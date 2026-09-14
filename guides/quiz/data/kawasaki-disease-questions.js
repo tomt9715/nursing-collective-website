@@ -26,12 +26,12 @@ var kawasakiDiseaseQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This child meets the classic Kawasaki criteria: fever \u22655 days plus 4 of 5 principal features (bilateral non-purulent conjunctivitis, strawberry tongue, rash, extremity changes). The CRASH and BURN mnemonic captures all of them.",
+                correct: "This child meets the classic Kawasaki criteria: fever \u22655 days plus 4 of 5 principal features (bilateral non-purulent conjunctivitis, strawberry tongue, rash, extremity changes). The Conjunctivitis, Rash, Adenopathy, Strawberry tongue, Hands and feet (CRASH) and BURN (fever of 5 or more days) mnemonic captures all of them.",
                 a: "Scarlet fever has strawberry tongue and sandpaper rash, but conjunctivitis is not typical, and strep throat symptoms (sore throat, exudate) are common.",
                 c: "Measles presents with cough, coryza, conjunctivitis (3 C's), plus Koplik spots in the mouth - not strawberry tongue.",
                 d: "Viral exanthems usually have milder fever and fewer systemic features; would not cause extremity edema and strawberry tongue together."
             },
-            testTakingTip: "CRASH and BURN is a single-question shortcut for Kawasaki - fever \u22655 days + 4 of 5 principal features.",
+            testTakingTip: "Conjunctivitis, Rash, Adenopathy, Strawberry tongue, Hands and feet (CRASH) and BURN is a single-question shortcut for Kawasaki - fever \u22655 days + 4 of 5 principal features.",
             guideSection: "Section 2 - CRASH and BURN Criteria",
             guideSectionId: "criteria"
         },
@@ -40,7 +40,7 @@ var kawasakiDiseaseQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A child is diagnosed with Kawasaki disease on day 7 of fever. The provider orders IVIG 2 g/kg. The nurse understands the priority reason for prompt administration is to:",
+            stem: "A child is diagnosed with Kawasaki disease on day 7 of fever. The provider orders intravenous immunoglobulin (IVIG) 2 g/kg. The nurse understands the priority reason for prompt administration is to:",
             options: [
                 { id: "a", text: "Prevent dehydration from prolonged fever" },
                 { id: "b", text: "Shorten the duration of the high fever" },
@@ -49,10 +49,10 @@ var kawasakiDiseaseQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "IVIG given within the first 10 days of illness reduces the risk of coronary artery aneurysms from ~25% to <5%. This is the defining benefit that determines the child's long-term cardiac risk.",
-                a: "IVIG does not primarily treat dehydration.",
+                correct: "Intravenous immunoglobulin (IVIG) given within the first 10 days of illness reduces the risk of coronary artery aneurysms from ~25% to <5%. This is the defining benefit that determines the child's long-term cardiac risk.",
+                a: "Intravenous immunoglobulin (IVIG) does not primarily treat dehydration.",
                 b: "Fever resolution is a secondary effect, not the primary reason for urgent administration.",
-                d: "Pericardial effusion is less concerning than coronary aneurysms and is not the primary target of IVIG."
+                d: "Pericardial effusion is less concerning than coronary aneurysms and is not the primary target of intravenous immunoglobulin (IVIG)."
             },
             testTakingTip: "The entire Kawasaki treatment plan is built around preventing coronary aneurysms. If a question asks why we do something - it's almost always about the arteries.",
             guideSection: "Section 6 - Treatment",
@@ -86,21 +86,21 @@ var kawasakiDiseaseQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 3-year-old has just completed IVIG therapy for Kawasaki disease. The parent asks when the child can receive the MMR vaccine that was due next week. The nurse's best response is:",
+            stem: "A 3-year-old has just completed intravenous immunoglobulin (IVIG) therapy for Kawasaki disease. The parent asks when the child can receive the measles, mumps, and rubella (MMR) vaccine that was due next week. The nurse's best response is:",
             options: [
                 { id: "a", text: "'The vaccine can be given at the regularly scheduled appointment.'" },
-                { id: "b", text: "'The MMR vaccine should be delayed for about 11 months after IVIG.'" },
-                { id: "c", text: "'MMR is now contraindicated forever due to Kawasaki disease.'" },
-                { id: "d", text: "'The child can receive MMR in 2 weeks once fever is fully gone.'" }
+                { id: "b", text: "'The vaccine should be delayed for about 11 months after the IV immunoglobulin.'" },
+                { id: "c", text: "'The vaccine is now contraindicated forever due to Kawasaki disease.'" },
+                { id: "d", text: "'The child can receive the vaccine in 2 weeks once fever is fully gone.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Passive antibodies in IVIG can neutralize live vaccines like MMR and varicella. Recommendation is to delay live vaccines for approximately 11 months after IVIG administration. Inactivated vaccines can still be given on schedule.",
-                a: "Giving MMR too soon means the IVIG antibodies will neutralize the vaccine - the child won't develop immunity.",
-                c: "MMR is not contraindicated forever, just delayed.",
-                d: "Two weeks is not long enough for the IVIG antibodies to clear."
+                correct: "Passive antibodies in intravenous immunoglobulin (IVIG) can neutralize live vaccines like the measles, mumps, and rubella (MMR) and varicella vaccines. Recommendation is to delay live vaccines for approximately 11 months after IVIG administration. Inactivated vaccines can still be given on schedule.",
+                a: "Giving the measles, mumps, and rubella (MMR) vaccine too soon means the intravenous immunoglobulin (IVIG) antibodies will neutralize the vaccine - the child won't develop immunity.",
+                c: "The measles, mumps, and rubella (MMR) vaccine is not contraindicated forever, just delayed.",
+                d: "Two weeks is not long enough for the intravenous immunoglobulin (IVIG) antibodies to clear."
             },
-            testTakingTip: "IVIG + live vaccines = delay 11 months. A specific, frequently tested fact.",
+            testTakingTip: "Intravenous immunoglobulin (IVIG) + live vaccines = delay 11 months. A specific, frequently tested fact.",
             guideSection: "Section 8 - Family Education",
             guideSectionId: "family-education"
         },
@@ -144,7 +144,7 @@ var kawasakiDiseaseQuizData = {
                 correct: "Platelets characteristically rise dramatically during the subacute phase, often exceeding 450,000 and sometimes surpassing 1 million. Combined with vasculitis, this creates a significant thrombotic risk - one reason low-dose aspirin is continued.",
                 a: "Thrombocytopenia is not typical; it would actually suggest a different diagnosis.",
                 c: "Hyponatremia, not hyperkalemia, is associated with Kawasaki.",
-                d: "WBCs are typically elevated (leukocytosis), not low."
+                d: "White blood cells (WBCs) are typically elevated (leukocytosis), not low."
             },
             testTakingTip: "Platelets + peeling = subacute phase. The rising platelet count is a specific and classic finding.",
             guideSection: "Section 4 - Labs & Diagnostics",
@@ -187,7 +187,7 @@ var kawasakiDiseaseQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Coronary artery aneurysms are the defining and most feared complication of Kawasaki disease. They can lead to myocardial infarction, arrhythmias, or sudden death - hence the need for echo surveillance and prompt IVIG.",
+                correct: "Coronary artery aneurysms are the defining and most feared complication of Kawasaki disease. They can lead to myocardial infarction, arrhythmias, or sudden death - hence the need for echo surveillance and prompt intravenous immunoglobulin (IVIG).",
                 a: "Mild transaminitis occurs but progression to liver failure is not typical.",
                 b: "Sterile pyuria is common, but renal failure is not a hallmark complication.",
                 d: "Facial paralysis is not a typical Kawasaki complication."
@@ -201,17 +201,17 @@ var kawasakiDiseaseQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "During administration of IVIG to a child with Kawasaki disease, the child develops chills, a temperature of 38.8\u00b0C (101.8\u00b0F), and drops blood pressure from 100/60 to 82/48 mmHg. What is the nurse's FIRST action?",
+            stem: "During administration of intravenous immunoglobulin (IVIG) to a child with Kawasaki disease, the child develops chills, a temperature of 38.8\u00b0C (101.8\u00b0F), and drops blood pressure from 100/60 to 82/48 mmHg. What is the nurse's FIRST action?",
             options: [
                 { id: "a", text: "Give a 20 mL/kg bolus of normal saline" },
                 { id: "b", text: "Administer diphenhydramine IV as prescribed" },
-                { id: "c", text: "Slow or stop the IVIG infusion and notify the provider" },
+                { id: "c", text: "Slow or stop the infusion and notify the provider" },
                 { id: "d", text: "Continue the infusion and reassess in 15 minutes" }
             ],
             correct: "c",
             rationale: {
                 correct: "The signs suggest an infusion reaction. First action is to slow or stop the infusion, then notify the provider. Diphenhydramine, acetaminophen, and fluids may be ordered next, but stopping the trigger comes first.",
-                a: "Fluids may be needed but addressing the source (IVIG) is first.",
+                a: "Fluids may be needed, but treating the cause with intravenous immunoglobulin (IVIG) comes first.",
                 b: "Diphenhydramine is often given, but only after the infusion is slowed/stopped and a provider is notified.",
                 d: "Continuing the infusion in the face of an apparent reaction is unsafe."
             },
@@ -229,14 +229,14 @@ var kawasakiDiseaseQuizData = {
                 { id: "a", text: "'My child will need follow-up echocardiograms for at least 2 months.'" },
                 { id: "b", text: "'I should call the cardiologist if my child is exposed to the flu while on aspirin.'" },
                 { id: "c", text: "'Once the fever is gone, my child can stop the aspirin right away.'" },
-                { id: "d", text: "'We need to delay the MMR vaccine for about 11 months.'" }
+                { id: "d", text: "'We need to delay the measles, mumps, and rubella (MMR) vaccine for about 11 months.'" }
             ],
             correct: "c",
             rationale: {
                 correct: "Low-dose aspirin continues for 6\u20138 weeks (or longer if aneurysms are present) AFTER the fever resolves, to prevent thrombosis during the subacute phase when platelets skyrocket. Stopping too early removes cardiac protection when it's most needed.",
                 a: "Correct - echo follow-up at 2 weeks and 6\u20138 weeks is standard.",
                 b: "Correct - the aspirin/flu/varicella teaching is right.",
-                d: "Correct - 11-month delay for live vaccines after IVIG."
+                d: "Correct - 11-month delay for live vaccines after intravenous immunoglobulin (IVIG)."
             },
             testTakingTip: "'Need further teaching' questions look for the incorrect statement. The aspirin continuation timeline is a high-yield teaching point.",
             guideSection: "Section 8 - Family Education",
@@ -261,7 +261,7 @@ var kawasakiDiseaseQuizData = {
                 c: "Multiple visitors often increases stimulation and agitation.",
                 d: "Routine sedation is not appropriate; comfort measures come first."
             },
-            testTakingTip: "Clustered care is a high-yield nursing intervention for multiple irritable pediatric patients (CHF, Kawasaki, post-op).",
+            testTakingTip: "Clustered care is a high-yield nursing intervention for irritable pediatric patients, such as children with congestive heart failure (CHF), Kawasaki disease, or post-op irritability.",
             guideSection: "Section 7 - Nursing Care",
             guideSectionId: "nursing-care"
         },
@@ -270,6 +270,7 @@ var kawasakiDiseaseQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["CRASH"],
             stem: "Which of the following clinical findings is NOT part of the CRASH and BURN diagnostic criteria for Kawasaki disease?",
             options: [
                 { id: "a", text: "Bilateral non-purulent conjunctivitis" },
@@ -293,18 +294,18 @@ var kawasakiDiseaseQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A 5-year-old with Kawasaki disease returns for a follow-up echocardiogram 2 weeks after IVIG. The echo shows a 4 mm coronary artery aneurysm. Which intervention does the nurse expect?",
+            stem: "A 5-year-old with Kawasaki disease returns for a follow-up echocardiogram 2 weeks after intravenous immunoglobulin (IVIG). The echo shows a 4 mm coronary artery aneurysm. Which intervention does the nurse expect?",
             options: [
                 { id: "a", text: "Discontinuation of all antiplatelet therapy" },
                 { id: "b", text: "Continued low-dose aspirin with close cardiology follow-up" },
-                { id: "c", text: "A second dose of IVIG administered immediately" },
+                { id: "c", text: "A second dose of IV immunoglobulin given immediately" },
                 { id: "d", text: "Immediate coronary bypass surgery" }
             ],
             correct: "b",
             rationale: {
                 correct: "Small-to-moderate aneurysms (5 mm or less) are typically managed with continued antiplatelet therapy (low-dose aspirin) and ongoing cardiology follow-up with serial echocardiograms. Many will regress over time.",
                 a: "Stopping antiplatelet therapy in the presence of a known aneurysm increases thrombosis risk.",
-                c: "Second IVIG is used for persistent fever (IVIG-resistant Kawasaki), not for stable aneurysms found on follow-up echo.",
+                c: "A second dose of intravenous immunoglobulin (IVIG) is used for persistent fever (IVIG-resistant Kawasaki), not for stable aneurysms found on follow-up echo.",
                 d: "Coronary bypass would be reserved for giant aneurysms with significant stenosis or ischemia - not a first-line response to a 4 mm aneurysm."
             },
             testTakingTip: "Aneurysm management depends on size: small \u2192 aspirin + follow-up. Giant (>8 mm) \u2192 aspirin + anticoagulation, possible surgical evaluation.",

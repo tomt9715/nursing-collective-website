@@ -17,7 +17,7 @@ var pediatricBurnsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is calculating fluid needs for a 20 kg child with 30% TBSA partial-thickness burns using the Parkland formula. How much total Lactated Ringer's should be administered over the first 24 hours?",
+            stem: "A nurse is calculating fluid needs for a 20 kg child with 30% total body surface area (TBSA) partial-thickness burns using the Parkland formula. How much total Lactated Ringer's should be administered over the first 24 hours?",
             options: [
                 { id: "a", text: "1,200 mL" },
                 { id: "b", text: "2,400 mL" },
@@ -26,12 +26,12 @@ var pediatricBurnsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Parkland formula: 4 mL \u00d7 kg \u00d7 %TBSA = 4 \u00d7 20 \u00d7 30 = 2,400 mL of Lactated Ringer's over 24 hours. Half (1,200 mL) in the first 8 hours from time of burn, half (1,200 mL) over the next 16 hours.",
+                correct: "Parkland formula: 4 mL \u00d7 kg \u00d7 % total body surface area (TBSA) = 4 \u00d7 20 \u00d7 30 = 2,400 mL of Lactated Ringer's over 24 hours. Half (1,200 mL) in the first 8 hours from time of burn, half (1,200 mL) over the next 16 hours.",
                 a: "1,200 mL is the first 8-hour allocation only, not total.",
                 c: "4,800 mL is 2\u00d7 the correct volume.",
                 d: "6,000 mL is too much."
             },
-            testTakingTip: "Parkland: 4 \u00d7 kg \u00d7 %TBSA = total 24-hour LR. Half in first 8 hr.",
+            testTakingTip: "Parkland: 4 \u00d7 kg \u00d7 % total body surface area (TBSA) = total 24-hour lactated Ringer's (LR). Half in first 8 hr.",
             guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
@@ -49,12 +49,12 @@ var pediatricBurnsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "ABCDE approach: assess the airway first, especially for inhalation injury signs (facial burns, singed nose hair, carbonaceous sputum, stridor). Then establish IV access (two large-bore) for fluid resuscitation. Even a scald without obvious airway involvement requires priority ABC assessment.",
+                correct: "Airway, breathing, circulation, disability, exposure (ABCDE) approach: assess the airway first, especially for inhalation injury signs (facial burns, singed nose hair, carbonaceous sputum, stridor). Then establish IV access (two large-bore) for fluid resuscitation. Even a scald without obvious airway involvement requires priority airway, breathing, circulation (ABC) assessment.",
                 a: "Ice worsens burns by vasoconstriction and additional tissue damage.",
                 c: "Oral fluids are inadequate for significant burn fluid loss.",
                 d: "Significant scald requires evaluation for resuscitation needs; don't send home."
             },
-            testTakingTip: "Burn priority: Airway first. ABCDE for every burn patient.",
+            testTakingTip: "Burn priority: Airway first. Airway, breathing, circulation, disability, exposure (ABCDE) for every burn patient.",
             guideSection: "Section 5 - Emergency Management",
             guideSectionId: "emergency"
         },
@@ -86,7 +86,7 @@ var pediatricBurnsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The nurse is using the Rule of Nines to estimate a 2-year-old's burn BSA. The child has burns on the entire head and neck. What percentage TBSA does this represent?",
+            stem: "The nurse is using the Rule of Nines to estimate a 2-year-old's burn body surface area (BSA). The child has burns on the entire head and neck. What percentage total body surface area (TBSA) does this represent?",
             options: [
                 { id: "a", text: "9%" },
                 { id: "b", text: "14%" },
@@ -95,9 +95,9 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "In young children (infants/toddlers), the head and neck account for approximately 18% of TBSA using the pediatric Rule of Nines - not 9% as in adults. This reflects the proportionally larger head in young children. As the child grows, this percentage decreases toward the adult 9%.",
-                a: "9% is the ADULT head BSA.",
-                b: "14% is the pediatric LEG BSA.",
+                correct: "In young children (infants/toddlers), the head and neck account for approximately 18% of total body surface area (TBSA) using the pediatric Rule of Nines - not 9% as in adults. This reflects the proportionally larger head in young children. As the child grows, this percentage decreases toward the adult 9%.",
+                a: "9% is the ADULT head body surface area (BSA).",
+                b: "14% is the pediatric LEG body surface area (BSA).",
                 d: "21% is too high."
             },
             testTakingTip: "Pediatric head = 18%. Pediatric leg = 14%. Adult head = 9%, leg = 18%. Classic trap.",
@@ -109,7 +109,7 @@ var pediatricBurnsQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A 10-year-old is being treated for a 25% TBSA burn. The Parkland formula has been started. Which assessment BEST indicates adequate fluid resuscitation?",
+            stem: "A 10-year-old is being treated for a 25% total body surface area (TBSA) burn. The Parkland formula has been started. Which assessment BEST indicates adequate fluid resuscitation?",
             options: [
                 { id: "a", text: "Blood pressure of 100/60" },
                 { id: "b", text: "Heart rate of 100 bpm" },
@@ -118,12 +118,12 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Urine output is the gold standard endpoint for burn fluid resuscitation. In young children (<30 kg), target is 1\u20132 mL/kg/hr; in older children, 0.5\u20131 mL/kg/hr. A 10-year-old is approaching adult thresholds, and 1 mL/kg/hr is adequate. If UOP is below target, increase fluids; if above, decrease to avoid over-resuscitation and pulmonary edema.",
+                correct: "Urine output is the gold standard endpoint for burn fluid resuscitation. In young children (<30 kg), target is 1\u20132 mL/kg/hr; in older children, 0.5\u20131 mL/kg/hr. A 10-year-old is approaching adult thresholds, and 1 mL/kg/hr is adequate. If urine output (UOP) is below target, increase fluids; if above, decrease to avoid over-resuscitation and pulmonary edema.",
                 a: "BP is a late indicator - children maintain BP until they decompensate.",
                 b: "HR alone doesn't confirm adequate resuscitation.",
                 d: "Clear lungs don't indicate volume status."
             },
-            testTakingTip: "UOP = the endpoint. 1\u20132 mL/kg/hr in young kids, 0.5\u20131 mL/kg/hr older. Titrate!",
+            testTakingTip: "Urine output (UOP) = the endpoint. 1\u20132 mL/kg/hr in young kids, 0.5\u20131 mL/kg/hr older. Titrate!",
             guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
@@ -203,8 +203,8 @@ var pediatricBurnsQuizData = {
             difficulty: "knowledge",
             stem: "Which burn patient is MOST appropriate for transfer to a regional burn center?",
             options: [
-                { id: "a", text: "A 10-year-old with 5% TBSA superficial (1st degree) sunburn on the shoulders" },
-                { id: "b", text: "A 4-year-old with 8% TBSA partial-thickness burns on the hands and face" },
+                { id: "a", text: "A 10-year-old with 5% total body surface area (TBSA) superficial (1st degree) sunburn on the shoulders" },
+                { id: "b", text: "A 4-year-old with 8% total body surface area (TBSA) partial-thickness burns on the hands and face" },
                 { id: "c", text: "A 15-year-old with a small 2% partial-thickness burn on the forearm" },
                 { id: "d", text: "An 8-year-old with a 2% burn on the chest, no complications" }
             ],
@@ -215,7 +215,7 @@ var pediatricBurnsQuizData = {
                 c: "Small partial-thickness on forearm can be managed locally in an older child.",
                 d: "Small uncomplicated chest burn can be managed locally."
             },
-            testTakingTip: "Burn center criteria: big BSA, any full-thickness, face/hands/feet/perineum/joints, electrical/chemical, inhalation, circumferential.",
+            testTakingTip: "Burn center criteria: big body surface area (BSA), any full-thickness, face/hands/feet/perineum/joints, electrical/chemical, inhalation, circumferential.",
             guideSection: "Section 4 - Severity & Transfer",
             guideSectionId: "severity"
         },
@@ -226,19 +226,19 @@ var pediatricBurnsQuizData = {
             difficulty: "application",
             stem: "A parent asks why their child with a partial-thickness burn is being given Lactated Ringer's instead of Normal Saline. What is the nurse's BEST response?",
             options: [
-                { id: "a", text: "'LR and NS are interchangeable for burns, so the choice does not matter.'" },
-                { id: "b", text: "'LR is preferred because large volumes of NS can cause hyperchloremic acidosis.'" },
-                { id: "c", text: "'NS costs more, so LR is used for large-volume burn resuscitation.'" },
-                { id: "d", text: "'NS is reserved for cardiac patients and would overload your child's heart.'" }
+                { id: "a", text: "'Lactated Ringer's and normal saline are interchangeable for burns, so the choice does not matter.'" },
+                { id: "b", text: "'Lactated Ringer's is preferred because large volumes of normal saline can cause hyperchloremic acidosis.'" },
+                { id: "c", text: "'Normal saline costs more, so lactated Ringer's is used for large-volume burn resuscitation.'" },
+                { id: "d", text: "'Normal saline is reserved for cardiac patients and would overload your child's heart.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Lactated Ringer's is preferred for large-volume burn resuscitation because it more closely resembles physiologic extracellular fluid. Large-volume Normal Saline can cause hyperchloremic metabolic acidosis due to the high chloride content (154 mEq/L vs 109 in LR). LR also contains lactate which is metabolized to bicarbonate, helping buffer acidosis.",
+                correct: "Lactated Ringer's (LR) is preferred for large-volume burn resuscitation because it more closely resembles physiologic extracellular fluid. Large-volume normal saline can cause hyperchloremic metabolic acidosis due to the high chloride content (154 mEq/L vs 109 in LR). LR also contains lactate which is metabolized to bicarbonate, helping buffer acidosis.",
                 a: "They are NOT interchangeable for large-volume resuscitation.",
                 c: "Cost is not the reason.",
-                d: "NS is used in many settings, not just cardiac."
+                d: "Normal saline (NS) is used in many settings, not just cardiac."
             },
-            testTakingTip: "Large-volume burn resuscitation = LR (not NS). Hyperchloremic acidosis from NS.",
+            testTakingTip: "Large-volume burn resuscitation = lactated Ringer's (LR), not normal saline (NS). Hyperchloremic acidosis from NS.",
             guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
@@ -272,19 +272,19 @@ var pediatricBurnsQuizData = {
             difficulty: "knowledge",
             stem: "Which of the following is a contraindication to using silver sulfadiazine (Silvadene) on a burn?",
             options: [
-                { id: "a", text: "A healthy 8-year-old with 10% BSA partial-thickness burn" },
+                { id: "a", text: "A healthy 8-year-old with 10% body surface area (BSA) partial-thickness burn" },
                 { id: "b", text: "A 2-month-old infant with a burn" },
                 { id: "c", text: "An adolescent with no allergies" },
                 { id: "d", text: "A teenager with a minor kitchen burn" }
             ],
             correct: "b",
             rationale: {
-                correct: "Silver sulfadiazine is contraindicated in infants under 2 months (risk of kernicterus), in patients with G6PD deficiency or sulfa allergy, and generally avoided on the face (may cause cosmetic discoloration). Use bacitracin or mupirocin instead in these cases.",
+                correct: "Silver sulfadiazine is contraindicated in infants under 2 months (risk of kernicterus), in patients with glucose-6-phosphate dehydrogenase (G6PD) deficiency or sulfa allergy, and generally avoided on the face (may cause cosmetic discoloration). Use bacitracin or mupirocin instead in these cases.",
                 a: "Appropriate use.",
                 c: "Appropriate use.",
                 d: "Appropriate use."
             },
-            testTakingTip: "Avoid silver sulfadiazine in infants <2 months, G6PD deficiency, sulfa allergy, and on the face.",
+            testTakingTip: "Avoid silver sulfadiazine in infants <2 months, glucose-6-phosphate dehydrogenase (G6PD) deficiency, sulfa allergy, and on the face.",
             guideSection: "Section 7 - Ongoing Care",
             guideSectionId: "ongoing"
         },
@@ -293,7 +293,7 @@ var pediatricBurnsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "Which nutritional approach is MOST appropriate for a child with a 25% TBSA burn?",
+            stem: "Which nutritional approach is MOST appropriate for a child with a 25% total body surface area (TBSA) burn?",
             options: [
                 { id: "a", text: "NPO for 7 days then oral diet" },
                 { id: "b", text: "Early high-protein enteral feeding within 24\u201348 hours" },
@@ -325,7 +325,7 @@ var pediatricBurnsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Pressure garments worn 23 hours/day for 12\u201324 months prevent hypertrophic scarring. Healing burn skin is highly photosensitive - sun exposure causes permanent hyperpigmentation. SPF 30+, hats, and sun-protective clothing are essential for at least a year.",
+                correct: "Pressure garments worn 23 hours/day for 12\u201324 months prevent hypertrophic scarring. Healing burn skin is highly photosensitive - sun exposure causes permanent hyperpigmentation. Sun protection factor (SPF) 30+, hats, and sun-protective clothing are essential for at least a year.",
                 a: "Sun exposure causes hyperpigmentation on healing skin.",
                 c: "Tight occlusion isn't appropriate; pressure garments are different - they're specifically designed.",
                 d: "Moisturizing is essential to keep healing skin supple."
@@ -362,7 +362,7 @@ var pediatricBurnsQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "The nurse is caring for a 3-year-old with a 15% TBSA partial-thickness burn in the first 24 hours. Which finding requires IMMEDIATE intervention?",
+            stem: "The nurse is caring for a 3-year-old with a 15% total body surface area (TBSA) partial-thickness burn in the first 24 hours. Which finding requires IMMEDIATE intervention?",
             options: [
                 { id: "a", text: "Urine output of 20 mL in the past hour (child weighs 15 kg)" },
                 { id: "b", text: "Reports of severe pain during dressing changes" },
@@ -371,12 +371,12 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "For a 15 kg child, target UOP is 1\u20132 mL/kg/hr, or 15\u201330 mL/hr. An output of 5 mL/hr is critically low - indicates inadequate fluid resuscitation and impending shock. Increase the fluid rate immediately and notify the provider.",
+                correct: "For a 15 kg child, target urine output (UOP) is 1\u20132 mL/kg/hr, or 15\u201330 mL/hr. An output of 5 mL/hr is critically low - indicates inadequate fluid resuscitation and impending shock. Increase the fluid rate immediately and notify the provider.",
                 a: "20 mL/hr is within the target range for a 15 kg child.",
                 b: "Pain during dressing changes is common and manageable with pre-medication.",
                 d: "Mild temperature elevation is expected post-burn."
             },
-            testTakingTip: "Pediatric burn UOP target: 1\u20132 mL/kg/hr. Below that = under-resuscitated.",
+            testTakingTip: "Pediatric burn urine output (UOP) target: 1\u20132 mL/kg/hr. Below that = under-resuscitated.",
             guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },

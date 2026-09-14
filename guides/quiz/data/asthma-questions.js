@@ -27,11 +27,11 @@ var asthmaQuizData = {
             correct: "c",
             rationale: {
                 correct: "Inhaled corticosteroids (ICS) are the cornerstone and most effective long-term controller medication for persistent asthma at all severity levels. They reduce airway inflammation, decrease mucus production, reduce bronchial hyperresponsiveness, and prevent exacerbations. ICS is recommended starting at Step 2 of the stepwise approach.",
-                a: "Albuterol is a rescue (quick-relief) medication, not a controller. It provides rapid bronchodilation but does not treat the underlying inflammation. Using SABAs alone for persistent asthma is inappropriate.",
+                a: "Albuterol is a rescue (quick-relief) medication, not a controller. It provides rapid bronchodilation but does not treat the underlying inflammation. Using short-acting beta2-agonists (SABAs) alone for persistent asthma is inappropriate.",
                 b: "Ipratropium is an anticholinergic used as adjunct therapy in acute exacerbations. It is not a first-line controller for chronic asthma management.",
-                d: "Leukotriene modifiers (montelukast) are alternative controllers but are less effective than ICS. They may be used as add-on therapy or for patients who cannot use ICS."
+                d: "Leukotriene modifiers (montelukast) are alternative controllers but are less effective than inhaled corticosteroids (ICS). They may be used as add-on therapy or for patients who cannot use ICS."
             },
-            testTakingTip: "ICS = #1 controller for persistent asthma. SABA = #1 rescue. Remember: asthma is an INFLAMMATORY disease, so the best controller targets inflammation (corticosteroid). LABAs must NEVER be used alone - always with an ICS.",
+            testTakingTip: "Inhaled corticosteroid (ICS) = #1 controller for persistent asthma. Short-acting beta2-agonist (SABA) = #1 rescue. Remember: asthma is an INFLAMMATORY disease, so the best controller targets inflammation (corticosteroid). Long-acting beta2-agonists (LABAs) must NEVER be used alone - always with an ICS.",
             guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
         },
@@ -112,16 +112,16 @@ var asthmaQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with moderate persistent asthma is currently on a low-dose ICS (Step 2). The patient reports using the rescue inhaler 4 times per week and waking at night with coughing twice a month. The nurse anticipates the provider will:",
+            stem: "A patient with moderate persistent asthma is currently on a low-dose inhaled corticosteroid (ICS) at Step 2. The patient reports using the rescue inhaler 4 times per week and waking at night with coughing twice a month. The nurse anticipates the provider will:",
             options: [
                 { id: "a", text: "Continue current treatment - symptoms are well-controlled" },
-                { id: "b", text: "Step up to medium-dose ICS or add a LABA" },
-                { id: "c", text: "Step down to PRN SABA only" },
-                { id: "d", text: "Switch to oral corticosteroids daily" }
+                { id: "b", text: "Step up to medium-dose inhaled corticosteroid or add a long-acting beta2-agonist" },
+                { id: "c", text: "Step down to PRN short-acting beta2-agonist (SABA) only" },
+                { id: "d", text: "Switch to daily oral corticosteroids as the long-term controller" }
             ],
             correct: "b",
             rationale: {
-                correct: "This patient\u2019s asthma is NOT well-controlled: rescue inhaler use >2 days/week (using 4x/week) and nighttime symptoms >2x/month indicates the need to step up therapy. From Step 2 (low-dose ICS), the step-up is to Step 3: medium-dose ICS OR low-dose ICS + LABA combination.",
+                correct: "This patient\u2019s asthma is NOT well-controlled: rescue inhaler use >2 days/week (using 4x/week) and nighttime symptoms >2x/month indicates the need to step up therapy. From Step 2, which is a low-dose inhaled corticosteroid (ICS), the step-up is to Step 3: medium-dose ICS OR low-dose ICS + long-acting beta2-agonist (LABA) combination.",
                 a: "Well-controlled asthma = rescue inhaler \u22642 days/week AND nighttime symptoms \u22642x/month. This patient exceeds both thresholds.",
                 c: "Stepping down is only appropriate when asthma has been well-controlled for at least 3 months. This patient needs more treatment, not less.",
                 d: "Daily oral corticosteroids are reserved for Step 6 (severe persistent) after all other options have failed. Jumping to oral steroids from Step 2 skips multiple intermediate steps."
@@ -144,12 +144,12 @@ var asthmaQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Correct MDI technique: exhale fully \u2192 place mouthpiece in mouth (or 1-2 inches away) \u2192 press canister at the beginning of a slow, deep inhalation \u2192 hold breath for 10 seconds \u2192 exhale slowly. The coordination of pressing and slow inhalation ensures medication reaches the lower airways. Exhaling first creates maximum lung volume for medication deposition.",
+                correct: "Correct metered-dose inhaler (MDI) technique: exhale fully \u2192 place mouthpiece in mouth (or 1-2 inches away) \u2192 press canister at the beginning of a slow, deep inhalation \u2192 hold breath for 10 seconds \u2192 exhale slowly. The coordination of pressing and slow inhalation ensures medication reaches the lower airways. Exhaling first creates maximum lung volume for medication deposition.",
                 b: "Rapid inhalation causes the medication to deposit in the oropharynx (mouth/throat) rather than reaching the lower airways. Slow, deep inhalation is essential for proper delivery.",
                 c: "Double-pressing wastes medication and delivers an imprecise dose. If two puffs are prescribed, wait 1 minute between each individual puff.",
-                d: "The \"open mouth\" technique (4 inches away) is an older method. Current guidelines recommend using MDIs with a spacer whenever possible for optimal drug delivery."
+                d: "The \"open mouth\" technique (4 inches away) is an older method. Current guidelines recommend using metered-dose inhalers (MDIs) with a spacer whenever possible for optimal drug delivery."
             },
-            testTakingTip: "MDI technique: Exhale \u2192 Slow inhale + actuate \u2192 Hold 10 sec. A spacer improves delivery by 40-60% and is recommended for all patients, especially children and those with coordination difficulty. Teach patients to demonstrate (teach-back method).",
+            testTakingTip: "Metered-dose inhaler (MDI) technique: Exhale \u2192 Slow inhale + actuate \u2192 Hold 10 sec. A spacer improves delivery by 40-60% and is recommended for all patients, especially children and those with coordination difficulty. Teach patients to demonstrate (teach-back method).",
             guideSection: "Section 8 - Patient Education",
             guideSectionId: "education"
         },
@@ -168,13 +168,13 @@ var asthmaQuizData = {
             ],
             correct: { a: "Controller (Maintenance)", b: "Rescue (Quick-Relief)", c: "Controller (Maintenance)", d: "Rescue (Quick-Relief)" },
             rationale: {
-                correct: "Controllers are taken daily to prevent symptoms (ICS, LABAs). Rescue medications provide rapid relief during acute episodes (SABAs, ipratropium). Knowing this distinction is essential for patient education.",
+                correct: "Controllers are taken daily to prevent symptoms: inhaled corticosteroids (ICS) and long-acting beta2-agonists (LABAs). Rescue medications provide rapid relief during acute episodes: short-acting beta2-agonists (SABAs) and ipratropium. Knowing this distinction is essential for patient education.",
                 a: "CONTROLLER - Inhaled corticosteroids are the most effective first-line controller medications. They reduce airway inflammation and are taken daily. Rinse mouth after use to prevent oral candidiasis.",
-                b: "RESCUE - Short-acting beta2-agonists like albuterol provide rapid bronchodilation within 5\u201315 minutes. Used PRN for acute symptoms. Needing SABA >2 days/week indicates poorly controlled asthma.",
-                c: "CONTROLLER - Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an ICS (never as monotherapy) due to FDA Black Box Warning about increased risk when used alone.",
+                b: "RESCUE - Short-acting beta2-agonists like albuterol provide rapid bronchodilation within 5\u201315 minutes. Used PRN for acute symptoms. Needing a short-acting beta2-agonist (SABA) >2 days/week indicates poorly controlled asthma.",
+                c: "CONTROLLER - Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an inhaled corticosteroid (ICS), never as monotherapy, due to the Food and Drug Administration (FDA) Black Box Warning about increased risk when used alone.",
                 d: "RESCUE - Ipratropium bromide is a short-acting anticholinergic used as adjunct quick-relief therapy in acute exacerbations, often nebulized with albuterol (DuoNeb) for synergistic bronchodilation."
             },
-            testTakingTip: "Controllers = daily (ICS, LABAs, leukotriene modifiers). Rescue = PRN (SABAs, ipratropium). Critical safety: LABAs must NEVER be used alone - always with an ICS.",
+            testTakingTip: "Controllers = daily: inhaled corticosteroids (ICS), long-acting beta2-agonists (LABAs), leukotriene modifiers. Rescue = PRN: short-acting beta2-agonists (SABAs), ipratropium. Critical safety: LABAs must NEVER be used alone - always with an ICS.",
             guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
         },

@@ -26,12 +26,12 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The standard recommendation is 400 mcg of folic acid daily for all women of childbearing age, ideally started before conception. This has been shown to reduce NTD risk by up to 70%.",
+                correct: "The standard recommendation is 400 mcg of folic acid daily for all women of childbearing age, ideally started before conception. This has been shown to reduce neural tube defect (NTD) risk by up to 70%.",
                 a: "100 mcg is too low to be protective.",
                 c: "1 mg is between standard and high-risk; not the baseline recommendation.",
-                d: "4 mg/day is the HIGH-RISK dose - for women with a prior NTD pregnancy, not baseline prevention."
+                d: "4 mg/day is the HIGH-RISK dose - for women with a prior neural tube defect (NTD) pregnancy, not baseline prevention."
             },
-            testTakingTip: "400 mcg = standard prevention. 4 mg = high-risk (prior NTD pregnancy, certain anticonvulsants).",
+            testTakingTip: "400 mcg = standard prevention. 4 mg = high-risk: a prior neural tube defect (NTD) pregnancy or certain anticonvulsants.",
             guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
@@ -44,17 +44,17 @@ var neuralTubeDefectsQuizData = {
             options: [
                 { id: "a", text: "'The standard 400 mcg is fine.'" },
                 { id: "b", text: "'You should take 4 mg daily starting 1 month before conception.'" },
-                { id: "c", text: "'Folic acid is no longer recommended for women who have had NTD pregnancies.'" },
+                { id: "c", text: "'Folic acid is no longer recommended for women who have had neural tube defect (NTD) pregnancies.'" },
                 { id: "d", text: "'Take 4 mg daily but only after the pregnancy is confirmed.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Women with a prior NTD pregnancy are recommended to take 4 mg folic acid daily, starting at least 1 month before conception and continuing through the first trimester. Higher dose is needed given the elevated recurrence risk.",
+                correct: "Women with a prior neural tube defect (NTD) pregnancy are recommended to take 4 mg folic acid daily, starting at least 1 month before conception and continuing through the first trimester. Higher dose is needed given the elevated recurrence risk.",
                 a: "400 mcg is baseline; this woman needs a higher dose.",
                 c: "Folic acid is MORE important, not less, for high-risk women.",
                 d: "Starting after pregnancy is confirmed is too late - the neural tube closes by day 28."
             },
-            testTakingTip: "High-risk women (prior NTD, anticonvulsants) = 4 mg daily, starting before conception.",
+            testTakingTip: "High-risk women with a prior neural tube defect (NTD) pregnancy or on anticonvulsants = 4 mg daily, starting before conception.",
             guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
@@ -72,7 +72,7 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Prone or side-lying positioning protects the sac from pressure or rupture. Supine positioning can put weight on the sac and damage neural tissue, leak CSF, or introduce infection.",
+                correct: "Prone or side-lying positioning protects the sac from pressure or rupture. Supine positioning can put weight on the sac and damage neural tissue, leak cerebrospinal fluid (CSF), or introduce infection.",
                 a: "Supine is CONTRAINDICATED in myelomeningocele - would put pressure on the sac.",
                 c: "Semi-Fowler's still involves some weight on the back.",
                 d: "Trendelenburg increases intracranial pressure and is inappropriate."
@@ -86,7 +86,7 @@ var neuralTubeDefectsQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A newborn with myelomeningocele arrives in the NICU. The sac is intact, and there is a nurse preparing to care for the baby. Which action is MOST important?",
+            stem: "A newborn with myelomeningocele arrives in the neonatal intensive care unit (NICU). The sac is intact, and there is a nurse preparing to care for the baby. Which action is MOST important?",
             options: [
                 { id: "a", text: "Apply a dry gauze dressing to the sac to protect it" },
                 { id: "b", text: "Cover the sac with a sterile saline-moistened dressing" },
@@ -121,7 +121,7 @@ var neuralTubeDefectsQuizData = {
                 correct: "Myelomeningocele is the most severe form of spina bifida - the sac contains both meninges AND spinal cord / nerve roots, resulting in flaccid paralysis, neurogenic bowel/bladder, and typically hydrocephalus.",
                 a: "Occulta is the mildest - vertebral defect only, often asymptomatic.",
                 b: "Meningocele is intermediate - meninges in the sac but no neural tissue.",
-                d: "Encephalocele is a cranial NTD, not a form of spina bifida."
+                d: "Encephalocele is a cranial neural tube defect (NTD), not a form of spina bifida."
             },
             testTakingTip: "Severity ladder: occulta \u2192 meningocele \u2192 myelomeningocele (worst). Memorize.",
             guideSection: "Section 1 - Overview & Types",
@@ -141,12 +141,12 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Rapidly increasing head circumference paired with a bulging fontanelle indicates increased ICP from hydrocephalus. Sunset eyes, poor feeding, lethargy, and high-pitched cry are other early signs. 80\u201390% of myelomeningocele infants develop hydrocephalus.",
+                correct: "Rapidly increasing head circumference paired with a bulging fontanelle indicates increased intracranial pressure (ICP) from hydrocephalus. Sunset eyes, poor feeding, lethargy, and high-pitched cry are other early signs. 80\u201390% of myelomeningocele infants develop hydrocephalus.",
                 a: "Decreased head size is not typical.",
                 c: "A flat fontanelle is normal.",
                 d: "Pink skin is a healthy finding, not a hydrocephalus sign."
             },
-            testTakingTip: "Head circumference daily for myelomeningocele infants. Bulging fontanelle + rapid growth = ICP up = shunt needed.",
+            testTakingTip: "Head circumference daily for myelomeningocele infants. Bulging fontanelle + rapid growth = intracranial pressure (ICP) up = shunt needed.",
             guideSection: "Section 2 - Myelomeningocele",
             guideSectionId: "myelomeningocele"
         },
@@ -164,12 +164,12 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Arnold-Chiari II malformation (cerebellar herniation through foramen magnum) is almost universal in myelomeningocele and causes hydrocephalus by blocking CSF flow. 80\u201390% of patients require a VP shunt.",
+                correct: "Arnold-Chiari II malformation (cerebellar herniation through foramen magnum) is almost universal in myelomeningocele and causes hydrocephalus by blocking cerebrospinal fluid (CSF) flow. 80\u201390% of patients require a ventriculoperitoneal (VP) shunt.",
                 a: "Brachial plexus injury is unrelated.",
-                c: "SMA is a separate neuromuscular disease.",
-                d: "TEF is unrelated."
+                c: "Spinal muscular atrophy (SMA) is a separate neuromuscular disease.",
+                d: "Tracheoesophageal fistula (TEF) is unrelated."
             },
-            testTakingTip: "Myelomeningocele + Chiari II + hydrocephalus + VP shunt = the core pathophysiologic chain.",
+            testTakingTip: "Myelomeningocele + Chiari II + hydrocephalus + ventriculoperitoneal (VP) shunt = the core pathophysiologic chain.",
             guideSection: "Section 2 - Myelomeningocele",
             guideSectionId: "myelomeningocele"
         },
@@ -211,12 +211,12 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Clean intermittent catheterization (CIC) every 3\u20134 hours is the standard for managing the neurogenic bladder in myelomeningocele. It preserves renal function, maintains continence, and reduces UTI risk. Parents learn first, then the child takes over as they grow.",
+                correct: "Clean intermittent catheterization (CIC) every 3\u20134 hours is the standard for managing the neurogenic bladder in myelomeningocele. It preserves renal function, maintains continence, and reduces urinary tract infection (UTI) risk. Parents learn first, then the child takes over as they grow.",
                 a: "Allowing overflow damages the upper urinary tract.",
-                c: "Indwelling Foley increases infection risk; CIC is preferred.",
+                c: "Indwelling Foley increases infection risk; clean intermittent catheterization (CIC) is preferred.",
                 d: "Urostomy is reserved for specific refractory cases, not first-line."
             },
-            testTakingTip: "CIC every 3\u20134 hours = standard bladder management in myelomeningocele. Teach parents early.",
+            testTakingTip: "Clean intermittent catheterization (CIC) every 3\u20134 hours = standard bladder management in myelomeningocele. Teach parents early.",
             guideSection: "Section 4 - Long-Term Complications",
             guideSectionId: "complications"
         },
@@ -234,13 +234,13 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Elevated MSAFP at 15\u201320 weeks gestation is a classic marker for open neural tube defects. It is combined with targeted fetal ultrasound to confirm. Closed NTDs (like spina bifida occulta) may not elevate AFP.",
+                correct: "Elevated maternal serum alpha-fetoprotein (MSAFP) at 15\u201320 weeks gestation is a classic marker for open neural tube defects. It is combined with targeted fetal ultrasound to confirm. Closed neural tube defects (NTDs), like spina bifida occulta, may not elevate alpha-fetoprotein (AFP).",
                 a: "Correct.",
-                b: "GCT screens for gestational diabetes.",
-                c: "GBS swab screens for neonatal sepsis risk.",
+                b: "The glucose challenge test (GCT) screens for gestational diabetes.",
+                c: "The group B streptococcus (GBS) swab screens for neonatal sepsis risk.",
                 d: "Rh screen identifies isoimmunization risk."
             },
-            testTakingTip: "Elevated MSAFP = think NTD (or multiple gestation, abdominal wall defects). Low MSAFP = think trisomies.",
+            testTakingTip: "Elevated maternal serum alpha-fetoprotein (MSAFP) = think neural tube defect (NTD), multiple gestation, or abdominal wall defects. Low MSAFP = think trisomies.",
             guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
@@ -249,7 +249,7 @@ var neuralTubeDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "A 6-year-old with myelomeningocele and a VP shunt presents to the ED with headache, vomiting, and new-onset lethargy. What is the nurse's priority concern?",
+            stem: "A 6-year-old with myelomeningocele and a ventriculoperitoneal (VP) shunt presents to the ED with headache, vomiting, and new-onset lethargy. What is the nurse's priority concern?",
             options: [
                 { id: "a", text: "Typical viral gastroenteritis" },
                 { id: "b", text: "Neurogenic bowel constipation" },
@@ -258,12 +258,12 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Headache, vomiting, and lethargy in a child with a VP shunt suggest shunt malfunction - the shunt is blocked, disconnected, or infected, allowing ICP to rise. This is an emergency; untreated, it can lead to herniation. Fever would also raise concern for shunt infection.",
+                correct: "Headache, vomiting, and lethargy in a child with a ventriculoperitoneal (VP) shunt suggest shunt malfunction - the shunt is blocked, disconnected, or infected, allowing intracranial pressure (ICP) to rise. This is an emergency; untreated, it can lead to herniation. Fever would also raise concern for shunt infection.",
                 a: "Shunt malfunction must be ruled out first; don't assume benign.",
                 b: "Constipation doesn't cause this triad.",
                 d: "Migraine doesn't typically cause lethargy with vomiting in a child with a shunt."
             },
-            testTakingTip: "Child with VP shunt + headache/vomiting/lethargy = shunt malfunction until proven otherwise. Emergency.",
+            testTakingTip: "Child with ventriculoperitoneal (VP) shunt + headache/vomiting/lethargy = shunt malfunction until proven otherwise. Emergency.",
             guideSection: "Section 4 - Long-Term Complications",
             guideSectionId: "complications"
         },
@@ -286,7 +286,7 @@ var neuralTubeDefectsQuizData = {
                 c: "Grains are not latex-cross-reactive.",
                 d: "Meats are not latex-cross-reactive."
             },
-            testTakingTip: "Latex cross-reactive foods: BANANA, AVOCADO, KIWI, chestnut, tomato. Memorize the first 3 - most tested.",
+            testTakingTip: "Latex cross-reactive foods: banana, avocado, kiwi, chestnut, tomato. Memorize the first 3 - most tested.",
             guideSection: "Section 5 - Latex Safety",
             guideSectionId: "latex"
         },
@@ -305,7 +305,7 @@ var neuralTubeDefectsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Closure within 24\u201372 hours of birth reduces the risk of infection (meningitis) and further neurologic damage from mechanical injury to the exposed cord. Fetal surgery is an alternative in select patients.",
-                a: "6 hours is typical for testicular torsion, not NTD closure.",
+                a: "6 hours is typical for testicular torsion, not neural tube defect closure.",
                 c: "Waiting a month risks infection and damage.",
                 d: "Too late; damage accumulates."
             },
@@ -327,7 +327,7 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "A small dimple, tuft of hair, lipoma, or port-wine stain over the lower spine in an otherwise normal infant suggests spina bifida occulta - a hidden vertebral defect without a sac. Most are asymptomatic, though a minority develop tethered cord symptoms later. MRI may be indicated.",
+                correct: "A small dimple, tuft of hair, lipoma, or port-wine stain over the lower spine in an otherwise normal infant suggests spina bifida occulta - a hidden vertebral defect without a sac. Most are asymptomatic, though a minority develop tethered cord symptoms later. Magnetic resonance imaging (MRI) may be indicated.",
                 a: "Meningocele has a visible sac.",
                 b: "Myelomeningocele has a visible sac plus neurologic deficits.",
                 d: "Encephalocele is on the cranium, not the lumbar spine."

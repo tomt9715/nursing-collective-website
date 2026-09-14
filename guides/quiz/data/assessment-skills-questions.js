@@ -19,23 +19,23 @@ var assessmentSkillsQuizData = {
             difficulty: "application",
             stem: "A nurse is assessing a patient who was involved in a motor vehicle accident. The patient opens eyes only to painful stimuli, makes incomprehensible sounds, and exhibits abnormal flexion (decorticate posturing) to pain. What is this patient's Glasgow Coma Scale (GCS) score?",
             options: [
-                { id: "a", text: "GCS 5 (E1 + V1 + M3)" },
-                { id: "b", text: "GCS 7 (E2 + V2 + M3)" },
-                { id: "c", text: "GCS 8 (E2 + V2 + M4)" },
-                { id: "d", text: "GCS 9 (E2 + V3 + M4)" }
+                { id: "a", text: "Glasgow Coma Scale (GCS) 5 (E1 + V1 + M3)" },
+                { id: "b", text: "Glasgow Coma Scale (GCS) 7 (E2 + V2 + M3)" },
+                { id: "c", text: "Glasgow Coma Scale (GCS) 8 (E2 + V2 + M4)" },
+                { id: "d", text: "Glasgow Coma Scale (GCS) 9 (E2 + V3 + M4)" }
             ],
             correct: "b",
             rationale: {
-                correct: "The GCS is calculated by adding three components: Eye Opening (E) = 2 (opens to pain), Verbal Response (V) = 2 (incomprehensible sounds - moaning/groaning without words), Motor Response (M) = 3 (abnormal flexion/decorticate posturing). Total = 2 + 2 + 3 = 7. A GCS of 7 indicates severe brain injury and the patient likely needs intubation for airway protection (GCS ≤8 = 'intubate').",
-                a: "GCS 5 would require: E1 (no eye opening) + V1 (no verbal response) + M3 (abnormal flexion). This patient DOES open eyes to pain (E2) and DOES make sounds (V2), so the score is higher than 5.",
-                c: "GCS 8 would require M4 (withdrawal from pain - a purposeful pulling away). This patient exhibits M3 (abnormal flexion/decorticate posturing - stereotypical flexion of arms, wrist flexion, and leg extension), which is a lower motor response than withdrawal.",
-                d: "GCS 9 would require V3 (inappropriate words - recognizable words but not conversational) and M4 (withdrawal). This patient produces only incomprehensible sounds (V2, no words) and has abnormal flexion (M3), not withdrawal."
+                correct: "The Glasgow Coma Scale (GCS) is calculated by adding three components: Eye Opening (E) = 2 (opens to pain), Verbal Response (V) = 2 (incomprehensible sounds - moaning/groaning without words), Motor Response (M) = 3 (abnormal flexion/decorticate posturing). Total = 2 + 2 + 3 = 7. A GCS of 7 indicates severe brain injury and the patient likely needs intubation for airway protection (GCS ≤8 = 'intubate').",
+                a: "Glasgow Coma Scale (GCS) 5 would require: E1 (no eye opening) + V1 (no verbal response) + M3 (abnormal flexion). This patient DOES open eyes to pain (E2) and DOES make sounds (V2), so the score is higher than 5.",
+                c: "Glasgow Coma Scale (GCS) 8 would require M4 (withdrawal from pain - a purposeful pulling away). This patient exhibits M3 (abnormal flexion/decorticate posturing - stereotypical flexion of arms, wrist flexion, and leg extension), which is a lower motor response than withdrawal.",
+                d: "Glasgow Coma Scale (GCS) 9 would require V3 (inappropriate words - recognizable words but not conversational) and M4 (withdrawal). This patient produces only incomprehensible sounds (V2, no words) and has abnormal flexion (M3), not withdrawal."
             },
             labValues: [
                 { name: "GCS Scale", normal: "Eye: 1-4, Verbal: 1-5, Motor: 1-6 (Total: 3-15)" },
                 { name: "GCS Severity", normal: "Mild: 13-15, Moderate: 9-12, Severe: 3-8" }
             ],
-            testTakingTip: "GCS scoring: Eye (4-1: spontaneous, voice, pain, none), Verbal (5-1: oriented, confused, inappropriate words, incomprehensible sounds, none), Motor (6-1: obeys commands, localizes, withdraws, abnormal flexion, extension, none). Key: GCS ≤8 = 'intubate' for airway protection. Abnormal flexion (decorticate) = M3, Extension (decerebrate) = M2.",
+            testTakingTip: "Glasgow Coma Scale (GCS) scoring: Eye (4-1: spontaneous, voice, pain, none), Verbal (5-1: oriented, confused, inappropriate words, incomprehensible sounds, none), Motor (6-1: obeys commands, localizes, withdraws, abnormal flexion, extension, none). Key: GCS ≤8 = 'intubate' for airway protection. Abnormal flexion (decorticate) = M3, Extension (decerebrate) = M2.",
             guideSection: "Section 5 - GCS Assessment",
             guideSectionId: "gcs-assessment"
         },
@@ -102,22 +102,22 @@ var assessmentSkillsQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse discovers a post-operative patient who is confused, tachycardic (HR 118), hypotensive (BP 84/56), and has a distended, rigid abdomen on post-operative day 1 after abdominal surgery. The nurse suspects internal hemorrhage. Place the SBAR communication elements in the correct sequence for notifying the provider.",
+            stem: "A nurse discovers a post-operative patient who is confused, tachycardic (HR 118), hypotensive (BP 84/56), and has a distended, rigid abdomen on post-operative day 1 after abdominal surgery. The nurse suspects internal hemorrhage. Place the Situation, Background, Assessment, Recommendation (SBAR) communication elements in the correct sequence for notifying the provider.",
             options: [
                 { id: "a", text: "SITUATION: \"I'm calling about Mr. Johnson in Room 412. He is post-op day 1 after an exploratory laparotomy and I'm concerned he is hemorrhaging internally.\"" },
                 { id: "b", text: "BACKGROUND: \"He had an uncomplicated surgery yesterday. His baseline vitals this morning were BP 120/76, HR 82. He has been receiving IV fluids and has had 200 mL of urine output in the last 4 hours.\"" },
                 { id: "c", text: "ASSESSMENT: \"His current vitals are BP 84/56, HR 118, RR 24, SpO2 96%. His abdomen is distended and rigid compared to 2 hours ago. He is confused and diaphoretic. I believe he is in hemorrhagic shock.\"" },
-                { id: "d", text: "RECOMMENDATION: \"I think he needs a stat CBC, type and crossmatch, abdominal CT, and I'd like to increase his IV fluid rate. Do you want to come evaluate him now?\"" }
+                { id: "d", text: "RECOMMENDATION: \"I think he needs a stat complete blood count (CBC), type and crossmatch, abdominal computed tomography (CT), and I'd like to increase his IV fluid rate. Do you want to come evaluate him now?\"" }
             ],
             correct: ["a", "b", "c", "d"],
             rationale: {
-                correct: "SBAR is a standardized communication framework that presents information in a logical, concise sequence: Situation (what is happening now), Background (relevant context), Assessment (clinical interpretation), Recommendation (what you think should be done).",
+                correct: "Situation, Background, Assessment, Recommendation (SBAR) is a standardized communication framework that presents information in a logical, concise sequence: Situation (what is happening now), Background (relevant context), Assessment (clinical interpretation), Recommendation (what you think should be done).",
                 a: "SITUATION - Start with who you are, which patient, and the immediate concern. This orients the provider and establishes urgency. State the problem upfront - don't bury the lead.",
                 b: "BACKGROUND - Provide relevant clinical context: recent surgery, baseline vitals (for comparison), current treatments. This gives the provider the information needed to understand how the patient's condition has changed.",
                 c: "ASSESSMENT - Present your current findings (objective data: vitals, physical exam) AND your clinical interpretation (hemorrhagic shock). Sharing your nursing assessment demonstrates critical thinking and helps the provider prioritize their response.",
-                d: "RECOMMENDATION - State what you think the patient needs (labs, imaging, fluid resuscitation) and ask a direct question ('Do you want to come evaluate?'). This is the most powerful part of SBAR - it empowers nurses to advocate for their patients and propose a plan."
+                d: "RECOMMENDATION - State what you think the patient needs (labs, imaging, fluid resuscitation) and ask a direct question ('Do you want to come evaluate?'). This is the most powerful part of Situation, Background, Assessment, Recommendation (SBAR) - it empowers nurses to advocate for their patients and propose a plan."
             },
-            testTakingTip: "SBAR order: Situation → Background → Assessment → Recommendation. The most commonly tested element on NCLEX is the 'R' - nurses must make a recommendation, not just report findings. Say 'I think the patient needs...' rather than just describing the problem. SBAR prevents the 'data dump' phenomenon where critical information gets lost in excessive details.",
+            testTakingTip: "The order is Situation → Background → Assessment → Recommendation (SBAR). The most commonly tested element on NCLEX is the 'R' - nurses must make a recommendation, not just report findings. Say 'I think the patient needs...' rather than just describing the problem. SBAR prevents the 'data dump' phenomenon where critical information gets lost in excessive details.",
             guideSection: "Section 10 - Head-to-Toe Assessment",
             guideSectionId: "head-to-toe"
         },
@@ -129,21 +129,21 @@ var assessmentSkillsQuizData = {
             stem: "A nurse is caring for an 82-year-old patient with advanced dementia who is 6 hours post\u2013hip fracture repair. The patient cannot verbalize but is grimacing, rigid, and pulling away when repositioned. Vital signs show HR 102 and BP 158/94 (baseline 128/76). The provider has ordered morphine 2 mg IV PRN. Place the nurse\u2019s pain management actions in the correct sequence.",
             options: [
                 { id: "a", text: "Attempt a simple self-report question: hold the patient\u2019s hand and ask \u201cAre you hurting?\u201d while watching for any nod, grimace, or gesture" },
-                { id: "b", text: "Apply the PAINAD behavioral observation tool to quantify pain (score facial expression, body language, consolability)" },
+                { id: "b", text: "Apply the Pain Assessment in Advanced Dementia (PAINAD) behavioral observation tool to quantify pain (score facial expression, body language, consolability)" },
                 { id: "c", text: "Note the elevated HR and BP as supporting evidence of pain, but recognize these alone are unreliable indicators" },
                 { id: "d", text: "Administer morphine 2 mg IV as ordered based on the assessment findings" },
-                { id: "e", text: "Reassess using the PAINAD tool 30 minutes after IV morphine to evaluate response and document the pain cycle" }
+                { id: "e", text: "Reassess using the Pain Assessment in Advanced Dementia (PAINAD) tool 30 minutes after IV morphine to evaluate response and document the pain cycle" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Pain assessment follows the hierarchy of pain assessment: attempt self-report first (gold standard, even with dementia patients), then use a validated behavioral tool (PAINAD for advanced dementia), note physiological signs as supplemental data, intervene, and reassess using the SAME tool.",
+                correct: "Pain assessment follows the hierarchy of pain assessment: attempt self-report first (gold standard, even with dementia patients), then use a validated behavioral tool such as the Pain Assessment in Advanced Dementia (PAINAD) scale, note physiological signs as supplemental data, intervene, and reassess using the SAME tool.",
                 a: "FIRST - Self-report is always attempted first, even in patients with cognitive impairment. Some dementia patients can respond to simple yes/no questions with gestures, facial expressions, or sounds. Skipping this step underestimates the patient\u2019s ability and violates best practice guidelines.",
-                b: "SECOND - When self-report is not possible, the PAINAD (Pain Assessment in Advanced Dementia) scale is the validated tool for this population. It scores breathing patterns, negative vocalizations, facial expression, body language, and consolability on a 0\u201310 scale.",
+                b: "SECOND - When self-report is not possible, the Pain Assessment in Advanced Dementia (PAINAD) scale is the validated tool for this population. It scores breathing patterns, negative vocalizations, facial expression, body language, and consolability on a 0\u201310 scale.",
                 c: "THIRD - The tachycardia (HR 102) and hypertension (BP 158/94 vs baseline 128/76) support the pain assessment but are NOT reliable standalone indicators. Beta-blockers can mask tachycardia, and chronic pain patients may adapt physiologically. These signs are supplemental data only.",
                 d: "FOURTH - Based on the behavioral assessment (grimacing, rigidity, withdrawal) and supporting vital signs, administering the ordered analgesic is appropriate. Post-surgical hip fracture pain is expected and undertreating it impairs mobility and recovery.",
-                e: "FIFTH - Reassessment 30 minutes after IV morphine completes the pain management cycle. Using the SAME tool (PAINAD) ensures consistent, comparable scoring. Document the initial score, intervention, and post-intervention score to guide ongoing pain management."
+                e: "FIFTH - Reassessment 30 minutes after IV morphine completes the pain management cycle. Using the SAME tool, the Pain Assessment in Advanced Dementia (PAINAD) scale, ensures consistent, comparable scoring. Document the initial score, intervention, and post-intervention score to guide ongoing pain management."
             },
-            testTakingTip: "Pain assessment hierarchy: Self-report first (even in dementia) \u2192 Behavioral tool if no self-report (PAINAD for dementia, CPOT for intubated, FLACC for children) \u2192 Physiological signs as supplemental only \u2192 Intervene \u2192 Reassess with the SAME tool. The NCLEX tests whether you know that vital signs alone are NOT reliable pain indicators.",
+            testTakingTip: "Pain assessment hierarchy: Self-report first (even in dementia) \u2192 Behavioral tool if no self-report: Pain Assessment in Advanced Dementia (PAINAD) for dementia, Critical-Care Pain Observation Tool (CPOT) for intubated patients, the Face, Legs, Activity, Cry, Consolability (FLACC) scale for children \u2192 Physiological signs as supplemental only \u2192 Intervene \u2192 Reassess with the SAME tool. The NCLEX tests whether you know that vital signs alone are NOT reliable pain indicators.",
             guideSection: "Section 8 - Pain Assessment",
             guideSectionId: "pain-assessment"
         },
@@ -164,9 +164,9 @@ var assessmentSkillsQuizData = {
                 correct: "A unilaterally dilated (6 mm), fixed (non-reactive) pupil with a declining level of consciousness is a NEUROLOGICAL EMERGENCY indicating increased intracranial pressure (ICP) with uncal herniation. The expanding mass (hemorrhage, edema) is pushing the temporal lobe against the tentorium, compressing cranial nerve III (oculomotor) on the ipsilateral side. This causes the pupil to dilate and become non-reactive. Immediate provider notification is required - the patient may need emergent surgical decompression.",
                 a: "Physiological anisocoria (benign pupil size difference) does exist in ~20% of the population, but it is typically mild (≤1 mm difference) and both pupils are reactive. A 3 mm difference (6 mm vs 3 mm) with a NON-REACTIVE pupil and declining consciousness is NEVER benign - this is a clinical emergency.",
                 c: "Waiting 30 minutes in this situation could be fatal. Brain herniation is a time-critical emergency where minutes matter. Reassessing later would delay life-saving intervention.",
-                d: "Acetaminophen does not address the underlying emergency. The declining LOC and pupil changes indicate a structural brain problem, not a simple headache. Additionally, analgesics could mask neurological signs."
+                d: "Acetaminophen does not address the underlying emergency. The declining level of consciousness (LOC) and pupil changes indicate a structural brain problem, not a simple headache. Additionally, analgesics could mask neurological signs."
             },
-            testTakingTip: "Pupil assessment emergencies: unilateral fixed/dilated pupil + declining LOC = herniation until proven otherwise. 'Blown pupil' = CN III compression = same side as the lesion. Bilateral fixed/dilated pupils = brainstem herniation (very late sign, often irreversible). Normal pupils: 2-5 mm, equal, round, reactive to light (PERRLA).",
+            testTakingTip: "Pupil assessment emergencies: unilateral fixed/dilated pupil + declining level of consciousness (LOC) = herniation until proven otherwise. 'Blown pupil' = cranial nerve (CN) III compression = same side as the lesion. Bilateral fixed/dilated pupils = brainstem herniation (very late sign, often irreversible). Normal pupils: 2-5 mm, and pupils equal, round, reactive to light and accommodation (PERRLA).",
             guideSection: "Section 10 - Head-to-Toe Assessment",
             guideSectionId: "head-to-toe"
         },
@@ -203,19 +203,19 @@ var assessmentSkillsQuizData = {
                 { id: "a", text: "Stimulate the patient and assess responsiveness: tap shoulders, call name loudly, apply a trapezius squeeze" },
                 { id: "b", text: "Open the airway (head-tilt chin-lift) and assess breathing: look, listen, feel for 10 seconds" },
                 { id: "c", text: "Call for help - activate the rapid response team and request the crash cart at bedside" },
-                { id: "d", text: "Obtain a full set of vital signs, blood glucose, and SpO2 - perform a focused neurological assessment (GCS, pupils, motor response)" },
+                { id: "d", text: "Obtain a full set of vital signs, blood glucose, and SpO2 - perform a focused neurological assessment of Glasgow Coma Scale (GCS) score, pupils, and motor response" },
                 { id: "e", text: "Establish IV access (if not already present), administer oxygen, and prepare to give naloxone if opioid overdose is suspected" }
             ],
             correct: ["a", "c", "b", "d", "e"],
             rationale: {
-                correct: "The correct sequence follows the systematic approach to an unresponsive patient: establish unresponsiveness, get help, assess ABCs, gather objective data, and initiate interventions.",
-                a: "FIRST - Determine responsiveness. Stimulate the patient with a firm shoulder tap, loud voice, and trapezius squeeze (a central pain stimulus). This differentiates true unresponsiveness from deep sleep. The response also provides initial GCS data (Eye and Motor components).",
+                correct: "The correct sequence follows the systematic approach to an unresponsive patient: establish unresponsiveness, get help, assess airway, breathing, circulation (ABCs), gather objective data, and initiate interventions.",
+                a: "FIRST - Determine responsiveness. Stimulate the patient with a firm shoulder tap, loud voice, and trapezius squeeze (a central pain stimulus). This differentiates true unresponsiveness from deep sleep. The response also provides initial Glasgow Coma Scale (GCS) data (Eye and Motor components).",
                 c: "SECOND - Call for help immediately. An unresponsive patient needs the rapid response team regardless of the cause. Do not wait to complete the full assessment before activating help. One rescuer should call while you continue assessment.",
                 b: "THIRD - Assess the airway and breathing. Open the airway using head-tilt chin-lift (or jaw thrust if cervical spine injury is suspected). Look for chest rise, listen for breath sounds, feel for air movement. If the patient is breathing, place in recovery position.",
-                d: "FOURTH - Obtain objective data: vital signs (BP, HR, RR, Temp, SpO2), blood glucose (hypoglycemia is a reversible cause), and focused neurological assessment (GCS score, pupil response, symmetry of motor response). This data guides treatment and communication with the arriving team.",
+                d: "FOURTH - Obtain objective data: vital signs (BP, HR, RR, Temp, SpO2), blood glucose (hypoglycemia is a reversible cause), and a focused neurological assessment covering Glasgow Coma Scale (GCS) score, pupil response, and symmetry of motor response. This data guides treatment and communication with the arriving team.",
                 e: "FIFTH - Initiate interventions based on assessment: IV access for medication administration, oxygen therapy for any unresponsive patient, and naloxone (Narcan) if opioid overdose is suspected (pinpoint pupils, RR <8, recent opioid administration). Have suction available."
             },
-            testTakingTip: "Unresponsive patient: Assess responsiveness → Call for help → ABCs → Vitals/glucose/neuro → Interventions. ALWAYS check blood glucose on an unresponsive patient - hypoglycemia is the most common reversible cause of altered consciousness. Naloxone if opioids suspected (pinpoint pupils, respiratory depression). Don't forget: pulse is present, so this is NOT a cardiac arrest protocol.",
+            testTakingTip: "Unresponsive patient: Assess responsiveness → Call for help → airway, breathing, circulation (ABCs) → Vitals/glucose/neuro → Interventions. ALWAYS check blood glucose on an unresponsive patient - hypoglycemia is the most common reversible cause of altered consciousness. Naloxone if opioids suspected (pinpoint pupils, respiratory depression). Don't forget: pulse is present, so this is NOT a cardiac arrest protocol.",
             guideSection: "Section 14 - Critical Findings",
             guideSectionId: "critical-findings"
         },
@@ -253,16 +253,16 @@ var assessmentSkillsQuizData = {
                 { id: "a", text: "A post-operative patient with a new-onset oxygen saturation of 89% on room air" },
                 { id: "b", text: "A patient with heart failure who gained 1.5 pounds overnight" },
                 { id: "c", text: "A diabetic patient with a blood glucose of 42 mg/dL who is diaphoretic and tremulous" },
-                { id: "d", text: "A patient on warfarin whose INR is 5.8 with no active bleeding" },
+                { id: "d", text: "A patient on warfarin whose international normalized ratio (INR) is 5.8 with no active bleeding" },
                 { id: "e", text: "A post-operative patient whose pain decreased from 8/10 to 4/10 after prescribed analgesic administration" }
             ],
             correct: { a: "Immediately Reportable", b: "Continue Monitoring", c: "Immediately Reportable", d: "Immediately Reportable", e: "Continue Monitoring" },
             rationale: {
                 correct: "Critical findings that represent immediate threats to patient safety require urgent provider notification. Expected changes or findings within parameters warrant continued monitoring.",
                 a: "IMMEDIATELY REPORTABLE - SpO2 89% is below the critical threshold of 90%. In a post-operative patient, this could indicate atelectasis, pneumonia, pulmonary embolism, or respiratory depression from opioids. Apply supplemental oxygen and notify the provider immediately.",
-                b: "CONTINUE MONITORING - A weight gain of 1.5 pounds overnight in a heart failure patient warrants monitoring and may indicate fluid retention, but the threshold for provider notification is typically ≥2-3 pounds in 24 hours or ≥5 pounds in one week. Document and continue daily weight monitoring. Assess for other signs of fluid overload (edema, crackles, JVD).",
-                c: "IMMEDIATELY REPORTABLE - Blood glucose 42 mg/dL is severe hypoglycemia (<70 mg/dL = hypoglycemia, <54 mg/dL = clinically significant). The patient is symptomatic (diaphoretic, tremulous). Administer 15-20g of fast-acting glucose per the Rule of 15 and notify the provider. Severe hypoglycemia can cause seizures, LOC, and death.",
-                d: "IMMEDIATELY REPORTABLE - INR 5.8 is critically elevated (therapeutic range for most conditions: 2.0-3.0). An INR >4.0 carries significant hemorrhage risk, and >5.0 is often considered a critical value requiring immediate notification. The patient needs the warfarin held and may need vitamin K administration, even without active bleeding.",
+                b: "CONTINUE MONITORING - A weight gain of 1.5 pounds overnight in a heart failure patient warrants monitoring and may indicate fluid retention, but the threshold for provider notification is typically ≥2-3 pounds in 24 hours or ≥5 pounds in one week. Document and continue daily weight monitoring. Assess for other signs of fluid overload, such as edema, crackles, and jugular venous distension (JVD).",
+                c: "IMMEDIATELY REPORTABLE - Blood glucose 42 mg/dL is severe hypoglycemia (<70 mg/dL = hypoglycemia, <54 mg/dL = clinically significant). The patient is symptomatic (diaphoretic, tremulous). Administer 15-20g of fast-acting glucose per the Rule of 15 and notify the provider. Severe hypoglycemia can cause seizures, loss of consciousness (LOC), and death.",
+                d: "IMMEDIATELY REPORTABLE - International normalized ratio (INR) 5.8 is critically elevated (therapeutic range for most conditions: 2.0-3.0). An INR >4.0 carries significant hemorrhage risk, and >5.0 is often considered a critical value requiring immediate notification. The patient needs the warfarin held and may need vitamin K administration, even without active bleeding.",
                 e: "CONTINUE MONITORING - A pain reduction from 8/10 to 4/10 after prescribed analgesic indicates the medication is effective. This is a positive therapeutic response. Document the finding and reassess per protocol (typically 30-60 minutes after IV, 60-90 minutes after PO). No provider notification needed."
             },
             labValues: [
@@ -271,7 +271,7 @@ var assessmentSkillsQuizData = {
                 { name: "INR (on warfarin)", normal: "2.0–3.0 (mechanical valve: 2.5–3.5)" },
                 { name: "Weight Gain Alert (HF)", normal: "Report >2-3 lbs/24 hrs or >5 lbs/week" }
             ],
-            testTakingTip: "Critical values that require IMMEDIATE notification: SpO2 <90%, Blood glucose <50 or >400 mg/dL, INR >5.0, K+ <3.0 or >6.0, Na+ <120 or >160, Temp >104°F, new-onset unilateral weakness, chest pain with ECG changes. When in doubt, notify the provider - it's safer to over-communicate than to miss a critical finding.",
+            testTakingTip: "Critical values that require IMMEDIATE notification: SpO2 <90%, Blood glucose <50 or >400 mg/dL, international normalized ratio (INR) >5.0, K+ <3.0 or >6.0, Na+ <120 or >160, Temp >104°F, new-onset unilateral weakness, chest pain with ECG changes. When in doubt, notify the provider - it's safer to over-communicate than to miss a critical finding.",
             guideSection: "Section 14 - Critical Findings",
             guideSectionId: "critical-findings"
         },

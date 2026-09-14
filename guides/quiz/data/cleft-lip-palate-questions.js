@@ -26,9 +26,9 @@ var cleftLipPalateQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Cleft palate forms when the lateral palatal shelves fail to fuse at 7\u201312 weeks gestation. Cleft LIP forms earlier (5\u20136 weeks). These are independent processes, which is why a baby can have CL, CP, or both.",
+                correct: "Cleft palate forms when the lateral palatal shelves fail to fuse at 7\u201312 weeks gestation. Cleft lip forms earlier (5\u20136 weeks). These are independent processes, which is why a baby can have a cleft lip, a cleft palate, or both.",
                 a: "Far too early; embryo is still forming basic structures.",
-                b: "This is cleft LIP formation window, not palate.",
+                b: "This is the cleft lip formation window, not palate.",
                 d: "This is well past the palatal fusion window."
             },
             testTakingTip: "Lip = 5\u20136 weeks. Palate = 7\u201312 weeks. Two independent processes.",
@@ -49,9 +49,9 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Specialized feeding devices compensate for the infant's inability to create suction with an open palate. Combined with upright positioning, frequent burping, and the ESSR technique, most cleft infants can feed successfully. Nutrition and weight gain are prerequisites for surgical repair.",
+                correct: "Specialized feeding devices compensate for the infant's inability to create suction with an open palate. Combined with upright positioning, frequent burping, and the Enlarge, Stimulate, Swallow, Rest (ESSR) technique, most cleft infants can feed successfully. Nutrition and weight gain are prerequisites for surgical repair.",
                 a: "Surgery is elective and delayed until the infant meets the Rule of 10s (typically 2\u20133 months).",
-                c: "GT placement is only considered after other feeding methods have failed; most cleft infants do well with specialty bottles.",
+                c: "Gastrostomy tube (GT) placement is only considered after other feeding methods have failed; most cleft infants do well with specialty bottles.",
                 d: "Skipping feeds causes dehydration and failure to thrive, delaying surgery indefinitely."
             },
             testTakingTip: "For cleft babies, feeding is the first priority - weight gain IS the path to surgery.",
@@ -118,12 +118,12 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After cleft LIP repair, the infant should be placed supine or side-lying - NEVER prone. Prone positioning could cause the face to rub against the sheets and disrupt the lip suture line.",
+                correct: "After cleft lip repair, the infant should be placed supine or side-lying - NEVER prone. Prone positioning could cause the face to rub against the sheets and disrupt the lip suture line.",
                 a: "Prone is contraindicated for cleft lip repair.",
                 c: "Trendelenburg is not indicated and is uncomfortable.",
                 d: "Prone positioning is the contraindication."
             },
-            testTakingTip: "Cleft LIP = SUPINE. Cleft PALATE = PRONE. Opposite positions for opposite surgeries.",
+            testTakingTip: "Cleft lip = SUPINE. Cleft palate = PRONE. Opposite positions for opposite surgeries.",
             guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         },
@@ -210,9 +210,9 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The abnormal palatal muscles disrupt Eustachian tube function, leading to recurrent middle ear fluid buildup. Most children with cleft palate require tympanostomy tubes at some point. Chronic OM causes conductive hearing loss that can delay speech and language.",
+                correct: "The abnormal palatal muscles disrupt Eustachian tube function, leading to recurrent middle ear fluid buildup. Most children with cleft palate require tympanostomy tubes at some point. Chronic otitis media (OM) causes conductive hearing loss that can delay speech and language.",
                 a: "Asthma is unrelated to cleft palate.",
-                c: "T1DM is unrelated.",
+                c: "Type 1 diabetes mellitus (T1DM) is unrelated.",
                 d: "Celiac is unrelated."
             },
             testTakingTip: "Cleft palate \u2192 Eustachian tube dysfunction \u2192 otitis media \u2192 hearing loss \u2192 speech delay. Chain reaction worth knowing.",

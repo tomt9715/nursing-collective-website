@@ -27,9 +27,9 @@ var pediatricRenalDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Periorbital morning edema, massive proteinuria (4+), foamy urine, weight gain from fluid, and a normal BP in a 2\u20136 year old is the classic nephrotic syndrome picture. Low albumin and elevated cholesterol complete the diagnosis.",
-                a: "AGN presents with tea-colored urine, HTN, hematuria, and follows a strep infection - none described here.",
-                c: "HUS presents with bloody diarrhea followed by pallor, bruising, oliguria - not puffy eyes with foamy urine.",
-                d: "ATN typically follows ischemic or nephrotoxic insult with oliguria and rising creatinine, not proteinuria and edema."
+                a: "Acute glomerulonephritis (AGN) presents with tea-colored urine, hypertension (HTN), hematuria, and follows a strep infection - none described here.",
+                c: "Hemolytic uremic syndrome (HUS) presents with bloody diarrhea followed by pallor, bruising, oliguria - not puffy eyes with foamy urine.",
+                d: "Acute tubular necrosis (ATN) typically follows ischemic or nephrotoxic insult with oliguria and rising creatinine, not proteinuria and edema."
             },
             testTakingTip: "Foamy urine + normal BP + periorbital AM edema = nephrotic syndrome. The classic presentation.",
             guideSection: "Section 2 - Nephrotic Syndrome",
@@ -40,21 +40,21 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 9-year-old who had a sore throat 2 weeks ago now has tea-colored urine, facial puffiness, and a BP of 142/94. Urinalysis shows 2+ protein and gross hematuria with RBC casts. Which lab finding would BEST support the likely diagnosis?",
+            stem: "A 9-year-old who had a sore throat 2 weeks ago now has tea-colored urine, facial puffiness, and a BP of 142/94. Urinalysis shows 2+ protein and gross hematuria with red blood cell (RBC) casts. Which lab finding would BEST support the likely diagnosis?",
             options: [
-                { id: "a", text: "Serum albumin 1.8 g/dL" },
-                { id: "b", text: "Thrombocytopenia with schistocytes" },
-                { id: "c", text: "Low C3 complement and elevated ASO titer" },
-                { id: "d", text: "Serum cholesterol 450 mg/dL" }
+                { id: "a", text: "Serum albumin 1.8 g/dL and low total serum protein" },
+                { id: "b", text: "Thrombocytopenia with schistocytes on the peripheral smear" },
+                { id: "c", text: "Low C3 complement and elevated antistreptolysin O (ASO) titer" },
+                { id: "d", text: "Serum cholesterol 450 mg/dL and elevated triglycerides" }
             ],
             correct: "c",
             rationale: {
-                correct: "Low C3 (consumed by immune complex activity) and elevated ASO titer (evidence of recent strep infection) confirm post-streptococcal acute glomerulonephritis. Tea-colored urine + HTN + RBC casts in a school-age child after strep is classic PSAGN.",
-                a: "Low albumin is the nephrotic marker, not AGN.",
-                b: "Schistocytes and thrombocytopenia point to HUS, not AGN.",
-                d: "Hyperlipidemia is a nephrotic finding, not AGN."
+                correct: "Low C3 (consumed by immune complex activity) and elevated antistreptolysin O (ASO) titer (evidence of recent strep infection) confirm post-streptococcal acute glomerulonephritis (PSAGN). Tea-colored urine + hypertension (HTN) + red blood cell (RBC) casts in a school-age child after strep is classic PSAGN.",
+                a: "Low albumin is the nephrotic marker, not acute glomerulonephritis (AGN).",
+                b: "Schistocytes and thrombocytopenia point to hemolytic uremic syndrome (HUS), not acute glomerulonephritis (AGN).",
+                d: "Hyperlipidemia is a nephrotic finding, not acute glomerulonephritis (AGN)."
             },
-            testTakingTip: "AGN workup: ASO titer + C3 complement. Low C3 + high ASO + recent strep = PSAGN.",
+            testTakingTip: "Acute glomerulonephritis (AGN) workup: antistreptolysin O (ASO) titer + C3 complement. Low C3 + high ASO + recent strep = post-streptococcal acute glomerulonephritis (PSAGN).",
             guideSection: "Section 3 - Acute Glomerulonephritis",
             guideSectionId: "agn"
         },
@@ -63,7 +63,7 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A 3-year-old is admitted with HUS after 6 days of bloody diarrhea. Stool culture is pending. The overnight provider orders ciprofloxacin and loperamide. What is the nurse's priority action?",
+            stem: "A 3-year-old is admitted with hemolytic uremic syndrome (HUS) after 6 days of bloody diarrhea. Stool culture is pending. The overnight provider orders ciprofloxacin and loperamide. What is the nurse's priority action?",
             options: [
                 { id: "a", text: "Administer both medications as ordered" },
                 { id: "b", text: "Hold both medications and notify the provider" },
@@ -72,12 +72,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Both medications are CONTRAINDICATED in HUS. Antibiotics lyse E. coli and release MORE Shiga toxin, worsening HUS. Antidiarrheals slow gut transit and prolong toxin exposure. Hold both and clarify with the provider - this is a safety issue.",
+                correct: "Both medications are CONTRAINDICATED in hemolytic uremic syndrome (HUS). Antibiotics lyse E. coli and release MORE Shiga toxin, worsening HUS. Antidiarrheals slow gut transit and prolong toxin exposure. Hold both and clarify with the provider - this is a safety issue.",
                 a: "Administering these meds would potentially worsen the patient's condition.",
-                c: "Ciprofloxacin alone is still contraindicated for HUS/STEC infection.",
+                c: "Ciprofloxacin alone is still contraindicated for hemolytic uremic syndrome (HUS) caused by Shiga toxin-producing E. coli (STEC) infection.",
                 d: "Slowing the infusion doesn't fix the contraindication."
             },
-            testTakingTip: "HUS = NO antibiotics, NO antidiarrheals. Supportive care only. This is a classic pediatric nursing safety question.",
+            testTakingTip: "Hemolytic uremic syndrome (HUS) = NO antibiotics, NO antidiarrheals. Supportive care only. This is a classic pediatric nursing safety question.",
             guideSection: "Section 5 - HUS",
             guideSectionId: "hus"
         },
@@ -95,12 +95,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The HUS triad: hemolytic anemia (from RBC fragmentation - schistocytes, elevated LDH, low haptoglobin), thrombocytopenia (consumption), and acute kidney injury (from endothelial damage).",
+                correct: "The hemolytic uremic syndrome (HUS) triad: hemolytic anemia from red blood cell (RBC) fragmentation, with schistocytes, elevated lactate dehydrogenase (LDH), and low haptoglobin; thrombocytopenia (consumption); and acute kidney injury (from endothelial damage).",
                 a: "This describes nephrotic syndrome.",
                 c: "This describes acute glomerulonephritis.",
-                d: "These are general AKI findings, not the HUS triad."
+                d: "These are general acute kidney injury (AKI) findings, not the hemolytic uremic syndrome (HUS) triad."
             },
-            testTakingTip: "HUS triad: anemia + low platelets + AKI. Memorize all three; they often appear together in the stem.",
+            testTakingTip: "Hemolytic uremic syndrome (HUS) triad: anemia + low platelets + acute kidney injury (AKI). Memorize all three; they often appear together in the stem.",
             guideSection: "Section 5 - HUS",
             guideSectionId: "hus"
         },
@@ -119,11 +119,11 @@ var pediatricRenalDisordersQuizData = {
             correct: "c",
             rationale: {
                 correct: "Nephrotic children are immunocompromised from both steroid therapy and urinary loss of immunoglobulins. Spontaneous bacterial peritonitis (SBP) - classically from Strep pneumoniae or E. coli - presents with fever, abdominal pain, and ascites-distension. It's a feared complication requiring urgent evaluation and antibiotics.",
-                a: "Appendicitis is possible but SBP is more specific to the nephrotic patient with these findings.",
+                a: "Appendicitis is possible but spontaneous bacterial peritonitis (SBP) is more specific to the nephrotic patient with these findings.",
                 b: "Gastroenteritis has different features (vomiting, diarrhea) and doesn't explain distension in a nephrotic child.",
                 d: "Intussusception is more common in infants and toddlers; unlikely in a 5-year-old."
             },
-            testTakingTip: "Fever + abdominal pain + distension + nephrotic child on steroids = SBP. High-risk and high-priority.",
+            testTakingTip: "Fever + abdominal pain + distension + nephrotic child on steroids = spontaneous bacterial peritonitis (SBP). High-risk and high-priority.",
             guideSection: "Section 2 - Nephrotic Syndrome",
             guideSectionId: "nephrotic"
         },
@@ -141,12 +141,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Prednisone is the standard first-line treatment for MCD - about 90% of children respond within 2\u20134 weeks. A long taper follows to prevent relapse. Other immunosuppressants are reserved for steroid-resistant or frequently relapsing disease.",
+                correct: "Prednisone is the standard first-line treatment for minimal change disease (MCD) - about 90% of children respond within 2\u20134 weeks. A long taper follows to prevent relapse. Other immunosuppressants are reserved for steroid-resistant or frequently relapsing disease.",
                 a: "Cyclosporine is a second-line option for steroid-resistant or dependent cases.",
                 c: "Albumin treats symptoms (edema, hypotension) but doesn't address the underlying glomerular disease.",
-                d: "Dialysis is not needed in MCD - these kids have proteinuria, not kidney failure."
+                d: "Dialysis is not needed in minimal change disease (MCD) - these kids have proteinuria, not kidney failure."
             },
-            testTakingTip: "MCD = steroid-responsive. Prednisone is first-line, then taper slowly.",
+            testTakingTip: "Minimal change disease (MCD) = steroid-responsive. Prednisone is first-line, then taper slowly.",
             guideSection: "Section 2 - Nephrotic Syndrome",
             guideSectionId: "nephrotic"
         },
@@ -164,8 +164,8 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Pre-renal causes - dehydration from gastroenteritis, blood loss, shock, or sepsis - are the most common cause of pediatric AKI. They're also the most reversible if caught early with fluid resuscitation.",
-                a: "AGN is a cause of intrinsic AKI but less common overall.",
+                correct: "Pre-renal causes - dehydration from gastroenteritis, blood loss, shock, or sepsis - are the most common cause of pediatric acute kidney injury (AKI). They're also the most reversible if caught early with fluid resuscitation.",
+                a: "Acute glomerulonephritis (AGN) is a cause of intrinsic acute kidney injury (AKI) but less common overall.",
                 b: "Post-renal obstruction is the least common category.",
                 d: "Nephrotoxic meds are a significant cause but not the #1."
             },
@@ -178,7 +178,7 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A child with AKI has a potassium level of 6.8 mEq/L. The EKG shows peaked T waves and a widening QRS complex. Which intervention should the nurse anticipate FIRST?",
+            stem: "A child with acute kidney injury (AKI) has a potassium level of 6.8 mEq/L. The EKG shows peaked T waves and a widening QRS complex. Which intervention should the nurse anticipate FIRST?",
             options: [
                 { id: "a", text: "Administer oral sodium polystyrene sulfonate" },
                 { id: "b", text: "Give IV calcium gluconate" },
@@ -201,6 +201,7 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["AEIOU"],
             stem: "A mnemonic used to remember indications for dialysis is AEIOU. Which of the following is NOT one of the components?",
             options: [
                 { id: "a", text: "Acidosis" },
@@ -256,12 +257,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "In children, CKD is most often caused by CAKUT (hypoplasia, dysplasia, PKD), obstructive uropathy (posterior urethral valves), or reflux nephropathy. This differs from adult CKD, where diabetes and HTN dominate.",
-                a: "T2DM and HTN are adult CKD causes.",
-                b: "HTN is rare as primary cause in children.",
-                d: "Autoimmune disease causes some pediatric CKD but isn't the most common."
+                correct: "In children, chronic kidney disease (CKD) is most often caused by congenital anomalies of the kidney and urinary tract (CAKUT), such as hypoplasia, dysplasia, and polycystic kidney disease (PKD), obstructive uropathy (posterior urethral valves), or reflux nephropathy. This differs from adult CKD, where diabetes and hypertension (HTN) dominate.",
+                a: "Type 2 diabetes mellitus (T2DM) and hypertension (HTN) are adult chronic kidney disease (CKD) causes.",
+                b: "Hypertension (HTN) is rare as primary cause in children.",
+                d: "Autoimmune disease causes some pediatric chronic kidney disease (CKD) but isn't the most common."
             },
-            testTakingTip: "Pediatric CKD = mostly congenital causes. Adult CKD = diabetes + HTN. Different etiologies.",
+            testTakingTip: "Pediatric chronic kidney disease (CKD) = mostly congenital causes. Adult CKD = diabetes + hypertension (HTN). Different etiologies.",
             guideSection: "Section 7 - CKD",
             guideSectionId: "ckd"
         },
@@ -302,12 +303,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The AV fistula is a vital access for dialysis. Compression (BPs, tight dressings), venipuncture, or IVs in that arm can damage or occlude the fistula. Nurses must confirm patency every shift by palpating a thrill and auscultating a bruit.",
+                correct: "The arteriovenous (AV) fistula is a vital access for dialysis. Compression (BPs, tight dressings), venipuncture, or IVs in that arm can damage or occlude the fistula. Nurses must confirm patency every shift by palpating a thrill and auscultating a bruit.",
                 a: "All of those actions threaten the fistula.",
                 c: "Elevation is not routinely required.",
                 d: "Firm pressure is only for active bleeding - not for clot prevention."
             },
-            testTakingTip: "AV fistula = protected arm. NO BP, NO draws, NO IVs. Thrill and bruit each shift.",
+            testTakingTip: "Arteriovenous (AV) fistula = protected arm. NO BP, NO draws, NO IVs. Thrill and bruit each shift.",
             guideSection: "Section 9 - Priority Nursing Care",
             guideSectionId: "nursing-care"
         },
@@ -325,10 +326,10 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Return of proteinuria (3+), periorbital edema, and weight gain in a nephrotic child on tapering steroids indicates a RELAPSE. Relapses are common in MCD, particularly during or after taper. The nephrologist will typically increase steroids back up and evaluate for frequent relapser designation.",
+                correct: "Return of proteinuria (3+), periorbital edema, and weight gain in a nephrotic child on tapering steroids indicates a RELAPSE. Relapses are common in minimal change disease (MCD), particularly during or after taper. The nephrologist will typically increase steroids back up and evaluate for frequent relapser designation.",
                 a: "A healthy response would show continued remission.",
                 b: "Infection could trigger a relapse but the immediate picture is relapse itself.",
-                d: "Steroid toxicity features Cushingoid, HTN, growth suppression - not proteinuria."
+                d: "Steroid toxicity features Cushingoid, hypertension (HTN), growth suppression - not proteinuria."
             },
             testTakingTip: "Nephrotic relapse = return of proteinuria, edema, weight gain. Call the nephrologist; don't wait.",
             guideSection: "Section 10 - Family Education",
@@ -339,6 +340,7 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["O157"],
             stem: "Which pediatric patient is at HIGHEST risk for Hemolytic Uremic Syndrome?",
             options: [
                 { id: "a", text: "A teen who had a viral upper respiratory infection 2 weeks ago" },
@@ -348,12 +350,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "HUS most commonly follows STEC (E. coli O157:H7) infection from contaminated undercooked beef, unpasteurized products, or produce - with bloody diarrhea as the precursor. Outbreaks are often linked to picnics, petting zoos, or contaminated water. Age <5 is the highest-risk group.",
-                a: "Viral URIs don't cause HUS.",
-                c: "Strep throat triggers AGN, not HUS.",
-                d: "UTI doesn't typically cause HUS."
+                correct: "Hemolytic uremic syndrome (HUS) most commonly follows Shiga toxin-producing E. coli (STEC) infection, classically E. coli O157:H7, from contaminated undercooked beef, unpasteurized products, or produce - with bloody diarrhea as the precursor. Outbreaks are often linked to picnics, petting zoos, or contaminated water. Age <5 is the highest-risk group.",
+                a: "Viral upper respiratory infections (URIs) don't cause hemolytic uremic syndrome (HUS).",
+                c: "Strep throat triggers acute glomerulonephritis (AGN), not hemolytic uremic syndrome (HUS).",
+                d: "Urinary tract infection (UTI) doesn't typically cause hemolytic uremic syndrome (HUS)."
             },
-            testTakingTip: "HUS preceded by bloody diarrhea + young age + food-borne exposure. E. coli O157:H7 is the culprit.",
+            testTakingTip: "Hemolytic uremic syndrome (HUS) preceded by bloody diarrhea + young age + food-borne exposure. E. coli O157:H7 is the culprit.",
             guideSection: "Section 5 - HUS",
             guideSectionId: "hus"
         },
@@ -371,12 +373,12 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "EPO stimulates RBC production; without adequate iron, EPO can't do its job. Most children receive oral or IV iron alongside EPO. Target hemoglobin is 10\u201311 - too high increases stroke risk.",
-                a: "EPO doesn't replace renal function; it only treats anemia.",
-                c: "EPO is a scheduled preventive treatment, not PRN.",
+                correct: "Erythropoietin (EPO) stimulates red blood cell (RBC) production; without adequate iron, EPO can't do its job. Most children receive oral or IV iron alongside EPO. Target hemoglobin is 10\u201311 - too high increases stroke risk.",
+                a: "Erythropoietin (EPO) doesn't replace renal function; it only treats anemia.",
+                c: "Erythropoietin (EPO) is a scheduled preventive treatment, not PRN.",
                 d: "Higher is NOT better; Hgb above 12 increases stroke risk."
             },
-            testTakingTip: "EPO + iron = anemia of CKD management. Target Hgb 10\u201311.",
+            testTakingTip: "Erythropoietin (EPO) + iron = anemia of chronic kidney disease (CKD) management. Target Hgb 10\u201311.",
             guideSection: "Section 7 - CKD",
             guideSectionId: "ckd"
         },
@@ -385,21 +387,21 @@ var pediatricRenalDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A nurse is educating a family about preventing future HUS. Which statement is most appropriate?",
+            stem: "A nurse is educating a family about preventing future hemolytic uremic syndrome (HUS). Which statement is most appropriate?",
             options: [
-                { id: "a", text: "'There's no way to prevent HUS, so just watch for bloody diarrhea.'" },
+                { id: "a", text: "'There's no way to prevent hemolytic uremic syndrome, so just watch for bloody diarrhea.'" },
                 { id: "b", text: "'Cook ground beef fully, avoid unpasteurized milk and juice, and wash produce well.'" },
-                { id: "c", text: "'Give the kids antibiotics before picnics and cookouts to prevent HUS.'" },
-                { id: "d", text: "'Ask the pediatrician about the vaccine that prevents HUS in children.'" }
+                { id: "c", text: "'Give the kids antibiotics before picnics and cookouts to prevent hemolytic uremic syndrome.'" },
+                { id: "d", text: "'Ask the pediatrician about the vaccine that prevents hemolytic uremic syndrome in children.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Prevention centers on food safety: cooking beef to 160\u00b0F, avoiding unpasteurized dairy and juice, washing produce, good hand hygiene (especially after petting-zoo visits and before eating). These steps dramatically reduce STEC exposure.",
+                correct: "Prevention centers on food safety: cooking beef to 160\u00b0F, avoiding unpasteurized dairy and juice, washing produce, good hand hygiene (especially after petting-zoo visits and before eating). These steps dramatically reduce Shiga toxin-producing E. coli (STEC) exposure.",
                 a: "Prevention IS possible through food safety.",
-                c: "Prophylactic antibiotics don't prevent HUS.",
-                d: "No HUS vaccine is available."
+                c: "Prophylactic antibiotics don't prevent hemolytic uremic syndrome (HUS).",
+                d: "No hemolytic uremic syndrome (HUS) vaccine is available."
             },
-            testTakingTip: "HUS prevention = food safety: cook beef through, pasteurized products, handwashing.",
+            testTakingTip: "Hemolytic uremic syndrome (HUS) prevention = food safety: cook beef through, pasteurized products, handwashing.",
             guideSection: "Section 10 - Family Education",
             guideSectionId: "family-education"
         },
@@ -411,18 +413,18 @@ var pediatricRenalDisordersQuizData = {
             stem: "A nurse is caring for four pediatric renal patients. Which child requires the MOST urgent assessment?",
             options: [
                 { id: "a", text: "A 5-year-old in remission from nephrotic syndrome on a taper" },
-                { id: "b", text: "A 4-year-old with HUS who has developed a new-onset seizure" },
-                { id: "c", text: "A 9-year-old with AGN whose BP has improved over the last 24 hours" },
-                { id: "d", text: "A 12-year-old with CKD scheduled for routine dialysis" }
+                { id: "b", text: "A 4-year-old with hemolytic uremic syndrome (HUS) who has developed a new-onset seizure" },
+                { id: "c", text: "A 9-year-old with acute glomerulonephritis (AGN) whose BP has improved over the last 24 hours" },
+                { id: "d", text: "A 12-year-old with chronic kidney disease (CKD) scheduled for routine dialysis" }
             ],
             correct: "b",
             rationale: {
-                correct: "A new seizure in a child with HUS suggests neurologic involvement (CNS microvascular thrombosis) - a life-threatening complication. Immediate airway assessment, seizure management, and neurologic evaluation are required.",
+                correct: "A new seizure in a child with hemolytic uremic syndrome (HUS) suggests neurologic involvement from central nervous system (CNS) microvascular thrombosis - a life-threatening complication. Immediate airway assessment, seizure management, and neurologic evaluation are required.",
                 a: "Remission patient on taper is stable.",
-                c: "Improving BP in AGN is reassuring.",
+                c: "Improving BP in acute glomerulonephritis (AGN) is reassuring.",
                 d: "Scheduled dialysis is routine."
             },
-            testTakingTip: "New neuro symptoms in HUS = CNS thrombotic event = top priority.",
+            testTakingTip: "New neuro symptoms in hemolytic uremic syndrome (HUS) = central nervous system (CNS) thrombotic event = top priority.",
             guideSection: "Section 5 - HUS",
             guideSectionId: "hus"
         }

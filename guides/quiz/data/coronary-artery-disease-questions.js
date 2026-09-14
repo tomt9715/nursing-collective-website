@@ -26,12 +26,12 @@ var coronaryArteryDiseaseQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Unstable angina is characterized by a change in the pattern of angina - chest pain occurring at rest, new-onset angina, or increasing frequency/severity of previous angina. This patient had previously stable exertional angina that has now changed to rest pain unrelieved by NTG, indicating plaque rupture with partial occlusion.",
-                a: "Stable angina is predictable - triggered by exertion, relieved by rest or NTG within 3\u20135 minutes. This patient\u2019s pain is at rest and unrelieved by NTG.",
-                c: "Variant (Prinzmetal) angina is caused by coronary vasospasm, typically occurs at rest during early morning hours, and responds well to NTG and calcium channel blockers. This patient\u2019s pain is unrelieved by NTG.",
+                correct: "Unstable angina is characterized by a change in the pattern of angina - chest pain occurring at rest, new-onset angina, or increasing frequency/severity of previous angina. This patient had previously stable exertional angina that has now changed to rest pain unrelieved by nitroglycerin (NTG), indicating plaque rupture with partial occlusion.",
+                a: "Stable angina is predictable - triggered by exertion, relieved by rest or nitroglycerin (NTG) within 3\u20135 minutes. This patient\u2019s pain is at rest and unrelieved by NTG.",
+                c: "Variant (Prinzmetal) angina is caused by coronary vasospasm, typically occurs at rest during early morning hours, and responds well to nitroglycerin (NTG) and calcium channel blockers. This patient\u2019s pain is unrelieved by NTG.",
                 d: "Microvascular angina involves small vessel disease and typically presents with exertional symptoms in women. It does not explain a sudden change from stable to rest pain."
             },
-            testTakingTip: "The key to this question is change in pattern. Any angina that is new, at rest, or worsening = unstable = emergency. Think of the ACS continuum: stable angina is NOT ACS; unstable angina IS ACS.",
+            testTakingTip: "The key to this question is change in pattern. Any angina that is new, at rest, or worsening = unstable = emergency. Think of the acute coronary syndrome (ACS) continuum: stable angina is NOT ACS; unstable angina IS ACS.",
             guideSection: "Section 3 - ACS Continuum",
             guideSectionId: "angina"
         },
@@ -40,7 +40,7 @@ var coronaryArteryDiseaseQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with a history of COPD is scheduled for a pharmacologic stress test. The nurse notes the order is for an adenosine stress test. The nurse should:",
+            stem: "A patient with a history of chronic obstructive pulmonary disease (COPD) is scheduled for a pharmacologic stress test. The nurse notes the order is for an adenosine stress test. The nurse should:",
             options: [
                 { id: "a", text: "Proceed with the test as ordered" },
                 { id: "b", text: "Withhold the patient\u2019s bronchodilator inhalers" },
@@ -49,12 +49,12 @@ var coronaryArteryDiseaseQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Adenosine and dipyridamole are vasodilator stress agents that are contraindicated in patients with reactive airway disease (asthma, COPD with bronchospastic component) because they can trigger severe bronchospasm. The nurse should question this order - a dobutamine stress test would be a safer alternative for this patient.",
+                correct: "Adenosine and dipyridamole are vasodilator stress agents that are contraindicated in patients with reactive airway disease, such as asthma or chronic obstructive pulmonary disease (COPD) with a bronchospastic component, because they can trigger severe bronchospasm. The nurse should question this order - a dobutamine stress test would be a safer alternative for this patient.",
                 a: "Proceeding could cause life-threatening bronchospasm. Nurses have a duty to question orders that may harm the patient.",
-                b: "Withholding bronchodilators in a COPD patient before a test that can cause bronchospasm would increase risk, not decrease it.",
+                b: "Withholding bronchodilators in a patient with chronic obstructive pulmonary disease (COPD) before a test that can cause bronchospasm would increase risk, not decrease it.",
                 d: "Prophylactic albuterol does not make adenosine safe for reactive airway patients. The test agent itself needs to be changed."
             },
-            testTakingTip: "Remember: Adenosine/dipyridamole = NO asthma/COPD. Use dobutamine instead. Aminophylline is the reversal agent for adenosine. Caffeine must be held 24\u201348 hours before vasodilator stress tests.",
+            testTakingTip: "Remember: Adenosine/dipyridamole = NO asthma or chronic obstructive pulmonary disease (COPD). Use dobutamine instead. Aminophylline is the reversal agent for adenosine. Caffeine must be held 24\u201348 hours before vasodilator stress tests.",
             guideSection: "Section 4 - Diagnostic Testing",
             guideSectionId: "diagnostics"
         },
@@ -73,14 +73,14 @@ var coronaryArteryDiseaseQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "The correct sequence follows the angina response protocol: eliminate the precipitating factor (stop activity), administer vasodilator (NTG), assess for response, repeat if needed, and escalate to emergency care if unrelieved.",
+                correct: "The correct sequence follows the angina response protocol: eliminate the precipitating factor (stop activity), administer a vasodilator, nitroglycerin (NTG), assess for response, repeat if needed, and escalate to emergency care if unrelieved.",
                 a: "FIRST - Stopping activity immediately reduces myocardial oxygen demand, the underlying cause of stable angina.",
-                b: "SECOND - After the patient is resting, administer sublingual NTG. NTG causes vasodilation, reducing preload and afterload. The patient should be seated to prevent orthostatic hypotension.",
-                c: "THIRD - Wait 5 minutes and reassess pain. Sublingual NTG peaks at about 5 minutes. This determines whether the episode is resolving or escalating.",
-                d: "FOURTH - If pain persists, administer a second sublingual NTG. Per current AHA guidelines, calling 911 is recommended after the first unrelieved dose for outpatients.",
-                e: "FIFTH - If pain remains unrelieved after maximum NTG doses, this is a potential ACS event. Call 911 or activate rapid response for emergent evaluation."
+                b: "SECOND - After the patient is resting, administer sublingual nitroglycerin (NTG). NTG causes vasodilation, reducing preload and afterload. The patient should be seated to prevent orthostatic hypotension.",
+                c: "THIRD - Wait 5 minutes and reassess pain. Sublingual nitroglycerin (NTG) peaks at about 5 minutes. This determines whether the episode is resolving or escalating.",
+                d: "FOURTH - If pain persists, administer a second sublingual nitroglycerin (NTG). Per current American Heart Association (AHA) guidelines, calling 911 is recommended after the first unrelieved dose for outpatients.",
+                e: "FIFTH - If pain remains unrelieved after maximum nitroglycerin (NTG) doses, this is a potential acute coronary syndrome (ACS) event. Call 911 or activate rapid response for emergent evaluation."
             },
-            testTakingTip: "Angina protocol: REST \u2192 NTG \u2192 REASSESS \u2192 REPEAT \u2192 RESCUE. NTG is contraindicated if SBP <90 or if patient took a PDE5 inhibitor (Viagra/Cialis) within 24\u201348 hours.",
+            testTakingTip: "Angina protocol: REST \u2192 nitroglycerin (NTG) \u2192 REASSESS \u2192 REPEAT \u2192 RESCUE. NTG is contraindicated if systolic blood pressure (SBP) <90 or if patient took a phosphodiesterase-5 (PDE5) inhibitor (Viagra/Cialis) within 24\u201348 hours.",
             guideSection: "Section 6 - Cardiac Catheterization & PCI",
             guideSectionId: "catheterization"
         },
@@ -100,7 +100,7 @@ var coronaryArteryDiseaseQuizData = {
             rationale: {
                 correct: "This is a classic retroperitoneal hemorrhage presentation - back/flank pain, hypotension, tachycardia, with a DRY access site dressing (the bleeding is internal, not visible). The priority is to stabilize the patient hemodynamically (increase IV fluids to maintain perfusion) and immediately notify the provider, as this is a life-threatening emergency requiring possible surgical intervention.",
                 b: "The dressing is dry - groin pressure won\u2019t help because the bleeding is retroperitoneal, not at the surface puncture site.",
-                c: "Lowering HOB is appropriate for hypotension, but applying abdominal pressure is not effective for retroperitoneal bleeding and could worsen it.",
+                c: "Lowering the head of the bed is appropriate for hypotension, but applying abdominal pressure is not effective for retroperitoneal bleeding and could worsen it.",
                 d: "Labs are appropriate but take time. In an actively hemorrhaging patient with hemodynamic instability, fluid resuscitation and provider notification take priority over diagnostics."
             },
             testTakingTip: "Retroperitoneal bleed triad: Back pain + hypotension + tachycardia with DRY dressing = bleeding you can\u2019t see. This is the most dangerous post-cath complication. Don\u2019t be tricked by the dry dressing - internal bleeding doesn\u2019t show externally.",
@@ -121,12 +121,12 @@ var coronaryArteryDiseaseQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After drug-eluting stent (DES) placement, dual antiplatelet therapy (DAPT = aspirin + P2Y12 inhibitor like clopidogrel) must continue for at least 12 months. Stopping clopidogrel prematurely carries a 20\u201340% risk of acute stent thrombosis, which can be fatal. The cardiologist must be consulted before any changes to antiplatelet therapy.",
-                a: "Stopping DAPT early after DES is life-threatening. Dental bleeding risk is far less dangerous than stent thrombosis risk.",
-                c: "Stopping one component of DAPT without cardiologist approval increases stent thrombosis risk. Both agents are needed for the full prescribed duration.",
+                correct: "After drug-eluting stent (DES) placement, dual antiplatelet therapy (DAPT), which is aspirin plus a P2Y12 inhibitor like clopidogrel, must continue for at least 12 months. Stopping clopidogrel prematurely carries a 20\u201340% risk of acute stent thrombosis, which can be fatal. The cardiologist must be consulted before any changes to antiplatelet therapy.",
+                a: "Stopping dual antiplatelet therapy (DAPT) early after a drug-eluting stent (DES) is life-threatening. Dental bleeding risk is far less dangerous than stent thrombosis risk.",
+                c: "Stopping one component of dual antiplatelet therapy (DAPT) without cardiologist approval increases stent thrombosis risk. Both agents are needed for the full prescribed duration.",
                 d: "Warfarin does not prevent stent thrombosis - it works on the coagulation cascade, not platelet aggregation. It is not a substitute for antiplatelet therapy."
             },
-            testTakingTip: "DAPT after stent = non-negotiable. Drug-eluting stent: 12 months minimum. Bare-metal stent: 1\u20133 months minimum. Stopping early = stent thrombosis = MI or death. Always consult cardiology first.",
+            testTakingTip: "Dual antiplatelet therapy (DAPT) after stent = non-negotiable. Drug-eluting stent: 12 months minimum. Bare-metal stent: 1\u20133 months minimum. Stopping early = stent thrombosis = myocardial infarction (MI) or death. Always consult cardiology first.",
             guideSection: "Section 7 - DAPT After Stent Placement",
             guideSectionId: "management"
         },
@@ -140,18 +140,18 @@ var coronaryArteryDiseaseQuizData = {
             options: [
                 { id: "a", text: "Smoking one pack of cigarettes per day for 15 years" },
                 { id: "b", text: "Father had a myocardial infarction at age 50" },
-                { id: "c", text: "Total cholesterol 260 mg/dL with LDL 180 mg/dL" },
+                { id: "c", text: "Total cholesterol 260 mg/dL with low-density lipoprotein (LDL) 180 mg/dL" },
                 { id: "d", text: "Male patient who is 58 years old" }
             ],
             correct: { a: "Modifiable Risk Factor", b: "Non-Modifiable Risk Factor", c: "Modifiable Risk Factor", d: "Non-Modifiable Risk Factor" },
             rationale: {
                 correct: "Modifiable risk factors are those the patient can change through lifestyle or medical intervention. Non-modifiable factors cannot be changed but awareness allows for aggressive management of modifiable factors.",
                 a: "MODIFIABLE - Smoking is the single most preventable cause of cardiovascular death. Within 1 year of quitting, cardiovascular risk decreases by 50%. Complete cessation is the goal.",
-                b: "NON-MODIFIABLE - A first-degree male relative with CAD before age 55 is a significant non-modifiable risk factor. Genetic predisposition cannot be changed.",
-                c: "MODIFIABLE - Hyperlipidemia is treatable through diet, exercise, weight loss, and statin therapy. For established CAD, the LDL target is <70 mg/dL.",
+                b: "NON-MODIFIABLE - A first-degree male relative with coronary artery disease (CAD) before age 55 is a significant non-modifiable risk factor. Genetic predisposition cannot be changed.",
+                c: "MODIFIABLE - Hyperlipidemia is treatable through diet, exercise, weight loss, and statin therapy. For established coronary artery disease (CAD), the low-density lipoprotein (LDL) target is <70 mg/dL.",
                 d: "NON-MODIFIABLE - Age is the strongest non-modifiable risk factor. Risk increases significantly in males >45 and females >55 (post-menopausal)."
             },
-            testTakingTip: "Modifiable CAD risk factors: smoking, hyperlipidemia, hypertension, diabetes, obesity, sedentary lifestyle. Non-modifiable: age (M >45, F >55), sex, family history. The NCLEX tests which factors the nurse should focus education on.",
+            testTakingTip: "Modifiable coronary artery disease (CAD) risk factors: smoking, hyperlipidemia, hypertension, diabetes, obesity, sedentary lifestyle. Non-modifiable: age (M >45, F >55), sex, family history. The NCLEX tests which factors the nurse should focus education on.",
             guideSection: "Section 5 - Risk Factor Modification",
             guideSectionId: "risk-factors"
         },
@@ -162,19 +162,19 @@ var coronaryArteryDiseaseQuizData = {
             difficulty: "analysis",
             stem: "A patient experiencing chest pain takes one sublingual nitroglycerin tablet. After 5 minutes, the pain persists. The nurse should instruct the patient to:",
             options: [
-                { id: "a", text: "Take a second NTG tablet and wait another 5 minutes" },
+                { id: "a", text: "Take a second nitroglycerin tablet and wait another 5 minutes" },
                 { id: "b", text: "Call 911 immediately" },
-                { id: "c", text: "Lie down and take two more NTG tablets at once" },
+                { id: "c", text: "Lie down and take two more nitroglycerin tablets at once" },
                 { id: "d", text: "Drive to the nearest emergency department" }
             ],
             correct: "b",
             rationale: {
-                correct: "Per current AHA guidelines, if chest pain is not relieved after ONE sublingual NTG dose within 5 minutes, the patient should call 911 immediately. This represents a potential ACS event. The older \"take up to 3 NTG\" protocol has been updated - calling 911 after the first unrelieved dose is now the standard.",
-                a: "The outdated protocol allowed up to 3 NTG doses at 5-minute intervals. Current AHA guidelines recommend calling 911 if pain persists after the first dose to avoid delaying emergency care.",
+                correct: "Per current American Heart Association (AHA) guidelines, if chest pain is not relieved after ONE sublingual nitroglycerin (NTG) dose within 5 minutes, the patient should call 911 immediately. This represents a potential acute coronary syndrome (ACS) event. The older \"take up to 3 NTG\" protocol has been updated - calling 911 after the first unrelieved dose is now the standard.",
+                a: "The outdated protocol allowed up to 3 nitroglycerin (NTG) doses at 5-minute intervals. Current American Heart Association (AHA) guidelines recommend calling 911 if pain persists after the first dose to avoid delaying emergency care.",
                 c: "Taking two tablets at once increases the risk of severe hypotension and is never appropriate.",
                 d: "Patients experiencing a potential cardiac event should NEVER drive themselves. They could lose consciousness while driving. Call 911 for transport."
             },
-            testTakingTip: "Updated NTG protocol: Take 1 NTG \u2192 wait 5 min \u2192 if not relieved, call 911. Do NOT wait through 3 doses. Also remember: sit or lie down before taking NTG (prevents orthostatic hypotension), and NTG is contraindicated if the patient took a PDE5 inhibitor (Viagra) within 24\u201348 hours.",
+            testTakingTip: "Updated nitroglycerin (NTG) protocol: Take 1 NTG \u2192 wait 5 min \u2192 if not relieved, call 911. Do NOT wait through 3 doses. Also remember: sit or lie down before taking NTG (prevents orthostatic hypotension), and NTG is contraindicated if the patient took a phosphodiesterase-5 (PDE5) inhibitor (Viagra) within 24\u201348 hours.",
             guideSection: "Section 7 - Nitroglycerin Administration",
             guideSectionId: "management"
         },

@@ -26,12 +26,12 @@ var copdQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Emphysema (\"Pink Puffer\") causes destruction of alveolar walls and loss of elastic recoil, leading to air trapping and hyperinflation. This produces a barrel chest (increased AP diameter), diminished breath sounds (air trapped in enlarged airspaces), dyspnea on exertion, pursed-lip breathing, and use of accessory muscles.",
+                correct: "Emphysema (\"Pink Puffer\") causes destruction of alveolar walls and loss of elastic recoil, leading to air trapping and hyperinflation. This produces a barrel chest (increased anteroposterior diameter), diminished breath sounds (air trapped in enlarged airspaces), dyspnea on exertion, pursed-lip breathing, and use of accessory muscles.",
                 a: "Productive cough with copious sputum is the hallmark of chronic bronchitis (\"Blue Bloater\"), not emphysema. Emphysema patients typically have a minimal, non-productive cough.",
                 c: "Cyanosis and dependent edema are characteristic of chronic bronchitis with cor pulmonale (right-sided heart failure). Emphysema patients maintain relatively normal oxygenation early on through increased respiratory effort (\"pink puffers\").",
-                d: "Fully reversible wheezing is characteristic of asthma. COPD airway obstruction is largely irreversible, though some bronchospasm component may partially respond to bronchodilators."
+                d: "Fully reversible wheezing is characteristic of asthma. In chronic obstructive pulmonary disease (COPD), airway obstruction is largely irreversible, though some bronchospasm component may partially respond to bronchodilators."
             },
-            testTakingTip: "Remember the classic profiles: Pink Puffer (emphysema) = thin, barrel chest, dyspnea, pursed lips, minimal cyanosis. Blue Bloater (chronic bronchitis) = overweight, productive cough, cyanosis, edema. Most COPD patients have features of both.",
+            testTakingTip: "Remember the classic profiles: Pink Puffer (emphysema) = thin, barrel chest, dyspnea, pursed lips, minimal cyanosis. Blue Bloater (chronic bronchitis) = overweight, productive cough, cyanosis, edema. Most patients with chronic obstructive pulmonary disease (COPD) have features of both.",
             guideSection: "Section 2 - Emphysema vs Chronic Bronchitis",
             guideSectionId: "bronchitis-emphysema"
         },
@@ -40,7 +40,7 @@ var copdQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A patient with COPD and chronic CO2 retention is admitted with an exacerbation. The respiratory therapist increases the oxygen flow rate to 6 L/min via nasal cannula. The nurse notices the patient becomes increasingly drowsy and the respiratory rate drops from 18 to 8 breaths/min. The nurse should FIRST:",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) and chronic CO2 retention is admitted with an exacerbation. The respiratory therapist increases the oxygen flow rate to 6 L/min via nasal cannula. The nurse notices the patient becomes increasingly drowsy and the respiratory rate drops from 18 to 8 breaths/min. The nurse should FIRST:",
             options: [
                 { id: "a", text: "Continue the oxygen and let the patient rest" },
                 { id: "b", text: "Reduce the oxygen flow rate and stimulate the patient" },
@@ -54,7 +54,7 @@ var copdQuizData = {
                 c: "Never completely remove oxygen from a hypoxemic patient. The goal is to reduce flow, not eliminate it. These patients still need supplemental O2, just at a lower rate.",
                 d: "Naloxone reverses opioid-induced respiratory depression. This patient\u2019s drowsiness is from CO2 narcosis, not opioid overdose. Naloxone would have no effect."
             },
-            testTakingTip: "COPD + chronic CO2 retention = low-flow O2 only (1-2 L/min, target SpO2 88-92%). High-flow O2 knocks out the hypoxic drive \u2192 CO2 narcosis \u2192 respiratory arrest. This is one of the most tested COPD concepts on NCLEX. Reduce the O2, don\u2019t remove it.",
+            testTakingTip: "Chronic obstructive pulmonary disease (COPD) + chronic CO2 retention = low-flow O2 only (1-2 L/min, target SpO2 88-92%). High-flow O2 knocks out the hypoxic drive \u2192 CO2 narcosis \u2192 respiratory arrest. This is one of the most tested COPD concepts on NCLEX. Reduce the O2, don\u2019t remove it.",
             guideSection: "Section 5 - Oxygen Therapy in COPD",
             guideSectionId: "oxygen-therapy"
         },
@@ -63,7 +63,7 @@ var copdQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is teaching a patient with COPD about breathing techniques. Which instruction demonstrates correct pursed-lip breathing?",
+            stem: "A nurse is teaching a patient with chronic obstructive pulmonary disease (COPD) about breathing techniques. Which instruction demonstrates correct pursed-lip breathing?",
             options: [
                 { id: "a", text: "\"Breathe in through your mouth for 4 counts, then out through your nose for 2 counts.\"" },
                 { id: "b", text: "\"Breathe in through your nose for 2 counts, then out through pursed lips for 4 counts.\"" },
@@ -74,10 +74,10 @@ var copdQuizData = {
             rationale: {
                 correct: "Pursed-lip breathing involves inhaling through the nose (2 counts) and exhaling slowly through pursed lips (4 counts) - a 1:2 inhale-to-exhale ratio. This technique creates back-pressure (positive end-expiratory pressure) that keeps airways open longer during exhalation, prevents air trapping, and improves CO2 elimination.",
                 a: "This reverses the correct technique. Inhalation should be through the nose (warms and filters air), and exhalation through pursed lips. Mouth breathing on inhalation dries airways.",
-                c: "Breath-holding increases intrathoracic pressure and is not appropriate for COPD patients who already have air trapping. This technique is used for incentive spirometry, not COPD management.",
+                c: "Breath-holding increases intrathoracic pressure and is not appropriate for patients with chronic obstructive pulmonary disease (COPD) who already have air trapping. This technique is used for incentive spirometry, not COPD management.",
                 d: "Rapid mouth breathing (tachypnea) is inefficient - it moves air in the dead space without improving gas exchange and increases work of breathing."
             },
-            testTakingTip: "Pursed-lip breathing: IN through nose (2), OUT through pursed lips (4). The 1:2 ratio is key. This works because it creates \"auto-PEEP\" that stents airways open. Teach patients to use this during activity and episodes of dyspnea.",
+            testTakingTip: "Pursed-lip breathing: IN through nose (2), OUT through pursed lips (4). The 1:2 ratio is key. This works because it creates intrinsic positive end-expiratory pressure (PEEP), or \"auto-PEEP\", that stents airways open. Teach patients to use this during activity and episodes of dyspnea.",
             guideSection: "Section 6 - Breathing Techniques",
             guideSectionId: "breathing-techniques"
         },
@@ -86,7 +86,7 @@ var copdQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with COPD arrives at the ED with acute exacerbation - increased dyspnea, purulent sputum production, and SpO2 of 85% on room air. Place the nursing interventions in priority order.",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) arrives at the ED with acute exacerbation - increased dyspnea, purulent sputum production, and SpO2 of 85% on room air. Place the nursing interventions in priority order.",
             options: [
                 { id: "a", text: "Apply low-flow oxygen to target SpO2 88\u201392%" },
                 { id: "b", text: "Obtain arterial blood gas (ABG)" },
@@ -96,14 +96,14 @@ var copdQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Prioritize ABCs - oxygenation first with COPD-specific targets (88\u201392%). Then assess ventilation (ABG), treat bronchospasm (nebulizer), reduce inflammation (steroids), and collect diagnostic specimens.",
-                a: "FIRST - SpO2 of 85% requires immediate oxygen therapy. In COPD, use LOW-flow oxygen targeting SpO2 88\u201392%. High-flow oxygen risks suppressing the hypoxic ventilatory drive and causing CO2 narcosis.",
-                b: "SECOND - Once oxygen is initiated, obtain an ABG to evaluate PaCO2, pH, and PaO2. The ABG guides treatment decisions (e.g., need for BiPAP if CO2 is critically elevated).",
+                correct: "Prioritize airway, breathing, circulation (ABCs) - oxygenation first with targets specific to chronic obstructive pulmonary disease (COPD), 88\u201392%. Then assess ventilation with an arterial blood gas (ABG), treat bronchospasm (nebulizer), reduce inflammation (steroids), and collect diagnostic specimens.",
+                a: "FIRST - SpO2 of 85% requires immediate oxygen therapy. In chronic obstructive pulmonary disease (COPD), use LOW-flow oxygen targeting SpO2 88\u201392%. High-flow oxygen risks suppressing the hypoxic ventilatory drive and causing CO2 narcosis.",
+                b: "SECOND - Once oxygen is initiated, obtain an arterial blood gas (ABG) to evaluate PaCO2, pH, and PaO2. The ABG guides treatment decisions, such as the need for bilevel positive airway pressure (BiPAP) if CO2 is critically elevated.",
                 c: "THIRD - Nebulized short-acting bronchodilators (albuterol + ipratropium) relieve bronchospasm and improve airflow.",
                 d: "FOURTH - Systemic corticosteroids reduce airway inflammation, shorten recovery time, and reduce treatment failure. They take hours to reach full effect, so early administration is important.",
                 e: "FIFTH - Sputum culture identifies the causative organism for guiding antibiotic therapy. It is diagnostic and does not directly stabilize the patient."
             },
-            testTakingTip: "COPD exacerbation: O2 (low-flow, 88\u201392%) \u2192 ABG \u2192 Bronchodilator \u2192 Steroids \u2192 Culture. Remember: COPD patients get LOW-flow O2, never high-flow.",
+            testTakingTip: "Chronic obstructive pulmonary disease (COPD) exacerbation: O2 (low-flow, 88\u201392%) \u2192 arterial blood gas (ABG) \u2192 Bronchodilator \u2192 Steroids \u2192 Culture. Remember: COPD patients get LOW-flow O2, never high-flow.",
             guideSection: "Section 7 - Medication Management",
             guideSectionId: "medications"
         },
@@ -112,7 +112,7 @@ var copdQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with COPD is prescribed a fluticasone/salmeterol (Advair) inhaler and an albuterol (ProAir) rescue inhaler. Which statement by the patient indicates correct understanding of the medications?",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) is prescribed a fluticasone/salmeterol (Advair) inhaler and an albuterol (ProAir) rescue inhaler. Which statement by the patient indicates correct understanding of the medications?",
             options: [
                 { id: "a", text: "\"I use my Advair inhaler when I feel short of breath and save the albuterol for bedtime.\"" },
                 { id: "b", text: "\"I take my Advair every day as scheduled, use my albuterol only when I need quick relief, and rinse my mouth after the Advair.\"" },
@@ -121,12 +121,12 @@ var copdQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Advair is a maintenance (controller) inhaler containing an inhaled corticosteroid (fluticasone) and a long-acting bronchodilator (salmeterol). It must be taken daily on schedule, not PRN. Albuterol is a short-acting rescue bronchodilator used only for acute symptoms. Rinsing the mouth after ICS prevents oral candidiasis (thrush).",
+                correct: "Advair is a maintenance (controller) inhaler containing an inhaled corticosteroid (fluticasone) and a long-acting bronchodilator (salmeterol). It must be taken daily on schedule, not PRN. Albuterol is a short-acting rescue bronchodilator used only for acute symptoms. Rinsing the mouth after an inhaled corticosteroid (ICS) prevents oral candidiasis (thrush).",
                 a: "Advair is NOT a rescue inhaler - it takes time to work and is meant for daily maintenance. Albuterol is the rescue inhaler for acute shortness of breath, not a bedtime medication.",
                 c: "These inhalers have completely different mechanisms and purposes. Using the wrong one in an emergency (Advair instead of albuterol) would not provide rapid relief and could delay appropriate treatment.",
-                d: "This reverses the roles. Albuterol should be used PRN for rescue, not on a fixed schedule. Advair is the scheduled maintenance inhaler. Using a SABA on a regular schedule without a controller indicates inadequate maintenance therapy."
+                d: "This reverses the roles. Albuterol should be used PRN for rescue, not on a fixed schedule. Advair is the scheduled maintenance inhaler. Using a short-acting beta agonist (SABA) on a regular schedule without a controller indicates inadequate maintenance therapy."
             },
-            testTakingTip: "Controller vs. rescue is one of the most tested inhaler concepts. SABAs (albuterol) = rescue/PRN. ICS or ICS/LABA combos (Advair, Symbicort) = scheduled maintenance. Always rinse mouth after ICS to prevent thrush. If a patient uses their rescue inhaler >2 days/week, their maintenance therapy needs to be stepped up.",
+            testTakingTip: "Controller vs. rescue is one of the most tested inhaler concepts. Short-acting beta agonists (SABAs) such as albuterol = rescue/PRN. Inhaled corticosteroids (ICS) or inhaled corticosteroid plus long-acting beta agonist (LABA) combos (Advair, Symbicort) = scheduled maintenance. Always rinse mouth after ICS to prevent thrush. If a patient uses their rescue inhaler >2 days/week, their maintenance therapy needs to be stepped up.",
             guideSection: "Section 7 - Medication Management",
             guideSectionId: "medications"
         },
@@ -135,7 +135,7 @@ var copdQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which intervention is the ONLY one proven to slow the progression of COPD?",
+            stem: "Which intervention is the ONLY one proven to slow the progression of chronic obstructive pulmonary disease (COPD)?",
             options: [
                 { id: "a", text: "Long-term oxygen therapy" },
                 { id: "b", text: "Inhaled corticosteroids" },
@@ -144,12 +144,12 @@ var copdQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Smoking cessation is the single most important intervention in COPD management and the ONLY intervention proven to slow the decline in lung function (FEV1). All other treatments manage symptoms and reduce exacerbations but do not alter disease progression. Even in advanced COPD, quitting smoking provides benefit.",
+                correct: "Smoking cessation is the single most important intervention in chronic obstructive pulmonary disease (COPD) management and the ONLY intervention proven to slow the decline in lung function, measured as forced expiratory volume in one second (FEV1). All other treatments manage symptoms and reduce exacerbations but do not alter disease progression. Even in advanced COPD, quitting smoking provides benefit.",
                 a: "Long-term O2 therapy (LTOT) improves survival in patients with chronic hypoxemia (PaO2 \u226455 or SpO2 \u226488%) but does not slow lung function decline.",
-                b: "Inhaled corticosteroids reduce exacerbation frequency but do not alter the progressive decline in FEV1.",
+                b: "Inhaled corticosteroids reduce exacerbation frequency but do not alter the progressive decline in forced expiratory volume in one second (FEV1).",
                 d: "Pulmonary rehab improves exercise capacity, quality of life, and reduces dyspnea, but does not slow disease progression."
             },
-            testTakingTip: "This is a commonly tested fact: Only smoking cessation slows COPD progression. Only LTOT improves survival. Everything else manages symptoms. Know the difference between slowing progression, improving survival, and managing symptoms.",
+            testTakingTip: "This is a commonly tested fact: Only smoking cessation slows chronic obstructive pulmonary disease (COPD) progression. Only long-term oxygen therapy (LTOT) improves survival. Everything else manages symptoms. Know the difference between slowing progression, improving survival, and managing symptoms.",
             guideSection: "Section 8 - Prevention & Lifestyle Modifications",
             guideSectionId: "interventions"
         },
@@ -158,7 +158,7 @@ var copdQuizData = {
             type: "matrix",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is comparing the clinical presentations of two patients with COPD. For each finding, indicate whether it is more characteristic of emphysema or chronic bronchitis.",
+            stem: "A nurse is comparing the clinical presentations of two patients with chronic obstructive pulmonary disease (COPD). For each finding, indicate whether it is more characteristic of emphysema or chronic bronchitis.",
             matrixColumns: ["Emphysema (Pink Puffer)", "Chronic Bronchitis (Blue Bloater)"],
             options: [
                 { id: "a", text: "Barrel chest with pursed-lip breathing" },
@@ -169,10 +169,10 @@ var copdQuizData = {
             correct: { a: "Emphysema (Pink Puffer)", b: "Chronic Bronchitis (Blue Bloater)", c: "Emphysema (Pink Puffer)", d: "Chronic Bronchitis (Blue Bloater)" },
             rationale: {
                 correct: "Emphysema patients ('Pink Puffers') present with hyperinflation, weight loss, and increased work of breathing. Chronic bronchitis patients ('Blue Bloaters') present with productive cough, cyanosis, and right-sided heart failure signs.",
-                a: "EMPHYSEMA - Alveolar destruction causes air trapping and lung hyperinflation, leading to increased AP diameter (barrel chest). Pursed-lip breathing creates auto-PEEP to keep airways open.",
+                a: "EMPHYSEMA - Alveolar destruction causes air trapping and lung hyperinflation, leading to increased anteroposterior (AP) diameter (barrel chest). Pursed-lip breathing creates intrinsic positive end-expiratory pressure (PEEP) to keep airways open.",
                 b: "CHRONIC BRONCHITIS - Defined by a chronic productive cough for at least 3 months in 2 consecutive years. Inflammation and hypertrophy of mucus glands cause excessive mucus production.",
                 c: "EMPHYSEMA - Increased work of breathing dramatically increases caloric expenditure. Combined with decreased appetite from dyspnea, patients develop cachexia.",
-                d: "CHRONIC BRONCHITIS - Chronic hypoxemia leads to cyanosis. Prolonged hypoxemia causes pulmonary hypertension and right-sided heart failure (cor pulmonale), manifesting as peripheral edema and JVD."
+                d: "CHRONIC BRONCHITIS - Chronic hypoxemia leads to cyanosis. Prolonged hypoxemia causes pulmonary hypertension and right-sided heart failure (cor pulmonale), manifesting as peripheral edema and jugular venous distention (JVD)."
             },
             testTakingTip: "Pink Puffer (emphysema) = thin, barrel chest, pursed-lip breathing, dyspnea, weight loss. Blue Bloater (chronic bronchitis) = overweight, productive cough, cyanosis, edema, cor pulmonale.",
             guideSection: "Section 4 - Acute Exacerbations",
@@ -183,21 +183,21 @@ var copdQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A nurse is caring for a COPD patient on a Venturi mask at 28% FiO2. The patient\u2019s ABG results show: pH 7.25, PaCO2 68 mmHg, PaO2 58 mmHg, HCO3 38 mEq/L. The nurse interprets this as:",
+            stem: "A nurse is caring for a patient with chronic obstructive pulmonary disease (COPD) on a Venturi mask at 28% FiO2. The patient\u2019s arterial blood gas (ABG) results show: pH 7.25, PaCO2 68 mmHg, PaO2 58 mmHg, HCO3 38 mEq/L. The nurse interprets this as:",
             options: [
                 { id: "a", text: "Fully compensated respiratory acidosis - continue current treatment" },
-                { id: "b", text: "Acute respiratory acidosis - prepare for intubation" },
-                { id: "c", text: "Acute-on-chronic respiratory acidosis - notify provider for possible BiPAP" },
-                { id: "d", text: "Metabolic alkalosis - hold the diuretics" }
+                { id: "b", text: "Acute respiratory acidosis - prepare for immediate endotracheal intubation" },
+                { id: "c", text: "Acute-on-chronic respiratory acidosis - notify provider for possible noninvasive ventilation" },
+                { id: "d", text: "Metabolic alkalosis from diuretic use - hold the diuretics and recheck" }
             ],
             correct: "c",
             rationale: {
-                correct: "The elevated HCO3 (38) indicates chronic CO2 retention with renal compensation (kidneys retain bicarb over time). However, the pH is still acidotic (7.25) and PaCO2 is significantly elevated (68), meaning the compensation is not keeping up - this is acute-on-chronic respiratory acidosis. BiPAP (non-invasive positive pressure ventilation) can reduce the work of breathing and improve CO2 elimination without intubation.",
+                correct: "The elevated HCO3 (38) indicates chronic CO2 retention with renal compensation (kidneys retain bicarb over time). However, the pH is still acidotic (7.25) and PaCO2 is significantly elevated (68), meaning the compensation is not keeping up - this is acute-on-chronic respiratory acidosis. Bilevel positive airway pressure (BiPAP), a form of non-invasive positive pressure ventilation, can reduce the work of breathing and improve CO2 elimination without intubation.",
                 a: "If fully compensated, the pH would be normal (7.35-7.45). A pH of 7.25 is significantly acidotic - the patient is decompensating and needs intervention.",
-                b: "In purely acute respiratory acidosis, the HCO3 would be near normal (22-26). The elevated HCO3 of 38 shows chronic compensation, making this acute-on-chronic. BiPAP is the first-line intervention before considering intubation.",
+                b: "In purely acute respiratory acidosis, the HCO3 would be near normal (22-26). The elevated HCO3 of 38 shows chronic compensation, making this acute-on-chronic. Bilevel positive airway pressure (BiPAP) is the first-line intervention before considering intubation.",
                 d: "The primary disorder is respiratory acidosis (high CO2), not metabolic alkalosis. The elevated HCO3 is compensatory, not the primary problem."
             },
-            testTakingTip: "ABG interpretation in COPD: High HCO3 = kidneys compensating for chronic CO2 retention. If pH is still abnormal despite high HCO3, the patient has decompensated (acute-on-chronic). BiPAP is the bridge between nasal cannula and intubation - know when to escalate.",
+            testTakingTip: "Arterial blood gas (ABG) interpretation in chronic obstructive pulmonary disease (COPD): High HCO3 = kidneys compensating for chronic CO2 retention. If pH is still abnormal despite high HCO3, the patient has decompensated (acute-on-chronic). Bilevel positive airway pressure (BiPAP) is the bridge between nasal cannula and intubation - know when to escalate.",
             labValues: [
                 { name: "pH", normal: "7.35\u20137.45" },
                 { name: "PaCO2", normal: "35\u201345 mmHg" },
@@ -289,7 +289,7 @@ var copdQuizData = {
         },
         {
             id: 13, type: "single", subtype: null, difficulty: "knowledge",
-            stem: "A patient has spirometry showing a forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio of 62 percent. How should the nurse interpret this?",
+            stem: "A patient has spirometry showing a forced expiratory volume in one second (FEV1) over forced vital capacity (FVC) ratio of 62 percent. How should the nurse interpret this?",
             options: [
                 { id: "a", text: "It confirms obstruction, being under 70 percent" },
                 { id: "b", text: "It is a normal ratio and rules out obstruction" },
@@ -298,12 +298,12 @@ var copdQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "A forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio under 70 percent confirms obstruction. At 62 percent this patient is clearly below that line.",
+                correct: "A forced expiratory volume in one second (FEV1) over forced vital capacity (FVC) ratio under 70 percent confirms obstruction. At 62 percent this patient is clearly below that line.",
                 b: "Under 70 percent is the threshold, and 62 percent sits below it.",
                 c: "A restrictive defect lowers volumes while preserving the ratio. A reduced ratio points to obstruction.",
                 d: "An arterial blood gas describes gas exchange. The diagnosis of obstruction comes from spirometry."
             },
-            testTakingTip: "Under 70 percent on the forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio confirms obstruction. The forced expiratory volume percentage then stages it.",
+            testTakingTip: "Under 70 percent on the forced expiratory volume in one second (FEV1) over forced vital capacity (FVC) ratio confirms obstruction. The forced expiratory volume percentage then stages it.",
             guideSection: "Section 10 - Numbers to have cold",
             guideSectionId: "numbers-cold"
         },

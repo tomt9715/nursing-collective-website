@@ -26,12 +26,12 @@ var pneumoniaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Hospital-acquired pneumonia (HAP) is defined as pneumonia that develops \u226548 hours after hospital admission and was not incubating at the time of admission. This patient developed symptoms 4 days (96 hours) post-admission, clearly meeting the HAP criteria. HAP requires broader-spectrum antibiotic coverage due to hospital-associated pathogens (Pseudomonas, MRSA, Klebsiella).",
-                a: "CAP develops in patients who have not been hospitalized in the past 90 days. This patient\u2019s pneumonia developed while in the hospital.",
+                correct: "Hospital-acquired pneumonia (HAP) is defined as pneumonia that develops \u226548 hours after hospital admission and was not incubating at the time of admission. This patient developed symptoms 4 days (96 hours) post-admission, clearly meeting the HAP criteria. HAP requires broader-spectrum antibiotic coverage due to hospital-associated pathogens such as Pseudomonas, methicillin-resistant Staphylococcus aureus (MRSA), and Klebsiella.",
+                a: "Community-acquired pneumonia (CAP) develops in patients who have not been hospitalized in the past 90 days. This patient\u2019s pneumonia developed while in the hospital.",
                 c: "Aspiration pneumonia results from inhalation of oropharyngeal or gastric contents. While post-surgical patients are at risk, there\u2019s no evidence of aspiration in this scenario.",
-                d: "VAP is a subtype of HAP that develops \u226548 hours after endotracheal intubation. There\u2019s no mention of mechanical ventilation in this scenario."
+                d: "Ventilator-associated pneumonia (VAP) is a subtype of hospital-acquired pneumonia (HAP) that develops \u226548 hours after endotracheal intubation. There\u2019s no mention of mechanical ventilation in this scenario."
             },
-            testTakingTip: "The 48-hour rule: Pneumonia onset \u226548 hours after admission = HAP. <48 hours = likely CAP (incubating on arrival). VAP = HAP + ventilator. The classification determines which antibiotics to use - HAP needs broader coverage.",
+            testTakingTip: "The 48-hour rule: Pneumonia onset \u226548 hours after admission = hospital-acquired pneumonia (HAP). <48 hours = likely community-acquired pneumonia (CAP), incubating on arrival. Ventilator-associated pneumonia (VAP) = HAP + ventilator. The classification determines which antibiotics to use - HAP needs broader coverage.",
             guideSection: "Section 4 - CAP vs HAP vs VAP",
             guideSectionId: "classification"
         },
@@ -45,16 +45,16 @@ var pneumoniaQuizData = {
                 { id: "a", text: "45-year-old with a temperature of 101.2\u00b0F and productive cough with yellow sputum" },
                 { id: "b", text: "72-year-old with confusion, BP 86/52, RR 28, and SpO2 88%" },
                 { id: "c", text: "55-year-old requesting pain medication for pleuritic chest pain" },
-                { id: "d", text: "38-year-old with a WBC count of 14,500 awaiting first antibiotic dose" }
+                { id: "d", text: "38-year-old with a white blood cell (WBC) count of 14,500 awaiting first antibiotic dose" }
             ],
             correct: "b",
             rationale: {
-                correct: "This elderly patient shows signs of sepsis secondary to pneumonia: confusion (altered mental status), hypotension (BP 86/52), tachypnea (RR 28), and hypoxemia (SpO2 88%). This meets SIRS/sepsis criteria and indicates organ dysfunction. The elderly often present atypically - confusion may be the only early sign. This patient needs immediate IV fluids, oxygen, blood cultures, and antibiotics.",
+                correct: "This elderly patient shows signs of sepsis secondary to pneumonia: confusion (altered mental status), hypotension (BP 86/52), tachypnea (RR 28), and hypoxemia (SpO2 88%). This meets systemic inflammatory response syndrome (SIRS) and sepsis criteria and indicates organ dysfunction. The elderly often present atypically - confusion may be the only early sign. This patient needs immediate IV fluids, oxygen, blood cultures, and antibiotics.",
                 a: "Fever and productive cough are expected pneumonia symptoms and are not acutely life-threatening.",
                 c: "Pleuritic chest pain is common with pneumonia and, while important to manage, is not immediately life-threatening compared to sepsis.",
                 d: "While timely antibiotic administration is important (as soon as possible after diagnosis, within 1 hour if severe or septic), this patient\u2019s vitals appear stable, unlike patient B who is hemodynamically unstable."
             },
-            testTakingTip: "Priority questions: Look for hemodynamic instability. Confusion + hypotension + tachypnea in an elderly patient = sepsis until proven otherwise. The elderly often don\u2019t mount fevers - confusion may be the ONLY early sign of serious infection. Always prioritize ABCs.",
+            testTakingTip: "Priority questions: Look for hemodynamic instability. Confusion + hypotension + tachypnea in an elderly patient = sepsis until proven otherwise. The elderly often don\u2019t mount fevers - confusion may be the ONLY early sign of serious infection. Always prioritize airway, breathing, circulation (ABCs).",
             guideSection: "Section 8 - Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -73,14 +73,14 @@ var pneumoniaQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Pneumonia admission priorities follow ABCs combined with the evidence-based care bundle. Oxygenation first, then cultures BEFORE antibiotics, then timely antibiotic administration, then supportive hydration.",
+                correct: "Pneumonia admission priorities follow airway, breathing, circulation (ABCs) combined with the evidence-based care bundle. Oxygenation first, then cultures BEFORE antibiotics, then timely antibiotic administration, then supportive hydration.",
                 a: "FIRST - SpO2 of 89% with tachypnea indicates significant hypoxemia. Apply supplemental oxygen targeting SpO2 \u226594%. Oxygenation is always the top priority.",
                 b: "SECOND - Blood cultures (2 sets from 2 sites) must be drawn BEFORE the first antibiotic dose. Antibiotics can sterilize blood within minutes, making cultures falsely negative.",
                 c: "THIRD - Obtain sputum from a deep cough for culture and Gram stain before antibiotics are given. This helps identify the causative organism.",
                 d: "FOURTH - Administer antibiotics as soon as cultures are obtained. The first dose is given as soon as possible after diagnosis, and within 1 hour if the patient is severe or septic. The old 4 hour quality measure was retired in 2012.",
                 e: "FIFTH - IV hydration supports increased metabolic needs from fever and tachypnea, thins secretions, and maintains hemodynamic stability."
             },
-            testTakingTip: "Pneumonia bundle: O2 first (ABCs) \u2192 Cultures BEFORE antibiotics \u2192 Antibiotics within 1 hour \u2192 IV fluids. The 'cultures before antibiotics' rule is one of the most tested pneumonia concepts.",
+            testTakingTip: "Pneumonia bundle: O2 first (airway, breathing, circulation) \u2192 Cultures BEFORE antibiotics \u2192 Antibiotics within 1 hour \u2192 IV fluids. The 'cultures before antibiotics' rule is one of the most tested pneumonia concepts.",
             guideSection: "Section 8 - Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -98,12 +98,12 @@ var pneumoniaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Consolidation on CXR means the alveoli are filled with inflammatory exudate, pus, or fluid instead of air, appearing as a white opacity. Air bronchograms occur when the air-filled bronchi become visible against the opacified (fluid-filled) surrounding lung tissue - this is a hallmark finding of pneumonia, particularly bacterial lobar pneumonia.",
+                correct: "Consolidation on chest X-ray (CXR) means the alveoli are filled with inflammatory exudate, pus, or fluid instead of air, appearing as a white opacity. Air bronchograms occur when the air-filled bronchi become visible against the opacified (fluid-filled) surrounding lung tissue - this is a hallmark finding of pneumonia, particularly bacterial lobar pneumonia.",
                 a: "Pleural effusion appears as a blunting of the costophrenic angle or a layering fluid opacity, not as lobar consolidation with air bronchograms.",
                 c: "Pneumothorax shows as increased lucency (darkness/blackness) with absent lung markings, not as a dense white consolidation.",
                 d: "Atelectasis shows volume loss with shift of structures toward the affected side. Consolidation shows opacity WITHOUT volume loss - air bronchograms help differentiate the two."
             },
-            testTakingTip: "CXR basics: White (opaque) = fluid/consolidation. Black (lucent) = air. Air bronchograms = pneumonia classic finding. Costophrenic angle blunting = pleural effusion. Absent lung markings with hyperlucency = pneumothorax.",
+            testTakingTip: "Chest X-ray (CXR) basics: White (opaque) = fluid/consolidation. Black (lucent) = air. Air bronchograms = pneumonia classic finding. Costophrenic angle blunting = pleural effusion. Absent lung markings with hyperlucency = pneumothorax.",
             guideSection: "Section 6 - Diagnostics & CXR",
             guideSectionId: "diagnostics"
         },
@@ -151,7 +151,7 @@ var pneumoniaQuizData = {
                 c: "TYPICAL - Bacterial pneumonia causes dense consolidation confined to a single lobe (lobar pneumonia) with air bronchograms on chest X-ray.",
                 d: "ATYPICAL - Atypical pneumonia causes diffuse, patchy, bilateral interstitial infiltrates. The 'X-ray looks worse than the patient' pattern is a hallmark of atypical pneumonia."
             },
-            testTakingTip: "Typical = sudden, high fever, productive sputum, lobar consolidation. Atypical = gradual, low-grade fever, dry cough, diffuse infiltrates. Key clue: if the CXR looks worse than the patient appears, think atypical.",
+            testTakingTip: "Typical = sudden, high fever, productive sputum, lobar consolidation. Atypical = gradual, low-grade fever, dry cough, diffuse infiltrates. Key clue: if the chest X-ray (CXR) looks worse than the patient appears, think atypical.",
             guideSection: "Section 8 - Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -160,7 +160,7 @@ var pneumoniaQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A nurse is caring for a patient with community-acquired pneumonia. The most common causative organism for CAP is:",
+            stem: "A nurse is caring for a patient with community-acquired pneumonia (CAP). The most common causative organism for CAP is:",
             options: [
                 { id: "a", text: "Pseudomonas aeruginosa" },
                 { id: "b", text: "Streptococcus pneumoniae" },
@@ -169,12 +169,12 @@ var pneumoniaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Streptococcus pneumoniae (pneumococcus) is the most common bacterial cause of community-acquired pneumonia across all age groups. It typically causes lobar pneumonia with sudden onset of high fever, productive cough with rust-colored sputum, and pleuritic chest pain. The pneumococcal vaccine (PCV13/PPSV23) is recommended for prevention.",
-                a: "Pseudomonas is associated with hospital-acquired pneumonia, ventilator-associated pneumonia, and immunocompromised patients - not typical CAP.",
-                c: "MRSA pneumonia can occur in the community (CA-MRSA) but is much less common than S. pneumoniae. It\u2019s more commonly associated with HAP.",
-                d: "Klebsiella is associated with pneumonia in alcoholics, diabetics, and debilitated patients. It causes \"currant jelly\" sputum but is not the most common overall CAP pathogen."
+                correct: "Streptococcus pneumoniae (pneumococcus) is the most common bacterial cause of community-acquired pneumonia across all age groups. It typically causes lobar pneumonia with sudden onset of high fever, productive cough with rust-colored sputum, and pleuritic chest pain. The pneumococcal conjugate vaccine (PCV13) or pneumococcal polysaccharide vaccine (PPSV23) is recommended for prevention.",
+                a: "Pseudomonas is associated with hospital-acquired pneumonia, ventilator-associated pneumonia, and immunocompromised patients - not typical community-acquired pneumonia (CAP).",
+                c: "Community-acquired methicillin-resistant Staphylococcus aureus (CA-MRSA) pneumonia does occur but is much less common than S. pneumoniae. Methicillin-resistant Staphylococcus aureus (MRSA) is more commonly associated with hospital-acquired pneumonia (HAP).",
+                d: "Klebsiella is associated with pneumonia in alcoholics, diabetics, and debilitated patients. It causes \"currant jelly\" sputum but is not the most common overall community-acquired pneumonia (CAP) pathogen."
             },
-            testTakingTip: "Key pathogen associations: CAP #1 = S. pneumoniae (rust sputum). Alcoholics = Klebsiella (currant jelly sputum). HAP = Pseudomonas, MRSA. Aspiration = anaerobes (foul-smelling sputum). Atypical = Mycoplasma (walking pneumonia, younger patients).",
+            testTakingTip: "Key pathogen associations: Community-acquired pneumonia (CAP) #1 = S. pneumoniae (rust sputum). Alcoholics = Klebsiella (currant jelly sputum). Hospital-acquired pneumonia (HAP) = Pseudomonas, methicillin-resistant Staphylococcus aureus (MRSA). Aspiration = anaerobes (foul-smelling sputum). Atypical = Mycoplasma (walking pneumonia, younger patients).",
             guideSection: "Section 4 - CAP vs HAP vs VAP",
             guideSectionId: "classification"
         },
@@ -183,7 +183,7 @@ var pneumoniaQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A patient with pneumonia has been on IV antibiotics for 72 hours. The nurse notes: temperature rising to 103.4\u00b0F (was 99.8\u00b0F yesterday), increased oxygen requirements (now on 5L NC, was on 2L), new-onset confusion, and WBC rising from 12,000 to 22,000. The nurse should:",
+            stem: "A patient with pneumonia has been on IV antibiotics for 72 hours. The nurse notes: temperature rising to 103.4\u00b0F (was 99.8\u00b0F yesterday), increased oxygen requirements (now on 5L by nasal cannula, was on 2L), new-onset confusion, and white blood cell (WBC) count rising from 12,000 to 22,000. The nurse should:",
             options: [
                 { id: "a", text: "Continue current treatment - it\u2019s too early to see improvement" },
                 { id: "b", text: "Request a repeat chest X-ray and blood cultures, and notify the provider" },
@@ -192,7 +192,7 @@ var pneumoniaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After 48-72 hours on antibiotics, patients should show clinical improvement. This patient is worsening on all parameters - rising fever, increasing O2 needs, new confusion, and rising WBC. This indicates treatment failure, possible resistant organism, or a complication (empyema, abscess, sepsis). A repeat CXR evaluates for complications, blood cultures identify the organism and guide antibiotic change, and the provider needs to reassess the treatment plan.",
+                correct: "After 48-72 hours on antibiotics, patients should show clinical improvement. This patient is worsening on all parameters - rising fever, increasing O2 needs, new confusion, and rising white blood cell (WBC) count. This indicates treatment failure, possible resistant organism, or a complication (empyema, abscess, sepsis). A repeat chest X-ray (CXR) evaluates for complications, blood cultures identify the organism and guide antibiotic change, and the provider needs to reassess the treatment plan.",
                 a: "72 hours is adequate time to see improvement with appropriate antibiotics. Clinical deterioration at this point is a red flag, not expected.",
                 c: "Administering extra doses without a provider order is outside nursing scope and doesn\u2019t address the likely need for a different antibiotic or investigation of complications.",
                 d: "Never abruptly discontinue antibiotics. The patient needs antibiotics but likely needs a CHANGE in antibiotic coverage based on culture results or empiric broadening."
@@ -283,7 +283,7 @@ var pneumoniaQuizData = {
         },
         {
             id: 13, type: "single", subtype: null, difficulty: "knowledge",
-            stem: "A nurse calculates a CURB-65 score of 4 for a patient with pneumonia. What question does this score answer?",
+            stem: "A nurse calculates a Confusion, Urea, Respiratory rate, Blood pressure, age 65 or older (CURB-65) score of 4 for a patient with pneumonia. What question does this score answer?",
             options: [
                 { id: "a", text: "Whether the patient needs admission rather than home care" },
                 { id: "b", text: "Which antibiotic the patient should be started on first" },
@@ -292,12 +292,12 @@ var pneumoniaQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "CURB-65 answers one question, and it is not which antibiotic. It scores severity to decide whether this patient goes home. A score of 3 to 5 means admit now.",
+                correct: "The Confusion, Urea, Respiratory rate, Blood pressure, age 65 or older (CURB-65) score answers one question, and it is not which antibiotic. It scores severity to decide whether this patient goes home. A score of 3 to 5 means admit now.",
                 b: "Antibiotic choice follows the setting and the likely organism, not the severity score.",
                 c: "The score uses confusion, urea, respiratory rate, blood pressure and age. None of those identify an organism.",
                 d: "Duration follows the response to treatment and the organism, not the admission score."
             },
-            testTakingTip: "CURB-65 decides disposition. A score of 3 to 5 means admit now.",
+            testTakingTip: "Confusion, Urea, Respiratory rate, Blood pressure, age 65 or older (CURB-65) decides disposition. A score of 3 to 5 means admit now.",
             guideSection: "Section 7 - Assessment, in order",
             guideSectionId: "assessment"
         },

@@ -110,6 +110,7 @@ var documentationChartingQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["MS"],
             stem: "Which documented order is written safely?",
             options: [
                 { id: "a", text: "Regular insulin 8U subcutaneously before meals" },
@@ -122,7 +123,7 @@ var documentationChartingQuizData = {
                 correct: "The dose, route and frequency are spelled out with no banned abbreviation, no trailing zero and no missing leading zero.",
                 a: "U is on the do-not-use list because it is misread as a zero or a four.",
                 c: "A missing leading zero turns 0.05 mg into 05 mg or 5 mg. Write 0.05 mg.",
-                d: "MS is confused with magnesium sulfate. The full drug name is required."
+                d: "MS, meant as morphine sulfate, is confused with magnesium sulfate. The full drug name is required."
             },
             testTakingTip: "Always a leading zero, never a trailing one, and spell out unit and daily.",
             guideSection: "Section 05: Abbreviations that are banned",
@@ -133,6 +134,7 @@ var documentationChartingQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
+            keepAcronyms: ["SBAR"],
             stem: "A nurse is calling a provider about a patient whose blood pressure has fallen to 84/50 with a heart rate of 122. Which statement completes the SBAR correctly?",
             options: [
                 { id: "a", text: "\"I just wanted to let you know about her vital signs this evening.\"" },
@@ -142,12 +144,12 @@ var documentationChartingQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "The recommendation is the letter that makes SBAR work. It names the concern and asks for something specific, so there is no ambiguity about what the nurse needs.",
+                correct: "The recommendation is the letter that makes situation, background, assessment, recommendation (SBAR) work. It names the concern and asks for something specific, so there is no ambiguity about what the nurse needs.",
                 a: "This is information without a request, and it leaves the next step undefined.",
                 b: "Continuing to watch a deteriorating patient without a request is not an escalation.",
                 d: "Deferring to the chart delays action in a time-sensitive situation."
             },
-            testTakingTip: "If an SBAR question asks what is missing, check for the specific ask first.",
+            testTakingTip: "If a situation, background, assessment, recommendation (SBAR) question asks what is missing, check for the specific ask first.",
             guideSection: "Section 07: Handoff and SBAR",
             guideSectionId: "handoff"
         },
@@ -248,6 +250,7 @@ var documentationChartingQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["DAR"],
             stem: "A nurse documents using the DAR format. What does this format record?",
             options: [
                 { id: "a", text: "Diagnosis, assessment, referral" },
@@ -262,7 +265,7 @@ var documentationChartingQuizData = {
                 c: "This is not a recognised documentation format.",
                 d: "This is not a recognised documentation format."
             },
-            testTakingTip: "Focus charting is DAR, and the R is the part most nurses forget to write.",
+            testTakingTip: "Focus charting is data, action, response (DAR), and the R is the part most nurses forget to write.",
             guideSection: "Section 06: Charting formats",
             guideSectionId: "formats"
         },

@@ -44,17 +44,17 @@ var cardiacMedicationsQuizData = {
             options: [
                 { id: "a", text: "\u201cThat is an allergic reaction to the drug. Stop the medication today.\u201d" },
                 { id: "b", text: "\u201cThat sounds like a chest infection. I will ask the provider about an antibiotic.\u201d" },
-                { id: "c", text: "\u201cThis is a known side effect. I will tell the provider, and switching to an ARB usually helps.\u201d" },
+                { id: "c", text: "\u201cA known side effect. I will ask the provider about switching to an angiotensin II receptor blocker (ARB).\u201d" },
                 { id: "d", text: "\u201cCoughing means the drug is working. Keep taking it every day as prescribed.\u201d" }
             ],
             correct: "c",
             rationale: {
-                correct: "A dry cough is a well-recognised effect of ACE inhibitors. It is not an allergy. The usual fix is switching to an ARB, which does not cause it.",
+                correct: "A dry cough is a well-recognised effect of angiotensin-converting enzyme (ACE) inhibitors. It is not an allergy. The usual fix is switching to an angiotensin II receptor blocker (ARB), which does not cause it.",
                 a: "The cough is an expected effect, not anaphylaxis. Facial or tongue swelling would be the emergency.",
                 b: "Clear lungs and no fever argue against infection. The timing points at the drug.",
                 d: "The cough is not a marker of effectiveness, and patients often stop the drug over it."
             },
-            testTakingTip: "ACE inhibitor cough means swap to an ARB, not stop and treat an infection.",
+            testTakingTip: "Angiotensin-converting enzyme (ACE) inhibitor cough means swap to an angiotensin II receptor blocker (ARB), not stop and treat an infection.",
             guideSection: "Section 3: The pressure drugs",
             guideSectionId: "antihypertensives"
         },
@@ -74,10 +74,10 @@ var cardiacMedicationsQuizData = {
             rationale: {
                 correct: "Both drugs raise potassium and both are held above 5.5. Together they compound the problem, so both are held and the provider is notified.",
                 a: "A potassium of 5.9 already carries arrhythmia risk. Adding two potassium-raising drugs makes it worse.",
-                c: "The ACE inhibitor also raises potassium. Holding only one leaves the problem in place.",
+                c: "The angiotensin-converting enzyme (ACE) inhibitor also raises potassium. Holding only one leaves the problem in place.",
                 d: "Those are high potassium foods. That teaching belongs with a loop or thiazide diuretic, not here."
             },
-            testTakingTip: "ACE, ARB, ARNI and aldosterone antagonists all raise K+. Hold above 5.5.",
+            testTakingTip: "Angiotensin-converting enzyme (ACE) inhibitors, angiotensin II receptor blockers (ARBs), angiotensin receptor-neprilysin inhibitors (ARNIs) and aldosterone antagonists all raise K+. Hold above 5.5.",
             guideSection: "Section 4: Diuretics, digoxin and potassium",
             guideSectionId: "heart-failure-drugs"
         },
@@ -118,12 +118,12 @@ var cardiacMedicationsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Sit or lie down first, take one tablet, and call 911 if the pain is unrelieved after 5 minutes. Up to three tablets total, 5 minutes apart, are taken while EMS is on the way.",
+                correct: "Sit or lie down first, take one tablet, and call 911 if the pain is unrelieved after 5 minutes. Up to three tablets total, 5 minutes apart, are taken while emergency medical services (EMS) is on the way.",
                 a: "That is the older teaching. Waiting through three tablets delays care in an evolving heart attack.",
                 c: "Nitroglycerin stays in its original amber glass bottle. Light, heat and moisture break it down.",
                 d: "Headache is expected and means the drug is dilating vessels. Acetaminophen helps and it eases over time."
             },
-            testTakingTip: "One tablet, 5 minutes, call 911. The other two are taken while EMS comes.",
+            testTakingTip: "One tablet, 5 minutes, call 911. The other two are taken while emergency medical services (EMS) comes.",
             guideSection: "Section 5: Nitrates and the chest pain drugs",
             guideSectionId: "antianginals"
         },
@@ -141,12 +141,12 @@ var cardiacMedicationsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "PDE5 inhibitors such as sildenafil, tadalafil and vardenafil combined with a nitrate cause profound and sometimes fatal hypotension. The window is 24 to 48 hours, and patients rarely volunteer the information.",
+                correct: "Phosphodiesterase-5 (PDE5) inhibitors such as sildenafil, tadalafil and vardenafil combined with a nitrate cause profound and sometimes fatal hypotension. The window is 24 to 48 hours, and patients rarely volunteer the information.",
                 b: "Food timing does not affect a sublingual dose.",
                 c: "Headache is expected with nitrates and a migraine history does not withhold the drug.",
                 d: "Shellfish allergy is a contrast media question, not a nitrate one."
             },
-            testTakingTip: "Ask the PDE5 question before any nitrate. Ask it plainly and privately.",
+            testTakingTip: "Ask the phosphodiesterase-5 (PDE5) inhibitor question before any nitrate. Ask it plainly and privately.",
             guideSection: "Section 5: Nitrates and the chest pain drugs",
             guideSectionId: "antianginals"
         },
@@ -189,7 +189,7 @@ var cardiacMedicationsQuizData = {
             rationale: {
                 correct: "Amlodipine and the other dipines dilate arterioles, which drives fluid into the tissues. Bilateral ankle edema with clear lungs is the classic picture and it is dose related.",
                 a: "Right-sided failure usually brings jugular vein distension, weight gain and hepatomegaly as well.",
-                c: "DVT is typically one leg, with pain, warmth and swelling on that side only.",
+                c: "Deep vein thrombosis (DVT) is typically one leg, with pain, warmth and swelling on that side only.",
                 d: "Allergy presents as rash, hives or swelling of the face and airway, not gradual bilateral ankle edema."
             },
             testTakingTip: "Dipine means vessels. Ankle edema is the signature complaint.",
@@ -210,10 +210,10 @@ var cardiacMedicationsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Verapamil and diltiazem slow the AV node, and so do beta-blockers. Two drugs slowing the same node can produce severe bradycardia and heart block, so the pairing is avoided or watched closely.",
-                b: "Neither drug is a major potassium raiser. That belongs to the ACE, ARB and aldosterone antagonist group.",
+                correct: "Verapamil and diltiazem slow the atrioventricular (AV) node, and so do beta-blockers. Two drugs slowing the same node can produce severe bradycardia and heart block, so the pairing is avoided or watched closely.",
+                b: "Neither drug is a major potassium raiser. That belongs to the angiotensin-converting enzyme (ACE) inhibitor, angiotensin II receptor blocker (ARB) and aldosterone antagonist group.",
                 c: "They do not cancel each other. The problem is that their effects add together.",
-                d: "The dry cough belongs to ACE inhibitors."
+                d: "The dry cough belongs to angiotensin-converting enzyme (ACE) inhibitors."
             },
             testTakingTip: "Diltiazem and verapamil work on the heart. Do not stack them with a beta-blocker.",
             guideSection: "Section 3: The pressure drugs",
@@ -251,17 +251,17 @@ var cardiacMedicationsQuizData = {
             options: [
                 { id: "a", text: "Give the first dose now and hold tomorrow's enalapril" },
                 { id: "b", text: "Give both drugs together for a week to overlap coverage" },
-                { id: "c", text: "Hold the new drug and confirm the 36 hour washout from the ACE inhibitor" },
+                { id: "c", text: "Hold the new drug and confirm 36 hours have passed since the enalapril" },
                 { id: "d", text: "Give the new drug at half the ordered dose" }
             ],
             correct: "c",
             rationale: {
-                correct: "An ARNI is never given alongside an ACE inhibitor. The angioedema risk stacks. A 36 hour washout from the last ACE inhibitor dose is required before the first ARNI dose.",
+                correct: "An angiotensin receptor-neprilysin inhibitor (ARNI) is never given alongside an angiotensin-converting enzyme (ACE) inhibitor. The angioedema risk stacks. A 36 hour washout from the last ACE inhibitor dose is required before the first ARNI dose.",
                 a: "The first dose is too soon. The washout has not elapsed.",
                 b: "Overlapping the two is exactly the combination that is prohibited.",
                 d: "The problem is timing, not dose, and nurses do not alter a prescribed dose."
             },
-            testTakingTip: "ARNI plus ACE inhibitor is never done. 36 hours between them.",
+            testTakingTip: "Angiotensin receptor-neprilysin inhibitor (ARNI) plus angiotensin-converting enzyme (ACE) inhibitor is never done. 36 hours between them.",
             guideSection: "Section 4: Diuretics, digoxin and potassium",
             guideSectionId: "heart-failure-drugs"
         },
@@ -270,7 +270,7 @@ var cardiacMedicationsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The nurse is preparing to give adenosine to a stable patient in SVT after vagal maneuvers failed. Which technique is correct?",
+            stem: "The nurse is preparing to give adenosine to a stable patient in supraventricular tachycardia (SVT) after vagal maneuvers failed. Which technique is correct?",
             options: [
                 { id: "a", text: "Give 6 mg slowly over 2 minutes through a hand vein, then flush with saline" },
                 { id: "b", text: "Give 6 mg rapid IV push at the closest port, then a 20 mL saline flush right away" },
@@ -304,7 +304,7 @@ var cardiacMedicationsQuizData = {
             rationale: {
                 correct: "Amiodarone affects the thyroid in both directions, is hepatotoxic, and can cause pulmonary toxicity. Those three systems drive the long-term monitoring plan.",
                 b: "Electrolytes matter in arrhythmia care generally but are not the amiodarone-specific monitoring set.",
-                c: "INR belongs to warfarin. Amiodarone does raise INR when the two are combined, but INR alone is not the monitoring plan.",
+                c: "International normalized ratio (INR) belongs to warfarin. Amiodarone does raise INR when the two are combined, but INR alone is not the monitoring plan.",
                 d: "A1c relates to diabetes management, not amiodarone."
             },
             testTakingTip: "Amiodarone: thyroid, liver, lungs. Plus sunscreen for photosensitivity.",
@@ -349,9 +349,9 @@ var cardiacMedicationsQuizData = {
             correct: "b",
             rationale: {
                 correct: "A fall of more than 50 percent from baseline, or below 100,000, on day 5 to 14 of heparin points to heparin-induced thrombocytopenia. Despite the low count these patients clot rather than bleed, so all heparin stops immediately and an alternative anticoagulant is started.",
-                a: "Continuing heparin in suspected HIT risks limb-threatening or fatal thrombosis.",
+                a: "Continuing heparin in suspected heparin-induced thrombocytopenia (HIT) risks limb-threatening or fatal thrombosis.",
                 c: "Reducing the dose does not remove the trigger. All heparin exposure stops, including line flushes.",
-                d: "Protamine reverses heparin but is used for bleeding, not for HIT, and the infusion would still be stopped."
+                d: "Protamine reverses heparin but is used for bleeding, not for heparin-induced thrombocytopenia (HIT), and the infusion would still be stopped."
             },
             testTakingTip: "Falling platelets on heparin means stop the heparin, not watch for bleeding.",
             guideSection: "Section 7: Clot drugs",
@@ -366,17 +366,17 @@ var cardiacMedicationsQuizData = {
             options: [
                 { id: "a", text: "\u201cI will stop eating all green vegetables.\u201d" },
                 { id: "b", text: "\u201cI will eat about the same amount of leafy greens each week rather than changing it.\u201d" },
-                { id: "c", text: "\u201cI will double my spinach on the weeks my INR runs high.\u201d" },
+                { id: "c", text: "\u201cI will double my spinach on the weeks my international normalized ratio (INR) runs high.\u201d" },
                 { id: "d", text: "\u201cI can take over the counter medicines freely since they are not prescriptions.\u201d" }
             ],
             correct: "b",
             rationale: {
-                correct: "Vitamin K opposes warfarin, so the dose is titrated to the patient's usual intake. Consistency is the goal, not avoidance. Sudden swings in either direction move the INR.",
+                correct: "Vitamin K opposes warfarin, so the dose is titrated to the patient's usual intake. Consistency is the goal, not avoidance. Sudden swings in either direction move the international normalized ratio (INR).",
                 a: "Complete avoidance removes useful nutrition and still causes swings if the patient later eats greens.",
-                c: "Self-adjusting the diet to chase an INR is unsafe. Dose changes come from the provider.",
+                c: "Self-adjusting the diet to chase an international normalized ratio (INR) is unsafe. Dose changes come from the provider.",
                 d: "Many over the counter drugs and supplements interact with warfarin. The provider is told before anything new is started."
             },
-            testTakingTip: "Warfarin diet teaching is consistency, not avoidance. Target INR is 2 to 3.",
+            testTakingTip: "Warfarin diet teaching is consistency, not avoidance. Target international normalized ratio (INR) is 2 to 3.",
             guideSection: "Section 7: Clot drugs",
             guideSectionId: "anticoagulants"
         },
@@ -417,7 +417,7 @@ var cardiacMedicationsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Muscle pain with weakness and dark, tea-coloured urine is the rhabdomyolysis pattern. Muscle breakdown products can injure the kidneys, so this needs same-day evaluation with a CK and renal studies.",
+                correct: "Muscle pain with weakness and dark, tea-coloured urine is the rhabdomyolysis pattern. Muscle breakdown products can injure the kidneys, so this needs same-day evaluation with a creatine kinase (CK) level and renal studies.",
                 a: "Mild aches are common, but the dark urine changes the picture entirely.",
                 c: "Hydration matters in treatment, but delaying evaluation for a week risks kidney injury.",
                 d: "Timing changes do not address an urgent muscle and kidney problem."

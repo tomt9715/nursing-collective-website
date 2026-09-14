@@ -27,12 +27,12 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Priority care for a sickle cell crisis follows HOPR: Hydration (IV 1.5\u20132\u00d7 maintenance), Oxygen only if hypoxic, Pain control (scheduled opioids), and Rest to decrease O2 consumption. Keep child warm; avoid cold and dehydration.",
-                a: "Oral fluids and oral NSAIDs alone are inadequate for severe crisis pain; cold worsens vasoconstriction and sickling.",
+                correct: "Priority care for a sickle cell crisis follows the Hydration, Oxygen, Pain, Rest (HOPR) mnemonic: hydration (IV 1.5\u20132\u00d7 maintenance), oxygen only if hypoxic, pain control (scheduled opioids), and rest to decrease O2 consumption. Keep child warm; avoid cold and dehydration.",
+                a: "Oral fluids and oral nonsteroidal anti-inflammatory drugs (NSAIDs) alone are inadequate for severe crisis pain; cold worsens vasoconstriction and sickling.",
                 c: "Fluid restriction worsens sickling. Routine high-flow O2 is not recommended if saturation is normal.",
-                d: "Cold compresses worsen sickling. Exchange transfusion is reserved for ACS, stroke, or multi-organ failure."
+                d: "Cold compresses worsen sickling. Exchange transfusion is reserved for acute chest syndrome (ACS), stroke, or multi-organ failure."
             },
-            testTakingTip: "Priority = HOPR: Hydration, Oxygen (if hypoxic), Pain, Rest. Warm, not cold.",
+            testTakingTip: "Priority = Hydration, Oxygen if hypoxic, Pain, Rest (HOPR). Warm, not cold.",
             guideSection: "Section 6 - Priority Care",
             guideSectionId: "priority"
         },
@@ -41,7 +41,7 @@ var sickleCellCrisisQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A child receiving a PRBC transfusion suddenly develops chills, back pain, and hypotension. What is the nurse\u2019s FIRST action?",
+            stem: "A child receiving a packed red blood cell (PRBC) transfusion suddenly develops chills, back pain, and hypotension. What is the nurse\u2019s FIRST action?",
             options: [
                 { id: "a", text: "Slow the transfusion rate and continue to monitor vital signs closely" },
                 { id: "b", text: "Stop the transfusion and maintain the IV line with normal saline using new tubing" },
@@ -76,7 +76,7 @@ var sickleCellCrisisQuizData = {
                 correct: "Fever in a child with sickle cell disease is an oncologic/infectious emergency because of functional asplenia. Overwhelming sepsis from encapsulated organisms (S. pneumoniae, H. influenzae, N. meningitidis) can kill within hours. Obtain blood cultures, other cultures as needed, and start IV ceftriaxone within the first hour.",
                 a: "Delaying antibiotics for fever is dangerous; acetaminophen alone is inadequate.",
                 c: "Cooling measures don\u2019t address sepsis risk.",
-                d: "Never discharge a febrile child with SCD without evaluation and antibiotics."
+                d: "Never discharge a febrile child with sickle cell disease (SCD) without evaluation and antibiotics."
             },
             testTakingTip: "Sickle cell fever \u2265 101\u00b0F = cultures + IV ceftriaxone within 1 hour.",
             guideSection: "Section 4 - Clinical Manifestations",
@@ -96,12 +96,12 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Acute chest syndrome (ACS) - fever, chest pain, hypoxia, and new infiltrate on CXR - is the leading cause of mortality in SCD. Vaso-occlusion in pulmonary vessels can progress rapidly. Management: oxygen, antibiotics, cautious IV fluids, pain control, incentive spirometry, and possible exchange transfusion.",
+                correct: "Acute chest syndrome (ACS) - fever, chest pain, hypoxia, and new infiltrate on chest x-ray (CXR) - is the leading cause of mortality in sickle cell disease (SCD). Vaso-occlusion in pulmonary vessels can progress rapidly. Management: oxygen, antibiotics, cautious IV fluids, pain control, incentive spirometry, and possible exchange transfusion.",
                 a: "Vaso-occlusive crisis is most common but less often fatal.",
-                b: "Splenic sequestration is dangerous in young children but less common cause of death than ACS.",
+                b: "Splenic sequestration is dangerous in young children but less common cause of death than acute chest syndrome (ACS).",
                 d: "Aplastic crisis is usually self-limited; supported with transfusion."
             },
-            testTakingTip: "Chest pain + hypoxia + new infiltrate in SCD = ACS = #1 killer.",
+            testTakingTip: "Chest pain + hypoxia + new infiltrate in sickle cell disease (SCD) = acute chest syndrome (ACS) = #1 killer.",
             guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
@@ -121,7 +121,7 @@ var sickleCellCrisisQuizData = {
             ],
             correct: ["a", "b", "c", "e", "f"],
             rationale: {
-                correct: "Dehydration, hypoxia, cold, infection, and altitude all precipitate sickling (remember HHIDS). A warm bath is actually a beneficial non-pharmacologic pain intervention - heat promotes vasodilation and comfort.",
+                correct: "Dehydration, hypoxia, cold, infection, and altitude all precipitate sickling. Remember the triggers as hypoxia, hydration loss, infection, decreased temperature, stress (HHIDS). A warm bath is actually a beneficial non-pharmacologic pain intervention - heat promotes vasodilation and comfort.",
                 a: "Correct - concentrated blood sickles more.",
                 b: "Correct - HbS polymerizes when deoxygenated.",
                 c: "Correct - cold causes vasoconstriction.",
@@ -129,7 +129,7 @@ var sickleCellCrisisQuizData = {
                 e: "Correct - infection is a leading trigger and cause of death.",
                 f: "Correct - reduced pO2 at altitude triggers sickling."
             },
-            testTakingTip: "Triggers: Hypoxia, Hydration loss, Infection, Decreased temp, Stress - HHIDS.",
+            testTakingTip: "Triggers: Hypoxia, Hydration loss, Infection, Decreased temp, Stress (HHIDS).",
             guideSection: "Section 3 - Triggers",
             guideSectionId: "triggers"
         },
@@ -210,18 +210,18 @@ var sickleCellCrisisQuizData = {
             stem: "A 2-year-old with sickle cell disease is admitted with a rapidly enlarging spleen, pallor, and hypotension. What is the nurse\u2019s priority intervention?",
             options: [
                 { id: "a", text: "Assess for respiratory distress and administer oxygen" },
-                { id: "b", text: "Prepare for emergent IV fluid resuscitation and PRBC transfusion" },
+                { id: "b", text: "Prepare for emergent IV fluid bolus and blood transfusion" },
                 { id: "c", text: "Position the child prone and apply warm compresses" },
                 { id: "d", text: "Administer a scheduled dose of hydroxyurea" }
             ],
             correct: "b",
             rationale: {
-                correct: "Splenic sequestration traps large volumes of blood in the spleen, causing rapid drops in hemoglobin and hypovolemic shock. Priority: restore volume with IV fluids and PRBC transfusion. Recurrent episodes may lead to splenectomy.",
+                correct: "Splenic sequestration traps large volumes of blood in the spleen, causing rapid drops in hemoglobin and hypovolemic shock. Priority: restore volume with IV fluids and packed red blood cell (PRBC) transfusion. Recurrent episodes may lead to splenectomy.",
                 a: "Respiratory assessment is important, but hemodynamic support is the priority.",
                 c: "Positioning doesn\u2019t address shock; compresses don\u2019t fix volume loss.",
                 d: "Hydroxyurea is a maintenance med, not emergency care."
             },
-            testTakingTip: "Splenic sequestration + shock = volume + PRBCs NOW.",
+            testTakingTip: "Splenic sequestration + shock = volume + packed red blood cells (PRBCs) NOW.",
             guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
@@ -244,7 +244,7 @@ var sickleCellCrisisQuizData = {
                 c: "It has no role in reducing transfusion need.",
                 d: "Penicillin and hydroxyurea are independent therapies."
             },
-            testTakingTip: "Daily penicillin in SCD = prevent pneumococcal sepsis. Through age 5+.",
+            testTakingTip: "Daily penicillin in sickle cell disease (SCD) = prevent pneumococcal sepsis. Through age 5+.",
             guideSection: "Section 8 - Long-Term Management",
             guideSectionId: "longterm"
         },
@@ -262,12 +262,12 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "TCD ultrasound measures cerebral artery blood flow velocity. Velocities >200 cm/sec indicate high stroke risk - those children start chronic transfusion to keep HbS <30% and prevent first stroke. Screening begins age 2 and continues annually through age 16.",
-                a: "EEG measures brain electrical activity, not blood flow.",
-                c: "LP is not a stroke screening tool.",
+                correct: "Transcranial Doppler (TCD) ultrasound measures cerebral artery blood flow velocity. Velocities >200 cm/sec indicate high stroke risk - those children start chronic transfusion to keep HbS <30% and prevent first stroke. Screening begins age 2 and continues annually through age 16.",
+                a: "Electroencephalogram (EEG) measures brain electrical activity, not blood flow.",
+                c: "Lumbar puncture (LP) is not a stroke screening tool.",
                 d: "Echo evaluates heart function, not cerebral circulation."
             },
-            testTakingTip: "SCD stroke screening = TCD annually age 2\u201316. >200 cm/s = chronic transfusion.",
+            testTakingTip: "Sickle cell disease (SCD) stroke screening = transcranial Doppler (TCD) annually age 2\u201316. >200 cm/s = chronic transfusion.",
             guideSection: "Section 8 - Long-Term Management",
             guideSectionId: "longterm"
         },
@@ -278,17 +278,17 @@ var sickleCellCrisisQuizData = {
             difficulty: "application",
             stem: "A nurse is reviewing IV fluids for a child in vaso-occlusive crisis. Which IV fluid rate is MOST appropriate?",
             options: [
-                { id: "a", text: "Fluid restriction at half maintenance" },
-                { id: "b", text: "Standard maintenance" },
-                { id: "c", text: "1.5\u20132 times maintenance of D5 1/2NS or D5NS" },
+                { id: "a", text: "Fluid restriction at half the maintenance rate" },
+                { id: "b", text: "Standard maintenance IV fluid rate" },
+                { id: "c", text: "1.5\u20132 times maintenance of dextrose 5% in half-normal or normal saline" },
                 { id: "d", text: "Bolus 20 mL/kg lactated Ringer's every hour until pain resolves" }
             ],
             correct: "c",
             rationale: {
-                correct: "Aggressive hydration (1.5\u20132\u00d7 maintenance) dilutes blood, reduces sickling, and flushes through occluded vessels. Typical fluids are D5 1/2NS or D5NS. Monitor for fluid overload, especially with suspected ACS.",
+                correct: "Aggressive hydration (1.5\u20132\u00d7 maintenance) dilutes blood, reduces sickling, and flushes through occluded vessels. Typical fluids are dextrose 5% in half-normal saline (D5 1/2NS) or dextrose 5% in normal saline (D5NS). Monitor for fluid overload, especially with suspected acute chest syndrome (ACS).",
                 a: "Fluid restriction worsens sickling.",
                 b: "Standard maintenance is inadequate for crisis.",
-                d: "Continuous bolus levels of fluid risk fluid overload and ACS."
+                d: "Continuous bolus levels of fluid risk fluid overload and acute chest syndrome (ACS)."
             },
             testTakingTip: "Crisis IV fluids = 1.5\u20132\u00d7 maintenance. D5 1/2NS typical.",
             guideSection: "Section 6 - Priority Care",
@@ -334,7 +334,7 @@ var sickleCellCrisisQuizData = {
                 correct: "Dactylitis (hand-foot syndrome) is often the FIRST sickle cell crisis in infants and toddlers. Vaso-occlusion in the small bones of the hands and feet produces painful swelling. It is self-limited but signals the disease is clinically active.",
                 a: "Kawasaki affects larger vessels and includes fever \u2265 5 days, rash, lymph nodes.",
                 c: "Osteomyelitis is localized bone infection - consider if fever plus focal bone tenderness.",
-                d: "JIA persistent joint swelling for >6 weeks; different timeline."
+                d: "Juvenile idiopathic arthritis (JIA) persistent joint swelling for >6 weeks; different timeline."
             },
             testTakingTip: "Infant + sickle cell + swollen hands/feet = dactylitis.",
             guideSection: "Section 1 - Fundamentals",
@@ -350,7 +350,7 @@ var sickleCellCrisisQuizData = {
                 { id: "a", text: "Mandatory participation in all contact sports for socialization" },
                 { id: "b", text: "Unlimited access to water bottle and bathroom at all times" },
                 { id: "c", text: "Seating closest to the air conditioning vent in winter" },
-                { id: "d", text: "Daily ice baths during PE class" }
+                { id: "d", text: "Daily ice baths during gym class" }
             ],
             correct: "b",
             rationale: {
@@ -377,12 +377,12 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This is acute chest syndrome - the leading cause of mortality in SCD. Treatment includes oxygen, broad-spectrum IV antibiotics to cover atypical and typical pneumonia pathogens, CAUTIOUS IV fluids (avoid overload), adequate pain control to enable deep breathing, and incentive spirometry to prevent atelectasis. Exchange transfusion is considered for severe or worsening disease.",
-                a: "Oral management is inadequate for ACS.",
+                correct: "This is acute chest syndrome - the leading cause of mortality in sickle cell disease (SCD). Treatment includes oxygen, broad-spectrum IV antibiotics to cover atypical and typical pneumonia pathogens, CAUTIOUS IV fluids (avoid overload), adequate pain control to enable deep breathing, and incentive spirometry to prevent atelectasis. Exchange transfusion is considered for severe or worsening disease.",
+                a: "Oral management is inadequate for acute chest syndrome (ACS).",
                 c: "Exchange transfusion alone without antibiotics/oxygen is incomplete.",
-                d: "ACS cannot be managed outpatient."
+                d: "Acute chest syndrome (ACS) cannot be managed outpatient."
             },
-            testTakingTip: "ACS bundle: O2, antibiotics, CAUTIOUS fluids, pain, spirometry.",
+            testTakingTip: "Acute chest syndrome (ACS) bundle: O2, antibiotics, CAUTIOUS fluids, pain, spirometry.",
             guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
@@ -405,7 +405,7 @@ var sickleCellCrisisQuizData = {
                 c: "It is specifically genetic.",
                 d: "Birth weight is not a factor."
             },
-            testTakingTip: "SCD = autosomal recessive, needs two copies. Refer for genetic counseling.",
+            testTakingTip: "Sickle cell disease (SCD) = autosomal recessive, needs two copies. Refer for genetic counseling.",
             guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         }

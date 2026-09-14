@@ -17,7 +17,7 @@ var rheumaticFeverEndocarditisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 9-year-old is evaluated 2 weeks after an untreated episode of strep throat. The child has a new holosystolic murmur at the apex, swollen painful knees and ankles that migrate from joint to joint, and an elevated ASO titer. Which condition is most likely?",
+            stem: "A 9-year-old is evaluated 2 weeks after an untreated episode of strep throat. The child has a new holosystolic murmur at the apex, swollen painful knees and ankles that migrate from joint to joint, and an elevated antistreptolysin O (ASO) titer. Which condition is most likely?",
             options: [
                 { id: "a", text: "Infective endocarditis" },
                 { id: "b", text: "Acute rheumatic fever" },
@@ -26,12 +26,12 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Two major Jones criteria (carditis with new mitral murmur + migratory polyarthritis) plus evidence of recent strep (elevated ASO titer) after untreated strep throat confirm acute rheumatic fever. The 2-week latency is classic.",
-                a: "IE is a direct infection; would more likely present with persistent fever, positive blood cultures, and peripheral stigmata (Osler, Janeway, Roth).",
-                c: "Kawasaki would show CRASH and BURN features - conjunctivitis, rash, strawberry tongue, \u22655 days of fever - not migratory arthritis after strep throat.",
-                d: "JIA is chronic, not post-infectious, and rarely causes a new murmur."
+                correct: "Two major Jones criteria (carditis with new mitral murmur + migratory polyarthritis) plus evidence of recent strep, an elevated antistreptolysin O (ASO) titer, after untreated strep throat confirm acute rheumatic fever. The 2-week latency is classic.",
+                a: "Infective endocarditis (IE) is a direct infection; would more likely present with persistent fever, positive blood cultures, and peripheral stigmata (Osler, Janeway, Roth).",
+                c: "Kawasaki would show conjunctivitis, rash, adenopathy, strawberry tongue, and hand and foot swelling (CRASH) with \u22655 days of fever (BURN), not migratory arthritis after strep throat.",
+                d: "Juvenile idiopathic arthritis (JIA) is chronic, not post-infectious, and rarely causes a new murmur."
             },
-            testTakingTip: "Migratory arthritis + new murmur 2\u20133 weeks after strep = classic rheumatic fever. ASO titer is the strep evidence.",
+            testTakingTip: "Migratory arthritis + new murmur 2\u20133 weeks after strep = classic rheumatic fever. The antistreptolysin O (ASO) titer is the strep evidence.",
             guideSection: "Section 3 - Jones Criteria",
             guideSectionId: "jones-criteria"
         },
@@ -44,17 +44,17 @@ var rheumaticFeverEndocarditisQuizData = {
             options: [
                 { id: "a", text: "Fever, arthralgia, elevated erythrocyte sedimentation rate (ESR)" },
                 { id: "b", text: "Carditis, migratory arthritis, subcutaneous nodules, erythema marginatum, Sydenham chorea" },
-                { id: "c", text: "Prolonged PR interval, elevated CRP, positive throat culture for strep" },
+                { id: "c", text: "Prolonged PR interval, elevated C-reactive protein (CRP), positive throat culture for strep" },
                 { id: "d", text: "Conjunctivitis, rash, strawberry tongue, adenopathy, extremity swelling" }
             ],
             correct: "b",
             rationale: {
                 correct: "The CASES mnemonic captures the five major Jones criteria: Carditis, Arthritis (migratory), Subcutaneous nodules, Erythema marginatum, Sydenham chorea.",
                 a: "These are MINOR Jones criteria.",
-                c: "Prolonged PR and elevated CRP are minor criteria. Positive throat culture is supporting evidence of strep.",
-                d: "These are CRASH and BURN criteria for Kawasaki disease - not RF."
+                c: "Prolonged PR and elevated C-reactive protein (CRP) are minor criteria. Positive throat culture is supporting evidence of strep.",
+                d: "These are Kawasaki disease criteria: conjunctivitis, rash, adenopathy, strawberry tongue, and hand and foot swelling (CRASH) plus BURN for fever. They are not rheumatic fever (RF) criteria."
             },
-            testTakingTip: "CASES for RF, CRASH+BURN for Kawasaki. Don't mix them up.",
+            testTakingTip: "CASES for rheumatic fever (RF). Conjunctivitis, rash, adenopathy, strawberry tongue, hand and foot swelling (CRASH) plus BURN for Kawasaki. Don't mix them up.",
             guideSection: "Section 3 - Jones Criteria",
             guideSectionId: "jones-criteria"
         },
@@ -72,12 +72,12 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A history of infective endocarditis places the child in the AHA highest-risk group for life. Prophylaxis before dental work involving the gums is amoxicillin 50 mg/kg PO (max 2 g) taken 30\u201360 minutes before the procedure.",
+                correct: "A history of infective endocarditis places the child in the American Heart Association (AHA) highest-risk group for life. Prophylaxis before dental work involving the gums is amoxicillin 50 mg/kg PO (max 2 g) taken 30\u201360 minutes before the procedure.",
                 a: "IV cefazolin is reserved for patients who cannot take PO; oral amoxicillin is first-line.",
                 c: "Previous endocarditis is a lifelong indication for prophylaxis, even after a full cure, because the risk of a second episode stays high.",
                 d: "Prophylaxis is a single dose before the procedure, not a 10-day course."
             },
-            testTakingTip: "SBE prophylaxis = amoxicillin 50 mg/kg PO × 1, taken 30\u201360 minutes before, and only for the highest-risk groups: prosthetic valve, prior endocarditis, certain congenital heart disease.",
+            testTakingTip: "Subacute bacterial endocarditis (SBE) prophylaxis = amoxicillin 50 mg/kg PO × 1, taken 30\u201360 minutes before, and only for the highest-risk groups: prosthetic valve, prior endocarditis, certain congenital heart disease.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
         },
@@ -95,12 +95,12 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Secondary RF prophylaxis without carditis continues for 5 years OR until age 21, whichever is longer. With carditis but no residual damage: 10 years or until age 21. With residual heart disease: 10 years or until age 40, sometimes lifetime.",
+                correct: "Secondary rheumatic fever (RF) prophylaxis without carditis continues for 5 years OR until age 21, whichever is longer. With carditis but no residual damage: 10 years or until age 21. With residual heart disease: 10 years or until age 40, sometimes lifetime.",
                 a: "One year is not long enough; recurrence risk remains high during school-age years.",
                 c: "Six weeks covers initial treatment, not secondary prevention.",
                 d: "Lifetime is reserved for those with significant residual rheumatic heart disease."
             },
-            testTakingTip: "Memorize the three durations: no carditis = 5 yr / age 21. Carditis, no residual = 10 yr / age 21. RHD = 10 yr / age 40, often lifetime.",
+            testTakingTip: "Memorize the three durations: no carditis = 5 yr / age 21. Carditis, no residual = 10 yr / age 21. Rheumatic heart disease (RHD) = 10 yr / age 40, often lifetime.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
         },
@@ -121,9 +121,9 @@ var rheumaticFeverEndocarditisQuizData = {
                 correct: "Osler nodes are painful, tender nodules on fingertips and toes - classic for infective endocarditis. Remember 'Ow-sler' = painful.",
                 a: "Janeway lesions are PAINLESS macules on palms and soles.",
                 b: "Roth spots are retinal hemorrhages, seen on fundoscopy.",
-                d: "Erythema marginatum is a ring-shaped rash seen in rheumatic fever, not IE."
+                d: "Erythema marginatum is a ring-shaped rash seen in rheumatic fever, not infective endocarditis (IE)."
             },
-            testTakingTip: "Osler = Ow (painful, tips). Janeway = J-un-painful (painless, palms/soles). This is the most tested IE distinction.",
+            testTakingTip: "Osler = Ow (painful, tips). Janeway = J-un-painful (painless, palms/soles). This is the most tested infective endocarditis (IE) distinction.",
             guideSection: "Section 5 - IE Peripheral Signs",
             guideSectionId: "ie-signs"
         },
@@ -146,7 +146,7 @@ var rheumaticFeverEndocarditisQuizData = {
                 b: "Starting antibiotics before cultures is a classic mistake; do cultures first unless the patient is unstable/septic.",
                 d: "Dental evaluation is important for long-term care but not the acute priority."
             },
-            testTakingTip: "For IE: cultures before antibiotics. This is a commonly tested priority question.",
+            testTakingTip: "For infective endocarditis (IE): cultures before antibiotics. This is a commonly tested priority question.",
             guideSection: "Section 6 - Treatment",
             guideSectionId: "treatment"
         },
@@ -165,11 +165,11 @@ var rheumaticFeverEndocarditisQuizData = {
             correct: "b",
             rationale: {
                 correct: "Streptococcus viridans is part of the normal oral flora. Dental procedures cause transient bacteremia, and these bacteria can seed damaged or abnormal valves - the classic cause of subacute bacterial endocarditis.",
-                a: "Staph aureus is the classic ACUTE IE pathogen, often associated with IV drug use or indwelling catheters.",
-                c: "Enterococcus is associated with GI/GU procedures.",
-                d: "E. coli is a rare cause of IE, not associated with dental procedures."
+                a: "Staph aureus is the classic ACUTE infective endocarditis (IE) pathogen, often associated with IV drug use or indwelling catheters.",
+                c: "Enterococcus is associated with gastrointestinal (GI) and genitourinary (GU) procedures.",
+                d: "E. coli is a rare cause of infective endocarditis (IE), not associated with dental procedures."
             },
-            testTakingTip: "Dental procedure + subacute IE = Strep viridans. IV drug use + acute IE = Staph aureus.",
+            testTakingTip: "Dental procedure + subacute infective endocarditis (IE) = Strep viridans. IV drug use + acute IE = Staph aureus.",
             guideSection: "Section 4 - Infective Endocarditis",
             guideSectionId: "endocarditis"
         },
@@ -187,8 +187,8 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Incomplete antibiotic treatment is the main preventable cause of rheumatic fever. Completing the full 10-day course of penicillin (or amoxicillin) eradicates the strep organism and prevents the autoimmune response that causes RF.",
-                a: "Stopping early is exactly what causes RF - residual strep triggers the antibody response.",
+                correct: "Incomplete antibiotic treatment is the main preventable cause of rheumatic fever. Completing the full 10-day course of penicillin (or amoxicillin) eradicates the strep organism and prevents the autoimmune response that causes rheumatic fever.",
+                a: "Stopping early is exactly what causes rheumatic fever (RF) - residual strep triggers the antibody response.",
                 c: "All cases of confirmed strep pharyngitis should be treated with antibiotics.",
                 d: "Rest and fluids alone are insufficient; antibiotics are essential."
             },
@@ -212,7 +212,7 @@ var rheumaticFeverEndocarditisQuizData = {
             rationale: {
                 correct: "Sydenham chorea causes involuntary movements, emotional lability, and clumsiness. A calm, quiet environment minimizes stimulation that worsens symptoms. Padded side rails and a safe environment prevent injury. The movements resolve over weeks to months.",
                 a: "Restraints would be distressing and are not appropriate; padded environment is safer.",
-                c: "Intensive PT is not standard for chorea - rest and safety are priorities.",
+                c: "Intensive physical therapy (PT) is not standard for chorea - rest and safety are priorities.",
                 d: "Fine motor tasks would frustrate the child; movements are involuntary and cannot be controlled with effort."
             },
             testTakingTip: "Chorea management is environmental and supportive: quiet, padded, patient. No restraints.",
@@ -228,8 +228,8 @@ var rheumaticFeverEndocarditisQuizData = {
             options: [
                 { id: "a", text: "Hemoglobin, hematocrit, and reticulocyte count" },
                 { id: "b", text: "Vancomycin trough level and serum creatinine" },
-                { id: "c", text: "Liver enzymes (AST and ALT) and bilirubin" },
-                { id: "d", text: "Coagulation studies (INR and PTT) and fibrinogen" }
+                { id: "c", text: "Liver transaminases and total bilirubin" },
+                { id: "d", text: "Coagulation studies and fibrinogen level" }
             ],
             correct: "b",
             rationale: {
@@ -247,7 +247,7 @@ var rheumaticFeverEndocarditisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which of the following patients does NOT require SBE prophylaxis before a dental cleaning, according to current AHA guidelines?",
+            stem: "Which of the following patients does NOT require subacute bacterial endocarditis (SBE) prophylaxis before a dental cleaning, according to current American Heart Association (AHA) guidelines?",
             options: [
                 { id: "a", text: "A child with a prosthetic aortic valve" },
                 { id: "b", text: "A child with unrepaired cyanotic congenital heart disease" },
@@ -256,12 +256,12 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "Mitral valve prolapse is NOT on the AHA high-risk list for SBE prophylaxis. Prophylaxis is reserved for prosthetic valves, unrepaired cyanotic CHD, prior IE, repaired CHD within 6 months with prosthetic material, repaired CHD with residual defects, and cardiac transplants with valvulopathy.",
+                correct: "Mitral valve prolapse is NOT on the American Heart Association (AHA) high-risk list for subacute bacterial endocarditis (SBE) prophylaxis. Prophylaxis is reserved for prosthetic valves, unrepaired cyanotic congenital heart disease (CHD), prior infective endocarditis (IE), repaired CHD within 6 months with prosthetic material, repaired CHD with residual defects, and cardiac transplants with valvulopathy.",
                 a: "Prosthetic valve - prophylaxis required.",
-                b: "Unrepaired cyanotic CHD - prophylaxis required.",
-                c: "Prior IE - prophylaxis required."
+                b: "Unrepaired cyanotic congenital heart disease (CHD) - prophylaxis required.",
+                c: "Prior infective endocarditis (IE) - prophylaxis required."
             },
-            testTakingTip: "Mitral valve prolapse, bicuspid aortic valve, isolated ASD, and fully repaired CHD without residual defects do NOT need prophylaxis. Memorize the list of who DOES.",
+            testTakingTip: "Mitral valve prolapse, bicuspid aortic valve, isolated atrial septal defect (ASD), and fully repaired congenital heart disease (CHD) without residual defects do NOT need prophylaxis. Memorize the list of who DOES.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
         },
@@ -270,7 +270,7 @@ var rheumaticFeverEndocarditisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "A child on long-term monthly benzathine penicillin injections for RF prophylaxis has been missing appointments. The school nurse is asked to help. What is the best approach?",
+            stem: "A child on long-term monthly benzathine penicillin injections for rheumatic fever (RF) prophylaxis has been missing appointments. The school nurse is asked to help. What is the best approach?",
             options: [
                 { id: "a", text: "Offer to give the injections at school to improve adherence" },
                 { id: "b", text: "Let the family handle it - school involvement is inappropriate" },
@@ -279,12 +279,12 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Coordinating monthly IM injections with the school nurse or pediatrician's office to streamline the visit improves adherence. Compliance is the single most important factor in preventing RF recurrence.",
+                correct: "Coordinating monthly IM injections with the school nurse or pediatrician's office to streamline the visit improves adherence. Compliance is the single most important factor in preventing rheumatic fever (RF) recurrence.",
                 b: "School nurses can and should help coordinate care for chronic pediatric conditions.",
                 c: "Stopping prophylaxis places the child at high risk for recurrence and worsening valve damage.",
-                d: "As-needed antibiotics for sore throats is NOT prophylaxis; it's treatment, and RF can occur even with mild/silent strep."
+                d: "As-needed antibiotics for sore throats is NOT prophylaxis; it's treatment, and rheumatic fever (RF) can occur even with mild/silent strep."
             },
-            testTakingTip: "Secondary RF prophylaxis is long-term and compliance-dependent. Use every resource (school, pharmacy reminders, coordinated visits) to support adherence.",
+            testTakingTip: "Secondary rheumatic fever (RF) prophylaxis is long-term and compliance-dependent. Use every resource (school, pharmacy reminders, coordinated visits) to support adherence.",
             guideSection: "Section 8 - Nursing Care & Family Education",
             guideSectionId: "nursing-care"
         },
@@ -295,19 +295,19 @@ var rheumaticFeverEndocarditisQuizData = {
             difficulty: "analysis",
             stem: "A nurse is caring for four patients on the pediatric cardiology unit. Which patient requires the most immediate assessment?",
             options: [
-                { id: "a", text: "A 10-year-old with RF in the convalescent phase awaiting discharge teaching" },
-                { id: "b", text: "A 14-year-old on week 2 of IV antibiotics for IE with new right-sided weakness and slurred speech" },
+                { id: "a", text: "A 10-year-old with rheumatic fever in the convalescent phase awaiting discharge teaching" },
+                { id: "b", text: "A 14-year-old on week 2 of IV antibiotics for endocarditis with new right-sided weakness and slurred speech" },
                 { id: "c", text: "A 12-year-old receiving prophylactic amoxicillin before a dental cleaning" },
-                { id: "d", text: "A 9-year-old with RF-associated migratory arthritis requesting more pain medication" }
+                { id: "d", text: "A 9-year-old with migratory arthritis from rheumatic fever requesting more pain medication" }
             ],
             correct: "b",
             rationale: {
-                correct: "New focal neurologic deficits (right-sided weakness, slurred speech) in an IE patient suggest a septic cerebral embolism from a valve vegetation. This is a life-threatening complication requiring immediate assessment and imaging.",
+                correct: "New focal neurologic deficits (right-sided weakness, slurred speech) in an infective endocarditis (IE) patient suggest a septic cerebral embolism from a valve vegetation. This is a life-threatening complication requiring immediate assessment and imaging.",
                 a: "Discharge teaching is routine and not urgent.",
                 c: "A dental prophylaxis dose is a planned, low-risk intervention.",
                 d: "Pain medication request is important but not life-threatening; addresses comfort, not acute complications."
             },
-            testTakingTip: "Embolic stroke is a feared IE complication. Any new neurologic change in an IE patient = immediate workup.",
+            testTakingTip: "Embolic stroke is a feared infective endocarditis (IE) complication. Any new neurologic change in an IE patient = immediate workup.",
             guideSection: "Section 4 - Infective Endocarditis",
             guideSectionId: "endocarditis"
         },
@@ -325,10 +325,10 @@ var rheumaticFeverEndocarditisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Current AHA guidance limits endocarditis prophylaxis to the highest-risk patients, such as those with a prosthetic valve or previous endocarditis. Rheumatic valve damage alone is not on that list. What protects this child is continuing secondary RF prophylaxis and good daily oral hygiene, since everyday brushing and chewing cause bacteremia far more often than dental visits do.",
+                correct: "Current American Heart Association (AHA) guidance limits endocarditis prophylaxis to the highest-risk patients, such as those with a prosthetic valve or previous endocarditis. Rheumatic valve damage alone is not on that list. What protects this child is continuing secondary rheumatic fever (RF) prophylaxis and good daily oral hygiene, since everyday brushing and chewing cause bacteremia far more often than dental visits do.",
                 a: "This was the older teaching. Rheumatic valve disease without a prosthetic valve or prior endocarditis no longer qualifies for dental prophylaxis.",
                 c: "Cleanings manipulate the gums and do cause transient bacteremia. This child needs no prophylaxis because of the risk group, not the type of procedure.",
-                d: "The answer is right but the reason is wrong. Monthly penicillin prevents strep infection and RF recurrence. It is not endocarditis prophylaxis."
+                d: "The answer is right but the reason is wrong. Monthly penicillin prevents strep infection and rheumatic fever (RF) recurrence. It is not endocarditis prophylaxis."
             },
             testTakingTip: "Rheumatic heart disease alone does NOT need dental prophylaxis. Prosthetic valve, prior endocarditis, or certain congenital heart disease does. Monthly penicillin is a different job.",
             guideSection: "Section 7 - Prophylaxis",

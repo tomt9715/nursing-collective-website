@@ -28,15 +28,15 @@ var immuneDeficiencyHivQuizData = {
             ],
             correct: ["a", "b", "c", "e"],
             rationale: {
-                correct: "PID warning signs include persistent thrush, \u22652 serious infections (like sepsis) in a year, \u22652 pneumonias in a year, failure to thrive, family history, and poor response to standard antibiotics. A single uncomplicated ear infection and seasonal allergies are not red flags.",
-                a: "Persistent thrush is a classic PID warning.",
+                correct: "Primary immune deficiency (PID) warning signs include persistent thrush, \u22652 serious infections (like sepsis) in a year, \u22652 pneumonias in a year, failure to thrive, family history, and poor response to standard antibiotics. A single uncomplicated ear infection and seasonal allergies are not red flags.",
+                a: "Persistent thrush is a classic primary immune deficiency (PID) warning.",
                 b: "Two serious infections triggers evaluation.",
-                c: "\u22652 PNA in a year is a red flag.",
+                c: "Two or more episodes of pneumonia in a year is a red flag.",
                 d: "A single ear infection is common and not concerning.",
-                e: "FTT and chronic diarrhea point to PID.",
-                f: "Seasonal allergies are not PID."
+                e: "Failure to thrive (FTT) and chronic diarrhea point to primary immune deficiency (PID).",
+                f: "Seasonal allergies are not a sign of primary immune deficiency (PID)."
             },
-            testTakingTip: "PID red flags: thrush, \u22652 serious infections, \u22652 PNA, FTT, family history.",
+            testTakingTip: "Primary immune deficiency (PID) red flags: thrush, \u22652 serious infections, \u22652 pneumonias, failure to thrive, family history.",
             guideSection: "Section 2 - Primary Immune Deficiency",
             guideSectionId: "pid"
         },
@@ -79,7 +79,7 @@ var immuneDeficiencyHivQuizData = {
             rationale: {
                 correct: "Epinephrine is given IM into the mid-anterolateral thigh (vastus lateralis) for fastest, most reliable absorption. Subcutaneous and deltoid injections are slower and less predictable.",
                 a: "Deltoid is slower for epi; vastus lateralis is preferred.",
-                b: "SubQ is less reliable and slower.",
+                b: "Subcutaneous injection is less reliable and slower.",
                 d: "Gluteal is not the emergency site."
             },
             testTakingTip: "Epi = vastus lateralis (outer mid-thigh). Through clothing if needed.",
@@ -94,18 +94,18 @@ var immuneDeficiencyHivQuizData = {
             stem: "Which vaccine should NEVER be given to a child on high-dose corticosteroids or other significant immunosuppression?",
             options: [
                 { id: "a", text: "Inactivated (injectable) influenza vaccine" },
-                { id: "b", text: "Tdap" },
-                { id: "c", text: "MMR (live-attenuated)" },
-                { id: "d", text: "Pneumococcal conjugate (PCV13)" }
+                { id: "b", text: "Tdap (tetanus, diphtheria, acellular pertussis)" },
+                { id: "c", text: "Measles, mumps, rubella (MMR), live-attenuated" },
+                { id: "d", text: "Pneumococcal conjugate vaccine (PCV13)" }
             ],
             correct: "c",
             rationale: {
-                correct: "MMR is a live-attenuated vaccine and can cause vaccine-strain illness in immunocompromised children. Other live vaccines to avoid: varicella, rotavirus, intranasal influenza, BCG, yellow fever. Inactivated vaccines are safe and encouraged.",
+                correct: "The measles, mumps, rubella (MMR) vaccine is live-attenuated and can cause vaccine-strain illness in immunocompromised children. Other live vaccines to avoid: varicella, rotavirus, intranasal influenza, bacille Calmette-Gu\u00e9rin (BCG), yellow fever. Inactivated vaccines are safe and encouraged.",
                 a: "Injectable flu is inactivated - safe.",
                 b: "Tdap is inactivated - safe.",
-                d: "PCV13 is inactivated - safe."
+                d: "Pneumococcal conjugate vaccine (PCV13) is inactivated - safe."
             },
-            testTakingTip: "No live vaccines in immunocompromised. MMR, varicella, rotavirus, nasal flu are live.",
+            testTakingTip: "No live vaccines in immunocompromised. Measles, mumps, rubella (MMR), varicella, rotavirus, nasal flu are live.",
             guideSection: "Section 5 - Vaccines",
             guideSectionId: "vaccines"
         },
@@ -114,21 +114,21 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which diagnostic test is MOST appropriate for detecting HIV in a 3-month-old infant born to an HIV-positive mother?",
+            stem: "Which diagnostic test is MOST appropriate for detecting human immunodeficiency virus (HIV) in a 3-month-old infant born to an HIV-positive mother?",
             options: [
-                { id: "a", text: "HIV antibody test" },
-                { id: "b", text: "HIV DNA or RNA PCR" },
-                { id: "c", text: "CD4 count alone" },
-                { id: "d", text: "Repeat rapid oral test" }
+                { id: "a", text: "Human immunodeficiency virus (HIV) antibody test" },
+                { id: "b", text: "Polymerase chain reaction (PCR) for viral genetic material" },
+                { id: "c", text: "CD4 T-cell count on its own" },
+                { id: "d", text: "Repeat rapid oral antibody test in the clinic" }
             ],
             correct: "b",
             rationale: {
-                correct: "Maternal IgG crosses the placenta, so HIV antibody tests are unreliable until 18\u201324 months. HIV DNA or RNA PCR directly detects the virus and is the standard for infant testing.",
+                correct: "Maternal immunoglobulin G (IgG) crosses the placenta, so human immunodeficiency virus (HIV) antibody tests are unreliable until 18\u201324 months. HIV deoxyribonucleic acid (DNA) or ribonucleic acid (RNA) polymerase chain reaction (PCR) directly detects the virus and is the standard for infant testing.",
                 a: "Antibody tests give false positives in infants with maternal antibodies.",
                 c: "CD4 count measures immune status, not infection.",
                 d: "Same limitation as antibody test."
             },
-            testTakingTip: "Infant HIV testing = PCR, not antibody. Two negatives confirm absence.",
+            testTakingTip: "Infant human immunodeficiency virus (HIV) testing = polymerase chain reaction (PCR), not antibody. Two negatives confirm absence.",
             guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },
@@ -137,17 +137,17 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A mother with HIV has taken antiretroviral therapy throughout pregnancy, and her viral load has stayed undetectable. She asks, \u201cCan I breastfeed my baby?\u201d The nurse\u2019s BEST response is:",
+            stem: "A mother with human immunodeficiency virus (HIV) has taken antiretroviral therapy throughout pregnancy, and her viral load has stayed undetectable. She asks, \u201cCan I breastfeed my baby?\u201d The nurse\u2019s BEST response is:",
             options: [
-                { id: "a", text: "\u201cYes, breast milk passes along antibodies that protect your baby from catching HIV.\u201d" },
+                { id: "a", text: "\u201cYes, breast milk passes along antibodies that protect your baby from catching the virus.\u201d" },
                 { id: "b", text: "\u201cFormula removes the risk completely, but breastfeeding is an option we can plan with your care team.\u201d" },
-                { id: "c", text: "\u201cYes. An undetectable viral load means HIV can\u2019t pass through breast milk at all.\u201d" },
+                { id: "c", text: "\u201cYes. An undetectable viral load means the virus can\u2019t pass through breast milk at all.\u201d" },
                 { id: "d", text: "\u201cBreastfeeding is safe once your baby is 6 months old and eating solid foods.\u201d" }
             ],
             correct: "b",
             rationale: {
-                correct: "Since 2024, US perinatal HIV guidelines support shared decision-making for a mother on antiretroviral therapy with a sustained undetectable viral load who wants to breastfeed. Formula or pasteurized donor milk is the only way to remove the risk entirely, so the nurse presents both options. A mother who breastfeeds needs frequent viral load checks, and the infant needs repeated HIV testing. A mother who is not virally suppressed should not breastfeed.",
-                a: "Breast milk CAN transmit HIV. Maternal antibodies do not protect the infant from the virus.",
+                correct: "Since 2024, United States perinatal human immunodeficiency virus (HIV) guidelines support shared decision-making for a mother on antiretroviral therapy with a sustained undetectable viral load who wants to breastfeed. Formula or pasteurized donor milk is the only way to remove the risk entirely, so the nurse presents both options. A mother who breastfeeds needs frequent viral load checks, and the infant needs repeated HIV testing. A mother who is not virally suppressed should not breastfeed.",
+                a: "Breast milk CAN transmit human immunodeficiency virus (HIV). Maternal antibodies do not protect the infant from the virus.",
                 c: "An undetectable viral load makes transmission through breast milk rare, not impossible. That is why breastfeeding comes with close monitoring of mother and baby.",
                 d: "Transmission risk continues for as long as breastfeeding continues. Starting solid foods does not make it safe."
             },
@@ -206,7 +206,7 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is teaching family home care for a child with HIV. Which teaching point is MOST important?",
+            stem: "A nurse is teaching family home care for a child with human immunodeficiency virus (HIV). Which teaching point is MOST important?",
             options: [
                 { id: "a", text: "\u201cTake antiretroviral medications only on days when your child feels sick or has a fever.\u201d" },
                 { id: "b", text: "\u201cTake antiretroviral medications every day as prescribed to keep the virus suppressed and prevent resistance.\u201d" },
@@ -215,12 +215,12 @@ var immuneDeficiencyHivQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "ART is lifelong and must be taken DAILY to maintain viral suppression. Missed doses lead to drug resistance, which can cause treatment failure and progression. Never stop without provider guidance.",
-                a: "ART is not PRN.",
+                correct: "Antiretroviral therapy (ART) is lifelong and must be taken DAILY to maintain viral suppression. Missed doses lead to drug resistance, which can cause treatment failure and progression. Never stop without provider guidance.",
+                a: "Antiretroviral therapy (ART) is not PRN.",
                 c: "Breaks cause resistance.",
                 d: "Dose adjustments require provider input."
             },
-            testTakingTip: "HIV adherence = daily, no breaks. Missed doses = resistance.",
+            testTakingTip: "Human immunodeficiency virus (HIV) adherence = daily, no breaks. Missed doses = resistance.",
             guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },
@@ -229,7 +229,7 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "Which infection-prevention teaching is MOST important for the family of a child with HIV?",
+            stem: "Which infection-prevention teaching is MOST important for the family of a child with human immunodeficiency virus (HIV)?",
             options: [
                 { id: "a", text: "Avoid all social contact with other children, including school and daycare" },
                 { id: "b", text: "Strict handwashing, avoid sick contacts, and call the clinic for any fever or sign of infection" },
@@ -275,21 +275,21 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "An adolescent with HIV has a rising viral load and falling CD4 count despite being on ART. The nurse should FIRST:",
+            stem: "An adolescent with human immunodeficiency virus (HIV) has a rising viral load and falling CD4 count despite being on antiretroviral therapy (ART). The nurse should FIRST:",
             options: [
                 { id: "a", text: "Encourage a well-balanced diet only" },
-                { id: "b", text: "Assess medication adherence and barriers to taking ART" },
-                { id: "c", text: "Discontinue ART to let the immune system recover" },
+                { id: "b", text: "Assess adherence and barriers to taking antiretroviral therapy" },
+                { id: "c", text: "Discontinue antiretroviral therapy to let the immune system recover" },
                 { id: "d", text: "Schedule a splenectomy consult" }
             ],
             correct: "b",
             rationale: {
                 correct: "Rising viral load + falling CD4 on treatment usually reflects missed doses or drug resistance. First, assess adherence and identify barriers (stigma, side effects, forgetting, unstable housing). A detailed conversation in a nonjudgmental tone is the starting point.",
-                a: "Diet alone doesn\u2019t treat HIV.",
-                c: "Stopping ART worsens the disease.",
+                a: "Diet alone doesn\u2019t treat human immunodeficiency virus (HIV).",
+                c: "Stopping antiretroviral therapy (ART) worsens the disease.",
                 d: "Splenectomy is not relevant here."
             },
-            testTakingTip: "Failing HIV labs \u2192 assess adherence first.",
+            testTakingTip: "Failing human immunodeficiency virus (HIV) labs \u2192 assess adherence first.",
             guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
@@ -298,7 +298,7 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A boy diagnosed with Bruton\u2019s X-linked agammaglobulinemia (XLA) is prescribed IVIG infusions. The nurse understands the purpose of IVIG is to:",
+            stem: "A boy diagnosed with Bruton\u2019s X-linked agammaglobulinemia (XLA) is prescribed intravenous immunoglobulin (IVIG) infusions. The nurse understands the purpose of IVIG is to:",
             options: [
                 { id: "a", text: "Treat existing acute infections only, as an alternative to antibiotics" },
                 { id: "b", text: "Replace the antibodies the child cannot produce and reduce infection risk" },
@@ -307,12 +307,12 @@ var immuneDeficiencyHivQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "XLA causes absent B cells and therefore no antibody production. Regular (typically monthly) IVIG infusions provide passive immunity with pooled immunoglobulins and dramatically reduce serious infections.",
-                a: "IVIG is preventive replacement, not just for active infection.",
-                c: "IVIG isn\u2019t a T-cell suppressor.",
-                d: "Live vaccines are still avoided; IVIG doesn\u2019t enable them."
+                correct: "X-linked agammaglobulinemia (XLA) causes absent B cells and therefore no antibody production. Regular (typically monthly) intravenous immunoglobulin (IVIG) infusions provide passive immunity with pooled immunoglobulins and dramatically reduce serious infections.",
+                a: "Intravenous immunoglobulin (IVIG) is preventive replacement, not just for active infection.",
+                c: "Intravenous immunoglobulin (IVIG) isn\u2019t a T-cell suppressor.",
+                d: "Live vaccines are still avoided; intravenous immunoglobulin (IVIG) doesn\u2019t enable them."
             },
-            testTakingTip: "IVIG = replace antibodies for B-cell defect. Monthly, preventive.",
+            testTakingTip: "Intravenous immunoglobulin (IVIG) = replace antibodies for B-cell defect. Monthly, preventive.",
             guideSection: "Section 2 - Primary Immune Deficiency",
             guideSectionId: "pid"
         },

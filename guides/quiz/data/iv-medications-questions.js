@@ -65,7 +65,7 @@ var ivMedicationsQuizData = {
             difficulty: "knowledge",
             stem: "A patient needs a continuous IV insulin infusion. Which insulin is appropriate?",
             options: [
-                { id: "a", text: "NPH insulin" },
+                { id: "a", text: "Neutral protamine Hagedorn (NPH) insulin" },
                 { id: "b", text: "Insulin glargine" },
                 { id: "c", text: "Regular insulin" },
                 { id: "d", text: "Insulin lispro mixed 75/25" }
@@ -73,7 +73,7 @@ var ivMedicationsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Regular insulin is the only insulin given intravenously. It is also a high-alert medication, so the infusion gets an independent double check.",
-                a: "NPH is an intermediate-acting suspension. It is cloudy and is never given IV.",
+                a: "Neutral protamine Hagedorn (NPH) insulin is an intermediate-acting suspension. It is cloudy and is never given IV.",
                 b: "Glargine is long-acting and subcutaneous only. Giving it IV would be a serious error.",
                 d: "Premixed suspensions are subcutaneous only."
             },
@@ -321,7 +321,7 @@ var ivMedicationsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "The nurse is flushing a PICC line. Which syringe should be used?",
+            stem: "The nurse is flushing a peripherally inserted central catheter (PICC) line. Which syringe should be used?",
             options: [
                 { id: "a", text: "A 3 mL syringe, to control the volume precisely" },
                 { id: "b", text: "A 5 mL syringe, to limit the flush volume" },

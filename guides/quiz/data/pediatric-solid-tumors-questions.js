@@ -17,7 +17,7 @@ var pediatricSolidTumorsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which is the MOST common malignant CNS tumor in children under 14 years old?",
+            stem: "Which is the MOST common malignant central nervous system (CNS) tumor in children under 14 years old?",
             options: [
                 { id: "a", text: "Glioblastoma multiforme" },
                 { id: "b", text: "Medulloblastoma" },
@@ -26,7 +26,7 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Medulloblastoma is the most common malignant CNS tumor in children <14, arising in the cerebellum/posterior fossa. It is the prototype pediatric brain cancer to know cold.",
+                correct: "Medulloblastoma is the most common malignant central nervous system (CNS) tumor in children <14, arising in the cerebellum/posterior fossa. It is the prototype pediatric brain cancer to know cold.",
                 a: "Glioblastoma is rare in children.",
                 c: "Meningiomas are usually benign and much more common in adults.",
                 d: "Craniopharyngioma occurs in children but is less common than medulloblastoma."
@@ -49,12 +49,12 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Morning headache + projectile vomiting without nausea (relieved by vomiting) + ataxia is the classic medulloblastoma triad reflecting increased ICP and cerebellar involvement.",
+                correct: "Morning headache + projectile vomiting without nausea (relieved by vomiting) + ataxia is the classic medulloblastoma triad reflecting increased intracranial pressure (ICP) and cerebellar involvement.",
                 a: "Wilms presents with an abdominal mass, not neurologic symptoms.",
                 c: "Neuroblastoma presents with an abdominal mass and catecholamine-related findings, not cerebellar symptoms.",
                 d: "Retinoblastoma presents with leukocoria (white pupillary reflex) and eye changes."
             },
-            testTakingTip: "Morning HA + AM vomiting + ataxia = medulloblastoma / posterior fossa tumor.",
+            testTakingTip: "Morning headache + AM vomiting + ataxia = medulloblastoma / posterior fossa tumor.",
             guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
@@ -112,7 +112,7 @@ var pediatricSolidTumorsQuizData = {
             stem: "Which urine test is used to help diagnose neuroblastoma?",
             options: [
                 { id: "a", text: "24-hour urine protein and creatinine" },
-                { id: "b", text: "24-hour urinary catecholamines (VMA and HVA)" },
+                { id: "b", text: "24-hour urinary catecholamine metabolites" },
                 { id: "c", text: "Urinary myoglobin on a random sample" },
                 { id: "d", text: "Urinary pH and specific gravity" }
             ],
@@ -123,7 +123,7 @@ var pediatricSolidTumorsQuizData = {
                 c: "Myoglobin is seen with rhabdomyolysis.",
                 d: "Urinary pH doesn\u2019t diagnose neuroblastoma."
             },
-            testTakingTip: "Neuroblastoma = urine VMA/HVA elevated.",
+            testTakingTip: "Neuroblastoma = urine vanillylmandelic acid (VMA)/homovanillic acid (HVA) elevated.",
             guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
@@ -134,15 +134,15 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "application",
             stem: "A child with medulloblastoma is 6 hours post-op from a posterior fossa craniotomy. Which position is appropriate?",
             options: [
-                { id: "a", text: "Trendelenburg with HOB flat" },
+                { id: "a", text: "Trendelenburg with head of bed (HOB) flat" },
                 { id: "b", text: "Flat side-lying on the un-operated side" },
                 { id: "c", text: "High Fowler\u2019s with hips flexed" },
                 { id: "d", text: "Sitting up in a rocking chair" }
             ],
             correct: "b",
             rationale: {
-                correct: "After a posterior fossa craniotomy, the child is usually positioned flat side-lying (or prone) on the un-operated side. This avoids pressure on the surgical site and prevents increased ICP. Trendelenburg is contraindicated (raises ICP). HOB elevation is surgeon-specific - often kept flat initially.",
-                a: "Trendelenburg raises ICP and can cause herniation.",
+                correct: "After a posterior fossa craniotomy, the child is usually positioned flat side-lying (or prone) on the un-operated side. This avoids pressure on the surgical site and prevents increased intracranial pressure (ICP). Trendelenburg is contraindicated (raises ICP). Head of bed (HOB) elevation is surgeon-specific - often kept flat initially.",
+                a: "Trendelenburg raises intracranial pressure (ICP) and can cause herniation.",
                 c: "High Fowler\u2019s may not be appropriate immediately post-op and depends on surgeon order.",
                 d: "Early mobilization is usually delayed after intracranial surgery."
             },
@@ -164,12 +164,12 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cushing\u2019s triad - hypertension, bradycardia, and irregular respirations - is a late sign of increased ICP and impending herniation. Emergency: notify provider, elevate HOB 30\u00b0, ensure airway, prepare mannitol or hypertonic saline.",
+                correct: "Cushing\u2019s triad - hypertension, bradycardia, and irregular respirations - is a late sign of increased intracranial pressure (ICP) and impending herniation. Emergency: notify provider, elevate head of bed (HOB) 30\u00b0, ensure airway, prepare mannitol or hypertonic saline.",
                 a: "Hypovolemic shock presents with tachycardia and hypotension.",
                 c: "Sepsis usually causes tachycardia and hypotension.",
                 d: "These vitals are NOT normal."
             },
-            testTakingTip: "Cushing\u2019s triad = HTN + bradycardia + irregular breathing = emergency ICP.",
+            testTakingTip: "Cushing\u2019s triad = hypertension (HTN) + bradycardia + irregular breathing = increased intracranial pressure (ICP) emergency.",
             guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
@@ -181,18 +181,18 @@ var pediatricSolidTumorsQuizData = {
             stem: "The presence of which genetic finding in neuroblastoma indicates HIGH-risk disease?",
             options: [
                 { id: "a", text: "Philadelphia chromosome" },
-                { id: "b", text: "MYCN amplification" },
-                { id: "c", text: "BCR-ABL translocation" },
-                { id: "d", text: "HER2 overexpression" }
+                { id: "b", text: "N-myc proto-oncogene (MYCN) amplification" },
+                { id: "c", text: "Breakpoint cluster region-Abelson (BCR-ABL) translocation" },
+                { id: "d", text: "Human epidermal growth factor receptor 2 (HER2) overexpression" }
             ],
             correct: "b",
             rationale: {
-                correct: "MYCN gene amplification in neuroblastoma cells denotes aggressive, high-risk disease and triggers intensified multi-modal therapy (chemo + surgery + autologous BMT + radiation + immunotherapy).",
-                a: "Philadelphia chromosome is associated with CML.",
-                c: "BCR-ABL is the Philadelphia chromosome fusion - CML marker.",
-                d: "HER2 overexpression is a breast cancer marker."
+                correct: "N-myc proto-oncogene (MYCN) amplification in neuroblastoma cells denotes aggressive, high-risk disease and triggers intensified multi-modal therapy: chemo + surgery + autologous bone marrow transplant (BMT) + radiation + immunotherapy.",
+                a: "Philadelphia chromosome is associated with chronic myeloid leukemia (CML).",
+                c: "Breakpoint cluster region-Abelson (BCR-ABL) is the Philadelphia chromosome fusion - chronic myeloid leukemia (CML) marker.",
+                d: "Human epidermal growth factor receptor 2 (HER2) overexpression is a breast cancer marker."
             },
-            testTakingTip: "Neuroblastoma + MYCN amplified = high risk.",
+            testTakingTip: "Neuroblastoma + N-myc proto-oncogene (MYCN) amplified = high risk.",
             guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
@@ -258,15 +258,15 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: ["a", "b", "c", "e"],
             rationale: {
-                correct: "Morning headache, papilledema, personality changes, and Cushing\u2019s triad are all signs of increased ICP. Brisk DTRs at baseline and steady weight gain are NOT ICP findings.",
-                a: "Correct - classic morning HA pattern.",
-                b: "Correct - papilledema indicates increased ICP.",
+                correct: "Morning headache, papilledema, personality changes, and Cushing\u2019s triad are all signs of increased intracranial pressure (ICP). Brisk deep tendon reflexes (DTRs) at baseline and steady weight gain are NOT ICP findings.",
+                a: "Correct - classic morning headache pattern.",
+                b: "Correct - papilledema indicates increased intracranial pressure (ICP).",
                 c: "Correct - personality change is an early sign in children.",
-                d: "Brisk DTRs alone are not specific for ICP.",
-                e: "Correct - Cushing\u2019s triad is late ICP sign.",
+                d: "Brisk deep tendon reflexes (DTRs) alone are not specific for intracranial pressure (ICP).",
+                e: "Correct - Cushing\u2019s triad is a late intracranial pressure (ICP) sign.",
                 f: "Weight gain is unrelated."
             },
-            testTakingTip: "ICP: morning HA, papilledema, personality change, Cushing\u2019s triad.",
+            testTakingTip: "Intracranial pressure (ICP): morning headache, papilledema, personality change, Cushing\u2019s triad.",
             guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
@@ -286,7 +286,7 @@ var pediatricSolidTumorsQuizData = {
             rationale: {
                 correct: "Cisplatin is ototoxic - it can cause permanent high-frequency hearing loss. Baseline and periodic audiograms are essential. Also monitor renal function (nephrotoxicity).",
                 a: "Echocardiograms are needed for anthracyclines (doxorubicin), not cisplatin.",
-                c: "PFTs are for bleomycin and radiation patients.",
+                c: "Pulmonary function tests (PFTs) are for bleomycin and radiation patients.",
                 d: "Not routine for cisplatin."
             },
             testTakingTip: "Cisplatin = ototoxic. Check hearing regularly.",
@@ -330,10 +330,10 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Survivorship clinic follow-up helps identify and manage late effects of treatment - cognitive changes (esp. after CNS radiation), hearing loss (cisplatin), endocrine deficits (radiation), cardiac issues, growth concerns, and secondary cancers. Many children return to school with accommodations and go on to live full lives.",
+                correct: "Survivorship clinic follow-up helps identify and manage late effects of treatment - cognitive changes, especially after central nervous system (CNS) radiation, hearing loss (cisplatin), endocrine deficits (radiation), cardiac issues, growth concerns, and secondary cancers. Many children return to school with accommodations and go on to live full lives.",
                 a: "False reassurance - late effects are real.",
                 c: "Follow-up is essential for years.",
-                d: "Children can and usually do return to school, often with a 504 plan or IEP."
+                d: "Children can and usually do return to school, often with a 504 plan or individualized education program (IEP)."
             },
             testTakingTip: "Always anticipate late effects; survivorship care matters.",
             guideSection: "Section 7 - Family Coping",

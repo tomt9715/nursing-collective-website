@@ -58,10 +58,10 @@ var adrenalDisordersQuizData = {
             rationale: {
                 correct: "This is adrenal crisis - a life-threatening emergency. The patient has the classic triad: severe hypotension, hypoglycemia, and altered mental status, with a clear trigger (stopped hydrocortisone). Treatment is IV hydrocortisone 100 mg STAT plus aggressive IV normal saline. Do NOT wait for lab confirmation - treat based on clinical presentation.",
                 a: "Waiting for cortisol results before treating adrenal crisis can be fatal. This is a clinical diagnosis that requires immediate treatment. You CAN draw a cortisol level before administering hydrocortisone, but do not delay treatment for results.",
-                c: "Oral medications are inappropriate in acute adrenal crisis. The patient is confused (risk of aspiration), hypotensive (impaired GI absorption), and needs rapid IV therapy. Fludrocortisone is for chronic management, not acute crisis.",
-                d: "Potassium-containing IV fluids are CONTRAINDICATED. Addison's patients are already hyperkalemic (aldosterone deficiency means they cannot excrete potassium). Adding potassium could cause fatal cardiac arrhythmias. Use normal saline (0.9% NaCl) only."
+                c: "Oral medications are inappropriate in acute adrenal crisis. The patient is confused (risk of aspiration), hypotensive, has impaired gastrointestinal (GI) absorption, and needs rapid IV therapy. Fludrocortisone is for chronic management, not acute crisis.",
+                d: "Potassium-containing IV fluids are CONTRAINDICATED. Addison's patients are already hyperkalemic (aldosterone deficiency means they cannot excrete potassium). Adding potassium could cause fatal cardiac arrhythmias. Use normal saline (0.9% sodium chloride) only."
             },
-            testTakingTip: "Adrenal crisis: treat FIRST, confirm later. IV hydrocortisone 100 mg STAT + IV NS. NEVER give potassium-containing fluids (patient is already hyperkalemic). NEVER give oral meds (patient is in shock).",
+            testTakingTip: "Adrenal crisis: treat FIRST, confirm later. IV hydrocortisone 100 mg STAT + IV normal saline (NS). NEVER give potassium-containing fluids (patient is already hyperkalemic). NEVER give oral meds (patient is in shock).",
             guideSection: "Section 6 - Adrenal Crisis",
             guideSectionId: "adrenal-crisis"
         },
@@ -83,12 +83,12 @@ var adrenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After 8 weeks of prednisone 40 mg daily, the HPA axis is significantly suppressed - the adrenal glands have atrophied and cannot produce cortisol on their own. Abrupt withdrawal can trigger adrenal crisis (life-threatening hypotension, shock, death). The patient must resume the prednisone immediately and work with their provider to develop a gradual tapering schedule over weeks.",
-                a: "Feeling better does NOT mean the adrenals have recovered. After 8 weeks of high-dose steroids, the HPA axis is suppressed. The patient needs their prednisone to survive until the adrenals recover through gradual tapering.",
+                correct: "After 8 weeks of prednisone 40 mg daily, the hypothalamic-pituitary-adrenal (HPA) axis is significantly suppressed - the adrenal glands have atrophied and cannot produce cortisol on their own. Abrupt withdrawal can trigger adrenal crisis (life-threatening hypotension, shock, death). The patient must resume the prednisone immediately and work with their provider to develop a gradual tapering schedule over weeks.",
+                a: "Feeling better does NOT mean the adrenals have recovered. After 8 weeks of high-dose steroids, the hypothalamic-pituitary-adrenal (HPA) axis is suppressed. The patient needs their prednisone to survive until the adrenals recover through gradual tapering.",
                 c: "Simply halving the dose for one day is not an appropriate taper. After 8 weeks at 40 mg, tapering must be done gradually over weeks to months under provider supervision. The immediate priority is resuming the full dose to prevent crisis.",
                 d: "This is dangerously incorrect. Abrupt cessation after 8 weeks of high-dose steroids is potentially fatal, not merely uncomfortable. It can cause acute adrenal insufficiency (adrenal crisis)."
             },
-            testTakingTip: "NEVER stop steroids abruptly after more than ~2 weeks of use. The HPA axis is suppressed and needs time to recover. Abrupt withdrawal = adrenal crisis = potential death. Always taper under provider guidance.",
+            testTakingTip: "NEVER stop steroids abruptly after more than ~2 weeks of use. The hypothalamic-pituitary-adrenal (HPA) axis is suppressed and needs time to recover. Abrupt withdrawal = adrenal crisis = potential death. Always taper under provider guidance.",
             guideSection: "Section 5 - Addison's Treatment",
             guideSectionId: "addisons-treatment"
         },
@@ -104,7 +104,7 @@ var adrenalDisordersQuizData = {
             stem: "A patient with Addison's disease develops adrenal crisis during a hospitalization for pneumonia. Place the following nursing interventions in the correct priority order.",
             options: [
                 { id: "a", text: "Administer IV hydrocortisone 100 mg as ordered" },
-                { id: "b", text: "Initiate large-volume IV normal saline (0.9% NaCl) bolus" },
+                { id: "b", text: "Initiate large-volume IV normal saline (0.9% sodium chloride) bolus" },
                 { id: "c", text: "Check blood glucose and administer IV dextrose if hypoglycemic" },
                 { id: "d", text: "Place on continuous cardiac monitoring and monitor potassium levels" },
                 { id: "e", text: "Identify and treat the precipitating cause (continue antibiotics for pneumonia)" }
@@ -113,7 +113,7 @@ var adrenalDisordersQuizData = {
             rationale: {
                 correct: "The correct sequence prioritizes life-saving cortisol replacement first, then volume restoration, metabolic correction, monitoring for dangerous complications, and finally addressing the underlying trigger. Hydrocortisone replaces the missing cortisol and at stress doses also provides mineralocorticoid coverage.",
                 a: "FIRST - IV hydrocortisone is the single most critical intervention. Without cortisol, the body cannot maintain vascular tone or respond to stress. This directly addresses the pathophysiology of adrenal crisis.",
-                b: "SECOND - Aggressive IV NS corrects the profound hypotension and dehydration from aldosterone deficiency (sodium/water loss). Patients may need 1-3 liters in the first hours. Use NS only - no potassium-containing fluids.",
+                b: "SECOND - Aggressive IV normal saline (NS) corrects the profound hypotension and dehydration from aldosterone deficiency (sodium/water loss). Patients may need 1-3 liters in the first hours. Use NS only - no potassium-containing fluids.",
                 c: "THIRD - Correct hypoglycemia with IV dextrose (D50W). Cortisol deficiency impairs gluconeogenesis. Hypoglycemia can cause seizures and brain damage if not corrected.",
                 d: "FOURTH - Continuous cardiac monitoring is essential because hyperkalemia from aldosterone deficiency can cause fatal arrhythmias. Monitor potassium closely and watch for peaked T-waves, widened QRS.",
                 e: "FIFTH - Treat the precipitating cause. In this case, the pneumonia triggered the crisis. Continue IV antibiotics and treat the infection aggressively."
@@ -179,7 +179,7 @@ var adrenalDisordersQuizData = {
                 c: "NEEDS MORE TEACHING - This is a dangerous misconception. Feeling well means the medication IS working, not that the condition is resolved. Addison's disease requires lifelong hormone replacement. Skipping doses can trigger adrenal crisis. The adrenal glands are permanently damaged and cannot produce cortisol.",
                 d: "CORRECT UNDERSTANDING - A high-sodium diet is recommended for Addison's patients because aldosterone deficiency causes excessive sodium loss. Extra dietary salt helps maintain sodium balance and blood pressure."
             },
-            testTakingTip: "Addison's teaching: NEVER skip doses (feeling well = meds working, not condition cured). Stress dosing during illness. Medical alert ID always. High-sodium diet. Emergency injection kit.",
+            testTakingTip: "Addison's teaching: NEVER skip doses (feeling well = meds working, not condition cured). Stress dosing during illness. Medical alert identification always. High-sodium diet. Emergency injection kit.",
             guideSection: "Section 5 - Addison's Treatment",
             guideSectionId: "addisons-treatment"
         },
@@ -219,7 +219,7 @@ var adrenalDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is caring for a patient with Cushing's syndrome. The patient's temperature is 98.8°F (37.1°C), WBC is 9,200/mm³ (normal range), and the patient reports feeling \"a little more tired than usual.\" Which nursing action is MOST appropriate?",
+            stem: "A nurse is caring for a patient with Cushing's syndrome. The patient's temperature is 98.8°F (37.1°C), white blood cell (WBC) count is 9,200/mm³ (normal range), and the patient reports feeling \"a little more tired than usual.\" Which nursing action is MOST appropriate?",
             options: [
                 { id: "a", text: "Reassure the patient that vital signs and labs are normal and encourage rest" },
                 { id: "b", text: "Assess further for signs of infection that may be masked by cortisol excess" },
@@ -228,12 +228,12 @@ var adrenalDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cushing's syndrome causes immunosuppression from excess cortisol. Patients may NOT show typical signs of infection - they may not develop fever (a 'normal' temp could actually be elevated for them), their WBC may not rise appropriately, and inflammatory signs may be blunted. New fatigue in a Cushing's patient warrants thorough infection assessment. Infection is a leading cause of mortality in Cushing's.",
+                correct: "Cushing's syndrome causes immunosuppression from excess cortisol. Patients may NOT show typical signs of infection - they may not develop fever (a 'normal' temp could actually be elevated for them), their white blood cell (WBC) count may not rise appropriately, and inflammatory signs may be blunted. New fatigue in a Cushing's patient warrants thorough infection assessment. Infection is a leading cause of mortality in Cushing's.",
                 a: "Reassurance based on 'normal' values is inappropriate. In an immunosuppressed Cushing's patient, normal-appearing vitals and labs can mask serious infection. A temperature of 98.8°F and subtle fatigue could represent early sepsis.",
                 c: "While acetaminophen could be given for comfort, the priority is to investigate WHY the patient has even mild temperature elevation and new fatigue. In Cushing's, this could be the only sign of a serious infection.",
                 d: "The patient already has excess cortisol - that IS the problem. Increasing corticosteroids would worsen Cushing's and further suppress the immune system."
             },
-            testTakingTip: "Cushing's patients are immunosuppressed - they may NOT spike a fever or elevate WBC even with serious infection. A 'normal' temp in Cushing's could be hiding sepsis. Always investigate subtle changes.",
+            testTakingTip: "Cushing's patients are immunosuppressed - they may NOT spike a fever or elevate their white blood cell (WBC) count even with serious infection. A 'normal' temp in Cushing's could be hiding sepsis. Always investigate subtle changes.",
             guideSection: "Section 2 - Cushing's Syndrome",
             guideSectionId: "cushings"
         },
@@ -251,14 +251,14 @@ var adrenalDisordersQuizData = {
                 { id: "a", text: "Pituitary adenoma (Cushing's disease)" },
                 { id: "b", text: "Adrenal cortex carcinoma" },
                 { id: "c", text: "Long-term exogenous corticosteroid therapy (iatrogenic)" },
-                { id: "d", text: "Ectopic ACTH production from small cell lung cancer" }
+                { id: "d", text: "Ectopic adrenocorticotropic hormone (ACTH) production from small cell lung cancer" }
             ],
             correct: "c",
             rationale: {
-                correct: "Iatrogenic (exogenous) Cushing's from long-term corticosteroid use is the MOST common cause of Cushing's syndrome overall. Medications like prednisone, dexamethasone, and hydrocortisone, when taken chronically for conditions like asthma, RA, lupus, and organ transplant, provide enough exogenous cortisol to produce Cushing's features. This is treated by gradually tapering the offending medication.",
+                correct: "Iatrogenic (exogenous) Cushing's from long-term corticosteroid use is the MOST common cause of Cushing's syndrome overall. Medications like prednisone, dexamethasone, and hydrocortisone, when taken chronically for conditions like asthma, rheumatoid arthritis (RA), lupus, and organ transplant, provide enough exogenous cortisol to produce Cushing's features. This is treated by gradually tapering the offending medication.",
                 a: "Pituitary adenoma is the most common ENDOGENOUS cause (accounting for 70% of non-iatrogenic cases), but iatrogenic Cushing's from steroid use is far more common overall.",
-                b: "Adrenal carcinoma is a rare cause of Cushing's. It produces cortisol independently of ACTH stimulation (ACTH levels would be low).",
-                d: "Ectopic ACTH production is uncommon and usually associated with aggressive malignancies like small cell lung cancer. It accounts for a small percentage of endogenous Cushing's."
+                b: "Adrenal carcinoma is a rare cause of Cushing's. It produces cortisol independently of adrenocorticotropic hormone (ACTH) stimulation (ACTH levels would be low).",
+                d: "Ectopic adrenocorticotropic hormone (ACTH) production is uncommon and usually associated with aggressive malignancies like small cell lung cancer. It accounts for a small percentage of endogenous Cushing's."
             },
             testTakingTip: "The #1 cause of Cushing's syndrome is NOT a tumor - it's prescription steroids. Always ask patients about steroid medications before pursuing an extensive endocrine workup. Iatrogenic = most common overall. Pituitary adenoma = most common endogenous cause.",
             guideSection: "Section 2 - Cushing's Syndrome",

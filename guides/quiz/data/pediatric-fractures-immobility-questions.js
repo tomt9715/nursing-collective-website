@@ -210,10 +210,10 @@ var pediatricFracturesImmobilityQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Prolonged immobility causes bone demineralization in pediatric patients, leading to disuse osteoporosis. Bones become fragile enough to fracture from minor stresses (turning in bed, transfers). This is why careful handling and active/passive ROM are nursing priorities in immobilized children.",
+                correct: "Prolonged immobility causes bone demineralization in pediatric patients, leading to disuse osteoporosis. Bones become fragile enough to fracture from minor stresses (turning in bed, transfers). This is why careful handling and active and passive range of motion (ROM) are nursing priorities in immobilized children.",
                 a: "Hypertension is not a typical immobility complication.",
-                c: "CKD is unrelated to simple immobility.",
-                d: "T1DM is autoimmune, not related to immobility."
+                c: "Chronic kidney disease (CKD) is unrelated to simple immobility.",
+                d: "Type 1 diabetes mellitus (T1DM) is autoimmune, not related to immobility."
             },
             testTakingTip: "Disuse osteoporosis = immobilized pediatric bone = can fracture from trivial handling. Careful positioning!",
             guideSection: "Section 4 - Immobility Complications",

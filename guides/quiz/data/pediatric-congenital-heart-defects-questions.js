@@ -31,7 +31,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "Morphine helps but is given AFTER positioning and oxygen. Morphine decreases infundibular spasm and reduces respiratory drive.",
                 d: "Getting IV access is important but takes time. Positioning is faster and can be done while someone else gets supplies."
             },
-            testTakingTip: "For tet spells: 'Knees to chest first' - it requires no equipment, no order, and works immediately. This is the classic 'first action' answer for cyanotic CHD.",
+            testTakingTip: "For tet spells: 'Knees to chest first' - it requires no equipment, no order, and works immediately. This is the classic 'first action' answer for cyanotic congenital heart defects (CHDs).",
             guideSection: "Section 6 - Hypercyanotic Tet Spells",
             guideSectionId: "tet-spells"
         },
@@ -42,20 +42,20 @@ var pediatricCongenitalHeartDefectsQuizData = {
             difficulty: "knowledge",
             stem: "Which four anatomical defects are present in Tetralogy of Fallot?",
             options: [
-                { id: "a", text: "Pulmonary stenosis, RV hypertrophy, overriding aorta, VSD" },
-                { id: "b", text: "Aortic stenosis, LV hypertrophy, ASD, coarctation" },
-                { id: "c", text: "Pulmonary atresia, tricuspid atresia, ASD, PDA" },
-                { id: "d", text: "Transposition, VSD, PDA, patent foramen ovale" }
+                { id: "a", text: "Pulmonary stenosis, right ventricular (RV) hypertrophy, overriding aorta, ventricular septal defect (VSD)" },
+                { id: "b", text: "Aortic stenosis, left ventricular (LV) hypertrophy, atrial septal defect (ASD), coarctation" },
+                { id: "c", text: "Pulmonary atresia, tricuspid atresia, atrial septal defect (ASD), patent ductus arteriosus (PDA)" },
+                { id: "d", text: "Transposition, ventricular septal defect (VSD), patent ductus arteriosus (PDA), patent foramen ovale" }
             ],
             correct: "a",
             rationale: {
-                correct: "TOF = PROV: Pulmonary stenosis, Right ventricular hypertrophy, Overriding aorta, VSD. The pulmonary stenosis raises RV pressure, which shunts blood right-to-left across the VSD → cyanosis.",
-                a: "Correct - Pulmonary stenosis, RV hypertrophy, overriding aorta, VSD.",
-                b: "These defects are not part of TOF. Aortic stenosis and coarctation are separate obstructive lesions.",
-                c: "These are separate cyanotic defects, not components of TOF.",
-                d: "Transposition of the great arteries is its own cyanotic CHD, not part of TOF."
+                correct: "Tetralogy of Fallot (TOF) has four parts, remembered as pulmonary stenosis, right ventricular hypertrophy, overriding aorta, ventricular septal defect (PROV). The pulmonary stenosis raises right ventricular (RV) pressure, which shunts blood right-to-left across the ventricular septal defect (VSD) → cyanosis.",
+                a: "Correct - Pulmonary stenosis, right ventricular (RV) hypertrophy, overriding aorta, ventricular septal defect (VSD).",
+                b: "These defects are not part of Tetralogy of Fallot (TOF). Aortic stenosis and coarctation are separate obstructive lesions.",
+                c: "These are separate cyanotic defects, not components of Tetralogy of Fallot (TOF).",
+                d: "Transposition of the great arteries is its own cyanotic congenital heart defect (CHD), not part of Tetralogy of Fallot (TOF)."
             },
-            testTakingTip: "Memorize PROV or the '4 Hs' - hypertrophy (RV), hole (VSD), hard valve (pulmonary stenosis), horse-riding aorta (overriding). Get this pattern locked in.",
+            testTakingTip: "Memorize pulmonary stenosis, right ventricular hypertrophy, overriding aorta, ventricular septal defect (PROV), or the '4 Hs': hypertrophy of the right ventricle, hole between the ventricles, hard valve (pulmonary stenosis), horse-riding aorta (overriding). Get this pattern locked in.",
             guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
@@ -64,7 +64,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 3-month-old infant with a VSD is receiving digoxin. Before administering the next dose, the nurse auscultates an apical heart rate of 88 beats per minute. What should the nurse do?",
+            stem: "A 3-month-old infant with a ventricular septal defect (VSD) is receiving digoxin. Before administering the next dose, the nurse auscultates an apical heart rate of 88 beats per minute. What should the nurse do?",
             options: [
                 { id: "a", text: "Administer the dose as scheduled" },
                 { id: "b", text: "Hold the dose and notify the provider" },
@@ -97,9 +97,9 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Prostaglandin E1 maintains patency of the ductus arteriosus, which is critical in ductal-dependent lesions where the ductus is the only pathway for blood to reach the lungs (or the body). It is a lifesaving bridge until surgery.",
-                a: "This is the OPPOSITE - indomethacin or ibuprofen close a PDA in a premature infant. Giving these to a ductal-dependent baby would be fatal.",
-                b: "PGE1 doesn't raise heart rate - that is not its mechanism.",
-                d: "PGE1 does not primarily affect pulmonary vascular resistance."
+                a: "This is the OPPOSITE - indomethacin or ibuprofen close a patent ductus arteriosus (PDA) in a premature infant. Giving these to a ductal-dependent baby would be fatal.",
+                b: "Prostaglandin E1 (PGE1) doesn't raise heart rate - that is not its mechanism.",
+                d: "Prostaglandin E1 (PGE1) does not primarily affect pulmonary vascular resistance."
             },
             testTakingTip: "Memory trick: 'E for Established' - prostaglandin E1 keeps the ductus ESTABLISHED (open). Indomethacin ends it.",
             guideSection: "Section 10 - Medications",
@@ -110,7 +110,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The nurse is teaching parents of an infant with TOF. Which statement by the parent indicates correct understanding of what to do during a tet spell at home?",
+            stem: "The nurse is teaching parents of an infant with Tetralogy of Fallot (TOF). Which statement by the parent indicates correct understanding of what to do during a tet spell at home?",
             options: [
                 { id: "a", text: "'I will lay my baby flat on the bed and elevate his head.'" },
                 { id: "b", text: "'I will hold my baby upright against my shoulder and pat his back.'" },
@@ -120,8 +120,8 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "c",
             rationale: {
                 correct: "The knee-to-chest position increases systemic vascular resistance and pushes more blood into the pulmonary circulation, reversing the spell. Parents must be taught to do this immediately and then call 911 for transport to the ED.",
-                a: "Lying flat lowers SVR and worsens the spell. Never lay a cyanotic TOF child flat during an episode.",
-                b: "Holding upright and patting is a burping position, not a tet-spell rescue. It does not raise SVR enough.",
+                a: "Lying flat lowers systemic vascular resistance (SVR) and worsens the spell. Never lay a cyanotic child with Tetralogy of Fallot (TOF) flat during an episode.",
+                b: "Holding upright and patting is a burping position, not a tet-spell rescue. It does not raise systemic vascular resistance (SVR) enough.",
                 d: "Giving an extra dose of digoxin will not stop a tet spell and risks toxicity."
             },
             testTakingTip: "Expect parent-understanding items on tet-spell management. The knee-chest answer is the right one.",
@@ -144,10 +144,10 @@ var pediatricCongenitalHeartDefectsQuizData = {
             rationale: {
                 correct: "These are the classic signs of infant heart failure: prolonged feeding time, diaphoresis with feeds, tachypnea at rest, and failure to thrive. Feeding is the infant's exercise, and a failing heart cannot meet the oxygen demand. This picture warrants urgent cardiology evaluation.",
                 a: "Normal infants feed in 15-30 minutes without sweating and gain weight steadily. This picture is abnormal.",
-                c: "GERD typically presents with regurgitation, arching, and irritability - not diaphoresis with feeds or tachypnea at rest.",
-                d: "RSV causes respiratory distress but is typically acute with nasal congestion and wheezing, not the chronic feeding/growth pattern described."
+                c: "Gastroesophageal reflux disease (GERD) typically presents with regurgitation, arching, and irritability - not diaphoresis with feeds or tachypnea at rest.",
+                d: "Respiratory syncytial virus (RSV) causes respiratory distress but is typically acute with nasal congestion and wheezing, not the chronic feeding/growth pattern described."
             },
-            testTakingTip: "The triad of 'tires with feeds + sweats while feeding + poor weight gain' is a high-yield pattern for infant CHF. Memorize it.",
+            testTakingTip: "The triad of 'tires with feeds + sweats while feeding + poor weight gain' is a high-yield pattern for infant congestive heart failure (CHF). Memorize it.",
             guideSection: "Section 8 - Right-Sided Heart Failure",
             guideSectionId: "right-heart-failure"
         },
@@ -156,7 +156,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is caring for a 4-year-old with a repaired VSD who is scheduled for a dental cleaning in two weeks. The parent asks whether the child needs antibiotics before the appointment. The nurse's best response is:",
+            stem: "A nurse is caring for a 4-year-old with a repaired ventricular septal defect (VSD) who is scheduled for a dental cleaning in two weeks. The parent asks whether the child needs antibiotics before the appointment. The nurse's best response is:",
             options: [
                 { id: "a", text: "'Yes, all children with any history of heart surgery need antibiotics forever.'" },
                 { id: "b", text: "'No antibiotics are needed because the heart defect repair is now complete.'" },
@@ -165,12 +165,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "SBE (subacute bacterial endocarditis) prophylaxis is required for 6 months after repair of a CHD with prosthetic material (like a patch). After 6 months, if the repair is complete and there is no residual defect, prophylaxis is generally not needed. Prosthetic valves, unrepaired cyanotic CHD, and residual defects adjacent to prosthetic material still require prophylaxis.",
+                correct: "Subacute bacterial endocarditis (SBE) prophylaxis is required for 6 months after repair of a congenital heart defect (CHD) with prosthetic material (like a patch). After 6 months, if the repair is complete and there is no residual defect, prophylaxis is generally not needed. Prosthetic valves, unrepaired cyanotic CHD, and residual defects adjacent to prosthetic material still require prophylaxis.",
                 a: "This is not accurate; prophylaxis is not lifelong for simple repairs without residual defect.",
                 b: "This ignores the 6-month prophylaxis window after surgical repair.",
-                d: "SBE prophylaxis is for PREVENTING infection during procedures that cause bacteremia (like dental work), not for treating current illness."
+                d: "Subacute bacterial endocarditis (SBE) prophylaxis is for PREVENTING infection during procedures that cause bacteremia (like dental work), not for treating current illness."
             },
-            testTakingTip: "Know the SBE prophylaxis groups: unrepaired cyanotic CHD, prosthetic valves, first 6 months after repair with prosthetic material, residual defects adjacent to prosthetic material.",
+            testTakingTip: "Know the subacute bacterial endocarditis (SBE) prophylaxis groups: unrepaired cyanotic congenital heart defect (CHD), prosthetic valves, first 6 months after repair with prosthetic material, residual defects adjacent to prosthetic material.",
             guideSection: "Section 9 - Nursing Care",
             guideSectionId: "nursing-care"
         },
@@ -189,11 +189,11 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Coarctation narrows the aorta, usually distal to the left subclavian. Blood pressure is high in the upper extremities (pre-coarctation) and diminished in the lower extremities. A gradient >20 mmHg between arms and legs, or weak/absent femoral pulses, is diagnostic.",
-                a: "Machinery murmur = PDA, not coarctation.",
-                c: "Fixed, split S2 with systolic ejection murmur = ASD.",
-                d: "Harsh holosystolic murmur at the left lower sternal border = VSD."
+                a: "Machinery murmur = patent ductus arteriosus (PDA), not coarctation.",
+                c: "Fixed, split S2 with systolic ejection murmur = atrial septal defect (ASD).",
+                d: "Harsh holosystolic murmur at the left lower sternal border = ventricular septal defect (VSD)."
             },
-            testTakingTip: "Match the murmur to the defect: VSD = holosystolic LLSB. PDA = continuous machinery. ASD = fixed split S2. Coarctation = BP difference between arms and legs.",
+            testTakingTip: "Match the murmur to the defect: ventricular septal defect (VSD) = holosystolic left lower sternal border (LLSB). Patent ductus arteriosus (PDA) = continuous machinery. Atrial septal defect (ASD) = fixed split S2. Coarctation = BP difference between arms and legs.",
             guideSection: "Section 7 - Obstructive Defects",
             guideSectionId: "obstructive"
         },
@@ -211,12 +211,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Indomethacin is a prostaglandin synthesis inhibitor. Prostaglandins keep the fetal ductus open; blocking them closes the ductus. It is used in premature infants with a hemodynamically significant PDA.",
+                correct: "Indomethacin is a prostaglandin synthesis inhibitor. Prostaglandins keep the fetal ductus open; blocking them closes the ductus. It is used in premature infants with a hemodynamically significant patent ductus arteriosus (PDA).",
                 a: "This is prostaglandin E1's job - the opposite of indomethacin.",
                 c: "Indomethacin does not primarily treat pulmonary hypertension.",
                 d: "Indomethacin is not an afterload reducer."
             },
-            testTakingTip: "NEVER give indomethacin or ibuprofen to an infant with a ductal-dependent lesion. The PDA is keeping them alive - closing it would be fatal.",
+            testTakingTip: "NEVER give indomethacin or ibuprofen to an infant with a ductal-dependent lesion. The patent ductus arteriosus (PDA) is keeping them alive - closing it would be fatal.",
             guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
@@ -248,7 +248,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 3-month-old with CHF is being fed. The infant has taken 2 oz over 35 minutes, has become diaphoretic, and is falling asleep mid-feed. The nurse's best action is to:",
+            stem: "A 3-month-old with congestive heart failure (CHF) is being fed. The infant has taken 2 oz over 35 minutes, has become diaphoretic, and is falling asleep mid-feed. The nurse's best action is to:",
             options: [
                 { id: "a", text: "Wake the infant and continue feeding until the bottle is finished" },
                 { id: "b", text: "Stop the feeding, position upright, and document intake" },
@@ -257,12 +257,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Infants with CHF tire quickly during feeds - feeding is work. Feeds should be limited to about 20-30 minutes to conserve energy. Stopping the feed, holding the infant upright (for reflux and cardiac demand), and documenting intake (with follow-up plan for remaining volume via NG if needed) is appropriate.",
+                correct: "Infants with congestive heart failure (CHF) tire quickly during feeds - feeding is work. Feeds should be limited to about 20-30 minutes to conserve energy. Stopping the feed, holding the infant upright (for reflux and cardiac demand), and documenting intake, with follow-up plan for remaining volume via nasogastric (NG) tube if needed, is appropriate.",
                 a: "Pushing the infant past exhaustion increases cardiac demand and risks aspiration. Do not force feeds.",
                 c: "A SOFTER nipple (preemie/low-flow) is easier. A firm nipple requires MORE sucking effort.",
                 d: "Holding all feeds worsens caloric deficit. Small, frequent feeds are the strategy, not skipping them."
             },
-            testTakingTip: "Key feeding principles for CHD/CHF infants: softer nipple, 20-30 min max, small frequent feeds, calorie-dense formula, upright positioning.",
+            testTakingTip: "Key feeding principles for infants with congenital heart defects (CHDs) or congestive heart failure (CHF): softer nipple, 20-30 min max, small frequent feeds, calorie-dense formula, upright positioning.",
             guideSection: "Section 9 - Nursing Care",
             guideSectionId: "nursing-care"
         },
@@ -271,7 +271,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which cyanotic CHD is associated with a 'boot-shaped' heart on chest X-ray?",
+            stem: "Which cyanotic congenital heart defect (CHD) is associated with a 'boot-shaped' heart on chest X-ray?",
             options: [
                 { id: "a", text: "Transposition of the great arteries" },
                 { id: "b", text: "Tetralogy of Fallot" },
@@ -285,7 +285,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "Tricuspid atresia has variable X-ray findings - often decreased pulmonary markings - but is not described as boot-shaped.",
                 d: "Coarctation is not a cyanotic defect, and its X-ray findings include rib notching (older children)."
             },
-            testTakingTip: "Classic CXR patterns to remember: TOF = boot. TGA = egg on a string. TAPVR = snowman. These are high-yield visual associations.",
+            testTakingTip: "Classic chest x-ray (CXR) patterns to remember: Tetralogy of Fallot (TOF) = boot. Transposition of the great arteries (TGA) = egg on a string. Total anomalous pulmonary venous return (TAPVR) = snowman. These are high-yield visual associations.",
             guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
@@ -294,7 +294,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A neonate in the NICU is receiving a continuous prostaglandin E1 infusion for a ductal-dependent CHD. Which assessment finding requires the most immediate nursing action?",
+            stem: "A neonate in the neonatal intensive care unit (NICU) is receiving a continuous prostaglandin E1 infusion for a ductal-dependent congenital heart defect (CHD). Which assessment finding requires the most immediate nursing action?",
             options: [
                 { id: "a", text: "Temperature of 38.1°C (100.6°F)" },
                 { id: "b", text: "Flushed, warm skin" },
@@ -303,12 +303,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Apnea is the most serious adverse effect of prostaglandin E1, occurring in 10-12% of neonates usually within the first hour. The nurse must stimulate the infant, ensure airway/breathing, and prepare for possible intubation. Always have intubation supplies at the bedside on a PGE1 infusion.",
-                a: "Fever is an expected side effect of PGE1 and is managed with antipyretics - not immediately life-threatening.",
-                b: "Flushing is a common PGE1 side effect; not life-threatening.",
+                correct: "Apnea is the most serious adverse effect of prostaglandin E1, occurring in 10-12% of neonates usually within the first hour. The nurse must stimulate the infant, ensure airway/breathing, and prepare for possible intubation. Always have intubation supplies at the bedside on a prostaglandin E1 (PGE1) infusion.",
+                a: "Fever is an expected side effect of prostaglandin E1 (PGE1) and is managed with antipyretics - not immediately life-threatening.",
+                b: "Flushing is a common prostaglandin E1 (PGE1) side effect; not life-threatening.",
                 d: "This BP is within range for a neonate. Severe hypotension would be more concerning, but it does not beat apnea for priority."
             },
-            testTakingTip: "PGE1 = apnea. Always. This is a high-yield priority question. Keep BVM and intubation equipment at the bedside.",
+            testTakingTip: "Prostaglandin E1 (PGE1) = apnea. Always. This is a high-yield priority question. Keep bag-valve-mask (BVM) and intubation equipment at the bedside.",
             guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
@@ -326,12 +326,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Squatting kinks the femoral arteries, raising systemic vascular resistance. Higher SVR forces blood across the VSD toward the lungs (rather than right-to-left), improving oxygenation. This is the same physiology as the knee-to-chest position during a tet spell - it's a self-protective maneuver, not a problem.",
+                correct: "Squatting kinks the femoral arteries, raising systemic vascular resistance. Higher systemic vascular resistance (SVR) forces blood across the ventricular septal defect (VSD) toward the lungs (rather than right-to-left), improving oxygenation. This is the same physiology as the knee-to-chest position during a tet spell - it's a self-protective maneuver, not a problem.",
                 a: "It is not a behavioral habit; it is a compensatory physiologic maneuver.",
                 b: "Squatting INCREASES pulmonary blood flow, not decreases it.",
-                d: "Squatting is typical for children with TOF and, while it indicates the defect is not fully repaired, it is not a sign of acute worsening."
+                d: "Squatting is typical for children with Tetralogy of Fallot (TOF) and, while it indicates the defect is not fully repaired, it is not a sign of acute worsening."
             },
-            testTakingTip: "Squatting = SVR increase = more blood to lungs. Same idea as knee-chest during a tet spell. Both increase afterload on the left side.",
+            testTakingTip: "Squatting = systemic vascular resistance (SVR) increase = more blood to lungs. Same idea as knee-chest during a tet spell. Both increase afterload on the left side.",
             guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
@@ -349,12 +349,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "AVSD is strongly associated with Trisomy 21 - about 40% of children with Down syndrome have a CHD, and AVSD is the most common type. All infants with Down syndrome should have an echocardiogram at birth.",
+                correct: "Atrioventricular septal defect (AVSD) is strongly associated with Trisomy 21 - about 40% of children with Down syndrome have a congenital heart defect (CHD), and AVSD is the most common type. All infants with Down syndrome should have an echocardiogram at birth.",
                 a: "Turner syndrome is associated with coarctation of the aorta and bicuspid aortic valve.",
                 c: "Marfan syndrome is associated with aortic root dilation and mitral valve prolapse.",
-                d: "Cystic fibrosis is not typically associated with CHD."
+                d: "Cystic fibrosis is not typically associated with congenital heart defects (CHDs)."
             },
-            testTakingTip: "Genetic → CHD pairings to know: Down → AVSD/VSD. Turner → coarctation. Marfan → aortic root dilation. DiGeorge (22q11) → TOF, truncus arteriosus.",
+            testTakingTip: "Genetic → congenital heart defect (CHD) pairings to know: Down → atrioventricular septal defect (AVSD)/ventricular septal defect (VSD). Turner → coarctation. Marfan → aortic root dilation. DiGeorge (22q11) → Tetralogy of Fallot (TOF), truncus arteriosus.",
             guideSection: "Section 3 - Increased Flow Defects",
             guideSectionId: "increased-flow"
         },
@@ -365,14 +365,14 @@ var pediatricCongenitalHeartDefectsQuizData = {
             difficulty: "analysis",
             stem: "A nurse is caring for four pediatric cardiac patients. Which patient should be seen FIRST?",
             options: [
-                { id: "a", text: "A 2-year-old post-VSD repair with stable vitals who is requesting pain medication" },
-                { id: "b", text: "A 6-month-old with unrepaired TOF whose parent reports 'he's acting different - very blue and sleepy'" },
-                { id: "c", text: "A 4-year-old with a repaired ASD who needs discharge teaching" },
-                { id: "d", text: "A 10-year-old post-cardiac cath who has mild bruising at the femoral site" }
+                { id: "a", text: "A 2-year-old after ventricular septal defect (VSD) repair with stable vitals who is requesting pain medication" },
+                { id: "b", text: "A 6-month-old with unrepaired Tetralogy of Fallot whose parent reports 'he's acting different - very blue and sleepy'" },
+                { id: "c", text: "A 4-year-old with a repaired atrial septal defect (ASD) who needs discharge teaching" },
+                { id: "d", text: "A 10-year-old after cardiac catheterization who has mild bruising at the femoral site" }
             ],
             correct: "b",
             rationale: {
-                correct: "A TOF patient who is 'very blue and sleepy' may be in a prolonged or severe tet spell. Decreased responsiveness with deep cyanosis suggests the spell is not self-resolving and the child is at risk for hypoxic injury, seizure, or death. This is the priority assessment.",
+                correct: "A patient with Tetralogy of Fallot (TOF) who is 'very blue and sleepy' may be in a prolonged or severe tet spell. Decreased responsiveness with deep cyanosis suggests the spell is not self-resolving and the child is at risk for hypoxic injury, seizure, or death. This is the priority assessment.",
                 a: "Pain is important but not life-threatening. This patient can wait.",
                 c: "Discharge teaching is routine work and not time-critical.",
                 d: "Mild bruising at a cath site is expected. Only a growing hematoma, bleeding, or pulse change would be urgent."

@@ -94,17 +94,17 @@ var seizuresQuizData = {
                 { id: "a", text: "Administer IV lorazepam (Ativan) 4 mg as ordered" },
                 { id: "b", text: "Ensure patient safety: side-lying position, suction available, pad side rails" },
                 { id: "c", text: "Prepare for fosphenytoin IV loading dose if seizure continues after benzodiazepine" },
-                { id: "d", text: "Confirm IV access is patent and draw STAT labs (glucose, electrolytes, AED levels)" }
+                { id: "d", text: "Confirm IV access is patent and draw STAT labs: glucose, electrolytes, antiepileptic drug (AED) levels" }
             ],
             correct: ["b", "d", "a", "c"],
             rationale: {
-                correct: "The correct sequence follows ABCs first (safety and airway), then establish access and assess (IV, labs), then first-line medication (benzodiazepine), then second-line if needed (fosphenytoin).",
+                correct: "The correct sequence follows airway, breathing, circulation (ABCs) first (safety and airway), then establish access and assess (IV, labs), then first-line medication (benzodiazepine), then second-line if needed (fosphenytoin).",
                 b: "FIRST - Patient safety and airway protection is always the immediate priority. Position on side to prevent aspiration, ensure suction is available, and protect from injury.",
-                d: "SECOND - Confirm IV access (needed for medication) and draw labs to identify reversible causes (hypoglycemia, hyponatremia, subtherapeutic AED levels). Check blood glucose - give D50 if hypoglycemic.",
+                d: "SECOND - Confirm IV access (needed for medication) and draw labs to identify reversible causes: hypoglycemia, hyponatremia, subtherapeutic antiepileptic drug (AED) levels. Check blood glucose - give D50 if hypoglycemic.",
                 a: "THIRD - Administer the first-line medication: IV lorazepam 4 mg. This is the standard initial treatment for status epilepticus. May repeat once in 5-10 minutes if seizure continues.",
-                c: "FOURTH - If seizure persists after benzodiazepine, prepare the second-line agent: fosphenytoin 20 mg PE/kg IV, or valproic acid, or levetiracetam. This step occurs only if the benzodiazepine fails."
+                c: "FOURTH - If seizure persists after benzodiazepine, prepare the second-line agent: fosphenytoin 20 mg phenytoin equivalents (PE) per kg IV, or valproic acid, or levetiracetam. This step occurs only if the benzodiazepine fails."
             },
-            testTakingTip: "Status epilepticus protocol: Safety/ABCs → IV access + labs → Lorazepam IV → Fosphenytoin if needed → ICU for refractory cases. Always check glucose - hypoglycemia can cause seizures and is easily reversible.",
+            testTakingTip: "Status epilepticus protocol: Safety/airway, breathing, circulation (ABCs) → IV access + labs → Lorazepam IV → Fosphenytoin if needed → ICU for refractory cases. Always check glucose - hypoglycemia can cause seizures and is easily reversible.",
             guideSection: "Section 4 - Status Epilepticus",
             guideSectionId: "status-epilepticus"
         },
@@ -147,14 +147,14 @@ var seizuresQuizData = {
                 { id: "a", text: "Attempt to orient the patient by asking them to state their name, date, and location" },
                 { id: "b", text: "Turn the patient on their side, maintain a quiet environment, and perform a neurological assessment" },
                 { id: "c", text: "Encourage the patient to get up and walk to assess motor function" },
-                { id: "d", text: "Immediately prepare the patient for an emergent CT scan" }
+                { id: "d", text: "Immediately prepare the patient for an emergent computed tomography (CT) scan" }
             ],
             correct: "b",
             rationale: {
                 correct: "After a generalized tonic-clonic seizure, the patient enters the postictal phase (drowsiness, confusion, headache). Priority interventions: turn on side (recovery position to maintain airway and drain secretions), provide a quiet environment (reduce stimulation), and perform a neurological assessment to establish baseline and detect complications.",
                 a: "While reorientation is appropriate eventually, aggressively questioning a postictal patient immediately after a seizure can increase agitation. Gentle reorientation is better as the patient gradually recovers.",
                 c: "A postictal patient is drowsy, confused, and may have muscle weakness. Encouraging ambulation immediately after a seizure increases fall risk. The patient should rest until fully recovered.",
-                d: "An emergent CT is not automatically indicated after every seizure, especially in a patient with known epilepsy. CT is indicated for first-time seizures, focal findings, prolonged postictal state, or suspected head injury."
+                d: "An emergent computed tomography (CT) scan is not automatically indicated after every seizure, especially in a patient with known epilepsy. CT is indicated for first-time seizures, focal findings, prolonged postictal state, or suspected head injury."
             },
             testTakingTip: "Postictal care: position on side, quiet environment, assess neuro status, check for injuries (tongue biting, head injury), document. Don't rush reorientation - the patient needs time to recover.",
             guideSection: "Section 5 - Priority Nursing Interventions",
@@ -201,12 +201,12 @@ var seizuresQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Doubling doses of AEDs is dangerous and can cause toxicity. If a dose is missed, the patient should take it as soon as remembered (unless it's close to the next dose), but never double up. This statement indicates a need for further teaching.",
+                correct: "Doubling doses of antiepileptic drugs (AEDs) is dangerous and can cause toxicity. If a dose is missed, the patient should take it as soon as remembered (unless it's close to the next dose), but never double up. This statement indicates a need for further teaching.",
                 a: "CORRECT understanding - Lamotrigine carries a risk of Stevens-Johnson syndrome (SJS), a potentially fatal skin reaction. Any rash must be reported immediately and the drug stopped pending evaluation.",
                 b: "CORRECT understanding - Lamotrigine must be titrated very slowly to reduce the risk of Stevens-Johnson syndrome. Rapid titration increases the risk significantly.",
-                d: "CORRECT understanding - Abrupt discontinuation of any AED can trigger rebound seizures or status epilepticus. AEDs should always be tapered under provider supervision."
+                d: "CORRECT understanding - Abrupt discontinuation of any antiepileptic drug (AED) can trigger rebound seizures or status epilepticus. AEDs should always be tapered under provider supervision."
             },
-            testTakingTip: "Lamotrigine key facts: slow titration required, Steven-Johnson syndrome risk (STOP if rash), never stop abruptly. 'Need for further teaching' questions = find the WRONG statement.",
+            testTakingTip: "Lamotrigine key facts: slow titration required, Stevens-Johnson syndrome risk (STOP if rash), never stop abruptly. 'Need for further teaching' questions = find the WRONG statement.",
             guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
@@ -226,10 +226,10 @@ var seizuresQuizData = {
             rationale: {
                 correct: "Valproic acid is Category D (positive evidence of human fetal risk) and is associated with a significantly increased risk of neural tube defects (spina bifida), craniofacial defects, and cognitive impairment in the fetus. The priority concern is the teratogenic risk, and the provider must be notified immediately for a medication change.",
                 a: "While weight gain is a side effect of valproic acid, it is not the priority concern in a pregnant patient compared to the severe teratogenic risk.",
-                c: "While AED levels can change during pregnancy due to altered pharmacokinetics, this is a secondary concern compared to the teratogenic risk of continuing valproic acid.",
+                c: "While antiepileptic drug (AED) levels can change during pregnancy due to altered pharmacokinetics, this is a secondary concern compared to the teratogenic risk of continuing valproic acid.",
                 d: "Phenytoin is also teratogenic (fetal hydantoin syndrome) and is NOT a safer alternative. Lamotrigine and levetiracetam are generally considered safer options in pregnancy."
             },
-            testTakingTip: "Valproic acid = Category D in pregnancy. Neural tube defects (spina bifida) are the #1 concern. All women of childbearing age on AEDs should take folic acid supplementation. Lamotrigine and levetiracetam are considered relatively safer in pregnancy.",
+            testTakingTip: "Valproic acid = Category D in pregnancy. Neural tube defects (spina bifida) are the #1 concern. All women of childbearing age on antiepileptic drugs (AEDs) should take folic acid supplementation. Lamotrigine and levetiracetam are considered relatively safer in pregnancy.",
             guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
@@ -272,11 +272,11 @@ var seizuresQuizData = {
             correct: "b",
             rationale: {
                 correct: "This presentation - generalized seizure, <15 minutes, age 6 months to 5 years, associated with fever, single occurrence, alert afterward - is a classic simple febrile seizure. These are common (2-5% of children), benign, and do not cause brain damage or significantly increase epilepsy risk. Parental reassurance and education is appropriate.",
-                a: "Simple febrile seizures do NOT require long-term AED therapy. The risk of AED side effects outweighs the benefit for simple febrile seizures.",
+                a: "Simple febrile seizures do NOT require long-term antiepileptic drug (AED) therapy. The risk of AED side effects outweighs the benefit for simple febrile seizures.",
                 c: "A single febrile seizure does not diagnose epilepsy. Epilepsy requires 2+ unprovoked seizures. Febrile seizures are provoked (by fever) and have a different prognosis.",
                 d: "Prophylactic antipyretics (Tylenol/ibuprofen) do NOT prevent febrile seizures. They treat fever-related discomfort but do not change seizure risk. This is a common parental misconception."
             },
-            testTakingTip: "Simple febrile seizure: generalized, <15 min, no recurrence in 24 hrs, ages 6mo-5yr. Treatment: treat the fever, reassurance. No AEDs needed. Prophylactic antipyretics do NOT prevent febrile seizures.",
+            testTakingTip: "Simple febrile seizure: generalized, <15 min, no recurrence in 24 hrs, ages 6mo-5yr. Treatment: treat the fever, reassurance. No antiepileptic drugs (AEDs) needed. Prophylactic antipyretics do NOT prevent febrile seizures.",
             guideSection: "Section 7 - Pediatric Considerations",
             guideSectionId: "pediatric"
         },
@@ -286,7 +286,7 @@ var seizuresQuizData = {
             subtype: null,
             difficulty: "application",
             matrixColumns: ["Correct AED Choice", "Incorrect AED Choice"],
-            stem: "A nurse is reviewing medication orders for seizure patients. Classify each medication-seizure type pairing as a correct or incorrect AED choice.",
+            stem: "A nurse is reviewing medication orders for seizure patients. Classify each medication-seizure type pairing as a correct or incorrect antiepileptic drug (AED) choice.",
             options: [
                 { id: "a", text: "Ethosuximide prescribed for a child with absence seizures only" },
                 { id: "b", text: "Carbamazepine prescribed for a patient with absence seizures" },
@@ -299,11 +299,11 @@ var seizuresQuizData = {
                 correct: "Ethosuximide is first-line for absence seizures, lorazepam is first-line for status epilepticus, and levetiracetam is effective for focal seizures. Carbamazepine worsens absence seizures, and valproic acid is teratogenic (Category D in pregnancy).",
                 a: "CORRECT - Ethosuximide (Zarontin) is the first-line drug for absence seizures when absence is the only seizure type. It is effective and well-tolerated for this specific indication.",
                 b: "INCORRECT - Carbamazepine (Tegretol) can actually WORSEN absence seizures. It blocks sodium channels, which does not address the thalamic mechanism of absence seizures. Phenytoin also worsens absence.",
-                c: "CORRECT - Lorazepam (Ativan) IV is the first-line treatment for status epilepticus due to its rapid onset and longer CNS duration compared to diazepam.",
-                d: "INCORRECT - Valproic acid is Category D in pregnancy with significant teratogenic risk (neural tube defects). Women planning pregnancy should be switched to a safer AED (lamotrigine or levetiracetam).",
-                e: "CORRECT - Levetiracetam (Keppra) is effective for focal seizures, has fewer drug interactions than older AEDs, and does not require routine level monitoring."
+                c: "CORRECT - Lorazepam (Ativan) IV is the first-line treatment for status epilepticus due to its rapid onset and longer central nervous system (CNS) duration compared to diazepam.",
+                d: "INCORRECT - Valproic acid is Category D in pregnancy with significant teratogenic risk (neural tube defects). Women planning pregnancy should be switched to a safer antiepileptic drug (AED), lamotrigine or levetiracetam.",
+                e: "CORRECT - Levetiracetam (Keppra) is effective for focal seizures, has fewer drug interactions than older antiepileptic drugs (AEDs), and does not require routine level monitoring."
             },
-            testTakingTip: "AED matching: Absence → ethosuximide or valproic acid (NOT carbamazepine/phenytoin). Status epilepticus → lorazepam IV. Pregnancy → avoid valproic acid (Category D). Focal seizures → many options (levetiracetam, carbamazepine, phenytoin, lamotrigine).",
+            testTakingTip: "Antiepileptic drug (AED) matching: Absence → ethosuximide or valproic acid (NOT carbamazepine/phenytoin). Status epilepticus → lorazepam IV. Pregnancy → avoid valproic acid (Category D). Focal seizures → many options (levetiracetam, carbamazepine, phenytoin, lamotrigine).",
             guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
@@ -321,12 +321,12 @@ var seizuresQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Alcohol lowers the seizure threshold, and alcohol withdrawal further increases seizure risk. Alcohol also interacts with many AEDs (increases CNS depression, affects metabolism). This statement demonstrates correct understanding.",
+                correct: "Alcohol lowers the seizure threshold, and alcohol withdrawal further increases seizure risk. Alcohol also interacts with many antiepileptic drugs (AEDs), increasing central nervous system (CNS) depression and affecting metabolism. This statement demonstrates correct understanding.",
                 a: "Most states require a seizure-free period (typically 3-12 months, varies by state) before driving is permitted. The patient cannot simply drive because they feel fine.",
-                c: "AED therapy is typically long-term (2+ years seizure-free before considering withdrawal). A one-month seizure-free period is far too short. Medication changes should only be made under provider supervision.",
-                d: "AEDs must be taken consistently every day as prescribed - they work by maintaining steady blood levels to PREVENT seizures. They are not taken reactively."
+                c: "Antiepileptic drug (AED) therapy is typically long-term (2+ years seizure-free before considering withdrawal). A one-month seizure-free period is far too short. Medication changes should only be made under provider supervision.",
+                d: "Antiepileptic drugs (AEDs) must be taken consistently every day as prescribed - they work by maintaining steady blood levels to PREVENT seizures. They are not taken reactively."
             },
-            testTakingTip: "Epilepsy patient education: take AEDs daily (not PRN), avoid alcohol, get adequate sleep, know your triggers, wear a medical alert bracelet, driving restrictions apply, never stop meds abruptly.",
+            testTakingTip: "Epilepsy patient education: take antiepileptic drugs (AEDs) daily (not PRN), avoid alcohol, get adequate sleep, know your triggers, wear a medical alert bracelet, driving restrictions apply, never stop meds abruptly.",
             guideSection: "Section 1 - Pathophysiology & Etiology",
             guideSectionId: "pathophysiology"
         },
@@ -360,19 +360,19 @@ var seizuresQuizData = {
             difficulty: "knowledge",
             stem: "Which diagnostic test is considered the GOLD STANDARD for diagnosing seizure disorders and classifying seizure type?",
             options: [
-                { id: "a", text: "CT scan of the head" },
-                { id: "b", text: "MRI of the brain" },
+                { id: "a", text: "Computed tomography (CT) scan of the head" },
+                { id: "b", text: "Magnetic resonance imaging (MRI) of the brain" },
                 { id: "c", text: "Electroencephalogram (EEG)" },
-                { id: "d", text: "Lumbar puncture with CSF analysis" }
+                { id: "d", text: "Lumbar puncture with cerebrospinal fluid (CSF) analysis" }
             ],
             correct: "c",
             rationale: {
-                correct: "The EEG (electroencephalogram) is the gold standard for seizure diagnosis. It records the brain's electrical activity and can identify epileptiform discharges (spikes, sharp waves) that confirm seizure activity and help classify the seizure type. Video-EEG monitoring is the most valuable form for capturing and characterizing seizure events.",
-                a: "CT scan is used emergently to rule out hemorrhage or mass lesions but does not diagnose seizure activity. It shows structure, not function.",
-                b: "MRI is superior to CT for identifying structural causes of epilepsy (tumors, mesial temporal sclerosis, malformations) but does not measure electrical activity.",
-                d: "Lumbar puncture is used to evaluate for CNS infections (meningitis, encephalitis) that may cause seizures but is not a test for seizure activity itself."
+                correct: "The electroencephalogram (EEG) is the gold standard for seizure diagnosis. It records the brain's electrical activity and can identify epileptiform discharges (spikes, sharp waves) that confirm seizure activity and help classify the seizure type. Video-EEG monitoring is the most valuable form for capturing and characterizing seizure events.",
+                a: "Computed tomography (CT) scan is used emergently to rule out hemorrhage or mass lesions but does not diagnose seizure activity. It shows structure, not function.",
+                b: "Magnetic resonance imaging (MRI) is superior to computed tomography (CT) for identifying structural causes of epilepsy (tumors, mesial temporal sclerosis, malformations) but does not measure electrical activity.",
+                d: "Lumbar puncture is used to evaluate for central nervous system (CNS) infections (meningitis, encephalitis) that may cause seizures but is not a test for seizure activity itself."
             },
-            testTakingTip: "EEG = gold standard for seizure DIAGNOSIS (measures electrical activity). MRI = best for finding structural CAUSES (tumors, sclerosis). CT = emergent use to rule out hemorrhage. Know the difference!",
+            testTakingTip: "Electroencephalogram (EEG) = gold standard for seizure DIAGNOSIS (measures electrical activity). Magnetic resonance imaging (MRI) = best for finding structural CAUSES (tumors, sclerosis). Computed tomography (CT) = emergent use to rule out hemorrhage. Know the difference!",
             guideSection: "Section 3 - Assessment & Diagnosis",
             guideSectionId: "assessment"
         }

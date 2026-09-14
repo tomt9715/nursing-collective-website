@@ -21,13 +21,13 @@ var pediatricSkinInfectionsQuizData = {
             options: [
                 { id: "a", text: "Oral acyclovir (Zovirax)" },
                 { id: "b", text: "Topical mupirocin (Bactroban)" },
-                { id: "c", text: "Oral griseofulvin (Gris-PEG)" },
+                { id: "c", text: "Oral griseofulvin (Grifulvin V)" },
                 { id: "d", text: "Topical clotrimazole (Lotrimin)" }
             ],
             correct: "b",
             rationale: {
-                correct: "Honey-colored crusts around the nose and mouth are classic for impetigo. Mild/localized impetigo is treated with topical mupirocin TID for 5\u20137 days. Oral antibiotics (cephalexin) are added for widespread or resistant cases.",
-                a: "Acyclovir is for HSV, which presents with clustered vesicles on erythematous base, not honey crusts.",
+                correct: "Honey-colored crusts around the nose and mouth are classic for impetigo. Mild/localized impetigo is treated with topical mupirocin three times daily (TID) for 5\u20137 days. Oral antibiotics (cephalexin) are added for widespread or resistant cases.",
+                a: "Acyclovir is for herpes simplex virus (HSV), which presents with clustered vesicles on erythematous base, not honey crusts.",
                 c: "Griseofulvin is for fungal tinea capitis, not bacterial impetigo.",
                 d: "Clotrimazole is antifungal - wrong class for bacterial impetigo."
             },
@@ -42,19 +42,19 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "analysis",
             stem: "A 10-year-old presents with a painful, fluctuant abscess on the forearm that he thought was a 'spider bite.' Culture is pending. What is the priority intervention?",
             options: [
-                { id: "a", text: "Apply warm compresses and observe for 48 hours" },
-                { id: "b", text: "Incision and drainage with empiric clindamycin or TMP-SMX" },
-                { id: "c", text: "Start oral amoxicillin and reassess in 72 hours" },
-                { id: "d", text: "Begin IV vancomycin as an outpatient infusion" }
+                { id: "a", text: "Apply warm compresses four times daily and observe for 48 hours" },
+                { id: "b", text: "Incision and drainage plus empiric clindamycin or trimethoprim-sulfamethoxazole (TMP-SMX)" },
+                { id: "c", text: "Start oral amoxicillin for 10 days and reassess in 72 hours" },
+                { id: "d", text: "Begin IV vancomycin as a daily outpatient infusion at home" }
             ],
             correct: "b",
             rationale: {
-                correct: "A fluctuant abscess, especially a 'spider bite' presentation, strongly suggests CA-MRSA. Incision and drainage is the primary treatment for abscesses >5 mm; empiric antibiotics effective against MRSA (clindamycin or TMP-SMX) are added. Amoxicillin would not cover MRSA.",
+                correct: "A fluctuant abscess, especially a 'spider bite' presentation, strongly suggests community-associated methicillin-resistant Staphylococcus aureus (CA-MRSA). Incision and drainage is the primary treatment for abscesses >5 mm; empiric antibiotics effective against this resistant strain, such as clindamycin or trimethoprim-sulfamethoxazole (TMP-SMX), are added. Amoxicillin would not cover this strain.",
                 a: "Warm compresses don't treat an established abscess.",
-                c: "Amoxicillin doesn't cover MRSA and delays effective treatment.",
+                c: "Amoxicillin doesn't cover methicillin-resistant Staphylococcus aureus (MRSA) and delays effective treatment.",
                 d: "IV vancomycin is reserved for severe/systemic cases, not outpatient abscesses."
             },
-            testTakingTip: "Fluctuant abscess = I&D + MRSA-active antibiotic. CA-MRSA often presents as 'spider bite.'",
+            testTakingTip: "Fluctuant abscess = I&D + an antibiotic active against methicillin-resistant Staphylococcus aureus (MRSA). Community-associated MRSA (CA-MRSA) often presents as 'spider bite.'",
             guideSection: "Section 1 - Bacterial",
             guideSectionId: "bacterial"
         },
@@ -95,12 +95,12 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Any neonate with fever plus vesicles - or fever + sepsis-like symptoms - is treated as possible neonatal HSV until proven otherwise. IV acyclovir is started empirically along with a full sepsis workup (blood cultures, CSF, PCR). Delay leads to death or severe neurologic damage.",
-                a: "Observation is inappropriate given the severity of neonatal HSV.",
-                b: "Topical treatment is inadequate for disseminated or CNS disease.",
-                d: "Oral acyclovir is inadequate; IV is required for neonatal HSV."
+                correct: "Any neonate with fever plus vesicles - or fever + sepsis-like symptoms - is treated as possible neonatal herpes simplex virus (HSV) until proven otherwise. IV acyclovir is started empirically along with a full sepsis workup that includes blood cultures, cerebrospinal fluid (CSF) analysis, and polymerase chain reaction (PCR) testing. Delay leads to death or severe neurologic damage.",
+                a: "Observation is inappropriate given the severity of neonatal herpes simplex virus (HSV).",
+                b: "Topical treatment is inadequate for disseminated or central nervous system (CNS) disease.",
+                d: "Oral acyclovir is inadequate; IV is required for neonatal herpes simplex virus (HSV)."
             },
-            testTakingTip: "Neonate + fever + vesicles or sepsis-like = IV acyclovir NOW. Don't wait for PCR.",
+            testTakingTip: "Neonate + fever + vesicles or sepsis-like = IV acyclovir NOW. Don't wait for polymerase chain reaction (PCR) results.",
             guideSection: "Section 2 - Viral",
             guideSectionId: "viral"
         },
@@ -225,7 +225,7 @@ var pediatricSkinInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which antibiotic would be MOST appropriate for an outpatient with uncomplicated cellulitis and no MRSA risk factors?",
+            stem: "Which antibiotic would be MOST appropriate for an outpatient with uncomplicated cellulitis and no methicillin-resistant Staphylococcus aureus (MRSA) risk factors?",
             options: [
                 { id: "a", text: "Amoxicillin" },
                 { id: "b", text: "Cephalexin" },
@@ -234,12 +234,12 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cephalexin is first-line for outpatient treatment of uncomplicated cellulitis without MRSA risk factors - it covers Staph aureus (non-MRSA) and GAS, which cause most cellulitis. Clindamycin is an alternative for penicillin-allergic patients.",
+                correct: "Cephalexin is first-line for outpatient treatment of uncomplicated cellulitis without methicillin-resistant Staphylococcus aureus (MRSA) risk factors - it covers Staph aureus (non-MRSA) and group A Streptococcus (GAS), which cause most cellulitis. Clindamycin is an alternative for penicillin-allergic patients.",
                 a: "Amoxicillin doesn't reliably cover Staph aureus.",
-                c: "IV vancomycin is reserved for severe/systemic disease or MRSA.",
+                c: "IV vancomycin is reserved for severe/systemic disease or methicillin-resistant Staphylococcus aureus (MRSA).",
                 d: "Metronidazole covers anaerobes - not typical for skin infections."
             },
-            testTakingTip: "Uncomplicated cellulitis = cephalexin. MRSA cellulitis or abscess = clindamycin or Bactrim.",
+            testTakingTip: "Uncomplicated cellulitis = cephalexin. Methicillin-resistant Staphylococcus aureus (MRSA) cellulitis or abscess = clindamycin or Bactrim.",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
@@ -257,7 +257,7 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Herpetic gingivostomatitis (primary HSV-1 infection in toddlers) causes painful oral lesions, fever, and feeding/drinking refusal. Dehydration is the primary clinical concern. Cool/cold fluids, popsicles, soft diet, and sometimes IV fluids are key interventions. Acyclovir may be given in severe cases.",
+                correct: "Herpetic gingivostomatitis, primary herpes simplex virus type 1 (HSV-1) infection in toddlers, causes painful oral lesions, fever, and feeding/drinking refusal. Dehydration is the primary clinical concern. Cool/cold fluids, popsicles, soft diet, and sometimes IV fluids are key interventions. Acyclovir may be given in severe cases.",
                 a: "Pain is important but dehydration is life-threatening in toddlers.",
                 c: "Secondary infection can occur but isn't the primary immediate concern.",
                 d: "Scarring of oral mucosa isn't typical."
@@ -274,18 +274,18 @@ var pediatricSkinInfectionsQuizData = {
             stem: "Which diagnostic test is MOST useful to quickly confirm a suspected fungal infection like tinea corporis?",
             options: [
                 { id: "a", text: "Blood culture and sensitivity" },
-                { id: "b", text: "KOH (potassium hydroxide) prep" },
+                { id: "b", text: "Potassium hydroxide (KOH) prep" },
                 { id: "c", text: "Wood's lamp (ultraviolet) examination" },
                 { id: "d", text: "Complete blood count (CBC)" }
             ],
             correct: "b",
             rationale: {
-                correct: "A KOH prep of scales from the lesion's active edge shows fungal hyphae under the microscope within minutes - quick, simple, and highly useful for confirming dermatophyte infection. Fungal culture is more specific but takes 2\u20134 weeks.",
+                correct: "A potassium hydroxide (KOH) prep of scales from the lesion's active edge shows fungal hyphae under the microscope within minutes - quick, simple, and highly useful for confirming dermatophyte infection. Fungal culture is more specific but takes 2\u20134 weeks.",
                 a: "Blood cultures are for systemic disease, not localized skin fungal infection.",
-                c: "Wood's lamp has limited utility since the most common US tinea pathogen (T. tonsurans) doesn't fluoresce.",
-                d: "CBC is not diagnostic for skin fungus."
+                c: "Wood's lamp has limited utility since the most common United States tinea pathogen (T. tonsurans) doesn't fluoresce.",
+                d: "A complete blood count (CBC) is not diagnostic for skin fungus."
             },
-            testTakingTip: "Fungal skin infection = KOH prep. Fast and bedside-friendly.",
+            testTakingTip: "Fungal skin infection = potassium hydroxide (KOH) prep. Fast and bedside-friendly.",
             guideSection: "Section 4 - Diagnostics",
             guideSectionId: "diagnostics"
         },
@@ -303,7 +303,7 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Warts are caused by HPV and are generally benign, self-limiting conditions - up to two-thirds resolve spontaneously within 2 years. Treatment options include topical salicylic acid, cryotherapy, duct tape occlusion, or simply observation. Surgical removal is rarely needed.",
+                correct: "Warts are caused by human papillomavirus (HPV) and are generally benign, self-limiting conditions - up to two-thirds resolve spontaneously within 2 years. Treatment options include topical salicylic acid, cryotherapy, duct tape occlusion, or simply observation. Surgical removal is rarely needed.",
                 a: "Immediate surgery is not standard for most warts.",
                 c: "Benign warts don't usually indicate immune disease.",
                 d: "Antibiotics are ineffective - warts are viral."
@@ -317,7 +317,7 @@ var pediatricSkinInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "A nurse is educating parents about preventing recurrent MRSA infections at home. Which statement indicates correct understanding?",
+            stem: "A nurse is educating parents about preventing recurrent methicillin-resistant Staphylococcus aureus (MRSA) infections at home. Which statement indicates correct understanding?",
             options: [
                 { id: "a", text: "'We'll let the kids share bath towels to be efficient with laundry.'" },
                 { id: "b", text: "'The whole family should wash hands often, cover wounds, and not share razors or towels.'" },
@@ -326,12 +326,12 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Hand hygiene, covering wounds, and avoiding sharing of personal items (towels, razors, razors, athletic equipment) are cornerstones of MRSA prevention. Decolonization (chlorhexidine baths, nasal mupirocin) may be recommended for recurrent cases.",
-                a: "Sharing towels spreads MRSA.",
+                correct: "Hand hygiene, covering wounds, and avoiding sharing of personal items (towels, razors, athletic equipment) are cornerstones of methicillin-resistant Staphylococcus aureus (MRSA) prevention. Decolonization (chlorhexidine baths, nasal mupirocin) may be recommended for recurrent cases.",
+                a: "Sharing towels spreads methicillin-resistant Staphylococcus aureus (MRSA).",
                 c: "Self-medicating with antibiotics causes resistance and is unsafe.",
                 d: "Daily bleach cleaning is excessive and not evidence-based."
             },
-            testTakingTip: "MRSA prevention: hand hygiene, cover wounds, don't share personal items. Decolonization for recurrent.",
+            testTakingTip: "Methicillin-resistant Staphylococcus aureus (MRSA) prevention: hand hygiene, cover wounds, don't share personal items. Decolonization for recurrent.",
             guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         },

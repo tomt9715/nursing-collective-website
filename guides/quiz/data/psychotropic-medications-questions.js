@@ -214,7 +214,7 @@ var psychotropicMedicationsQuizData = {
             rationale: {
                 correct: "Tyramine accumulates in aged, fermented, cured and spoiled foods. Aged cheeses, cured meats, fermented vegetables and tap beer are classic sources, and they can precipitate a hypertensive crisis.",
                 b: "Fresh, unprocessed foods are low in tyramine and are not restricted.",
-                c: "Grapefruit affects other drugs. The MAOI restriction is tyramine, and it is far broader than one juice.",
+                c: "Grapefruit affects other drugs. The monoamine oxidase inhibitor (MAOI) restriction is tyramine, and it is far broader than one juice.",
                 d: "Taking the drug with food does not prevent a tyramine reaction."
             },
             testTakingTip: "Aged, fermented, cured or spoiled. Fresh food is generally fine.",
@@ -226,7 +226,7 @@ var psychotropicMedicationsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A patient has been taking fluoxetine and is being switched to an MAOI. How long should the washout period be?",
+            stem: "A patient has been taking fluoxetine and is being switched to a monoamine oxidase inhibitor (MAOI). How long should the washout period be?",
             options: [
                 { id: "a", text: "3 days" },
                 { id: "b", text: "1 week" },
@@ -235,7 +235,7 @@ var psychotropicMedicationsQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "Fluoxetine and its active metabolite have unusually long half-lives, so about 5 weeks is required before starting an MAOI. Starting sooner risks serotonin syndrome.",
+                correct: "Fluoxetine and its active metabolite have unusually long half-lives, so about 5 weeks is required before starting a monoamine oxidase inhibitor (MAOI). Starting sooner risks serotonin syndrome.",
                 a: "Three days leaves substantial drug and active metabolite in the body.",
                 b: "One week is far too short for fluoxetine specifically.",
                 c: "Two weeks is the usual washout for most other antidepressants, but fluoxetine is the exception."
@@ -467,7 +467,7 @@ var psychotropicMedicationsQuizData = {
             rationale: {
                 correct: "Fever with rigidity in a patient on an antipsychotic is neuroleptic malignant syndrome until proven otherwise. It is life threatening and it outranks everything else in this group.",
                 a: "A level of 0.9 is therapeutic, and a fine hand tremor is an expected effect rather than toxicity. A coarse tremor would be the concern.",
-                c: "Early nausea on an SSRI is common and usually settles within the first weeks.",
+                c: "Early nausea on a selective serotonin reuptake inhibitor (SSRI) is common and usually settles within the first weeks.",
                 d: "Weight gain on olanzapine matters and needs addressing, but it is not the immediate priority."
             },
             testTakingTip: "Fever plus rigidity on an antipsychotic outranks every other option.",

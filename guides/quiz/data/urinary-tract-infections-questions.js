@@ -17,7 +17,7 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "recall",
-            stem: "A 26-year-old woman reports 2 days of burning with urination, urinary frequency every hour, urgency, and suprapubic pressure. She is afebrile, has no back pain, and no CVA tenderness. Which diagnosis is most likely?",
+            stem: "A 26-year-old woman reports 2 days of burning with urination, urinary frequency every hour, urgency, and suprapubic pressure. She is afebrile, has no back pain, and no costovertebral angle (CVA) tenderness. Which diagnosis is most likely?",
             options: [
                 { id: "a", text: "Upper urinary tract infection (pyelonephritis)" },
                 { id: "b", text: "Lower urinary tract infection (cystitis)" },
@@ -26,12 +26,12 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Dysuria, frequency, urgency, and suprapubic pressure without fever, flank pain, or CVA tenderness is the classic lower UTI presentation.",
-                a: "Pyelonephritis adds fever, chills, flank pain, and CVA tenderness - none described here.",
+                correct: "Dysuria, frequency, urgency, and suprapubic pressure without fever, flank pain, or costovertebral angle (CVA) tenderness is the classic lower urinary tract infection (UTI) presentation.",
+                a: "Pyelonephritis adds fever, chills, flank pain, and costovertebral angle (CVA) tenderness - none described here.",
                 c: "Urolithiasis typically presents with severe colicky flank pain radiating to the groin, often with hematuria.",
                 d: "Urosepsis requires systemic signs (hypotension, tachycardia, altered mental status) - she has none."
             },
-            testTakingTip: "No fever + no flank pain + no CVA tenderness = lower tract. This is the exam distinction.",
+            testTakingTip: "No fever + no flank pain + no costovertebral angle (CVA) tenderness = lower tract. This is the exam distinction.",
             guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
@@ -49,12 +49,12 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "CVA tenderness, fever, chills, flank pain, nausea, and malaise are the classic upper-tract findings in pyelonephritis.",
-                a: "Suprapubic tenderness alone points to a lower UTI.",
+                correct: "Costovertebral angle (CVA) tenderness, fever, chills, flank pain, nausea, and malaise are the classic upper-tract findings in pyelonephritis.",
+                a: "Suprapubic tenderness alone points to a lower urinary tract infection (UTI).",
                 c: "Painless hematuria is more concerning for malignancy or glomerular disease, not pyelonephritis.",
-                d: "Nocturia without systemic signs would point to a lower UTI or BPH, not pyelonephritis."
+                d: "Nocturia without systemic signs would point to a lower urinary tract infection (UTI) or benign prostatic hyperplasia (BPH), not pyelonephritis."
             },
-            testTakingTip: "Fever + flank pain + CVA tenderness = upper UTI. Memorize this triad.",
+            testTakingTip: "Fever + flank pain + costovertebral angle (CVA) tenderness = upper urinary tract infection (UTI). Memorize this triad.",
             guideSection: "Section 4 - Pyelonephritis",
             guideSectionId: "pyelonephritis"
         },
@@ -67,17 +67,17 @@ var urinaryTractInfectionsQuizData = {
             options: [
                 { id: "a", text: "Positive nitrites" },
                 { id: "b", text: "Positive leukocyte esterase" },
-                { id: "c", text: "WBC casts" },
+                { id: "c", text: "White blood cell (WBC) casts" },
                 { id: "d", text: "Trace glucose" }
             ],
             correct: "c",
             rationale: {
-                correct: "WBC (leukocyte) casts form in renal tubules and specifically suggest upper-tract infection (pyelonephritis).",
-                a: "Nitrites suggest gram-negative bacteriuria but occur in both lower and upper UTIs.",
-                b: "Leukocyte esterase indicates WBCs in urine but doesn't localize upper vs lower tract.",
+                correct: "White blood cell (WBC), or leukocyte, casts form in renal tubules and specifically suggest upper-tract infection (pyelonephritis).",
+                a: "Nitrites suggest gram-negative bacteriuria but occur in both lower and upper urinary tract infections (UTIs).",
+                b: "Leukocyte esterase indicates white blood cells (WBCs) in urine but doesn't localize upper vs lower tract.",
                 d: "Glucose is unrelated to infection localization."
             },
-            testTakingTip: "Casts form in tubules. WBC casts = kidney-level inflammation.",
+            testTakingTip: "Casts form in tubules. White blood cell (WBC) casts = kidney-level inflammation.",
             guideSection: "Section 5 - Lower vs Upper UTI",
             guideSectionId: "compare"
         },
@@ -118,7 +118,7 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "UA and urine culture go in two separate containers. Culture should be obtained before antibiotics whenever possible.",
+                correct: "Urinalysis (UA) and urine culture go in two separate containers. Culture should be obtained before antibiotics whenever possible.",
                 a: "Same-container collection is not standard practice.",
                 c: "Cultures are ideally collected before antibiotics so the organism can be identified.",
                 d: "Catheter specimens should be collected from the sampling port, never from the drainage bag (contaminated)."
@@ -132,21 +132,21 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "An 82-year-old admitted for pneumonia is now drowsier than at admission, with new incontinence and anorexia. VS are stable, no cough worsening. Which order would the nurse anticipate first?",
+            stem: "An 82-year-old admitted for pneumonia is now drowsier than at admission, with new incontinence and anorexia. Vital signs are stable, no cough worsening. Which order would the nurse anticipate first?",
             options: [
-                { id: "a", text: "CT head" },
+                { id: "a", text: "Computed tomography (CT) of the head" },
                 { id: "b", text: "Psychiatric consult for new-onset dementia" },
                 { id: "c", text: "Urinalysis and urine culture" },
                 { id: "d", text: "Electroencephalogram" }
             ],
             correct: "c",
             rationale: {
-                correct: "New confusion, lethargy, and incontinence in an older adult are classic atypical UTI presentations. A UA + culture screens for this quickly and cheaply.",
-                a: "CT head is appropriate if UA is negative or focal neuro signs appear; UTI is the higher-yield first step.",
+                correct: "New confusion, lethargy, and incontinence in an older adult are classic atypical urinary tract infection (UTI) presentations. A urinalysis (UA) + culture screens for this quickly and cheaply.",
+                a: "Computed tomography (CT) of the head is appropriate if the urinalysis (UA) is negative or focal neuro signs appear; checking for urinary tract infection (UTI) is the higher-yield first step.",
                 b: "Acute cognitive changes are not diagnosed as new dementia without ruling out reversible causes first.",
-                d: "EEG is reserved for suspected seizures."
+                d: "Electroencephalogram (EEG) is reserved for suspected seizures."
             },
-            testTakingTip: "In older adults: new confusion, falls, or incontinence = rule out UTI first.",
+            testTakingTip: "In older adults: new confusion, falls, or incontinence = rule out urinary tract infection (UTI) first.",
             guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
@@ -155,24 +155,24 @@ var urinaryTractInfectionsQuizData = {
             type: "sata",
             subtype: "select-all",
             difficulty: "application",
-            stem: "Which patients are at increased risk for lower UTI? Select all that apply.",
+            stem: "Which patients are at increased risk for lower urinary tract infection (UTI)? Select all that apply.",
             options: [
                 { id: "a", text: "A 60-year-old with type 2 diabetes and neuropathy" },
                 { id: "b", text: "A 28-year-old in her second pregnancy" },
-                { id: "c", text: "A 70-year-old with BPH and post-void residual of 180 mL" },
+                { id: "c", text: "A 70-year-old with benign prostatic hyperplasia (BPH) and post-void residual of 180 mL" },
                 { id: "d", text: "A 35-year-old marathon runner with no medical history" },
-                { id: "e", text: "A 52-year-old with MS and a chronic indwelling catheter" }
+                { id: "e", text: "A 52-year-old with multiple sclerosis (MS) and a chronic indwelling catheter" }
             ],
             correct: ["a", "b", "c", "e"],
             rationale: {
-                correct: "Diabetes, pregnancy, obstruction/incomplete emptying (BPH), neurogenic bladder, and indwelling catheters are all major UTI risk factors. A healthy adult without risk modifiers (D) is not at elevated risk.",
+                correct: "Diabetes, pregnancy, obstruction or incomplete emptying from benign prostatic hyperplasia (BPH), neurogenic bladder, and indwelling catheters are all major urinary tract infection (UTI) risk factors. A healthy adult without risk modifiers (D) is not at elevated risk.",
                 a: "Diabetes + neuropathy = high glucose in urine + incomplete emptying.",
-                b: "Pregnancy changes urinary tract tone and increases UTI and pyelonephritis risk.",
-                c: "BPH causes retention and stasis.",
+                b: "Pregnancy changes urinary tract tone and increases urinary tract infection (UTI) and pyelonephritis risk.",
+                c: "Benign prostatic hyperplasia (BPH) causes retention and stasis.",
                 d: "Healthy without modifiers - baseline risk only.",
                 e: "Neurogenic bladder + catheter = classic high-risk combination."
             },
-            testTakingTip: "Anything that causes stasis, sugar in urine, or bypasses defenses = UTI risk.",
+            testTakingTip: "Anything that causes stasis, sugar in urine, or bypasses defenses = urinary tract infection (UTI) risk.",
             guideSection: "Section 2 - How Infection Ascends",
             guideSectionId: "pathway"
         },
@@ -181,7 +181,7 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The nurse is teaching a woman about preventing recurrent UTIs. Which statement indicates the teaching was effective?",
+            stem: "The nurse is teaching a woman about preventing recurrent urinary tract infections (UTIs). Which statement indicates the teaching was effective?",
             options: [
                 { id: "a", text: "\"I'll limit my fluids to reduce how often I have to go.\"" },
                 { id: "b", text: "\"I'll hold my urine during the day so I can sleep through the night.\"" },
@@ -193,7 +193,7 @@ var urinaryTractInfectionsQuizData = {
                 correct: "Wiping front to back prevents fecal bacteria from reaching the urethra; voiding after intercourse flushes bacteria introduced during sex.",
                 a: "Fluid restriction concentrates urine and promotes bacterial growth - opposite of what's needed.",
                 b: "Holding urine allows bacteria to multiply in a stagnant bladder.",
-                d: "Bubble baths irritate the urethra and are associated with UTIs."
+                d: "Bubble baths irritate the urethra and are associated with urinary tract infections (UTIs)."
             },
             testTakingTip: "Hydrate, void regularly (q2–3h), void after sex, wipe front to back, skip bubble baths.",
             guideSection: "Section 8 - Prevention & Education",
@@ -208,12 +208,12 @@ var urinaryTractInfectionsQuizData = {
             options: [
                 { id: "a", text: "Temperature 38.2°C (100.8°F) and mild flank pain" },
                 { id: "b", text: "BP 82/48, HR 124, new confusion, urine output 15 mL/hr" },
-                { id: "c", text: "WBC 12,000/mm³ with bacteriuria on urinalysis" },
+                { id: "c", text: "White blood cell count 12,000/mm³ with bacteriuria on urinalysis" },
                 { id: "d", text: "Burning with urination and cloudy, foul-smelling urine" }
             ],
             correct: "b",
             rationale: {
-                correct: "Hypotension, tachycardia, altered mental status, and low urine output (<0.5 mL/kg/hr) are SIRS/sepsis criteria and warrant emergent sepsis bundle activation.",
+                correct: "Hypotension, tachycardia, altered mental status, and low urine output (<0.5 mL/kg/hr) are systemic inflammatory response syndrome (SIRS) and sepsis criteria and warrant emergent sepsis bundle activation.",
                 a: "Low-grade fever and flank pain are expected in pyelonephritis without indicating systemic decompensation.",
                 c: "Mild leukocytosis and bacteriuria reflect the underlying infection, not progression to sepsis.",
                 d: "These are lower-tract symptoms and do not indicate sepsis."
@@ -227,7 +227,7 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "Which action is the single most effective way to prevent catheter-associated UTI (CAUTI)?",
+            stem: "Which action is the single most effective way to prevent catheter-associated urinary tract infection (CAUTI)?",
             options: [
                 { id: "a", text: "Cleanse the perineum with chlorhexidine daily" },
                 { id: "b", text: "Change the drainage bag every shift" },
@@ -236,12 +236,12 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Every day a catheter is in place raises infection risk. Daily necessity review and early removal is the most effective CAUTI prevention.",
+                correct: "Every day a catheter is in place raises infection risk. Daily necessity review and early removal is the most effective catheter-associated urinary tract infection (CAUTI) prevention.",
                 a: "Daily soap-and-water peri-care is sufficient; special antiseptics are not required.",
                 b: "Routine bag changes are not recommended; keep the system closed.",
                 d: "Routine catheter irrigation is not indicated and introduces infection risk."
             },
-            testTakingTip: "Best CAUTI prevention = don't have a catheter. Second best = take it out early.",
+            testTakingTip: "Best catheter-associated urinary tract infection (CAUTI) prevention = don't have a catheter. Second best = take it out early.",
             guideSection: "Section 6 - CAUTI",
             guideSectionId: "cauti"
         },
@@ -273,7 +273,7 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient taking phenazopyridine (Pyridium) for UTI discomfort calls concerned that their urine is bright orange. Which is the best nursing response?",
+            stem: "A patient taking phenazopyridine (Pyridium) for urinary tract infection (UTI) discomfort calls concerned that their urine is bright orange. Which is the best nursing response?",
             options: [
                 { id: "a", text: "\"Stop the medication immediately and come in.\"" },
                 { id: "b", text: "\"This is an expected harmless effect of the medication.\"" },
@@ -305,8 +305,8 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Completing the full course prevents recurrence and antibiotic resistance - a cornerstone teaching point for UTI.",
-                a: "Stopping early is the single most common cause of recurrent UTI and resistance.",
+                correct: "Completing the full course prevents recurrence and antibiotic resistance - a cornerstone teaching point for urinary tract infection (UTI).",
+                a: "Stopping early is the single most common cause of recurrent urinary tract infection (UTI) and resistance.",
                 c: "Patients should drink 8–10 glasses of water daily; dilution is not a concern.",
                 d: "Voiding every 2–3 hours is recommended, not every 6."
             },
@@ -343,7 +343,7 @@ var urinaryTractInfectionsQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The nurse is caring for a patient with a newly placed indwelling urinary catheter. Which action BEST prevents CAUTI?",
+            stem: "The nurse is caring for a patient with a newly placed indwelling urinary catheter. Which action BEST prevents catheter-associated urinary tract infection (CAUTI)?",
             options: [
                 { id: "a", text: "Keep the drainage bag on the bed next to the patient" },
                 { id: "b", text: "Disconnect the catheter from the bag nightly to irrigate" },
@@ -375,7 +375,7 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Hypotension, tachycardia, tachypnea, and altered mental status meet SIRS/sepsis criteria - likely urosepsis. See this patient first.",
+                correct: "Hypotension, tachycardia, tachypnea, and altered mental status meet systemic inflammatory response syndrome (SIRS) and sepsis criteria - likely urosepsis. See this patient first.",
                 a: "Resolving cystitis on treatment is stable.",
                 c: "Orange urine from Pyridium is expected and non-urgent.",
                 d: "Educational question, non-urgent."
@@ -398,12 +398,12 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Serum creatinine most directly reflects GFR because it is produced at a relatively constant rate and excreted almost entirely by glomerular filtration.",
-                a: "BUN is useful but is affected by hydration, protein intake, and GI bleeding - less specific than creatinine.",
+                correct: "Serum creatinine most directly reflects glomerular filtration rate (GFR) because it is produced at a relatively constant rate and excreted almost entirely by glomerular filtration.",
+                a: "Blood urea nitrogen (BUN) is useful but is affected by hydration, protein intake, and gastrointestinal bleeding - less specific than creatinine.",
                 c: "Sodium reflects fluid/volume status rather than kidney function directly.",
-                d: "Specific gravity reflects urine concentration, not GFR."
+                d: "Specific gravity reflects urine concentration, not glomerular filtration rate (GFR)."
             },
-            testTakingTip: "Creatinine = most specific for kidney function. BUN is sensitive but non-specific.",
+            testTakingTip: "Creatinine = most specific for kidney function. Blood urea nitrogen (BUN) is sensitive but non-specific.",
             guideSection: "Section 1 - Kidney & Urinary Assessment",
             guideSectionId: "assessment"
         },

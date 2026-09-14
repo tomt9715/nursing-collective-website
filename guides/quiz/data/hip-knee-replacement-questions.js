@@ -49,17 +49,17 @@ var hipKneeReplacementQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The findings - unilateral swelling (3 cm circumference difference), warmth, tenderness, and a 'heavy/aching' sensation in the operative leg on post-op day 2 - are classic signs of deep vein thrombosis (DVT). Joint replacement is one of the highest-risk procedures for DVT (risk without prophylaxis: 40-60% for TKR). The nurse should immediately notify the provider for evaluation. Venous duplex ultrasound is the gold standard diagnostic test for DVT.",
-                a: "While some post-operative swelling is expected, a 3 cm circumference difference with warmth and tenderness is NOT normal. Dismissing this as expected swelling could delay diagnosis and treatment of a potentially fatal DVT → pulmonary embolism.",
-                c: "While DVT prophylaxis (enoxaparin) is standard post-joint replacement, administering the scheduled dose does NOT address the current suspected DVT. The patient likely needs therapeutic-dose anticoagulation, not prophylactic dosing, if DVT is confirmed.",
-                d: "If DVT is present, ambulation before anticoagulation could dislodge the clot and cause a pulmonary embolism. The patient should be placed on bed rest until DVT is ruled out or therapeutic anticoagulation is initiated."
+                correct: "The findings - unilateral swelling (3 cm circumference difference), warmth, tenderness, and a 'heavy/aching' sensation in the operative leg on post-op day 2 - are classic signs of deep vein thrombosis (DVT). Joint replacement is one of the highest-risk procedures for DVT; without prophylaxis the risk is 40-60% after total knee replacement (TKR). The nurse should immediately notify the provider for evaluation. Venous duplex ultrasound is the gold standard diagnostic test for DVT.",
+                a: "While some post-operative swelling is expected, a 3 cm circumference difference with warmth and tenderness is NOT normal. Dismissing this as expected swelling could delay diagnosis and treatment of a potentially fatal deep vein thrombosis (DVT) → pulmonary embolism.",
+                c: "While deep vein thrombosis (DVT) prophylaxis (enoxaparin) is standard post-joint replacement, administering the scheduled dose does NOT address the current suspected DVT. The patient likely needs therapeutic-dose anticoagulation, not prophylactic dosing, if DVT is confirmed.",
+                d: "If deep vein thrombosis (DVT) is present, ambulation before anticoagulation could dislodge the clot and cause a pulmonary embolism. The patient should be placed on bed rest until DVT is ruled out or therapeutic anticoagulation is initiated."
             },
             labValues: [
                 { name: "D-dimer", normal: "<500 ng/mL (elevated in DVT but also post-surgery - low specificity)" },
                 { name: "aPTT", normal: "25–35 seconds (for heparin monitoring)" },
                 { name: "Anti-Xa Level", normal: "0.5–1.0 IU/mL (for enoxaparin monitoring)" }
             ],
-            testTakingTip: "DVT after joint replacement: swelling > 3 cm difference, warmth, tenderness, heavy/aching pain. Do NOT ambulate if DVT suspected - bed rest until ruled out. D-dimer is often elevated post-surgery anyway (poor specificity), so duplex ultrasound is the definitive test. Homan's sign is unreliable and no longer recommended.",
+            testTakingTip: "Deep vein thrombosis (DVT) after joint replacement: swelling > 3 cm difference, warmth, tenderness, heavy/aching pain. Do NOT ambulate if DVT suspected - bed rest until ruled out. D-dimer is often elevated post-surgery anyway (poor specificity), so duplex ultrasound is the definitive test. Homan's sign is unreliable and no longer recommended.",
             guideSection: "Section 7 - DVT Prevention",
             guideSectionId: "dvt-prevention"
         },
@@ -128,14 +128,14 @@ var hipKneeReplacementQuizData = {
             ],
             correct: { a: "RN Responsibility", b: "Can Delegate to UAP", c: "RN Responsibility", d: "Can Delegate to UAP", e: "RN Responsibility" },
             rationale: {
-                correct: "Assessment, evaluation, and clinical judgment are RN responsibilities and cannot be delegated. Assistance with ADLs (meals, hygiene) can be delegated to UAPs who have been trained in hip precautions.",
+                correct: "Assessment, evaluation, and clinical judgment are RN responsibilities and cannot be delegated. Assistance with activities of daily living (ADLs), such as meals and hygiene, can be delegated to unlicensed assistive personnel (UAPs) who have been trained in hip precautions.",
                 a: "RN RESPONSIBILITY - Neurovascular assessment requires clinical judgment to interpret findings (pulse quality, capillary refill, sensation changes) and determine if they indicate complications. Assessment is a step of the nursing process that cannot be delegated.",
-                b: "CAN DELEGATE - Assisting with meals is a routine ADL that UAPs can perform. The RN should ensure the UAP understands positioning requirements (elevated seat, abduction pillow, no leaning forward past 90°) before delegating.",
-                c: "RN RESPONSIBILITY - Wound assessment requires clinical judgment to determine if drainage is expected (serosanguineous → concerning) or indicates infection (purulent, foul-smelling). The UAP can report what they SEE but cannot assess or interpret.",
-                d: "CAN DELEGATE - Hygiene assistance is a routine ADL appropriate for UAP delegation. The RN must ensure the UAP is trained in hip precautions (raised toilet seat, no bending past 90°, abduction maintained) before delegating.",
+                b: "CAN DELEGATE - Assisting with meals is a routine activity of daily living (ADL) that unlicensed assistive personnel (UAPs) can perform. The RN should ensure the UAP understands positioning requirements (elevated seat, abduction pillow, no leaning forward past 90°) before delegating.",
+                c: "RN RESPONSIBILITY - Wound assessment requires clinical judgment to determine if drainage is expected (serosanguineous, becoming serous) or indicates infection (purulent, foul-smelling). The unlicensed assistive personnel (UAP) can report what they SEE but cannot assess or interpret.",
+                d: "CAN DELEGATE - Hygiene assistance is a routine activity of daily living (ADL) appropriate for unlicensed assistive personnel (UAP) delegation. The RN must ensure the UAP is trained in hip precautions (raised toilet seat, no bending past 90°, abduction maintained) before delegating.",
                 e: "RN RESPONSIBILITY - Evaluating medication effectiveness requires clinical judgment (reassessing pain level, observing for adverse effects, determining if the regimen is adequate). Evaluation is a nursing process step that cannot be delegated."
             },
-            testTakingTip: "Delegation framework: RN retains Assessment, Teaching, Evaluation, and Unstable patients. UAP can perform routine ADLs, vital signs on stable patients, and assist with mobility - but ONLY after RN has assessed and provided specific instructions. The key question: 'Does this require clinical judgment?' If yes = RN only.",
+            testTakingTip: "Delegation framework: RN retains Assessment, Teaching, Evaluation, and Unstable patients. Unlicensed assistive personnel (UAP) can perform routine activities of daily living (ADLs), vital signs on stable patients, and assist with mobility - but ONLY after RN has assessed and provided specific instructions. The key question: 'Does this require clinical judgment?' If yes = RN only.",
             guideSection: "Section 6 - Postoperative Care",
             guideSectionId: "postop"
         },
@@ -170,19 +170,19 @@ var hipKneeReplacementQuizData = {
             stem: "A patient is being discharged home 3 days after a total hip replacement (posterior approach). Place the nurse's discharge teaching priorities in the correct sequence.",
             options: [
                 { id: "a", text: "Review hip precautions: no flexion >90°, no crossing legs, no internal rotation - demonstrate use of adaptive equipment (reacher, sock aid, raised toilet seat)" },
-                { id: "b", text: "Teach signs of complications requiring immediate medical attention: sudden leg pain/swelling (DVT), chest pain/dyspnea (PE), fever >101.5°F/wound drainage (infection), sudden severe hip pain with leg shortening (dislocation)" },
+                { id: "b", text: "Teach signs of complications requiring immediate medical attention: sudden leg pain/swelling (deep vein thrombosis), chest pain/dyspnea (pulmonary embolism), fever >101.5°F/wound drainage (infection), sudden severe hip pain with leg shortening (dislocation)" },
                 { id: "c", text: "Review medication regimen: anticoagulant therapy (duration, administration, bleeding precautions), pain management schedule, and whether the surgeon wants antibiotics before dental work" },
                 { id: "d", text: "Confirm home safety modifications: remove throw rugs, install grab bars, ensure adequate lighting, arrange ground-floor living if possible" }
             ],
             correct: ["a", "b", "c", "d"],
             rationale: {
-                correct: "Discharge teaching prioritizes the most critical safety information first: hip precautions (prevent dislocation), complication recognition (prevent delayed treatment), medication management (prevent DVT/bleeding), and home safety (prevent falls).",
+                correct: "Discharge teaching prioritizes the most critical safety information first: hip precautions (prevent dislocation), complication recognition (prevent delayed treatment), medication management (prevent clots and bleeding), and home safety (prevent falls).",
                 a: "FIRST - Hip precautions are the highest priority because hip dislocation is the most common early complication of total hip replacement. Patients must understand and demonstrate proper positioning, adaptive equipment use, and movement restrictions before going home.",
-                b: "SECOND - Patients must know the warning signs of the most serious complications (DVT, PE, infection, dislocation) and when to seek immediate medical attention. Delayed recognition of these complications can be life-threatening.",
+                b: "SECOND - Patients must know the warning signs of the most serious complications, such as deep vein thrombosis (DVT), pulmonary embolism (PE), infection, and dislocation, and when to seek immediate medical attention. Delayed recognition of these complications can be life-threatening.",
                 c: "THIRD - Medication teaching ensures adherence to anticoagulation therapy (typically 2-6 weeks post-op), proper pain management, and whether the surgeon wants antibiotics before dental work, which is decided by the patient's infection risk.",
                 d: "FOURTH - Home safety assessment and modifications reduce fall risk. Falls are a major threat after joint replacement because they can dislocate the prosthesis or cause periprosthetic fracture. Arrange for home health or physical therapy evaluation if needed."
             },
-            testTakingTip: "Discharge teaching priority order: Safety (precautions) → Complications (what to watch for) → Medications (what to take) → Environment (home modifications). Always teach the patient what can KILL them or cause the MOST HARM first. Dislocation and DVT/PE are the big threats early post-op.",
+            testTakingTip: "Discharge teaching priority order: Safety (precautions) → Complications (what to watch for) → Medications (what to take) → Environment (home modifications). Always teach the patient what can KILL them or cause the MOST HARM first. Dislocation and deep vein thrombosis (DVT) or pulmonary embolism (PE) are the big threats early post-op.",
             guideSection: "Section 9 - Complications",
             guideSectionId: "complications"
         },
@@ -193,22 +193,22 @@ var hipKneeReplacementQuizData = {
             difficulty: "knowledge",
             stem: "A patient had a total knee replacement this morning. Place the expected post-operative mobility milestones in the correct chronological sequence from day of surgery through discharge.",
             options: [
-                { id: "a", text: "Ankle pump exercises and quad sets in bed with CPM machine initiated at 30-40 degrees (post-op day 0)" },
+                { id: "a", text: "Ankle pump exercises and quad sets in bed with continuous passive motion (CPM) machine initiated at 30-40 degrees (post-op day 0)" },
                 { id: "b", text: "Dangle at bedside, transfer to chair with assistance, begin weight-bearing as tolerated with walker (post-op day 1)" },
-                { id: "c", text: "Ambulate in hallway with walker, PT works on active ROM exercises - goal knee flexion 70-80 degrees (post-op day 1-2)" },
-                { id: "d", text: "Stair training with PT (up with good leg, down with operative leg), independent transfers, CPM goal 90+ degrees (post-op day 2-3)" },
-                { id: "e", text: "Demonstrate independent ambulation with assistive device, meet discharge criteria: knee flexion ≥90°, independent ADLs, pain controlled on oral meds (post-op day 3-4)" }
+                { id: "c", text: "Ambulate in hallway with walker, physical therapy (PT) works on active range of motion (ROM) exercises - goal knee flexion 70-80 degrees (post-op day 1-2)" },
+                { id: "d", text: "Stair training with physical therapy (PT), up with good leg and down with operative leg, independent transfers, continuous passive motion (CPM) goal 90+ degrees (post-op day 2-3)" },
+                { id: "e", text: "Demonstrate independent ambulation with assistive device, meet discharge criteria: knee flexion ≥90°, independent activities of daily living (ADLs), pain controlled on oral meds (post-op day 3-4)" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Post-TKR mobility follows a progressive sequence: immediate bed exercises → sitting/standing → hallway ambulation → stairs/independence → discharge readiness. Each milestone builds on the previous one.",
-                a: "FIRST (Day 0) - On the day of surgery, the patient begins ankle pumps (DVT prevention) and isometric quadriceps sets (muscle activation) in bed. CPM is initiated at a low arc (30-40°) to begin gentle passive ROM and prevent joint adhesions.",
-                b: "SECOND (Day 1) - The patient progresses to sitting at the bedside (dangling), then transferring to a chair with nursing assistance. Weight-bearing as tolerated (WBAT) is initiated with a walker, which is the standard for cemented TKR prostheses.",
-                c: "THIRD (Day 1-2) - Once the patient can transfer safely, hallway ambulation with a walker begins. Physical therapy initiates active ROM exercises. The initial knee flexion goal is 70-80 degrees, building toward the discharge goal of 90+.",
-                d: "FOURTH (Day 2-3) - Stair training is critical for safe discharge since most patients have stairs at home. The rule: 'up with the good, down with the bad' (good leg leads going up, operative leg leads going down). Independent transfers demonstrate functional recovery. CPM continues advancing toward 90+ degrees.",
-                e: "FIFTH (Day 3-4) - Discharge criteria include: knee flexion ≥90° (functional minimum for daily activities), independent ambulation with assistive device, ability to perform ADLs independently, and pain controlled on oral medications. Home PT referral is arranged."
+                correct: "Mobility after total knee replacement (TKR) follows a progressive sequence: immediate bed exercises → sitting/standing → hallway ambulation → stairs/independence → discharge readiness. Each milestone builds on the previous one.",
+                a: "FIRST (Day 0) - On the day of surgery, the patient begins ankle pumps to prevent deep vein thrombosis (DVT) and isometric quadriceps sets (muscle activation) in bed. Continuous passive motion (CPM) is initiated at a low arc (30-40°) to begin gentle passive range of motion (ROM) and prevent joint adhesions.",
+                b: "SECOND (Day 1) - The patient progresses to sitting at the bedside (dangling), then transferring to a chair with nursing assistance. Weight-bearing as tolerated (WBAT) is initiated with a walker, which is the standard for cemented total knee replacement (TKR) prostheses.",
+                c: "THIRD (Day 1-2) - Once the patient can transfer safely, hallway ambulation with a walker begins. Physical therapy initiates active range of motion (ROM) exercises. The initial knee flexion goal is 70-80 degrees, building toward the discharge goal of 90+.",
+                d: "FOURTH (Day 2-3) - Stair training is critical for safe discharge since most patients have stairs at home. The rule: 'up with the good, down with the bad' (good leg leads going up, operative leg leads going down). Independent transfers demonstrate functional recovery. Continuous passive motion (CPM) continues advancing toward 90+ degrees.",
+                e: "FIFTH (Day 3-4) - Discharge criteria include: knee flexion ≥90° (functional minimum for daily activities), independent ambulation with assistive device, ability to perform activities of daily living (ADLs) independently, and pain controlled on oral medications. Home physical therapy (PT) referral is arranged."
             },
-            testTakingTip: "TKR mobility milestones: Day 0 = bed exercises + CPM. Day 1 = dangle + chair + walk. Day 2 = hallway + stairs. Day 3-4 = discharge if criteria met. Key goals: knee flexion ≥90° at discharge (needed to climb stairs, get in/out of car). Stair rule: 'good up, bad down.' CPM starts at 30-40° and progresses - it does NOT replace PT.",
+            testTakingTip: "Total knee replacement (TKR) mobility milestones: Day 0 = bed exercises + continuous passive motion (CPM). Day 1 = dangle + chair + walk. Day 2 = hallway + stairs. Day 3-4 = discharge if criteria met. Key goals: knee flexion ≥90° at discharge (needed to climb stairs, get in/out of car). Stair rule: 'good up, bad down.' CPM starts at 30-40° and progresses - it does NOT replace physical therapy (PT).",
             guideSection: "Section 8 - Mobility",
             guideSectionId: "mobility"
         },
@@ -248,17 +248,17 @@ var hipKneeReplacementQuizData = {
             options: [
                 { id: "a", text: "Elevate the head of bed, apply high-flow oxygen, and call a rapid response" },
                 { id: "b", text: "Administer a dose of IV heparin per the anticoagulation protocol" },
-                { id: "c", text: "Obtain a stat CT pulmonary angiography (CTPA)" },
+                { id: "c", text: "Obtain a stat computed tomography pulmonary angiography (CTPA)" },
                 { id: "d", text: "Apply sequential compression devices to both legs" }
             ],
             correct: "a",
             rationale: {
-                correct: "This patient is presenting with classic signs of pulmonary embolism (PE) - sudden dyspnea, pleuritic chest pain, tachycardia, hypoxemia, anxiety, and diaphoresis - on post-op day 2 after a high-risk surgery. The FIRST actions are: (1) Elevate the HOB to improve respiratory effort, (2) Apply high-flow O2 to address the hypoxemia (SpO2 87%), and (3) Call a rapid response/code for immediate provider evaluation. These are simultaneous nursing actions that address the ABCs.",
-                b: "Anticoagulation will likely be initiated once PE is confirmed, but the nurse should NOT independently administer IV heparin without a provider order. The first priority is oxygenation and rapid response activation - the provider will order definitive treatment.",
-                c: "CT pulmonary angiography is the gold standard diagnostic test for PE, but diagnostics never come before stabilization. The patient needs oxygen and emergency evaluation first.",
-                d: "SCDs are a DVT PREVENTION measure, not a PE treatment. They are useless once embolization has already occurred. Additionally, if the patient has an existing DVT, leg compression could theoretically dislodge additional clot material."
+                correct: "This patient is presenting with classic signs of pulmonary embolism (PE) - sudden dyspnea, pleuritic chest pain, tachycardia, hypoxemia, anxiety, and diaphoresis - on post-op day 2 after a high-risk surgery. The FIRST actions are: (1) Elevate the head of bed (HOB) to improve respiratory effort, (2) Apply high-flow O2 to address the hypoxemia (SpO2 87%), and (3) Call a rapid response/code for immediate provider evaluation. These are simultaneous nursing actions that address the airway, breathing, circulation (ABCs).",
+                b: "Anticoagulation will likely be initiated once pulmonary embolism (PE) is confirmed, but the nurse should NOT independently administer IV heparin without a provider order. The first priority is oxygenation and rapid response activation - the provider will order definitive treatment.",
+                c: "Computed tomography (CT) pulmonary angiography is the gold standard diagnostic test for pulmonary embolism (PE), but diagnostics never come before stabilization. The patient needs oxygen and emergency evaluation first.",
+                d: "Sequential compression devices (SCDs) are a deep vein thrombosis (DVT) PREVENTION measure, not a pulmonary embolism (PE) treatment. They are useless once embolization has already occurred. Additionally, if the patient has an existing DVT, leg compression could theoretically dislodge additional clot material."
             },
-            testTakingTip: "PE after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + HOB elevated + rapid response. The question will try to tempt you with heparin or CTPA - but always stabilize (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
+            testTakingTip: "Pulmonary embolism (PE) after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + head of bed (HOB) elevated + rapid response. The question will try to tempt you with heparin or computed tomography pulmonary angiography (CTPA) - but always stabilize airway, breathing, circulation (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
             guideSection: "Section 7 - DVT Prevention",
             guideSectionId: "dvt-prevention"
         },

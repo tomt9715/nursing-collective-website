@@ -17,7 +17,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A 10-month-old is brought to the clinic with a 3-day fever of 39.2\u00b0C, irritability, and decreased appetite. Physical exam is otherwise unremarkable - no URI, no ear findings, no rash. What is the nurse's priority action?",
+            stem: "A 10-month-old is brought to the clinic with a 3-day fever of 39.2\u00b0C, irritability, and decreased appetite. Physical exam is otherwise unremarkable - no upper respiratory infection (URI), no ear findings, no rash. What is the nurse's priority action?",
             options: [
                 { id: "a", text: "Reassure the parent and send home with acetaminophen" },
                 { id: "b", text: "Obtain a urine sample for urinalysis and culture" },
@@ -26,12 +26,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A febrile infant under 24 months without an obvious source requires a UA and urine culture. UTI is the most common serious bacterial infection in this age group, and missed UTIs progress to pyelonephritis and renal scarring. Infants typically show only fever - no dysuria, no frequency.",
-                a: "Sending home without evaluation risks missing a UTI.",
+                correct: "A febrile infant under 24 months without an obvious source requires a urinalysis (UA) and urine culture. Urinary tract infection (UTI) is the most common serious bacterial infection in this age group, and missed UTIs progress to pyelonephritis and renal scarring. Infants typically show only fever - no dysuria, no frequency.",
+                a: "Sending home without evaluation risks missing a urinary tract infection (UTI).",
                 c: "Empiric antibiotics without cultures eliminates diagnostic yield.",
                 d: "Chest X-ray would be ordered only if respiratory symptoms present."
             },
-            testTakingTip: "Febrile infant w/o source = UA + culture. Don't skip the workup.",
+            testTakingTip: "Febrile infant w/o source = urinalysis (UA) + culture. Don't skip the workup.",
             guideSection: "Section 1 - Pediatric UTI",
             guideSectionId: "uti"
         },
@@ -40,7 +40,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which organism causes approximately 80% of pediatric UTIs?",
+            stem: "Which organism causes approximately 80% of pediatric urinary tract infections (UTIs)?",
             options: [
                 { id: "a", text: "Staphylococcus aureus" },
                 { id: "b", text: "Pseudomonas aeruginosa" },
@@ -49,12 +49,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "E. coli is the predominant cause of pediatric UTI, accounting for ~80% of cases. It originates from the bowel flora and ascends the urethra, especially in girls.",
-                a: "Staph aureus UTIs are rare and usually associated with hematogenous spread or structural abnormalities.",
-                b: "Pseudomonas is common in hospitalized, catheterized, or immunocompromised patients - not community-acquired UTIs.",
-                d: "Strep pyogenes causes pharyngitis and skin infections - not typical for UTI."
+                correct: "E. coli is the predominant cause of pediatric urinary tract infection (UTI), accounting for ~80% of cases. It originates from the bowel flora and ascends the urethra, especially in girls.",
+                a: "Staph aureus urinary tract infections (UTIs) are rare and usually associated with hematogenous spread or structural abnormalities.",
+                b: "Pseudomonas is common in hospitalized, catheterized, or immunocompromised patients - not community-acquired urinary tract infections (UTIs).",
+                d: "Strep pyogenes causes pharyngitis and skin infections - not typical for urinary tract infection (UTI)."
             },
-            testTakingTip: "E. coli = first line of thinking for community-acquired pediatric UTI.",
+            testTakingTip: "E. coli = first line of thinking for community-acquired pediatric urinary tract infection (UTI).",
             guideSection: "Section 1 - Pediatric UTI",
             guideSectionId: "uti"
         },
@@ -63,7 +63,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 6-month-old infant with suspected UTI needs a urine culture. Which method is most appropriate for obtaining the specimen?",
+            stem: "A 6-month-old infant with suspected urinary tract infection (UTI) needs a urine culture. Which method is most appropriate for obtaining the specimen?",
             options: [
                 { id: "a", text: "Adhesive perineal urine bag specimen" },
                 { id: "b", text: "Urethral catheterization (in-and-out cath)" },
@@ -72,7 +72,7 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "In-and-out catheterization produces a sterile sample suitable for culture in non-toilet-trained infants. A growth of >50,000 CFU from a cath specimen is diagnostic.",
+                correct: "In-and-out catheterization produces a sterile sample suitable for culture in non-toilet-trained infants. A growth of >50,000 colony-forming units (CFU) from a cath specimen is diagnostic.",
                 a: "Bag specimens are highly contaminated and NEVER appropriate for culture - only for screening.",
                 c: "Clean catch is not feasible in a non-toilet-trained 6-month-old.",
                 d: "Diaper collections are contaminated and unsuitable for culture."
@@ -86,21 +86,21 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "analysis",
-            stem: "A 3-year-old girl has had 3 febrile UTIs in the past year. What diagnostic test is most appropriate to evaluate for structural cause?",
+            stem: "A 3-year-old girl has had 3 febrile urinary tract infections (UTIs) in the past year. What diagnostic test is most appropriate to evaluate for structural cause?",
             options: [
-                { id: "a", text: "Abdominal CT scan with contrast" },
+                { id: "a", text: "Abdominal computed tomography (CT) scan with contrast" },
                 { id: "b", text: "Voiding cystourethrogram (VCUG)" },
                 { id: "c", text: "Percutaneous renal biopsy" },
-                { id: "d", text: "DMSA renal scan only" }
+                { id: "d", text: "Dimercaptosuccinic acid (DMSA) renal scan only" }
             ],
             correct: "b",
             rationale: {
-                correct: "VCUG is the gold standard for diagnosing and grading vesicoureteral reflux (VUR), a common cause of recurrent febrile UTIs. Recurrent UTIs in a young child warrant this imaging to guide management (including possible prophylaxis or surgery).",
-                a: "CT involves radiation and is not first-line for VUR evaluation.",
+                correct: "Voiding cystourethrogram (VCUG) is the gold standard for diagnosing and grading vesicoureteral reflux (VUR), a common cause of recurrent febrile urinary tract infections (UTIs). Recurrent UTIs in a young child warrant this imaging to guide management (including possible prophylaxis or surgery).",
+                a: "Computed tomography (CT) involves radiation and is not first-line for vesicoureteral reflux (VUR) evaluation.",
                 c: "Renal biopsy evaluates glomerular/parenchymal disease - not reflux.",
-                d: "DMSA detects scarring but doesn't diagnose reflux itself."
+                d: "Dimercaptosuccinic acid (DMSA) scanning detects scarring but doesn't diagnose reflux itself."
             },
-            testTakingTip: "VCUG = gold standard for VUR. Renal ultrasound first for structure, then VCUG for function.",
+            testTakingTip: "Voiding cystourethrogram (VCUG) = gold standard for vesicoureteral reflux (VUR). Renal ultrasound first for structure, then VCUG for function.",
             guideSection: "Section 2 - VUR",
             guideSectionId: "vur"
         },
@@ -118,12 +118,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Grade IV and V VUR rarely resolve spontaneously because of significant anatomic dilation. Surgical correction via ureteral reimplantation or endoscopic injection (Deflux) is typically required to prevent ongoing pyelonephritis and renal scarring.",
+                correct: "Grade IV and V vesicoureteral reflux (VUR) rarely resolve spontaneously because of significant anatomic dilation. Surgical correction via ureteral reimplantation or endoscopic injection (Deflux) is typically required to prevent ongoing pyelonephritis and renal scarring.",
                 a: "Spontaneous resolution applies mostly to grades I\u2013III.",
-                c: "Transplant is not indicated for VUR alone without end-stage disease.",
+                c: "Transplant is not indicated for vesicoureteral reflux (VUR) alone without end-stage disease.",
                 d: "Dialysis is not indicated unless end-stage renal failure develops."
             },
-            testTakingTip: "VUR grades I\u2013III usually resolve; IV\u2013V usually need surgery.",
+            testTakingTip: "Vesicoureteral reflux (VUR) grades I\u2013III usually resolve; IV\u2013V usually need surgery.",
             guideSection: "Section 2 - VUR",
             guideSectionId: "vur"
         },
@@ -132,7 +132,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 4-year-old with VUR is undergoing a VCUG. What should the nurse include in preparation?",
+            stem: "A 4-year-old with vesicoureteral reflux (VUR) is undergoing a voiding cystourethrogram (VCUG). What should the nurse include in preparation?",
             options: [
                 { id: "a", text: "Explain that the test is painful and will take several hours" },
                 { id: "b", text: "Maintain NPO for 8 hours before the procedure to prevent vomiting" },
@@ -141,12 +141,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "VCUG is typically an awake procedure. Age-appropriate explanation (catheter goes into bladder, contrast fills it, X-ray watches during voiding), child life services, comfort positioning, and parent presence minimize distress. Distraction tools can reduce anxiety.",
+                correct: "A voiding cystourethrogram (VCUG) is typically an awake procedure. Age-appropriate explanation (catheter goes into bladder, contrast fills it, X-ray watches during voiding), child life services, comfort positioning, and parent presence minimize distress. Distraction tools can reduce anxiety.",
                 a: "While uncomfortable, the procedure is relatively brief; catastrophizing it adds distress.",
-                b: "NPO is not routinely required for VCUG.",
+                b: "NPO is not routinely required for a voiding cystourethrogram (VCUG).",
                 d: "Sedation is not routine but may be used for very anxious children or repeat studies."
             },
-            testTakingTip: "VCUG is awake, uncomfortable but brief. Age-appropriate teaching + child life support is standard nursing care.",
+            testTakingTip: "A voiding cystourethrogram (VCUG) is done awake; uncomfortable but brief. Age-appropriate teaching + child life support is standard nursing care.",
             guideSection: "Section 6 - Nursing Care",
             guideSectionId: "nursing"
         },
@@ -181,16 +181,16 @@ var utiVurEnuresisQuizData = {
             stem: "A 7-year-old who has been dry for 2 years suddenly starts bedwetting 3 nights per week. What should the nurse anticipate first?",
             options: [
                 { id: "a", text: "Prescription for desmopressin (DDAVP) at bedtime" },
-                { id: "b", text: "A bedwetting alarm to condition waking" },
-                { id: "c", text: "Workup for UTI, diabetes, or other secondary cause" },
+                { id: "b", text: "A bedwetting alarm to condition waking at night" },
+                { id: "c", text: "Workup for urinary tract infection, diabetes, or other secondary cause" },
                 { id: "d", text: "Reassurance and waiting 6 months for resolution" }
             ],
             correct: "c",
             rationale: {
-                correct: "Secondary enuresis (dry for >6 months, then wetting again) warrants workup for UTI, type 1 diabetes, constipation, stress/abuse, or structural causes. A urine dipstick, history, and physical exam are the starting points.",
-                a: "DDAVP is for primary enuresis or short-term use - not before ruling out secondary causes.",
+                correct: "Secondary enuresis (dry for >6 months, then wetting again) warrants workup for urinary tract infection (UTI), type 1 diabetes, constipation, stress/abuse, or structural causes. A urine dipstick, history, and physical exam are the starting points.",
+                a: "Desmopressin (DDAVP) is for primary enuresis or short-term use - not before ruling out secondary causes.",
                 b: "Alarm therapy is behavioral - also for primary enuresis.",
-                d: "Waiting can miss a treatable cause like UTI or new-onset diabetes."
+                d: "Waiting can miss a treatable cause like urinary tract infection (UTI) or new-onset diabetes."
             },
             testTakingTip: "Secondary enuresis = workup first. Never assume primary when the child was previously dry.",
             guideSection: "Section 3 - Enuresis",
@@ -212,10 +212,10 @@ var utiVurEnuresisQuizData = {
             rationale: {
                 correct: "Bedwetting alarms condition the child to wake at the onset of voiding. They have the best long-term cure rates for primary nocturnal enuresis but require 2\u20133 months of consistent use and family commitment.",
                 a: "Imipramine has cardiac side effects and overdose risk; rarely first-line now.",
-                b: "DDAVP is effective short-term (sleepovers, camp) but has high relapse rate when stopped.",
+                b: "Desmopressin (DDAVP) is effective short-term (sleepovers, camp) but has high relapse rate when stopped.",
                 d: "Total fluid restriction is inappropriate - only evening fluids should be limited."
             },
-            testTakingTip: "First-line behavioral: bedwetting alarm. First-line pharmacologic short-term: DDAVP.",
+            testTakingTip: "First-line behavioral: bedwetting alarm. First-line pharmacologic short-term: desmopressin (DDAVP).",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
@@ -233,12 +233,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "DDAVP is an ADH analog that causes water retention. Excess fluid intake during its action can cause water intoxication, hyponatremia, and seizures. Teaching fluid restriction around the dose is a critical safety instruction.",
+                correct: "Desmopressin (DDAVP) is an antidiuretic hormone (ADH) analog that causes water retention. Excess fluid intake during its action can cause water intoxication, hyponatremia, and seizures. Teaching fluid restriction around the dose is a critical safety instruction.",
                 a: "Giving with a large glass of water risks water intoxication.",
                 c: "Long-term nightly use is not first-line; alarm therapy is preferred for chronic use.",
                 d: "Doubling up risks toxicity; follow the prescribed dose."
             },
-            testTakingTip: "DDAVP + unrestricted fluids = hyponatremia, seizures. Always teach fluid limits.",
+            testTakingTip: "Desmopressin (DDAVP) + unrestricted fluids = hyponatremia, seizures. Always teach fluid limits.",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
@@ -247,7 +247,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "Which statement by a parent of a child recently treated for a UTI indicates CORRECT understanding of prevention?",
+            stem: "Which statement by a parent of a child recently treated for a urinary tract infection (UTI) indicates CORRECT understanding of prevention?",
             options: [
                 { id: "a", text: "'I'll give my daughter bubble baths to help her relax.'" },
                 { id: "b", text: "'I'll teach her to hold her urine as long as possible to strengthen her bladder.'" },
@@ -256,8 +256,8 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Wiping front to back prevents bowel flora (especially E. coli) from reaching the urethra. This is a cornerstone UTI prevention teaching for girls and should be started early.",
-                a: "Bubble baths irritate the urethra and increase UTI risk in girls.",
+                correct: "Wiping front to back prevents bowel flora (especially E. coli) from reaching the urethra. This is a cornerstone urinary tract infection (UTI) prevention teaching for girls and should be started early.",
+                a: "Bubble baths irritate the urethra and increase urinary tract infection (UTI) risk in girls.",
                 b: "Holding urine promotes bacterial growth; regular voiding is preventive.",
                 d: "Stopping antibiotics early risks incomplete treatment and recurrence."
             },
@@ -302,12 +302,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Nitrites are highly specific for gram-negative UTIs because gram-negative organisms (E. coli, Klebsiella, Proteus) reduce nitrates to nitrites. A positive dipstick nitrite supports gram-negative UTI, though sensitivity is modest (some UTIs are nitrite-negative).",
-                a: "Ketones are unrelated to UTI.",
+                correct: "Nitrites are highly specific for gram-negative urinary tract infections (UTIs) because gram-negative organisms (E. coli, Klebsiella, Proteus) reduce nitrates to nitrites. A positive dipstick nitrite supports gram-negative UTI, though sensitivity is modest (some UTIs are nitrite-negative).",
+                a: "Ketones are unrelated to urinary tract infection (UTI).",
                 c: "Specific gravity of 1.015 is within normal range.",
                 d: "Neutral pH is normal, not diagnostic."
             },
-            testTakingTip: "Nitrites positive = gram-negative UTI highly likely. Leukocyte esterase + nitrites = strong UTI signal.",
+            testTakingTip: "Nitrites positive = gram-negative urinary tract infection (UTI) highly likely. Leukocyte esterase + nitrites = strong UTI signal.",
             guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
@@ -325,12 +325,12 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Infants under 2 months with UTI or pyelonephritis are routinely admitted for IV antibiotics (ceftriaxone or ampicillin + gentamicin) and a full sepsis workup (CBC, blood culture, often LP) because of the risk of bacteremia and meningitis.",
+                correct: "Infants under 2 months with urinary tract infection (UTI) or pyelonephritis are routinely admitted for IV antibiotics (ceftriaxone or ampicillin + gentamicin) and a full sepsis workup, including a complete blood count (CBC), blood culture, and often a lumbar puncture (LP), because of the risk of bacteremia and meningitis.",
                 a: "Oral outpatient treatment is not safe for young infants with pyelonephritis.",
                 b: "Observation without treatment in a febrile young infant is dangerous.",
-                d: "Immunoglobulin replacement is for primary immune deficiencies and is not a treatment for UTI."
+                d: "Immunoglobulin replacement is for primary immune deficiencies and is not a treatment for urinary tract infection (UTI)."
             },
-            testTakingTip: "Infant <2 months with UTI = admit + IV antibiotics + sepsis workup. Low threshold for escalation.",
+            testTakingTip: "Infant <2 months with urinary tract infection (UTI) = admit + IV antibiotics + sepsis workup. Low threshold for escalation.",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },

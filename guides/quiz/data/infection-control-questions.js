@@ -248,11 +248,11 @@ var infectionControlQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse sustains a needlestick from a hollow-bore needle used on a patient with unknown HIV status. Which action should the nurse take FIRST?",
+            stem: "A nurse sustains a needlestick from a hollow-bore needle used on a patient with unknown human immunodeficiency virus (HIV) status. Which action should the nurse take FIRST?",
             options: [
                 { id: "a", text: "Wash the site immediately with soap and water" },
                 { id: "b", text: "Complete an incident report before leaving the unit" },
-                { id: "c", text: "Ask the patient to consent to HIV testing" },
+                { id: "c", text: "Ask the patient to consent to human immunodeficiency virus (HIV) testing" },
                 { id: "d", text: "Report to occupational health at the end of the shift" }
             ],
             correct: "a",
@@ -303,8 +303,8 @@ var infectionControlQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "MRSA needs contact precautions. Gown and gloves go on before entry, and equipment such as the stethoscope and blood pressure cuff stays dedicated to that room.",
-                a: "A mask addresses a respiratory route. MRSA in a wound travels by touch.",
+                correct: "Methicillin-resistant Staphylococcus aureus (MRSA) needs contact precautions. Gown and gloves go on before entry, and equipment such as the stethoscope and blood pressure cuff stays dedicated to that room.",
+                a: "A mask addresses a respiratory route. Methicillin-resistant Staphylococcus aureus (MRSA) in a wound travels by touch.",
                 c: "Negative pressure is for airborne organisms, not for a contact organism.",
                 d: "A covered wound does not remove the need for contact precautions with a multidrug-resistant organism."
             },

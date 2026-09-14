@@ -16,26 +16,26 @@ var strokeQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A 68-year-old patient arrives at the emergency department with sudden left-sided facial droop, left arm weakness, and slurred speech. The patient's spouse states symptoms began 90 minutes ago. CT scan shows no hemorrhage. Blood pressure is 178/102 mmHg. What is the nurse's PRIORITY action?",
+            stem: "A 68-year-old patient arrives at the emergency department with sudden left-sided facial droop, left arm weakness, and slurred speech. The patient's spouse states symptoms began 90 minutes ago. A computed tomography (CT) scan shows no hemorrhage. Blood pressure is 178/102 mmHg. What is the nurse's PRIORITY action?",
             options: [
                 { id: "a", text: "Administer an antihypertensive to lower the blood pressure below 140/90 mmHg" },
-                { id: "b", text: "Prepare for tPA administration - obtain consent and verify inclusion criteria" },
+                { id: "b", text: "Prepare for alteplase administration and verify the inclusion criteria" },
                 { id: "c", text: "Administer aspirin 325 mg orally" },
                 { id: "d", text: "Position the patient flat to maximize cerebral perfusion" }
             ],
             correct: "b",
             rationale: {
-                correct: "This patient has an ischemic stroke (CT negative for hemorrhage) within the 4.5-hour tPA window (90 minutes). The blood pressure of 178/102 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical - the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
-                a: "Aggressively lowering BP below 140/90 is dangerous in acute ischemic stroke. Permissive hypertension is maintained to perfuse the ischemic penumbra. The pre-tPA threshold is <185/110, and this patient is already below that. After tPA, the target is <180/105.",
-                c: "Aspirin is indicated for ischemic stroke but is CONTRAINDICATED within 24 hours of tPA administration. If tPA is given, aspirin must wait 24 hours. Giving aspirin now would delay or preclude tPA.",
-                d: "Flat positioning is sometimes used to improve perfusion, but preparing for definitive thrombolytic therapy takes priority in a tPA-eligible patient. Some patients may also need head of bed elevated 30° for airway protection."
+                correct: "This patient has an ischemic stroke, confirmed by a computed tomography (CT) scan negative for hemorrhage, within the 4.5-hour tissue plasminogen activator (tPA) window (90 minutes). The blood pressure of 178/102 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical - the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
+                a: "Aggressively lowering BP below 140/90 is dangerous in acute ischemic stroke. Permissive hypertension is maintained to perfuse the ischemic penumbra. The threshold before tissue plasminogen activator (tPA) is <185/110, and this patient is already below that. After tPA, the target is <180/105.",
+                c: "Aspirin is indicated for ischemic stroke but is CONTRAINDICATED within 24 hours of tissue plasminogen activator (tPA) administration. If tPA is given, aspirin must wait 24 hours. Giving aspirin now would delay or preclude tPA.",
+                d: "Flat positioning is sometimes used to improve perfusion, but preparing for definitive thrombolytic therapy takes priority in a patient eligible for tissue plasminogen activator (tPA). Some patients may also need head of bed elevated 30° for airway protection."
             },
             labValues: [
                 { name: "INR (tPA cutoff)", normal: "Must be ≤1.7" },
                 { name: "Platelets (tPA cutoff)", normal: "Must be ≥100,000/mm³" },
                 { name: "Blood Glucose", normal: "70–100 mg/dL" }
             ],
-            testTakingTip: "tPA eligibility checklist: ischemic stroke (CT no hemorrhage), within 4.5 hours, BP <185/110, no contraindications (recent surgery, active bleeding, INR >1.7, platelets <100,000). When a patient meets criteria, preparing for tPA is ALWAYS the priority.",
+            testTakingTip: "Tissue plasminogen activator (tPA) eligibility checklist: ischemic stroke with no hemorrhage on computed tomography (CT), within 4.5 hours, BP <185/110, no contraindications such as recent surgery, active bleeding, international normalized ratio (INR) >1.7, or platelets <100,000. When a patient meets criteria, preparing for tPA is ALWAYS the priority.",
             guideSection: "Section 4 - tPA Inclusion & Exclusion Criteria",
             guideSectionId: "tpa"
         },
@@ -45,7 +45,7 @@ var strokeQuizData = {
             subtype: null,
             difficulty: "application",
             matrixColumns: ["Positive Indicator", "Negative Indicator"],
-            stem: "A nurse is assessing a patient using the BE-FAST stroke recognition tool. Classify each finding as a positive stroke indicator (abnormal) or a negative indicator (normal).",
+            stem: "A nurse is assessing a patient using the Balance, Eyes, Face, Arms, Speech, Time (BE-FAST) stroke recognition tool. Classify each finding as a positive stroke indicator (abnormal) or a negative indicator (normal).",
             options: [
                 { id: "a", text: "The patient suddenly cannot maintain balance and lists to the right side" },
                 { id: "b", text: "The patient's left eye shows sudden vision loss" },
@@ -55,14 +55,14 @@ var strokeQuizData = {
             ],
             correct: { a: "Positive Indicator", b: "Positive Indicator", c: "Negative Indicator", d: "Negative Indicator", e: "Positive Indicator" },
             rationale: {
-                correct: "Balance loss, sudden vision changes, and unilateral arm drift are all positive (abnormal) stroke indicators in the BE-FAST assessment. Symmetric facial movement and clear speech are negative (normal) findings.",
+                correct: "Balance loss, sudden vision changes, and unilateral arm drift are all positive (abnormal) stroke indicators in the Balance, Eyes, Face, Arms, Speech, Time (BE-FAST) assessment. Symmetric facial movement and clear speech are negative (normal) findings.",
                 a: "POSITIVE INDICATOR - 'B' = Balance. Sudden loss of balance, coordination, or dizziness is a stroke indicator. The patient listing to one side suggests cerebellar or brainstem involvement.",
                 b: "POSITIVE INDICATOR - 'E' = Eyes. Sudden vision changes including blurred vision, double vision, or vision loss in one or both eyes indicates possible stroke affecting the visual pathways.",
                 c: "NEGATIVE INDICATOR - Symmetric facial movement is a NORMAL finding. A positive 'F' (Face) would show asymmetry - one side drooping when the patient smiles.",
                 d: "NEGATIVE INDICATOR - Clear speech without slurring is a NORMAL finding. A positive 'S' (Speech) would show slurred, garbled, or absent speech.",
                 e: "POSITIVE INDICATOR - 'A' = Arms. Arm drift (one arm drifting downward when both are held outstretched with eyes closed for 10 seconds) indicates contralateral motor weakness, a key stroke sign."
             },
-            testTakingTip: "BE-FAST: Balance, Eyes, Face (droop), Arms (drift), Speech (slurred), Time (call 911). For NCLEX, remember that NORMAL findings are negative - only ABNORMAL findings are stroke indicators. Don't be tricked by answer options describing normal exam findings.",
+            testTakingTip: "Balance, Eyes, Face, Arms, Speech, Time (BE-FAST): balance loss, eye changes, face droop, arm drift, slurred speech, and time to call 911. For NCLEX, remember that NORMAL findings are negative - only ABNORMAL findings are stroke indicators. Don't be tricked by answer options describing normal exam findings.",
             guideSection: "Section 3 - FAST Assessment Tool",
             guideSectionId: "fast"
         },
@@ -71,21 +71,21 @@ var strokeQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A nurse is reviewing the chart of a patient admitted with stroke symptoms. The CT scan report states \"hyperdense lesion with surrounding edema in the left basal ganglia, consistent with acute intraparenchymal hemorrhage.\" Which intervention is CONTRAINDICATED for this patient?",
+            stem: "A nurse is reviewing the chart of a patient admitted with stroke symptoms. The computed tomography (CT) scan report states \"hyperdense lesion with surrounding edema in the left basal ganglia, consistent with acute intraparenchymal hemorrhage.\" Which intervention is CONTRAINDICATED for this patient?",
             options: [
-                { id: "a", text: "Administering IV antihypertensive to achieve SBP <140 mmHg" },
+                { id: "a", text: "Administering IV antihypertensive to achieve systolic BP <140 mmHg" },
                 { id: "b", text: "Performing neurological assessments every 1-2 hours" },
                 { id: "c", text: "Administering alteplase (tPA) intravenously" },
                 { id: "d", text: "Elevating the head of the bed to 30 degrees" }
             ],
             correct: "c",
             rationale: {
-                correct: "tPA (alteplase) is a thrombolytic that dissolves blood clots. In hemorrhagic stroke, the problem is bleeding, NOT a clot. Administering tPA would worsen the hemorrhage by breaking down clotting factors, potentially causing catastrophic expansion of the bleed. This is an absolute contraindication.",
-                a: "Blood pressure management targeting SBP <140 mmHg is a recommended intervention for hemorrhagic stroke to limit hematoma expansion. This is appropriate, not contraindicated.",
-                b: "Frequent neurological assessments (NIHSS, GCS, pupil checks) are essential for detecting deterioration such as hematoma expansion or increasing intracranial pressure.",
+                correct: "Alteplase, a tissue plasminogen activator (tPA), is a thrombolytic that dissolves blood clots. In hemorrhagic stroke, the problem is bleeding, NOT a clot. Administering tPA would worsen the hemorrhage by breaking down clotting factors, potentially causing catastrophic expansion of the bleed. This is an absolute contraindication.",
+                a: "Blood pressure management targeting systolic blood pressure (SBP) <140 mmHg is a recommended intervention for hemorrhagic stroke to limit hematoma expansion. This is appropriate, not contraindicated.",
+                b: "Frequent neurological assessments, including the National Institutes of Health Stroke Scale (NIHSS), Glasgow Coma Scale (GCS), and pupil checks, are essential for detecting deterioration such as hematoma expansion or increasing intracranial pressure.",
                 d: "Head of bed elevation to 30 degrees promotes venous drainage from the brain, reduces intracranial pressure, and is a standard nursing intervention for both stroke types."
             },
-            testTakingTip: "The single most important reason to get an emergent CT scan in acute stroke is to rule out hemorrhage BEFORE giving tPA. Hemorrhagic stroke = NO tPA, EVER. This is the #1 contraindication to remember.",
+            testTakingTip: "The single most important reason to get an emergent computed tomography (CT) scan in acute stroke is to rule out hemorrhage BEFORE giving tissue plasminogen activator (tPA). Hemorrhagic stroke = NO tPA, EVER. This is the #1 contraindication to remember.",
             guideSection: "Section 2 - Ischemic vs Hemorrhagic Stroke",
             guideSectionId: "types"
         },
@@ -94,22 +94,22 @@ var strokeQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "analysis",
-            stem: "A patient received IV tPA for acute ischemic stroke 2 hours ago. The nurse finds that the patient's level of consciousness has decreased, the previously affected arm is now completely flaccid, and the patient vomits. Place the nurse's actions in the correct priority sequence.",
+            stem: "A patient received IV tissue plasminogen activator (tPA) for acute ischemic stroke 2 hours ago. The nurse finds that the patient's level of consciousness has decreased, the previously affected arm is now completely flaccid, and the patient vomits. Place the nurse's actions in the correct priority sequence.",
             options: [
-                { id: "a", text: "Stop the tPA infusion immediately" },
+                { id: "a", text: "Stop the tissue plasminogen activator (tPA) infusion immediately" },
                 { id: "b", text: "Position the patient on their side to protect the airway" },
                 { id: "c", text: "Notify the stroke team/provider of the acute deterioration" },
-                { id: "d", text: "Obtain a stat CT scan of the head to evaluate for hemorrhagic conversion" }
+                { id: "d", text: "Obtain a stat computed tomography (CT) scan of the head to evaluate for hemorrhagic conversion" }
             ],
             correct: ["a", "b", "c", "d"],
             rationale: {
                 correct: "The correct sequence follows the mnemonic STOP-SIDE-SIGNAL-SCAN: stop the causative agent first, protect the airway, activate the team, then obtain definitive imaging.",
-                a: "FIRST - If the tPA infusion is still running, it must be stopped immediately. The clinical picture suggests hemorrhagic conversion, and continuing tPA would worsen any bleeding. Removing the causative agent is the most time-critical action.",
+                a: "FIRST - If the tissue plasminogen activator (tPA) infusion is still running, it must be stopped immediately. The clinical picture suggests hemorrhagic conversion, and continuing tPA would worsen any bleeding. Removing the causative agent is the most time-critical action.",
                 b: "SECOND - The patient is vomiting with a decreased level of consciousness, creating a high aspiration risk. Lateral positioning protects the airway from aspiration. Airway protection is always a top priority after stopping the harmful agent.",
-                c: "THIRD - Notify the stroke team/provider immediately. This is a medical emergency requiring physician involvement for possible emergent neurosurgical intervention, blood product transfusion, or other life-saving measures. The team must be aware to order and interpret the CT scan.",
-                d: "FOURTH - A stat CT scan is needed to determine if intracranial hemorrhage has occurred. This is the definitive diagnostic step and guides all subsequent treatment. It requires the team to be notified first so they can order and act on the results."
+                c: "THIRD - Notify the stroke team/provider immediately. This is a medical emergency requiring physician involvement for possible emergent neurosurgical intervention, blood product transfusion, or other life-saving measures. The team must be aware to order and interpret the computed tomography (CT) scan.",
+                d: "FOURTH - A stat computed tomography (CT) scan is needed to determine if intracranial hemorrhage has occurred. This is the definitive diagnostic step and guides all subsequent treatment. It requires the team to be notified first so they can order and act on the results."
             },
-            testTakingTip: "Post-tPA neurological deterioration = hemorrhagic conversion until proven otherwise. The mnemonic: STOP (infusion), SIDE (position), SIGNAL (notify team), SCAN (CT). A second dose of tPA is NEVER given - additional thrombolytics would be catastrophic.",
+            testTakingTip: "Neurological deterioration after tissue plasminogen activator (tPA) = hemorrhagic conversion until proven otherwise. The mnemonic: STOP (infusion), SIDE (position), SIGNAL (notify team), SCAN (computed tomography). A second dose of tPA is NEVER given - additional thrombolytics would be catastrophic.",
             guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -118,21 +118,21 @@ var strokeQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with acute ischemic stroke is NOT a candidate for tPA because symptoms began 6 hours ago. The patient's blood pressure is 208/116 mmHg. The nurse anticipates which blood pressure management approach?",
+            stem: "A patient with acute ischemic stroke is NOT a candidate for tissue plasminogen activator (tPA) because symptoms began 6 hours ago. The patient's blood pressure is 208/116 mmHg. The nurse anticipates which blood pressure management approach?",
             options: [
                 { id: "a", text: "Aggressively lower BP to <140/90 mmHg within 1 hour" },
                 { id: "b", text: "Allow permissive hypertension - do not treat unless BP exceeds 220/120 mmHg" },
-                { id: "c", text: "Lower BP to <185/110 mmHg in preparation for possible tPA" },
+                { id: "c", text: "Lower BP to <185/110 mmHg in preparation for possible tissue plasminogen activator (tPA)" },
                 { id: "d", text: "Administer a bolus of IV fluids to increase BP further" }
             ],
             correct: "b",
             rationale: {
-                correct: "For ischemic stroke patients who are NOT receiving tPA or thrombectomy, permissive hypertension is the standard approach. Blood pressure is not treated unless it exceeds 220/120 mmHg. The elevated BP is the brain's compensatory mechanism to perfuse the ischemic penumbra (the vulnerable tissue surrounding the infarct core). At 208/116, this patient is below the 220/120 threshold.",
-                a: "Aggressively lowering BP to <140/90 would reduce cerebral perfusion to the already ischemic brain tissue, potentially worsening the stroke and expanding the infarct. This target is for hemorrhagic stroke, not ischemic without tPA.",
-                c: "The <185/110 threshold is specifically for patients who WILL receive tPA. This patient is outside the tPA window and is not a tPA candidate, so this target does not apply.",
+                correct: "For ischemic stroke patients who are NOT receiving tissue plasminogen activator (tPA) or thrombectomy, permissive hypertension is the standard approach. Blood pressure is not treated unless it exceeds 220/120 mmHg. The elevated BP is the brain's compensatory mechanism to perfuse the ischemic penumbra (the vulnerable tissue surrounding the infarct core). At 208/116, this patient is below the 220/120 threshold.",
+                a: "Aggressively lowering BP to <140/90 would reduce cerebral perfusion to the already ischemic brain tissue, potentially worsening the stroke and expanding the infarct. This target is for hemorrhagic stroke, not ischemic without tissue plasminogen activator (tPA).",
+                c: "The <185/110 threshold is specifically for patients who WILL receive tissue plasminogen activator (tPA). This patient is outside the tPA window and is not a tPA candidate, so this target does not apply.",
                 d: "The patient already has severe hypertension. Increasing BP further would not improve outcomes and could cause end-organ damage."
             },
-            testTakingTip: "Stroke BP targets are scenario-specific: Pre-tPA = <185/110. During/after tPA = <180/105. Ischemic, no tPA = allow up to 220/120. Hemorrhagic = SBP <140. The NCLEX will test whether you know WHICH target applies to WHICH scenario.",
+            testTakingTip: "Stroke BP targets are scenario-specific: Before tissue plasminogen activator (tPA) = <185/110. During/after tPA = <180/105. Ischemic, no tPA = allow up to 220/120. Hemorrhagic = systolic blood pressure (SBP) <140. The NCLEX will test whether you know WHICH target applies to WHICH scenario.",
             guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -142,29 +142,29 @@ var strokeQuizData = {
             subtype: null,
             difficulty: "application",
             matrixColumns: ["Inclusion Criterion", "Exclusion Criterion"],
-            stem: "A nurse is evaluating a patient for tPA eligibility. Classify each finding as an inclusion criterion (supports tPA administration) or an exclusion criterion (prevents tPA administration).",
+            stem: "A nurse is evaluating a patient for tissue plasminogen activator (tPA) eligibility. Classify each finding as an inclusion criterion (supports tPA administration) or an exclusion criterion (prevents tPA administration).",
             options: [
                 { id: "a", text: "Symptom onset was 5 hours ago" },
                 { id: "b", text: "Platelet count of 85,000/mm³" },
-                { id: "c", text: "CT scan showing no evidence of hemorrhage" },
+                { id: "c", text: "Computed tomography (CT) scan showing no evidence of hemorrhage" },
                 { id: "d", text: "The patient had major abdominal surgery 10 days ago" },
-                { id: "e", text: "INR of 1.4 on chronic low-dose warfarin" }
+                { id: "e", text: "International normalized ratio (INR) of 1.4 on chronic low-dose warfarin" }
             ],
             correct: { a: "Exclusion Criterion", b: "Exclusion Criterion", c: "Inclusion Criterion", d: "Exclusion Criterion", e: "Inclusion Criterion" },
             rationale: {
-                correct: "Symptom onset >4.5 hours, platelets <100,000, and major surgery within 14 days are exclusion criteria. A negative CT for hemorrhage and INR ≤1.7 are inclusion criteria that support tPA eligibility.",
-                a: "EXCLUSION CRITERION - The standard tPA window is 0-3 hours (extended to 4.5 hours with additional criteria). At 5 hours, the patient is outside the treatment window.",
-                b: "EXCLUSION CRITERION - Platelets must be >=100,000/mm3 for tPA. A count of 85,000 increases the risk of hemorrhagic complications. tPA works by breaking down clots, and inadequate platelets cannot provide hemostasis if bleeding occurs.",
-                c: "INCLUSION CRITERION - A CT scan must show NO hemorrhage before tPA can be given. Hemorrhage on CT is the #1 absolute contraindication, so the absence of hemorrhage is a required inclusion criterion.",
-                d: "EXCLUSION CRITERION - Major surgery or serious trauma within 14 days is a contraindication due to the risk of surgical site hemorrhage. The tPA could dissolve clots at the surgical site, causing life-threatening bleeding.",
-                e: "INCLUSION CRITERION - INR must be <=1.7 for tPA eligibility. An INR of 1.4 is below the cutoff and does not preclude tPA administration, making this a finding that supports eligibility."
+                correct: "Symptom onset >4.5 hours, platelets <100,000, and major surgery within 14 days are exclusion criteria. A computed tomography (CT) scan negative for hemorrhage and an international normalized ratio (INR) ≤1.7 are inclusion criteria that support tissue plasminogen activator (tPA) eligibility.",
+                a: "EXCLUSION CRITERION - The standard tissue plasminogen activator (tPA) window is 0-3 hours (extended to 4.5 hours with additional criteria). At 5 hours, the patient is outside the treatment window.",
+                b: "EXCLUSION CRITERION - Platelets must be >=100,000/mm3 for tissue plasminogen activator (tPA). A count of 85,000 increases the risk of hemorrhagic complications. tPA works by breaking down clots, and inadequate platelets cannot provide hemostasis if bleeding occurs.",
+                c: "INCLUSION CRITERION - A computed tomography (CT) scan must show NO hemorrhage before tissue plasminogen activator (tPA) can be given. Hemorrhage on CT is the #1 absolute contraindication, so the absence of hemorrhage is a required inclusion criterion.",
+                d: "EXCLUSION CRITERION - Major surgery or serious trauma within 14 days is a contraindication due to the risk of surgical site hemorrhage. The tissue plasminogen activator (tPA) could dissolve clots at the surgical site, causing life-threatening bleeding.",
+                e: "INCLUSION CRITERION - International normalized ratio (INR) must be <=1.7 for tissue plasminogen activator (tPA) eligibility. An INR of 1.4 is below the cutoff and does not preclude tPA administration, making this a finding that supports eligibility."
             },
             labValues: [
                 { name: "INR (tPA cutoff)", normal: "Must be ≤1.7" },
                 { name: "Platelets (tPA cutoff)", normal: "Must be ≥100,000/mm³" },
                 { name: "PT (tPA cutoff)", normal: "Must be ≤15 seconds" }
             ],
-            testTakingTip: "tPA exclusions to memorize: >4.5 hours, hemorrhage on CT, platelets <100K, INR >1.7, recent major surgery (14 days), active internal bleeding, prior ICH, BP >185/110 (unless controlled). The INR cutoff of 1.7 is commonly tested - don't confuse it with the normal range.",
+            testTakingTip: "Tissue plasminogen activator (tPA) exclusions to memorize: >4.5 hours, hemorrhage on computed tomography (CT), platelets <100K, international normalized ratio (INR) >1.7, recent major surgery (14 days), active internal bleeding, prior intracranial hemorrhage (ICH), BP >185/110 (unless controlled). The INR cutoff of 1.7 is commonly tested - don't confuse it with the normal range.",
             guideSection: "Section 4 - tPA Inclusion & Exclusion Criteria",
             guideSectionId: "tpa"
         },
@@ -173,7 +173,7 @@ var strokeQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A nurse is caring for a patient who received tPA 4 hours ago for ischemic stroke. While performing a neurological assessment, the nurse notes the patient's blood pressure is 194/112 mmHg. The patient's neurological status is unchanged from the last assessment. What is the PRIORITY nursing action?",
+            stem: "A nurse is caring for a patient who received tissue plasminogen activator (tPA) 4 hours ago for ischemic stroke. While performing a neurological assessment, the nurse notes the patient's blood pressure is 194/112 mmHg. The patient's neurological status is unchanged from the last assessment. What is the PRIORITY nursing action?",
             options: [
                 { id: "a", text: "Document the findings and recheck in 30 minutes" },
                 { id: "b", text: "Administer the PRN antihypertensive as ordered to bring BP below 180/105 mmHg" },
@@ -182,12 +182,12 @@ var strokeQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After tPA administration, the blood pressure target is <180/105 mmHg for the first 24 hours. This patient's BP of 194/112 exceeds that threshold. The nurse should administer the prescribed PRN antihypertensive (typically IV labetalol or nicardipine) to bring the BP below the target. The neurological status is stable, so this is not a rapid response situation - it's a medication management issue.",
-                a: "Documenting and waiting is inappropriate when the BP exceeds the post-tPA target. Sustained hypertension above 180/105 after tPA increases the risk of hemorrhagic conversion. Treatment should not be delayed.",
-                c: "The 185/110 threshold is the PRE-tPA target (eligibility). Post-tPA, the target changes to <180/105. While the BP needs treatment, the patient is neurologically stable, and a rapid response is not indicated for isolated hypertension that can be managed with PRN medications.",
+                correct: "After tissue plasminogen activator (tPA) administration, the blood pressure target is <180/105 mmHg for the first 24 hours. This patient's BP of 194/112 exceeds that threshold. The nurse should administer the prescribed PRN antihypertensive (typically IV labetalol or nicardipine) to bring the BP below the target. The neurological status is stable, so this is not a rapid response situation - it's a medication management issue.",
+                a: "Documenting and waiting is inappropriate when the BP exceeds the target after tissue plasminogen activator (tPA). Sustained hypertension above 180/105 after tPA increases the risk of hemorrhagic conversion. Treatment should not be delayed.",
+                c: "The 185/110 threshold is the eligibility target BEFORE tissue plasminogen activator (tPA). Post-tPA, the target changes to <180/105. While the BP needs treatment, the patient is neurologically stable, and a rapid response is not indicated for isolated hypertension that can be managed with PRN medications.",
                 d: "Neurological assessments must continue on schedule (typically every 15 minutes for the first 2 hours, then every 30 minutes for 6 hours, then every hour for 16 hours). Skipping assessments could miss early signs of hemorrhagic conversion."
             },
-            testTakingTip: "Post-tPA BP management: <180/105 for 24 hours. Pre-tPA: <185/110. Note the slight difference. If the question says 'received tPA X hours ago,' use the post-tPA target. If 'being evaluated for tPA,' use the pre-tPA target.",
+            testTakingTip: "BP management after tissue plasminogen activator (tPA): <180/105 for 24 hours. Pre-tPA: <185/110. Note the slight difference. If the question says 'received tPA X hours ago,' use the post-tPA target. If 'being evaluated for tPA,' use the pre-tPA target.",
             guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
@@ -196,21 +196,21 @@ var strokeQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A student nurse asks why the NIH Stroke Scale (NIHSS) is performed serially on stroke patients rather than just once at admission. Which response by the preceptor is BEST?",
+            stem: "A student nurse asks why the National Institutes of Health Stroke Scale (NIHSS) is performed serially on stroke patients rather than just once at admission. Which response by the preceptor is BEST?",
             options: [
                 { id: "a", text: "\"It is performed multiple times to ensure the initial score was accurate.\"" },
                 { id: "b", text: "\"Serial assessments detect improvement or deterioration early, which guides treatment decisions.\"" },
                 { id: "c", text: "\"It is required by insurance companies for reimbursement of stroke care.\"" },
-                { id: "d", text: "\"The initial NIHSS is unreliable because the patient is too stressed on admission.\"" }
+                { id: "d", text: "\"The initial stroke scale score is unreliable because the patient is too stressed on admission.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "The NIHSS quantifies neurological deficit severity on a scale of 0-42. Serial assessments allow the healthcare team to track the patient's trajectory: improvement suggests successful reperfusion, while deterioration may indicate hemorrhagic conversion, cerebral edema, or stroke extension. These changes trigger different interventions.",
+                correct: "The National Institutes of Health Stroke Scale (NIHSS) quantifies neurological deficit severity on a scale of 0-42. Serial assessments allow the healthcare team to track the patient's trajectory: improvement suggests successful reperfusion, while deterioration may indicate hemorrhagic conversion, cerebral edema, or stroke extension. These changes trigger different interventions.",
                 a: "While accuracy is important, the primary purpose of serial assessments is to track CHANGES over time, not to verify the initial score.",
-                c: "This is not the clinical rationale. The NIHSS is performed because it provides critical clinical information, not for administrative or billing purposes.",
-                d: "The initial NIHSS establishes a baseline and is clinically reliable. Stress does not invalidate the neurological exam - the deficits being measured (facial droop, arm drift, language) are not affected by anxiety."
+                c: "This is not the clinical rationale. The National Institutes of Health Stroke Scale (NIHSS) is performed because it provides critical clinical information, not for administrative or billing purposes.",
+                d: "The initial National Institutes of Health Stroke Scale (NIHSS) score establishes a baseline and is clinically reliable. Stress does not invalidate the neurological exam - the deficits being measured (facial droop, arm drift, language) are not affected by anxiety."
             },
-            testTakingTip: "Serial neurological assessments (NIHSS, GCS, pupil checks) are the nurse's most important tool for detecting stroke complications. A change of ≥4 points on the NIHSS is clinically significant and warrants immediate provider notification.",
+            testTakingTip: "Serial neurological assessments, including the National Institutes of Health Stroke Scale (NIHSS), Glasgow Coma Scale (GCS), and pupil checks, are the nurse's most important tool for detecting stroke complications. A change of ≥4 points on the NIHSS is clinically significant and warrants immediate provider notification.",
             guideSection: "Section 3 - FAST Assessment Tool",
             guideSectionId: "fast"
         },
@@ -242,21 +242,21 @@ var strokeQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A 72-year-old patient presents to the ED with sudden onset right-sided weakness, expressive aphasia, and a severe headache described as \"the worst headache of my life.\" CT scan reveals a large left-sided intracerebral hemorrhage. Blood pressure is 198/110 mmHg. What is the PRIORITY nursing intervention?",
+            stem: "A 72-year-old patient presents to the ED with sudden onset right-sided weakness, expressive aphasia, and a severe headache described as \"the worst headache of my life.\" A computed tomography (CT) scan reveals a large left-sided intracerebral hemorrhage. Blood pressure is 198/110 mmHg. What is the PRIORITY nursing intervention?",
             options: [
-                { id: "a", text: "Prepare for tPA administration to dissolve the hemorrhage" },
-                { id: "b", text: "Administer IV antihypertensive to achieve SBP <140 mmHg" },
+                { id: "a", text: "Prepare for tissue plasminogen activator (tPA) administration to dissolve the hemorrhage" },
+                { id: "b", text: "Administer IV antihypertensive to achieve systolic BP <140 mmHg" },
                 { id: "c", text: "Administer aspirin and heparin for stroke prophylaxis" },
                 { id: "d", text: "Allow permissive hypertension up to 220/120 mmHg" }
             ],
             correct: "b",
             rationale: {
-                correct: "In hemorrhagic stroke, aggressive blood pressure control targeting SBP <140 mmHg is the priority to limit hematoma expansion. Higher blood pressure in the setting of active intracranial bleeding drives more blood into the hemorrhage, increasing brain damage and intracranial pressure. IV antihypertensives (nicardipine or labetalol drip) should be initiated immediately.",
-                a: "tPA is absolutely CONTRAINDICATED in hemorrhagic stroke. It dissolves clots, which would worsen the bleeding and could be fatal. tPA is for ISCHEMIC stroke only.",
+                correct: "In hemorrhagic stroke, aggressive blood pressure control targeting systolic blood pressure (SBP) <140 mmHg is the priority to limit hematoma expansion. Higher blood pressure in the setting of active intracranial bleeding drives more blood into the hemorrhage, increasing brain damage and intracranial pressure. IV antihypertensives (nicardipine or labetalol drip) should be initiated immediately.",
+                a: "Tissue plasminogen activator (tPA) is absolutely CONTRAINDICATED in hemorrhagic stroke. It dissolves clots, which would worsen the bleeding and could be fatal. tPA is for ISCHEMIC stroke only.",
                 c: "Aspirin (antiplatelet) and heparin (anticoagulant) would worsen hemorrhagic stroke by impairing the body's ability to stop the bleeding. These are contraindicated in acute hemorrhage.",
-                d: "Permissive hypertension (up to 220/120) is the approach for ISCHEMIC stroke without tPA. In hemorrhagic stroke, the opposite approach is needed - aggressive BP lowering to SBP <140 mmHg to reduce hematoma expansion."
+                d: "Permissive hypertension (up to 220/120) is the approach for ISCHEMIC stroke without tissue plasminogen activator (tPA). In hemorrhagic stroke, the opposite approach is needed - aggressive BP lowering to a systolic blood pressure (SBP) <140 mmHg to reduce hematoma expansion."
             },
-            testTakingTip: "Hemorrhagic stroke = the opposite of ischemic in almost every way. No tPA, no anticoagulants, no antiplatelets, aggressive BP lowering (SBP <140). 'Worst headache of my life' + hemorrhage on CT = treat the blood pressure aggressively.",
+            testTakingTip: "Hemorrhagic stroke = the opposite of ischemic in almost every way. No tissue plasminogen activator (tPA), no anticoagulants, no antiplatelets, aggressive BP lowering to a systolic blood pressure (SBP) <140. 'Worst headache of my life' + hemorrhage on computed tomography (CT) = treat the blood pressure aggressively.",
             guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },

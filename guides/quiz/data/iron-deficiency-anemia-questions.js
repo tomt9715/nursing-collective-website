@@ -26,12 +26,12 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Excess cow\u2019s milk intake is the leading cause of iron-deficiency anemia in toddlers. Cow\u2019s milk has little iron, displaces iron-rich foods, and can cause microscopic GI bleeding. Recommend limiting to 16\u201324 oz/day.",
+                correct: "Excess cow\u2019s milk intake is the leading cause of iron-deficiency anemia in toddlers. Cow\u2019s milk has little iron, displaces iron-rich foods, and can cause microscopic gastrointestinal (GI) bleeding. Recommend limiting to 16\u201324 oz/day.",
                 a: "Cow\u2019s milk doesn\u2019t typically cause hypernatremia.",
                 c: "Hyperkalemia is not the risk here.",
                 d: "Vitamin D toxicity would require mega-dosing supplements, not milk intake."
             },
-            testTakingTip: "Toddler + \u201ctoo much milk\u201d = IDA.",
+            testTakingTip: "Toddler + \u201ctoo much milk\u201d = iron-deficiency anemia (IDA).",
             guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
@@ -49,12 +49,12 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Pallor, fatigue, and pica are classic findings in pediatric IDA. Pica (eating non-food items like dirt or ice) is distinctive and also signals potential lead exposure risk.",
-                a: "Cherry-red cheeks are seen in carbon monoxide poisoning, not IDA.",
+                correct: "Pallor, fatigue, and pica are classic findings in pediatric iron-deficiency anemia (IDA). Pica (eating non-food items like dirt or ice) is distinctive and also signals potential lead exposure risk.",
+                a: "Cherry-red cheeks are seen in carbon monoxide poisoning, not iron-deficiency anemia (IDA).",
                 c: "Jaundice and hepatomegaly point to liver disease or hemolysis.",
-                d: "Fever and splenomegaly suggest infection, leukemia, or EBV, not IDA."
+                d: "Fever and splenomegaly suggest infection, leukemia, or Epstein-Barr virus (EBV), not iron-deficiency anemia (IDA)."
             },
-            testTakingTip: "Pallor + fatigue + pica = IDA until proven otherwise.",
+            testTakingTip: "Pallor + fatigue + pica = iron-deficiency anemia (IDA) until proven otherwise.",
             guideSection: "Section 2 - Clinical Manifestations",
             guideSectionId: "clinical"
         },
@@ -66,18 +66,18 @@ var ironDeficiencyAnemiaQuizData = {
             stem: "Which lab pattern is classic for iron-deficiency anemia?",
             options: [
                 { id: "a", text: "Macrocytic, hyperchromic anemia with high ferritin" },
-                { id: "b", text: "Microcytic, hypochromic anemia with LOW ferritin and HIGH TIBC" },
+                { id: "b", text: "Microcytic, hypochromic anemia with LOW ferritin and HIGH total iron-binding capacity (TIBC)" },
                 { id: "c", text: "Normocytic anemia with elevated reticulocytes and low ferritin" },
-                { id: "d", text: "Microcytic anemia with high ferritin and low TIBC" }
+                { id: "d", text: "Microcytic anemia with high ferritin and low total iron-binding capacity (TIBC)" }
             ],
             correct: "b",
             rationale: {
-                correct: "IDA produces a microcytic (low MCV), hypochromic (low MCH) anemia with LOW ferritin (first lab to drop) and HIGH TIBC (transferrin tries to grab more iron). Reticulocytes are initially low.",
+                correct: "Iron-deficiency anemia (IDA) produces a microcytic, hypochromic anemia: low mean corpuscular volume (MCV) and low mean corpuscular hemoglobin (MCH). Ferritin is LOW (first lab to drop) and total iron-binding capacity (TIBC) is HIGH (transferrin tries to grab more iron). Reticulocytes are initially low.",
                 a: "Macrocytic/hyperchromic = B12 or folate deficiency.",
                 c: "Elevated reticulocytes suggest hemolysis.",
-                d: "High ferritin + low TIBC = anemia of chronic disease."
+                d: "High ferritin + low total iron-binding capacity (TIBC) = anemia of chronic disease."
             },
-            testTakingTip: "IDA: small, pale RBCs + low ferritin + high TIBC.",
+            testTakingTip: "Iron-deficiency anemia (IDA): small, pale red blood cells + low ferritin + high total iron-binding capacity (TIBC).",
             guideSection: "Section 3 - Diagnosis",
             guideSectionId: "diagnosis"
         },
@@ -134,14 +134,14 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "A parent calls concerned: \u201cMy child\u2019s stool is very dark green, almost black, since starting iron. Should I stop the medication?\u201d The BEST nursing response is:",
             options: [
-                { id: "a", text: "\u201cYes, stop the iron and bring the child in immediately - it\u2019s likely GI bleeding.\u201d" },
+                { id: "a", text: "\u201cYes, stop the iron and bring the child in immediately - it\u2019s likely bleeding in the digestive tract.\u201d" },
                 { id: "b", text: "\u201cDark green or black stool is an expected, harmless effect of iron. Keep giving the medicine.\u201d" },
                 { id: "c", text: "\u201cDouble the dose for a few days to make sure it\u2019s being absorbed.\u201d" },
                 { id: "d", text: "\u201cSwitch to a milk-based formula to lighten the stool and protect the gut.\u201d" }
             ],
             correct: "b",
             rationale: {
-                correct: "Dark green or black stools from iron supplementation are normal and expected - it\u2019s unabsorbed iron. It does NOT indicate GI bleeding. Melena from true GI bleeding is sticky, tarry, foul-smelling and typically accompanied by other symptoms.",
+                correct: "Dark green or black stools from iron supplementation are normal and expected - it\u2019s unabsorbed iron. It does NOT indicate gastrointestinal (GI) bleeding. Melena from true GI bleeding is sticky, tarry, foul-smelling and typically accompanied by other symptoms.",
                 a: "Dark stool from iron is expected, not a bleed.",
                 c: "Don\u2019t double dose.",
                 d: "Milk reduces iron absorption; irrelevant to stool color anyway."
@@ -169,7 +169,7 @@ var ironDeficiencyAnemiaQuizData = {
                 c: "Activated charcoal does NOT bind iron.",
                 d: "Home observation can be fatal with iron toxicity."
             },
-            testTakingTip: "Iron OD = poison control + ED + deferoxamine. No charcoal, no ipecac.",
+            testTakingTip: "Iron overdose = poison control + ED + deferoxamine. No charcoal, no ipecac.",
             guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
@@ -192,7 +192,7 @@ var ironDeficiencyAnemiaQuizData = {
                 b: "Flumazenil reverses benzodiazepines.",
                 c: "N-acetylcysteine is the acetaminophen antidote."
             },
-            testTakingTip: "Iron = Deferoxamine. Acetaminophen = NAC. Opioids = Naloxone. Benzos = Flumazenil.",
+            testTakingTip: "Iron = Deferoxamine. Acetaminophen = N-acetylcysteine (NAC). Opioids = Naloxone. Benzos = Flumazenil.",
             guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
@@ -238,10 +238,10 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Serum ferritin reflects stored iron. It is the FIRST lab to drop in iron deficiency - before hemoglobin or MCV change. Low ferritin with normal hemoglobin identifies early iron deficiency.",
+                correct: "Serum ferritin reflects stored iron. It is the FIRST lab to drop in iron deficiency - before hemoglobin or mean corpuscular volume (MCV) change. Low ferritin with normal hemoglobin identifies early iron deficiency.",
                 a: "Hemoglobin falls later, after stores are depleted.",
-                b: "MCV decreases after sustained deficiency.",
-                d: "WBC is unrelated."
+                b: "Mean corpuscular volume (MCV) decreases after sustained deficiency.",
+                d: "White blood cell (WBC) count is unrelated."
             },
             testTakingTip: "Ferritin drops FIRST. Hgb drops last.",
             guideSection: "Section 3 - Diagnosis",
@@ -284,10 +284,10 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A good response to iron therapy is a rise in reticulocytes within 3\u20137 days and a hemoglobin increase of >1 g/dL by 2\u20134 weeks. Ferritin should rise with continued therapy. MCV and MCH rise back toward normal.",
+                correct: "A good response to iron therapy is a rise in reticulocytes within 3\u20137 days and a hemoglobin increase of >1 g/dL by 2\u20134 weeks. Ferritin should rise with continued therapy. Mean corpuscular volume (MCV) and mean corpuscular hemoglobin (MCH) rise back toward normal.",
                 a: "No change = inadequate response or adherence issue.",
                 c: "Persistent undetectable ferritin suggests inadequate therapy.",
-                d: "Decreasing MCV = worsening."
+                d: "Decreasing mean corpuscular volume (MCV) = worsening."
             },
             testTakingTip: "Retic count up + Hgb rising = good response.",
             guideSection: "Section 4 - Treatment",
@@ -307,12 +307,12 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Children with iron deficiency commonly develop pica, which increases the risk of ingesting lead from paint chips, dust, or contaminated dirt (especially in housing built before 1978). IDA and lead poisoning also potentiate each other. Screen blood lead level when pica is present.",
+                correct: "Children with iron deficiency commonly develop pica, which increases the risk of ingesting lead from paint chips, dust, or contaminated dirt (especially in housing built before 1978). Iron-deficiency anemia (IDA) and lead poisoning also potentiate each other. Screen blood lead level when pica is present.",
                 a: "Iron doesn\u2019t clear lead.",
                 c: "Lead causes anemia (low Hgb), not high.",
                 d: "Iron supplements don\u2019t contain lead."
             },
-            testTakingTip: "Pica + IDA = check blood lead level.",
+            testTakingTip: "Pica + iron-deficiency anemia (IDA) = check blood lead level.",
             guideSection: "Section 2 - Clinical Manifestations",
             guideSectionId: "clinical"
         },

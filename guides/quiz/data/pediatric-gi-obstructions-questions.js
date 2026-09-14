@@ -26,10 +26,10 @@ var pediatricGiObstructionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The classic triad of projectile non-bilious vomiting, hunger immediately after vomiting, and the 2\u20138 week age window in a first-born boy is diagnostic for pyloric stenosis. The olive-shaped RUQ mass and visible peristaltic waves complete the picture.",
+                correct: "The classic triad of projectile non-bilious vomiting, hunger immediately after vomiting, and the 2\u20138 week age window in a first-born boy is diagnostic for pyloric stenosis. The olive-shaped right upper quadrant (RUQ) mass and visible peristaltic waves complete the picture.",
                 a: "Gastroenteritis typically causes diarrhea and the child is not hungry after vomiting.",
                 c: "Intussusception peaks at 5\u20139 months and features intermittent severe pain, not projectile vomiting.",
-                d: "GER involves effortless regurgitation, not forceful projectile vomiting, and is not typically associated with hunger immediately afterward."
+                d: "Gastroesophageal reflux (GER) involves effortless regurgitation, not forceful projectile vomiting, and is not typically associated with hunger immediately afterward."
             },
             testTakingTip: "First-born boy + 2\u20138 weeks + projectile vomiting + hungry after = pyloric stenosis. Memorize this cluster.",
             guideSection: "Section 2 - Pyloric Stenosis",
@@ -96,7 +96,7 @@ var pediatricGiObstructionsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Intussusception classically presents between 3 months and 3 years (peak 5\u20139 months) with intermittent severe crampy abdominal pain that causes the infant to draw knees to chest. 'Currant jelly' stool (blood and mucus) is a late sign indicating bowel ischemia.",
-                a: "Appendicitis is rare in infants; pain is typically continuous and migratory to RLQ.",
+                a: "Appendicitis is rare in infants; pain is typically continuous and migratory to the right lower quadrant (RLQ).",
                 b: "Pyloric stenosis causes projectile vomiting, not intermittent crampy pain or bloody stool.",
                 d: "Hirschsprung's presents with failure to pass meconium as a newborn or chronic constipation."
             },
@@ -166,7 +166,7 @@ var pediatricGiObstructionsQuizData = {
             rationale: {
                 correct: "Failure to pass meconium within 48 hours of birth is the classic presentation of Hirschsprung's disease. Combined with distension and bilious vomiting, this is a red-flag pattern that warrants immediate evaluation, typically starting with a contrast enema and rectal biopsy.",
                 a: "Physiologic feeding issues don't prevent meconium passage.",
-                c: "GER doesn't cause absence of meconium or abdominal distension.",
+                c: "Gastroesophageal reflux (GER) doesn't cause absence of meconium or abdominal distension.",
                 d: "Colic is a diagnosis of exclusion and not associated with absent meconium."
             },
             testTakingTip: "No meconium in 48 hours = Hirschsprung's until proven otherwise.",
@@ -210,9 +210,9 @@ var pediatricGiObstructionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "High fever, explosive foul diarrhea, and distension in a child with known Hirschsprung's strongly suggests HAEC - a life-threatening complication. Requires emergent IV fluids, broad-spectrum antibiotics, rectal decompression, and close hemodynamic monitoring.",
+                correct: "High fever, explosive foul diarrhea, and distension in a child with known Hirschsprung's strongly suggests Hirschsprung-associated enterocolitis (HAEC) - a life-threatening complication. Requires emergent IV fluids, broad-spectrum antibiotics, rectal decompression, and close hemodynamic monitoring.",
                 a: "Possible but unlikely to present this dramatically in a Hirschsprung child.",
-                c: "Appendicitis usually presents with RLQ migration of pain, not explosive diarrhea.",
+                c: "Appendicitis usually presents with right lower quadrant (RLQ) migration of pain, not explosive diarrhea.",
                 d: "Constipation doesn't cause high fever or explosive diarrhea."
             },
             testTakingTip: "In a Hirschsprung child, fever + explosive diarrhea + distension = enterocolitis. Priority action.",
@@ -233,13 +233,13 @@ var pediatricGiObstructionsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Periumbilical pain migrating to the RLQ (McBurney's point), anorexia, low-grade fever, vomiting after pain onset, and rebound tenderness is the classic presentation of appendicitis in school-age children and adolescents.",
+                correct: "Periumbilical pain migrating to the right lower quadrant (RLQ) at McBurney's point), anorexia, low-grade fever, vomiting after pain onset, and rebound tenderness is the classic presentation of appendicitis in school-age children and adolescents.",
                 a: "Correct - classic appendicitis.",
                 b: "Gastroenteritis typically causes diarrhea, which is not described here, and pain is diffuse, not localized.",
                 c: "Constipation doesn't migrate or cause rebound tenderness.",
-                d: "UTI may cause flank pain and dysuria, not this pain pattern."
+                d: "A urinary tract infection (UTI) may cause flank pain and dysuria, not this pain pattern."
             },
-            testTakingTip: "Pain migration from periumbilical to RLQ + anorexia + rebound = textbook appendicitis.",
+            testTakingTip: "Pain migration from periumbilical to right lower quadrant (RLQ) + anorexia + rebound = textbook appendicitis.",
             guideSection: "Section 5 - Appendicitis",
             guideSectionId: "appendicitis"
         },
@@ -281,7 +281,7 @@ var pediatricGiObstructionsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Applying heat to the abdomen in suspected appendicitis can cause the appendix to rupture. Cold compresses (if used at all) are sometimes acceptable, but heat is contraindicated. Enemas and laxatives are also contraindicated for the same reason.",
-                a: "NPO is appropriate - prepares for surgery and reduces GI motility.",
+                a: "NPO is appropriate - prepares for surgery and reduces gastrointestinal (GI) motility.",
                 c: "IV fluids are appropriate for hydration pre-op.",
                 d: "Frequent vital sign monitoring is essential."
             },
@@ -303,7 +303,7 @@ var pediatricGiObstructionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Chvostek's sign is associated with hypocalcemia (facial twitch when tapping over the facial nerve). Rovsing's (LLQ palpation causes RLQ pain), psoas (pain with hip extension), and obturator (pain with internal hip rotation) are all appendicitis signs.",
+                correct: "Chvostek's sign is associated with hypocalcemia (facial twitch when tapping over the facial nerve). Rovsing's (palpating the left lower quadrant causes right lower quadrant pain), psoas (pain with hip extension), and obturator (pain with internal hip rotation) are all appendicitis signs.",
                 a: "Rovsing's is a classic appendicitis sign.",
                 b: "Psoas is a classic appendicitis sign.",
                 d: "Obturator is a classic appendicitis sign."
@@ -326,12 +326,12 @@ var pediatricGiObstructionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Standard pediatric fluid resuscitation is normal saline (or LR) 20 mL/kg IV bolus over 20\u201330 minutes, repeated as needed based on clinical response.",
+                correct: "Standard pediatric fluid resuscitation is normal saline or lactated Ringer's (LR), 20 mL/kg IV bolus over 20\u201330 minutes, repeated as needed based on clinical response.",
                 a: "Too small and too slow for a severely dehydrated child.",
                 b: "The right speed but the volume is inadequate.",
                 d: "50 mL/kg over 10 minutes can cause fluid overload; 20 mL/kg is the standard starting bolus."
             },
-            testTakingTip: "Pediatric fluid bolus: 20 mL/kg NS over 20\u201330 minutes. Memorize this number.",
+            testTakingTip: "Pediatric fluid bolus: 20 mL/kg normal saline (NS) over 20\u201330 minutes. Memorize this number.",
             guideSection: "Section 8 - Medications & Fluids",
             guideSectionId: "medications"
         },

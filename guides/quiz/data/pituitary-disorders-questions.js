@@ -23,18 +23,18 @@ var pituitaryDisordersQuizData = {
             stem: "A patient's lab results show: serum sodium 118 mEq/L, serum osmolality 248 mOsm/kg, urine osmolality 450 mOsm/kg, and urine specific gravity 1.035. Which condition do these results indicate?",
             options: [
                 { id: "a", text: "Diabetes insipidus (central type)" },
-                { id: "b", text: "SIADH (Syndrome of Inappropriate ADH)" },
-                { id: "c", text: "Uncontrolled diabetes mellitus" },
-                { id: "d", text: "Primary adrenal insufficiency" }
+                { id: "b", text: "Syndrome of inappropriate antidiuretic hormone (SIADH)" },
+                { id: "c", text: "Uncontrolled type 2 diabetes mellitus" },
+                { id: "d", text: "Primary adrenal insufficiency (Addison disease)" }
             ],
             correct: "b",
             rationale: {
-                correct: "This is a classic SIADH pattern: LOW serum sodium (118 mEq/L - dilutional hyponatremia), LOW serum osmolality (248 - dilute blood), HIGH urine osmolality (450 - concentrated urine), and HIGH urine specific gravity (1.035 - concentrated urine). The body is retaining too much water due to excess ADH, diluting the serum while concentrating the urine.",
-                a: "Diabetes insipidus would show the OPPOSITE pattern: HIGH serum sodium (>145), HIGH serum osmolality (>295), LOW urine osmolality (<300), and LOW urine specific gravity (<1.005). DI produces massive amounts of dilute urine.",
-                c: "Diabetes mellitus would not cause this electrolyte pattern. DM is characterized by hyperglycemia, not hyponatremia with concentrated urine.",
-                d: "While adrenal insufficiency can cause hyponatremia, it would not produce the high urine osmolality with this degree of hyponatremia. The combination of very low serum osmolality with concentrated urine is the hallmark of SIADH."
+                correct: "This is the classic pattern of syndrome of inappropriate antidiuretic hormone (SIADH): LOW serum sodium (118 mEq/L - dilutional hyponatremia), LOW serum osmolality (248 - dilute blood), HIGH urine osmolality (450 - concentrated urine), and HIGH urine specific gravity (1.035 - concentrated urine). The body is retaining too much water due to excess antidiuretic hormone (ADH), diluting the serum while concentrating the urine.",
+                a: "Diabetes insipidus (DI) would show the OPPOSITE pattern: HIGH serum sodium (>145), HIGH serum osmolality (>295), LOW urine osmolality (<300), and LOW urine specific gravity (<1.005). DI produces massive amounts of dilute urine.",
+                c: "Diabetes mellitus (DM) would not cause this electrolyte pattern. DM is characterized by hyperglycemia, not hyponatremia with concentrated urine.",
+                d: "While adrenal insufficiency can cause hyponatremia, it would not produce the high urine osmolality with this degree of hyponatremia. The combination of very low serum osmolality with concentrated urine is the hallmark of the syndrome of inappropriate antidiuretic hormone (SIADH)."
             },
-            testTakingTip: "SIADH: serum values are LOW (dilute blood), urine values are HIGH (concentrated urine). DI: serum values are HIGH (concentrated blood), urine values are LOW (dilute urine). They are EXACT OPPOSITES. Check sodium + urine concentration to differentiate instantly.",
+            testTakingTip: "Syndrome of inappropriate antidiuretic hormone (SIADH): serum values are LOW (dilute blood), urine values are HIGH (concentrated urine). Diabetes insipidus (DI): serum values are HIGH (concentrated blood), urine values are LOW (dilute urine). They are EXACT OPPOSITES. Check sodium + urine concentration to differentiate instantly.",
             guideSection: "Section 4 - SIADH vs DI Comparison",
             guideSectionId: "siadh-vs-di"
         },
@@ -51,17 +51,17 @@ var pituitaryDisordersQuizData = {
             options: [
                 { id: "a", text: "Obtain a specimen of the nasal drainage and test it for glucose" },
                 { id: "b", text: "Encourage the patient to blow their nose gently to clear the drainage" },
-                { id: "c", text: "Notify the surgeon immediately - this may be a CSF leak" },
+                { id: "c", text: "Notify the surgeon immediately - this may be a cerebrospinal fluid (CSF) leak" },
                 { id: "d", text: "Apply a nasal decongestant spray to reduce the drainage" }
             ],
             correct: "c",
             rationale: {
-                correct: "Clear nasal drainage with a postural headache (worse when upright) after transsphenoidal surgery is strongly suspicious for a CSF leak. This is the most serious post-operative complication because it creates a direct pathway for bacteria to enter the CNS, potentially causing meningitis. The surgeon must be notified immediately. While glucose testing can confirm CSF, the clinical picture warrants immediate notification rather than delaying to perform a test.",
-                a: "Testing nasal drainage for glucose can help confirm CSF (CSF contains glucose while mucus does not), but the clinical presentation is already highly suspicious. Notifying the surgeon takes priority - you can test the drainage while waiting for the surgeon's response.",
-                b: "Nose blowing is ABSOLUTELY CONTRAINDICATED after transsphenoidal surgery. It increases intracranial pressure and can worsen or create a CSF leak. This could be a life-threatening action.",
-                d: "Nasal decongestant spray is not appropriate for CSF drainage and could mask the leak. The drainage is not from nasal congestion - it is potentially cerebrospinal fluid."
+                correct: "Clear nasal drainage with a postural headache (worse when upright) after transsphenoidal surgery is strongly suspicious for a cerebrospinal fluid (CSF) leak. This is the most serious post-operative complication because it creates a direct pathway for bacteria to enter the central nervous system (CNS), potentially causing meningitis. The surgeon must be notified immediately. While glucose testing can confirm CSF, the clinical picture warrants immediate notification rather than delaying to perform a test.",
+                a: "Testing nasal drainage for glucose can help confirm cerebrospinal fluid (CSF), since CSF contains glucose while mucus does not, but the clinical presentation is already highly suspicious. Notifying the surgeon takes priority - you can test the drainage while waiting for the surgeon's response.",
+                b: "Nose blowing is ABSOLUTELY CONTRAINDICATED after transsphenoidal surgery. It increases intracranial pressure and can worsen or create a cerebrospinal fluid (CSF) leak. This could be a life-threatening action.",
+                d: "Nasal decongestant spray is not appropriate for cerebrospinal fluid (CSF) drainage and could mask the leak. The drainage is not from nasal congestion - it is potentially cerebrospinal fluid."
             },
-            testTakingTip: "Post-transsphenoidal surgery: clear nasal drainage = CSF leak until proven otherwise. Test for glucose (CSF is positive), look for halo sign. NEVER blow the nose - this is one of the '5 No's' after this surgery.",
+            testTakingTip: "Post-transsphenoidal surgery: clear nasal drainage = cerebrospinal fluid (CSF) leak until proven otherwise. Test for glucose (CSF is positive), look for halo sign. NEVER blow the nose - this is one of the '5 No's' after this surgery.",
             guideSection: "Section 10 - Transsphenoidal Surgery Care",
             guideSectionId: "transsphenoidal"
         },
@@ -74,7 +74,7 @@ var pituitaryDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with SIADH has a fluid restriction of 1000 mL/day. The patient's serum sodium is 121 mEq/L and they are confused. Which nursing intervention is MOST important?",
+            stem: "A patient with syndrome of inappropriate antidiuretic hormone (SIADH) has a fluid restriction of 1000 mL/day. The patient's serum sodium is 121 mEq/L and they are confused. Which nursing intervention is MOST important?",
             options: [
                 { id: "a", text: "Encourage the patient to drink at least 2 liters of water per day to flush excess sodium" },
                 { id: "b", text: "Implement seizure precautions and perform frequent neurological assessments" },
@@ -83,12 +83,12 @@ var pituitaryDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "With a serum sodium of 121 mEq/L (severe hyponatremia below 125 mEq/L), the patient is at HIGH risk for seizures. The confusion is already a sign of CNS effects from hyponatremia. Seizure precautions (padded side rails, bed in lowest position, suction at bedside, IV access) and frequent neuro checks are the highest nursing priority. Seizures from hyponatremia can be fatal.",
-                a: "This is DANGEROUS. Encouraging fluid intake in SIADH would worsen the hyponatremia by further diluting the serum sodium. SIADH treatment is fluid RESTRICTION, not fluid encouragement. The patient is already retaining too much water.",
-                c: "Loop diuretics may be used as part of SIADH treatment (with salt replacement), but this is a medical decision. The nurse's priority action is safety measures for the immediate seizure risk. Additionally, diuretics without sodium replacement could worsen hyponatremia.",
-                d: "Potassium is not the concern in SIADH - sodium is the critical electrolyte issue. Offering high-potassium foods does not address the hyponatremia or seizure risk."
+                correct: "With a serum sodium of 121 mEq/L (severe hyponatremia below 125 mEq/L), the patient is at HIGH risk for seizures. The confusion is already a sign of central nervous system (CNS) effects from hyponatremia. Seizure precautions (padded side rails, bed in lowest position, suction at bedside, IV access) and frequent neuro checks are the highest nursing priority. Seizures from hyponatremia can be fatal.",
+                a: "This is DANGEROUS. Encouraging fluid intake in syndrome of inappropriate antidiuretic hormone (SIADH) would worsen the hyponatremia by further diluting the serum sodium. SIADH treatment is fluid RESTRICTION, not fluid encouragement. The patient is already retaining too much water.",
+                c: "Loop diuretics may be used as part of syndrome of inappropriate antidiuretic hormone (SIADH) treatment (with salt replacement), but this is a medical decision. The nurse's priority action is safety measures for the immediate seizure risk. Additionally, diuretics without sodium replacement could worsen hyponatremia.",
+                d: "Potassium is not the concern in syndrome of inappropriate antidiuretic hormone (SIADH) - sodium is the critical electrolyte issue. Offering high-potassium foods does not address the hyponatremia or seizure risk."
             },
-            testTakingTip: "Sodium < 125 mEq/L = seizure precautions IMMEDIATELY. SIADH patients get confused before they seize. Remember: SIADH = restrict fluids (never encourage drinking). The biggest danger in SIADH is neurological - seizures from low sodium.",
+            testTakingTip: "Sodium < 125 mEq/L = seizure precautions IMMEDIATELY. Patients with syndrome of inappropriate antidiuretic hormone (SIADH) get confused before they seize. Remember: SIADH = restrict fluids (never encourage drinking). The biggest danger in SIADH is neurological - seizures from low sodium.",
             guideSection: "Section 3 - SIADH",
             guideSectionId: "siadh"
         },
@@ -103,22 +103,22 @@ var pituitaryDisordersQuizData = {
             difficulty: "application",
             stem: "A nurse is caring for a patient immediately post-transsphenoidal hypophysectomy. Place the following nursing assessments in the correct priority order.",
             options: [
-                { id: "a", text: "Monitor for CSF leak - assess nasal drainage, test for glucose if clear drainage noted" },
+                { id: "a", text: "Monitor for cerebrospinal fluid (CSF) leak - assess nasal drainage, test for glucose if clear drainage noted" },
                 { id: "b", text: "Monitor strict I&O and urine specific gravity for signs of diabetes insipidus" },
-                { id: "c", text: "Perform neurological assessment - LOC, orientation, visual acuity, pupil response" },
+                { id: "c", text: "Perform neurological assessment - level of consciousness (LOC), orientation, visual acuity, pupil response" },
                 { id: "d", text: "Assess nasal packing - ensure intact, monitor for bleeding" },
                 { id: "e", text: "Provide oral care with gentle mouth rinses (no toothbrushing for 2 weeks)" }
             ],
             correct: ["a", "c", "b", "d", "e"],
             rationale: {
-                correct: "Priority order reflects urgency: (1) CSF leak is the most serious complication - it risks meningitis. (2) Neurological assessment detects increased ICP, visual changes, or altered consciousness. (3) DI monitoring catches the second most common complication (occurs in up to 30% of patients). (4) Nasal packing assessment ensures hemostasis. (5) Oral care is important for comfort but lower priority.",
-                a: "FIRST - CSF leak detection is the #1 priority because meningitis from CSF leak is the most dangerous complication. Clear nasal drainage with glucose = CSF. Report immediately.",
-                c: "SECOND - Neurological assessment catches increased ICP, hemorrhage, or cranial nerve damage early. Compare to pre-operative baseline. Visual field testing is critical.",
-                b: "THIRD - DI occurs in up to 30% of patients. Sudden urine output >200 mL/hr with low specific gravity requires immediate desmopressin. Can cause rapid dehydration.",
+                correct: "Priority order reflects urgency: (1) A cerebrospinal fluid (CSF) leak is the most serious complication - it risks meningitis. (2) Neurological assessment detects increased intracranial pressure (ICP), visual changes, or altered consciousness. (3) Diabetes insipidus (DI) monitoring catches the second most common complication (occurs in up to 30% of patients). (4) Nasal packing assessment ensures hemostasis. (5) Oral care is important for comfort but lower priority.",
+                a: "FIRST - Cerebrospinal fluid (CSF) leak detection is the #1 priority because meningitis from CSF leak is the most dangerous complication. Clear nasal drainage with glucose = CSF. Report immediately.",
+                c: "SECOND - Neurological assessment catches increased intracranial pressure (ICP), hemorrhage, or cranial nerve damage early. Compare to pre-operative baseline. Visual field testing is critical.",
+                b: "THIRD - Diabetes insipidus (DI) occurs in up to 30% of patients. Sudden urine output >200 mL/hr with low specific gravity requires immediate desmopressin. Can cause rapid dehydration.",
                 d: "FOURTH - Nasal packing should be intact and not excessively bloody. Do not remove or manipulate - this is the surgeon's responsibility.",
                 e: "FIFTH - Oral care is important for comfort (patient is mouth-breathing) but is the lowest priority. No toothbrushing to avoid disrupting the surgical site near the upper gum line."
             },
-            testTakingTip: "Post-transsphenoidal priorities follow 'CSF → Neuro → DI → Packing → Comfort.' CSF leak is always #1 because meningitis risk is the most dangerous consequence. DI is #2 most common complication.",
+            testTakingTip: "Post-transsphenoidal priorities follow 'cerebrospinal fluid (CSF) → Neuro → diabetes insipidus (DI) → Packing → Comfort.' CSF leak is always #1 because meningitis risk is the most dangerous consequence. DI is #2 most common complication.",
             guideSection: "Section 10 - Transsphenoidal Surgery Care",
             guideSectionId: "transsphenoidal"
         },
@@ -140,12 +140,12 @@ var pituitaryDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Desmopressin replaces the missing ADH, causing the kidneys to reabsorb water and produce more concentrated urine. A urine specific gravity increasing from 1.002 (very dilute - untreated DI) to 1.018 (within normal range of 1.010-1.025) indicates the medication is working. Urine output should DECREASE and urine should become MORE concentrated.",
-                a: "Increased urine output to 5 L/day indicates the DI is NOT being controlled. Effective desmopressin would DECREASE urine output toward normal volumes. High output suggests inadequate dosing or nephrogenic DI (which does not respond to desmopressin).",
-                b: "Rising serum sodium (from 144 to 152 - worsening hypernatremia) indicates the DI is getting worse, not better. Effective treatment should normalize or decrease serum sodium as the body retains more water.",
-                d: "Increased thirst and dry mouth are symptoms of uncontrolled DI (dehydration). Effective desmopressin should reduce thirst as the body retains adequate water."
+                correct: "Desmopressin replaces the missing antidiuretic hormone (ADH), causing the kidneys to reabsorb water and produce more concentrated urine. A urine specific gravity increasing from 1.002, which is very dilute and typical of untreated diabetes insipidus (DI), to 1.018 (within normal range of 1.010-1.025) indicates the medication is working. Urine output should DECREASE and urine should become MORE concentrated.",
+                a: "Increased urine output to 5 L/day indicates the diabetes insipidus (DI) is NOT being controlled. Effective desmopressin would DECREASE urine output toward normal volumes. High output suggests inadequate dosing or nephrogenic DI (which does not respond to desmopressin).",
+                b: "Rising serum sodium (from 144 to 152 - worsening hypernatremia) indicates the diabetes insipidus (DI) is getting worse, not better. Effective treatment should normalize or decrease serum sodium as the body retains more water.",
+                d: "Increased thirst and dry mouth are symptoms of dehydration from uncontrolled diabetes insipidus (DI). Effective desmopressin should reduce thirst as the body retains adequate water."
             },
-            testTakingTip: "Desmopressin effectiveness = urine concentrates (specific gravity rises toward normal), urine output decreases, serum sodium normalizes. It mimics ADH - the 'anti-diuretic' effect means less peeing and more concentrated urine.",
+            testTakingTip: "Desmopressin effectiveness = urine concentrates (specific gravity rises toward normal), urine output decreases, serum sodium normalizes. It mimics antidiuretic hormone (ADH) - the 'anti-diuretic' effect means less peeing and more concentrated urine.",
             guideSection: "Section 2 - Diabetes Insipidus",
             guideSectionId: "diabetes-insipidus"
         },
@@ -159,7 +159,7 @@ var pituitaryDisordersQuizData = {
             subtype: null,
             difficulty: "analysis",
             matrixColumns: ["SIADH", "Diabetes Insipidus"],
-            stem: "For each clinical finding, identify whether it is associated with SIADH or Diabetes Insipidus.",
+            stem: "For each clinical finding, identify whether it is associated with the syndrome of inappropriate antidiuretic hormone (SIADH) or diabetes insipidus.",
             options: [
                 { id: "a", text: "Serum sodium 118 mEq/L with confusion and muscle cramps" },
                 { id: "b", text: "Urine output of 12 liters per day with extreme thirst" },
@@ -173,13 +173,13 @@ var pituitaryDisordersQuizData = {
                 d: "Diabetes Insipidus"
             },
             rationale: {
-                correct: "SIADH retains water (low Na+, concentrated urine, weight gain). DI loses water (high Na+, massive dilute urine output, dehydration signs).",
-                a: "SIADH - Low serum sodium (118 mEq/L = severe hyponatremia) with neurological symptoms (confusion) and muscle cramps are hallmarks of SIADH's dilutional hyponatremia.",
-                b: "DI - Massive urine output (12 L/day) with extreme polydipsia (thirst) is the hallmark of diabetes insipidus. The kidneys cannot concentrate urine without ADH.",
-                c: "SIADH - Very high urine specific gravity (1.038 = concentrated urine) with weight gain but no edema is classic SIADH. The excess water distributes intracellularly, not into interstitial spaces.",
-                d: "DI - High serum osmolality (310 = concentrated/dehydrated blood) with clinical signs of dehydration (dry mucous membranes, tachycardia) indicates the body is losing excessive water."
+                correct: "Syndrome of inappropriate antidiuretic hormone (SIADH) retains water (low Na+, concentrated urine, weight gain). Diabetes insipidus (DI) loses water (high Na+, massive dilute urine output, dehydration signs).",
+                a: "Syndrome of inappropriate antidiuretic hormone (SIADH) - Low serum sodium (118 mEq/L = severe hyponatremia) with neurological symptoms (confusion) and muscle cramps are hallmarks of SIADH's dilutional hyponatremia.",
+                b: "Diabetes insipidus (DI) - Massive urine output (12 L/day) with extreme polydipsia (thirst) is the hallmark of diabetes insipidus. The kidneys cannot concentrate urine without antidiuretic hormone (ADH).",
+                c: "Syndrome of inappropriate antidiuretic hormone (SIADH) - Very high urine specific gravity (1.038 = concentrated urine) with weight gain but no edema is classic SIADH. The excess water distributes intracellularly, not into interstitial spaces.",
+                d: "Diabetes insipidus (DI) - High serum osmolality (310 = concentrated/dehydrated blood) with clinical signs of dehydration (dry mucous membranes, tachycardia) indicates the body is losing excessive water."
             },
-            testTakingTip: "Two quick checks to differentiate: (1) Is sodium HIGH or LOW? High = DI, Low = SIADH. (2) Is urine output HIGH or LOW? High = DI, Low = SIADH. Everything mirrors.",
+            testTakingTip: "Two quick checks to differentiate: (1) Is sodium HIGH or LOW? High = diabetes insipidus (DI), Low = syndrome of inappropriate antidiuretic hormone (SIADH). (2) Is urine output HIGH or LOW? High = DI, Low = SIADH. Everything mirrors.",
             guideSection: "Section 4 - SIADH vs DI Comparison",
             guideSectionId: "siadh-vs-di"
         },
@@ -192,7 +192,7 @@ var pituitaryDisordersQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with SIADH is started on tolvaptan (Samsca). The morning serum sodium is 119 mEq/L. At 6 hours, it has risen to 128 mEq/L. What should the nurse do?",
+            stem: "A patient with syndrome of inappropriate antidiuretic hormone (SIADH) is started on tolvaptan (Samsca). The morning serum sodium is 119 mEq/L. At 6 hours, it has risen to 128 mEq/L. What should the nurse do?",
             options: [
                 { id: "a", text: "Continue tolvaptan - the sodium is correcting appropriately" },
                 { id: "b", text: "Notify the provider immediately - sodium is correcting too rapidly" },
@@ -202,9 +202,9 @@ var pituitaryDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "The serum sodium has risen 9 mEq/L in just 6 hours. The safe correction rate is no more than 10-12 mEq/L in 24 hours. At this rate, the patient is on track to exceed the safe limit, risking osmotic demyelination syndrome (ODS) - an irreversible and devastating neurological condition. The provider must be notified to consider stopping tolvaptan and potentially giving hypotonic fluids (D5W) to slow the correction.",
-                a: "This is NOT appropriate. A rise of 9 mEq/L in 6 hours projects to 36 mEq/L in 24 hours - far exceeding the 10-12 mEq/L safe limit. Continuing the current treatment risks ODS.",
+                a: "This is NOT appropriate. A rise of 9 mEq/L in 6 hours projects to 36 mEq/L in 24 hours - far exceeding the 10-12 mEq/L safe limit. Continuing the current treatment risks osmotic demyelination syndrome (ODS).",
                 c: "Hypertonic saline would ACCELERATE sodium correction - the exact opposite of what is needed. The sodium is already rising too fast. Hypertonic saline is used for severe symptomatic hyponatremia (seizures, coma), not to speed up an already rapid correction.",
-                d: "While the concept of slowing correction is right, the nurse's first action is to notify the provider. The provider may order D5W (hypotonic fluid) to actually lower the sodium slightly and slow the correction. Simply restricting fluids is insufficient when the correction rate is this dangerous."
+                d: "While the concept of slowing correction is right, the nurse's first action is to notify the provider. The provider may order 5% dextrose in water (D5W), a hypotonic fluid, to actually lower the sodium slightly and slow the correction. Simply restricting fluids is insufficient when the correction rate is this dangerous."
             },
             testTakingTip: "The 10-12 rule: never correct sodium more than 10-12 mEq/L in 24 hours. Faster = osmotic demyelination syndrome (irreversible brain damage). Calculate: if sodium rose 9 in 6 hours, it's on pace for ~36 in 24 hours. That's dangerously fast.",
             guideSection: "Section 3 - SIADH",
@@ -228,12 +228,12 @@ var pituitaryDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "This is a classic acromegaly presentation: gradual enlargement of hands (rings don't fit), feet (shoes feel tight), and facial features over years, combined with insulin resistance (new diabetes) and carpal tunnel syndrome (from soft tissue swelling). Acromegaly is caused by a GH-secreting pituitary adenoma producing excess growth hormone after growth plate closure. The slow onset (years) is characteristic - average diagnosis takes 7-10 years.",
+                correct: "This is a classic acromegaly presentation: gradual enlargement of hands (rings don't fit), feet (shoes feel tight), and facial features over years, combined with insulin resistance (new diabetes) and carpal tunnel syndrome (from soft tissue swelling). Acromegaly is caused by a pituitary adenoma that secretes excess growth hormone (GH) after growth plate closure. The slow onset (years) is characteristic - average diagnosis takes 7-10 years.",
                 a: "Cushing's syndrome causes truncal obesity, moon face, buffalo hump, and striae - but not enlarged hands and feet. The facial changes in Cushing's are fat redistribution, not bone/tissue enlargement.",
                 b: "Hypothyroidism causes weight gain, fatigue, cold intolerance, and puffy features (myxedema), but not progressive bony enlargement of hands, feet, and jaw.",
                 d: "Hyperprolactinemia causes galactorrhea, amenorrhea, or sexual dysfunction - not enlargement of extremities or facial features."
             },
-            testTakingTip: "Rings don't fit + shoes feel tight + facial changes over years = acromegaly. The gradual onset is key - comparing old photographs is the best way to detect the changes. IGF-1 is the best screening test.",
+            testTakingTip: "Rings don't fit + shoes feel tight + facial changes over years = acromegaly. The gradual onset is key - comparing old photographs is the best way to detect the changes. Insulin-like growth factor 1 (IGF-1) is the best screening test.",
             guideSection: "Section 6 - Growth Hormone Disorders",
             guideSectionId: "growth-hormone"
         },
@@ -256,11 +256,11 @@ var pituitaryDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Urine output of 350 mL/hr (well above the 200 mL/hr threshold) with very dilute urine (specific gravity 1.002, normal is 1.010-1.025) after pituitary surgery is classic transient diabetes insipidus from posterior pituitary manipulation. The provider must be notified immediately to initiate desmopressin and IV fluid replacement. At 350 mL/hr, the patient will become dangerously dehydrated rapidly.",
-                a: "Fluid restriction is the treatment for SIADH, not DI. Restricting fluids in a patient who is losing 350 mL/hr through urine would cause severe dehydration and potentially cardiovascular collapse.",
-                c: "While fluid replacement is part of DI management, the nurse should notify the provider FIRST. The patient likely needs desmopressin (DDAVP) in addition to fluid replacement. Oral fluid intake alone cannot keep up with output this high.",
+                a: "Fluid restriction is the treatment for syndrome of inappropriate antidiuretic hormone (SIADH), not diabetes insipidus (DI). Restricting fluids in a patient who is losing 350 mL/hr through urine would cause severe dehydration and potentially cardiovascular collapse.",
+                c: "While fluid replacement is part of diabetes insipidus (DI) management, the nurse should notify the provider FIRST. The patient likely needs desmopressin (DDAVP) in addition to fluid replacement. Oral fluid intake alone cannot keep up with output this high.",
                 d: "Waiting 4 hours is dangerous. At 350 mL/hr, the patient could lose an additional 1.4 liters in 4 hours. This is an urgent situation requiring immediate provider notification and intervention."
             },
-            testTakingTip: "Post-pituitary surgery + sudden high urine output + very dilute urine (SG < 1.005) = DI. The 200 mL/hr threshold is key. Notify immediately - don't wait. Transient DI occurs in up to 30% of transsphenoidal patients.",
+            testTakingTip: "Post-pituitary surgery + sudden high urine output + very dilute urine (specific gravity under 1.005) = diabetes insipidus (DI). The 200 mL/hr threshold is key. Notify immediately - don't wait. Transient DI occurs in up to 30% of transsphenoidal patients.",
             guideSection: "Section 10 - Transsphenoidal Surgery Care",
             guideSectionId: "transsphenoidal"
         },
@@ -276,18 +276,18 @@ var pituitaryDisordersQuizData = {
             stem: "A nurse is reviewing medications for patients with pituitary disorders. Which medication-disorder pairing is CORRECT?",
             options: [
                 { id: "a", text: "Tolvaptan (Samsca) for diabetes insipidus" },
-                { id: "b", text: "Desmopressin (DDAVP) for SIADH" },
+                { id: "b", text: "Desmopressin (DDAVP) for syndrome of inappropriate antidiuretic hormone (SIADH)" },
                 { id: "c", text: "Cabergoline (Dostinex) for prolactinoma" },
                 { id: "d", text: "Octreotide (Sandostatin) for growth hormone deficiency" }
             ],
             correct: "c",
             rationale: {
                 correct: "Cabergoline is a dopamine agonist used to treat prolactinoma. Dopamine normally inhibits prolactin secretion, so a dopamine agonist suppresses excess prolactin and shrinks the tumor. Cabergoline is the preferred first-line treatment (over bromocriptine) due to better efficacy and fewer side effects.",
-                a: "Tolvaptan is used for SIADH, NOT DI. Tolvaptan blocks V2 vasopressin receptors to promote water excretion - used when the body retains too much water. DI patients need desmopressin (to retain water), which is the opposite effect.",
-                b: "Desmopressin is used for DI, NOT SIADH. Desmopressin is synthetic ADH - it tells the kidneys to reabsorb water. Giving desmopressin in SIADH (which already has excess ADH effect) would dangerously worsen the water retention and hyponatremia.",
-                d: "Octreotide is used for acromegaly (GH excess), NOT GH deficiency. Octreotide is a somatostatin analog that suppresses GH secretion. GH deficiency is treated with somatropin (recombinant GH replacement)."
+                a: "Tolvaptan is used for syndrome of inappropriate antidiuretic hormone (SIADH), NOT diabetes insipidus (DI). Tolvaptan blocks V2 vasopressin receptors to promote water excretion - used when the body retains too much water. DI patients need desmopressin (to retain water), which is the opposite effect.",
+                b: "Desmopressin is used for diabetes insipidus (DI), NOT syndrome of inappropriate antidiuretic hormone (SIADH). Desmopressin is synthetic antidiuretic hormone (ADH) - it tells the kidneys to reabsorb water. Giving desmopressin in SIADH (which already has excess ADH effect) would dangerously worsen the water retention and hyponatremia.",
+                d: "Octreotide is used for growth hormone (GH) excess in acromegaly, NOT GH deficiency. Octreotide is a somatostatin analog that suppresses GH secretion. GH deficiency is treated with somatropin (recombinant GH replacement)."
             },
-            testTakingTip: "Match the drug to its purpose: Desmopressin REPLACES ADH (for DI). Tolvaptan BLOCKS ADH (for SIADH). Octreotide SUPPRESSES GH (for acromegaly). Somatropin REPLACES GH (for deficiency). Cabergoline INHIBITS prolactin (for prolactinoma). Each drug is the opposite of the disease.",
+            testTakingTip: "Match the drug to its purpose: Desmopressin REPLACES antidiuretic hormone (ADH) in diabetes insipidus (DI). Tolvaptan BLOCKS ADH in syndrome of inappropriate antidiuretic hormone (SIADH). Octreotide SUPPRESSES growth hormone (GH) in acromegaly. Somatropin REPLACES GH (for deficiency). Cabergoline INHIBITS prolactin (for prolactinoma). Each drug is the opposite of the disease.",
             guideSection: "Section 11 - Medication Comparison",
             guideSectionId: "medications"
         },
@@ -303,7 +303,7 @@ var pituitaryDisordersQuizData = {
             correct: "a",
             rationale: {
                 correct: "The posterior lobe is a warehouse, not a factory. It makes nothing. It stores and releases two hormones produced in the hypothalamus, antidiuretic hormone and oxytocin.",
-                b: "Six hormones under hypothalamic instruction describes the anterior lobe, remembered as FLAT PiG.",
+                b: "Six hormones under hypothalamic instruction describes the anterior lobe, which makes six hormones of its own.",
                 c: "The posterior lobe does not synthesise anything, which is the point of the distinction.",
                 d: "Growth hormone is an anterior lobe product."
             },
@@ -373,6 +373,7 @@ var pituitaryDisordersQuizData = {
         },
         {
             id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            keepAcronyms: ["PiG"],
             stem: "A nursing student uses the mnemonic FLAT PiG for the anterior pituitary hormones. Which hormone does the G represent?",
             options: [
                 { id: "a", text: "Growth hormone" },

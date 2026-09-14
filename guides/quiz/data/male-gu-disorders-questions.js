@@ -28,7 +28,7 @@ var maleGuDisordersQuizData = {
             rationale: {
                 correct: "Sudden severe pain, high-riding testis with horizontal lie, and absent cremasteric reflex in an adolescent boy is testicular torsion until proven otherwise. Salvage rate drops sharply after 6 hours. Notify the surgeon and prepare for emergent OR; don't delay for imaging if the clinical picture is classic.",
                 a: "Discharge would result in testicular loss within hours.",
-                b: "UA is not diagnostic for torsion; don't delay surgery.",
+                b: "A urinalysis (UA) is not diagnostic for torsion; don't delay surgery.",
                 d: "Antibiotic trial is for epididymitis, not torsion."
             },
             testTakingTip: "Classic torsion pattern in a teen = OR ASAP. Time is testicle.",
@@ -166,7 +166,7 @@ var maleGuDisordersQuizData = {
             rationale: {
                 correct: "Untreated cryptorchidism increases testicular cancer risk 4\u20138 times. Early orchiopexy reduces but does not eliminate this risk. Infertility is also a major concern if the testis is not placed in the scrotum before puberty.",
                 a: "Epididymitis is not a known long-term consequence.",
-                c: "BPH is unrelated.",
+                c: "Benign prostatic hyperplasia (BPH) is unrelated.",
                 d: "Hypogonadism can occur but isn't the major concern - cancer risk is."
             },
             testTakingTip: "Cryptorchidism \u2192 cancer risk 4\u20138\u00d7. Orchiopexy by 18 months reduces but doesn't eliminate this.",

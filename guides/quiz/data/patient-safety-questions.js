@@ -225,6 +225,7 @@ var patientSafetyQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
+            keepAcronyms: ["QOD", "QD", "MS", "MSO4"],
             stem: "Which medication order is written safely?",
             options: [
                 { id: "a", text: "Digoxin 0.25 mg by mouth daily" },
@@ -236,8 +237,8 @@ var patientSafetyQuizData = {
             rationale: {
                 correct: "A leading zero before a decimal point is required, so 0.25 mg is written correctly and cannot be misread as 25 mg.",
                 b: "A trailing zero is prohibited. 1.0 mg is misread as 10 mg if the decimal point is faint.",
-                c: "QOD is on the do-not-use list because it is confused with QD. Write every other day.",
-                d: "MS and MSO4 are confused with magnesium sulfate. The full drug name is required."
+                c: "QOD, meant as every other day, is on the do-not-use list because it is confused with QD, meant as daily. Write every other day.",
+                d: "MS and MSO4, meant as morphine sulfate, are confused with magnesium sulfate. The full drug name is required."
             },
             testTakingTip: "Always a leading zero, never a trailing one.",
             guideSection: "Section 06: Medication safety",

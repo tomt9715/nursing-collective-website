@@ -25,12 +25,12 @@ var antepartumCareQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Naegele\u2019s rule: Subtract 3 months from the LMP and add 7 days. March 10 minus 3 months = December 10, plus 7 days = December 17. This is the standard method for calculating EDD when the client has regular 28-day cycles.",
+                correct: "Naegele\u2019s rule: Subtract 3 months from the last menstrual period (LMP) and add 7 days. March 10 minus 3 months = December 10, plus 7 days = December 17. This is the standard method for calculating the estimated date of delivery (EDD) when the client has regular 28-day cycles.",
                 b: "This would result from adding 10 months and 7 days, which is not how Naegele\u2019s rule works.",
                 c: "December 10 only subtracts 3 months but forgets to add 7 days.",
                 d: "January 10 adds 10 months but does not apply the correct formula."
             },
-            testTakingTip: "Naegele\u2019s rule: LMP \u2212 3 months + 7 days + 1 year (if needed). Practice this calculation until it is automatic - it shows up on exams and in clinical. Always use the first day of the LMP, not the last day.",
+            testTakingTip: "Naegele\u2019s rule: last menstrual period (LMP) \u2212 3 months + 7 days + 1 year (if needed). Practice this calculation until it is automatic - it shows up on exams and in clinical. Always use the first day of the LMP, not the last day.",
             guideSection: "Section 2 - Confirmation of Pregnancy",
             guideSectionId: "pregnancy-confirmation"
         },
@@ -48,12 +48,12 @@ var antepartumCareQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A positive pregnancy test (detecting hCG) is a probable sign of pregnancy - it strongly suggests pregnancy but could have other causes (such as hCG-secreting tumors). Nausea and breast tenderness are presumptive signs (subjective, reported by the client). Since the question asks about all the findings together including the positive test, probable is the best answer because it is the highest level of certainty present.",
+                correct: "A positive pregnancy test, which detects human chorionic gonadotropin (hCG), is a probable sign of pregnancy - it strongly suggests pregnancy but could have other causes (such as hCG-secreting tumors). Nausea and breast tenderness are presumptive signs (subjective, reported by the client). Since the question asks about all the findings together including the positive test, probable is the best answer because it is the highest level of certainty present.",
                 a: "Positive signs are definitive proof of pregnancy: visualization of the fetus on ultrasound, fetal heart tones by Doppler, or fetal movement felt by the examiner. None of these have been confirmed yet.",
                 c: "Nausea and breast tenderness alone are presumptive (subjective) signs, but the positive pregnancy test elevates the certainty to probable.",
                 d: "\"Diagnostic signs\" is not a standard classification in the presumptive-probable-positive framework used in obstetric nursing."
             },
-            testTakingTip: "Remember the hierarchy: Presumptive = subjective symptoms (client reports). Probable = objective findings that suggest pregnancy (positive hCG, Hegar\u2019s sign, Chadwick\u2019s sign). Positive = definitive proof (see, hear, or feel the fetus).",
+            testTakingTip: "Remember the hierarchy: Presumptive = subjective symptoms (client reports). Probable = objective findings that suggest pregnancy: positive human chorionic gonadotropin (hCG), Hegar\u2019s sign, Chadwick\u2019s sign. Positive = definitive proof (see, hear, or feel the fetus).",
             guideSection: "Section 2 - Confirmation of Pregnancy",
             guideSectionId: "pregnancy-confirmation"
         },
@@ -98,12 +98,12 @@ var antepartumCareQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "A positive urine culture for GBS indicates a urinary tract infection that requires antibiotic treatment NOW - untreated GBS bacteriuria increases the risk of preterm labor, pyelonephritis, and neonatal sepsis. This also means the client will need IV antibiotics during labor (GBS prophylaxis). This finding requires immediate provider notification and treatment.",
+                correct: "A positive urine culture for group B streptococcus (GBS) indicates a urinary tract infection that requires antibiotic treatment NOW - untreated GBS bacteriuria increases the risk of preterm labor, pyelonephritis, and neonatal sepsis. This also means the client will need IV antibiotics during labor (GBS prophylaxis). This finding requires immediate provider notification and treatment.",
                 a: "Hemoglobin of 11.2 g/dL is within the normal range for pregnancy (physiologic anemia occurs due to hemodilution). The lower limit is approximately 11.0 g/dL in the first trimester.",
                 b: "Blood type O negative with a negative antibody screen is expected. The client will need RhoGAM at 28 weeks and after delivery if the infant is Rh positive, but this is routine management, not an immediate concern.",
-                c: "A non-immune rubella titer means the client is susceptible to rubella. The nurse should educate about avoiding exposure, but the MMR vaccine is a live vaccine and CANNOT be given during pregnancy. Vaccination will be given postpartum."
+                c: "A non-immune rubella titer means the client is susceptible to rubella. The nurse should educate about avoiding exposure, but the measles, mumps, and rubella (MMR) vaccine is a live vaccine and CANNOT be given during pregnancy. Vaccination will be given postpartum."
             },
-            testTakingTip: "Positive infection cultures always require follow-up. GBS in urine is treated immediately AND triggers intrapartum prophylaxis. Know the difference between GBS screening (35-37 weeks, vaginal/rectal) and GBS bacteriuria (urine, treated when found).",
+            testTakingTip: "Positive infection cultures always require follow-up. Group B streptococcus (GBS) in urine is treated immediately AND triggers intrapartum prophylaxis. Know the difference between GBS screening (35-37 weeks, vaginal/rectal) and GBS bacteriuria (urine, treated when found).",
             guideSection: "Section 4 - Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
         },
@@ -121,12 +121,12 @@ var antepartumCareQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A reactive NST requires TWO or more accelerations of at least 15 bpm lasting at least 15 seconds within a 20-minute window. This tracing shows only ONE acceleration, making it non-reactive. The nurse should extend the test to 40 minutes (the fetus may be sleeping) or use vibroacoustic stimulation to elicit a response before reporting results.",
+                correct: "A reactive non-stress test (NST) requires TWO or more accelerations of at least 15 bpm lasting at least 15 seconds within a 20-minute window. This tracing shows only ONE acceleration, making it non-reactive. The nurse should extend the test to 40 minutes (the fetus may be sleeping) or use vibroacoustic stimulation to elicit a response before reporting results.",
                 a: "Reactive requires 2+ accelerations meeting criteria. Only one acceleration was observed - this does not meet the threshold for reactivity.",
-                c: "\"Positive\" and \"negative\" are terms used for the contraction stress test (CST), not the NST. The NST uses \"reactive\" and \"non-reactive.\"",
-                d: "\"Equivocal\" is a CST term, not an NST term. The appropriate response to a non-reactive NST is to extend testing or proceed to further evaluation (BPP or CST)."
+                c: "\"Positive\" and \"negative\" are terms used for the contraction stress test (CST), not the non-stress test (NST). The NST uses \"reactive\" and \"non-reactive.\"",
+                d: "\"Equivocal\" is a contraction stress test (CST) term, not a non-stress test (NST) term. The appropriate response to a non-reactive NST is to extend testing or proceed to further evaluation, such as a biophysical profile (BPP) or CST."
             },
-            testTakingTip: "Remember the 15-15-2 rule for NST: 15 bpm acceleration \u00d7 15 seconds duration \u00d7 2 occurrences in 20 minutes = reactive. If the fetus doesn\u2019t meet criteria, the baby may be sleeping - extend the test or stimulate before calling it non-reactive.",
+            testTakingTip: "Remember the 15-15-2 rule for the non-stress test (NST): 15 bpm acceleration \u00d7 15 seconds duration \u00d7 2 occurrences in 20 minutes = reactive. If the fetus doesn\u2019t meet criteria, the baby may be sleeping - extend the test or stimulate before calling it non-reactive.",
             guideSection: "Section 5 - Fetal Assessment & Monitoring",
             guideSectionId: "fetal-assessment"
         },
@@ -139,20 +139,20 @@ var antepartumCareQuizData = {
             options: [
                 { id: "a", text: "Schedule the 3-hour glucose tolerance test to confirm or rule out gestational diabetes" },
                 { id: "b", text: "Administer RhoGAM at 28 weeks to prevent Rh sensitization" },
-                { id: "c", text: "Initiate dietary counseling and blood glucose self-monitoring if GDM is confirmed" },
-                { id: "d", text: "Obtain vaginal-rectal GBS culture to determine need for intrapartum antibiotics" },
-                { id: "e", text: "Increase fetal surveillance with non-stress tests if GDM requires insulin therapy" }
+                { id: "c", text: "Initiate dietary counseling and blood glucose self-monitoring if gestational diabetes mellitus (GDM) is confirmed" },
+                { id: "d", text: "Obtain vaginal-rectal group B streptococcus (GBS) culture to determine need for intrapartum antibiotics" },
+                { id: "e", text: "Increase fetal surveillance with non-stress tests if gestational diabetes mellitus (GDM) requires insulin therapy" }
             ],
             correct: ["a", "c", "b", "d", "e"],
             rationale: {
                 correct: "The sequence addresses the most immediate concern first (abnormal glucose screening requires confirmatory testing), then manages the confirmed diagnosis, then addresses time-sensitive preventive care (RhoGAM at 28 weeks), followed by later-pregnancy screenings and ongoing monitoring.",
-                a: "FIRST - The abnormal 1-hour GCT (\u2265140 mg/dL) requires a confirmatory 3-hour glucose tolerance test. This is the most immediate priority because it determines the treatment plan. GDM diagnosis changes the entire trajectory of care.",
-                c: "SECOND - If GDM is confirmed by the 3-hour GTT, dietary counseling and blood glucose self-monitoring begin immediately. Most women with GDM are managed with medical nutrition therapy first before considering pharmacological intervention.",
+                a: "FIRST - The abnormal 1-hour glucose challenge test (GCT) result (\u2265140 mg/dL) requires a confirmatory 3-hour glucose tolerance test. This is the most immediate priority because it determines the treatment plan. A gestational diabetes mellitus (GDM) diagnosis changes the entire trajectory of care.",
+                c: "SECOND - If gestational diabetes mellitus (GDM) is confirmed by the 3-hour glucose tolerance test (GTT), dietary counseling and blood glucose self-monitoring begin immediately. Most women with GDM are managed with medical nutrition therapy first before considering pharmacological intervention.",
                 b: "THIRD - At 28 weeks, RhoGAM must be administered to this Rh-negative mother to prevent alloimmunization. This is a time-sensitive, non-negotiable intervention that protects the fetus from hemolytic disease.",
-                d: "FOURTH - GBS culture is obtained at 35\u201337 weeks. A positive result means the mother will receive IV penicillin during labor to prevent neonatal GBS sepsis - the leading cause of early-onset neonatal infection.",
-                e: "FIFTH - If GDM cannot be controlled with diet alone and insulin is required, fetal surveillance intensifies (typically starting at 32\u201336 weeks) because insulin-dependent GDM increases the risk of macrosomia, stillbirth, and uteroplacental insufficiency."
+                d: "FOURTH - Group B streptococcus (GBS) culture is obtained at 35\u201337 weeks. A positive result means the mother will receive IV penicillin during labor to prevent neonatal GBS sepsis - the leading cause of early-onset neonatal infection.",
+                e: "FIFTH - If gestational diabetes mellitus (GDM) cannot be controlled with diet alone and insulin is required, fetal surveillance intensifies (typically starting at 32\u201336 weeks) because insulin-dependent GDM increases the risk of macrosomia, stillbirth, and uteroplacental insufficiency."
             },
-            testTakingTip: "When a question presents an abnormal screening result, the first priority is always confirmatory testing before treatment. For GDM: 1-hour GCT screens, 3-hour GTT confirms. Also remember RhoGAM timing (28 weeks) and GBS timing (35-37 weeks) as key milestones.",
+            testTakingTip: "When a question presents an abnormal screening result, the first priority is always confirmatory testing before treatment. For gestational diabetes mellitus (GDM): the 1-hour glucose challenge test (GCT) screens, the 3-hour glucose tolerance test (GTT) confirms. Also remember RhoGAM timing (28 weeks) and group B streptococcus (GBS) timing (35-37 weeks) as key milestones.",
             guideSection: "Section 4 - Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
         },
@@ -170,7 +170,7 @@ var antepartumCareQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "This presentation - severe headache, visual changes, and sudden facial/hand edema - represents the classic warning signs of preeclampsia with severe features. Combined with a borderline BP at her last visit, this is a medical emergency requiring immediate evaluation. Labor and delivery (or the ED) can perform a full workup including BP, urine protein, CBC, liver enzymes, and fetal monitoring. Delay can lead to eclampsia (seizures), HELLP syndrome, placental abruption, or stroke.",
+                correct: "This presentation - severe headache, visual changes, and sudden facial/hand edema - represents the classic warning signs of preeclampsia with severe features. Combined with a borderline BP at her last visit, this is a medical emergency requiring immediate evaluation. Labor and delivery (or the ED) can perform a full workup including BP, urine protein, complete blood count (CBC), liver enzymes, and fetal monitoring. Delay can lead to eclampsia (seizures), hemolysis, elevated liver enzymes, and low platelets (HELLP) syndrome, placental abruption, or stroke.",
                 a: "These symptoms are NOT a typical headache. Headache with visual changes and sudden edema in the third trimester must be assumed to be preeclampsia until proven otherwise. Delaying evaluation risks life-threatening complications.",
                 b: "A prenatal clinic appointment is insufficient for this level of urgency. The client needs continuous monitoring, IV access capability, and the ability to deliver emergently if needed - only available in L&D or the ED.",
                 d: "Elevating feet and drinking water may help with dependent edema but will not treat preeclampsia. Facial and hand edema with neurological symptoms requires emergent evaluation."
@@ -244,9 +244,9 @@ var antepartumCareQuizData = {
                 correct: "Between 16 and 36 weeks, fundal height in centimeters should approximate the gestational age in weeks (\u00b12 cm). At 28 weeks, the expected fundal height is 26-30 cm. A measurement of 24 cm is 4 cm less than expected, which falls outside the normal range. This discrepancy could indicate intrauterine growth restriction (IUGR), oligohydramnios, or incorrect dating - all of which require provider evaluation and possible ultrasound.",
                 a: "A 4 cm discrepancy is NOT normal. The acceptable variance is \u00b12 cm. A fundal height of 24 cm at 28 weeks warrants investigation.",
                 b: "While measurement technique matters, a 4 cm discrepancy is too significant to attribute to technique alone. The provider needs to be notified even if a remeasurement is performed.",
-                d: "Waiting a week could delay identification of a serious problem like IUGR. The provider should be notified now so an ultrasound can be ordered to assess fetal growth and amniotic fluid volume."
+                d: "Waiting a week could delay identification of a serious problem like intrauterine growth restriction (IUGR). The provider should be notified now so an ultrasound can be ordered to assess fetal growth and amniotic fluid volume."
             },
-            testTakingTip: "Fundal height rule: cm = gestational weeks (\u00b12 cm) between 16-36 weeks. If the measurement is off by more than 2 cm in either direction, notify the provider. Too small = IUGR or oligohydramnios. Too large = macrosomia, polyhydramnios, or multiples.",
+            testTakingTip: "Fundal height rule: cm = gestational weeks (\u00b12 cm) between 16-36 weeks. If the measurement is off by more than 2 cm in either direction, notify the provider. Too small = intrauterine growth restriction (IUGR) or oligohydramnios. Too large = macrosomia, polyhydramnios, or multiples.",
             guideSection: "Section 4 - Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
         },

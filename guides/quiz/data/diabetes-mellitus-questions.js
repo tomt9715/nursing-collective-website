@@ -25,7 +25,7 @@ var diabetesMellitusQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Type 1 DM involves autoimmune destruction of pancreatic beta cells, resulting in absolute insulin deficiency - the body produces no insulin at all. Type 2 DM involves cellular resistance to insulin action combined with progressive decline in beta-cell function, resulting in relative insulin deficiency - insulin is present but not effective enough.",
+                correct: "Type 1 diabetes mellitus (DM) involves autoimmune destruction of pancreatic beta cells, resulting in absolute insulin deficiency - the body produces no insulin at all. Type 2 DM involves cellular resistance to insulin action combined with progressive decline in beta-cell function, resulting in relative insulin deficiency - insulin is present but not effective enough.",
                 b: "While Type 1 is more commonly diagnosed in youth and Type 2 in adults, both can occur at any age. Type 2 is increasingly diagnosed in children and adolescents, particularly with rising obesity rates.",
                 c: "This is reversed. Type 1 always requires insulin (no endogenous production). Type 2 typically starts with lifestyle modifications and oral agents, though insulin may be needed as the disease progresses.",
                 d: "This is reversed. Obesity is a major risk factor for Type 2 (not Type 1). Type 1 has an autoimmune etiology, sometimes triggered by viral infections or genetic predisposition."
@@ -50,7 +50,7 @@ var diabetesMellitusQuizData = {
             rationale: {
                 correct: "With a potassium of 3.1 mEq/L (below 3.3), insulin MUST be held until potassium is repleted. Insulin drives potassium into cells, which would further drop this already critically low potassium level, potentially causing fatal cardiac arrhythmias. The protocol is clear: if K+ < 3.3, hold insulin and replace potassium first.",
                 a: "Insulin cannot be started until potassium is at least 3.3 mEq/L. Starting insulin with a K+ of 3.1 would cause dangerous hypokalemia as insulin shifts K+ intracellularly.",
-                c: "An ABG may provide additional data, but the pH is already known (7.18), and the immediate life-threatening issue is the critically low potassium that must be corrected before insulin therapy.",
+                c: "An arterial blood gas (ABG) may provide additional data, but the pH is already known (7.18), and the immediate life-threatening issue is the critically low potassium that must be corrected before insulin therapy.",
                 d: "Bicarbonate is only considered when pH < 6.9 (severe acidosis). This patient's pH of 7.18, while acidotic, does not meet that threshold. Additionally, the potassium must be addressed first."
             },
             labValues: [
@@ -58,7 +58,7 @@ var diabetesMellitusQuizData = {
                 { name: "Blood pH", normal: "7.35–7.45" },
                 { name: "Blood Glucose", normal: "70–100 mg/dL (fasting)" }
             ],
-            testTakingTip: "In DKA, ALWAYS look at the potassium first. The rule is simple: K+ < 3.3 = hold insulin, replace K+ first. K+ 3.3–5.3 = give K+ with insulin. K+ > 5.3 = hold K+, start insulin. Potassium is the #1 killer in DKA management.",
+            testTakingTip: "In diabetic ketoacidosis (DKA), ALWAYS look at the potassium first. The rule is simple: K+ < 3.3 = hold insulin, replace K+ first. K+ 3.3–5.3 = give K+ with insulin. K+ > 5.3 = hold K+, start insulin. Potassium is the #1 killer in DKA management.",
             guideSection: "Section 3 - Acute Complications: DKA vs HHS",
             guideSectionId: "acute-complications"
         },
@@ -67,7 +67,7 @@ var diabetesMellitusQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with Type 2 diabetes is taking metformin 1000 mg twice daily. The patient is scheduled for a CT scan with IV contrast dye tomorrow. Which nursing action is MOST appropriate?",
+            stem: "A patient with Type 2 diabetes is taking metformin 1000 mg twice daily. The patient is scheduled for a computed tomography (CT) scan with IV contrast dye tomorrow. Which nursing action is MOST appropriate?",
             options: [
                 { id: "a", text: "Administer metformin with a full glass of water before the procedure" },
                 { id: "b", text: "Verify that metformin has been held and notify the provider if not" },
@@ -79,7 +79,7 @@ var diabetesMellitusQuizData = {
                 correct: "Metformin must be held before and for 48 hours after IV contrast dye administration. Contrast dye can cause acute kidney injury, and metformin is renally cleared - if kidney function declines, metformin can accumulate and cause life-threatening lactic acidosis. The nurse should verify the medication has been held per protocol.",
                 a: "Administering metformin before a contrast procedure puts the patient at risk for lactic acidosis if renal function is compromised by the contrast dye.",
                 c: "Switching to insulin is not the standard protocol. The appropriate action is simply to hold metformin before and after the procedure. The provider may order a sliding scale if needed, but the priority nursing action is ensuring metformin is held.",
-                d: "A double dose is never appropriate and would increase GI side effects and lactic acidosis risk. Metformin is resumed at the regular dose 48 hours post-procedure after renal function is confirmed adequate."
+                d: "A double dose is never appropriate and would increase gastrointestinal (GI) side effects and lactic acidosis risk. Metformin is resumed at the regular dose 48 hours post-procedure after renal function is confirmed adequate."
             },
             testTakingTip: "Metformin + contrast dye = lactic acidosis risk. Hold metformin before the procedure and for 48 hours after. Renal function should be verified before resuming. This is a classic NCLEX question.",
             guideSection: "Section 6 - Oral & Injectable Agents",
@@ -102,12 +102,12 @@ var diabetesMellitusQuizData = {
             rationale: {
                 correct: "The correct sequence addresses immediate safety (airway), treats the life-threatening hypoglycemia, verifies response, communicates with the provider, and documents/investigates to prevent recurrence.",
                 a: "FIRST - The patient is unconscious, so airway protection is the immediate priority. Positioning on the side prevents aspiration. Never give oral glucose to an unconscious patient.",
-                b: "SECOND - IV D50W is the treatment of choice for severe hypoglycemia in a hospitalized patient with IV access. This rapidly raises blood glucose. If no IV access, administer IM glucagon.",
+                b: "SECOND - IV dextrose 50% in water (D50W) is the treatment of choice for severe hypoglycemia in a hospitalized patient with IV access. This rapidly raises blood glucose. If no IV access, administer IM glucagon.",
                 c: "THIRD - After treatment, recheck blood glucose in 15 minutes to verify the intervention was effective. If still < 70 mg/dL, repeat treatment.",
                 d: "FOURTH - Notify the provider of the hypoglycemic event and current glucose level. The insulin regimen may need adjustment.",
                 e: "FIFTH - Document the event thoroughly and investigate the cause (too much insulin, missed meal, increased activity, medication interaction) to prevent recurrence."
             },
-            testTakingTip: "For unconscious hypoglycemia: Safety first (airway), then treat (IV D50 or IM glucagon), then verify (recheck BG), then communicate (notify provider), then prevent recurrence (document/investigate).",
+            testTakingTip: "For unconscious hypoglycemia: Safety first (airway), then treat (IV D50 or IM glucagon), then verify (recheck blood glucose), then communicate (notify provider), then prevent recurrence (document/investigate).",
             guideSection: "Section 7 - Hypoglycemia Management",
             guideSectionId: "hypoglycemia"
         },
@@ -118,19 +118,19 @@ var diabetesMellitusQuizData = {
             difficulty: "analysis",
             stem: "A nurse is caring for two patients in the emergency department. Patient A has a blood glucose of 520 mg/dL, pH 7.12, positive ketones, and is breathing deeply and rapidly. Patient B has a blood glucose of 980 mg/dL, pH 7.38, negative ketones, and is confused and severely dehydrated. Which statement about these patients is correct?",
             options: [
-                { id: "a", text: "Patient A likely has HHS; Patient B likely has DKA" },
-                { id: "b", text: "Patient A likely has DKA; Patient B likely has HHS" },
-                { id: "c", text: "Both patients have DKA at different stages" },
+                { id: "a", text: "Patient A likely has hyperosmolar hyperglycemic state (HHS); Patient B likely has diabetic ketoacidosis (DKA)" },
+                { id: "b", text: "Patient A likely has diabetic ketoacidosis (DKA); Patient B likely has hyperosmolar hyperglycemic state (HHS)" },
+                { id: "c", text: "Both patients have diabetic ketoacidosis (DKA) at different stages" },
                 { id: "d", text: "Both patients need insulin as the first priority intervention" }
             ],
             correct: "b",
             rationale: {
-                correct: "Patient A shows classic DKA: glucose 250–600 range, metabolic acidosis (pH 7.12), positive ketones, and Kussmaul respirations (deep, rapid breathing to blow off CO2). Patient B shows classic HHS: extremely elevated glucose (> 600), normal pH (no acidosis), negative ketones, altered mental status, and severe dehydration.",
-                a: "This reversal mixes up the two conditions. DKA has ketones and acidosis; HHS has extreme glucose without ketones.",
-                c: "Patient B has a normal pH and no ketones, which rules out DKA. The extremely elevated glucose (980) and severe dehydration without acidosis is classic HHS.",
-                d: "While both need insulin eventually, the first priority for HHS (Patient B) is aggressive IV fluid replacement. HHS patients are typically 8–12 liters fluid deficit, and rehydration alone will significantly lower glucose. DKA (Patient A) needs fluids too, but also needs to check K+ before starting insulin."
+                correct: "Patient A shows classic diabetic ketoacidosis (DKA): glucose 250–600 range, metabolic acidosis (pH 7.12), positive ketones, and Kussmaul respirations (deep, rapid breathing to blow off CO2). Patient B shows classic hyperosmolar hyperglycemic state (HHS): extremely elevated glucose (> 600), normal pH (no acidosis), negative ketones, altered mental status, and severe dehydration.",
+                a: "This reversal mixes up the two conditions. Diabetic ketoacidosis (DKA) has ketones and acidosis; hyperosmolar hyperglycemic state (HHS) has extreme glucose without ketones.",
+                c: "Patient B has a normal pH and no ketones, which rules out diabetic ketoacidosis (DKA). The extremely elevated glucose (980) and severe dehydration without acidosis is classic hyperosmolar hyperglycemic state (HHS).",
+                d: "While both need insulin eventually, the first priority for hyperosmolar hyperglycemic state (HHS) in Patient B is aggressive IV fluid replacement. HHS patients are typically 8–12 liters fluid deficit, and rehydration alone will significantly lower glucose. Diabetic ketoacidosis (DKA) in Patient A needs fluids too, but also needs to check K+ before starting insulin."
             },
-            testTakingTip: "The key differentiators: DKA = ketones + acidosis + Kussmaul breathing. HHS = extreme glucose + no ketones + normal pH + severe dehydration. Treatment priorities differ: DKA = fluids + insulin + K+. HHS = fluids first (massive dehydration).",
+            testTakingTip: "The key differentiators: Diabetic ketoacidosis (DKA) = ketones + acidosis + Kussmaul breathing. Hyperosmolar hyperglycemic state (HHS) = extreme glucose + no ketones + normal pH + severe dehydration. Treatment priorities differ: DKA = fluids + insulin + K+. HHS = fluids first (massive dehydration).",
             guideSection: "Section 3 - Acute Complications: DKA vs HHS",
             guideSectionId: "acute-complications"
         },
@@ -150,7 +150,7 @@ var diabetesMellitusQuizData = {
             correct: { a: "Correct Understanding", b: "Needs More Teaching", c: "Correct Understanding", d: "Needs More Teaching" },
             rationale: {
                 correct: "Taking metformin with food and performing daily foot inspections demonstrate correct understanding. Treating shakiness with metformin and stopping medications when asymptomatic are dangerous misconceptions.",
-                a: "CORRECT UNDERSTANDING - Metformin commonly causes GI side effects (nausea, diarrhea, abdominal discomfort). Taking it with meals minimizes these effects. The extended-release formulation also helps.",
+                a: "CORRECT UNDERSTANDING - Metformin commonly causes gastrointestinal (GI) side effects (nausea, diarrhea, abdominal discomfort). Taking it with meals minimizes these effects. The extended-release formulation also helps.",
                 b: "NEEDS MORE TEACHING - Shakiness and diaphoresis are signs of hypoglycemia, which requires fast-acting carbohydrates (Rule of 15), not metformin. Metformin does not cause hypoglycemia alone and would not treat it. The patient is confusing diabetes medication with hypoglycemia treatment.",
                 c: "CORRECT UNDERSTANDING - Daily foot inspection is essential for all diabetes patients. Neuropathy causes loss of sensation, meaning injuries can go unnoticed. Never going barefoot prevents foot injuries that could lead to infection and amputation.",
                 d: "NEEDS MORE TEACHING - Type 2 diabetes is often asymptomatic, especially in early stages. Feeling fine does not mean blood glucose is controlled. Stopping medication allows glucose to rise, accelerating organ damage. Diabetes medications are lifelong unless the provider changes the plan."
@@ -164,19 +164,19 @@ var diabetesMellitusQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A nurse is preparing to administer morning insulin to a patient with Type 1 diabetes. The patient receives NPH insulin and regular insulin before breakfast. The breakfast tray has not arrived yet. What should the nurse do FIRST?",
+            stem: "A nurse is preparing to administer morning insulin to a patient with Type 1 diabetes. The patient receives neutral protamine Hagedorn (NPH) insulin and regular insulin before breakfast. The breakfast tray has not arrived yet. What should the nurse do FIRST?",
             options: [
                 { id: "a", text: "Administer both insulins and have the patient call when the tray arrives" },
                 { id: "b", text: "Hold both insulins until the breakfast tray arrives" },
-                { id: "c", text: "Administer only the NPH insulin and hold the regular insulin" },
+                { id: "c", text: "Administer only the neutral protamine Hagedorn (NPH) insulin and hold the regular insulin" },
                 { id: "d", text: "Contact dietary to ensure the breakfast tray is delivered promptly" }
             ],
             correct: "d",
             rationale: {
-                correct: "The priority is to ensure food will be available before administering insulin. Regular insulin should be given 30 minutes before meals, and NPH has a peak at 4–12 hours that requires food. The nurse should first ensure the tray is coming, then administer both insulins at the appropriate time relative to the meal.",
+                correct: "The priority is to ensure food will be available before administering insulin. Regular insulin should be given 30 minutes before meals, and neutral protamine Hagedorn (NPH) insulin has a peak at 4–12 hours that requires food. The nurse should first ensure the tray is coming, then administer both insulins at the appropriate time relative to the meal.",
                 a: "Administering insulin without guaranteed food availability puts the patient at risk for hypoglycemia, especially the regular insulin which peaks in 2–4 hours.",
-                b: "Completely holding both insulins delays necessary glucose management. The Type 1 patient needs basal insulin (NPH). The better approach is to expedite the food, not indefinitely delay insulin.",
-                c: "While NPH provides basal coverage that is less meal-dependent, this approach still delays complete insulin coverage. The best action is to expedite the meal so both insulins can be given on schedule."
+                b: "Completely holding both insulins delays necessary glucose management. The Type 1 patient needs the basal coverage of neutral protamine Hagedorn (NPH) insulin. The better approach is to expedite the food, not indefinitely delay insulin.",
+                c: "While neutral protamine Hagedorn (NPH) insulin provides basal coverage that is less meal-dependent, this approach still delays complete insulin coverage. The best action is to expedite the meal so both insulins can be given on schedule."
             },
             testTakingTip: "When food and insulin timing don't align, the NCLEX expects you to take action to resolve the conflict - not just hold or just give. Ensure food availability first, then give insulin at the correct timing relative to the meal. Safety first: no food = no mealtime insulin.",
             guideSection: "Section 5 - Insulin Therapy",
@@ -190,18 +190,18 @@ var diabetesMellitusQuizData = {
             stem: "A nurse is reviewing insulin types for an upcoming exam. Which statement about insulin administration is correct?",
             options: [
                 { id: "a", text: "Glargine (Lantus) can be mixed with regular insulin in the same syringe to reduce injections" },
-                { id: "b", text: "NPH insulin appears cloudy and should be gently rolled between the palms before administration" },
+                { id: "b", text: "Neutral protamine Hagedorn (NPH) insulin is cloudy and should be rolled between the palms before use" },
                 { id: "c", text: "Rapid-acting insulin should be administered 30–60 minutes before meals" },
                 { id: "d", text: "Any type of insulin can be administered intravenously in an emergency" }
             ],
             correct: "b",
             rationale: {
-                correct: "NPH is the only insulin that appears cloudy (it is a suspension). It must be gently rolled (not shaken) to resuspend the particles evenly before drawing up the dose. All other insulin types are clear solutions.",
+                correct: "Neutral protamine Hagedorn (NPH) is the only insulin that appears cloudy (it is a suspension). It must be gently rolled (not shaken) to resuspend the particles evenly before drawing up the dose. All other insulin types are clear solutions.",
                 a: "Glargine (Lantus) and detemir (Levemir) should NEVER be mixed with any other insulin. Mixing alters their long-acting properties and can cause unpredictable absorption.",
                 c: "Rapid-acting insulins (lispro, aspart) should be given within 15 minutes of a meal (at the meal), not 30–60 minutes before. Regular insulin is the one given 30 minutes before meals.",
-                d: "Only regular insulin can be given IV. It is the only insulin type approved for intravenous administration. All other types (rapid-acting, NPH, long-acting) are for subcutaneous use only."
+                d: "Only regular insulin can be given IV. It is the only insulin type approved for intravenous administration. All other types, including rapid-acting, neutral protamine Hagedorn (NPH), and long-acting insulins, are for subcutaneous use only."
             },
-            testTakingTip: "Key insulin facts for the NCLEX: NPH = only cloudy insulin (roll, don't shake). Regular = only IV insulin. Glargine/detemir = never mix. When mixing: Regular before NPH ('RN' = clear before cloudy).",
+            testTakingTip: "Key insulin facts for the NCLEX: Neutral protamine Hagedorn (NPH) = only cloudy insulin (roll, don't shake). Regular = only IV insulin. Glargine/detemir = never mix. When mixing: Regular before NPH ('RN' = clear before cloudy).",
             guideSection: "Section 5 - Insulin Therapy",
             guideSectionId: "insulin-therapy"
         },
@@ -219,10 +219,10 @@ var diabetesMellitusQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This is the #1 sick day mistake. During illness, counter-regulatory stress hormones (cortisol, glucagon, epinephrine) dramatically raise blood glucose even without food intake. Type 1 patients who skip insulin during illness can develop DKA within hours. The nurse should instruct the patient to take insulin, check blood glucose every 4 hours, check urine ketones, and maintain fluid intake.",
-                a: "This is dangerous misinformation. Skipping insulin during illness is the most common cause of DKA in known Type 1 patients. Illness increases glucose - the body needs MORE insulin during sickness, not less.",
+                correct: "This is the #1 sick day mistake. During illness, counter-regulatory stress hormones (cortisol, glucagon, epinephrine) dramatically raise blood glucose even without food intake. Type 1 patients who skip insulin during illness can develop diabetic ketoacidosis (DKA) within hours. The nurse should instruct the patient to take insulin, check blood glucose every 4 hours, check urine ketones, and maintain fluid intake.",
+                a: "This is dangerous misinformation. Skipping insulin during illness is the most common cause of diabetic ketoacidosis (DKA) in known Type 1 patients. Illness increases glucose - the body needs MORE insulin during sickness, not less.",
                 c: "While dose adjustments may be necessary during illness, this should be determined by the provider based on current glucose readings, not arbitrarily halved. The immediate priority is to resume insulin and check glucose/ketones now.",
-                d: "Stopping all medications is dangerous. Type 1 patients have zero endogenous insulin production - stopping insulin can lead to DKA within hours, which is life-threatening."
+                d: "Stopping all medications is dangerous. Type 1 patients have zero endogenous insulin production - stopping insulin can lead to diabetic ketoacidosis (DKA) within hours, which is life-threatening."
             },
             testTakingTip: "Sick day rule #1: NEVER stop insulin when sick. Illness = stress hormones = higher blood glucose, even without eating. This is a top NCLEX topic because the wrong answer seems logical to patients ('not eating = don't need insulin').",
             guideSection: "Section 8 - Nursing Management & Patient Teaching",

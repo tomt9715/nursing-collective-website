@@ -16,7 +16,7 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A nurse is reading the tuberculin skin test (Mantoux/PPD) of a 42-year-old healthcare worker with no known immunocompromising conditions. The induration measures 9 mm. How should the nurse interpret this result?",
+            stem: "A nurse is reading the Mantoux purified protein derivative (PPD) tuberculin skin test of a 42-year-old healthcare worker with no known immunocompromising conditions. The induration measures 9 mm. How should the nurse interpret this result?",
             options: [
                 { id: "a", text: "Positive - all adults with ≥5 mm induration are positive" },
                 { id: "b", text: "Positive - healthcare workers are positive at ≥10 mm" },
@@ -26,11 +26,11 @@ var tuberculosisQuizData = {
             correct: "c",
             rationale: {
                 correct: "Healthcare workers fall into the ≥10 mm positive category due to occupational exposure risk. At 9 mm, this result is just below the threshold and is interpreted as negative for this risk group.",
-                a: "The ≥5 mm threshold applies to HIV-positive individuals, close contacts of active TB cases, immunosuppressed patients, and those with prior TB-consistent chest X-ray changes - not all adults.",
+                a: "The ≥5 mm threshold applies to people with human immunodeficiency virus (HIV), close contacts of active tuberculosis (TB) cases, immunosuppressed patients, and those with prior TB-consistent chest X-ray changes - not all adults.",
                 b: "While healthcare workers do use the 10 mm cutoff, 9 mm is below that threshold and is therefore negative.",
                 d: "The ≥15 mm cutoff applies to individuals with NO known risk factors. Healthcare workers have occupational risk and use the ≥10 mm threshold."
             },
-            testTakingTip: "Know the three PPD cutoffs: ≥5 mm (highest risk - HIV, contacts, immunosuppressed), ≥10 mm (moderate risk - healthcare workers, high-prevalence groups, children <4), ≥15 mm (no risk factors). Always match the patient's risk category first.",
+            testTakingTip: "Know the three purified protein derivative (PPD) cutoffs: ≥5 mm for highest risk: human immunodeficiency virus (HIV), contacts, immunosuppressed; ≥10 mm (moderate risk - healthcare workers, high-prevalence groups, children <4), ≥15 mm (no risk factors). Always match the patient's risk category first.",
             guideSection: "Section 5 - Diagnostic Testing",
             guideSectionId: "diagnostics"
         },
@@ -39,21 +39,21 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with HIV is being evaluated for TB exposure. The tuberculin skin test shows 4 mm of induration. The provider orders a QuantiFERON-TB Gold test, which returns positive. Which action should the nurse anticipate?",
+            stem: "A patient with human immunodeficiency virus (HIV) is being evaluated for tuberculosis (TB) exposure. The tuberculin skin test shows 4 mm of induration. The provider orders a QuantiFERON-TB Gold test, which returns positive. Which action should the nurse anticipate?",
             options: [
                 { id: "a", text: "Repeat the tuberculin skin test in 2 weeks" },
                 { id: "b", text: "Initiate airborne isolation immediately" },
                 { id: "c", text: "Obtain a chest X-ray and sputum specimens" },
-                { id: "d", text: "Document the patient as TB-free based on the negative skin test" }
+                { id: "d", text: "Document the patient as free of tuberculosis based on the negative skin test" }
             ],
             correct: "c",
             rationale: {
-                correct: "A positive QuantiFERON-TB Gold (IGRA) indicates TB infection regardless of the skin test result. The next step is to determine whether the infection is latent or active by obtaining a chest X-ray and, if indicated, sputum specimens for AFB smear and culture.",
-                a: "Repeating the TST is unnecessary. The IGRA is a more specific test and its positive result takes precedence, especially in immunocompromised patients where TST sensitivity is reduced.",
-                b: "Airborne isolation is indicated for suspected or confirmed ACTIVE TB with respiratory symptoms, not solely based on a positive IGRA. The patient needs further workup first.",
-                d: "The TST can produce false negatives in HIV patients due to impaired immune response (anergy). The positive IGRA is the more reliable result here."
+                correct: "A positive QuantiFERON-TB Gold interferon-gamma release assay (IGRA) indicates tuberculosis (TB) infection regardless of the skin test result. The next step is to determine whether the infection is latent or active by obtaining a chest X-ray and, if indicated, sputum specimens for acid-fast bacilli (AFB) smear and culture.",
+                a: "Repeating the tuberculin skin test (TST) is unnecessary. The interferon-gamma release assay (IGRA) is a more specific test and its positive result takes precedence, especially in immunocompromised patients where TST sensitivity is reduced.",
+                b: "Airborne isolation is indicated for suspected or confirmed ACTIVE tuberculosis (TB) with respiratory symptoms, not solely based on a positive interferon-gamma release assay (IGRA). The patient needs further workup first.",
+                d: "The tuberculin skin test (TST) can produce false negatives in human immunodeficiency virus (HIV) patients due to impaired immune response (anergy). The positive interferon-gamma release assay (IGRA) is the more reliable result here."
             },
-            testTakingTip: "QuantiFERON (IGRA) is more specific than TST and is preferred in immunocompromised patients and BCG-vaccinated individuals. A positive IGRA always warrants further workup - chest X-ray is the next step.",
+            testTakingTip: "QuantiFERON, an interferon-gamma release assay (IGRA), is more specific than the tuberculin skin test (TST) and is preferred in immunocompromised patients and bacille Calmette-Guerin (BCG)-vaccinated individuals. A positive IGRA always warrants further workup - chest X-ray is the next step.",
             guideSection: "Section 5 - Diagnostic Testing",
             guideSectionId: "diagnostics"
         },
@@ -66,20 +66,20 @@ var tuberculosisQuizData = {
             options: [
                 { id: "a", text: "Place a surgical mask on the patient" },
                 { id: "b", text: "Don an N95 respirator (fit-tested)" },
-                { id: "c", text: "Transfer the patient to a negative-pressure AIIR" },
+                { id: "c", text: "Transfer the patient to a negative-pressure airborne infection isolation room (AIIR)" },
                 { id: "d", text: "Verify the room has 6–12 air exchanges per hour and negative pressure" },
-                { id: "e", text: "Collect three sputum specimens for AFB smear and culture" }
+                { id: "e", text: "Collect three sputum specimens for acid-fast bacilli (AFB) smear and culture" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Contain the source first (mask the patient), protect yourself (N95), move the patient to the correct environment (AIIR), confirm the room is functioning properly (negative pressure + air exchanges), then obtain diagnostic specimens.",
+                correct: "Contain the source first (mask the patient), protect yourself (N95), move the patient to the correct environment, an airborne infection isolation room (AIIR), confirm the room is functioning properly (negative pressure + air exchanges), then obtain diagnostic specimens.",
                 a: "FIRST - Masking the patient immediately reduces droplet nuclei released into the shared environment. This is the fastest way to limit exposure to others.",
-                b: "SECOND - The nurse must don a fit-tested N95 respirator before close contact. A surgical mask does NOT filter the 1–5 micron droplet nuclei that transmit TB.",
+                b: "SECOND - The nurse must don a fit-tested N95 respirator before close contact. A surgical mask does NOT filter the 1–5 micron droplet nuclei that transmit tuberculosis (TB).",
                 c: "THIRD - Transfer the patient to a negative-pressure airborne infection isolation room. Negative pressure prevents airborne particles from escaping into hallways.",
-                d: "FOURTH - Verify the room is functioning: negative pressure (check smoke tube or pressure monitor) and 6–12 air exchanges/hour. A non-functioning AIIR provides no protection.",
-                e: "FIFTH - Collect three sputum specimens 8–24 hours apart for AFB smear and culture. These confirm the diagnosis and determine infectiousness. This step requires a functioning AIIR."
+                d: "FOURTH - Verify the room is functioning: negative pressure (check smoke tube or pressure monitor) and 6–12 air exchanges/hour. A non-functioning airborne infection isolation room (AIIR) provides no protection.",
+                e: "FIFTH - Collect three sputum specimens 8–24 hours apart for acid-fast bacilli (AFB) smear and culture. These confirm the diagnosis and determine infectiousness. This step requires a functioning airborne infection isolation room (AIIR)."
             },
-            testTakingTip: "Isolation sequence: contain the source (mask patient) → protect the nurse (N95) → correct environment (AIIR) → verify room function → obtain specimens. Think: 'mask, respirator, room, verify, collect.'",
+            testTakingTip: "Isolation sequence: contain the source (mask patient) → protect the nurse (N95) → correct environment, an airborne infection isolation room (AIIR) → verify room function → obtain specimens. Think: 'mask, respirator, room, verify, collect.'",
             guideSection: "Section 6 - Airborne Isolation Precautions",
             guideSectionId: "isolation"
         },
@@ -88,18 +88,18 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A patient on RIPE therapy for active TB calls the clinic and reports dark-colored urine and yellowing of the eyes that began 2 days ago. The patient also complains of persistent nausea and right upper quadrant abdominal pain. Which action should the nurse take FIRST?",
+            stem: "A patient on rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy for active tuberculosis (TB) calls the clinic and reports dark-colored urine and yellowing of the eyes that began 2 days ago. The patient also complains of persistent nausea and right upper quadrant abdominal pain. Which action should the nurse take FIRST?",
             options: [
                 { id: "a", text: "Reassure the patient that orange-colored body fluids are normal with rifampin" },
-                { id: "b", text: "Instruct the patient to stop taking all TB medications and come in immediately" },
+                { id: "b", text: "Instruct the patient to stop taking all tuberculosis medications and come in immediately" },
                 { id: "c", text: "Recommend taking the medications with food to reduce nausea" },
                 { id: "d", text: "Schedule a routine follow-up appointment for next week" }
             ],
             correct: "b",
             rationale: {
-                correct: "Jaundice (yellowing of the eyes), dark urine, nausea, and RUQ pain are classic signs of hepatotoxicity - a serious adverse effect of three of the four RIPE drugs (rifampin, isoniazid, and pyrazinamide). All hepatotoxic medications must be stopped immediately and the patient evaluated urgently with liver function tests.",
-                a: "While rifampin does cause orange/red discoloration of body fluids (urine, tears, sweat), this patient has JAUNDICE and RUQ pain - signs of liver damage, not the expected benign color change. Confusing these two presentations is dangerous.",
-                c: "Nausea in the context of jaundice and RUQ pain indicates hepatotoxicity, not simple GI intolerance. Taking medications with food would not address liver damage and could worsen it.",
+                correct: "Jaundice (yellowing of the eyes), dark urine, nausea, and right upper quadrant (RUQ) pain are classic signs of hepatotoxicity - a serious adverse effect of rifampin, isoniazid, and pyrazinamide, three of the four drugs in rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy. All hepatotoxic medications must be stopped immediately and the patient evaluated urgently with liver function tests.",
+                a: "While rifampin does cause orange/red discoloration of body fluids (urine, tears, sweat), this patient has JAUNDICE and right upper quadrant (RUQ) pain - signs of liver damage, not the expected benign color change. Confusing these two presentations is dangerous.",
+                c: "Nausea in the context of jaundice and right upper quadrant (RUQ) pain indicates hepatotoxicity, not simple gastrointestinal (GI) intolerance. Taking medications with food would not address liver damage and could worsen it.",
                 d: "Hepatotoxicity is a medical urgency. Delayed evaluation risks fulminant liver failure. This patient needs same-day evaluation."
             },
             labValues: [
@@ -107,7 +107,7 @@ var tuberculosisQuizData = {
                 { name: "AST (SGOT)", normal: "10–40 U/L" },
                 { name: "Total Bilirubin", normal: "0.1–1.2 mg/dL" }
             ],
-            testTakingTip: "Three of the four RIPE drugs are hepatotoxic (RIP = Rifampin, Isoniazid, Pyrazinamide). Distinguish normal rifampin orange discoloration from true jaundice: orange urine alone = expected; yellow sclera + dark urine + RUQ pain = STOP meds immediately.",
+            testTakingTip: "Three of the four drugs in rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy are hepatotoxic: rifampin, isoniazid, and pyrazinamide (RIP). Distinguish normal rifampin orange discoloration from true jaundice: orange urine alone = expected; yellow sclera + dark urine + right upper quadrant (RUQ) pain = STOP meds immediately.",
             guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
@@ -116,7 +116,7 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is teaching a patient about RIPE therapy for tuberculosis. Which statement by the patient indicates a need for additional teaching?",
+            stem: "A nurse is teaching a patient about rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy for tuberculosis. Which statement by the patient indicates a need for additional teaching?",
             options: [
                 { id: "a", text: "\"I will take vitamin B6 with my isoniazid to prevent nerve damage.\"" },
                 { id: "b", text: "\"My tears and sweat may turn orange while taking rifampin.\"" },
@@ -125,12 +125,12 @@ var tuberculosisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Stopping TB medications after 2 months - even if the patient feels better - is the #1 cause of drug-resistant TB. The initial phase (2 months, all 4 drugs) must be followed by a continuation phase (4+ months, rifampin + isoniazid) for a total minimum of 6 months.",
-                a: "This is CORRECT understanding. Isoniazid depletes vitamin B6 (pyridoxine), causing peripheral neuropathy. B6 supplementation is standard practice during RIPE therapy.",
+                correct: "Stopping tuberculosis (TB) medications after 2 months - even if the patient feels better - is the #1 cause of drug-resistant TB. The initial phase (2 months, all 4 drugs) must be followed by a continuation phase (4+ months, rifampin + isoniazid) for a total minimum of 6 months.",
+                a: "This is CORRECT understanding. Isoniazid depletes vitamin B6 (pyridoxine), causing peripheral neuropathy. B6 supplementation is standard practice during rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy.",
                 b: "This is CORRECT understanding. Rifampin causes harmless orange-red discoloration of tears, urine, sweat, and saliva. Patients should be warned so they don't mistake it for bleeding.",
                 d: "This is CORRECT understanding. Ethambutol can cause optic neuritis (decreased visual acuity, red-green color blindness). Vision changes must be reported immediately, and baseline eye exams are recommended."
             },
-            testTakingTip: "Read the question carefully - it asks for 'needs additional teaching,' meaning the INCORRECT statement. Only one answer shows misunderstanding: stopping meds early. TB treatment is always 6+ months minimum.",
+            testTakingTip: "Read the question carefully - it asks for 'needs additional teaching,' meaning the INCORRECT statement. Only one answer shows misunderstanding: stopping meds early. Tuberculosis (TB) treatment is always 6+ months minimum.",
             guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
@@ -141,19 +141,19 @@ var tuberculosisQuizData = {
             difficulty: "knowledge",
             stem: "A patient with latent tuberculosis infection (LTBI) asks the nurse, \"Am I contagious?\" Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Yes, you can spread TB to others through coughing and sneezing.\"" },
-                { id: "b", text: "\"No. In latent TB, the bacteria are inactive and you cannot spread the disease to others.\"" },
+                { id: "a", text: "\"Yes, you can spread tuberculosis to others through coughing and sneezing.\"" },
+                { id: "b", text: "\"No. In latent tuberculosis, the bacteria are inactive and you cannot spread the disease to others.\"" },
                 { id: "c", text: "\"You are contagious only during the first 2 weeks before starting treatment.\"" },
                 { id: "d", text: "\"You are not contagious now, but you will become contagious once you start treatment.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "In LTBI, the immune system has walled off the TB bacteria (encased in granulomas). The patient has a positive skin test but negative sputum, normal chest X-ray, and NO respiratory symptoms. They are NOT infectious and cannot transmit TB to others.",
-                a: "This describes ACTIVE pulmonary TB, where the bacteria are multiplying and being expelled via respiratory secretions. LTBI patients do not have active replication or respiratory shedding.",
-                c: "LTBI patients are never contagious at any point. This statement confuses LTBI with active TB, which is contagious until adequately treated.",
-                d: "Treatment of LTBI (typically isoniazid for 9 months or rifampin for 4 months) does not cause the patient to become contagious. Treatment is given to PREVENT progression to active disease."
+                correct: "In latent tuberculosis infection (LTBI), the immune system has walled off the tuberculosis (TB) bacteria (encased in granulomas). The patient has a positive skin test but negative sputum, normal chest X-ray, and NO respiratory symptoms. They are NOT infectious and cannot transmit TB to others.",
+                a: "This describes ACTIVE pulmonary tuberculosis (TB), where the bacteria are multiplying and being expelled via respiratory secretions. Latent tuberculosis infection (LTBI) patients do not have active replication or respiratory shedding.",
+                c: "Latent tuberculosis infection (LTBI) patients are never contagious at any point. This statement confuses LTBI with active tuberculosis (TB), which is contagious until adequately treated.",
+                d: "Treatment of latent tuberculosis infection (LTBI), typically isoniazid for 9 months or rifampin for 4 months, does not cause the patient to become contagious. Treatment is given to PREVENT progression to active disease."
             },
-            testTakingTip: "Key distinction: Latent TB = positive test, NOT infectious, normal CXR, no symptoms, treated to prevent activation. Active TB = positive sputum, IS infectious, abnormal CXR, has symptoms, requires RIPE + isolation.",
+            testTakingTip: "Key distinction: Latent tuberculosis (TB) = positive test, NOT infectious, normal chest x-ray (CXR), no symptoms, treated to prevent activation. Active TB = positive sputum, IS infectious, abnormal CXR, has symptoms, requires rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) + isolation.",
             guideSection: "Section 3 - Latent vs Active TB",
             guideSectionId: "latent-vs-active"
         },
@@ -164,19 +164,19 @@ var tuberculosisQuizData = {
             difficulty: "analysis",
             stem: "An emergency department nurse is triaging patients. Which patient should the nurse place in airborne isolation FIRST?",
             options: [
-                { id: "a", text: "A patient with a positive PPD result obtained during a routine employment physical" },
+                { id: "a", text: "A patient with a positive tuberculin skin test obtained during a routine employment physical" },
                 { id: "b", text: "A homeless patient with a 3-week history of productive cough, night sweats, weight loss, and hemoptysis" },
-                { id: "c", text: "A patient with latent TB who missed the last dose of isoniazid" },
-                { id: "d", text: "A healthcare worker who was exposed to a TB-positive patient last week and has no symptoms" }
+                { id: "c", text: "A patient with latent tuberculosis who missed the last dose of isoniazid" },
+                { id: "d", text: "A healthcare worker who was exposed to a patient with tuberculosis last week and has no symptoms" }
             ],
             correct: "b",
             rationale: {
-                correct: "This patient has the classic triad of active pulmonary TB: prolonged productive cough (>2-3 weeks), constitutional symptoms (night sweats, weight loss), and hemoptysis. Being homeless is an additional risk factor. This patient is likely highly infectious and needs immediate airborne isolation pending AFB smears.",
-                a: "A positive PPD alone indicates TB infection (latent or active) but without symptoms, sputum testing, or chest X-ray results, isolation is not the immediate priority. This patient needs further workup but is not urgently infectious.",
-                c: "A patient with LTBI is not infectious and does not require airborne isolation. Missing one dose warrants medication counseling and adherence support, not isolation.",
-                d: "An asymptomatic recently exposed healthcare worker needs TST/IGRA testing (typically 8-10 weeks post-exposure) but shows no signs of active disease. No isolation needed."
+                correct: "This patient has the classic triad of active pulmonary tuberculosis (TB): prolonged productive cough (>2-3 weeks), constitutional symptoms (night sweats, weight loss), and hemoptysis. Being homeless is an additional risk factor. This patient is likely highly infectious and needs immediate airborne isolation pending acid-fast bacilli (AFB) smears.",
+                a: "A positive purified protein derivative (PPD) alone indicates tuberculosis (TB) infection (latent or active) but without symptoms, sputum testing, or chest X-ray results, isolation is not the immediate priority. This patient needs further workup but is not urgently infectious.",
+                c: "A patient with latent tuberculosis infection (LTBI) is not infectious and does not require airborne isolation. Missing one dose warrants medication counseling and adherence support, not isolation.",
+                d: "An asymptomatic recently exposed healthcare worker needs tuberculin skin test (TST) or interferon-gamma release assay (IGRA) testing (typically 8-10 weeks post-exposure) but shows no signs of active disease. No isolation needed."
             },
-            testTakingTip: "When prioritizing TB patients, look for signs of ACTIVE disease: prolonged cough, night sweats, weight loss, hemoptysis, and risk factors (homelessness, incarceration, immunocompromise). Positive PPD alone ≠ isolation.",
+            testTakingTip: "When prioritizing tuberculosis (TB) patients, look for signs of ACTIVE disease: prolonged cough, night sweats, weight loss, hemoptysis, and risk factors (homelessness, incarceration, immunocompromise). Positive purified protein derivative (PPD) alone ≠ isolation.",
             guideSection: "Section 4 - Clinical Manifestations",
             guideSectionId: "clinical-manifestations"
         },
@@ -185,7 +185,7 @@ var tuberculosisQuizData = {
             type: "matrix",
             subtype: null,
             difficulty: "analysis",
-            stem: "A nurse is monitoring a patient on RIPE therapy for side effects. For each finding, indicate whether it is an expected effect (reassure the patient) or an adverse effect (notify the provider).",
+            stem: "A nurse is monitoring a patient on rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy for side effects. For each finding, indicate whether it is an expected effect (reassure the patient) or an adverse effect (notify the provider).",
             matrixColumns: ["Expected Effect - Reassure Patient", "Adverse Effect - Notify Provider"],
             options: [
                 { id: "a", text: "Orange-colored urine" },
@@ -210,7 +210,7 @@ var tuberculosisQuizData = {
                 { name: "Uric Acid (Male)", normal: "3.5–7.2 mg/dL" },
                 { name: "Uric Acid (Female)", normal: "2.6–6.0 mg/dL" }
             ],
-            testTakingTip: "Match each RIPE drug to its signature side effect: Rifampin = Red/orange secretions (expected); Isoniazid = peripheral neuropathy + hepatotoxicity; Pyrazinamide = hyperuricemia + hepatotoxicity; Ethambutol = Eye (optic neuritis). Mnemonic: RIPE = Red, Isoniazid-neuropathy, Pee-uric acid, Eyes.",
+            testTakingTip: "Match each drug in rifampin, isoniazid, pyrazinamide, and ethambutol (RIPE) therapy to its signature side effect: Rifampin = Red/orange secretions (expected); Isoniazid = peripheral neuropathy + hepatotoxicity; Pyrazinamide = hyperuricemia + hepatotoxicity; Ethambutol = Eye (optic neuritis). Mnemonic: RIPE = Red, Isoniazid-neuropathy, Pee-uric acid, Eyes.",
             guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
@@ -219,7 +219,7 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is performing contact tracing for a patient diagnosed with active pulmonary TB. The patient lives with a spouse, two school-aged children, and an elderly parent who takes prednisone for rheumatoid arthritis. Which household member is at HIGHEST priority for immediate testing and possible prophylactic treatment?",
+            stem: "A nurse is performing contact tracing for a patient diagnosed with active pulmonary tuberculosis (TB). The patient lives with a spouse, two school-aged children, and an elderly parent who takes prednisone for rheumatoid arthritis. Which household member is at HIGHEST priority for immediate testing and possible prophylactic treatment?",
             options: [
                 { id: "a", text: "The spouse, who reports no symptoms" },
                 { id: "b", text: "The 8-year-old child, who has a cough" },
@@ -228,12 +228,12 @@ var tuberculosisQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "The elderly parent on chronic prednisone (a corticosteroid that suppresses the immune system) is at the highest risk for progressing from exposure to active TB. Immunosuppressed individuals are the highest priority for testing and prophylaxis because they are least able to contain the infection.",
+                correct: "The elderly parent on chronic prednisone (a corticosteroid that suppresses the immune system) is at the highest risk for progressing from exposure to active tuberculosis (TB). Immunosuppressed individuals are the highest priority for testing and prophylaxis because they are least able to contain the infection.",
                 a: "The spouse is a close contact and needs testing, but without immunosuppression, the risk of rapid progression is lower than the immunocompromised parent.",
-                b: "The coughing child needs evaluation, but the cough could have many causes. While children under 4 are at higher risk for TB progression, at age 8 the immunocompromised grandparent still takes priority.",
+                b: "The coughing child needs evaluation, but the cough could have many causes. While children under 4 are at higher risk for tuberculosis (TB) progression, at age 8 the immunocompromised grandparent still takes priority.",
                 c: "The asymptomatic 12-year-old needs testing as a household contact but is lowest priority among these options due to being older and having a functional immune system."
             },
-            testTakingTip: "In contact tracing, prioritize immunocompromised individuals first (HIV, organ transplant, chronic steroids), then children under 5, then other close contacts. Immunosuppression = faster progression from latent to active TB.",
+            testTakingTip: "In contact tracing, prioritize immunocompromised individuals first, such as people with human immunodeficiency virus (HIV), organ transplants, or chronic steroid use, then children under 5, then other close contacts. Immunosuppression = faster progression from latent to active tuberculosis (TB).",
             guideSection: "Section 8 - Nursing Care & Patient Education",
             guideSectionId: "nursing-care"
         },
@@ -242,9 +242,9 @@ var tuberculosisQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A nurse on a medical unit suspects that a newly admitted patient may have active tuberculosis after learning the patient has had a productive cough for 4 weeks, unintentional weight loss, and recently emigrated from a country with high TB prevalence. The patient is currently in a standard semi-private room. What should the nurse do FIRST?",
+            stem: "A nurse on a medical unit suspects that a newly admitted patient may have active tuberculosis after learning the patient has had a productive cough for 4 weeks, unintentional weight loss, and recently emigrated from a country with high tuberculosis prevalence. The patient is currently in a standard semi-private room. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Obtain three sputum specimens for AFB smear and culture" },
+                { id: "a", text: "Obtain three sputum specimens for acid-fast bacilli (AFB) smear and culture" },
                 { id: "b", text: "Don an N95 respirator and move the patient to a negative-pressure room" },
                 { id: "c", text: "Administer a tuberculin skin test to screen for infection" },
                 { id: "d", text: "Notify the public health department for contact tracing" }
@@ -253,10 +253,10 @@ var tuberculosisQuizData = {
             rationale: {
                 correct: "The immediate priority is protecting others from potential exposure. The nurse should put on an N95 respirator and transfer the patient to a negative-pressure airborne infection isolation room (AIIR) as quickly as possible. In a semi-private room, the roommate and other patients are at risk of exposure with every cough.",
                 a: "Sputum specimens are essential for confirming the diagnosis but collecting them is the SECOND priority after isolating the patient. You cannot draw labs in a semi-private room while potentially exposing the roommate.",
-                c: "A TST takes 48-72 hours to read and is less useful in diagnosing active TB (it can be negative in active disease due to anergy). Isolation is the immediate action.",
+                c: "A tuberculin skin test (TST) takes 48-72 hours to read and is less useful in diagnosing active tuberculosis (TB), since it can be negative in active disease due to anergy. Isolation is the immediate action.",
                 d: "Public health notification is important but not the FIRST action. The immediate threat is ongoing transmission in a shared room."
             },
-            testTakingTip: "When the NCLEX gives you a patient with suspected TB in a non-isolated setting, the FIRST action is always isolation (protect others). Think safety first: isolate → then diagnose → then notify.",
+            testTakingTip: "When the NCLEX gives you a patient with suspected tuberculosis (TB) in a non-isolated setting, the FIRST action is always isolation (protect others). Think safety first: isolate → then diagnose → then notify.",
             guideSection: "Section 6 - Airborne Isolation Precautions",
             guideSectionId: "isolation"
         },

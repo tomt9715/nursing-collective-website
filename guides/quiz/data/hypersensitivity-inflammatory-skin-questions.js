@@ -120,10 +120,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             rationale: {
                 correct: "This is Stevens-Johnson syndrome (SJS) or toxic epidermal necrolysis (TEN). Positive Nikolsky sign plus mucosal erosions plus recent medication (lamotrigine is a well-known trigger) requires IMMEDIATE discontinuation of the offending drug and admission to ICU or burn unit. Continuing the drug escalates to TEN and death.",
                 a: "Continuing the offending drug is lethal.",
-                c: "Antihistamines are inadequate for SJS/TEN.",
+                c: "Antihistamines are inadequate for Stevens-Johnson syndrome (SJS)/toxic epidermal necrolysis (TEN).",
                 d: "Topical steroids are inadequate; systemic management is required."
             },
-            testTakingTip: "SJS/TEN = stop the drug immediately + ICU/burn unit. Time is tissue.",
+            testTakingTip: "Stevens-Johnson syndrome (SJS)/toxic epidermal necrolysis (TEN) = stop the drug immediately + ICU/burn unit. Time is tissue.",
             guideSection: "Section 4 - EM, SJS & TEN",
             guideSectionId: "sjs"
         },
@@ -141,7 +141,7 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Topical steroids are applied to ACTIVE flare areas (red, itchy patches) only during flares, typically BID for 1\u20132 weeks, then stopped. Daily moisturization to the whole body prevents flares. Long-term steroid use in wrong areas causes skin atrophy and striae.",
+                correct: "Topical steroids are applied to ACTIVE flare areas (red, itchy patches) only during flares, typically twice daily (BID) for 1\u20132 weeks, then stopped. Daily moisturization to the whole body prevents flares. Long-term steroid use in wrong areas causes skin atrophy and striae.",
                 a: "Continuous whole-body steroid use risks skin atrophy.",
                 c: "Topical steroids used correctly are safe and effective.",
                 d: "Wool irritates eczema skin; cotton is preferred."
@@ -164,7 +164,7 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Migratory wheals that appear and disappear within 24 hours describe urticaria (hives). H1 antihistamines are first-line: cetirizine or loratadine (non-sedating) or diphenhydramine (sedating). If there are signs of anaphylaxis (respiratory, CV, GI), then epinephrine is indicated.",
+                correct: "Migratory wheals that appear and disappear within 24 hours describe urticaria (hives). H1 antihistamines are first-line: cetirizine or loratadine (non-sedating) or diphenhydramine (sedating). If there are signs of anaphylaxis (respiratory, cardiovascular, gastrointestinal), then epinephrine is indicated.",
                 a: "Topical steroids are less effective than systemic antihistamines for generalized hives.",
                 c: "Acyclovir is antiviral, not indicated for hives.",
                 d: "Epinephrine is for anaphylaxis - hives alone without systemic signs don't warrant it."
@@ -204,13 +204,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             stem: "A school-age child with chronic atopic dermatitis suddenly develops a cluster of painful vesicles on her affected arms, plus fever. What is the priority concern?",
             options: [
                 { id: "a", text: "Typical eczema flare (worsening of chronic dermatitis)" },
-                { id: "b", text: "Eczema herpeticum (disseminated HSV on eczematous skin)" },
+                { id: "b", text: "Eczema herpeticum (disseminated herpes simplex virus on eczematous skin)" },
                 { id: "c", text: "Contact dermatitis (reaction to a new soap or lotion)" },
                 { id: "d", text: "Dry skin from weather change (winter xerosis)" }
             ],
             correct: "b",
             rationale: {
-                correct: "Painful clustered vesicles on eczematous skin plus fever suggests eczema herpeticum - disseminated HSV on broken eczema skin. It's an emergency that requires IV acyclovir. If near the eyes, emergent ophthalmology consult to prevent corneal scarring.",
+                correct: "Painful clustered vesicles on eczematous skin plus fever suggests eczema herpeticum - disseminated herpes simplex virus (HSV) on broken eczema skin. It's an emergency that requires IV acyclovir. If near the eyes, emergent ophthalmology consult to prevent corneal scarring.",
                 a: "A typical flare doesn't have vesicles or fever.",
                 c: "Contact dermatitis is itchy, not painful clustered vesicles.",
                 d: "Dry skin alone doesn't cause fever or vesicles."
@@ -256,12 +256,12 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Positive Nikolsky sign (skin sloughs with lateral pressure) plus painful mucosal erosions (mouth, eyes, genitals) plus recent new medication is the classic SJS/TEN picture. The target lesions of erythema multiforme lack these severe features.",
-                a: "Urticarial wheals are characteristic of hives, not SJS.",
+                correct: "Positive Nikolsky sign (skin sloughs with lateral pressure) plus painful mucosal erosions (mouth, eyes, genitals) plus recent new medication is the classic Stevens-Johnson syndrome (SJS)/toxic epidermal necrolysis (TEN) picture. The target lesions of erythema multiforme lack these severe features.",
+                a: "Urticarial wheals are characteristic of hives, not Stevens-Johnson syndrome (SJS).",
                 c: "Flexural itchy skin is atopic dermatitis.",
                 d: "Target lesions are erythema multiforme (EM), usually benign."
             },
-            testTakingTip: "Nikolsky+ mucosal involvement = SJS/TEN emergency. Target alone + skin only = EM (milder).",
+            testTakingTip: "Nikolsky+ mucosal involvement = Stevens-Johnson syndrome (SJS)/toxic epidermal necrolysis (TEN) emergency. Target alone + skin only = erythema multiforme (EM), which is milder.",
             guideSection: "Section 4 - EM, SJS & TEN",
             guideSectionId: "sjs"
         },
@@ -328,7 +328,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 correct: "Anaphylaxis - hives + facial swelling + wheezing after food allergen exposure - is the most urgent priority. IM epinephrine is needed immediately. The other patients have less urgent needs: mild eczema care, diaper rash teaching, and simple urticaria.",
                 a: "Moisturizer education can wait.",
                 b: "Diaper rash teaching can wait.",
-                d: "Simple urticaria without respiratory or CV signs is not emergent."
+                d: "Simple urticaria without respiratory or cardiovascular signs is not emergent."
             },
             testTakingTip: "Airway > everything. Anaphylaxis patient is always the first priority.",
             guideSection: "Section 3 - Urticaria & Anaphylaxis",
@@ -339,7 +339,7 @@ var hypersensitivityInflammatorySkinQuizData = {
             stem: "A child develops a red itchy rash on the wrist about 48 hours after wearing a new metal bracelet. Which type of hypersensitivity does this represent?",
             options: [
                 { id: "a", text: "Type IV, delayed and T-cell mediated" },
-                { id: "b", text: "Type I, immediate and IgE mediated" },
+                { id: "b", text: "Type I, immediate and immunoglobulin E (IgE) mediated" },
                 { id: "c", text: "Type II, cytotoxic and antibody driven" },
                 { id: "d", text: "Type III, from immune complex deposition" }
             ],

@@ -416,13 +416,39 @@ async function getSubscriptionPlans() {
 }
 
 /**
+ * fetch() with the signed-in user's access token, refreshing it once on a 401.
+ * Unlike apiCall(), it hands back the raw Response so callers can read
+ * structured error bodies (already_owned, use_upgrade_flow, ...).
+ */
+async function authorizedFetch(url, options = {}) {
+    const send = () => {
+        const token = localStorage.getItem('accessToken');
+        const headers = { ...(options.headers || {}) };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        return fetch(url, { ...options, headers, credentials: 'include' });
+    };
+
+    let response = await send();
+    if (response.status === 401) {
+        try {
+            await refreshToken();
+        } catch (e) {
+            return response;
+        }
+        response = await send();
+    }
+    return response;
+}
+
+/**
  * Create a subscription checkout session (hosted Stripe Checkout — redirect mode)
  * @param {string} planId - Plan ID (monthly-access, semester-access, lifetime-access)
  * @param {string} email - Customer email
  * @returns {Promise<{url: string}>} - Checkout URL
  */
 async function createSubscriptionCheckout(planId, email) {
-    const response = await fetch(`${API_URL}/api/create-subscription`, {
+    // The backend buys for the signed-in account, so the token is required.
+    const response = await authorizedFetch(`${API_URL}/api/create-subscription`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -456,7 +482,8 @@ async function createCheckoutIntent(planId, email, promoCode) {
     const body = { plan_id: planId, email };
     if (promoCode) body.promo_code = promoCode;
 
-    const response = await fetch(`${API_URL}/api/create-checkout-intent`, {
+    // The backend buys for the signed-in account, so the token is required.
+    const response = await authorizedFetch(`${API_URL}/api/create-checkout-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

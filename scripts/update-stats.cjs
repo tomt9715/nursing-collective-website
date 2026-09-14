@@ -75,7 +75,7 @@ function loadRegistry() {
 function countFreeResources() {
     // Everything under resources/ is reachable without a subscription:
     // content-gate.js only gates /guides/, so nothing here sits behind the
-    // paywall regardless of what FREE_PATHS lists.
+    // paywall.
     const dir = path.join(WEBSITE_ROOT, 'resources');
     if (!fs.existsSync(dir)) return 0;
     return fs.readdirSync(dir).filter((f) => f.endsWith('.html')).length;

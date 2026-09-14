@@ -200,12 +200,8 @@ The `<body>` tag **MUST** have these data attributes for PDF functionality:
 1. User clicks PDF button (either on dashboard or within guide page)
 2. `guide-script.js` reads `PRODUCT_ID` from `document.body.dataset.productId`
 3. Makes authenticated request to `/api/guides/[product-id]/pdf`
-4. Backend creates a print token and stores it in Redis
-5. Backend uses Playwright to render the HTML guide with the print token
-6. Frontend validates the print token and shows content without auth check
-7. Playwright generates PDF and returns it
-8. PDF is downloaded as `TNC-[Guide-Name].pdf`
-9. Download is tracked via `/cart/downloads/track` for refund policy
+4. Backend checks the subscription and returns a short-lived download link to the pre-generated PDF in R2 storage
+5. PDF is downloaded as `TNC-[Guide-Name].pdf`
 
 ---
 

@@ -16,15 +16,6 @@
         return 'https://staging-backend-production-365a.up.railway.app';
     })();
 
-    // Free content paths that don't require gating
-    const FREE_PATHS = [
-        '/resources/how-to-study.html',
-        '/resources/not-overwhelmed.html',
-        '/resources/time-management.html',
-        '/resources/care-plans.html',
-        '/resources/feeling-like-failing.html'
-    ];
-
     // Check if user is authenticated
     function isAuthenticated() {
         return !!localStorage.getItem('accessToken');
@@ -36,12 +27,6 @@
         let normalized = path.replace(/^\/+|\/+$/g, '');
         // Add leading slash back
         return '/' + normalized;
-    }
-
-    // Check if current path is free content
-    function isFreePath(path) {
-        const normalized = normalizePath(path);
-        return FREE_PATHS.some(freePath => normalized === freePath);
     }
 
     // Check if current path is a paid guide
@@ -266,11 +251,6 @@
     // Initialize content gating
     async function initContentGate() {
         const path = window.location.pathname;
-
-        // Skip if free content
-        if (isFreePath(path)) {
-            return;
-        }
 
         // Only gate guides for now (can expand later)
         if (!isPaidGuide(path)) {

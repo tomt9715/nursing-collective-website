@@ -12,10 +12,6 @@ const API_URL = (function() {
     return 'https://staging-backend-production-365a.up.railway.app';
 })();
 
-// Check for print token in URL (used for server-side PDF generation)
-const urlParams = new URLSearchParams(window.location.search);
-const PRINT_TOKEN = urlParams.get('print_token');
-
 // Force light mode on guide pages (don't affect global preference)
 document.documentElement.removeAttribute('data-theme');
 
@@ -186,40 +182,9 @@ function hideLoading() {
     }
 }
 
-// Validate print token with backend (for server-side PDF generation)
-async function validatePrintToken(token) {
-    try {
-        const response = await fetch(`${API_URL}/api/guides/validate-print-token?token=${encodeURIComponent(token)}&product_id=${encodeURIComponent(PRODUCT_ID)}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            return data.valid === true;
-        }
-        return false;
-    } catch (error) {
-        console.error('Print token validation error:', error);
-        return false;
-    }
-}
-
 // Verify user has access to this guide
 async function verifyAccess() {
     showLoading();
-
-    // Check for print token (server-side PDF generation)
-    if (PRINT_TOKEN) {
-        const isValidPrintToken = await validatePrintToken(PRINT_TOKEN);
-        if (isValidPrintToken) {
-            hideLoading();
-            return true;
-        }
-        // Invalid token - fall through to normal auth check
-    }
 
     // Check if user is logged in
     const token = getAuthToken();

@@ -43,9 +43,9 @@ var hipKneeReplacementQuizData = {
             stem: "A patient is post-operative day 2 after a total knee replacement. The nurse notes the patient's operative leg is warm, swollen from mid-thigh to calf, and tender to palpation. The calf circumference is 3 cm larger than the non-operative leg. The patient reports a 'heavy, aching' sensation. What should the nurse do FIRST?",
             options: [
                 { id: "a", text: "Apply ice packs and elevate the leg - this is expected post-surgical swelling" },
-                { id: "b", text: "Notify the provider of suspected deep vein thrombosis and request a stat venous duplex ultrasound" },
-                { id: "c", text: "Administer the scheduled enoxaparin (Lovenox) injection" },
-                { id: "d", text: "Encourage the patient to ambulate to improve venous return" }
+                { id: "b", text: "Notify the provider of suspected deep vein thrombosis and request a venous ultrasound" },
+                { id: "c", text: "Administer the scheduled enoxaparin (Lovenox) injection now" },
+                { id: "d", text: "Encourage the patient to ambulate in the hall to improve venous return" }
             ],
             correct: "b",
             rationale: {
@@ -97,9 +97,9 @@ var hipKneeReplacementQuizData = {
             stem: "A nurse is providing discharge education to a patient who had a total knee replacement 3 days ago. The patient asks, \"Do I really need to take antibiotics before going to the dentist?\" Which response by the nurse is MOST accurate?",
             options: [
                 { id: "a", text: "\"You only need dental antibiotics for the first 6 months after surgery while the prosthesis integrates.\"" },
-                { id: "b", text: "\"Current guidelines recommend lifetime antibiotic prophylaxis before dental procedures that involve the gums to prevent prosthetic joint infection.\"" },
+                { id: "b", text: "\"Guidelines recommend lifetime antibiotic prophylaxis before dental work involving the gums to prevent joint infection.\"" },
                 { id: "c", text: "\"Dental antibiotics are only needed if you have other risk factors like diabetes or immunosuppression.\"" },
-                { id: "d", text: "\"Dental antibiotics are no longer recommended - that guideline was discontinued.\"" }
+                { id: "d", text: "\"Dental antibiotics are no longer recommended for anyone - that guideline was discontinued years ago.\"" }
             ],
             correct: "b",
             rationale: {

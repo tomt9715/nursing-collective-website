@@ -65,10 +65,10 @@ var maleGuDisordersQuizData = {
             difficulty: "analysis",
             stem: "Which physical exam finding is MOST useful for distinguishing testicular torsion from epididymitis?",
             options: [
-                { id: "a", text: "Fever" },
+                { id: "a", text: "Presence of fever and chills" },
                 { id: "b", text: "Absent cremasteric reflex" },
-                { id: "c", text: "Scrotal redness" },
-                { id: "d", text: "Pyuria on urinalysis" }
+                { id: "c", text: "Scrotal redness and swelling" },
+                { id: "d", text: "Pyuria on a urinalysis" }
             ],
             correct: "b",
             rationale: {
@@ -134,10 +134,10 @@ var maleGuDisordersQuizData = {
             difficulty: "knowledge",
             stem: "At what age is surgical correction (orchiopexy) typically recommended if a testis has not descended spontaneously?",
             options: [
-                { id: "a", text: "At birth" },
+                { id: "a", text: "At birth, before discharge" },
                 { id: "b", text: "Between 6 and 18 months" },
                 { id: "c", text: "Between ages 3 and 5" },
-                { id: "d", text: "After puberty" }
+                { id: "d", text: "After puberty is complete" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var maleGuDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Untreated cryptorchidism increases the risk of which condition later in life?",
             options: [
-                { id: "a", text: "Epididymitis" },
+                { id: "a", text: "Recurrent epididymitis in adulthood" },
                 { id: "b", text: "Testicular cancer (4\u20138\u00d7 increased risk)" },
-                { id: "c", text: "Benign prostatic hyperplasia" },
-                { id: "d", text: "Hypogonadism only" }
+                { id: "c", text: "Benign prostatic hyperplasia (BPH)" },
+                { id: "d", text: "Hypogonadism only (low testosterone)" }
             ],
             correct: "b",
             rationale: {
@@ -204,10 +204,10 @@ var maleGuDisordersQuizData = {
             difficulty: "application",
             stem: "A 14-year-old is recovering from surgical detorsion of the right testis and contralateral orchiopexy. The parent asks why the left (unaffected) testis was also fixed. The nurse's best response is:",
             options: [
-                { id: "a", text: "'It prevents future infection on the left side.'" },
-                { id: "b", text: "'The predisposing condition (bell clapper deformity) is usually on both sides, so fixing both prevents future torsion.'" },
-                { id: "c", text: "'It will restore fertility on the affected side.'" },
-                { id: "d", text: "'It's a cosmetic procedure only.'" }
+                { id: "a", text: "'It prevents a future infection like epididymitis on the left side.'" },
+                { id: "b", text: "'The bell clapper deformity is usually on both sides, so fixing both prevents torsion later.'" },
+                { id: "c", text: "'Fixing both sides together will restore fertility on the affected right side.'" },
+                { id: "d", text: "'It is a cosmetic step so both testes sit at the same level in the scrotum.'" }
             ],
             correct: "b",
             rationale: {
@@ -227,10 +227,10 @@ var maleGuDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is teaching an adolescent male about testicular self-exam. Which instruction is correct?",
             options: [
-                { id: "a", text: "Perform the exam yearly during the annual physical" },
-                { id: "b", text: "Perform monthly in the shower, rolling each testis gently between thumb and fingers" },
-                { id: "c", text: "Only perform if there is pain or swelling" },
-                { id: "d", text: "Perform daily, right after waking up" }
+                { id: "a", text: "Perform yearly during the annual physical, pressing firmly on each testis" },
+                { id: "b", text: "Perform monthly in the shower, rolling each testis between thumb and fingers" },
+                { id: "c", text: "Only perform if there is pain or swelling, checking both sides at once" },
+                { id: "d", text: "Perform daily right after waking up, before getting out of bed" }
             ],
             correct: "b",
             rationale: {
@@ -250,10 +250,10 @@ var maleGuDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A pediatric nurse is examining a 3-month-old male. She notes the right side of the scrotum is empty, and the right testis can be felt in the inguinal canal but cannot be brought into the scrotum. How should the nurse document this finding?",
             options: [
-                { id: "a", text: "Normal physical exam" },
-                { id: "b", text: "Retractile testis" },
+                { id: "a", text: "Normal exam for a 3-month-old" },
+                { id: "b", text: "Retractile testis (brisk cremaster reflex)" },
                 { id: "c", text: "Cryptorchidism (undescended testis)" },
-                { id: "d", text: "Hydrocele" }
+                { id: "d", text: "Hydrocele (fluid around the testis)" }
             ],
             correct: "c",
             rationale: {
@@ -296,17 +296,17 @@ var maleGuDisordersQuizData = {
             difficulty: "application",
             stem: "A 16-year-old is seen for evaluation after describing \"occasional episodes\" of testicular pain that come and go over the last few months. Physical exam is currently normal. What is the nurse's best response?",
             options: [
-                { id: "a", text: "'Normal physical exam reassures us that nothing is wrong.'" },
-                { id: "b", text: "'This sounds like intermittent testicular torsion. Urology should evaluate you before another severe episode.'" },
-                { id: "c", text: "'This is just growing pains, it will resolve on its own.'" },
-                { id: "d", text: "'Start a daily NSAID and follow up in 6 months.'" }
+                { id: "a", text: "'A normal physical exam today reassures us that nothing serious is wrong.'" },
+                { id: "b", text: "'This may be intermittent testicular torsion. Urology should see you before another severe episode.'" },
+                { id: "c", text: "'This sounds like growing pains, and it should resolve on its own over time.'" },
+                { id: "d", text: "'Take a daily nonsteroidal anti-inflammatory drug (NSAID) and follow up in 6 months.'" }
             ],
             correct: "b",
             rationale: {
                 correct: "Intermittent testicular pain suggests INTERMITTENT torsion - the testis twists and spontaneously untwists. This is a red flag for future complete torsion and warrants urology referral for evaluation and often prophylactic bilateral orchiopexy.",
                 a: "Normal exam doesn't rule out intermittent torsion - history is critical.",
                 c: "Not growing pains - this pattern is concerning.",
-                d: "NSAIDs don't address the structural issue."
+                d: "Nonsteroidal anti-inflammatory drugs (NSAIDs) don't address the structural issue."
             },
             testTakingTip: "Intermittent testicular pain in a teen = intermittent torsion until proven otherwise. Refer to urology.",
             guideSection: "Section 3 - Testicular Torsion",

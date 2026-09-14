@@ -47,10 +47,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "A 4-year-old is stung by a bee and develops generalized hives, swelling of the lips, wheezing, and hypotension. What is the nurse\u2019s PRIORITY action?",
             options: [
-                { id: "a", text: "Administer oral diphenhydramine" },
-                { id: "b", text: "Start a normal saline bolus" },
+                { id: "a", text: "Administer oral diphenhydramine 1 mg/kg and reassess in 15 minutes" },
+                { id: "b", text: "Start a normal saline bolus of 20 mL/kg through a peripheral IV" },
                 { id: "c", text: "Administer intramuscular epinephrine 0.01 mg/kg in the anterolateral thigh" },
-                { id: "d", text: "Obtain a chest X-ray to evaluate wheezing" }
+                { id: "d", text: "Obtain a portable chest X-ray to evaluate the cause of wheezing" }
             ],
             correct: "c",
             rationale: {
@@ -70,10 +70,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "knowledge",
             stem: "Where is intramuscular epinephrine administered for anaphylaxis to achieve the fastest absorption?",
             options: [
-                { id: "a", text: "Deltoid muscle" },
-                { id: "b", text: "Subcutaneous abdomen" },
+                { id: "a", text: "Upper outer arm (deltoid muscle)" },
+                { id: "b", text: "Subcutaneous tissue of the abdomen" },
                 { id: "c", text: "Mid-anterolateral thigh (vastus lateralis)" },
-                { id: "d", text: "Gluteal muscle" }
+                { id: "d", text: "Upper outer buttock (gluteal muscle)" }
             ],
             correct: "c",
             rationale: {
@@ -139,10 +139,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "The parent of an infant with HIV asks, \u201cCan I breastfeed?\u201d The nurse\u2019s BEST response is:",
             options: [
-                { id: "a", text: "\u201cYes, breastfeeding prevents HIV transmission.\u201d" },
-                { id: "b", text: "\u201cIn the United States, formula feeding is recommended to prevent HIV transmission through breast milk.\u201d" },
+                { id: "a", text: "\u201cYes, breastfeeding passes along antibodies that protect your baby from HIV.\u201d" },
+                { id: "b", text: "\u201cIn the United States, formula feeding is recommended because HIV can pass through breast milk.\u201d" },
                 { id: "c", text: "\u201cYou can breastfeed as long as you\u2019re on antiretroviral therapy.\u201d" },
-                { id: "d", text: "\u201cBreastfeeding is fine after the baby is 6 months old.\u201d" }
+                { id: "d", text: "\u201cBreastfeeding is fine once the baby is 6 months old and eating solid foods.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -162,10 +162,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "The mother of a 6-year-old with severe peanut allergy asks how long to observe the child after an anaphylactic reaction. The BEST response is:",
             options: [
-                { id: "a", text: "\u201cYou can go home as soon as symptoms resolve.\u201d" },
+                { id: "a", text: "\u201cYou can go home as soon as the hives fade and your child is breathing easily.\u201d" },
                 { id: "b", text: "\u201cChildren should be observed for at least 4\u20138 hours because of the risk of a biphasic reaction.\u201d" },
-                { id: "c", text: "\u201cObservation isn\u2019t needed once we\u2019ve given epinephrine.\u201d" },
-                { id: "d", text: "\u201cObservation is needed only if symptoms return in the first hour.\u201d" }
+                { id: "c", text: "\u201cObservation isn\u2019t needed once we\u2019ve given epinephrine, because it works quickly.\u201d" },
+                { id: "d", text: "\u201cObservation is needed only if symptoms return during the first hour after treatment.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -185,10 +185,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "A school nurse is developing an action plan for a child with severe food allergies. Which item is MOST important to include?",
             options: [
-                { id: "a", text: "A single epinephrine auto-injector locked in the office" },
-                { id: "b", text: "Two epinephrine auto-injectors accessible during the school day, plus a written anaphylaxis action plan" },
-                { id: "c", text: "A bottle of oral diphenhydramine" },
-                { id: "d", text: "An albuterol inhaler only" }
+                { id: "a", text: "A single epinephrine auto-injector kept locked in the nurse\u2019s office for safety" },
+                { id: "b", text: "Two epinephrine auto-injectors kept accessible all day, plus a written anaphylaxis action plan" },
+                { id: "c", text: "A bottle of oral diphenhydramine given at the first sign of hives or itching" },
+                { id: "d", text: "An albuterol inhaler carried at all times for any wheezing or throat tightness" }
             ],
             correct: "b",
             rationale: {
@@ -208,10 +208,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "A nurse is teaching family home care for a child with HIV. Which teaching point is MOST important?",
             options: [
-                { id: "a", text: "\u201cTake antiretroviral medications only when your child feels sick.\u201d" },
+                { id: "a", text: "\u201cTake antiretroviral medications only on days when your child feels sick or has a fever.\u201d" },
                 { id: "b", text: "\u201cTake antiretroviral medications every day as prescribed to keep the virus suppressed and prevent resistance.\u201d" },
-                { id: "c", text: "\u201cStop the medication during school breaks.\u201d" },
-                { id: "d", text: "\u201cMedications can be adjusted at home if side effects occur.\u201d" }
+                { id: "c", text: "\u201cStop the medication during school breaks to give your child\u2019s body a rest from side effects.\u201d" },
+                { id: "d", text: "\u201cMedications can be skipped or adjusted at home if side effects like nausea occur.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -231,10 +231,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "Which infection-prevention teaching is MOST important for the family of a child with HIV?",
             options: [
-                { id: "a", text: "Avoid all social contact with other children" },
-                { id: "b", text: "Strict handwashing, avoid sick contacts, and call the clinic for any fever or new symptoms of infection" },
-                { id: "c", text: "Avoid all immunizations" },
-                { id: "d", text: "Use household bleach for all the child\u2019s personal items" }
+                { id: "a", text: "Avoid all social contact with other children, including school and daycare" },
+                { id: "b", text: "Strict handwashing, avoid sick contacts, and call the clinic for any fever or sign of infection" },
+                { id: "c", text: "Avoid all immunizations, since vaccines can overwhelm the weakened immune system" },
+                { id: "d", text: "Use household bleach to disinfect all of the child\u2019s personal items every day" }
             ],
             correct: "b",
             rationale: {
@@ -300,10 +300,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "A boy diagnosed with Bruton\u2019s X-linked agammaglobulinemia (XLA) is prescribed IVIG infusions. The nurse understands the purpose of IVIG is to:",
             options: [
-                { id: "a", text: "Treat existing acute infections only" },
+                { id: "a", text: "Treat existing acute infections only, as an alternative to antibiotics" },
                 { id: "b", text: "Replace the antibodies the child cannot produce and reduce infection risk" },
-                { id: "c", text: "Kill T cells that are too active" },
-                { id: "d", text: "Boost vaccine response to live vaccines" }
+                { id: "c", text: "Suppress overactive T cells that are attacking healthy tissue" },
+                { id: "d", text: "Boost the child\u2019s response so live vaccines can be given safely" }
             ],
             correct: "b",
             rationale: {
@@ -323,10 +323,10 @@ var immuneDeficiencyHivQuizData = {
             difficulty: "application",
             stem: "During an IV antibiotic infusion, a child develops hives, lip swelling, and wheezing. After STOPPING the antibiotic and administering IM epinephrine, which next action is MOST appropriate?",
             options: [
-                { id: "a", text: "Resume the antibiotic at half the rate" },
-                { id: "b", text: "Give IV normal saline bolus, continuous oxygen, and antihistamines while monitoring continuously" },
-                { id: "c", text: "Discharge the child home for outpatient follow-up" },
-                { id: "d", text: "Administer a second antibiotic from the same class" }
+                { id: "a", text: "Resume the antibiotic at half the rate once the wheezing resolves" },
+                { id: "b", text: "Give an IV normal saline bolus, oxygen, and antihistamines with continuous monitoring" },
+                { id: "c", text: "Discharge the child home once symptoms resolve, with outpatient follow-up" },
+                { id: "d", text: "Administer a second antibiotic from the same class at a slower infusion rate" }
             ],
             correct: "b",
             rationale: {

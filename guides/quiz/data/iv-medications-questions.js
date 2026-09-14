@@ -89,8 +89,8 @@ var ivMedicationsQuizData = {
             stem: "A patient in diabetic ketoacidosis has a potassium of 3.1 mEq/L. Fluids are running. The insulin infusion is prescribed. What should the nurse do?",
             options: [
                 { id: "a", text: "Start the insulin infusion and recheck potassium in 4 hours" },
-                { id: "b", text: "Hold the insulin, give the prescribed potassium replacement, and recheck the level" },
-                { id: "c", text: "Start the insulin at half the ordered rate" },
+                { id: "b", text: "Hold the insulin, give the prescribed potassium, and recheck the level" },
+                { id: "c", text: "Start the insulin infusion at half the ordered rate" },
                 { id: "d", text: "Give a bolus of regular insulin subcutaneously instead" }
             ],
             correct: "b",
@@ -181,9 +181,9 @@ var ivMedicationsQuizData = {
             stem: "An older adult receiving IV fluids develops crackles, dyspnea, distended neck veins and a bounding pulse. What should the nurse do FIRST?",
             options: [
                 { id: "a", text: "Clamp the IV line completely and remove the catheter" },
-                { id: "b", text: "Slow the infusion to a keep-vein-open rate and raise the head of the bed" },
-                { id: "c", text: "Increase the rate to improve renal perfusion" },
-                { id: "d", text: "Place the patient flat to improve venous return" }
+                { id: "b", text: "Slow the infusion to keep-vein-open and raise the head of the bed" },
+                { id: "c", text: "Increase the infusion rate to improve renal perfusion" },
+                { id: "d", text: "Place the patient flat in bed to improve venous return" }
             ],
             correct: "b",
             rationale: {
@@ -272,8 +272,8 @@ var ivMedicationsQuizData = {
             difficulty: "application",
             stem: "Ten minutes into a transfusion the patient develops fever, chills and flank pain. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Notify the provider and the blood bank" },
-                { id: "b", text: "Stop the transfusion and keep the line open with normal saline through new tubing" },
+                { id: "a", text: "Notify the provider and the blood bank of the reaction" },
+                { id: "b", text: "Stop the transfusion and infuse normal saline through new tubing" },
                 { id: "c", text: "Take a full set of vital signs and reassess in 5 minutes" },
                 { id: "d", text: "Slow the transfusion and give the prescribed antipyretic" }
             ],
@@ -369,10 +369,10 @@ var ivMedicationsQuizData = {
             difficulty: "application",
             stem: "The nurse notices white crystals forming in the tubing after connecting a second medication to a running line. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Increase the rate to clear the tubing" },
-                { id: "b", text: "Stop the infusion and do not allow the solution to enter the patient" },
+                { id: "a", text: "Increase the rate to clear the crystals from the tubing" },
+                { id: "b", text: "Stop the infusion and keep the solution out of the patient" },
                 { id: "c", text: "Flush the line with dextrose 5 percent in water" },
-                { id: "d", text: "Document the finding and continue monitoring" }
+                { id: "d", text: "Document the finding and continue monitoring the line" }
             ],
             correct: "b",
             rationale: {

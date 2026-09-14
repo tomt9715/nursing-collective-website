@@ -44,10 +44,10 @@ var psychotropicMedicationsQuizData = {
             difficulty: "analysis",
             stem: "A patient taking an antipsychotic has a temperature of 40.1 degrees Celsius, blood pressure swinging between 90/50 and 160/95, and uniform resistance through the full range of motion in all limbs. Reflexes are sluggish. Symptoms developed over four days. Which condition is most likely?",
             options: [
-                { id: "a", text: "Serotonin syndrome" },
+                { id: "a", text: "Severe serotonin syndrome" },
                 { id: "b", text: "Neuroleptic malignant syndrome" },
                 { id: "c", text: "Acute dystonic reaction" },
-                { id: "d", text: "Tardive dyskinesia" }
+                { id: "d", text: "Late-onset tardive dyskinesia" }
             ],
             correct: "b",
             rationale: {
@@ -389,10 +389,10 @@ var psychotropicMedicationsQuizData = {
             difficulty: "knowledge",
             stem: "A patient on maintenance lithium is scheduled for a morning serum level. When should the specimen be drawn?",
             options: [
-                { id: "a", text: "Immediately after the morning dose" },
-                { id: "b", text: "Approximately 12 hours after the previous dose, before the morning dose" },
-                { id: "c", text: "Four hours after the morning dose" },
-                { id: "d", text: "At any time, since lithium levels remain constant" }
+                { id: "a", text: "Immediately after the morning dose is taken" },
+                { id: "b", text: "About 12 hours after the last dose, before the morning dose" },
+                { id: "c", text: "About four hours after the morning dose is taken" },
+                { id: "d", text: "At any time of day, since lithium levels remain constant" }
             ],
             correct: "b",
             rationale: {
@@ -435,10 +435,10 @@ var psychotropicMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient stopped paroxetine abruptly four days ago and reports dizziness, nausea, irritability, vivid dreams and brief electric-shock sensations. How should the nurse interpret this?",
             options: [
-                { id: "a", text: "Relapse of the underlying depression" },
-                { id: "b", text: "Addiction to the antidepressant" },
-                { id: "c", text: "Discontinuation syndrome from stopping a short half-life antidepressant abruptly" },
-                { id: "d", text: "Serotonin syndrome" }
+                { id: "a", text: "Relapse of the underlying major depressive disorder" },
+                { id: "b", text: "Psychological addiction to the antidepressant" },
+                { id: "c", text: "Antidepressant discontinuation syndrome after abrupt cessation" },
+                { id: "d", text: "Serotonin syndrome from excess serotonin activity" }
             ],
             correct: "c",
             rationale: {

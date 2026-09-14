@@ -65,10 +65,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "A parent of a child with systemic JIA asks why the fever keeps returning even though their child is taking antibiotics. The BEST nursing response is:",
             options: [
-                { id: "a", text: "\u201cThe antibiotics must not be strong enough - we should switch.\u201d" },
-                { id: "b", text: "\u201cIn systemic JIA, fever is caused by inflammation rather than infection, so antibiotics don\u2019t stop it - the anti-inflammatory medications will.\u201d" },
-                { id: "c", text: "\u201cThe child likely has a secondary infection.\u201d" },
-                { id: "d", text: "\u201cDaily fevers are always a sign of worsening disease.\u201d" }
+                { id: "a", text: "\u201cThe antibiotics must not be strong enough, so we should ask the provider to switch to a stronger one.\u201d" },
+                { id: "b", text: "\u201cIn systemic JIA, fever comes from inflammation, not infection, so antibiotics won\u2019t stop it; anti-inflammatory medicines will.\u201d" },
+                { id: "c", text: "\u201cYour child most likely has a second infection on top of the JIA that the antibiotics are not covering.\u201d" },
+                { id: "d", text: "\u201cFevers that keep coming back every day are always a sign that the JIA is getting worse.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var jiaLupusQuizData = {
             difficulty: "knowledge",
             stem: "The malar rash of pediatric SLE characteristically:",
             options: [
-                { id: "a", text: "Spreads over the entire face including the nasolabial folds" },
+                { id: "a", text: "Spreads over the entire face, including the nasolabial folds and the forehead" },
                 { id: "b", text: "Spares the nasolabial folds and often appears as a butterfly pattern over cheeks and nose" },
-                { id: "c", text: "Appears as discoid scaly lesions only on the scalp" },
-                { id: "d", text: "Has pinpoint petechiae across the cheeks" }
+                { id: "c", text: "Appears as raised, scaly, coin-shaped plaques that leave scars as they heal" },
+                { id: "d", text: "Has pinpoint petechiae scattered across the cheeks, chin, and forehead" }
             ],
             correct: "b",
             rationale: {
@@ -111,10 +111,10 @@ var jiaLupusQuizData = {
             difficulty: "knowledge",
             stem: "Which lab is MOST SPECIFIC for systemic lupus erythematosus?",
             options: [
-                { id: "a", text: "ANA" },
-                { id: "b", text: "Rheumatoid factor" },
+                { id: "a", text: "Antinuclear antibody (ANA)" },
+                { id: "b", text: "Rheumatoid factor (RF)" },
                 { id: "c", text: "Anti-double-stranded DNA (anti-dsDNA)" },
-                { id: "d", text: "Elevated ESR" }
+                { id: "d", text: "Elevated erythrocyte sedimentation rate (ESR)" }
             ],
             correct: "c",
             rationale: {
@@ -134,10 +134,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "A nurse is reviewing labs for a 14-year-old with SLE during a possible flare. Which finding supports ACTIVE disease?",
             options: [
-                { id: "a", text: "Elevated C3 and C4" },
+                { id: "a", text: "HIGH C3 and C4 with normal anti-dsDNA" },
                 { id: "b", text: "Normal UA and normal anti-dsDNA" },
                 { id: "c", text: "LOW C3 and C4 with HIGH anti-dsDNA" },
-                { id: "d", text: "Negative ANA" }
+                { id: "d", text: "Negative ANA with normal C3 and C4" }
             ],
             correct: "c",
             rationale: {
@@ -157,10 +157,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "The parent of a child on methotrexate for JIA asks about folic acid. The nurse\u2019s BEST response is:",
             options: [
-                { id: "a", text: "\u201cStop giving folic acid because it cancels out the methotrexate.\u201d" },
-                { id: "b", text: "\u201cGive folic acid daily or weekly as prescribed; it reduces methotrexate side effects without reducing its effectiveness.\u201d" },
-                { id: "c", text: "\u201cFolic acid is only needed for the first dose of methotrexate.\u201d" },
-                { id: "d", text: "\u201cFolic acid must be taken at the same time as methotrexate for best effect.\u201d" }
+                { id: "a", text: "\u201cStop giving folic acid, because it cancels out the methotrexate and keeps it from working.\u201d" },
+                { id: "b", text: "\u201cGive folic acid as prescribed; it reduces methotrexate side effects without making it less effective.\u201d" },
+                { id: "c", text: "\u201cFolic acid is only needed with the first dose of methotrexate, and then it can be stopped.\u201d" },
+                { id: "d", text: "\u201cFolic acid must be taken at the same time as methotrexate so the two work together best.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -208,10 +208,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "Which sun-protection teaching is BEST for a teenager with SLE?",
             options: [
-                { id: "a", text: "\u201cSunscreen is only needed at the beach.\u201d" },
-                { id: "b", text: "\u201cSunscreen SPF 15 applied once daily is sufficient.\u201d" },
-                { id: "c", text: "\u201cUse broad-spectrum sunscreen SPF 50+, reapply every 2 hours outdoors, wear a wide-brim hat and UV-protective clothing, and avoid peak sun hours.\u201d" },
-                { id: "d", text: "\u201cSun exposure actually helps lupus rashes heal.\u201d" }
+                { id: "a", text: "\u201cSunscreen is only needed at the beach or pool, so regular days outside do not need it.\u201d" },
+                { id: "b", text: "\u201cSunscreen SPF 15 applied once each morning is enough protection for the whole school day.\u201d" },
+                { id: "c", text: "\u201cUse broad-spectrum SPF 50+ sunscreen, reapply every 2 hours, wear a wide-brim hat, and avoid peak sun hours.\u201d" },
+                { id: "d", text: "\u201cSome sun exposure actually helps lupus rashes heal faster, so short periods outside are fine.\u201d" }
             ],
             correct: "c",
             rationale: {
@@ -231,10 +231,10 @@ var jiaLupusQuizData = {
             difficulty: "knowledge",
             stem: "What is the LEADING cause of morbidity and mortality in pediatric SLE?",
             options: [
-                { id: "a", text: "Pericarditis" },
+                { id: "a", text: "Pericarditis (heart lining inflammation)" },
                 { id: "b", text: "Lupus nephritis (kidney involvement)" },
-                { id: "c", text: "Malar rash" },
-                { id: "d", text: "Oral ulcers" }
+                { id: "c", text: "Malar rash (butterfly facial rash)" },
+                { id: "d", text: "Oral ulcers (sores on the palate)" }
             ],
             correct: "b",
             rationale: {
@@ -254,10 +254,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "A child with systemic JIA on tocilizumab develops persistent fever, very high ferritin, cytopenias, and hepatitis. The nurse recognizes this as:",
             options: [
-                { id: "a", text: "Benign JIA flare" },
+                { id: "a", text: "Benign JIA flare that will settle on its own" },
                 { id: "b", text: "Macrophage activation syndrome (MAS) - an emergency" },
-                { id: "c", text: "Expected response to the biologic" },
-                { id: "d", text: "Early sign of medication allergy" }
+                { id: "c", text: "Expected response to the biologic medication" },
+                { id: "d", text: "Early sign of a medication allergy to tocilizumab" }
             ],
             correct: "b",
             rationale: {
@@ -277,10 +277,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "A school-age child with JIA is reporting that morning stiffness is preventing her from getting ready for school. Which teaching point should the nurse provide?",
             options: [
-                { id: "a", text: "\u201cKeep the affected joint immobilized all night to prevent pain.\u201d" },
+                { id: "a", text: "\u201cKeep the stiff joint immobilized in a splint all night to prevent morning pain.\u201d" },
                 { id: "b", text: "\u201cTake a warm bath or shower on waking and do gentle range-of-motion exercises before school.\u201d" },
                 { id: "c", text: "\u201cApply an ice pack to the affected joint for 30 minutes in the morning.\u201d" },
-                { id: "d", text: "\u201cSkip physical therapy when you feel stiff.\u201d" }
+                { id: "d", text: "\u201cSkip physical therapy and stretching on the mornings you feel stiff.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -300,10 +300,10 @@ var jiaLupusQuizData = {
             difficulty: "knowledge",
             stem: "Which medication requires TB screening before initiation due to the risk of reactivating latent infection?",
             options: [
-                { id: "a", text: "Ibuprofen" },
-                { id: "b", text: "Hydroxychloroquine" },
+                { id: "a", text: "Nonsteroidal anti-inflammatory drug (e.g., ibuprofen)" },
+                { id: "b", text: "Antimalarial agent (e.g., hydroxychloroquine)" },
                 { id: "c", text: "Tumor necrosis factor (TNF) inhibitor (e.g., etanercept)" },
-                { id: "d", text: "Acetaminophen" }
+                { id: "d", text: "Analgesic and antipyretic (e.g., acetaminophen)" }
             ],
             correct: "c",
             rationale: {
@@ -323,10 +323,10 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "The parents of a child newly diagnosed with JIA say, \u201cShe needs to stop gymnastics until this is gone.\u201d The BEST nursing response is:",
             options: [
-                { id: "a", text: "\u201cYes, she should not do any physical activity.\u201d" },
-                { id: "b", text: "\u201cLow-impact activities like swimming or biking are encouraged, and PT can help guide safe participation. Avoiding movement actually worsens JIA.\u201d" },
-                { id: "c", text: "\u201cShe should continue competitive gymnastics at full intensity.\u201d" },
-                { id: "d", text: "\u201cActivity makes JIA worse - bed rest is the treatment.\u201d" }
+                { id: "a", text: "\u201cYes, she should stop all physical activity, including gym class, until the JIA goes away.\u201d" },
+                { id: "b", text: "\u201cLow-impact activity like swimming or biking is encouraged, and physical therapy can guide safe participation.\u201d" },
+                { id: "c", text: "\u201cShe should keep doing competitive gymnastics at full intensity, even during a flare.\u201d" },
+                { id: "d", text: "\u201cActivity makes JIA worse, so bed rest is the main treatment until her joints stop hurting.\u201d" }
             ],
             correct: "b",
             rationale: {

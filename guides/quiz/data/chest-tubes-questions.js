@@ -140,8 +140,8 @@ var chestTubesQuizData = {
             difficulty: "knowledge",
             stem: "A patient has a chest tube connected to a water-seal drainage system following a thoracotomy. The nursing assistant asks the nurse why the drainage collection device must always remain below the patient's chest level. Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Keeping it below the chest prevents the tubing from kinking.\"" },
-                { id: "b", text: "\"Gravity helps drain fluid and air from the pleural space, and raising the unit could cause backflow into the chest.\"" },
+                { id: "a", text: "\"Keeping it below the chest prevents the tubing from kinking or looping.\"" },
+                { id: "b", text: "\"Gravity drains the pleural space, and raising the unit could cause backflow into the chest.\"" },
                 { id: "c", text: "\"The device generates suction only when it is lower than the patient.\"" },
                 { id: "d", text: "\"It makes it easier for the nurse to measure and record the drainage output.\"" }
             ],

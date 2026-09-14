@@ -91,10 +91,10 @@ var pneumoniaQuizData = {
             difficulty: "application",
             stem: "A nurse is reviewing a chest X-ray report for a patient with suspected pneumonia. The report describes \"dense consolidation of the right lower lobe with air bronchograms.\" The nurse understands this finding indicates:",
             options: [
-                { id: "a", text: "A pleural effusion compressing the right lung" },
-                { id: "b", text: "The alveoli are filled with fluid/exudate while bronchi remain air-filled" },
-                { id: "c", text: "A pneumothorax in the right lower lobe" },
-                { id: "d", text: "Atelectasis from mucus plugging" }
+                { id: "a", text: "A pleural effusion compressing the right lower lung" },
+                { id: "b", text: "Alveoli filled with fluid or exudate while bronchi remain air-filled" },
+                { id: "c", text: "A pneumothorax with air trapped in the right pleural space" },
+                { id: "d", text: "Atelectasis from mucus plugging with collapsed alveoli" }
             ],
             correct: "b",
             rationale: {

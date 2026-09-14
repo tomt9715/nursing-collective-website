@@ -159,9 +159,9 @@ var pediatricCongenitalHeartDefectsQuizData = {
             stem: "A nurse is caring for a 4-year-old with a repaired VSD who is scheduled for a dental cleaning in two weeks. The parent asks whether the child needs antibiotics before the appointment. The nurse's best response is:",
             options: [
                 { id: "a", text: "'Yes, all children with any history of heart surgery need antibiotics forever.'" },
-                { id: "b", text: "'No antibiotics are needed because the repair is complete.'" },
+                { id: "b", text: "'No antibiotics are needed because the heart defect repair is now complete.'" },
                 { id: "c", text: "'Antibiotics are recommended for 6 months after repair; after that it depends on the type of repair.'" },
-                { id: "d", text: "'Antibiotics are only needed if the child is currently sick.'" }
+                { id: "d", text: "'Antibiotics are only needed if the child is currently sick with an infection.'" }
             ],
             correct: "c",
             rationale: {
@@ -342,10 +342,10 @@ var pediatricCongenitalHeartDefectsQuizData = {
             difficulty: "knowledge",
             stem: "Atrioventricular septal defect (AVSD) is most strongly associated with which genetic condition?",
             options: [
-                { id: "a", text: "Turner syndrome" },
+                { id: "a", text: "Monosomy X (Turner syndrome)" },
                 { id: "b", text: "Trisomy 21 (Down syndrome)" },
-                { id: "c", text: "Marfan syndrome" },
-                { id: "d", text: "Cystic fibrosis" }
+                { id: "c", text: "Marfan syndrome (fibrillin)" },
+                { id: "d", text: "Cystic fibrosis (recessive)" }
             ],
             correct: "b",
             rationale: {
@@ -388,9 +388,9 @@ var pediatricCongenitalHeartDefectsQuizData = {
             difficulty: "application",
             stem: "A parent of an infant on digoxin calls the nurse's line and reports, 'She just spit up her whole dose of medicine.' What is the nurse's best response?",
             options: [
-                { id: "a", text: "'Give her the same dose again right now.'" },
+                { id: "a", text: "'Give her the same dose again right now so she gets it all.'" },
                 { id: "b", text: "'Give half of the dose to replace what she spit up.'" },
-                { id: "c", text: "'Do not give a replacement dose. Give the next dose at the usual scheduled time.'" },
+                { id: "c", text: "'Do not repeat the dose. Give the next dose at the usual time.'" },
                 { id: "d", text: "'Bring her to the emergency department immediately.'" }
             ],
             correct: "c",

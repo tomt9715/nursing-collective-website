@@ -230,9 +230,9 @@ var oxygenTherapyQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is setting up a simple face mask for a patient. The respiratory therapist orders 4 L/min via simple face mask. What should the nurse do?",
             options: [
-                { id: "a", text: "Set the flow rate as ordered at 4 L/min" },
-                { id: "b", text: "Contact the provider because the minimum flow rate for a simple face mask is 5 L/min" },
-                { id: "c", text: "Switch to a nasal cannula at 4 L/min instead" },
+                { id: "a", text: "Set the flow rate at 4 L/min on the flowmeter as ordered" },
+                { id: "b", text: "Contact the provider, because a simple face mask needs at least 5 L/min" },
+                { id: "c", text: "Switch to a nasal cannula at 4 L/min instead of the mask" },
                 { id: "d", text: "Set the flow rate at 5 L/min and document the change" }
             ],
             correct: "b",

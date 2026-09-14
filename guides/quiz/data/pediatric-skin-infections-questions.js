@@ -19,10 +19,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "application",
             stem: "A 5-year-old is brought to the clinic with honey-colored crusted lesions around the mouth and nose. The lesions started as small red spots, then vesicles that ruptured. Which treatment is most appropriate for this presentation?",
             options: [
-                { id: "a", text: "Oral acyclovir" },
+                { id: "a", text: "Oral acyclovir (Zovirax)" },
                 { id: "b", text: "Topical mupirocin (Bactroban)" },
-                { id: "c", text: "Oral griseofulvin" },
-                { id: "d", text: "Topical clotrimazole" }
+                { id: "c", text: "Oral griseofulvin (Gris-PEG)" },
+                { id: "d", text: "Topical clotrimazole (Lotrimin)" }
             ],
             correct: "b",
             rationale: {
@@ -42,10 +42,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "analysis",
             stem: "A 10-year-old presents with a painful, fluctuant abscess on the forearm that he thought was a 'spider bite.' Culture is pending. What is the priority intervention?",
             options: [
-                { id: "a", text: "Apply warm compresses and observe" },
+                { id: "a", text: "Apply warm compresses and observe for 48 hours" },
                 { id: "b", text: "Incision and drainage with empiric clindamycin or TMP-SMX" },
                 { id: "c", text: "Start oral amoxicillin and reassess in 72 hours" },
-                { id: "d", text: "Begin IV vancomycin as outpatient" }
+                { id: "d", text: "Begin IV vancomycin as an outpatient infusion" }
             ],
             correct: "b",
             rationale: {
@@ -65,10 +65,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "application",
             stem: "A nurse is caring for a hospitalized toddler with cellulitis of the lower leg. The provider orders IV cefazolin. Which nursing action is MOST important in addition to administering the antibiotic?",
             options: [
-                { id: "a", text: "Apply ice packs to reduce swelling" },
+                { id: "a", text: "Apply ice packs to the leg to reduce swelling" },
                 { id: "b", text: "Mark the borders of the erythema with a pen and reassess" },
-                { id: "c", text: "Encourage ambulation to prevent DVT" },
-                { id: "d", text: "Keep the leg below heart level" }
+                { id: "c", text: "Encourage ambulation to prevent deep vein thrombosis" },
+                { id: "d", text: "Keep the affected leg positioned below heart level" }
             ],
             correct: "b",
             rationale: {
@@ -88,8 +88,8 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "application",
             stem: "A 14-day-old neonate presents to the ED with fever, lethargy, poor feeding, and a cluster of small vesicles on the scalp. What is the priority action?",
             options: [
-                { id: "a", text: "Observe and recheck in 24 hours" },
-                { id: "b", text: "Apply topical antiviral and discharge" },
+                { id: "a", text: "Observe in the department and recheck in 24 hours" },
+                { id: "b", text: "Apply a topical antiviral and discharge home" },
                 { id: "c", text: "Start empiric IV acyclovir and admit for full sepsis workup" },
                 { id: "d", text: "Begin oral acyclovir and follow up in 48 hours" }
             ],
@@ -134,10 +134,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "knowledge",
             stem: "An 8-year-old is diagnosed with tinea capitis. Which treatment approach is correct?",
             options: [
-                { id: "a", text: "Topical clotrimazole cream for 2 weeks" },
-                { id: "b", text: "Selenium sulfide shampoo alone, twice weekly" },
-                { id: "c", text: "Oral antifungal (griseofulvin or terbinafine) for 6\u20138 weeks, with selenium sulfide shampoo as adjunct" },
-                { id: "d", text: "Oral antibiotic and topical corticosteroid" }
+                { id: "a", text: "Topical clotrimazole cream applied to the scalp twice daily for 2 weeks" },
+                { id: "b", text: "Selenium sulfide shampoo alone, used two to three times weekly until clear" },
+                { id: "c", text: "Oral griseofulvin or terbinafine for 6\u20138 weeks, with selenium sulfide shampoo as an adjunct" },
+                { id: "d", text: "Oral antibiotic such as cephalexin plus a topical corticosteroid cream" }
             ],
             correct: "c",
             rationale: {
@@ -158,9 +158,9 @@ var pediatricSkinInfectionsQuizData = {
             stem: "A breastfeeding mother brings her 2-month-old with white patches in the mouth that don't scrape off easily. The infant is fussy with feeds. Which treatment is correct?",
             options: [
                 { id: "a", text: "Nystatin oral suspension for the infant; treat the mother's breasts if symptomatic" },
-                { id: "b", text: "Topical steroid cream to the oral mucosa" },
-                { id: "c", text: "Oral acyclovir for 7 days" },
-                { id: "d", text: "Oral amoxicillin" }
+                { id: "b", text: "Topical steroid cream applied to the white patches on the oral mucosa" },
+                { id: "c", text: "Oral acyclovir for the infant for 7 days; the mother needs no treatment" },
+                { id: "d", text: "Oral amoxicillin for 10 days, and continue breastfeeding as usual" }
             ],
             correct: "a",
             rationale: {
@@ -181,10 +181,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "knowledge",
             stem: "A parent of a child with impetigo asks when their child can return to school. What is the correct answer?",
             options: [
-                { id: "a", text: "Once all lesions have completely healed" },
+                { id: "a", text: "Once all lesions have completely crusted over and healed" },
                 { id: "b", text: "24 hours after starting antibiotics and with lesions covered" },
-                { id: "c", text: "7 days after starting antibiotics" },
-                { id: "d", text: "Immediately - impetigo is not contagious" }
+                { id: "c", text: "After a full 7-day course of antibiotics is finished" },
+                { id: "d", text: "Immediately, since impetigo is not a contagious infection" }
             ],
             correct: "b",
             rationale: {
@@ -273,10 +273,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "knowledge",
             stem: "Which diagnostic test is MOST useful to quickly confirm a suspected fungal infection like tinea corporis?",
             options: [
-                { id: "a", text: "Blood culture" },
+                { id: "a", text: "Blood culture and sensitivity" },
                 { id: "b", text: "KOH (potassium hydroxide) prep" },
-                { id: "c", text: "Wood's lamp examination" },
-                { id: "d", text: "CBC with differential" }
+                { id: "c", text: "Wood's lamp (ultraviolet) examination" },
+                { id: "d", text: "Complete blood count (CBC)" }
             ],
             correct: "b",
             rationale: {
@@ -296,10 +296,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "application",
             stem: "A parent is concerned their child's warts on the hand keep coming back. Which statement by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "'Warts should be surgically removed immediately to prevent spread.'" },
-                { id: "b", text: "'Warts are usually benign and self-limiting - many resolve in 1\u20132 years. Treatment options include salicylic acid, cryotherapy, or observation.'" },
-                { id: "c", text: "'Warts indicate a serious underlying immune problem.'" },
-                { id: "d", text: "'Warts are best treated with oral antibiotics.'" }
+                { id: "a", text: "'Warts should be surgically removed right away so they do not spread to other children.'" },
+                { id: "b", text: "'Warts are usually harmless and often resolve in 1\u20132 years; salicylic acid or cryotherapy can help.'" },
+                { id: "c", text: "'Warts that keep coming back are a sign of a serious underlying immune problem.'" },
+                { id: "d", text: "'Warts are best treated with a course of oral antibiotics to clear the infection.'" }
             ],
             correct: "b",
             rationale: {
@@ -319,10 +319,10 @@ var pediatricSkinInfectionsQuizData = {
             difficulty: "analysis",
             stem: "A nurse is educating parents about preventing recurrent MRSA infections at home. Which statement indicates correct understanding?",
             options: [
-                { id: "a", text: "'We'll share towels to be efficient with laundry.'" },
-                { id: "b", text: "'Everyone in the family should wash hands often, cover wounds, and not share personal items like razors or towels.'" },
+                { id: "a", text: "'We'll let the kids share bath towels to be efficient with laundry.'" },
+                { id: "b", text: "'The whole family should wash hands often, cover wounds, and not share razors or towels.'" },
                 { id: "c", text: "'Oral antibiotics at home should be kept in case of future outbreaks.'" },
-                { id: "d", text: "'We should clean the house with bleach daily.'" }
+                { id: "d", text: "'We should clean every surface in the house with bleach every day.'" }
             ],
             correct: "b",
             rationale: {

@@ -65,10 +65,10 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "knowledge",
             stem: "Which component of the 6 Ps of neurovascular assessment is typically the EARLIEST and most sensitive sign of compartment syndrome?",
             options: [
-                { id: "a", text: "Pulselessness" },
-                { id: "b", text: "Pain out of proportion" },
-                { id: "c", text: "Pallor" },
-                { id: "d", text: "Paralysis" }
+                { id: "a", text: "Pulselessness distal to the injury" },
+                { id: "b", text: "Pain out of proportion to the injury" },
+                { id: "c", text: "Pallor of the affected extremity" },
+                { id: "d", text: "Paralysis of the distal muscles" }
             ],
             correct: "b",
             rationale: {
@@ -89,9 +89,9 @@ var pediatricFracturesImmobilityQuizData = {
             stem: "A nurse is caring for a 14-month-old in Bryant's traction for a femur fracture. Which finding indicates the traction is set up correctly?",
             options: [
                 { id: "a", text: "The affected leg is elevated 90 degrees; the other leg rests flat on the bed" },
-                { id: "b", text: "Both legs are elevated 90 degrees perpendicular to the bed; the buttocks are slightly off the mattress" },
-                { id: "c", text: "Both legs are flat on the bed with weights at the head of the bed" },
-                { id: "d", text: "The child is prone with both legs straight" }
+                { id: "b", text: "Both legs are elevated 90 degrees to the bed with the buttocks slightly off the mattress" },
+                { id: "c", text: "Both legs are flat on the bed with weights hanging from the head of the bed" },
+                { id: "d", text: "The child lies prone with both legs straight and the weights hanging freely" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "application",
             stem: "A nurse is caring for a toddler in Bryant's traction. The parent asks if they can lift the weights for a moment so the child can be repositioned. What is the nurse's best response?",
             options: [
-                { id: "a", text: "'That's fine, just be careful.'" },
-                { id: "b", text: "'The weights must hang freely at all times - never lift or remove them.'" },
-                { id: "c", text: "'You can remove them for 5 minutes at a time.'" },
-                { id: "d", text: "'The weights don't really matter for alignment.'" }
+                { id: "a", text: "'That's fine, just lift them gently and set them back down.'" },
+                { id: "b", text: "'The weights must hang freely at all times, so never lift them.'" },
+                { id: "c", text: "'You can remove them for 5 minutes at a time to reposition.'" },
+                { id: "d", text: "'The weights don't really matter for alignment, so go ahead.'" }
             ],
             correct: "b",
             rationale: {
@@ -180,10 +180,10 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "analysis",
             stem: "A 6-month-old is brought in with a left femur fracture. The father states the baby 'rolled off the couch.' The child is not yet rolling or ambulating independently. What is the nurse's priority action?",
             options: [
-                { id: "a", text: "Accept the history and proceed with routine fracture care" },
+                { id: "a", text: "Accept the history as given and proceed with routine fracture care and splinting" },
                 { id: "b", text: "Document objectively, request a skeletal survey, notify the provider and child protection team" },
-                { id: "c", text: "Ask the father to describe the injury in more detail and then decide" },
-                { id: "d", text: "Send the family home with pain medications and follow-up" }
+                { id: "c", text: "Ask the father to describe the fall again in more detail and then decide" },
+                { id: "d", text: "Send the family home with pain medication and an orthopedic clinic follow-up" }
             ],
             correct: "b",
             rationale: {
@@ -203,10 +203,10 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is caring for a 4-year-old in a long-leg cast for 6 weeks. Which complication of prolonged immobility is MOST concerning in pediatric patients?",
             options: [
-                { id: "a", text: "Permanent hypertension" },
-                { id: "b", text: "Disuse osteoporosis leading to fractures from minor movements" },
-                { id: "c", text: "Chronic kidney disease" },
-                { id: "d", text: "Type 1 diabetes" }
+                { id: "a", text: "Permanent hypertension from prolonged bed rest" },
+                { id: "b", text: "Disuse osteoporosis causing fractures from minor movements" },
+                { id: "c", text: "Chronic kidney disease from reduced fluid intake" },
+                { id: "d", text: "Type 1 diabetes triggered by reduced activity" }
             ],
             correct: "b",
             rationale: {
@@ -272,7 +272,7 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "knowledge",
             stem: "Which of the following is NOT a typical indication for using a splint rather than a full cast immediately after injury?",
             options: [
-                { id: "a", text: "Expected swelling" },
+                { id: "a", text: "Expected swelling in the first few days after injury" },
                 { id: "b", text: "Stable fracture requiring definitive immobilization" },
                 { id: "c", text: "Recent reduction with monitoring needed" },
                 { id: "d", text: "Allows accommodation for additional swelling" }
@@ -318,16 +318,16 @@ var pediatricFracturesImmobilityQuizData = {
             difficulty: "analysis",
             stem: "A toddler is admitted with a supracondylar humerus fracture after a playground fall. The nurse understands that this fracture is concerning because of the risk of damage to which structure?",
             options: [
-                { id: "a", text: "Ulnar nerve only" },
+                { id: "a", text: "Ulnar nerve only, at the medial elbow" },
                 { id: "b", text: "Brachial artery and median/radial nerves" },
-                { id: "c", text: "Sciatic nerve" },
-                { id: "d", text: "Spinal cord" }
+                { id: "c", text: "Sciatic nerve and femoral artery" },
+                { id: "d", text: "Spinal cord and cervical nerve roots" }
             ],
             correct: "b",
             rationale: {
                 correct: "Supracondylar humerus fractures have a high risk of damaging the brachial artery and the median or radial nerves because these structures pass directly at the fracture site. This is why neurovascular checks are especially critical after supracondylar fractures.",
                 a: "Ulnar nerve is usually spared; median/radial are more at risk.",
-                c: "Sciatic is in the leg - unrelated.",
+                c: "The sciatic nerve and femoral artery are in the leg - unrelated.",
                 d: "Spinal cord injury is a separate concern, not associated with supracondylar fracture."
             },
             testTakingTip: "Supracondylar humerus fracture = brachial artery + median/radial nerve risk. Neurovascular check is critical.",

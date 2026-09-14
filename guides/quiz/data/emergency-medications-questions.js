@@ -20,10 +20,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient becomes unresponsive and pulseless. The monitor shows ventricular fibrillation. What should the team do FIRST?",
             options: [
-                { id: "a", text: "Administer epinephrine 1 mg IV" },
+                { id: "a", text: "Administer epinephrine 1 mg IV and continue compressions" },
                 { id: "b", text: "Defibrillate, then immediately resume compressions" },
-                { id: "c", text: "Administer amiodarone 300 mg IV" },
-                { id: "d", text: "Perform synchronized cardioversion" }
+                { id: "c", text: "Administer amiodarone 300 mg IV push before shocking" },
+                { id: "d", text: "Perform synchronized cardioversion at 200 joules" }
             ],
             correct: "b",
             rationale: {
@@ -43,10 +43,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "application",
             stem: "A pulseless patient is in asystole confirmed in two leads. Which intervention is appropriate?",
             options: [
-                { id: "a", text: "Defibrillate at the highest available setting" },
-                { id: "b", text: "Perform synchronized cardioversion" },
+                { id: "a", text: "Defibrillate at the highest available energy setting right away" },
+                { id: "b", text: "Perform synchronized cardioversion at 100 joules" },
                 { id: "c", text: "High-quality compressions with epinephrine 1 mg every 3 to 5 minutes" },
-                { id: "d", text: "Administer adenosine 6 mg by rapid IV push" }
+                { id: "d", text: "Administer adenosine 6 mg by rapid IV push with a saline flush" }
             ],
             correct: "c",
             rationale: {
@@ -66,10 +66,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient has symptomatic bradycardia with a heart rate of 38, blood pressure 78/44 and confusion. Which order should the nurse anticipate?",
             options: [
-                { id: "a", text: "Atropine 0.5 mg IV once" },
-                { id: "b", text: "Atropine 1 mg IV, repeated every 3 to 5 minutes to a maximum of 3 mg" },
-                { id: "c", text: "Adenosine 6 mg by rapid IV push" },
-                { id: "d", text: "Amiodarone 300 mg IV push" }
+                { id: "a", text: "Atropine 0.5 mg IV once, then reassess the heart rate" },
+                { id: "b", text: "Atropine 1 mg IV every 3 to 5 minutes, to a maximum of 3 mg" },
+                { id: "c", text: "Adenosine 6 mg by rapid IV push with a saline flush" },
+                { id: "d", text: "Amiodarone 150 mg IV infused over 10 minutes" }
             ],
             correct: "b",
             rationale: {
@@ -90,9 +90,9 @@ var emergencyMedicationsQuizData = {
             stem: "A nurse is administering adenosine for stable supraventricular tachycardia. Which technique is correct?",
             options: [
                 { id: "a", text: "Dilute in 50 mL of normal saline and infuse over 15 minutes" },
-                { id: "b", text: "Push slowly over 2 minutes to reduce patient discomfort" },
-                { id: "c", text: "Push over 1 to 2 seconds into the port closest to the patient, followed by a 20 mL saline flush" },
-                { id: "d", text: "Give intramuscularly into the deltoid" }
+                { id: "b", text: "Push slowly over 2 minutes to reduce chest discomfort and flushing" },
+                { id: "c", text: "Push over 1 to 2 seconds into the closest port, then flush with 20 mL of saline" },
+                { id: "d", text: "Give intramuscularly into the deltoid for slower absorption" }
             ],
             correct: "c",
             rationale: {
@@ -135,10 +135,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient develops wheezing, throat tightness and a blood pressure of 82/40 minutes after an intravenous antibiotic. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Administer intravenous diphenhydramine" },
-                { id: "b", text: "Administer intravenous methylprednisolone" },
-                { id: "c", text: "Stop the infusion and give intramuscular epinephrine into the vastus lateralis" },
-                { id: "d", text: "Begin a normal saline bolus and reassess in 10 minutes" }
+                { id: "a", text: "Administer intravenous diphenhydramine 50 mg and recheck the blood pressure" },
+                { id: "b", text: "Administer intravenous methylprednisolone 125 mg as a slow push" },
+                { id: "c", text: "Stop the infusion and give intramuscular epinephrine into the thigh" },
+                { id: "d", text: "Begin a rapid normal saline bolus and reassess in 10 minutes" }
             ],
             correct: "c",
             rationale: {
@@ -342,10 +342,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "analysis",
             stem: "A nurse is asked to give epinephrine during a cardiac arrest and is handed a vial labeled 1:1,000. What should the nurse do?",
             options: [
-                { id: "a", text: "Give 1 mL intravenously, since that equals 1 mg" },
+                { id: "a", text: "Give 1 mL intravenously right away, since that equals 1 mg" },
                 { id: "b", text: "Verify the concentration, because cardiac arrest uses the 1:10,000 intravenous form" },
-                { id: "c", text: "Give the entire vial intravenously to ensure a full dose" },
-                { id: "d", text: "Give it intramuscularly into the thigh instead" }
+                { id: "c", text: "Give the entire vial intravenously to be sure the full dose is delivered" },
+                { id: "d", text: "Give it intramuscularly into the thigh instead, as for anaphylaxis" }
             ],
             correct: "b",
             rationale: {
@@ -388,10 +388,10 @@ var emergencyMedicationsQuizData = {
             difficulty: "knowledge",
             stem: "A patient who took an overdose of acetaminophen six hours ago arrives in the emergency department. Which statement about treatment is accurate?",
             options: [
-                { id: "a", text: "Acetylcysteine is most effective when given early, so timing drives the plan" },
-                { id: "b", text: "Flumazenil should be given to reverse the sedation" },
-                { id: "c", text: "No antidote exists, so care is entirely supportive" },
-                { id: "d", text: "Naloxone reverses acetaminophen toxicity" }
+                { id: "a", text: "Acetylcysteine works best when given early, so timing drives the plan" },
+                { id: "b", text: "Flumazenil should be given first to reverse the sedation" },
+                { id: "c", text: "No antidote exists, so care is supportive with fluids and monitoring" },
+                { id: "d", text: "Naloxone should be given, since it reverses acetaminophen toxicity" }
             ],
             correct: "a",
             rationale: {

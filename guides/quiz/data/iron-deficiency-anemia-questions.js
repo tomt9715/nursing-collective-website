@@ -19,9 +19,9 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "A mother says, \u201cMy 14-month-old drinks 40 ounces of whole cow\u2019s milk daily and doesn\u2019t eat much table food.\u201d The nurse suspects the child is at highest risk for:",
             options: [
-                { id: "a", text: "Hypernatremia" },
+                { id: "a", text: "Acute hypernatremia" },
                 { id: "b", text: "Iron-deficiency anemia" },
-                { id: "c", text: "Hyperkalemia" },
+                { id: "c", text: "Acute hyperkalemia" },
                 { id: "d", text: "Vitamin D toxicity" }
             ],
             correct: "b",
@@ -42,10 +42,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "knowledge",
             stem: "Which finding is MOST suggestive of iron-deficiency anemia in a 3-year-old?",
             options: [
-                { id: "a", text: "Cherry-red cheeks and increased energy" },
+                { id: "a", text: "Cherry-red cheeks and increased energy levels" },
                 { id: "b", text: "Pallor, fatigue, and pica (eating non-food items)" },
-                { id: "c", text: "Jaundice and hepatomegaly" },
-                { id: "d", text: "High fever and splenomegaly" }
+                { id: "c", text: "Jaundice and hepatomegaly (enlarged liver)" },
+                { id: "d", text: "High fever and splenomegaly (enlarged spleen)" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "The nurse is teaching the parent of a 2-year-old how to give prescribed liquid ferrous sulfate. Which instruction is MOST appropriate?",
             options: [
-                { id: "a", text: "\u201cMix the iron with a full glass of milk for better taste.\u201d" },
-                { id: "b", text: "\u201cGive the iron through a straw or syringe toward the back of the cheek to prevent staining the teeth, and rinse the mouth afterward.\u201d" },
-                { id: "c", text: "\u201cGive the iron with a calcium supplement.\u201d" },
-                { id: "d", text: "\u201cStop giving iron when the stools turn dark green or black.\u201d" }
+                { id: "a", text: "\u201cMix the iron into a full bottle of milk so your child will take it more easily.\u201d" },
+                { id: "b", text: "\u201cGive it by straw or syringe toward the back of the cheek, then rinse the mouth to prevent staining.\u201d" },
+                { id: "c", text: "\u201cGive the iron together with a calcium supplement to protect the stomach.\u201d" },
+                { id: "d", text: "\u201cStop the iron when the stools turn dark green or black and call the clinic.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -135,9 +135,9 @@ var ironDeficiencyAnemiaQuizData = {
             stem: "A parent calls concerned: \u201cMy child\u2019s stool is very dark green, almost black, since starting iron. Should I stop the medication?\u201d The BEST nursing response is:",
             options: [
                 { id: "a", text: "\u201cYes, stop the iron and bring the child in immediately - it\u2019s likely GI bleeding.\u201d" },
-                { id: "b", text: "\u201cDark green or black stool is an expected, harmless side effect of iron. Continue giving the medicine.\u201d" },
-                { id: "c", text: "\u201cDouble the dose to make sure it\u2019s absorbing.\u201d" },
-                { id: "d", text: "\u201cSwitch to milk-based formula to lighten the stool.\u201d" }
+                { id: "b", text: "\u201cDark green or black stool is an expected, harmless effect of iron. Keep giving the medicine.\u201d" },
+                { id: "c", text: "\u201cDouble the dose for a few days to make sure it\u2019s being absorbed.\u201d" },
+                { id: "d", text: "\u201cSwitch to a milk-based formula to lighten the stool and protect the gut.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "A 3-year-old was found with an empty bottle of a parent\u2019s iron tablets. The child is currently vomiting with bloody emesis. What is the nurse\u2019s PRIORITY action?",
             options: [
-                { id: "a", text: "Administer syrup of ipecac at home" },
+                { id: "a", text: "Instruct the parent to give syrup of ipecac at home to induce vomiting" },
                 { id: "b", text: "Contact poison control and prepare for emergency care with IV access and deferoxamine" },
-                { id: "c", text: "Give activated charcoal" },
-                { id: "d", text: "Observe at home for 24 hours" }
+                { id: "c", text: "Give activated charcoal by mouth to bind the iron in the stomach" },
+                { id: "d", text: "Have the parent observe the child at home for the next 24 hours" }
             ],
             correct: "b",
             rationale: {
@@ -254,10 +254,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "The nurse is reviewing a 6-month-old child\u2019s iron-supplementation plan. Which instruction is MOST important?",
             options: [
-                { id: "a", text: "\u201cGive the iron with whole milk at bedtime.\u201d" },
-                { id: "b", text: "\u201cGive the iron between meals with a small amount of vitamin C such as a few drops of orange juice.\u201d" },
-                { id: "c", text: "\u201cAlways give the iron with an antacid to protect the stomach.\u201d" },
-                { id: "d", text: "\u201cStop the iron as soon as the baby\u2019s color improves.\u201d" }
+                { id: "a", text: "\u201cGive the iron mixed with whole milk at bedtime so it is better tolerated.\u201d" },
+                { id: "b", text: "\u201cGive the iron between meals with a little vitamin C, like a few drops of orange juice.\u201d" },
+                { id: "c", text: "\u201cAlways give the iron with an antacid to protect the baby\u2019s stomach.\u201d" },
+                { id: "d", text: "\u201cStop the iron as soon as the baby\u2019s color and energy improve.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -277,10 +277,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "analysis",
             stem: "A child with iron-deficiency anemia has been taking prescribed ferrous sulfate for 4 weeks. Which finding indicates a THERAPEUTIC response?",
             options: [
-                { id: "a", text: "Hemoglobin has not changed from baseline" },
-                { id: "b", text: "Reticulocyte count has risen and hemoglobin is 1.2 g/dL above baseline" },
-                { id: "c", text: "Ferritin remains undetectable" },
-                { id: "d", text: "MCV is decreasing further" }
+                { id: "a", text: "Hemoglobin is unchanged from the baseline value at diagnosis" },
+                { id: "b", text: "Reticulocytes have risen and hemoglobin is 1.2 g/dL above baseline" },
+                { id: "c", text: "Ferritin remains undetectable on repeat testing" },
+                { id: "d", text: "Mean corpuscular volume (MCV) is decreasing further" }
             ],
             correct: "b",
             rationale: {
@@ -300,10 +300,10 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "A parent asks why their child with iron-deficiency anemia also needs a blood lead level. The BEST explanation is:",
             options: [
-                { id: "a", text: "\u201cLead levels always drop with iron.\u201d" },
-                { id: "b", text: "\u201cChildren with iron deficiency often develop pica, which raises the risk of eating paint or dust and having lead poisoning.\u201d" },
-                { id: "c", text: "\u201cLead poisoning causes high hemoglobin.\u201d" },
-                { id: "d", text: "\u201cThe iron supplement contains trace lead.\u201d" }
+                { id: "a", text: "\u201cLead levels always drop once iron therapy is started, so we track progress.\u201d" },
+                { id: "b", text: "\u201cIron deficiency often causes pica, which raises the risk of eating lead paint chips or dust.\u201d" },
+                { id: "c", text: "\u201cLead poisoning causes a high hemoglobin that can hide iron deficiency.\u201d" },
+                { id: "d", text: "\u201cThe iron supplement contains trace lead, so levels need to be checked.\u201d" }
             ],
             correct: "b",
             rationale: {

@@ -90,8 +90,8 @@ var pediatricSolidTumorsQuizData = {
             options: [
                 { id: "a", text: "Posterior fossa of the brain" },
                 { id: "b", text: "Adrenal gland / retroperitoneum" },
-                { id: "c", text: "Kidney" },
-                { id: "d", text: "Liver" }
+                { id: "c", text: "Kidney (renal parenchyma)" },
+                { id: "d", text: "Liver (hepatic parenchyma)" }
             ],
             correct: "b",
             rationale: {
@@ -111,10 +111,10 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "knowledge",
             stem: "Which urine test is used to help diagnose neuroblastoma?",
             options: [
-                { id: "a", text: "Urine protein and creatinine" },
+                { id: "a", text: "24-hour urine protein and creatinine" },
                 { id: "b", text: "24-hour urinary catecholamines (VMA and HVA)" },
-                { id: "c", text: "Urinary myoglobin" },
-                { id: "d", text: "Urinary pH" }
+                { id: "c", text: "Urinary myoglobin on a random sample" },
+                { id: "d", text: "Urinary pH and specific gravity" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "analysis",
             stem: "A 10-year-old with medulloblastoma has the following vital signs: BP 145/60, HR 48, RR irregular. These findings are MOST consistent with:",
             options: [
-                { id: "a", text: "Hypovolemic shock" },
+                { id: "a", text: "Hypovolemic shock from vomiting and dehydration" },
                 { id: "b", text: "Cushing\u2019s triad / increased intracranial pressure" },
-                { id: "c", text: "Sepsis" },
-                { id: "d", text: "Normal sleep vital signs" }
+                { id: "c", text: "Septic shock from a central line infection" },
+                { id: "d", text: "Normal sleep vital signs for a 10-year-old" }
             ],
             correct: "b",
             rationale: {
@@ -228,8 +228,8 @@ var pediatricSolidTumorsQuizData = {
             options: [
                 { id: "a", text: "Leukocoria (white pupillary reflex)" },
                 { id: "b", text: "Periorbital ecchymosis (raccoon eyes)" },
-                { id: "c", text: "Exophthalmos" },
-                { id: "d", text: "Cataracts" }
+                { id: "c", text: "Exophthalmos (bulging of the eye)" },
+                { id: "d", text: "Cataracts (clouding of the lens)" }
             ],
             correct: "b",
             rationale: {
@@ -277,10 +277,10 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "application",
             stem: "A child receiving cisplatin for medulloblastoma should have which baseline and serial assessments?",
             options: [
-                { id: "a", text: "Echocardiogram" },
+                { id: "a", text: "Echocardiogram (heart function)" },
                 { id: "b", text: "Audiology evaluation (hearing testing)" },
-                { id: "c", text: "Pulmonary function tests" },
-                { id: "d", text: "Bone density scan" }
+                { id: "c", text: "Pulmonary function tests (spirometry)" },
+                { id: "d", text: "Bone density scan of the spine and hip" }
             ],
             correct: "b",
             rationale: {
@@ -323,10 +323,10 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "application",
             stem: "A parent of a child about to undergo treatment for medulloblastoma asks what to expect in the long term. Which is the BEST nursing response?",
             options: [
-                { id: "a", text: "\u201cYour child will not have any long-term problems once treatment ends.\u201d" },
-                { id: "b", text: "\u201cLong-term follow-up in a survivorship clinic helps monitor for late effects like cognitive, hearing, or endocrine issues.\u201d" },
-                { id: "c", text: "\u201cAfter treatment, your child won\u2019t need additional follow-up.\u201d" },
-                { id: "d", text: "\u201cMost children cannot return to school after treatment for a brain tumor.\u201d" }
+                { id: "a", text: "\u201cYour child will not have any long-term problems once the treatment ends.\u201d" },
+                { id: "b", text: "\u201cA survivorship clinic will watch for late effects like cognitive, hearing, or endocrine problems.\u201d" },
+                { id: "c", text: "\u201cAfter treatment ends, your child won\u2019t need any additional follow-up visits.\u201d" },
+                { id: "d", text: "\u201cMost children cannot return to school after treatment for a brain tumor like this.\u201d" }
             ],
             correct: "b",
             rationale: {

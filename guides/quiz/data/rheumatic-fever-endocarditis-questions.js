@@ -42,10 +42,10 @@ var rheumaticFeverEndocarditisQuizData = {
             difficulty: "knowledge",
             stem: "Which set of findings is part of the MAJOR Jones criteria for diagnosis of rheumatic fever?",
             options: [
-                { id: "a", text: "Fever, arthralgia, elevated ESR" },
+                { id: "a", text: "Fever, arthralgia, elevated erythrocyte sedimentation rate (ESR)" },
                 { id: "b", text: "Carditis, migratory arthritis, subcutaneous nodules, erythema marginatum, Sydenham chorea" },
-                { id: "c", text: "Prolonged PR interval, elevated CRP, positive throat culture" },
-                { id: "d", text: "Conjunctivitis, rash, strawberry tongue, adenopathy" }
+                { id: "c", text: "Prolonged PR interval, elevated CRP, positive throat culture for strep" },
+                { id: "d", text: "Conjunctivitis, rash, strawberry tongue, adenopathy, extremity swelling" }
             ],
             correct: "b",
             rationale: {
@@ -226,10 +226,10 @@ var rheumaticFeverEndocarditisQuizData = {
             difficulty: "knowledge",
             stem: "A child with infective endocarditis is prescribed a 6-week course of IV vancomycin. Which lab values should the nurse monitor most closely?",
             options: [
-                { id: "a", text: "Hemoglobin and hematocrit" },
+                { id: "a", text: "Hemoglobin, hematocrit, and reticulocyte count" },
                 { id: "b", text: "Vancomycin trough level and serum creatinine" },
-                { id: "c", text: "AST and ALT" },
-                { id: "d", text: "INR and PTT" }
+                { id: "c", text: "Liver enzymes (AST and ALT) and bilirubin" },
+                { id: "d", text: "Coagulation studies (INR and PTT) and fibrinogen" }
             ],
             correct: "b",
             rationale: {
@@ -295,8 +295,8 @@ var rheumaticFeverEndocarditisQuizData = {
             difficulty: "analysis",
             stem: "A nurse is caring for four patients on the pediatric cardiology unit. Which patient requires the most immediate assessment?",
             options: [
-                { id: "a", text: "A 10-year-old with RF in convalescent phase awaiting discharge teaching" },
-                { id: "b", text: "A 14-year-old on week 2 of IV antibiotics for IE who has developed new-onset right-sided weakness and slurred speech" },
+                { id: "a", text: "A 10-year-old with RF in the convalescent phase awaiting discharge teaching" },
+                { id: "b", text: "A 14-year-old on week 2 of IV antibiotics for IE with new right-sided weakness and slurred speech" },
                 { id: "c", text: "A 12-year-old receiving prophylactic amoxicillin before a dental cleaning" },
                 { id: "d", text: "A 9-year-old with RF-associated migratory arthritis requesting more pain medication" }
             ],
@@ -318,10 +318,10 @@ var rheumaticFeverEndocarditisQuizData = {
             difficulty: "application",
             stem: "A parent asks why their child with a history of rheumatic heart disease needs antibiotics before a dental cleaning even though the heart is 'fine' now. The nurse's best response is:",
             options: [
-                { id: "a", text: "'The antibiotics treat any leftover strep from the rheumatic fever.'" },
-                { id: "b", text: "'Dental procedures can release bacteria into the bloodstream, which can attach to damaged heart valves and cause endocarditis.'" },
-                { id: "c", text: "'It's a precaution in case the child is developing a cavity.'" },
-                { id: "d", text: "'It prevents rheumatic fever from coming back.'" }
+                { id: "a", text: "'The antibiotics treat any leftover strep infection from the rheumatic fever years ago.'" },
+                { id: "b", text: "'Dental work can put bacteria in the blood, which can stick to damaged valves and cause endocarditis.'" },
+                { id: "c", text: "'It's a precaution in case the dentist finds a cavity that is already infected.'" },
+                { id: "d", text: "'It keeps rheumatic fever from coming back and damaging the heart again.'" }
             ],
             correct: "b",
             rationale: {

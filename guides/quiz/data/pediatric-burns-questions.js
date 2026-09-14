@@ -42,9 +42,9 @@ var pediatricBurnsQuizData = {
             difficulty: "application",
             stem: "A 4-year-old is brought to the ED with a scald burn on the chest and arms 90 minutes ago. The parent has been applying cool wet washcloths. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Apply ice directly to the burn" },
+                { id: "a", text: "Apply ice directly to the burn to limit tissue damage" },
                 { id: "b", text: "Assess the airway and breathing, and prepare IV access" },
-                { id: "c", text: "Give oral fluids immediately" },
+                { id: "c", text: "Give oral fluids immediately to replace fluid losses" },
                 { id: "d", text: "Cover the burn with a dry dressing and send home" }
             ],
             correct: "b",
@@ -180,10 +180,10 @@ var pediatricBurnsQuizData = {
             difficulty: "application",
             stem: "A parent calls the poison control line after their toddler ingested drain cleaner. What is the FIRST home intervention the nurse should recommend?",
             options: [
-                { id: "a", text: "Induce vomiting with ipecac" },
-                { id: "b", text: "Give milk to neutralize the chemical" },
-                { id: "c", text: "Call 911 and do not induce vomiting; rinse the mouth with water if not contraindicated" },
-                { id: "d", text: "Administer activated charcoal" }
+                { id: "a", text: "Induce vomiting with syrup of ipecac to empty the stomach quickly" },
+                { id: "b", text: "Give milk to neutralize the chemical before driving to the hospital" },
+                { id: "c", text: "Call 911; do not induce vomiting, and rinse the mouth with water if safe" },
+                { id: "d", text: "Administer activated charcoal at home to bind the swallowed chemical" }
             ],
             correct: "c",
             rationale: {
@@ -226,10 +226,10 @@ var pediatricBurnsQuizData = {
             difficulty: "application",
             stem: "A parent asks why their child with a partial-thickness burn is being given Lactated Ringer's instead of Normal Saline. What is the nurse's BEST response?",
             options: [
-                { id: "a", text: "'LR and NS are interchangeable for burns.'" },
-                { id: "b", text: "'LR is preferred because NS in large volumes can cause acidosis from the chloride load.'" },
-                { id: "c", text: "'NS is too expensive for large-volume resuscitation.'" },
-                { id: "d", text: "'NS is reserved for cardiac patients only.'" }
+                { id: "a", text: "'LR and NS are interchangeable for burns, so the choice does not matter.'" },
+                { id: "b", text: "'LR is preferred because large volumes of NS can cause hyperchloremic acidosis.'" },
+                { id: "c", text: "'NS costs more, so LR is used for large-volume burn resuscitation.'" },
+                { id: "d", text: "'NS is reserved for cardiac patients and would overload your child's heart.'" }
             ],
             correct: "b",
             rationale: {
@@ -250,9 +250,9 @@ var pediatricBurnsQuizData = {
             stem: "A child with a circumferential partial-thickness burn of the left forearm develops increasing pain, diminished pulses, cool fingers, and pallor. What is the priority action?",
             options: [
                 { id: "a", text: "Apply a warm compress and reassess in 30 minutes" },
-                { id: "b", text: "Elevate the arm above the heart" },
+                { id: "b", text: "Elevate the arm above the heart to reduce swelling" },
                 { id: "c", text: "Notify the surgeon immediately; escharotomy may be needed" },
-                { id: "d", text: "Increase the IV fluid rate" }
+                { id: "d", text: "Increase the IV fluid rate to improve distal perfusion" }
             ],
             correct: "c",
             rationale: {
@@ -341,10 +341,10 @@ var pediatricBurnsQuizData = {
             difficulty: "knowledge",
             stem: "Which finding in a toddler with a scald burn should prompt the nurse to suspect non-accidental trauma (child abuse)?",
             options: [
-                { id: "a", text: "A small splash pattern on the chest from a pulled-down cup" },
-                { id: "b", text: "Symmetric burns on both legs with a sharp demarcation line at mid-thigh ('stocking' distribution) and spared skin folds" },
-                { id: "c", text: "An irregular scald pattern consistent with spilled hot liquid" },
-                { id: "d", text: "A burn from chewing an electrical cord" }
+                { id: "a", text: "An asymmetric splash pattern on the chest and arm from a pulled-down cup" },
+                { id: "b", text: "Symmetric 'stocking' burns on both legs with a sharp line at mid-thigh and spared skin folds" },
+                { id: "c", text: "An irregular scald pattern with drip marks consistent with spilled hot liquid" },
+                { id: "d", text: "A burn at the corner of the mouth from chewing an electrical cord" }
             ],
             correct: "b",
             rationale: {
@@ -410,10 +410,10 @@ var pediatricBurnsQuizData = {
             difficulty: "application",
             stem: "Which home safety education is MOST important for preventing pediatric scald burns?",
             options: [
-                { id: "a", text: "Keep matches and lighters locked away" },
+                { id: "a", text: "Keep matches and lighters locked away and out of a child's reach" },
                 { id: "b", text: "Set water heater to no more than 120\u00b0F (49\u00b0C) and always test bath water" },
-                { id: "c", text: "Install outlet covers in every room" },
-                { id: "d", text: "Use sunscreen on children when outdoors" }
+                { id: "c", text: "Install tamper-resistant outlet covers in every room of the home" },
+                { id: "d", text: "Apply sunscreen to children every 2 hours when playing outdoors" }
             ],
             correct: "b",
             rationale: {

@@ -244,9 +244,9 @@ var tuberculosisQuizData = {
             difficulty: "analysis",
             stem: "A nurse on a medical unit suspects that a newly admitted patient may have active tuberculosis after learning the patient has had a productive cough for 4 weeks, unintentional weight loss, and recently emigrated from a country with high TB prevalence. The patient is currently in a standard semi-private room. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Obtain sputum specimens for AFB smear and culture" },
-                { id: "b", text: "Apply an N95 respirator and move the patient to a negative-pressure room" },
-                { id: "c", text: "Administer a tuberculin skin test" },
+                { id: "a", text: "Obtain three sputum specimens for AFB smear and culture" },
+                { id: "b", text: "Don an N95 respirator and move the patient to a negative-pressure room" },
+                { id: "c", text: "Administer a tuberculin skin test to screen for infection" },
                 { id: "d", text: "Notify the public health department for contact tracing" }
             ],
             correct: "b",

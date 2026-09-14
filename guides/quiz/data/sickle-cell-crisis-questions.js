@@ -43,9 +43,9 @@ var sickleCellCrisisQuizData = {
             difficulty: "application",
             stem: "A child receiving a PRBC transfusion suddenly develops chills, back pain, and hypotension. What is the nurse\u2019s FIRST action?",
             options: [
-                { id: "a", text: "Slow the transfusion rate and continue" },
+                { id: "a", text: "Slow the transfusion rate and continue to monitor vital signs closely" },
                 { id: "b", text: "Stop the transfusion and maintain the IV line with normal saline using new tubing" },
-                { id: "c", text: "Administer acetaminophen and diphenhydramine" },
+                { id: "c", text: "Administer acetaminophen and diphenhydramine, then continue the transfusion" },
                 { id: "d", text: "Flush the line with the remaining saline in the current tubing" }
             ],
             correct: "b",
@@ -163,10 +163,10 @@ var sickleCellCrisisQuizData = {
             difficulty: "application",
             stem: "Parents ask what they should do if their 7-year-old with sickle cell disease develops mild leg pain at home. Which response is BEST?",
             options: [
-                { id: "a", text: "\u201cApply an ice pack to the painful area.\u201d" },
-                { id: "b", text: "\u201cEncourage extra fluids, use a warm compress, and give the prescribed acetaminophen or ibuprofen.\u201d" },
-                { id: "c", text: "\u201cKeep the child NPO and wait for the pain to pass.\u201d" },
-                { id: "d", text: "\u201cTake the child outside for fresh cold air to reduce swelling.\u201d" }
+                { id: "a", text: "\u201cApply an ice pack to the painful area for 20 minutes to numb the pain.\u201d" },
+                { id: "b", text: "\u201cGive extra fluids, use a warm compress, and give the prescribed acetaminophen or ibuprofen.\u201d" },
+                { id: "c", text: "\u201cKeep the child NPO and on bed rest, and wait for the pain to pass.\u201d" },
+                { id: "d", text: "\u201cTake the child outside for fresh, cold air to help reduce the swelling.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -232,10 +232,10 @@ var sickleCellCrisisQuizData = {
             difficulty: "knowledge",
             stem: "Why is penicillin prophylaxis prescribed daily for young children with sickle cell disease?",
             options: [
-                { id: "a", text: "To treat ongoing infections during crises" },
+                { id: "a", text: "To treat ongoing infections that develop during vaso-occlusive crises" },
                 { id: "b", text: "To prevent overwhelming sepsis from encapsulated bacteria due to functional asplenia" },
-                { id: "c", text: "To reduce the need for transfusions" },
-                { id: "d", text: "To improve the effect of hydroxyurea" }
+                { id: "c", text: "To reduce the need for transfusions by slowing red blood cell breakdown" },
+                { id: "d", text: "To improve the effect of hydroxyurea by boosting fetal hemoglobin levels" }
             ],
             correct: "b",
             rationale: {
@@ -257,8 +257,8 @@ var sickleCellCrisisQuizData = {
             options: [
                 { id: "a", text: "Electroencephalogram (EEG)" },
                 { id: "b", text: "Transcranial Doppler (TCD) ultrasound" },
-                { id: "c", text: "Lumbar puncture" },
-                { id: "d", text: "Echocardiogram" }
+                { id: "c", text: "Lumbar puncture (spinal tap)" },
+                { id: "d", text: "Transthoracic echocardiogram (echo)" }
             ],
             correct: "b",
             rationale: {
@@ -301,10 +301,10 @@ var sickleCellCrisisQuizData = {
             difficulty: "application",
             stem: "A teenager with sickle cell disease undergoing chronic transfusion therapy now has a ferritin level of 1,800 ng/mL. The nurse anticipates the provider will:",
             options: [
-                { id: "a", text: "Increase the transfusion frequency" },
+                { id: "a", text: "Increase the transfusion frequency and volume" },
                 { id: "b", text: "Start iron chelation therapy (e.g., deferasirox)" },
-                { id: "c", text: "Begin oral iron supplements" },
-                { id: "d", text: "Discontinue folic acid" }
+                { id: "c", text: "Begin oral iron supplements (e.g., ferrous sulfate)" },
+                { id: "d", text: "Discontinue folic acid supplementation" }
             ],
             correct: "b",
             rationale: {
@@ -324,9 +324,9 @@ var sickleCellCrisisQuizData = {
             difficulty: "application",
             stem: "An infant with sickle cell disease presents with swollen, painful hands and feet. The nurse recognizes this as:",
             options: [
-                { id: "a", text: "Kawasaki disease" },
+                { id: "a", text: "Acute Kawasaki disease" },
                 { id: "b", text: "Dactylitis (hand-foot syndrome)" },
-                { id: "c", text: "Osteomyelitis" },
+                { id: "c", text: "Osteomyelitis (bone infection)" },
                 { id: "d", text: "Juvenile idiopathic arthritis" }
             ],
             correct: "b",
@@ -370,10 +370,10 @@ var sickleCellCrisisQuizData = {
             difficulty: "analysis",
             stem: "A 10-year-old with sickle cell disease presents with cough, chest pain, fever, and a SpO2 of 88%. Chest X-ray shows a new lobar infiltrate. Which interventions does the nurse prioritize?",
             options: [
-                { id: "a", text: "Oral fluids, rest, and ibuprofen only" },
-                { id: "b", text: "Supplemental oxygen, broad-spectrum IV antibiotics, cautious IV fluids, pain control, and incentive spirometry" },
-                { id: "c", text: "Immediate exchange transfusion without any other interventions" },
-                { id: "d", text: "Discharge home with antibiotic prescription and follow-up in 1 week" }
+                { id: "a", text: "Oral fluids, rest, ibuprofen, and a follow-up chest X-ray in 48 hours" },
+                { id: "b", text: "Oxygen, broad-spectrum IV antibiotics, cautious IV fluids, pain control, and incentive spirometry" },
+                { id: "c", text: "Immediate exchange transfusion alone, holding oxygen and antibiotics until it is done" },
+                { id: "d", text: "Discharge home with an oral antibiotic prescription and follow-up in 1 week" }
             ],
             correct: "b",
             rationale: {
@@ -394,9 +394,9 @@ var sickleCellCrisisQuizData = {
             stem: "A parent whose child was just diagnosed with sickle cell disease after newborn screening asks, \u201cHow did this happen?\u201d The nurse\u2019s BEST response is:",
             options: [
                 { id: "a", text: "\u201cIt\u2019s caused by something in the environment you were exposed to during pregnancy.\u201d" },
-                { id: "b", text: "\u201cBoth you and your partner each carry one copy of the sickle gene; your baby inherited two copies.\u201d" },
-                { id: "c", text: "\u201cIt\u2019s a random disease that has nothing to do with genetics.\u201d" },
-                { id: "d", text: "\u201cIt only happens to babies with low birth weight.\u201d" }
+                { id: "b", text: "\u201cYou and your partner each carry one copy of the sickle gene; your baby inherited two copies.\u201d" },
+                { id: "c", text: "\u201cIt\u2019s a random disease that has nothing to do with genetics or family history.\u201d" },
+                { id: "d", text: "\u201cIt only happens to babies born early or with a low birth weight.\u201d" }
             ],
             correct: "b",
             rationale: {

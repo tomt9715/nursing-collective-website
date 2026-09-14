@@ -42,10 +42,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient started on lisinopril two weeks ago reports a persistent dry, hacking cough. There is no fever and the lungs are clear. What is the nurse's best response?",
             options: [
-                { id: "a", text: "\u201cThat is an allergic reaction. Stop the medication today.\u201d" },
-                { id: "b", text: "\u201cThat sounds like a chest infection. I will ask about an antibiotic.\u201d" },
-                { id: "c", text: "\u201cThat is a known effect of this drug. I will let the provider know, and a related drug called an ARB usually solves it.\u201d" },
-                { id: "d", text: "\u201cCoughing means the drug is working. Keep taking it.\u201d" }
+                { id: "a", text: "\u201cThat is an allergic reaction to the drug. Stop the medication today.\u201d" },
+                { id: "b", text: "\u201cThat sounds like a chest infection. I will ask the provider about an antibiotic.\u201d" },
+                { id: "c", text: "\u201cThis is a known side effect. I will tell the provider, and switching to an ARB usually helps.\u201d" },
+                { id: "d", text: "\u201cCoughing means the drug is working. Keep taking it every day as prescribed.\u201d" }
             ],
             correct: "c",
             rationale: {
@@ -134,10 +134,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "application",
             stem: "A man with chest pain is prescribed sublingual nitroglycerin. Which question is most important before the nurse gives it?",
             options: [
-                { id: "a", text: "\u201cHave you taken sildenafil or a similar drug in the last 24 to 48 hours?\u201d" },
-                { id: "b", text: "\u201cWhen did you last eat?\u201d" },
-                { id: "c", text: "\u201cDo you have a history of migraines?\u201d" },
-                { id: "d", text: "\u201cAre you allergic to shellfish?\u201d" }
+                { id: "a", text: "\u201cHave you taken sildenafil or a similar drug in the last 48 hours?\u201d" },
+                { id: "b", text: "\u201cWhen did you last eat, and what did you have to eat?\u201d" },
+                { id: "c", text: "\u201cDo you have a history of migraines or cluster headaches?\u201d" },
+                { id: "d", text: "\u201cAre you allergic to shellfish or iodine contrast?\u201d" }
             ],
             correct: "a",
             rationale: {
@@ -157,10 +157,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "application",
             stem: "A patient using a nitroglycerin patch for chronic angina reports the patch is working less well than it used to. Which explanation and plan is correct?",
             options: [
-                { id: "a", text: "Tolerance develops with continuous exposure, so a nitrate-free interval of 10 to 12 hours each day is needed" },
-                { id: "b", text: "The patch dose is too low and a second patch should be added" },
+                { id: "a", text: "Tolerance from continuous use requires a daily 10 to 12 hour nitrate-free interval" },
+                { id: "b", text: "The patch dose is too low, so a second patch should be added each day" },
                 { id: "c", text: "The patch should be applied to the same spot each day for steady absorption" },
-                { id: "d", text: "Patches stop working after a week and must be switched to tablets" }
+                { id: "d", text: "Patches stop working after about a week and must be switched to tablets" }
             ],
             correct: "a",
             rationale: {
@@ -180,10 +180,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "knowledge",
             stem: "A patient taking amlodipine for hypertension reports new swelling of both ankles. The lungs are clear and there is no jugular vein distension. What is the most likely explanation?",
             options: [
-                { id: "a", text: "New right-sided heart failure" },
+                { id: "a", text: "New right-sided heart failure from fluid overload" },
                 { id: "b", text: "A common effect of dihydropyridine calcium channel blockers" },
-                { id: "c", text: "Deep vein thrombosis" },
-                { id: "d", text: "An allergic reaction to the drug" }
+                { id: "c", text: "Deep vein thrombosis from reduced mobility" },
+                { id: "d", text: "An allergic reaction to the calcium channel blocker" }
             ],
             correct: "b",
             rationale: {
@@ -272,10 +272,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "application",
             stem: "The nurse is preparing to give adenosine to a stable patient in SVT after vagal maneuvers failed. Which technique is correct?",
             options: [
-                { id: "a", text: "Give 6 mg over 2 minutes through a hand vein" },
-                { id: "b", text: "Give 6 mg rapid IV push through the port closest to the patient, followed immediately by a 20 mL saline flush" },
-                { id: "c", text: "Mix 6 mg in 100 mL and infuse over 30 minutes" },
-                { id: "d", text: "Give 12 mg first, then 6 mg if there is no response" }
+                { id: "a", text: "Give 6 mg slowly over 2 minutes through a hand vein, then flush with saline" },
+                { id: "b", text: "Give 6 mg rapid IV push at the closest port, then a 20 mL saline flush right away" },
+                { id: "c", text: "Mix 6 mg in 100 mL of normal saline and infuse over 30 minutes" },
+                { id: "d", text: "Give 12 mg rapid IV push first, then 6 mg if there is no response" }
             ],
             correct: "b",
             rationale: {
@@ -295,10 +295,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "knowledge",
             stem: "A patient on long-term amiodarone needs ongoing monitoring. Which set of tests is most appropriate?",
             options: [
-                { id: "a", text: "Thyroid function, liver enzymes and assessment of lung findings" },
-                { id: "b", text: "Serum potassium and magnesium only" },
-                { id: "c", text: "Weekly INR" },
-                { id: "d", text: "Monthly hemoglobin A1c" }
+                { id: "a", text: "Thyroid function, liver enzymes and lung assessment" },
+                { id: "b", text: "Serum potassium and magnesium levels only" },
+                { id: "c", text: "Weekly international normalized ratio (INR) only" },
+                { id: "d", text: "Monthly hemoglobin A1c and fasting glucose" }
             ],
             correct: "a",
             rationale: {
@@ -318,10 +318,10 @@ var cardiacMedicationsQuizData = {
             difficulty: "analysis",
             stem: "A patient with new atrial fibrillation asks why warfarin was prescribed instead of the aspirin a friend takes for the heart. Which explanation is best?",
             options: [
-                { id: "a", text: "\u201cAspirin and warfarin do the same job, but warfarin is stronger.\u201d" },
-                { id: "b", text: "\u201cA clot forming in a quivering atrium is built from fibrin, so it needs a drug that blocks the clotting cascade. Aspirin works on platelets and is not enough here.\u201d" },
-                { id: "c", text: "\u201cAspirin is only for people who have already had a heart attack.\u201d" },
-                { id: "d", text: "\u201cWarfarin dissolves the clot that is already there.\u201d" }
+                { id: "a", text: "\u201cAspirin and warfarin do the same job, but warfarin is simply the stronger of the two.\u201d" },
+                { id: "b", text: "\u201cA clot in a quivering atrium is mostly fibrin, so it needs an anticoagulant. Aspirin only works on platelets.\u201d" },
+                { id: "c", text: "\u201cAspirin is only for people who have already had a heart attack, and you have not.\u201d" },
+                { id: "d", text: "\u201cWarfarin dissolves the clot that is already there, and aspirin cannot do that.\u201d" }
             ],
             correct: "b",
             rationale: {

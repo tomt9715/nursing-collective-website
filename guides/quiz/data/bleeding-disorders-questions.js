@@ -42,10 +42,10 @@ var bleedingDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A mother asks how her son inherited hemophilia when neither parent has it. The BEST nursing explanation is:",
             options: [
-                { id: "a", text: "\u201cIt\u2019s caused by vitamin K deficiency at birth.\u201d" },
+                { id: "a", text: "\u201cIt\u2019s caused by not getting the vitamin K shot at birth.\u201d" },
                 { id: "b", text: "\u201cMothers who are carriers pass it to their sons on the X chromosome.\u201d" },
-                { id: "c", text: "\u201cHemophilia is autosomal dominant.\u201d" },
-                { id: "d", text: "\u201cIt\u2019s caused by a recent infection.\u201d" }
+                { id: "c", text: "\u201cHemophilia is autosomal dominant, so one parent must have it.\u201d" },
+                { id: "d", text: "\u201cIt\u2019s caused by a recent viral infection that damaged his blood.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -65,10 +65,10 @@ var bleedingDisordersQuizData = {
             difficulty: "application",
             stem: "A 4-year-old with hemophilia A falls and hits his head. He is alert and has no visible injuries. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Observe the child at home for 24 hours" },
+                { id: "a", text: "Observe the child at home for 24 hours for signs of bleeding" },
                 { id: "b", text: "Administer factor VIII replacement as prescribed, then obtain a head CT" },
-                { id: "c", text: "Give acetaminophen for pain" },
-                { id: "d", text: "Apply an ice pack and reassess in 4 hours" }
+                { id: "c", text: "Give acetaminophen for pain and monitor his neurologic status" },
+                { id: "d", text: "Apply an ice pack to the head and reassess in 4 hours" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var bleedingDisordersQuizData = {
             difficulty: "application",
             stem: "Which lab finding is MOST consistent with hemophilia A?",
             options: [
-                { id: "a", text: "Low platelet count" },
-                { id: "b", text: "Prolonged PT, normal PTT" },
+                { id: "a", text: "Low platelet count, normal PT, normal PTT, normal factor VIII" },
+                { id: "b", text: "Prolonged PT, normal PTT, normal platelet count, normal factor VIII" },
                 { id: "c", text: "Prolonged PTT, normal PT, normal platelet count, low factor VIII" },
-                { id: "d", text: "Elevated white blood cell count" }
+                { id: "d", text: "Elevated white blood cell count with normal PT and PTT" }
             ],
             correct: "c",
             rationale: {
@@ -111,10 +111,10 @@ var bleedingDisordersQuizData = {
             difficulty: "application",
             stem: "A 5-year-old presents with widespread petechiae and purpura. The parent reports the child had a viral illness 2 weeks ago. Labs show platelets 12,000/mm\u00b3; WBC, hemoglobin, PT, and PTT are normal. The nurse suspects:",
             options: [
-                { id: "a", text: "Acute lymphoblastic leukemia" },
-                { id: "b", text: "Hemophilia A" },
+                { id: "a", text: "Acute lymphoblastic leukemia (ALL)" },
+                { id: "b", text: "Hemophilia A (factor VIII deficiency)" },
                 { id: "c", text: "Immune thrombocytopenic purpura (ITP)" },
-                { id: "d", text: "Von Willebrand disease" }
+                { id: "d", text: "Von Willebrand disease (vWD)" }
             ],
             correct: "c",
             rationale: {
@@ -254,10 +254,10 @@ var bleedingDisordersQuizData = {
             difficulty: "analysis",
             stem: "A 3-year-old presents with multiple bruises in varied stages of healing, one imprinted as a hand mark. Labs are normal including CBC, PT, PTT, and factor levels. The nurse should:",
             options: [
-                { id: "a", text: "Document and discharge home as accidental injury" },
-                { id: "b", text: "Report suspected child abuse per mandatory reporting laws while continuing medical workup" },
+                { id: "a", text: "Document the bruises and discharge home as accidental injury" },
+                { id: "b", text: "Report suspected child abuse while continuing the medical workup" },
                 { id: "c", text: "Assume the child has a mild coagulopathy that wasn\u2019t detected" },
-                { id: "d", text: "Treat with vitamin K and send home" }
+                { id: "d", text: "Treat with vitamin K and send home with follow-up in 1 week" }
             ],
             correct: "b",
             rationale: {
@@ -300,10 +300,10 @@ var bleedingDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Desmopressin (DDAVP) is useful for MILD hemophilia A and von Willebrand disease because it:",
             options: [
-                { id: "a", text: "Directly replaces factor VIII and factor IX" },
+                { id: "a", text: "Directly replaces the missing factor VIII and factor IX" },
                 { id: "b", text: "Stimulates the release of stored factor VIII and vWF from endothelium" },
-                { id: "c", text: "Destroys antiplatelet antibodies" },
-                { id: "d", text: "Breaks down existing clots to prevent DVT" }
+                { id: "c", text: "Destroys the antiplatelet antibodies that shorten platelet life" },
+                { id: "d", text: "Breaks down existing clots to prevent deep vein thrombosis" }
             ],
             correct: "b",
             rationale: {

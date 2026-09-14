@@ -199,7 +199,7 @@ var strokeQuizData = {
             stem: "A student nurse asks why the NIH Stroke Scale (NIHSS) is performed serially on stroke patients rather than just once at admission. Which response by the preceptor is BEST?",
             options: [
                 { id: "a", text: "\"It is performed multiple times to ensure the initial score was accurate.\"" },
-                { id: "b", text: "\"Serial assessments detect improvement or deterioration, which guides treatment decisions and identifies complications early.\"" },
+                { id: "b", text: "\"Serial assessments detect improvement or deterioration early, which guides treatment decisions.\"" },
                 { id: "c", text: "\"It is required by insurance companies for reimbursement of stroke care.\"" },
                 { id: "d", text: "\"The initial NIHSS is unreliable because the patient is too stressed on admission.\"" }
             ],

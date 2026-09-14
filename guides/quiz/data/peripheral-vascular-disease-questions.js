@@ -42,9 +42,9 @@ var peripheralVascularDiseaseQuizData = {
             difficulty: "application",
             stem: "A patient with PAD has an ankle-brachial index (ABI) of 0.35. The nurse interprets this result as indicating:",
             options: [
-                { id: "a", text: "Normal arterial circulation" },
-                { id: "b", text: "Mild peripheral arterial disease" },
-                { id: "c", text: "Moderate peripheral arterial disease" },
+                { id: "a", text: "Normal arterial circulation to the lower legs" },
+                { id: "b", text: "Mild peripheral arterial disease with claudication" },
+                { id: "c", text: "Moderate peripheral arterial disease with early rest pain" },
                 { id: "d", text: "Critical limb ischemia requiring urgent intervention" }
             ],
             correct: "d",
@@ -193,9 +193,9 @@ var peripheralVascularDiseaseQuizData = {
             stem: "A patient with PAD reports a sudden onset of severe leg pain with a cold, pale, pulseless left foot. The nurse recognizes this as acute arterial occlusion. What is the priority nursing action?",
             options: [
                 { id: "a", text: "Apply warm blankets to the affected extremity" },
-                { id: "b", text: "Position the leg in a dependent position and notify the provider STAT" },
-                { id: "c", text: "Administer a dose of prescribed warfarin" },
-                { id: "d", text: "Prepare for an ABI measurement" }
+                { id: "b", text: "Keep the leg dependent and notify the provider STAT" },
+                { id: "c", text: "Administer a dose of the prescribed oral warfarin" },
+                { id: "d", text: "Prepare the patient for an ABI measurement" }
             ],
             correct: "b",
             rationale: {

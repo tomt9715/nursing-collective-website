@@ -43,9 +43,9 @@ var antibioticsAntiviralsQuizData = {
             stem: "A patient is hypotensive, mottled and febrile with suspected septic shock. Blood cultures have not been drawn and the phlebotomist is 20 minutes away. The nurse should:",
             options: [
                 { id: "a", text: "Wait for the phlebotomist so the cultures are drawn correctly" },
-                { id: "b", text: "Draw what cultures can be obtained now and give the antibiotic without further delay" },
-                { id: "c", text: "Give the antibiotic and cancel the cultures" },
-                { id: "d", text: "Hold the antibiotic until the provider rounds" }
+                { id: "b", text: "Draw whatever cultures are possible now and give the antibiotic without delay" },
+                { id: "c", text: "Give the antibiotic now and cancel the blood cultures entirely" },
+                { id: "d", text: "Hold the antibiotic until the provider rounds and reviews the patient" }
             ],
             correct: "b",
             rationale: {
@@ -111,10 +111,10 @@ var antibioticsAntiviralsQuizData = {
             difficulty: "application",
             stem: "A patient on IV tobramycin reports ringing in the ears and feeling unsteady when standing. The nurse should recognize this as:",
             options: [
-                { id: "a", text: "An expected side effect that will resolve after the course" },
-                { id: "b", text: "Early ototoxicity that must be reported promptly, since hearing loss can be permanent" },
-                { id: "c", text: "A sign the dose is too low" },
-                { id: "d", text: "A normal response to being on bed rest" }
+                { id: "a", text: "An expected side effect that will resolve once the course is finished" },
+                { id: "b", text: "Early ototoxicity to report promptly, since the hearing loss can be permanent" },
+                { id: "c", text: "A sign the dose is too low and the level is subtherapeutic" },
+                { id: "d", text: "A normal response to being on bed rest and getting up too fast" }
             ],
             correct: "b",
             rationale: {
@@ -249,10 +249,10 @@ var antibioticsAntiviralsQuizData = {
             difficulty: "knowledge",
             stem: "A patient is discharged on metronidazole. Which instruction is essential?",
             options: [
-                { id: "a", text: "Avoid all alcohol during the course and for 3 days after the last dose, including mouthwash and cough syrup" },
-                { id: "b", text: "Stop the drug if the urine darkens" },
-                { id: "c", text: "Take the drug on an empty stomach with grapefruit juice" },
-                { id: "d", text: "One or two drinks a day is acceptable if taken with food" }
+                { id: "a", text: "Avoid all alcohol, including mouthwash and cough syrup, until 3 days after the last dose" },
+                { id: "b", text: "Stop the drug right away if the urine turns dark or reddish-brown" },
+                { id: "c", text: "Take the drug on an empty stomach with a glass of grapefruit juice" },
+                { id: "d", text: "One or two drinks a day is acceptable as long as they are taken with food" }
             ],
             correct: "a",
             rationale: {
@@ -295,10 +295,10 @@ var antibioticsAntiviralsQuizData = {
             difficulty: "analysis",
             stem: "A patient calls 3 days after influenza symptoms began asking for oseltamivir. The most appropriate nursing response is:",
             options: [
-                { id: "a", text: "It works best started within 48 hours of the first symptom, so the plan now focuses on comfort measures and preventing spread." },
-                { id: "b", text: "It can be started at any point in the illness with the same benefit." },
-                { id: "c", text: "You should take an antibiotic instead since it has been 3 days." },
-                { id: "d", text: "You will need it for at least a month to be effective." }
+                { id: "a", text: "It works best within 48 hours of symptoms, so the focus now is comfort and preventing spread." },
+                { id: "b", text: "It can be started at any point in the illness with the same benefit to you." },
+                { id: "c", text: "You should take an antibiotic instead since it has now been 3 days of symptoms." },
+                { id: "d", text: "You will need to take it for at least a month for it to be effective." }
             ],
             correct: "a",
             rationale: {
@@ -319,9 +319,9 @@ var antibioticsAntiviralsQuizData = {
             stem: "A patient is receiving IV acyclovir for a severe herpes infection. Which nursing action is the priority?",
             options: [
                 { id: "a", text: "Give the dose as a rapid IV push to reduce infusion time" },
-                { id: "b", text: "Restrict fluids to avoid overload" },
-                { id: "c", text: "Maintain generous hydration, infuse over at least 1 hour, and monitor creatinine" },
-                { id: "d", text: "Hold all other medications during the infusion" }
+                { id: "b", text: "Restrict fluids to avoid overload and protect the kidneys" },
+                { id: "c", text: "Hydrate generously, infuse over at least 1 hour, and monitor creatinine" },
+                { id: "d", text: "Hold all other medications until the infusion is complete" }
             ],
             correct: "c",
             rationale: {
@@ -342,9 +342,9 @@ var antibioticsAntiviralsQuizData = {
             stem: "Twenty minutes into an amphotericin B infusion the patient develops fever, chills and rigors. Vital signs are otherwise stable. The nurse recognizes that this:",
             options: [
                 { id: "a", text: "Is an expected infusion reaction that is managed and premedicated for" },
-                { id: "b", text: "Is anaphylaxis requiring immediate epinephrine" },
-                { id: "c", text: "Means the patient has a new bacterial infection" },
-                { id: "d", text: "Means the drug must never be given again" }
+                { id: "b", text: "Is anaphylaxis requiring immediate intramuscular epinephrine" },
+                { id: "c", text: "Means the patient has developed a new bacterial bloodstream infection" },
+                { id: "d", text: "Means the drug must be stopped and never given again" }
             ],
             correct: "a",
             rationale: {
@@ -416,9 +416,9 @@ var antibioticsAntiviralsQuizData = {
             stem: "Which finding in a patient receiving both vancomycin and gentamicin most requires the nurse to notify the provider before the next dose?",
             options: [
                 { id: "a", text: "Serum creatinine has risen from 0.9 to 1.8 mg/dL with falling urine output" },
-                { id: "b", text: "The patient reports the IV site feels cool" },
-                { id: "c", text: "Temperature has fallen from 39.1 to 37.6 degrees Celsius" },
-                { id: "d", text: "The patient asks for a second pillow" }
+                { id: "b", text: "The patient reports the IV site feels cool during the infusion" },
+                { id: "c", text: "Temperature has fallen from 39.1 to 37.6 degrees Celsius overnight" },
+                { id: "d", text: "The patient asks for a second pillow to sleep more comfortably" }
             ],
             correct: "a",
             rationale: {

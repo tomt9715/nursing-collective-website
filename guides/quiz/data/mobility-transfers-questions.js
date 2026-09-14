@@ -227,10 +227,10 @@ var mobilityTransfersQuizData = {
             difficulty: "application",
             stem: "A patient is receiving continuous tube feeding. Which position is most appropriate?",
             options: [
-                { id: "a", text: "Supine, flat" },
+                { id: "a", text: "Supine with the bed completely flat" },
                 { id: "b", text: "Head of bed elevated 30 to 45 degrees" },
-                { id: "c", text: "Trendelenburg" },
-                { id: "d", text: "Left lateral, flat" }
+                { id: "c", text: "Trendelenburg, head lower than the feet" },
+                { id: "d", text: "Left lateral with the bed kept flat" }
             ],
             correct: "b",
             rationale: {

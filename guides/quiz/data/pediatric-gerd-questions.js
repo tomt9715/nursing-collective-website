@@ -19,10 +19,10 @@ var pediatricGerdQuizData = {
             difficulty: "application",
             stem: "A parent brings a 3-month-old for a well-child visit. The infant spits up after most feeds, produces adequate wet diapers, is following the 50th percentile for weight, and is generally content. What is the nurse's best interpretation?",
             options: [
-                { id: "a", text: "The infant has GERD and needs medication" },
-                { id: "b", text: "Physiologic GER - a 'happy spitter' that typically resolves by 12\u201318 months" },
-                { id: "c", text: "The infant likely has pyloric stenosis" },
-                { id: "d", text: "This is evidence of a cow's milk protein allergy" }
+                { id: "a", text: "The infant has GERD and needs acid-suppressing medication" },
+                { id: "b", text: "Physiologic GER - a 'happy spitter' likely to resolve by 12\u201318 months" },
+                { id: "c", text: "The infant likely has pyloric stenosis and needs surgery" },
+                { id: "d", text: "Spitting up this often is evidence of a cow's milk protein allergy" }
             ],
             correct: "b",
             rationale: {
@@ -43,9 +43,9 @@ var pediatricGerdQuizData = {
             stem: "A 6-week-old has been vomiting after feeds. Today, the vomit appeared green. What is the priority nursing action?",
             options: [
                 { id: "a", text: "Reassure the parents that green vomit is normal reflux" },
-                { id: "b", text: "Thicken the feedings and follow up in 2 weeks" },
+                { id: "b", text: "Thicken the feedings with rice cereal and follow up in 2 weeks" },
                 { id: "c", text: "Notify the provider immediately and prepare for an upper GI series" },
-                { id: "d", text: "Start a proton pump inhibitor" }
+                { id: "d", text: "Start a proton pump inhibitor for suspected reflux" }
             ],
             correct: "c",
             rationale: {
@@ -134,10 +134,10 @@ var pediatricGerdQuizData = {
             difficulty: "analysis",
             stem: "Which clinical finding is MOST suggestive of GERD rather than physiologic GER?",
             options: [
-                { id: "a", text: "Spitting up after every bottle" },
-                { id: "b", text: "Weight gain tracking along the 25th percentile" },
+                { id: "a", text: "Spitting up small amounts after every bottle, day and night" },
+                { id: "b", text: "Weight gain steadily tracking along the 25th percentile" },
                 { id: "c", text: "Falling off the growth curve, feeding refusal, and recurrent wheezing" },
-                { id: "d", text: "Crossing 2 percentile lines up on the growth chart" }
+                { id: "d", text: "Crossing 2 percentile lines upward on the growth chart" }
             ],
             correct: "c",
             rationale: {
@@ -250,10 +250,10 @@ var pediatricGerdQuizData = {
             difficulty: "knowledge",
             stem: "Which test is considered the gold standard for measuring the severity of acid reflux in a child?",
             options: [
-                { id: "a", text: "Upper GI series" },
-                { id: "b", text: "Abdominal ultrasound" },
+                { id: "a", text: "Upper GI contrast series" },
+                { id: "b", text: "Abdominal ultrasonography" },
                 { id: "c", text: "24-hour esophageal pH probe" },
-                { id: "d", text: "Stool studies" }
+                { id: "d", text: "Stool guaiac and culture studies" }
             ],
             correct: "c",
             rationale: {

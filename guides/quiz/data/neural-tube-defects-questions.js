@@ -134,10 +134,10 @@ var neuralTubeDefectsQuizData = {
             difficulty: "application",
             stem: "The nurse is assessing a 2-week-old post myelomeningocele repair. Which finding suggests developing hydrocephalus?",
             options: [
-                { id: "a", text: "Decreased head circumference" },
+                { id: "a", text: "Decreasing head circumference and a sunken fontanelle" },
                 { id: "b", text: "Rapidly increasing head circumference and bulging fontanelle" },
-                { id: "c", text: "Flat fontanelle with crying" },
-                { id: "d", text: "Pink skin color" }
+                { id: "c", text: "Flat fontanelle that bulges briefly with crying" },
+                { id: "d", text: "Pink skin color with a strong cry and steady weight gain" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var neuralTubeDefectsQuizData = {
             difficulty: "knowledge",
             stem: "Which condition is associated with myelomeningocele and typically requires a ventriculoperitoneal shunt?",
             options: [
-                { id: "a", text: "Brachial plexus injury" },
+                { id: "a", text: "Erb's palsy from brachial plexus injury" },
                 { id: "b", text: "Arnold-Chiari II malformation with hydrocephalus" },
-                { id: "c", text: "Spinal muscular atrophy" },
-                { id: "d", text: "Tracheoesophageal fistula" }
+                { id: "c", text: "Spinal muscular atrophy with hypotonia" },
+                { id: "d", text: "Tracheoesophageal fistula with esophageal atresia" }
             ],
             correct: "b",
             rationale: {
@@ -181,9 +181,9 @@ var neuralTubeDefectsQuizData = {
             stem: "A 4-year-old with myelomeningocele is scheduled for shunt revision. The nurse is preparing the OR. Which intervention is MOST important?",
             options: [
                 { id: "a", text: "Ensure latex-free gloves, catheters, and equipment are used" },
-                { id: "b", text: "Use regular surgical equipment" },
-                { id: "c", text: "Keep the child NPO for 4 hours" },
-                { id: "d", text: "Start IV fluids with lactated Ringer's" }
+                { id: "b", text: "Use regular surgical gloves and standard equipment" },
+                { id: "c", text: "Keep the child NPO for 4 hours before surgery" },
+                { id: "d", text: "Start IV fluids with lactated Ringer's before induction" }
             ],
             correct: "a",
             rationale: {
@@ -228,9 +228,9 @@ var neuralTubeDefectsQuizData = {
             stem: "Which prenatal screening test typically detects neural tube defects when elevated?",
             options: [
                 { id: "a", text: "Maternal serum alpha-fetoprotein (MSAFP)" },
-                { id: "b", text: "Glucose challenge test" },
-                { id: "c", text: "Group B strep swab" },
-                { id: "d", text: "Rh antibody screen" }
+                { id: "b", text: "Oral glucose challenge test (GCT)" },
+                { id: "c", text: "Group B streptococcus (GBS) swab" },
+                { id: "d", text: "Rh antibody (indirect Coombs) screen" }
             ],
             correct: "a",
             rationale: {
@@ -251,10 +251,10 @@ var neuralTubeDefectsQuizData = {
             difficulty: "analysis",
             stem: "A 6-year-old with myelomeningocele and a VP shunt presents to the ED with headache, vomiting, and new-onset lethargy. What is the nurse's priority concern?",
             options: [
-                { id: "a", text: "Typical viral illness" },
-                { id: "b", text: "Constipation" },
+                { id: "a", text: "Typical viral gastroenteritis" },
+                { id: "b", text: "Neurogenic bowel constipation" },
                 { id: "c", text: "Shunt malfunction or infection" },
-                { id: "d", text: "Migraine" }
+                { id: "d", text: "Tension or migraine headache" }
             ],
             correct: "c",
             rationale: {

@@ -44,9 +44,9 @@ var painManagementQuizData = {
             stem: "A patient with a healthy liver is taking oxycodone with acetaminophen every 6 hours, plus scheduled plain acetaminophen, plus an over-the-counter cold remedy at night. The nurse is most concerned about which risk?",
             options: [
                 { id: "a", text: "Exceeding the daily acetaminophen ceiling from combined sources" },
-                { id: "b", text: "Developing tolerance to the oxycodone" },
-                { id: "c", text: "Gastrointestinal bleeding from the acetaminophen" },
-                { id: "d", text: "Opioid withdrawal between doses" }
+                { id: "b", text: "Developing tolerance to the oxycodone with regular use" },
+                { id: "c", text: "Gastrointestinal bleeding from the scheduled acetaminophen" },
+                { id: "d", text: "Opioid withdrawal symptoms between the scheduled doses" }
             ],
             correct: "a",
             rationale: {
@@ -66,10 +66,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "A patient with cirrhosis asks how much acetaminophen is safe at home. Which response is most appropriate?",
             options: [
-                { id: "a", text: "\"You can take up to 4 grams a day, the same as anyone else.\"" },
+                { id: "a", text: "\"You can safely take up to 4 grams a day, the same limit as anyone else.\"" },
                 { id: "b", text: "\"Acetaminophen is not safe at any dose with liver disease, so use ibuprofen instead.\"" },
-                { id: "c", text: "\"Your ceiling is lower than the usual 4 grams, often 2 grams or less. Check the exact limit with your provider.\"" },
-                { id: "d", text: "\"Take it only when your pain reaches 8 out of 10.\"" }
+                { id: "c", text: "\"Your limit is lower than the usual 4 grams, often 2 grams or less. Confirm it with your provider.\"" },
+                { id: "d", text: "\"Take it only when your pain reaches 8 out of 10, and then take a full dose.\"" }
             ],
             correct: "c",
             rationale: {
@@ -112,10 +112,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "The spouse of a patient using PCA morphine tells the nurse, \"He was sleeping so I pressed the button a few times so he would not wake up hurting.\" What is the nurse's priority action?",
             options: [
-                { id: "a", text: "Thank the spouse for helping and continue the current monitoring" },
-                { id: "b", text: "Assess the patient's sedation level and respiratory status, then teach that only the patient may press the button" },
-                { id: "c", text: "Remove the PCA pump and switch to oral analgesics" },
-                { id: "d", text: "Increase the lockout interval so the doses spread out" }
+                { id: "a", text: "Thank the spouse for helping and continue the current monitoring plan" },
+                { id: "b", text: "Assess sedation and respiratory status, then teach that only the patient presses the button" },
+                { id: "c", text: "Remove the PCA pump and switch the patient to scheduled oral analgesics" },
+                { id: "d", text: "Increase the lockout interval on the pump so the extra doses are spread out" }
             ],
             correct: "b",
             rationale: {
@@ -135,10 +135,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "A patient with a long leg cast reports pain that has become severe, is unrelieved by two opioid doses, and worsens sharply when the toes are passively extended. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Request an increase in the opioid dose" },
-                { id: "b", text: "Elevate the limb above heart level and apply ice" },
-                { id: "c", text: "Assess the limb neurovascularly, loosen constricting materials, keep the limb level with the heart, and notify the provider" },
-                { id: "d", text: "Reposition the patient and offer distraction" }
+                { id: "a", text: "Request an increase in the opioid dose and reassess the pain score in 30 minutes" },
+                { id: "b", text: "Elevate the limb on pillows above heart level and apply ice packs around the cast" },
+                { id: "c", text: "Check neurovascular status, loosen tight dressings, keep the limb at heart level, and notify the provider" },
+                { id: "d", text: "Reposition the patient, offer distraction, and reassess the pain score in an hour" }
             ],
             correct: "c",
             rationale: {
@@ -158,7 +158,7 @@ var painManagementQuizData = {
             difficulty: "knowledge",
             stem: "Which opioid side effect does the patient NOT develop tolerance to?",
             options: [
-                { id: "a", text: "Nausea" },
+                { id: "a", text: "Nausea and vomiting" },
                 { id: "b", text: "Sedation" },
                 { id: "c", text: "Constipation" },
                 { id: "d", text: "Itching" }
@@ -166,7 +166,7 @@ var painManagementQuizData = {
             correct: "c",
             rationale: {
                 correct: "Constipation persists for as long as the opioid is taken, at any dose. That is why a bowel regimen starts with the first opioid dose rather than after symptoms appear.",
-                a: "Nausea usually settles within days as tolerance develops.",
+                a: "Nausea and vomiting usually settle within days as tolerance develops.",
                 b: "Sedation typically improves over the first days of stable dosing.",
                 d: "Itching is often histamine related and usually eases with time."
             },
@@ -227,10 +227,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "A patient taking opioids for chronic cancer pain asks for the next dose 25 minutes early and requests a specific drug by name. The reassessment scores show pain of 8 out of 10 an hour after the last dose. This behaviour is best described as:",
             options: [
-                { id: "a", text: "Addiction" },
-                { id: "b", text: "Physical dependence" },
+                { id: "a", text: "Addiction (opioid use disorder)" },
+                { id: "b", text: "Physical dependence on the opioid" },
                 { id: "c", text: "Pseudoaddiction from undertreated pain" },
-                { id: "d", text: "Drug diversion" }
+                { id: "d", text: "Drug diversion to another person" }
             ],
             correct: "c",
             rationale: {
@@ -252,8 +252,8 @@ var painManagementQuizData = {
             options: [
                 { id: "a", text: "Numeric rating scale, 0 to 10" },
                 { id: "b", text: "FLACC behavioural scale" },
-                { id: "c", text: "CPOT" },
-                { id: "d", text: "PAINAD" }
+                { id: "c", text: "CPOT behavioural scale" },
+                { id: "d", text: "PAINAD observational scale" }
             ],
             correct: "b",
             rationale: {
@@ -273,10 +273,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "A patient with chronic low back pain of 4 years rates the pain 8 out of 10. The heart rate is 72, the blood pressure is 124/78, and the patient is calmly watching television. What is the most appropriate nursing interpretation?",
             options: [
-                { id: "a", text: "The pain report is exaggerated, because the vital signs are normal" },
-                { id: "b", text: "The pain is 8 out of 10, because self-report is the standard and chronic pain does not raise vital signs" },
-                { id: "c", text: "The patient is displaying drug-seeking behaviour" },
-                { id: "d", text: "A behavioural pain scale should be used to verify the report" }
+                { id: "a", text: "The pain report is exaggerated, because the vital signs and behaviour are normal" },
+                { id: "b", text: "The pain is 8 out of 10; self-report is the standard, and chronic pain does not raise vital signs" },
+                { id: "c", text: "The patient is displaying drug-seeking behaviour, because the score does not match" },
+                { id: "d", text: "A behavioural pain scale should be used to verify the self-reported score" }
             ],
             correct: "b",
             rationale: {
@@ -365,10 +365,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "A family member of a dying patient asks the nurse not to give more morphine, saying, \"I do not want it to shorten the time we have.\" The patient is grimacing and restless. What is the best nursing response?",
             options: [
-                { id: "a", text: "\"You are right, we will hold the morphine and use repositioning instead.\"" },
-                { id: "b", text: "\"Doses titrated to relieve his pain are appropriate care, and comfort is our goal. Let me explain how we monitor him.\"" },
-                { id: "c", text: "\"Only the doctor can make that decision, so I will call.\"" },
-                { id: "d", text: "\"Pain medication never affects breathing at the end of life.\"" }
+                { id: "a", text: "\"You are right, we will hold the morphine for now and use repositioning and music instead.\"" },
+                { id: "b", text: "\"Doses titrated to relieve his pain are appropriate, and comfort is our goal. Let me explain how we monitor him.\"" },
+                { id: "c", text: "\"Only the doctor can make that decision, so I will call and let them talk with you.\"" },
+                { id: "d", text: "\"Pain medication never affects breathing at the end of life, so there is nothing to worry about.\"" }
             ],
             correct: "b",
             rationale: {
@@ -388,10 +388,10 @@ var painManagementQuizData = {
             difficulty: "application",
             stem: "Which nursing action best reflects multimodal analgesia for a patient one day after abdominal surgery?",
             options: [
-                { id: "a", text: "Doubling the as-needed opioid dose when the pain score stays high" },
-                { id: "b", text: "Giving scheduled acetaminophen and an NSAID, using the prescribed opioid for breakthrough pain, and splinting the incision when the patient coughs" },
-                { id: "c", text: "Offering distraction and music instead of the prescribed analgesic" },
-                { id: "d", text: "Waiting until the pain reaches 8 out of 10 before giving anything" }
+                { id: "a", text: "Doubling the as-needed opioid dose whenever the pain score stays high after surgery" },
+                { id: "b", text: "Giving scheduled acetaminophen and an NSAID, with the opioid for breakthrough pain and incision splinting" },
+                { id: "c", text: "Offering distraction, music, and guided imagery instead of the prescribed analgesic" },
+                { id: "d", text: "Waiting until the pain reaches 8 out of 10 before giving any of the prescribed medication" }
             ],
             correct: "b",
             rationale: {

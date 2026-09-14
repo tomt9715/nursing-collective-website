@@ -22,10 +22,10 @@ var pituitaryDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A patient's lab results show: serum sodium 118 mEq/L, serum osmolality 248 mOsm/kg, urine osmolality 450 mOsm/kg, and urine specific gravity 1.035. Which condition do these results indicate?",
             options: [
-                { id: "a", text: "Diabetes insipidus" },
+                { id: "a", text: "Diabetes insipidus (central type)" },
                 { id: "b", text: "SIADH (Syndrome of Inappropriate ADH)" },
-                { id: "c", text: "Diabetes mellitus" },
-                { id: "d", text: "Adrenal insufficiency" }
+                { id: "c", text: "Uncontrolled diabetes mellitus" },
+                { id: "d", text: "Primary adrenal insufficiency" }
             ],
             correct: "b",
             rationale: {

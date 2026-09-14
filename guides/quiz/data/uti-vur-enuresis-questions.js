@@ -65,10 +65,10 @@ var utiVurEnuresisQuizData = {
             difficulty: "application",
             stem: "A 6-month-old infant with suspected UTI needs a urine culture. Which method is most appropriate for obtaining the specimen?",
             options: [
-                { id: "a", text: "Adhesive bag specimen" },
+                { id: "a", text: "Adhesive perineal urine bag specimen" },
                 { id: "b", text: "Urethral catheterization (in-and-out cath)" },
-                { id: "c", text: "Clean catch midstream" },
-                { id: "d", text: "Collect from a wet diaper" }
+                { id: "c", text: "Clean catch midstream urine specimen" },
+                { id: "d", text: "Urine squeezed from a wet diaper pad" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var utiVurEnuresisQuizData = {
             difficulty: "analysis",
             stem: "A 3-year-old girl has had 3 febrile UTIs in the past year. What diagnostic test is most appropriate to evaluate for structural cause?",
             options: [
-                { id: "a", text: "CT abdomen with contrast" },
+                { id: "a", text: "Abdominal CT scan with contrast" },
                 { id: "b", text: "Voiding cystourethrogram (VCUG)" },
-                { id: "c", text: "Renal biopsy" },
-                { id: "d", text: "DMSA scan only" }
+                { id: "c", text: "Percutaneous renal biopsy" },
+                { id: "d", text: "DMSA renal scan only" }
             ],
             correct: "b",
             rationale: {
@@ -111,10 +111,10 @@ var utiVurEnuresisQuizData = {
             difficulty: "knowledge",
             stem: "A child is diagnosed with Grade IV vesicoureteral reflux. Which management approach is most likely?",
             options: [
-                { id: "a", text: "No intervention; wait for spontaneous resolution" },
+                { id: "a", text: "No intervention; wait for spontaneous resolution over several years" },
                 { id: "b", text: "Surgical correction (ureteral reimplantation or endoscopic injection)" },
-                { id: "c", text: "Renal transplant evaluation" },
-                { id: "d", text: "Long-term hemodialysis" }
+                { id: "c", text: "Referral to transplant surgery for renal transplant evaluation" },
+                { id: "d", text: "Start long-term hemodialysis to protect the remaining kidney function" }
             ],
             correct: "b",
             rationale: {
@@ -135,9 +135,9 @@ var utiVurEnuresisQuizData = {
             stem: "A 4-year-old with VUR is undergoing a VCUG. What should the nurse include in preparation?",
             options: [
                 { id: "a", text: "Explain that the test is painful and will take several hours" },
-                { id: "b", text: "Maintain NPO for 8 hours prior" },
-                { id: "c", text: "Explain the test at an age-appropriate level, provide comfort measures and child life support" },
-                { id: "d", text: "Sedate the child routinely for the procedure" }
+                { id: "b", text: "Maintain NPO for 8 hours before the procedure to prevent vomiting" },
+                { id: "c", text: "Give an age-appropriate explanation with comfort measures and child life support" },
+                { id: "d", text: "Sedate the child routinely so the catheter can be inserted safely" }
             ],
             correct: "c",
             rationale: {
@@ -180,10 +180,10 @@ var utiVurEnuresisQuizData = {
             difficulty: "analysis",
             stem: "A 7-year-old who has been dry for 2 years suddenly starts bedwetting 3 nights per week. What should the nurse anticipate first?",
             options: [
-                { id: "a", text: "Prescription for desmopressin" },
-                { id: "b", text: "A bedwetting alarm" },
+                { id: "a", text: "Prescription for desmopressin (DDAVP) at bedtime" },
+                { id: "b", text: "A bedwetting alarm to condition waking" },
                 { id: "c", text: "Workup for UTI, diabetes, or other secondary cause" },
-                { id: "d", text: "Reassurance and waiting 6 months" }
+                { id: "d", text: "Reassurance and waiting 6 months for resolution" }
             ],
             correct: "c",
             rationale: {
@@ -272,10 +272,10 @@ var utiVurEnuresisQuizData = {
             difficulty: "analysis",
             stem: "A 5-year-old is diagnosed with primary nocturnal enuresis. The parents are frustrated and considering punishment. What is the nurse's BEST response?",
             options: [
-                { id: "a", text: "'Mild consequences may help motivate her.'" },
-                { id: "b", text: "'Most children outgrow this; shaming or punishing can delay resolution. Focus on protecting the bed and praising dry nights.'" },
-                { id: "c", text: "'She's old enough to know better; she's doing it on purpose.'" },
-                { id: "d", text: "'Limit all fluids throughout the day.'" }
+                { id: "a", text: "'Mild consequences, like losing a privilege after a wet night, may help motivate her.'" },
+                { id: "b", text: "'Most children outgrow this, and punishment can delay it. Protect the bed and praise dry nights.'" },
+                { id: "c", text: "'She's old enough to know better, so she may be doing it on purpose for attention.'" },
+                { id: "d", text: "'Limit all fluids throughout the day so her bladder stays empty at night.'" }
             ],
             correct: "b",
             rationale: {
@@ -318,17 +318,17 @@ var utiVurEnuresisQuizData = {
             difficulty: "application",
             stem: "A 2-month-old infant is admitted for pyelonephritis. The nurse anticipates which initial treatment approach?",
             options: [
-                { id: "a", text: "Oral cephalexin as outpatient" },
-                { id: "b", text: "Observation at home with close follow-up" },
+                { id: "a", text: "Oral cephalexin as an outpatient with follow-up in 48 hours" },
+                { id: "b", text: "Observation at home with close follow-up and fever checks" },
                 { id: "c", text: "Hospital admission with IV antibiotics and rule-out sepsis workup" },
-                { id: "d", text: "Subcutaneous immunoglobulin" }
+                { id: "d", text: "Subcutaneous immunoglobulin to boost infection defenses" }
             ],
             correct: "c",
             rationale: {
                 correct: "Infants under 2 months with UTI or pyelonephritis are routinely admitted for IV antibiotics (ceftriaxone or ampicillin + gentamicin) and a full sepsis workup (CBC, blood culture, often LP) because of the risk of bacteremia and meningitis.",
                 a: "Oral outpatient treatment is not safe for young infants with pyelonephritis.",
                 b: "Observation without treatment in a febrile young infant is dangerous.",
-                d: "IVIG is not indicated for UTI."
+                d: "Immunoglobulin replacement is for primary immune deficiencies and is not a treatment for UTI."
             },
             testTakingTip: "Infant <2 months with UTI = admit + IV antibiotics + sepsis workup. Low threshold for escalation.",
             guideSection: "Section 5 - Treatment",

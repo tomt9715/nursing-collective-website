@@ -19,10 +19,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "recall",
             stem: "A 26-year-old woman reports 2 days of burning with urination, urinary frequency every hour, urgency, and suprapubic pressure. She is afebrile, has no back pain, and no CVA tenderness. Which diagnosis is most likely?",
             options: [
-                { id: "a", text: "Pyelonephritis" },
+                { id: "a", text: "Upper urinary tract infection (pyelonephritis)" },
                 { id: "b", text: "Lower urinary tract infection (cystitis)" },
-                { id: "c", text: "Urolithiasis" },
-                { id: "d", text: "Urosepsis" }
+                { id: "c", text: "Obstructing kidney stone (urolithiasis)" },
+                { id: "d", text: "Systemic infection from a urinary source (urosepsis)" }
             ],
             correct: "b",
             rationale: {
@@ -42,10 +42,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient is admitted with suspected pyelonephritis. Which assessment finding would the nurse expect?",
             options: [
-                { id: "a", text: "Suprapubic tenderness only" },
+                { id: "a", text: "Suprapubic tenderness with no fever or chills" },
                 { id: "b", text: "Costovertebral angle tenderness with fever and chills" },
-                { id: "c", text: "Hematuria without pain" },
-                { id: "d", text: "Nocturia without systemic symptoms" }
+                { id: "c", text: "Painless hematuria with a normal temperature" },
+                { id: "d", text: "Nocturia without fever or other systemic symptoms" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient with uncomplicated cystitis asks how long they'll be on antibiotics. The best nursing response is:",
             options: [
-                { id: "a", text: "\"Just until your symptoms resolve - usually 2 days.\"" },
-                { id: "b", text: "\"You'll be on oral antibiotics for 5 to 7 days. Finish the full course even if you feel better.\"" },
-                { id: "c", text: "\"You'll be on IV antibiotics for 2 weeks.\"" },
-                { id: "d", text: "\"A single dose is usually enough - stop when the bottle's empty.\"" }
+                { id: "a", text: "\"Just take them until your symptoms resolve - usually about 2 days.\"" },
+                { id: "b", text: "\"You'll take oral antibiotics for 5 to 7 days. Finish them even if you feel better.\"" },
+                { id: "c", text: "\"You'll be on IV antibiotics for 2 weeks, so you'll need to stay admitted.\"" },
+                { id: "d", text: "\"A single dose is usually enough - you can stop once the bottle is empty.\"" }
             ],
             correct: "b",
             rationale: {
@@ -206,10 +206,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient with pyelonephritis is receiving IV antibiotics. Which finding most strongly indicates progression to urosepsis?",
             options: [
-                { id: "a", text: "Temperature 38.2°C and mild flank pain" },
+                { id: "a", text: "Temperature 38.2°C (100.8°F) and mild flank pain" },
                 { id: "b", text: "BP 82/48, HR 124, new confusion, urine output 15 mL/hr" },
-                { id: "c", text: "WBC 12,000, bacteriuria on UA" },
-                { id: "d", text: "Burning with urination and cloudy urine" }
+                { id: "c", text: "WBC 12,000/mm³ with bacteriuria on urinalysis" },
+                { id: "d", text: "Burning with urination and cloudy, foul-smelling urine" }
             ],
             correct: "b",
             rationale: {
@@ -414,10 +414,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A pregnant patient in her second trimester is diagnosed with pyelonephritis. Which statement about her management is MOST accurate?",
             options: [
-                { id: "a", text: "Pregnancy decreases the risk of pyelonephritis" },
+                { id: "a", text: "Pregnancy decreases her risk of developing pyelonephritis" },
                 { id: "b", text: "She will most likely be admitted for IV antibiotics and close monitoring" },
-                { id: "c", text: "A short course of oral antibiotics is sufficient" },
-                { id: "d", text: "Pyelonephritis does not affect pregnancy outcomes" }
+                { id: "c", text: "A short 3-day course of oral antibiotics at home is sufficient" },
+                { id: "d", text: "Pyelonephritis in pregnancy does not affect fetal or pregnancy outcomes" }
             ],
             correct: "b",
             rationale: {

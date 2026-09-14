@@ -66,9 +66,9 @@ var pediatricLeukemiasQuizData = {
             difficulty: "application",
             stem: "A child receiving a PRBC transfusion suddenly complains of back pain, chills, and shortness of breath. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Slow the transfusion rate and continue" },
-                { id: "b", text: "Stop the transfusion and keep the IV line patent with normal saline via new tubing" },
-                { id: "c", text: "Administer diphenhydramine and acetaminophen" },
+                { id: "a", text: "Slow the transfusion rate and continue to monitor closely" },
+                { id: "b", text: "Stop the transfusion and keep the IV open with normal saline via new tubing" },
+                { id: "c", text: "Administer diphenhydramine and acetaminophen as prescribed" },
                 { id: "d", text: "Flush the IV with the remaining normal saline in the current tubing" }
             ],
             correct: "b",
@@ -234,8 +234,8 @@ var pediatricLeukemiasQuizData = {
             options: [
                 { id: "a", text: "Immune thrombocytopenic purpura (ITP)" },
                 { id: "b", text: "Disseminated intravascular coagulation (DIC)" },
-                { id: "c", text: "Hemophilia A" },
-                { id: "d", text: "Von Willebrand disease" }
+                { id: "c", text: "Hemophilia A (factor VIII deficiency)" },
+                { id: "d", text: "Inherited von Willebrand disease (VWD)" }
             ],
             correct: "b",
             rationale: {
@@ -255,8 +255,8 @@ var pediatricLeukemiasQuizData = {
             difficulty: "application",
             stem: "A sibling of a child with leukemia is scheduled for their well-child visit. Which vaccine should be AVOIDED in the sibling during the patient's active chemotherapy?",
             options: [
-                { id: "a", text: "Injectable influenza" },
-                { id: "b", text: "Tdap" },
+                { id: "a", text: "Injectable (inactivated) influenza" },
+                { id: "b", text: "Tdap (tetanus, diphtheria, pertussis)" },
                 { id: "c", text: "Intranasal (live-attenuated) influenza" },
                 { id: "d", text: "Pneumococcal conjugate (PCV13)" }
             ],
@@ -324,10 +324,10 @@ var pediatricLeukemiasQuizData = {
             difficulty: "application",
             stem: "A nurse is preparing to start induction chemotherapy for a child with a WBC of 180,000/mm\u00b3. Which intervention is the HIGHEST priority to prevent tumor lysis syndrome?",
             options: [
-                { id: "a", text: "Restrict fluids to prevent fluid overload" },
+                { id: "a", text: "Restrict fluids to prevent fluid overload and pulmonary edema" },
                 { id: "b", text: "Administer IV fluids at 2\u20133 times maintenance and allopurinol or rasburicase" },
-                { id: "c", text: "Add potassium to the maintenance fluid" },
-                { id: "d", text: "Premedicate with diphenhydramine and acetaminophen" }
+                { id: "c", text: "Add potassium chloride to the maintenance IV fluids to prevent losses" },
+                { id: "d", text: "Premedicate with diphenhydramine and acetaminophen before each dose" }
             ],
             correct: "b",
             rationale: {
@@ -370,10 +370,10 @@ var pediatricLeukemiasQuizData = {
             difficulty: "analysis",
             stem: "An adolescent with newly diagnosed T-cell ALL has a chest X-ray showing a large anterior mediastinal mass and is now complaining of facial swelling, dyspnea, and stridor. These findings are MOST consistent with:",
             options: [
-                { id: "a", text: "Pulmonary embolism" },
+                { id: "a", text: "Acute pulmonary embolism" },
                 { id: "b", text: "Superior vena cava syndrome" },
-                { id: "c", text: "Pneumothorax" },
-                { id: "d", text: "Anaphylaxis" }
+                { id: "c", text: "Tension pneumothorax" },
+                { id: "d", text: "Acute anaphylactic reaction" }
             ],
             correct: "b",
             rationale: {

@@ -42,8 +42,8 @@ var fracturesQuizData = {
             stem: "A patient with a femur fracture sustained in a motorcycle accident is now 36 hours post-injury. The nurse notes new-onset confusion, SpO2 88% on room air, respiratory rate of 32 breaths/min, and a non-blanching petechial rash across the chest and axillae. Which action should the nurse take FIRST?",
             options: [
                 { id: "a", text: "Administer high-flow oxygen via non-rebreather mask" },
-                { id: "b", text: "Obtain a stat chest X-ray" },
-                { id: "c", text: "Prepare for emergent intubation" },
+                { id: "b", text: "Obtain a stat chest X-ray to confirm the diagnosis" },
+                { id: "c", text: "Prepare the patient for emergent intubation" },
                 { id: "d", text: "Notify the provider of suspected fat embolism" }
             ],
             correct: "a",

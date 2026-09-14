@@ -18,10 +18,10 @@ var diabetesMellitusQuizData = {
             difficulty: "knowledge",
             stem: "A nursing student is studying the pathophysiology of diabetes mellitus. Which statement BEST describes the fundamental difference between Type 1 and Type 2 diabetes?",
             options: [
-                { id: "a", text: "Type 1 results from autoimmune destruction of beta cells causing absolute insulin deficiency; Type 2 results from insulin resistance with relative insulin deficiency" },
-                { id: "b", text: "Type 1 only occurs in children; Type 2 only occurs in adults over age 40" },
-                { id: "c", text: "Type 1 is managed with oral medications; Type 2 always requires insulin injections" },
-                { id: "d", text: "Type 1 is caused by obesity; Type 2 is caused by viral infections" }
+                { id: "a", text: "Type 1 is autoimmune beta-cell destruction with absolute insulin deficiency; Type 2 is insulin resistance with relative insulin deficiency" },
+                { id: "b", text: "Type 1 only occurs in children and teens; Type 2 only occurs in adults over age 40 with obesity" },
+                { id: "c", text: "Type 1 is managed with oral medications and diet; Type 2 always requires multiple daily insulin injections" },
+                { id: "d", text: "Type 1 is caused by obesity and inactivity; Type 2 is caused by viral infections that damage the pancreas" }
             ],
             correct: "a",
             rationale: {
@@ -213,9 +213,9 @@ var diabetesMellitusQuizData = {
             stem: "A patient with Type 1 diabetes calls the clinic and reports having the flu with nausea and vomiting. The patient states, \"I haven't eaten anything today, so I didn't take my insulin this morning.\" Which response by the nurse is MOST appropriate?",
             options: [
                 { id: "a", text: "\"That was the right decision. You should skip insulin when you can't eat to prevent low blood sugar.\"" },
-                { id: "b", text: "\"You need to take your insulin. Illness actually raises your blood sugar even if you're not eating. Check your glucose and ketones now.\"" },
-                { id: "c", text: "\"Take half your usual insulin dose and call back tomorrow if you're still not eating.\"" },
-                { id: "d", text: "\"Stop all medications until the flu is over, then resume your regular schedule.\"" }
+                { id: "b", text: "\"You need to take your insulin. Illness raises blood sugar even when you aren't eating. Check your glucose and ketones now.\"" },
+                { id: "c", text: "\"Take half your usual insulin dose and call back tomorrow if you're still not able to eat.\"" },
+                { id: "d", text: "\"Stop all of your medications until the flu is over, then resume your regular schedule.\"" }
             ],
             correct: "b",
             rationale: {
@@ -235,10 +235,10 @@ var diabetesMellitusQuizData = {
             difficulty: "application",
             stem: "A school nurse is developing a diabetes management plan for a 10-year-old with Type 1 diabetes. The child's parent asks why the blood glucose goal for their child might be slightly higher than for adults. Which response by the nurse is BEST?",
             options: [
-                { id: "a", text: "\"Children are less compliant with treatment, so we set easier goals.\"" },
-                { id: "b", text: "\"Children are at higher risk for hypoglycemia, which can affect brain development, so slightly higher targets help prevent dangerous lows.\"" },
-                { id: "c", text: "\"Children's insulin works differently than adult insulin, requiring higher targets.\"" },
-                { id: "d", text: "\"Higher glucose targets are temporary until the child reaches puberty.\"" }
+                { id: "a", text: "\"Children are less compliant with treatment, so we set easier goals they can reach more often.\"" },
+                { id: "b", text: "\"Children are at higher risk for hypoglycemia, which can harm the developing brain, so higher targets help prevent lows.\"" },
+                { id: "c", text: "\"Children's insulin works differently than adult insulin, so they require higher glucose targets to stay safe.\"" },
+                { id: "d", text: "\"Higher glucose targets are only temporary until the child reaches puberty and growth slows down.\"" }
             ],
             correct: "b",
             rationale: {

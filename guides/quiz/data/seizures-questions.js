@@ -20,8 +20,8 @@ var seizuresQuizData = {
             options: [
                 { id: "a", text: "Insert an oral airway to maintain a patent airway" },
                 { id: "b", text: "Restrain the patient's arms and legs to prevent injury" },
-                { id: "c", text: "Note the time and protect the patient from injury by moving nearby objects" },
-                { id: "d", text: "Administer the PRN lorazepam IV immediately" }
+                { id: "c", text: "Note the time and move nearby objects to protect the patient" },
+                { id: "d", text: "Administer the PRN lorazepam IV push immediately" }
             ],
             correct: "c",
             rationale: {
@@ -337,8 +337,8 @@ var seizuresQuizData = {
             difficulty: "application",
             stem: "A nurse is monitoring a patient receiving IV phenytoin when the patient reports burning pain at the IV site. The nurse observes swelling and a purplish discoloration around the IV catheter. What complication does the nurse suspect?",
             options: [
-                { id: "a", text: "Phlebitis from the acidic pH of phenytoin" },
-                { id: "b", text: "Purple glove syndrome - a serious extravasation injury specific to phenytoin" },
+                { id: "a", text: "Chemical phlebitis from the alkaline pH of phenytoin" },
+                { id: "b", text: "Purple glove syndrome, a serious phenytoin extravasation injury" },
                 { id: "c", text: "An allergic reaction to the phenytoin formulation" },
                 { id: "d", text: "Normal bruising that commonly occurs with IV phenytoin" }
             ],

@@ -180,10 +180,10 @@ var pediatricGiObstructionsQuizData = {
             difficulty: "knowledge",
             stem: "Which diagnostic test is considered the GOLD STANDARD for Hirschsprung's disease?",
             options: [
-                { id: "a", text: "Abdominal X-ray" },
-                { id: "b", text: "Contrast enema" },
+                { id: "a", text: "Abdominal X-ray showing dilated bowel loops" },
+                { id: "b", text: "Contrast enema showing a transition zone" },
                 { id: "c", text: "Rectal biopsy showing absence of ganglion cells" },
-                { id: "d", text: "Stool culture" }
+                { id: "d", text: "Stool culture ruling out infectious colitis" }
             ],
             correct: "c",
             rationale: {
@@ -203,10 +203,10 @@ var pediatricGiObstructionsQuizData = {
             difficulty: "analysis",
             stem: "A 3-year-old with known Hirschsprung's disease awaiting surgical repair is admitted with a fever of 39.5\u00b0C, explosive foul-smelling diarrhea, and marked abdominal distension. What is the nurse's priority concern?",
             options: [
-                { id: "a", text: "Viral gastroenteritis" },
+                { id: "a", text: "Viral gastroenteritis (stomach flu)" },
                 { id: "b", text: "Hirschsprung-associated enterocolitis (HAEC)" },
-                { id: "c", text: "Appendicitis" },
-                { id: "d", text: "Constipation from pre-op NPO" }
+                { id: "c", text: "Acute appendicitis with possible perforation" },
+                { id: "d", text: "Constipation from preoperative NPO status" }
             ],
             correct: "b",
             rationale: {
@@ -273,10 +273,10 @@ var pediatricGiObstructionsQuizData = {
             difficulty: "application",
             stem: "A nurse is caring for a 10-year-old with suspected appendicitis awaiting surgical evaluation. Which intervention is CONTRAINDICATED?",
             options: [
-                { id: "a", text: "Maintain NPO status" },
+                { id: "a", text: "Maintain NPO status until surgical evaluation" },
                 { id: "b", text: "Apply a heating pad to the abdomen for comfort" },
-                { id: "c", text: "Start IV fluids" },
-                { id: "d", text: "Monitor vital signs every 2 hours" }
+                { id: "c", text: "Start IV fluids for hydration and access" },
+                { id: "d", text: "Monitor vital signs and pain every 2 hours" }
             ],
             correct: "b",
             rationale: {

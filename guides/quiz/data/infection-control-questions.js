@@ -228,8 +228,8 @@ var infectionControlQuizData = {
             stem: "A nursing student asks how to reduce catheter-associated urinary tract infections on the unit. Which response reflects the highest-yield action?",
             options: [
                 { id: "a", text: "Irrigate the catheter with sterile saline once each shift" },
-                { id: "b", text: "Change the drainage bag every 24 hours" },
-                { id: "c", text: "Review daily whether the catheter is still needed and advocate for early removal" },
+                { id: "b", text: "Change the drainage bag every 24 hours to limit bacterial growth" },
+                { id: "c", text: "Review the need for the catheter daily and advocate early removal" },
                 { id: "d", text: "Apply antimicrobial ointment to the meatus twice daily" }
             ],
             correct: "c",

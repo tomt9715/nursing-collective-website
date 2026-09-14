@@ -132,10 +132,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient's annual labs show TSH 7.2 mIU/L (normal: 0.4–4.0) with a free T4 of 1.0 ng/dL (normal: 0.8–1.8). The patient reports mild fatigue but no other symptoms. Which interpretation should the nurse provide to the patient?",
             options: [
-                { id: "a", text: "\"Your labs are completely normal. The fatigue is likely from stress.\"" },
+                { id: "a", text: "\"Your labs are completely normal. The fatigue is likely from stress, so no follow-up testing is needed.\"" },
                 { id: "b", text: "\"You have subclinical hypothyroidism. Your TSH is elevated but your T4 is still normal, so we will monitor closely.\"" },
-                { id: "c", text: "\"You have severe hypothyroidism and need to start medication immediately.\"" },
-                { id: "d", text: "\"Your thyroid is overactive, which is causing your fatigue.\"" }
+                { id: "c", text: "\"You have severe hypothyroidism and need to start high-dose medication immediately to prevent complications.\"" },
+                { id: "d", text: "\"Your thyroid is overactive, which is causing your fatigue, so we will start medication to slow it down.\"" }
             ],
             correct: "b",
             rationale: {
@@ -242,9 +242,9 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is teaching a community health class about thyroid function. Which statement about iodine and the thyroid is MOST accurate?",
             options: [
-                { id: "a", text: "Iodine is needed for the pituitary gland to produce TSH." },
-                { id: "b", text: "Iodine deficiency is the most common cause of hypothyroidism in the United States." },
-                { id: "c", text: "Iodine is an essential component of T3 and T4 synthesis; without adequate iodine, the thyroid cannot produce sufficient thyroid hormones." },
+                { id: "a", text: "Iodine is needed for the pituitary gland to produce TSH, which then signals the thyroid to make hormone." },
+                { id: "b", text: "Iodine deficiency is the most common cause of hypothyroidism in the United States and other developed countries." },
+                { id: "c", text: "Iodine is an essential component of T3 and T4; without adequate iodine, the thyroid cannot produce sufficient thyroid hormones." },
                 { id: "d", text: "Excess dietary iodine always leads to hyperthyroidism because more iodine means more thyroid hormone production." }
             ],
             correct: "c",
@@ -267,10 +267,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "A patient with a history of pituitary surgery presents with fatigue and cold intolerance. Lab results show TSH 0.8 mIU/L (normal: 0.4–4.0) and free T4 0.4 ng/dL (normal: 0.8–1.8). Which interpretation is MOST accurate?",
             options: [
-                { id: "a", text: "The patient has primary hypothyroidism; the TSH should be higher." },
-                { id: "b", text: "The labs are normal because TSH is within the reference range." },
+                { id: "a", text: "The patient has primary hypothyroidism; the TSH should be higher, so the thyroid gland itself is failing." },
+                { id: "b", text: "The labs are normal because TSH is within the reference range, so no further thyroid evaluation is needed." },
                 { id: "c", text: "The patient likely has secondary (central) hypothyroidism; the damaged pituitary cannot mount an appropriate TSH response." },
-                { id: "d", text: "The low T4 is likely due to a lab error since the TSH is normal." }
+                { id: "d", text: "The low T4 is likely due to a lab error since the TSH is normal; the test should simply be repeated." }
             ],
             correct: "c",
             rationale: {
@@ -419,9 +419,9 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient prescribed levothyroxine asks, \"Why can't I just take this pill with my breakfast?\" Which response by the nurse provides the BEST explanation?",
             options: [
-                { id: "a", text: "\"Food can cause the medication to be absorbed too quickly, increasing the risk of side effects.\"" },
-                { id: "b", text: "\"Food, especially fiber and dairy, binds to levothyroxine in the stomach and significantly reduces how much your body absorbs, making the medication less effective.\"" },
-                { id: "c", text: "\"Levothyroxine must be taken with food to prevent stomach ulcers.\"" },
+                { id: "a", text: "\"Food can cause the medication to be absorbed too quickly, increasing the risk of side effects like a racing heart.\"" },
+                { id: "b", text: "\"Food, especially fiber and dairy, binds to levothyroxine and significantly reduces how much your body absorbs, making it less effective.\"" },
+                { id: "c", text: "\"Levothyroxine must be taken with food to prevent stomach ulcers, so breakfast is actually the best time to take it.\"" },
                 { id: "d", text: "\"It doesn't really matter when you take it; taking it with breakfast is fine as long as you're consistent.\"" }
             ],
             correct: "b",
@@ -658,10 +658,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A pregnant patient with known hypothyroidism asks whether she should continue her levothyroxine during pregnancy. Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"You should stop levothyroxine during pregnancy because it can harm the developing baby.\"" },
+                { id: "a", text: "\"You should stop levothyroxine during pregnancy because it can harm the developing baby's own thyroid.\"" },
                 { id: "b", text: "\"Continue taking levothyroxine. Your dose will likely need to be INCREASED during pregnancy because your body needs more thyroid hormone.\"" },
-                { id: "c", text: "\"Switch to a natural thyroid supplement during pregnancy instead of levothyroxine.\"" },
-                { id: "d", text: "\"Continue the same dose throughout pregnancy; no adjustments are needed.\"" }
+                { id: "c", text: "\"Switch to a natural thyroid supplement during pregnancy instead of levothyroxine, since it is gentler on the baby.\"" },
+                { id: "d", text: "\"Continue the same dose throughout pregnancy; no adjustments are needed until after you deliver the baby.\"" }
             ],
             correct: "b",
             rationale: {
@@ -733,10 +733,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient calls the pharmacy and is told their usual brand of levothyroxine is unavailable and a different manufacturer's generic will be substituted. What should the nurse advise?",
             options: [
-                { id: "a", text: "\"All levothyroxine brands are identical. Take whatever the pharmacy provides.\"" },
+                { id: "a", text: "\"All levothyroxine brands are identical, so no follow-up is needed. Take whatever the pharmacy provides.\"" },
                 { id: "b", text: "\"Notify your provider about the brand change. You may need a TSH recheck in 6-8 weeks to ensure the new formulation maintains your levels.\"" },
-                { id: "c", text: "\"Stop taking levothyroxine until your usual brand is available.\"" },
-                { id: "d", text: "\"Double the dose of the new brand since generics are weaker than brand-name medications.\"" }
+                { id: "c", text: "\"Stop taking levothyroxine until your usual brand is available, since mixing manufacturers is unsafe.\"" },
+                { id: "d", text: "\"Double the dose of the new brand since generics are weaker and less reliable than brand-name medications.\"" }
             ],
             correct: "b",
             rationale: {
@@ -786,9 +786,9 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "During a physical assessment, the nurse observes that a hypothyroid patient has dry, coarse skin, brittle nails, and thinning hair with loss of the outer third of the eyebrows. These findings are related to:",
             options: [
-                { id: "a", text: "Increased sebaceous gland activity from excess thyroid hormone." },
+                { id: "a", text: "Increased sebaceous gland activity and hair follicle overgrowth from excess thyroid hormone." },
                 { id: "b", text: "Decreased metabolic activity reducing skin cell turnover, sebum production, and hair follicle cycling." },
-                { id: "c", text: "An allergic reaction to levothyroxine medication." },
+                { id: "c", text: "An allergic reaction to levothyroxine medication affecting the skin, nails, and hair." },
                 { id: "d", text: "Iron deficiency anemia, which commonly co-occurs with thyroid disease." }
             ],
             correct: "b",
@@ -811,10 +811,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient presents with a visibly enlarged anterior neck. The patient reports difficulty swallowing and a sensation of pressure in the throat. The nurse palpates a symmetrically enlarged, non-tender thyroid gland. Which question is MOST important for the nurse to ask?",
             options: [
-                { id: "a", text: "\"Have you been eating a lot of seafood lately?\"" },
+                { id: "a", text: "\"Have you been eating a lot of seafood or iodized salt lately?\"" },
                 { id: "b", text: "\"Do you have any difficulty breathing, especially when lying flat?\"" },
                 { id: "c", text: "\"Have you traveled to any tropical countries recently?\"" },
-                { id: "d", text: "\"Do you exercise regularly?\"" }
+                { id: "d", text: "\"Do you exercise regularly, and how often each week?\"" }
             ],
             correct: "b",
             rationale: {
@@ -840,10 +840,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "A nurse finds an unresponsive patient with a known history of hypothyroidism. Vital signs are: temperature 93.2°F (34°C), heart rate 38 bpm, blood pressure 78/50 mmHg, and respiratory rate 6 breaths/min. Which condition should the nurse suspect, and what is the PRIORITY action?",
             options: [
-                { id: "a", text: "Thyroid storm; administer PTU and beta-blockers immediately." },
+                { id: "a", text: "Thyroid storm; administer PTU and beta-blockers immediately and apply a cooling blanket." },
                 { id: "b", text: "Myxedema coma; activate the rapid response team and prepare for ICU transfer with IV levothyroxine and supportive care." },
-                { id: "c", text: "Diabetic ketoacidosis; check blood glucose and prepare an insulin drip." },
-                { id: "d", text: "Septic shock; obtain blood cultures and administer broad-spectrum antibiotics." }
+                { id: "c", text: "Diabetic ketoacidosis; check blood glucose and prepare an insulin drip with IV fluid resuscitation." },
+                { id: "d", text: "Septic shock; obtain blood cultures and administer broad-spectrum antibiotics and a fluid bolus." }
             ],
             correct: "b",
             rationale: {
@@ -903,10 +903,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient in myxedema coma has a core temperature of 92°F (33.3°C). The nurse receives orders for rewarming. Which rewarming method is MOST appropriate?",
             options: [
-                { id: "a", text: "Apply a forced-air warming blanket set to high heat" },
-                { id: "b", text: "Immerse the patient in a warm water bath at 104°F" },
+                { id: "a", text: "Apply a forced-air warming blanket set to high heat for rapid active rewarming" },
+                { id: "b", text: "Immerse the patient in a warm water bath at 104°F until normothermic" },
                 { id: "c", text: "Apply warm blankets and increase the room temperature, allowing gradual passive rewarming" },
-                { id: "d", text: "Administer warmed IV normal saline at a rapid infusion rate" }
+                { id: "d", text: "Administer warmed IV normal saline at a rapid infusion rate to raise core temperature" }
             ],
             correct: "c",
             rationale: {
@@ -956,10 +956,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient in myxedema coma has a serum sodium of 118 mEq/L (normal: 135–145). The nurse understands that the hyponatremia in this patient is MOST likely caused by:",
             options: [
-                { id: "a", text: "Excessive sodium loss from diarrhea and diaphoresis." },
+                { id: "a", text: "Excessive sodium loss from severe diarrhea and profuse diaphoresis (sweating)." },
                 { id: "b", text: "Impaired free water excretion due to decreased cardiac output and increased ADH secretion." },
-                { id: "c", text: "Dietary sodium restriction prescribed for hypothyroidism." },
-                { id: "d", text: "Overhydration from excessive IV fluid administration." }
+                { id: "c", text: "Dietary sodium restriction prescribed for hypothyroidism-related fluid retention." },
+                { id: "d", text: "Overhydration from excessive IV fluid administration during the ICU admission." }
             ],
             correct: "b",
             rationale: {
@@ -982,9 +982,9 @@ var thyroidDisordersQuizData = {
             stem: "A nurse is caring for a patient being treated for myxedema coma in the ICU. Which assessment finding would indicate the patient is responding to treatment?",
             options: [
                 { id: "a", text: "Temperature rising to 94°F with increased level of consciousness" },
-                { id: "b", text: "Heart rate decreasing from 42 to 36 bpm" },
-                { id: "c", text: "Respiratory rate remaining at 6 breaths/min" },
-                { id: "d", text: "Increasing peripheral edema and weight gain" }
+                { id: "b", text: "Heart rate decreasing from 42 to 36 bpm with continued lethargy" },
+                { id: "c", text: "Respiratory rate remaining at 6 breaths/min with shallow respirations" },
+                { id: "d", text: "Increasing peripheral edema and weight gain over the first 24 hours" }
             ],
             correct: "a",
             rationale: {
@@ -1044,10 +1044,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "In the treatment of myxedema coma, levothyroxine is administered intravenously rather than orally. Which rationale BEST explains this route selection?",
             options: [
-                { id: "a", text: "IV administration provides a faster onset of action and avoids the risk of aspiration." },
+                { id: "a", text: "IV administration provides a faster onset of action and avoids the risk of aspiration during oral dosing." },
                 { id: "b", text: "Oral levothyroxine is contraindicated in all emergency situations regardless of the patient's ability to swallow." },
-                { id: "c", text: "GI absorption is severely impaired in myxedema coma due to decreased GI motility and mucosal edema, and the patient may be unable to swallow safely." },
-                { id: "d", text: "IV levothyroxine is a different formulation that is more potent than the oral form." }
+                { id: "c", text: "GI absorption is severely impaired in myxedema coma due to decreased motility and mucosal edema, and the patient may be unable to swallow safely." },
+                { id: "d", text: "IV levothyroxine is a different formulation that is more potent than the oral form and acts on different receptors." }
             ],
             correct: "c",
             rationale: {
@@ -1094,10 +1094,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "In the treatment of myxedema coma, IV hydrocortisone is administered BEFORE or simultaneously with IV levothyroxine. Which rationale BEST explains this practice?",
             options: [
-                { id: "a", text: "Hydrocortisone enhances the absorption of IV levothyroxine." },
-                { id: "b", text: "Hydrocortisone is needed to treat the hyponatremia that occurs in myxedema coma." },
-                { id: "c", text: "Severe hypothyroidism may coexist with adrenal insufficiency; giving thyroid hormone alone increases cortisol metabolism and can precipitate adrenal crisis." },
-                { id: "d", text: "Hydrocortisone reduces the risk of allergic reaction to IV levothyroxine." }
+                { id: "a", text: "Hydrocortisone enhances the absorption and tissue uptake of IV levothyroxine, increasing its effectiveness." },
+                { id: "b", text: "Hydrocortisone is needed to treat the hyponatremia that occurs in myxedema coma, which is its main purpose here." },
+                { id: "c", text: "Severe hypothyroidism may coexist with adrenal insufficiency; thyroid hormone alone speeds cortisol breakdown and can trigger adrenal crisis." },
+                { id: "d", text: "Hydrocortisone reduces the risk of an allergic or infusion reaction to IV levothyroxine given rapidly." }
             ],
             correct: "c",
             rationale: {
@@ -1148,10 +1148,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A patient is diagnosed with Graves' disease. The nurse explains to the patient that this condition is caused by:",
             options: [
-                { id: "a", text: "A benign tumor of the thyroid gland that autonomously produces thyroid hormone." },
-                { id: "b", text: "Autoimmune antibodies (thyroid-stimulating immunoglobulins) that continuously activate the thyroid gland, causing excess hormone production." },
-                { id: "c", text: "A pituitary tumor that secretes excess TSH, overstimulating the thyroid." },
-                { id: "d", text: "Chronic iodine excess from dietary sources that overstimulates thyroid hormone synthesis." }
+                { id: "a", text: "A benign tumor of the thyroid gland (toxic adenoma) that autonomously produces excess thyroid hormone." },
+                { id: "b", text: "Autoimmune antibodies (thyroid-stimulating immunoglobulins) that continuously activate the thyroid, causing excess hormone production." },
+                { id: "c", text: "A pituitary tumor (TSH-secreting adenoma) that secretes excess TSH, overstimulating the thyroid gland." },
+                { id: "d", text: "Chronic iodine excess from dietary sources and supplements that overstimulates thyroid hormone synthesis." }
             ],
             correct: "b",
             rationale: {
@@ -1173,10 +1173,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient with Graves' disease has moderate exophthalmos. Which nursing intervention is MOST important to include in the care plan?",
             options: [
-                { id: "a", text: "Administer levothyroxine to correct the underlying thyroid imbalance." },
-                { id: "b", text: "Protect the corneas by applying artificial tears, elevating the head of bed, and taping the eyelids closed at night if they do not fully close." },
-                { id: "c", text: "Apply ice packs to the eyes every 2 hours to reduce swelling." },
-                { id: "d", text: "Restrict oral fluids to decrease periorbital edema." }
+                { id: "a", text: "Administer levothyroxine to correct the underlying thyroid imbalance and reverse the eye protrusion." },
+                { id: "b", text: "Protect the corneas with artificial tears, elevate the head of bed, and tape the eyelids closed at night if they do not fully close." },
+                { id: "c", text: "Apply ice packs directly to the eyes every 2 hours and keep the patient lying flat to reduce swelling." },
+                { id: "d", text: "Restrict oral fluids to 1,000 mL per day to decrease periorbital edema and reduce eye protrusion." }
             ],
             correct: "b",
             rationale: {
@@ -1258,10 +1258,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A female patient with hyperthyroidism asks the nurse about changes in her menstrual cycle. Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Hyperthyroidism commonly causes heavy, prolonged menstrual periods.\"" },
-                { id: "b", text: "\"You may experience lighter periods or even missed periods because excess thyroid hormone can disrupt the normal menstrual cycle.\"" },
-                { id: "c", text: "\"Thyroid disorders do not affect menstrual cycles.\"" },
-                { id: "d", text: "\"Hyperthyroidism always causes infertility that is permanent.\"" }
+                { id: "a", text: "\"Hyperthyroidism commonly causes heavy, prolonged menstrual periods because hormone levels are too high.\"" },
+                { id: "b", text: "\"You may have lighter or even missed periods because excess thyroid hormone can disrupt your normal menstrual cycle.\"" },
+                { id: "c", text: "\"Thyroid disorders do not affect menstrual cycles, so the changes are likely due to stress.\"" },
+                { id: "d", text: "\"Hyperthyroidism always causes permanent infertility, even after your thyroid levels are treated.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1426,7 +1426,7 @@ var thyroidDisordersQuizData = {
             stem: "A patient with Graves' disease and moderate exophthalmos is being discharged. Which set of discharge instructions is MOST appropriate for eye care?",
             options: [
                 { id: "a", text: "Apply warm compresses hourly, keep the head flat at night, and wear contact lenses to protect the cornea." },
-                { id: "b", text: "Use artificial tears during the day, wear dark sunglasses outdoors, elevate the head of bed at night, and tape eyelids closed during sleep if they don't fully close." },
+                { id: "b", text: "Use artificial tears by day, wear dark sunglasses outdoors, elevate the head of bed, and tape eyelids closed at night if they don't fully close." },
                 { id: "c", text: "Instill antibiotic eye drops four times daily, avoid all bright light, and wear an eye patch at all times." },
                 { id: "d", text: "No special eye care is needed; the exophthalmos will resolve completely once the hyperthyroidism is treated." }
             ],
@@ -1450,10 +1450,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is assessing a patient with Graves' disease and notes raised, thickened, non-pitting skin lesions on both shins. The nurse documents this finding as:",
             options: [
-                { id: "a", text: "Pitting edema from heart failure related to hyperthyroidism" },
+                { id: "a", text: "Pitting edema from high-output heart failure related to hyperthyroidism" },
                 { id: "b", text: "Pretibial myxedema, a characteristic dermatologic manifestation of Graves' disease" },
                 { id: "c", text: "Peripheral vascular disease caused by thyroid hormone excess" },
-                { id: "d", text: "Contact dermatitis from an unknown allergen" }
+                { id: "d", text: "Contact dermatitis from an unknown topical allergen on the lower legs" }
             ],
             correct: "b",
             rationale: {
@@ -1563,10 +1563,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient with hypothyroidism asks the nurse, \"My friend told me I should avoid broccoli and cabbage because they're bad for my thyroid. Is that true?\" Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Yes, you must completely eliminate all cruciferous vegetables from your diet immediately.\"" },
-                { id: "b", text: "\"These foods contain goitrogens that can interfere with thyroid function in very large amounts, but cooking them reduces the effect. Normal portions as part of a balanced diet are fine, especially since you're taking levothyroxine.\"" },
-                { id: "c", text: "\"No, diet has absolutely no effect on thyroid function.\"" },
-                { id: "d", text: "\"You should eat as much broccoli and cabbage as possible to help your thyroid work better.\"" }
+                { id: "a", text: "\"Yes, you must completely eliminate all cruciferous vegetables, even cooked ones, from your diet immediately.\"" },
+                { id: "b", text: "\"Goitrogens in these foods can affect the thyroid only in very large amounts, and cooking reduces the effect. Normal portions are fine.\"" },
+                { id: "c", text: "\"No, diet has absolutely no effect on thyroid function or on how well your levothyroxine works.\"" },
+                { id: "d", text: "\"You should eat as much broccoli and cabbage as possible, since they help your thyroid make more hormone.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1588,10 +1588,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A patient with Graves' disease asks why the thyroid keeps making too much hormone even though TSH is very low. Which explanation by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Your thyroid gland has a tumor that produces hormone independently of TSH.\"" },
-                { id: "b", text: "\"Your immune system produces antibodies called TSI that mimic TSH and continuously stimulate the thyroid, regardless of the feedback loop.\"" },
-                { id: "c", text: "\"Your pituitary gland is producing too much TSH, overstimulating the thyroid.\"" },
-                { id: "d", text: "\"You are consuming too much dietary iodine, which forces the thyroid to make excess hormone.\"" }
+                { id: "a", text: "\"Your thyroid gland has a benign tumor (toxic adenoma) that produces hormone independently of TSH.\"" },
+                { id: "b", text: "\"Your immune system makes antibodies called TSI that mimic TSH and keep stimulating the thyroid, regardless of the feedback loop.\"" },
+                { id: "c", text: "\"Your pituitary gland is producing too much TSH, which overstimulates the thyroid and overrides the feedback loop.\"" },
+                { id: "d", text: "\"You are consuming too much dietary iodine, which forces the thyroid to make excess hormone on its own.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1614,8 +1614,8 @@ var thyroidDisordersQuizData = {
             stem: "A 35-year-old woman with Graves' disease is discussing treatment options with her healthcare team. She plans to become pregnant within the next year. Which treatment plan is MOST appropriate?",
             options: [
                 { id: "a", text: "Radioactive iodine therapy now, followed by levothyroxine and pregnancy once thyroid levels stabilize." },
-                { id: "b", text: "Antithyroid medication therapy with methimazole, switching to PTU when she becomes pregnant in the first trimester, then back to methimazole for the second and third trimesters." },
-                { id: "c", text: "Immediate total thyroidectomy without preoperative preparation." },
+                { id: "b", text: "Methimazole therapy now, switching to PTU for the first trimester of pregnancy, then back to methimazole for the second and third trimesters." },
+                { id: "c", text: "Immediate total thyroidectomy without preoperative preparation, followed by pregnancy as soon as she recovers." },
                 { id: "d", text: "Beta-blocker therapy alone, since it controls all hyperthyroid symptoms without affecting the thyroid directly." }
             ],
             correct: "b",
@@ -1638,10 +1638,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A patient has a radioactive iodine uptake scan that shows a 'cold' nodule. The nurse explains that this finding means:",
             options: [
-                { id: "a", text: "The nodule is actively producing thyroid hormone and is almost certainly benign." },
+                { id: "a", text: "The nodule is actively producing thyroid hormone and is almost certainly benign, requiring no further workup." },
                 { id: "b", text: "The nodule does not take up radioactive iodine, which indicates it is non-functioning and has a higher risk of being malignant." },
-                { id: "c", text: "The nodule has a cold temperature on palpation, indicating poor blood supply." },
-                { id: "d", text: "The nodule responded well to thyroid medication and is shrinking." }
+                { id: "c", text: "The nodule has a cold temperature on palpation, indicating poor blood supply and tissue death." },
+                { id: "d", text: "The nodule responded well to thyroid medication and is shrinking, so it no longer needs follow-up." }
             ],
             correct: "b",
             rationale: {
@@ -1667,10 +1667,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A patient with Graves' disease is started on methimazole (Tapazole). The nurse explains that this medication works by:",
             options: [
-                { id: "a", text: "Destroying thyroid tissue through radiation exposure." },
+                { id: "a", text: "Destroying overactive thyroid tissue through targeted radiation exposure." },
                 { id: "b", text: "Blocking the synthesis of new thyroid hormones by inhibiting the enzyme thyroid peroxidase." },
-                { id: "c", text: "Replacing deficient thyroid hormone in the bloodstream." },
-                { id: "d", text: "Blocking the release of preformed thyroid hormone from the gland." }
+                { id: "c", text: "Replacing deficient thyroid hormone in the bloodstream to restore normal levels." },
+                { id: "d", text: "Blocking the release of preformed thyroid hormone stored in the gland." }
             ],
             correct: "b",
             rationale: {
@@ -1692,10 +1692,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient has been taking methimazole for 6 weeks. The patient calls the clinic reporting a sore throat, fever of 101.8°F, and mouth ulcers. Which instruction should the nurse provide?",
             options: [
-                { id: "a", text: "\"These are common cold symptoms. Take over-the-counter cold medication and continue the methimazole.\"" },
-                { id: "b", text: "\"Stop the methimazole immediately and come to the clinic or emergency department NOW for a complete blood count. These symptoms may indicate a serious medication side effect.\"" },
+                { id: "a", text: "\"These are common cold symptoms. Take over-the-counter cold medication and continue the methimazole as usual.\"" },
+                { id: "b", text: "\"Stop the methimazole and come to the clinic or emergency department right now for a complete blood count to check for a serious side effect.\"" },
                 { id: "c", text: "\"This is likely an allergic reaction. Take an antihistamine and call back if it doesn't improve in a week.\"" },
-                { id: "d", text: "\"Increase the methimazole dose, as these symptoms suggest your hyperthyroidism is getting worse.\"" }
+                { id: "d", text: "\"Increase your methimazole dose tonight, as these symptoms suggest your hyperthyroidism is getting worse.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1717,10 +1717,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Propylthiouracil (PTU) carries a BLACK BOX WARNING for which serious adverse effect?",
             options: [
-                { id: "a", text: "Cardiac arrhythmias and sudden death" },
+                { id: "a", text: "Fatal cardiac arrhythmias, including sudden cardiac death" },
                 { id: "b", text: "Severe hepatotoxicity, including liver failure and death" },
-                { id: "c", text: "Renal failure requiring dialysis" },
-                { id: "d", text: "Permanent bone marrow suppression" }
+                { id: "c", text: "Acute renal failure requiring long-term dialysis" },
+                { id: "d", text: "Permanent, irreversible bone marrow suppression" }
             ],
             correct: "b",
             rationale: {
@@ -1808,10 +1808,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient started on methimazole 3 days ago asks, \"Why am I still having palpitations and feeling anxious? Is the medication working?\" Which response by the nurse is MOST appropriate?",
             options: [
-                { id: "a", text: "\"The medication should have worked by now. Let me notify your provider to increase the dose.\"" },
-                { id: "b", text: "\"Methimazole blocks NEW hormone production but doesn't affect the thyroid hormone already in your bloodstream. It typically takes 2 to 8 weeks to notice improvement as the existing hormone is gradually used up.\"" },
-                { id: "c", text: "\"You may be having an allergic reaction to the medication. Stop taking it immediately.\"" },
-                { id: "d", text: "\"The medication only works when taken with food. Try taking it after meals.\"" }
+                { id: "a", text: "\"The medication should have worked by now. Let me notify your provider to increase the dose right away.\"" },
+                { id: "b", text: "\"Methimazole blocks NEW hormone production but not the hormone already in your blood. It takes 2 to 8 weeks to notice improvement.\"" },
+                { id: "c", text: "\"You may be having an allergic reaction to the medication. Stop taking it immediately and call your provider.\"" },
+                { id: "d", text: "\"The medication only works when taken with food. Try taking it after meals so it absorbs properly.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1833,10 +1833,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "In the treatment of thyroid storm, PTU is often preferred over methimazole. Which pharmacological property of PTU makes it superior in this emergency?",
             options: [
-                { id: "a", text: "PTU works faster because it has a shorter half-life than methimazole." },
-                { id: "b", text: "PTU blocks both thyroid hormone synthesis AND peripheral conversion of T4 to the more active T3, providing a dual mechanism of action." },
-                { id: "c", text: "PTU can be given intravenously, while methimazole cannot." },
-                { id: "d", text: "PTU has fewer side effects than methimazole in the emergency setting." }
+                { id: "a", text: "PTU works faster in an emergency because it has a shorter half-life than methimazole." },
+                { id: "b", text: "PTU blocks both thyroid hormone synthesis AND peripheral conversion of T4 to the more active T3, a dual mechanism." },
+                { id: "c", text: "PTU can be given intravenously in the ICU, while methimazole is available only as a tablet." },
+                { id: "d", text: "PTU has fewer side effects than methimazole, making it safer in the emergency setting." }
             ],
             correct: "b",
             rationale: {
@@ -1858,10 +1858,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A nurse is providing discharge teaching to a patient newly started on methimazole. Which instruction is MOST important for patient safety?",
             options: [
-                { id: "a", text: "\"Avoid eating dairy products while taking this medication.\"" },
-                { id: "b", text: "\"Call your provider or go to the emergency room immediately if you develop a sore throat, fever, or signs of infection, as this could indicate a dangerous drop in white blood cells.\"" },
-                { id: "c", text: "\"Take an extra dose if you miss one to maintain consistent blood levels.\"" },
-                { id: "d", text: "\"This medication will cure your Graves' disease permanently after a few months of use.\"" }
+                { id: "a", text: "\"Avoid eating dairy products while taking this medication because calcium will block its absorption.\"" },
+                { id: "b", text: "\"Seek care right away for a sore throat, fever, or any sign of infection, since this could mean a dangerous drop in white blood cells.\"" },
+                { id: "c", text: "\"Take an extra dose if you miss one to maintain consistent blood levels and keep your symptoms controlled.\"" },
+                { id: "d", text: "\"This medication will cure your Graves' disease permanently after a few months, so you can then stop it.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1883,10 +1883,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient has been on methimazole for 4 weeks. Which set of laboratory tests should the nurse anticipate the provider ordering at this follow-up visit?",
             options: [
-                { id: "a", text: "Hemoglobin A1C and fasting glucose" },
+                { id: "a", text: "Hemoglobin A1C, fasting blood glucose, and a fasting lipid panel" },
                 { id: "b", text: "CBC with differential, liver function tests, and thyroid function tests (TSH, free T4)" },
-                { id: "c", text: "Urinalysis and serum creatinine" },
-                { id: "d", text: "Serum calcium and phosphorus levels" }
+                { id: "c", text: "Urinalysis, serum creatinine, and a 24-hour urine collection for protein" },
+                { id: "d", text: "Serum calcium, phosphorus, magnesium, and parathyroid hormone levels" }
             ],
             correct: "b",
             rationale: {
@@ -1936,10 +1936,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient with newly diagnosed Graves' disease is prescribed propranolol in addition to methimazole. The patient asks, \"Why do I need two medications?\" Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"Propranolol cures the hyperthyroidism faster when combined with methimazole.\"" },
-                { id: "b", text: "\"Propranolol controls your symptoms like rapid heartbeat and tremors right away, while the methimazole takes several weeks to reduce your thyroid hormone levels. The propranolol bridges the gap.\"" },
-                { id: "c", text: "\"Propranolol replaces the thyroid hormone that methimazole blocks, keeping you balanced.\"" },
-                { id: "d", text: "\"Both medications do the same thing but work through different pathways for stronger effect.\"" }
+                { id: "a", text: "\"Propranolol cures the hyperthyroidism faster when combined with methimazole, so you'll need less of both.\"" },
+                { id: "b", text: "\"Propranolol calms symptoms like a racing heart and tremors right away, while methimazole takes weeks to lower your thyroid levels.\"" },
+                { id: "c", text: "\"Propranolol replaces the thyroid hormone that methimazole blocks, keeping your hormone levels balanced.\"" },
+                { id: "d", text: "\"Both medications do the same thing but work through different pathways, which gives a stronger effect.\"" }
             ],
             correct: "b",
             rationale: {
@@ -1961,10 +1961,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A hyperthyroid patient on propranolol 40 mg three times daily has achieved a euthyroid state after 8 weeks of methimazole therapy. The provider plans to discontinue the propranolol. Which instruction is MOST important?",
             options: [
-                { id: "a", text: "\"Stop the propranolol immediately since your thyroid levels are normal now.\"" },
+                { id: "a", text: "\"Stop the propranolol immediately since your thyroid levels are normal now and you no longer need it.\"" },
                 { id: "b", text: "\"The propranolol will be gradually tapered over several days. Stopping it suddenly can cause rebound tachycardia and hypertension.\"" },
-                { id: "c", text: "\"Continue taking propranolol indefinitely as a preventive measure.\"" },
-                { id: "d", text: "\"Switch from propranolol to aspirin for continued heart rate control.\"" }
+                { id: "c", text: "\"Continue taking propranolol indefinitely as a preventive measure against future thyroid flare-ups.\"" },
+                { id: "d", text: "\"Switch from propranolol to daily low-dose aspirin, which will provide continued heart rate control.\"" }
             ],
             correct: "b",
             rationale: {
@@ -2021,10 +2021,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A pregnant patient at 10 weeks gestation is diagnosed with hyperthyroidism requiring treatment. The provider prescribes PTU instead of methimazole. Which explanation by the nurse BEST describes why PTU is preferred at this stage?",
             options: [
-                { id: "a", text: "PTU is more effective than methimazole at controlling hyperthyroidism during pregnancy." },
-                { id: "b", text: "Methimazole can cause birth defects (aplasia cutis, choanal atresia) in the first trimester, while PTU has a better safety profile in early pregnancy." },
-                { id: "c", text: "PTU does not cross the placenta at all, making it completely safe for the fetus." },
-                { id: "d", text: "Methimazole is not available in a safe dosage form for pregnant patients." }
+                { id: "a", text: "PTU is more effective than methimazole at controlling hyperthyroidism in every stage of pregnancy." },
+                { id: "b", text: "Methimazole can cause birth defects (aplasia cutis, choanal atresia) in the first trimester, while PTU is safer in early pregnancy." },
+                { id: "c", text: "PTU does not cross the placenta at all, making it completely safe for the fetus throughout the pregnancy." },
+                { id: "d", text: "Methimazole is not available in a safe dosage form for pregnant patients and must be avoided for all nine months." }
             ],
             correct: "b",
             rationale: {
@@ -2085,10 +2085,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient is prescribed Lugol's solution (potassium iodide) before thyroidectomy. Which administration technique is MOST correct?",
             options: [
-                { id: "a", text: "Administer undiluted on an empty stomach for rapid absorption." },
-                { id: "b", text: "Dilute in water or juice, administer through a straw to reduce the bitter taste, take with food, and rinse the mouth afterward." },
-                { id: "c", text: "Apply topically to the thyroid area of the neck for direct absorption." },
-                { id: "d", text: "Administer intramuscularly for fastest onset of action." }
+                { id: "a", text: "Administer undiluted on an empty stomach for rapid absorption, then offer a glass of water." },
+                { id: "b", text: "Dilute in water or juice, give through a straw to reduce the bitter taste, take with food, and rinse the mouth afterward." },
+                { id: "c", text: "Apply topically to the skin over the thyroid area of the neck for direct absorption into the gland." },
+                { id: "d", text: "Administer intramuscularly into a large muscle for the fastest onset of action before surgery." }
             ],
             correct: "b",
             rationale: {
@@ -2188,10 +2188,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Before administering radioactive iodine (I-131) therapy, the nurse must FIRST verify which critical patient information?",
             options: [
-                { id: "a", text: "The patient's most recent hemoglobin A1C level" },
+                { id: "a", text: "The patient's most recent hemoglobin A1C level and fasting blood glucose" },
                 { id: "b", text: "A negative pregnancy test and confirmation that the patient is not breastfeeding" },
-                { id: "c", text: "The patient's baseline kidney function tests" },
-                { id: "d", text: "Documentation of a recent dental exam" }
+                { id: "c", text: "The patient's baseline kidney function tests and urine output record" },
+                { id: "d", text: "Documentation of a recent dental exam and any dental work in progress" }
             ],
             correct: "b",
             rationale: {
@@ -2241,10 +2241,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "In the treatment of thyroid storm, Lugol's solution (iodine) must be administered at least 1 hour AFTER PTU or methimazole. If iodine is given FIRST, the MOST dangerous consequence would be:",
             options: [
-                { id: "a", text: "The iodine would have no therapeutic effect." },
-                { id: "b", text: "The thyroid gland would use the iodine as raw material to produce MORE thyroid hormone, worsening the crisis." },
+                { id: "a", text: "The iodine would have no therapeutic effect and would simply be excreted in the urine." },
+                { id: "b", text: "The thyroid would use the iodine as raw material to make MORE thyroid hormone, worsening the crisis." },
                 { id: "c", text: "The patient would develop an immediate allergic reaction to the iodine." },
-                { id: "d", text: "The iodine would permanently destroy the thyroid gland." }
+                { id: "d", text: "The iodine would permanently destroy the thyroid gland, causing lifelong hypothyroidism." }
             ],
             correct: "b",
             rationale: {
@@ -2344,10 +2344,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "A patient with a history of Graves' disease presents to the emergency department after developing a urinary tract infection. Vital signs are: temperature 105.8°F (41°C), heart rate 168 bpm (irregular), blood pressure 190/110 mmHg, respiratory rate 28. The patient is agitated, confused, and diaphoretic. What should the nurse suspect, and what is the PRIORITY action?",
             options: [
-                { id: "a", text: "Septic shock; administer IV antibiotics and fluid bolus immediately." },
-                { id: "b", text: "Thyroid storm triggered by infection; activate the rapid response team and prepare for multidrug emergency treatment in the ICU." },
-                { id: "c", text: "Myxedema coma; administer IV levothyroxine and begin passive rewarming." },
-                { id: "d", text: "Panic attack; administer a benzodiazepine and provide a calm environment." }
+                { id: "a", text: "Septic shock from the urinary infection; administer IV antibiotics and a fluid bolus immediately." },
+                { id: "b", text: "Thyroid storm triggered by infection; activate the rapid response team and prepare for multidrug treatment in the ICU." },
+                { id: "c", text: "Myxedema coma; administer IV levothyroxine and begin passive rewarming with warm blankets." },
+                { id: "d", text: "Panic attack; administer a benzodiazepine, provide a calm environment, and reassess in 30 minutes." }
             ],
             correct: "b",
             rationale: {
@@ -2482,10 +2482,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "Which finding BEST differentiates thyroid storm from uncomplicated severe hyperthyroidism?",
             options: [
-                { id: "a", text: "Elevated T3 and T4 levels" },
-                { id: "b", text: "Presence of goiter on physical examination" },
-                { id: "c", text: "Temperature greater than 104°F (40°C) with altered mental status and multiorgan dysfunction" },
-                { id: "d", text: "Low TSH on laboratory testing" }
+                { id: "a", text: "Elevated free T3 and free T4 levels on routine laboratory testing" },
+                { id: "b", text: "Presence of a large, diffuse goiter on physical examination" },
+                { id: "c", text: "Temperature above 104°F (40°C) with altered mental status and organ dysfunction" },
+                { id: "d", text: "A suppressed, nearly undetectable TSH level on laboratory testing" }
             ],
             correct: "c",
             rationale: {
@@ -2507,10 +2507,10 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A patient in thyroid storm has been successfully stabilized over 48 hours with multidrug therapy. Which assessment finding BEST indicates the patient is responding to treatment?",
             options: [
-                { id: "a", text: "Heart rate decreasing from 168 to 88 bpm, temperature decreasing to 99.2°F, and the patient becoming alert and oriented" },
-                { id: "b", text: "Heart rate remaining at 160 bpm with persistent confusion and fever of 104°F" },
-                { id: "c", text: "Development of new lower extremity edema and decreased urine output" },
-                { id: "d", text: "TSH level rising from 0.01 to 0.05 mIU/L" }
+                { id: "a", text: "Heart rate decreasing from 168 to 88 bpm, temperature falling to 99.2°F, and the patient becoming alert and oriented" },
+                { id: "b", text: "Heart rate remaining at 160 bpm with persistent confusion, agitation, and a fever of 104°F" },
+                { id: "c", text: "Development of new lower extremity edema, crackles in the lungs, and decreased urine output" },
+                { id: "d", text: "TSH level rising slightly from 0.01 to 0.05 mIU/L on the morning laboratory panel after 48 hours" }
             ],
             correct: "a",
             rationale: {
@@ -2532,10 +2532,10 @@ var thyroidDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Corticosteroids (dexamethasone or hydrocortisone) are administered during thyroid storm for which TWO reasons?",
             options: [
-                { id: "a", text: "To reduce inflammation in the thyroid gland and shrink the goiter" },
+                { id: "a", text: "To reduce inflammation in the thyroid gland and shrink the goiter before a planned thyroidectomy" },
                 { id: "b", text: "To block peripheral conversion of T4 to T3 and to prevent possible adrenal insufficiency from the hypermetabolic state" },
-                { id: "c", text: "To enhance the effect of beta-blockers and reduce blood pressure" },
-                { id: "d", text: "To prevent the patient from developing hypothyroidism after treatment" }
+                { id: "c", text: "To enhance the effect of beta-blockers and reduce blood pressure and heart rate more quickly" },
+                { id: "d", text: "To prevent the patient from developing permanent hypothyroidism after antithyroid treatment" }
             ],
             correct: "b",
             rationale: {
@@ -2621,10 +2621,10 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "A patient is 4 hours post-thyroidectomy. The nurse observes progressive swelling of the anterior neck, blood-tinged drainage soaking the dressing, and the patient states, \"It feels like something is pressing on my throat - I can't breathe well.\" What is the nurse's PRIORITY action?",
             options: [
-                { id: "a", text: "Elevate the head of bed and apply an ice pack to the neck to reduce swelling." },
-                { id: "b", text: "Administer IV calcium gluconate for possible hypocalcemia." },
-                { id: "c", text: "Notify the surgeon immediately and have the suture removal/tracheostomy tray ready at the bedside for emergency airway intervention." },
-                { id: "d", text: "Administer a dose of analgesic medication for throat discomfort." }
+                { id: "a", text: "Elevate the head of bed, apply an ice pack to the neck to reduce swelling, and reassess in 15 minutes." },
+                { id: "b", text: "Administer IV calcium gluconate for possible hypocalcemia and send a stat serum calcium level." },
+                { id: "c", text: "Notify the surgeon immediately and bring the suture removal/tracheostomy tray to the bedside for an emergency airway." },
+                { id: "d", text: "Administer a dose of IV analgesic medication for throat discomfort and recheck breathing in 30 minutes." }
             ],
             correct: "c",
             rationale: {

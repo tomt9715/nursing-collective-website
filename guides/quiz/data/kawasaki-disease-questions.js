@@ -42,10 +42,10 @@ var kawasakiDiseaseQuizData = {
             difficulty: "analysis",
             stem: "A child is diagnosed with Kawasaki disease on day 7 of fever. The provider orders IVIG 2 g/kg. The nurse understands the priority reason for prompt administration is to:",
             options: [
-                { id: "a", text: "Prevent dehydration" },
-                { id: "b", text: "Shorten the duration of fever" },
+                { id: "a", text: "Prevent dehydration from prolonged fever" },
+                { id: "b", text: "Shorten the duration of the high fever" },
                 { id: "c", text: "Reduce the risk of coronary artery aneurysms" },
-                { id: "d", text: "Prevent pericardial effusion" }
+                { id: "d", text: "Prevent pericardial effusion and tamponade" }
             ],
             correct: "c",
             rationale: {
@@ -66,9 +66,9 @@ var kawasakiDiseaseQuizData = {
             stem: "A parent of a 4-year-old being treated for Kawasaki disease asks the nurse why the child is receiving high-dose aspirin when they were told aspirin is dangerous for children. The nurse's best response is:",
             options: [
                 { id: "a", text: "'Aspirin is safe at this age; the Reye warning only applies to infants.'" },
-                { id: "b", text: "'In Kawasaki disease, the benefits of aspirin outweigh the risks because it helps prevent heart problems.'" },
-                { id: "c", text: "'The provider must have made an error - let me check the order.'" },
-                { id: "d", text: "'Aspirin only causes Reye syndrome in children older than 12.'" }
+                { id: "b", text: "'In Kawasaki disease, aspirin's benefit of preventing heart problems outweighs the risk.'" },
+                { id: "c", text: "'The provider must have made an error - let me hold it and check the order.'" },
+                { id: "d", text: "'Aspirin only causes Reye syndrome in children older than 12 years of age.'" }
             ],
             correct: "b",
             rationale: {
@@ -136,8 +136,8 @@ var kawasakiDiseaseQuizData = {
             options: [
                 { id: "a", text: "Thrombocytopenia (platelets <150,000)" },
                 { id: "b", text: "Thrombocytosis (platelets often >450,000, up to >1 million)" },
-                { id: "c", text: "Hyperkalemia" },
-                { id: "d", text: "Leukopenia" }
+                { id: "c", text: "Hyperkalemia (potassium often >5.5 mEq/L, up to >7 mEq/L)" },
+                { id: "d", text: "Leukopenia (white blood cells often <4,500, down to <2,000)" }
             ],
             correct: "b",
             rationale: {
@@ -203,8 +203,8 @@ var kawasakiDiseaseQuizData = {
             difficulty: "application",
             stem: "During administration of IVIG to a child with Kawasaki disease, the child develops chills, a temperature of 38.8\u00b0C (101.8\u00b0F), and drops blood pressure from 100/60 to 82/48 mmHg. What is the nurse's FIRST action?",
             options: [
-                { id: "a", text: "Give a bolus of normal saline" },
-                { id: "b", text: "Administer diphenhydramine IV" },
+                { id: "a", text: "Give a 20 mL/kg bolus of normal saline" },
+                { id: "b", text: "Administer diphenhydramine IV as prescribed" },
                 { id: "c", text: "Slow or stop the IVIG infusion and notify the provider" },
                 { id: "d", text: "Continue the infusion and reassess in 15 minutes" }
             ],
@@ -273,9 +273,9 @@ var kawasakiDiseaseQuizData = {
             stem: "Which of the following clinical findings is NOT part of the CRASH and BURN diagnostic criteria for Kawasaki disease?",
             options: [
                 { id: "a", text: "Bilateral non-purulent conjunctivitis" },
-                { id: "b", text: "Fever for at least 5 days" },
+                { id: "b", text: "Fever lasting at least 5 consecutive days" },
                 { id: "c", text: "Purulent cervical lymphadenitis with abscess" },
-                { id: "d", text: "Strawberry tongue" }
+                { id: "d", text: "Strawberry tongue and cracked red lips" }
             ],
             correct: "c",
             rationale: {

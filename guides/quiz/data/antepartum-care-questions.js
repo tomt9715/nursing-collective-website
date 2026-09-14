@@ -87,9 +87,9 @@ var antepartumCareQuizData = {
             difficulty: "application",
             stem: "A nurse is reviewing the prenatal lab results for a client at her first prenatal visit at 10 weeks gestation. Which finding requires immediate follow-up by the nurse?",
             options: [
-                { id: "a", text: "Hemoglobin 11.2 g/dL" },
+                { id: "a", text: "Hemoglobin 11.2 g/dL at 10 weeks gestation" },
                 { id: "b", text: "Blood type O negative, antibody screen negative" },
-                { id: "c", text: "Rubella titer non-immune" },
+                { id: "c", text: "Rubella titer non-immune (susceptible)" },
                 { id: "d", text: "Urine culture positive for Group B Streptococcus" }
             ],
             labValues: [
@@ -114,10 +114,10 @@ var antepartumCareQuizData = {
             difficulty: "application",
             stem: "A nurse is performing a non-stress test (NST) on a client at 34 weeks gestation. After 20 minutes, the tracing shows one acceleration of fetal heart rate of 15 beats per minute lasting 18 seconds. No decelerations are present. How should the nurse interpret this result?",
             options: [
-                { id: "a", text: "Reactive - no further testing needed" },
-                { id: "b", text: "Non-reactive - extend the test or perform vibroacoustic stimulation" },
+                { id: "a", text: "Reactive - reassuring, no further testing needed" },
+                { id: "b", text: "Non-reactive - extend the test or use vibroacoustic stimulation" },
                 { id: "c", text: "Positive - the fetus is not tolerating the test" },
-                { id: "d", text: "Equivocal - repeat the NST in 24 hours" }
+                { id: "d", text: "Equivocal - repeat the non-stress test in 24 hours" }
             ],
             correct: "b",
             rationale: {
@@ -211,9 +211,9 @@ var antepartumCareQuizData = {
             difficulty: "application",
             stem: "A nurse is providing prenatal education to an Rh-negative client whose partner is Rh-positive. The client\u2019s indirect Coombs test is negative. When should the nurse explain that RhoGAM (Rh immune globulin) will be administered?",
             options: [
-                { id: "a", text: "At 20 weeks gestation and again at 36 weeks" },
-                { id: "b", text: "At 28 weeks gestation and within 72 hours after delivery if the newborn is Rh-positive" },
-                { id: "c", text: "Only after delivery if the newborn is confirmed Rh-positive" },
+                { id: "a", text: "At 20 weeks gestation and again at 36 weeks gestation" },
+                { id: "b", text: "At 28 weeks and within 72 hours after birth if the newborn is Rh-positive" },
+                { id: "c", text: "Only after delivery, once the newborn is confirmed Rh-positive" },
                 { id: "d", text: "At every prenatal visit starting in the second trimester" }
             ],
             correct: "b",

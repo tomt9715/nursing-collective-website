@@ -181,10 +181,10 @@ var patientSafetyQuizData = {
             difficulty: "application",
             stem: "A nurse administers 10 units of insulin instead of the ordered 4 units. After assessing the patient and notifying the provider, what should the nurse document in the medical record?",
             options: [
-                { id: "a", text: "That an incident report was completed and filed" },
-                { id: "b", text: "The dose given, the assessment findings, the provider notification and the patient response" },
+                { id: "a", text: "That an incident report was completed and filed with risk management" },
+                { id: "b", text: "The dose given, assessment findings, provider notification and patient response" },
                 { id: "c", text: "An explanation of how the error occurred and who was at fault" },
-                { id: "d", text: "Nothing, since the incident report covers the event" }
+                { id: "d", text: "Nothing, since the separate incident report covers the event" }
             ],
             correct: "b",
             rationale: {
@@ -366,8 +366,8 @@ var patientSafetyQuizData = {
             stem: "A nurse applies soft wrist restraints to a patient with a valid order. Which action indicates correct technique?",
             options: [
                 { id: "a", text: "Securing the ties to the side rails so they move with the rail" },
-                { id: "b", text: "Tying with a knot that requires scissors to release quickly" },
-                { id: "c", text: "Securing to the bed frame with a quick-release knot and checking that two fingers slide underneath" },
+                { id: "b", text: "Tying with a tight knot that must be cut with scissors to release" },
+                { id: "c", text: "Tying to the bed frame with a quick-release knot, leaving room for two fingers" },
                 { id: "d", text: "Applying the restraints tightly enough that the wrists cannot rotate" }
             ],
             correct: "c",

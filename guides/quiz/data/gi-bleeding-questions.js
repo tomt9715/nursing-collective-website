@@ -18,10 +18,10 @@ var giBleedingQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is assessing a patient admitted with suspected gastrointestinal bleeding. The patient has black, tarry, foul-smelling stools. Which type of GI bleed does this finding MOST likely indicate?",
             options: [
-                { id: "a", text: "Lower GI bleed from diverticulosis" },
+                { id: "a", text: "Lower GI bleed from diverticulosis of the colon" },
                 { id: "b", text: "Upper GI bleed from a source above the ligament of Treitz" },
-                { id: "c", text: "Lower GI bleed from hemorrhoids" },
-                { id: "d", text: "GI bleed from a colorectal source" }
+                { id: "c", text: "Lower GI bleed from internal or external hemorrhoids" },
+                { id: "d", text: "GI bleed from a colorectal source in the large bowel" }
             ],
             correct: "b",
             rationale: {
@@ -41,10 +41,10 @@ var giBleedingQuizData = {
             difficulty: "analysis",
             stem: "A patient presents to the emergency department with hematemesis (vomiting bright red blood). Vital signs: BP 86/52 mmHg, HR 128 bpm, RR 26 breaths/min, SpO2 94%. The patient is anxious and confused. Initial hemoglobin is 10.2 g/dL. What should the nurse do FIRST?",
             options: [
-                { id: "a", text: "Insert a nasogastric tube for lavage" },
-                { id: "b", text: "Establish two large-bore (18-gauge or larger) IV lines and begin fluid resuscitation" },
+                { id: "a", text: "Insert a nasogastric tube and begin gastric lavage" },
+                { id: "b", text: "Establish two large-bore IV lines and begin fluid resuscitation" },
                 { id: "c", text: "Obtain a type and crossmatch for blood transfusion" },
-                { id: "d", text: "Prepare the patient for emergent endoscopy" }
+                { id: "d", text: "Prepare the patient for emergent upper endoscopy" }
             ],
             correct: "b",
             rationale: {
@@ -117,9 +117,9 @@ var giBleedingQuizData = {
             difficulty: "analysis",
             stem: "A patient is admitted with a GI bleed. Vital signs: BP 100/68, HR 118, RR 22. Labs drawn on admission 2 hours ago showed Hgb 11.8 g/dL. The patient continues to have melena stools. The nurse understands that the hemoglobin level may not accurately reflect the severity of blood loss. Which statement BEST explains why the initial hemoglobin is misleading in acute hemorrhage?",
             options: [
-                { id: "a", text: "Both red blood cells and plasma are lost proportionally in acute hemorrhage, so the hemoglobin concentration remains unchanged until hemodilution occurs over 24-72 hours" },
-                { id: "b", text: "Hemoglobin levels are only accurate when drawn from an arterial blood gas sample, not a venous draw" },
-                { id: "c", text: "The lab equipment cannot accurately measure hemoglobin when the sample contains digested blood products" },
+                { id: "a", text: "Red blood cells and plasma are lost in equal proportion, so hemoglobin concentration stays unchanged until hemodilution occurs over 24-72 hours" },
+                { id: "b", text: "Hemoglobin levels are only accurate when drawn from an arterial blood gas sample, not from a routine venous draw" },
+                { id: "c", text: "The lab equipment cannot accurately measure hemoglobin when the sample contains digested blood products from the gut" },
                 { id: "d", text: "Acute hemorrhage causes the bone marrow to immediately release reticulocytes, which are not counted in the standard hemoglobin assay" }
             ],
             correct: "a",

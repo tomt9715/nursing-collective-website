@@ -19,10 +19,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "application",
             stem: "A parent of an 18-month-old with atopic dermatitis asks the nurse about the best way to moisturize their child's skin. Which instruction is MOST important?",
             options: [
-                { id: "a", text: "Apply lotion only when the skin feels dry" },
+                { id: "a", text: "Apply a light lotion only on days when the skin looks or feels dry" },
                 { id: "b", text: "Give a long, hot bath followed by moisturizer within 30 minutes" },
                 { id: "c", text: "Give a short lukewarm bath and apply thick moisturizer within 3 minutes of patting dry" },
-                { id: "d", text: "Use fragrance and antibacterial soap to kill skin bacteria" }
+                { id: "d", text: "Use fragranced antibacterial soap daily to kill bacteria on the skin" }
             ],
             correct: "c",
             rationale: {
@@ -65,10 +65,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "knowledge",
             stem: "Which physical finding distinguishes IRRITANT diaper dermatitis from CANDIDAL diaper dermatitis?",
             options: [
-                { id: "a", text: "Redness of the skin" },
-                { id: "b", text: "Involvement of skin folds and satellite lesions (candidal) vs. sparing of folds (irritant)" },
-                { id: "c", text: "Presence of pain" },
-                { id: "d", text: "Age of the child" }
+                { id: "a", text: "Bright red, inflamed skin (candidal) vs. pale pink, mild redness (irritant)" },
+                { id: "b", text: "Skin fold involvement and satellite lesions (candidal) vs. spared folds (irritant)" },
+                { id: "c", text: "Pain during diaper changes (candidal) vs. no discomfort at all (irritant)" },
+                { id: "d", text: "Seen in older infants (candidal) vs. seen only in newborns (irritant)" }
             ],
             correct: "b",
             rationale: {
@@ -88,10 +88,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "knowledge",
             stem: "An adolescent presents with linear red streaks and vesicles on her forearm 2 days after hiking. The reaction is INTENSELY itchy. Which condition is most likely?",
             options: [
-                { id: "a", text: "Atopic dermatitis" },
+                { id: "a", text: "Atopic dermatitis triggered by outdoor heat" },
                 { id: "b", text: "Allergic contact dermatitis from poison ivy" },
-                { id: "c", text: "Scabies" },
-                { id: "d", text: "Urticaria" }
+                { id: "c", text: "Scabies infestation picked up at a campsite" },
+                { id: "d", text: "Urticaria from an insect sting on the trail" }
             ],
             correct: "b",
             rationale: {
@@ -134,10 +134,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "application",
             stem: "A 7-year-old with atopic dermatitis is being discharged. Which teaching statement by the parent indicates understanding?",
             options: [
-                { id: "a", text: "'I'll apply the topical steroid to the entire body, all the time.'" },
-                { id: "b", text: "'I'll apply the topical steroid only to active red itchy patches during flares, and moisturize the rest of the skin daily.'" },
-                { id: "c", text: "'Steroids cause addiction, so I'll avoid them entirely.'" },
-                { id: "d", text: "'I should dress him in wool clothing to keep his skin warm.'" }
+                { id: "a", text: "'I'll apply the topical steroid to his entire body every day, even when his skin is clear.'" },
+                { id: "b", text: "'I'll use the topical steroid only on red, itchy patches during flares and moisturize all over daily.'" },
+                { id: "c", text: "'Steroids cause addiction, so I'll avoid them and use only moisturizer on his skin.'" },
+                { id: "d", text: "'I should dress him in wool clothing to keep his skin warm and prevent dryness.'" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "knowledge",
             stem: "A parent describes their toddler's rash as 'wheals that appear, move around, and disappear within hours.' The rash is intensely itchy. Which medication is first-line?",
             options: [
-                { id: "a", text: "Topical clobetasol" },
+                { id: "a", text: "Topical clobetasol (Temovate) applied twice daily" },
                 { id: "b", text: "Cetirizine (Zyrtec) or diphenhydramine (Benadryl)" },
-                { id: "c", text: "Oral acyclovir" },
-                { id: "d", text: "IM epinephrine" }
+                { id: "c", text: "Oral acyclovir (Zovirax) liquid suspension" },
+                { id: "d", text: "IM epinephrine (EpiPen) into the outer thigh" }
             ],
             correct: "b",
             rationale: {
@@ -203,10 +203,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "application",
             stem: "A school-age child with chronic atopic dermatitis suddenly develops a cluster of painful vesicles on her affected arms, plus fever. What is the priority concern?",
             options: [
-                { id: "a", text: "Typical eczema flare" },
+                { id: "a", text: "Typical eczema flare (worsening of chronic dermatitis)" },
                 { id: "b", text: "Eczema herpeticum (disseminated HSV on eczematous skin)" },
-                { id: "c", text: "Contact dermatitis" },
-                { id: "d", text: "Dry skin from weather change" }
+                { id: "c", text: "Contact dermatitis (reaction to a new soap or lotion)" },
+                { id: "d", text: "Dry skin from weather change (winter xerosis)" }
             ],
             correct: "b",
             rationale: {
@@ -226,10 +226,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "application",
             stem: "A parent asks the nurse whether their child with a peanut allergy should carry an EpiPen even if they've only had hives in the past. What is the MOST accurate response?",
             options: [
-                { id: "a", text: "'No, an EpiPen is only for severe reactions.'" },
-                { id: "b", text: "'Yes, because past reactions don't predict future severity. Always carry two EpiPens and know how to use them.'" },
-                { id: "c", text: "'Yes, but only when traveling or at restaurants.'" },
-                { id: "d", text: "'Oral antihistamines are a safer alternative.'" }
+                { id: "a", text: "'No, an EpiPen is only needed after a reaction with trouble breathing.'" },
+                { id: "b", text: "'Yes. Past reactions don't predict future ones, so carry two EpiPens at all times.'" },
+                { id: "c", text: "'Yes, but only when traveling, eating out, or at birthday parties.'" },
+                { id: "d", text: "'No, oral antihistamines are a safer alternative for hives-only allergies.'" }
             ],
             correct: "b",
             rationale: {
@@ -272,10 +272,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "knowledge",
             stem: "Which medication class is the FIRST-LINE treatment for uncomplicated acute urticaria?",
             options: [
-                { id: "a", text: "Topical corticosteroids" },
+                { id: "a", text: "Topical corticosteroids (hydrocortisone, triamcinolone)" },
                 { id: "b", text: "H1 antihistamines (cetirizine, loratadine, diphenhydramine)" },
-                { id: "c", text: "Oral antibiotics" },
-                { id: "d", text: "Immunosuppressants like cyclosporine" }
+                { id: "c", text: "Oral antibiotics (amoxicillin, cephalexin, azithromycin)" },
+                { id: "d", text: "Systemic immunosuppressants like oral cyclosporine" }
             ],
             correct: "b",
             rationale: {
@@ -295,10 +295,10 @@ var hypersensitivityInflammatorySkinQuizData = {
             difficulty: "application",
             stem: "A 3-month-old has red, shiny patches on the buttocks, spares the skin folds, and is not improving with frequent diaper changes. What is the MOST appropriate next step?",
             options: [
-                { id: "a", text: "Apply topical clotrimazole immediately" },
+                { id: "a", text: "Apply topical clotrimazole cream to the rash twice daily starting now" },
                 { id: "b", text: "Apply generous zinc oxide barrier cream with every diaper change and give air time" },
-                { id: "c", text: "Start oral antibiotics" },
-                { id: "d", text: "Use scented baby wipes to clean the area" }
+                { id: "c", text: "Start oral antibiotics to treat a possible bacterial skin infection" },
+                { id: "d", text: "Use scented baby wipes to clean the area thoroughly at each change" }
             ],
             correct: "b",
             rationale: {

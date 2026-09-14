@@ -20,10 +20,10 @@ var documentationChartingQuizData = {
             difficulty: "application",
             stem: "Which entry is documented appropriately?",
             options: [
-                { id: "a", text: "Patient is uncooperative and refuses to follow instructions" },
-                { id: "b", text: "Patient appears anxious about the surgery tomorrow" },
-                { id: "c", text: "Declined morning medications at 0800 and 1000. States, \"I am not taking anything until I speak to my doctor.\"" },
-                { id: "d", text: "Patient tolerated the dressing change well" }
+                { id: "a", text: "Patient is uncooperative and refuses to follow any instructions from the nursing staff" },
+                { id: "b", text: "Patient appears anxious about the surgery tomorrow and seems upset with the plan" },
+                { id: "c", text: "Declined 0800 and 1000 medications. States, \"I am not taking anything until I speak to my doctor.\"" },
+                { id: "d", text: "Patient tolerated the dressing change well and seemed comfortable afterward" }
             ],
             correct: "c",
             rationale: {
@@ -135,9 +135,9 @@ var documentationChartingQuizData = {
             difficulty: "application",
             stem: "A nurse is calling a provider about a patient whose blood pressure has fallen to 84/50 with a heart rate of 122. Which statement completes the SBAR correctly?",
             options: [
-                { id: "a", text: "\"I just wanted to let you know about her vital signs.\"" },
-                { id: "b", text: "\"I think she may be getting worse, so I will keep watching her.\"" },
-                { id: "c", text: "\"I am concerned she is becoming septic. I am requesting that you come to assess her now and that we start fluids.\"" },
+                { id: "a", text: "\"I just wanted to let you know about her vital signs this evening.\"" },
+                { id: "b", text: "\"I think she may be getting worse, so I will keep a close eye on her.\"" },
+                { id: "c", text: "\"I am concerned she is becoming septic. Please come assess her now and order fluids.\"" },
                 { id: "d", text: "\"Her numbers are in the chart if you want to look at them later.\"" }
             ],
             correct: "c",
@@ -158,10 +158,10 @@ var documentationChartingQuizData = {
             difficulty: "application",
             stem: "A nurse administers the wrong dose of a medication. After assessing the patient and notifying the provider, which entry belongs in the medical record?",
             options: [
-                { id: "a", text: "\"Medication error occurred. Incident report completed and submitted.\"" },
-                { id: "b", text: "\"Gave 10 mg instead of 5 mg due to a distracting environment on the unit.\"" },
-                { id: "c", text: "\"Metoprolol 10 mg given at 0900. Blood pressure 96/58, heart rate 54 at 0915. Provider notified at 0918. Vital signs every 15 minutes.\"" },
-                { id: "d", text: "No entry, because the incident report documents the event" }
+                { id: "a", text: "\"Medication error occurred at 0900. Incident report completed and submitted to the charge nurse.\"" },
+                { id: "b", text: "\"Gave 10 mg instead of 5 mg at 0900 due to a distracting environment on the unit. Provider aware.\"" },
+                { id: "c", text: "\"Metoprolol 10 mg given at 0900. Blood pressure 96/58, heart rate 54 at 0915. Provider notified 0918. Vital signs every 15 minutes.\"" },
+                { id: "d", text: "No entry, because the incident report already documents the event, the dose and the patient response" }
             ],
             correct: "c",
             rationale: {
@@ -411,10 +411,10 @@ var documentationChartingQuizData = {
             difficulty: "application",
             stem: "A patient refuses a scheduled dose of an anticoagulant. What should the nurse document?",
             options: [
-                { id: "a", text: "Nothing, since the medication was not administered" },
+                { id: "a", text: "Nothing, since the medication was never actually administered" },
                 { id: "b", text: "That the dose was given, to keep the record consistent with the order" },
-                { id: "c", text: "The refusal, the patient's stated reason, the teaching provided and the provider notification" },
-                { id: "d", text: "That the patient is non-adherent with the treatment plan" }
+                { id: "c", text: "The refusal, the patient's reason, the teaching given and the provider notification" },
+                { id: "d", text: "That the patient is non-adherent with the anticoagulation treatment plan" }
             ],
             correct: "c",
             rationale: {

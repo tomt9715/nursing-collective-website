@@ -46,10 +46,10 @@ var assessmentSkillsQuizData = {
             difficulty: "application",
             stem: "A nurse is completing a Braden Scale assessment for a 78-year-old patient admitted with a hip fracture who is immobile in bed, incontinent of urine, eating less than 50% of meals, and requires complete assistance with repositioning. The nurse scores: Sensory Perception 3, Moisture 2, Activity 1, Mobility 2, Nutrition 2, Friction/Shear 1. The total Braden Score is 11. Which nursing action is MOST appropriate based on this score?",
             options: [
-                { id: "a", text: "Document the score and reassess in one week" },
-                { id: "b", text: "Implement a high-risk pressure injury prevention protocol: reposition every 2 hours, apply pressure-relieving mattress, optimize nutrition, and moisturize skin" },
-                { id: "c", text: "Apply a barrier cream and continue current care since the score indicates low risk" },
-                { id: "d", text: "Place the patient on a standard hospital mattress and reposition every 4 hours" }
+                { id: "a", text: "Document the score in the chart and reassess skin integrity with the Braden Scale in one week" },
+                { id: "b", text: "Implement high-risk pressure injury prevention: reposition every 2 hours, pressure-relieving mattress, nutrition and skin care" },
+                { id: "c", text: "Apply a barrier cream and continue the current plan of care since the score indicates low risk" },
+                { id: "d", text: "Place the patient on a standard hospital mattress and reposition every 4 hours around the clock" }
             ],
             correct: "b",
             rationale: {
@@ -155,8 +155,8 @@ var assessmentSkillsQuizData = {
             stem: "A nurse is performing a head-to-toe assessment on a newly admitted patient. During the neurological assessment, the nurse notes the right pupil is 6 mm and non-reactive to light while the left pupil is 3 mm and briskly reactive. The patient was alert on admission 2 hours ago but is now difficult to arouse. What should the nurse do FIRST?",
             options: [
                 { id: "a", text: "Document the findings as a possible pre-existing condition (anisocoria)" },
-                { id: "b", text: "Notify the provider immediately - this is a sign of increased intracranial pressure with impending herniation" },
-                { id: "c", text: "Dim the room lights and reassess the pupils in 30 minutes" },
+                { id: "b", text: "Notify the provider immediately of signs of increased intracranial pressure" },
+                { id: "c", text: "Dim the room lights and reassess the pupils and alertness in 30 minutes" },
                 { id: "d", text: "Administer the prescribed PRN acetaminophen for a possible headache" }
             ],
             correct: "b",
@@ -177,10 +177,10 @@ var assessmentSkillsQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is documenting an assessment finding. Which documentation entry demonstrates CORRECT objective charting?",
             options: [
-                { id: "a", text: "\"Patient is being dramatic about pain and likely drug-seeking.\"" },
-                { id: "b", text: "\"Patient seems anxious and appears to be in moderate pain.\"" },
-                { id: "c", text: "\"Patient rates pain 7/10 in the right lower quadrant. Grimacing and guarding abdomen. Diaphoretic. Vital signs: BP 148/92, HR 104, RR 22.\"" },
-                { id: "d", text: "\"Patient is doing well and has a good attitude about recovery.\"" }
+                { id: "a", text: "\"Patient is being dramatic about pain and is likely drug-seeking. Will continue to monitor.\"" },
+                { id: "b", text: "\"Patient seems anxious and appears to be in moderate pain in the abdomen. Resting in bed.\"" },
+                { id: "c", text: "\"Rates pain 7/10, right lower quadrant. Grimacing, guarding abdomen, diaphoretic. Blood pressure 148/92, heart rate 104.\"" },
+                { id: "d", text: "\"Patient is doing well and has a good attitude about recovery. No concerns at this time.\"" }
             ],
             correct: "c",
             rationale: {

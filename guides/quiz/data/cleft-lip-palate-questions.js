@@ -42,10 +42,10 @@ var cleftLipPalateQuizData = {
             difficulty: "application",
             stem: "A newborn with cleft lip and palate is having difficulty feeding. What is the nurse's priority intervention?",
             options: [
-                { id: "a", text: "Schedule surgical consult for immediate repair" },
-                { id: "b", text: "Use a specialized feeding device (Haberman or Pigeon bottle) with upright positioning" },
+                { id: "a", text: "Schedule a surgical consult for immediate cleft repair" },
+                { id: "b", text: "Use a Haberman or Pigeon bottle with upright positioning" },
                 { id: "c", text: "Switch the infant to a gastrostomy tube for all feeds" },
-                { id: "d", text: "Allow the infant to skip feeds until surgery" }
+                { id: "d", text: "Allow the infant to skip feeds until after surgery" }
             ],
             correct: "b",
             rationale: {
@@ -203,10 +203,10 @@ var cleftLipPalateQuizData = {
             difficulty: "knowledge",
             stem: "Which complication is most strongly associated with cleft palate?",
             options: [
-                { id: "a", text: "Asthma" },
+                { id: "a", text: "Asthma with recurrent wheezing in infancy" },
                 { id: "b", text: "Chronic otitis media with conductive hearing loss" },
-                { id: "c", text: "Type 1 diabetes" },
-                { id: "d", text: "Celiac disease" }
+                { id: "c", text: "Type 1 diabetes from pancreatic beta-cell loss" },
+                { id: "d", text: "Celiac disease with chronic malabsorption" }
             ],
             correct: "b",
             rationale: {
@@ -251,8 +251,8 @@ var cleftLipPalateQuizData = {
             options: [
                 { id: "a", text: "'Folic acid deficiency does cause cleft palate, so try to do better with your next child.'" },
                 { id: "b", text: "'Cleft palate has many causes, and it's not something you did. Let me share some support resources.'" },
-                { id: "c", text: "'You shouldn't blame yourself. Forget about it.'" },
-                { id: "d", text: "'There's really no way to know; let's focus on feeding.'" }
+                { id: "c", text: "'You shouldn't blame yourself. Just try to forget about it and move on.'" },
+                { id: "d", text: "'There's really no way to know what caused it; let's focus on feeding instead.'" }
             ],
             correct: "b",
             rationale: {

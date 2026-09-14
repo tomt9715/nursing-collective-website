@@ -88,10 +88,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Which triad defines hemolytic uremic syndrome (HUS)?",
             options: [
-                { id: "a", text: "Proteinuria, hypoalbuminemia, edema" },
-                { id: "b", text: "Microangiopathic hemolytic anemia, thrombocytopenia, acute kidney injury" },
-                { id: "c", text: "Hematuria, hypertension, elevated ASO" },
-                { id: "d", text: "Oliguria, hyperkalemia, metabolic acidosis" }
+                { id: "a", text: "Heavy proteinuria, hypoalbuminemia, and generalized edema" },
+                { id: "b", text: "Microangiopathic hemolytic anemia, thrombocytopenia, and acute kidney injury" },
+                { id: "c", text: "Hematuria, hypertension, and an elevated antistreptolysin O titer" },
+                { id: "d", text: "Oliguria, hyperkalemia, and metabolic acidosis with fluid overload" }
             ],
             correct: "b",
             rationale: {
@@ -111,10 +111,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "application",
             stem: "The nurse is caring for a 5-year-old with nephrotic syndrome on prednisone. The child has a temperature of 39\u00b0C, abdominal pain, and distension. What is the priority concern?",
             options: [
-                { id: "a", text: "Appendicitis" },
-                { id: "b", text: "Viral gastroenteritis" },
+                { id: "a", text: "Acute perforated appendicitis" },
+                { id: "b", text: "Acute viral gastroenteritis" },
                 { id: "c", text: "Spontaneous bacterial peritonitis" },
-                { id: "d", text: "Intussusception" }
+                { id: "d", text: "Ileocolic intussusception" }
             ],
             correct: "c",
             rationale: {
@@ -134,10 +134,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Which treatment is first-line for minimal change nephrotic syndrome in a pediatric patient?",
             options: [
-                { id: "a", text: "Cyclosporine" },
+                { id: "a", text: "Immunosuppressants (cyclosporine)" },
                 { id: "b", text: "Corticosteroids (prednisone)" },
-                { id: "c", text: "IV albumin alone" },
-                { id: "d", text: "Dialysis" }
+                { id: "c", text: "IV albumin infusion alone" },
+                { id: "d", text: "Peritoneal dialysis" }
             ],
             correct: "b",
             rationale: {
@@ -157,10 +157,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Which represents the MOST common cause of acute kidney injury in pediatric patients?",
             options: [
-                { id: "a", text: "Acute glomerulonephritis" },
-                { id: "b", text: "Post-renal obstruction" },
+                { id: "a", text: "Intrinsic (acute glomerulonephritis)" },
+                { id: "b", text: "Post-renal (urinary tract obstruction)" },
                 { id: "c", text: "Pre-renal (dehydration, volume loss)" },
-                { id: "d", text: "Nephrotoxic medications" }
+                { id: "d", text: "Intrinsic (nephrotoxic medications)" }
             ],
             correct: "c",
             rationale: {
@@ -249,10 +249,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Which is the most common underlying cause of pediatric chronic kidney disease?",
             options: [
-                { id: "a", text: "Type 2 diabetes mellitus" },
-                { id: "b", text: "Hypertension" },
-                { id: "c", text: "Congenital anomalies of the kidney and urinary tract (CAKUT) and reflux nephropathy" },
-                { id: "d", text: "Autoimmune disease" }
+                { id: "a", text: "Type 2 diabetes mellitus (diabetic nephropathy)" },
+                { id: "b", text: "Primary hypertension (hypertensive nephrosclerosis)" },
+                { id: "c", text: "Congenital anomalies of the kidney and urinary tract (CAKUT)" },
+                { id: "d", text: "Autoimmune disease such as lupus nephritis" }
             ],
             correct: "c",
             rationale: {
@@ -272,10 +272,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "application",
             stem: "A 4-year-old with nephrotic syndrome weighs 18 kg. Over the past 2 days, the child has gained 1.5 kg. There is increasing periorbital edema. Urine output has decreased. Which nursing action is the priority?",
             options: [
-                { id: "a", text: "Encourage the child to drink more fluids" },
-                { id: "b", text: "Notify the provider and anticipate diuretic and possibly albumin administration" },
-                { id: "c", text: "Increase the sodium in the child's diet" },
-                { id: "d", text: "Apply ice packs to reduce the facial edema" }
+                { id: "a", text: "Encourage the child to drink more fluids to improve urine output" },
+                { id: "b", text: "Notify the provider and anticipate a diuretic, possibly with albumin" },
+                { id: "c", text: "Increase dietary sodium to replace sodium lost in the urine" },
+                { id: "d", text: "Apply ice packs around the eyes to reduce the periorbital edema" }
             ],
             correct: "b",
             rationale: {
@@ -295,10 +295,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "application",
             stem: "A 7-year-old with an arteriovenous fistula for dialysis is admitted to the pediatric unit for an unrelated issue. Which nursing action is MOST important regarding the fistula arm?",
             options: [
-                { id: "a", text: "Take all blood pressures and blood draws from that arm" },
-                { id: "b", text: "Avoid BPs, IVs, and blood draws in the fistula arm; palpate thrill and auscultate bruit each shift" },
-                { id: "c", text: "Keep the arm elevated on pillows at all times" },
-                { id: "d", text: "Apply firm pressure over the fistula to prevent clotting" }
+                { id: "a", text: "Take all blood pressures and blood draws from that arm to protect the other arm" },
+                { id: "b", text: "Avoid blood pressures, IVs, and blood draws in that arm; check the thrill and bruit each shift" },
+                { id: "c", text: "Keep the arm elevated on pillows at all times and check it once a day" },
+                { id: "d", text: "Apply firm pressure over the fistula each shift to prevent clotting" }
             ],
             correct: "b",
             rationale: {
@@ -341,10 +341,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "Which pediatric patient is at HIGHEST risk for Hemolytic Uremic Syndrome?",
             options: [
-                { id: "a", text: "A teen who had a viral URI 2 weeks ago" },
-                { id: "b", text: "A 3-year-old who ate at a family picnic and developed bloody diarrhea 5 days later" },
-                { id: "c", text: "A 7-year-old with a strep throat 3 weeks ago" },
-                { id: "d", text: "An 18-month-old with a UTI" }
+                { id: "a", text: "A teen who had a viral upper respiratory infection 2 weeks ago" },
+                { id: "b", text: "A 3-year-old who ate at a picnic and had bloody diarrhea 5 days later" },
+                { id: "c", text: "A 7-year-old who had strep throat treated 3 weeks ago" },
+                { id: "d", text: "An 18-month-old with a urinary tract infection and fever" }
             ],
             correct: "b",
             rationale: {
@@ -387,10 +387,10 @@ var pediatricRenalDisordersQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is educating a family about preventing future HUS. Which statement is most appropriate?",
             options: [
-                { id: "a", text: "'There's no way to prevent HUS.'" },
-                { id: "b", text: "'Always cook ground beef thoroughly, avoid unpasteurized dairy and juice, and wash produce well.'" },
-                { id: "c", text: "'Antibiotics before picnics prevent HUS.'" },
-                { id: "d", text: "'Vaccines are available for HUS prevention.'" }
+                { id: "a", text: "'There's no way to prevent HUS, so just watch for bloody diarrhea.'" },
+                { id: "b", text: "'Cook ground beef fully, avoid unpasteurized milk and juice, and wash produce well.'" },
+                { id: "c", text: "'Give the kids antibiotics before picnics and cookouts to prevent HUS.'" },
+                { id: "d", text: "'Ask the pediatrician about the vaccine that prevents HUS in children.'" }
             ],
             correct: "b",
             rationale: {

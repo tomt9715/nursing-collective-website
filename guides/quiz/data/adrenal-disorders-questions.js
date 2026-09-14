@@ -77,8 +77,8 @@ var adrenalDisordersQuizData = {
             stem: "A patient with rheumatoid arthritis has been taking prednisone 40 mg daily for 8 weeks. The patient tells the nurse, \"My joints feel much better, so I stopped taking the prednisone yesterday.\" What is the nurse's MOST appropriate response?",
             options: [
                 { id: "a", text: "\"That's great that you're feeling better! You can stop it since your symptoms improved.\"" },
-                { id: "b", text: "\"You need to resume the prednisone immediately and contact your provider. Stopping it suddenly after 8 weeks can be life-threatening.\"" },
-                { id: "c", text: "\"You should have cut the dose in half first. Take 20 mg today and stop tomorrow.\"" },
+                { id: "b", text: "\"Resume the prednisone now and call your provider. Stopping it suddenly after 8 weeks can be life-threatening.\"" },
+                { id: "c", text: "\"You should have cut the dose in half first. Take 20 mg today and then stop tomorrow.\"" },
                 { id: "d", text: "\"Stopping prednisone suddenly may cause some mild discomfort, but it's not dangerous.\"" }
             ],
             correct: "b",
@@ -222,8 +222,8 @@ var adrenalDisordersQuizData = {
             stem: "A nurse is caring for a patient with Cushing's syndrome. The patient's temperature is 98.8°F (37.1°C), WBC is 9,200/mm³ (normal range), and the patient reports feeling \"a little more tired than usual.\" Which nursing action is MOST appropriate?",
             options: [
                 { id: "a", text: "Reassure the patient that vital signs and labs are normal and encourage rest" },
-                { id: "b", text: "Assess further for signs of infection, recognizing that Cushing's patients may not mount a typical immune response" },
-                { id: "c", text: "Administer acetaminophen for the low-grade temperature elevation" },
+                { id: "b", text: "Assess further for signs of infection that may be masked by cortisol excess" },
+                { id: "c", text: "Administer acetaminophen for the low-grade temperature and encourage fluids" },
                 { id: "d", text: "Increase the patient's corticosteroid dose to provide more energy" }
             ],
             correct: "b",
@@ -275,10 +275,10 @@ var adrenalDisordersQuizData = {
             difficulty: "application",
             stem: "A patient with Addison's disease who takes hydrocortisone 20 mg every morning and 10 mg every afternoon calls the nurse advice line reporting a temperature of 101.5°F and body aches consistent with influenza. What is the MOST appropriate advice?",
             options: [
-                { id: "a", text: "\"Continue your regular hydrocortisone doses and take acetaminophen for the fever.\"" },
+                { id: "a", text: "\"Continue your regular hydrocortisone doses and take acetaminophen for the fever and aches.\"" },
                 { id: "b", text: "\"Stop your hydrocortisone since you're sick and your body needs to fight the infection naturally.\"" },
-                { id: "c", text: "\"Double your hydrocortisone doses (40 mg morning, 20 mg afternoon) and contact your provider if symptoms worsen or you cannot keep medication down.\"" },
-                { id: "d", text: "\"Come to the emergency department immediately for IV hydrocortisone.\"" }
+                { id: "c", text: "\"Double your hydrocortisone (40 mg morning, 20 mg afternoon) and call your provider if symptoms worsen or you vomit.\"" },
+                { id: "d", text: "\"Come to the emergency department right away so you can receive IV hydrocortisone.\"" }
             ],
             correct: "c",
             rationale: {

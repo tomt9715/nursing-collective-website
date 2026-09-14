@@ -316,7 +316,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 2-month-old infant is admitted for pyelonephritis. The nurse anticipates which initial treatment approach?",
+            stem: "A 5-week-old infant is admitted for pyelonephritis. The nurse anticipates which initial treatment approach?",
             options: [
                 { id: "a", text: "Oral cephalexin as an outpatient with follow-up in 48 hours" },
                 { id: "b", text: "Observation at home with close follow-up and fever checks" },

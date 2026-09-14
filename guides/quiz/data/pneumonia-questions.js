@@ -169,7 +169,7 @@ var pneumoniaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Streptococcus pneumoniae (pneumococcus) is the most common bacterial cause of community-acquired pneumonia across all age groups. It typically causes lobar pneumonia with sudden onset of high fever, productive cough with rust-colored sputum, and pleuritic chest pain. The pneumococcal conjugate vaccine (PCV13) or pneumococcal polysaccharide vaccine (PPSV23) is recommended for prevention.",
+                correct: "Streptococcus pneumoniae (pneumococcus) is the most common bacterial cause of community-acquired pneumonia across all age groups. It typically causes lobar pneumonia with sudden onset of high fever, productive cough with rust-colored sputum, and pleuritic chest pain. Pneumococcal vaccination prevents it: adults 50 and older, and younger adults with risk conditions, receive a pneumococcal conjugate vaccine, either the 20- or 21-valent version alone or the 15-valent version followed by the polysaccharide vaccine.",
                 a: "Pseudomonas is associated with hospital-acquired pneumonia, ventilator-associated pneumonia, and immunocompromised patients - not typical community-acquired pneumonia (CAP).",
                 c: "Community-acquired methicillin-resistant Staphylococcus aureus (CA-MRSA) pneumonia does occur but is much less common than S. pneumoniae. Methicillin-resistant Staphylococcus aureus (MRSA) is more commonly associated with hospital-acquired pneumonia (HAP).",
                 d: "Klebsiella is associated with pneumonia in alcoholics, diabetics, and debilitated patients. It causes \"currant jelly\" sputum but is not the most common overall community-acquired pneumonia (CAP) pathogen."

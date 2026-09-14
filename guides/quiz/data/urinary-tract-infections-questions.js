@@ -321,20 +321,20 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient with pyelonephritis completes a 2-week course of antibiotics. Which follow-up action should the nurse expect to reinforce?",
             options: [
-                { id: "a", text: "Repeat urine culture 2 weeks after antibiotics end to confirm clearance" },
-                { id: "b", text: "No follow-up is needed if symptoms have resolved" },
+                { id: "a", text: "Return promptly if fever, flank pain, or urinary symptoms come back" },
+                { id: "b", text: "Repeat a urine culture 2 weeks after antibiotics in every patient" },
                 { id: "c", text: "A renal ultrasound every 6 months for life" },
                 { id: "d", text: "Daily antibiotics indefinitely to prevent recurrence" }
             ],
             correct: "a",
             rationale: {
-                correct: "Follow-up urine culture 2 weeks after completing antibiotics confirms clearance of infection - standard practice for pyelonephritis.",
-                a: "Correct answer.",
-                b: "Follow-up cultures are standard after pyelonephritis due to the risk of persistent infection and scarring.",
+                correct: "Once symptoms resolve, a routine repeat urine culture is not recommended for a patient who is not pregnant, because treating bacteria found without symptoms breeds resistance without benefit. What matters is teaching the patient to return if fever, flank pain, or urinary symptoms recur, which suggests treatment failure or relapse.",
+                a: "Clear return precautions are the follow-up that protects this patient.",
+                b: "A test-of-cure culture is reserved for specific groups, such as pregnant patients, or for symptoms that persist or return.",
                 c: "Routine renal ultrasound every 6 months is not indicated unless structural issues are suspected.",
                 d: "Indefinite prophylactic antibiotics are not standard."
             },
-            testTakingTip: "Pyelonephritis → repeat culture 2 weeks after antibiotics to confirm cure.",
+            testTakingTip: "After pyelonephritis: no routine test-of-cure culture unless the patient is pregnant. Teach return precautions.",
             guideSection: "Section 4 - Pyelonephritis",
             guideSectionId: "pyelonephritis"
         },

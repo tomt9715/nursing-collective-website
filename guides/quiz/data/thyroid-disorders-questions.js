@@ -666,7 +666,7 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Levothyroxine is safe and essential during pregnancy. Untreated maternal hypothyroidism increases risk of miscarriage, preeclampsia, preterm birth, and impaired fetal neurodevelopment. Most women need a 25-50% dose increase during pregnancy because of increased thyroid hormone-binding globulin, expanded blood volume, and fetal demand. Thyroid-stimulating hormone (TSH) should be monitored every 4 weeks in the first trimester.",
-                a: "Levothyroxine is Food and Drug Administration (FDA) category A and is safe in pregnancy. STOPPING it would be harmful - untreated hypothyroidism has serious consequences for both mother and fetus including intellectual disability in the child.",
+                a: "Levothyroxine replaces a hormone the body normally makes and is safe in pregnancy. STOPPING it would be harmful - untreated hypothyroidism has serious consequences for both mother and fetus including intellectual disability in the child.",
                 c: "Natural thyroid supplements (desiccated thyroid) have inconsistent potency and are not recommended as first-line therapy. There is no reason to switch from levothyroxine during pregnancy.",
                 d: "The same dose is usually NOT sufficient during pregnancy. Most women need a 25-50% increase. Maintaining the pre-pregnancy dose risks maternal and fetal complications from inadequate thyroid hormone levels."
             },
@@ -1762,7 +1762,7 @@ var thyroidDisordersQuizData = {
                 correct: "Methimazole advantages: once daily, first-line non-pregnant, less liver toxicity. Propylthiouracil (PTU) advantages: safer in 1st trimester, blocks peripheral conversion (useful in thyroid storm). PTU disadvantages: hepatotoxicity black box, multiple daily doses.",
                 a: "METHIMAZOLE - Its longer half-life allows once-daily dosing, which improves patient compliance compared to propylthiouracil (PTU).",
                 b: "PROPYLTHIOURACIL (PTU) - The Food and Drug Administration (FDA) Black Box Warning for severe hepatotoxicity (liver failure, death) is specific to PTU. This made methimazole the preferred first-line drug.",
-                c: "PROPYLTHIOURACIL (PTU) - Methimazole is teratogenic in the first trimester (causes aplasia cutis and choanal atresia). PTU crosses the placenta less and is the safer choice in early pregnancy.",
+                c: "PROPYLTHIOURACIL (PTU) - Methimazole is teratogenic in the first trimester (causes aplasia cutis and choanal atresia). PTU does not carry that birth-defect pattern, so it is the safer choice in the first trimester. Both drugs cross the placenta.",
                 d: "METHIMAZOLE - Due to the liver toxicity risk of propylthiouracil (PTU) and methimazole's more favorable side effect profile and once-daily dosing, methimazole is the standard first-line antithyroid drug.",
                 e: "PROPYLTHIOURACIL (PTU) - In addition to blocking thyroid hormone synthesis (like methimazole), PTU also inhibits peripheral conversion of T4 to T3 by deiodinase enzymes. This dual action makes PTU preferred in thyroid storm.",
                 f: "PROPYLTHIOURACIL (PTU) - Its shorter half-life requires 2-3 doses per day, which can be a compliance challenge for patients."
@@ -1918,7 +1918,7 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "The antithyroid drug protocol for pregnancy follows a careful switching sequence: (1) Stop methimazole because it's teratogenic in the first trimester, (2) Start propylthiouracil (PTU), which is safer in the first trimester, (3) Monitor closely, (4) Switch back to methimazole at week 13 because PTU has higher hepatotoxicity risk, (5) Continue methimazole for the rest of pregnancy.",
                 a: "FIRST - Methimazole must be stopped immediately because first-trimester exposure is associated with aplasia cutis (skin defects) and choanal atresia in the fetus.",
-                b: "SECOND - Propylthiouracil (PTU) is started as the replacement antithyroid drug because it crosses the placenta less than methimazole and is not associated with the same birth defects in early pregnancy.",
+                b: "SECOND - Propylthiouracil (PTU) is started as the replacement antithyroid drug because it is not associated with the same birth defects in early pregnancy. Both drugs cross the placenta.",
                 c: "THIRD - Frequent thyroid function test (TFT) monitoring is essential during pregnancy because thyroid hormone needs change. The goal is to use the lowest possible dose to maintain free T4 in the upper normal range.",
                 d: "FOURTH - At week 13 (start of second trimester), methimazole replaces propylthiouracil (PTU) because PTU's Black Box Warning for hepatotoxicity makes it unsuitable for long-term use when a safer alternative exists.",
                 e: "FIFTH - Methimazole is continued through the remainder of pregnancy with ongoing monitoring to maintain maternal euthyroid state while minimizing fetal exposure."
@@ -2030,7 +2030,7 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "Methimazole is associated with specific teratogenic effects when used in the first trimester: aplasia cutis (absence of skin patches on the scalp) and choanal atresia (blockage of the nasal passages). Propylthiouracil (PTU) has not been associated with these specific birth defects. However, PTU is only preferred in the first trimester - after week 12-13, methimazole becomes preferred due to PTU's hepatotoxicity risk.",
                 a: "Both drugs are similarly effective at controlling hyperthyroidism. The preference for propylthiouracil (PTU) is based on SAFETY (teratogenicity difference), not efficacy.",
-                c: "Propylthiouracil (PTU) DOES cross the placenta - just less than methimazole. No antithyroid drug is completely safe for the fetus. The goal is to use the lowest effective dose to maintain maternal euthyroid state.",
+                c: "Propylthiouracil (PTU) DOES cross the placenta, as methimazole does. No antithyroid drug is completely safe for the fetus. The goal is to use the lowest effective dose to maintain maternal euthyroid state.",
                 d: "Methimazole is available in the same dosage forms. The issue is not availability but teratogenicity in early pregnancy."
             },
             testTakingTip: "Methimazole teratogenic effects: Aplasia cutis + Choanal atresia (both start with vowels: A and C). These only occur in first trimester. Propylthiouracil (PTU) is safer early, but its liver risk makes methimazole safer for long-term use.",
@@ -2410,16 +2410,16 @@ var thyroidDisordersQuizData = {
                 { id: "d", text: "Administer IV corticosteroids such as dexamethasone (to block T4→T3 conversion and support adrenals)" },
                 { id: "e", text: "Initiate cooling measures with acetaminophen and cooling blankets (NOT aspirin)" }
             ],
-            correct: ["a", "b", "c", "d", "e"],
+            correct: ["c", "a", "d", "e", "b"],
             rationale: {
-                correct: "Thyroid storm treatment follows the 'Block-Block-Block-Block-Cool' strategy: (1) Block SYNTHESIS with propylthiouracil (PTU) first, (2) Block RELEASE with iodine 1 hour after PTU, (3) Block adrenergic SYMPTOMS with beta-blockers, (4) Block peripheral CONVERSION with corticosteroids, (5) Supportive COOLING. Iodine MUST come after PTU to prevent providing raw material for more hormone production.",
-                a: "FIRST - Propylthiouracil (PTU) blocks new hormone synthesis AND peripheral T4→T3 conversion. It MUST precede iodine. Methimazole can be used if PTU is unavailable, but PTU is preferred for its dual mechanism.",
-                b: "SECOND - Lugol's solution blocks release of stored hormone. The 1-hour wait after propylthiouracil (PTU) ensures synthesis is blocked before providing iodine substrate. Giving iodine first would feed the overactive thyroid.",
-                c: "THIRD - IV propranolol rapidly controls the dangerous tachycardia, atrial fibrillation, tremors, and agitation. Propranolol also provides some T4→T3 conversion blockade at high doses.",
-                d: "FOURTH - Corticosteroids (dexamethasone or hydrocortisone) block peripheral T4→T3 conversion and prevent possible adrenal insufficiency from the hypermetabolic state.",
-                e: "FIFTH - Cooling measures address the dangerous hyperthermia. Use acetaminophen ONLY - aspirin is contraindicated because it displaces thyroid hormone from binding proteins, increasing free hormone."
+                correct: "Thyroid storm is treated with four blocks plus cooling, and the clock order matters for two of them. The beta-blocker goes in first because the tachyarrhythmia kills fastest. Propylthiouracil (PTU) follows to block synthesis, then steroids block peripheral conversion and cooling treats the fever. Iodine comes last because it MUST wait at least 1 hour after PTU, or it becomes raw material for more hormone.",
+                a: "SECOND - Propylthiouracil (PTU) blocks new hormone synthesis AND peripheral T4→T3 conversion. It MUST precede iodine. Methimazole can be used if PTU is unavailable, but PTU is preferred for its dual mechanism.",
+                b: "FIFTH - Lugol's solution blocks release of stored hormone. The 1-hour wait after propylthiouracil (PTU) ensures synthesis is blocked before providing iodine substrate. Giving iodine first would feed the overactive thyroid.",
+                c: "FIRST - IV propranolol rapidly controls the dangerous tachycardia, atrial fibrillation, tremors, and agitation. Propranolol also provides some T4→T3 conversion blockade at high doses.",
+                d: "THIRD - Corticosteroids (dexamethasone or hydrocortisone) block peripheral T4→T3 conversion and prevent possible adrenal insufficiency from the hypermetabolic state.",
+                e: "FOURTH - Cooling measures address the dangerous hyperthermia. Use acetaminophen ONLY - aspirin is contraindicated because it displaces thyroid hormone from binding proteins, increasing free hormone."
             },
-            testTakingTip: "Thyroid storm = 'Block × 4 + Cool.' Synthesis → Release → Symptoms → Conversion → Cool. Critical: Propylthiouracil (PTU) BEFORE iodine (1-hour gap). Critical: NO aspirin for fever (use acetaminophen).",
+            testTakingTip: "Thyroid storm = 'Block × 4 + Cool.' Beta-blocker first for the heart rate, then synthesis, conversion and cooling, with iodine last. Critical: Propylthiouracil (PTU) BEFORE iodine (1-hour gap). Critical: NO aspirin for fever (use acetaminophen).",
             guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },

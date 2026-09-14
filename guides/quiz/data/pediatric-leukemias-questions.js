@@ -258,7 +258,7 @@ var pediatricLeukemiasQuizData = {
                 { id: "a", text: "Injectable (inactivated) influenza" },
                 { id: "b", text: "Tdap (tetanus, diphtheria, pertussis)" },
                 { id: "c", text: "Intranasal (live-attenuated) influenza" },
-                { id: "d", text: "Pneumococcal conjugate vaccine (PCV13)" }
+                { id: "d", text: "Pneumococcal conjugate vaccine" }
             ],
             correct: "c",
             rationale: {
@@ -347,19 +347,19 @@ var pediatricLeukemiasQuizData = {
             difficulty: "application",
             stem: "Discharge teaching for the family of a child on maintenance chemo with 6-mercaptopurine should include which instruction?",
             options: [
-                { id: "a", text: "Give mercaptopurine with a glass of milk at breakfast" },
-                { id: "b", text: "Give mercaptopurine at bedtime on an empty stomach" },
+                { id: "a", text: "Skip mercaptopurine on days the child is not eating well" },
+                { id: "b", text: "Give mercaptopurine at the same time every evening" },
                 { id: "c", text: "Only give mercaptopurine when the child has symptoms" },
                 { id: "d", text: "Give mercaptopurine with ibuprofen to prevent nausea" }
             ],
             correct: "b",
             rationale: {
-                correct: "Mercaptopurine absorption is reduced by food (especially dairy). Give at bedtime on an empty stomach (at least 1 hour after last meal, 2 hours before next meal). Daily adherence for years is essential for sustained remission.",
-                a: "Dairy and food reduce absorption; bedtime empty stomach is standard.",
+                correct: "Consistency matters most: give it at the same time every day, usually in the evening, and the same way each day with respect to food. Children\u2019s Oncology Group guidance no longer requires an empty stomach or avoiding dairy, because those rules did not improve outcomes and made daily doses harder to give. Missed doses raise the risk of relapse.",
+                a: "Doses should not be skipped for a poor appetite. Missed maintenance doses raise the risk of relapse.",
                 c: "Mercaptopurine is a scheduled daily medication, not PRN.",
                 d: "Nonsteroidal anti-inflammatory drugs (NSAIDs) are avoided (platelet effect) and do not prevent nausea from mercaptopurine."
             },
-            testTakingTip: "Mercaptopurine = bedtime, empty stomach, away from dairy, daily for 2\u20133 years.",
+            testTakingTip: "Mercaptopurine = every day, same time (usually evening), same way, for 2\u20133 years. Adherence is the priority.",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },

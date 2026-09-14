@@ -30,7 +30,7 @@ const sidebarConfig = {
         { id: 'tip-low-vs-high-flow', title: 'Ask One Question', text: 'Does the device meet the full inspiratory demand. If not, the FiO2 is a guess rather than a fact.' },
         { id: 'tip-venturi-copd', title: 'Venturi Is the COPD Answer', text: 'Set 24 percent and get 24 percent. A cannula gives somewhere between 24 and 44, depending on the breath.' },
         { id: 'tip-fio2-rule', title: 'Four Percent per Litre', text: '1 L is 24, 2 L is 28, 3 L is 32, 4 L is 36, 5 L is 40, 6 L is 44. Fast deep breathing lowers the real value.' },
-        { id: 'tip-copd-targets', title: 'Do Not Chase 100 in COPD', text: 'A COPD patient at 89 percent is at target. Pushing higher suppresses breathing and raises carbon dioxide.' },
+        { id: 'tip-copd-targets', title: 'Do Not Chase 100 in COPD', text: 'A COPD patient at 89 percent is at target. Pushing higher raises carbon dioxide. Below target, give oxygen.' },
         { id: 'tip-toxicity-signs', title: 'Keep FiO2 at 50 or Below', text: 'Substernal pain, dry cough and dyspnea worsening on oxygen are the early signs of pulmonary toxicity.' },
         { id: 'tip-pulse-ox-false', title: 'Believe the Patient', text: 'Poor perfusion, nail polish, motion, anemia, carbon monoxide and methemoglobin all fool the probe.' }
     ]

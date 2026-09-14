@@ -16,7 +16,7 @@ const sidebarConfig = {
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '55-70%', label: 'Normal EF', section: 'systolic-diastolic' },
-        { type: 'critical', icon: 'fa-arrow-down', value: '<40%', label: 'HFrEF, cannot squeeze', section: 'systolic-diastolic' },
+        { type: 'critical', icon: 'fa-arrow-down', value: '≤40%', label: 'HFrEF, cannot squeeze', section: 'systolic-diastolic' },
         { type: 'info', icon: 'fa-arrow-up', value: '>=50%', label: 'HFpEF, cannot fill', section: 'systolic-diastolic' },
         { type: 'warning', icon: 'fa-weight', value: '>2 lbs/day', label: 'Report weight gain', section: 'assessment' },
         { type: 'target', icon: 'fa-tint', value: '100 pg/mL', label: 'BNP threshold', section: 'assessment' },

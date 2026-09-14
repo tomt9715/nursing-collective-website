@@ -17,9 +17,9 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-ruler', value: '1.0-1.3', label: 'Normal ABI range', section: 'abi' },
+        { type: 'target', icon: 'fa-ruler', value: '1.00-1.40', label: 'Normal ABI range', section: 'abi' },
         { type: 'critical', icon: 'fa-exclamation', value: '≤0.40', label: 'Critical limb ischemia', section: 'abi' },
-        { type: 'warning', icon: 'fa-calculator', value: '>1.30', label: 'Calcified vessels (unreliable)', section: 'abi' },
+        { type: 'warning', icon: 'fa-calculator', value: '>1.40', label: 'Calcified vessels (unreliable)', section: 'abi' },
         { type: 'time', icon: 'fa-clock', value: '4-6 hrs', label: 'Acute occlusion window', section: 'pad' },
         { type: 'success', icon: 'fa-compress', value: '30-40', label: 'Compression mmHg (CVI)', section: 'venous' },
         { type: 'info', icon: 'fa-pills', value: '3+ mo', label: 'DVT anticoag duration', section: 'dvt' }

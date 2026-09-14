@@ -218,18 +218,18 @@ var seizuresQuizData = {
             stem: "A nurse is caring for a pregnant patient with epilepsy who is on valproic acid (Depakote). The patient just discovered she is 6 weeks pregnant. What is the nurse's PRIORITY concern?",
             options: [
                 { id: "a", text: "Valproic acid can cause weight gain that complicates pregnancy" },
-                { id: "b", text: "Valproic acid is highly teratogenic (Category D) and increases the risk of neural tube defects" },
+                { id: "b", text: "Valproic acid is highly teratogenic and increases the risk of neural tube defects" },
                 { id: "c", text: "Valproic acid levels will decrease during pregnancy requiring dose increases" },
                 { id: "d", text: "The patient will need to switch to phenytoin which is safer in pregnancy" }
             ],
             correct: "b",
             rationale: {
-                correct: "Valproic acid is Category D (positive evidence of human fetal risk) and is associated with a significantly increased risk of neural tube defects (spina bifida), craniofacial defects, and cognitive impairment in the fetus. The priority concern is the teratogenic risk, and the provider must be notified immediately for a medication change.",
+                correct: "Valproic acid carries a Food and Drug Administration (FDA) boxed warning for fetal harm and is associated with a significantly increased risk of neural tube defects (spina bifida), craniofacial defects, and cognitive impairment in the fetus. The priority concern is the teratogenic risk, and the provider must be notified immediately for a medication change.",
                 a: "While weight gain is a side effect of valproic acid, it is not the priority concern in a pregnant patient compared to the severe teratogenic risk.",
                 c: "While antiepileptic drug (AED) levels can change during pregnancy due to altered pharmacokinetics, this is a secondary concern compared to the teratogenic risk of continuing valproic acid.",
                 d: "Phenytoin is also teratogenic (fetal hydantoin syndrome) and is NOT a safer alternative. Lamotrigine and levetiracetam are generally considered safer options in pregnancy."
             },
-            testTakingTip: "Valproic acid = Category D in pregnancy. Neural tube defects (spina bifida) are the #1 concern. All women of childbearing age on antiepileptic drugs (AEDs) should take folic acid supplementation. Lamotrigine and levetiracetam are considered relatively safer in pregnancy.",
+            testTakingTip: "Valproic acid = major teratogen, avoided in pregnancy. Neural tube defects (spina bifida) are the #1 concern. All women of childbearing age on antiepileptic drugs (AEDs) should take folic acid supplementation. Lamotrigine and levetiracetam are considered relatively safer in pregnancy.",
             guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
@@ -296,14 +296,14 @@ var seizuresQuizData = {
             ],
             correct: { a: "Correct AED Choice", b: "Incorrect AED Choice", c: "Correct AED Choice", d: "Incorrect AED Choice", e: "Correct AED Choice" },
             rationale: {
-                correct: "Ethosuximide is first-line for absence seizures, lorazepam is first-line for status epilepticus, and levetiracetam is effective for focal seizures. Carbamazepine worsens absence seizures, and valproic acid is teratogenic (Category D in pregnancy).",
+                correct: "Ethosuximide is first-line for absence seizures, lorazepam is first-line for status epilepticus, and levetiracetam is effective for focal seizures. Carbamazepine worsens absence seizures, and valproic acid is a major teratogen that is avoided in pregnancy.",
                 a: "CORRECT - Ethosuximide (Zarontin) is the first-line drug for absence seizures when absence is the only seizure type. It is effective and well-tolerated for this specific indication.",
                 b: "INCORRECT - Carbamazepine (Tegretol) can actually WORSEN absence seizures. It blocks sodium channels, which does not address the thalamic mechanism of absence seizures. Phenytoin also worsens absence.",
                 c: "CORRECT - Lorazepam (Ativan) IV is the first-line treatment for status epilepticus due to its rapid onset and longer central nervous system (CNS) duration compared to diazepam.",
-                d: "INCORRECT - Valproic acid is Category D in pregnancy with significant teratogenic risk (neural tube defects). Women planning pregnancy should be switched to a safer antiepileptic drug (AED), lamotrigine or levetiracetam.",
+                d: "INCORRECT - Valproic acid carries significant teratogenic risk, including neural tube defects, and is avoided in pregnancy. Women planning pregnancy should be switched to a safer antiepileptic drug (AED), lamotrigine or levetiracetam.",
                 e: "CORRECT - Levetiracetam (Keppra) is effective for focal seizures, has fewer drug interactions than older antiepileptic drugs (AEDs), and does not require routine level monitoring."
             },
-            testTakingTip: "Antiepileptic drug (AED) matching: Absence → ethosuximide or valproic acid (NOT carbamazepine/phenytoin). Status epilepticus → lorazepam IV. Pregnancy → avoid valproic acid (Category D). Focal seizures → many options (levetiracetam, carbamazepine, phenytoin, lamotrigine).",
+            testTakingTip: "Antiepileptic drug (AED) matching: Absence → ethosuximide or valproic acid (NOT carbamazepine/phenytoin). Status epilepticus → lorazepam IV. Pregnancy → avoid valproic acid (major teratogen). Focal seizures → many options (levetiracetam, carbamazepine, phenytoin, lamotrigine).",
             guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },

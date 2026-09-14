@@ -745,7 +745,7 @@ Heart failure (HF) is a complex clinical syndrome resulting from structural or f
 The most common form, occurring when the left ventricle cannot effectively pump blood to the systemic circulation.
 
 **Systolic Dysfunction (HFrEF)**
-- Ejection Fraction < 40%
+- Ejection Fraction ≤ 40%
 - Impaired contractility
 - The heart cannot pump blood forward effectively
 
@@ -1336,7 +1336,7 @@ Telling physiologic reflux ("happy spitter") from pathologic GERD, recognizing r
 ### Conservative Management (first-line)
 - **Upright positioning** during + 30 min after feeds
 - Small frequent feeds, burp every ½-1 oz
-- **Thickened feeds** (1 tsp rice cereal per oz formula)
+- **Thickened feeds** if the provider recommends (infant oatmeal cereal or pre-thickened formula, not rice cereal)
 - Sleep SUPINE (flat firm surface) — SIDS risk overrules reflux
 - Older children: weight management, avoid trigger foods
 
@@ -1612,7 +1612,7 @@ Master seizure classification, recognize status epilepticus as a medical emergen
 
 ### Key AED Facts
 - **Phenytoin (Dilantin):** Level 10-20 mcg/mL, gingival hyperplasia, slow IV only
-- **Valproic acid:** Monitor LFTs, Category X in pregnancy
+- **Valproic acid:** Monitor LFTs, major teratogen, avoid in pregnancy
 - **Ethosuximide:** First-line for absence seizures ONLY
 - **Never stop AEDs abruptly** — can trigger status epilepticus
 

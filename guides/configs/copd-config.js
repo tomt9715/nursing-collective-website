@@ -25,7 +25,7 @@ const sidebarConfig = {
     ],
     clinicalPearls: [
         { id: 'tip-blue-bloater', title: 'Blue Bloater vs Pink Puffer', text: 'Blue means gas exchange failed and the right heart followed. Pink means they are still compensating, at great cost.' },
-        { id: 'tip-low-flow-first', title: 'Low Flow First', text: '1 to 2 L per minute, target 88 to 92 percent. Their only stimulus to breathe is the low oxygen.' },
+        { id: 'tip-low-flow-first', title: 'Low Flow First', text: '1 to 2 L per minute, target 88 to 92 percent. More oxygen than that drives CO2 up. Never withhold it from a hypoxemic patient.' },
         { id: 'tip-co2-narcosis', title: 'Watch for CO2 Narcosis', text: 'Confusion, headache, flushed warm skin, shallow breathing, asterixis. Turn the oxygen down first.' },
         { id: 'tip-pursed-lip', title: 'Pursed-Lip Breathing', text: 'In through the nose for two, out through pursed lips for four. Back-pressure holds collapsing airways open.' },
         { id: 'tip-rinse-after-ics', title: 'Rinse After ICS', text: 'Steroid left in the mouth invites candida. Swish and spit after every dose, and use a spacer.' },

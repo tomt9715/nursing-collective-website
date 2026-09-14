@@ -17,7 +17,7 @@ var myocardialInfarctionQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A 58-year-old male arrives in the emergency department with crushing chest pain radiating to his left arm, diaphoresis, and nausea. The 12-lead ECG shows ST elevation in leads II, III, and aVF. The nearest cardiac catheterization lab is 2 hours away. What should the nurse anticipate as the PRIORITY intervention?",
+            stem: "A 58-year-old male arrives in the emergency department with crushing chest pain radiating to his left arm, diaphoresis, and nausea. The 12-lead ECG shows ST elevation in leads II, III, and aVF. The nearest cardiac catheterization lab is 3 hours away. What should the nurse anticipate as the PRIORITY intervention?",
             options: [
                 { id: "a", text: "Prepare for immediate thrombolytic administration at this hospital" },
                 { id: "b", text: "Transfer the patient to the facility with the cardiac catheterization lab" },
@@ -27,7 +27,7 @@ var myocardialInfarctionQuizData = {
             correct: "a",
             rationale: {
                 correct: "This patient has an ST elevation myocardial infarction (STEMI): ST elevation in contiguous leads II, III, aVF = inferior myocardial infarction (MI). Percutaneous coronary intervention (PCI) is the preferred reperfusion strategy, but when PCI is not available within 120 minutes, thrombolytics must be administered (door-to-needle goal < 30 minutes). \"Time is muscle\" - every minute of delay means more myocardial cell death.",
-                b: "Transfer for percutaneous coronary intervention (PCI) is appropriate only if it can be achieved within 120 minutes of first medical contact. A 2-hour drive exceeds this window, making thrombolytics the priority.",
+                b: "Transfer for percutaneous coronary intervention (PCI) is appropriate only if it can be achieved within 120 minutes of first medical contact. A 3-hour transfer exceeds this window, making thrombolytics the priority.",
                 c: "While nitroglycerin is part of the initial management, the \"N\" in morphine, oxygen, nitroglycerin, aspirin, beta blocker (MONA-B), it is not the priority over reperfusion therapy. Also, this is an inferior myocardial infarction (MI) - the nurse must first rule out right ventricular involvement before giving nitrates.",
                 d: "Troponin takes 2-4 hours to rise. Treatment for ST elevation myocardial infarction (STEMI) is based on the ECG, not troponin results. Waiting for labs delays life-saving reperfusion."
             },
@@ -139,7 +139,7 @@ var myocardialInfarctionQuizData = {
             stem: "A patient is recovering from an ST elevation myocardial infarction (STEMI) and is on standard post-infarction medications including metoprolol, enalapril, aspirin, and atorvastatin. For each finding, indicate whether it is an expected effect of the medication regimen or should be reported to the provider.",
             options: [
                 { id: "a", text: "Blood pressure of 108/68 mmHg (baseline was 138/86 mmHg)" },
-                { id: "b", text: "Resting heart rate of 52 bpm" },
+                { id: "b", text: "Resting heart rate of 46 bpm with dizziness" },
                 { id: "c", text: "Persistent dry cough that started after beginning enalapril" },
                 { id: "d", text: "Recurrent chest pain with exertion despite taking all medications as prescribed" }
             ],
@@ -147,7 +147,7 @@ var myocardialInfarctionQuizData = {
             rationale: {
                 correct: "A modest BP reduction is expected with angiotensin-converting enzyme (ACE) inhibitors and beta-blockers. However, significant bradycardia, persistent ACE inhibitor cough, and recurrent chest pain all warrant provider notification for possible medication adjustment or further evaluation.",
                 a: "EXPECTED EFFECT - Both metoprolol and enalapril lower blood pressure. A drop from 138/86 to 108/68 is a therapeutic response - the BP remains adequate for organ perfusion.",
-                b: "REPORT TO PROVIDER - While metoprolol lowers heart rate, a resting HR of 52 bpm is at the lower limit and may cause symptoms. The provider may need to adjust the dose.",
+                b: "REPORT TO PROVIDER - Metoprolol is expected to slow the heart, but a resting HR of 46 bpm with dizziness is symptomatic bradycardia. Hold the next dose and let the provider adjust it.",
                 c: "REPORT TO PROVIDER - A dry, persistent cough occurs in 5\u201320% of patients on angiotensin-converting enzyme (ACE) inhibitors due to bradykinin accumulation. The provider typically switches to an angiotensin receptor blocker (ARB) such as losartan.",
                 d: "REPORT TO PROVIDER - Recurrent chest pain with exertion despite optimal medical therapy is a red flag for ongoing ischemia or stent thrombosis. This requires urgent evaluation."
             },

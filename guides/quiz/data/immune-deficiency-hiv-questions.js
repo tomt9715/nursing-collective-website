@@ -96,14 +96,14 @@ var immuneDeficiencyHivQuizData = {
                 { id: "a", text: "Inactivated (injectable) influenza vaccine" },
                 { id: "b", text: "Tdap (tetanus, diphtheria, acellular pertussis)" },
                 { id: "c", text: "Measles, mumps, rubella (MMR), live-attenuated" },
-                { id: "d", text: "Pneumococcal conjugate vaccine (PCV13)" }
+                { id: "d", text: "Pneumococcal conjugate vaccine" }
             ],
             correct: "c",
             rationale: {
                 correct: "The measles, mumps, rubella (MMR) vaccine is live-attenuated and can cause vaccine-strain illness in immunocompromised children. Other live vaccines to avoid: varicella, rotavirus, intranasal influenza, bacille Calmette-Gu\u00e9rin (BCG), yellow fever. Inactivated vaccines are safe and encouraged.",
                 a: "Injectable flu is inactivated - safe.",
                 b: "Tdap is inactivated - safe.",
-                d: "Pneumococcal conjugate vaccine (PCV13) is inactivated - safe."
+                d: "Pneumococcal conjugate vaccine is inactivated - safe."
             },
             testTakingTip: "No live vaccines in immunocompromised. Measles, mumps, rubella (MMR), varicella, rotavirus, nasal flu are live.",
             guideSection: "Section 5 - Vaccines",

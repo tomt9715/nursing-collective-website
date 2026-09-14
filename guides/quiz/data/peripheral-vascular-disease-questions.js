@@ -49,15 +49,15 @@ var peripheralVascularDiseaseQuizData = {
             ],
             correct: "d",
             labValues: [
-                { name: "ABI", normal: "0.9\u20131.3" }
+                { name: "ABI", normal: "1.00\u20131.40" }
             ],
             rationale: {
                 correct: "An ankle-brachial index (ABI) \u22640.4 indicates critical limb ischemia (CLI) - the most severe form of peripheral arterial disease (PAD) with high risk for tissue loss and amputation. These patients typically have rest pain, non-healing wounds, and gangrene. Urgent vascular intervention (angioplasty, stenting, or bypass surgery) is needed to prevent limb loss.",
-                a: "Normal ankle-brachial index (ABI) is 1.00 to 1.30. An ankle-brachial index of 0.35 is severely abnormal.",
-                b: "Mild peripheral arterial disease (PAD) corresponds to an ankle-brachial index (ABI) of 0.7-0.9, presenting with intermittent claudication.",
-                c: "Moderate peripheral arterial disease (PAD) corresponds to an ankle-brachial index (ABI) of 0.4-0.7, with more significant claudication and possible early rest pain."
+                a: "Normal ankle-brachial index (ABI) is 1.00 to 1.40. An ankle-brachial index of 0.35 is severely abnormal.",
+                b: "Mild peripheral arterial disease (PAD) corresponds to an ankle-brachial index (ABI) of 0.70 to 0.90, presenting with intermittent claudication.",
+                c: "Moderate peripheral arterial disease (PAD) corresponds to an ankle-brachial index (ABI) of 0.41 to 0.69, with more significant claudication and possible early rest pain."
             },
-            testTakingTip: "Ankle-brachial index (ABI) bands: 1.00 to 1.30 normal, 0.91 to 0.99 borderline, 0.41 to 0.90 mild to moderate peripheral arterial disease, 0.40 or less critical limb ischemia, above 1.30 calcified and unreliable so use a toe-brachial index. An ankle-brachial index measures arterial flow and cannot diagnose a deep vein thrombosis (DVT).",
+            testTakingTip: "Ankle-brachial index (ABI) bands: 1.00 to 1.40 normal, 0.91 to 0.99 borderline, 0.70 to 0.90 mild and 0.41 to 0.69 moderate peripheral arterial disease, 0.40 or less critical limb ischemia, above 1.40 calcified and unreliable so use a toe-brachial index. An ankle-brachial index measures arterial flow and cannot diagnose a deep vein thrombosis (DVT).",
             guideSection: "Section 4 - Ankle-Brachial Index",
             guideSectionId: "abi"
         },
@@ -174,7 +174,7 @@ var peripheralVascularDiseaseQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "The correct sequence prioritizes assessment, then addressing the root cause (poor perfusion), supportive positioning, wound protection, and avoiding interventions that could worsen ischemic tissue. An ankle-brachial index (ABI) of 0.5 indicates moderate-to-severe arterial disease.",
+                correct: "The correct sequence prioritizes assessment, then addressing the root cause (poor perfusion), supportive positioning, wound protection, and avoiding interventions that could worsen ischemic tissue. An ankle-brachial index (ABI) of 0.5 indicates moderate arterial disease.",
                 a: "FIRST - Thorough wound assessment establishes the baseline and guides all subsequent care. Document dimensions, depth, tissue color, drainage, and periwound condition.",
                 b: "SECOND - With an ankle-brachial index (ABI) of 0.5 and a non-healing ulcer, the root cause is inadequate arterial perfusion. Vascular surgery consult for revascularization is the most critical intervention for healing.",
                 c: "THIRD - Keep legs flat or slightly dependent (gravity assists arterial perfusion). NEVER elevate - that is for venous disease.",
@@ -339,12 +339,12 @@ var peripheralVascularDiseaseQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "An ankle-brachial index (ABI) above 1.30 means the vessels are calcified and will not compress, so the reading is falsely high and unreliable. A toe-brachial index is used instead, because the digital arteries calcify far less.",
-                b: "Normal is 1.00 to 1.30. A value above that range is not normal, it is uninterpretable.",
+                correct: "An ankle-brachial index (ABI) above 1.40 means the vessels are calcified and will not compress, so the reading is falsely high and unreliable. A toe-brachial index is used instead, because the digital arteries calcify far less.",
+                b: "Normal is 1.00 to 1.40. A value above that range is not normal, it is uninterpretable.",
                 c: "Mild to moderate disease is 0.41 to 0.90, well below this value.",
                 d: "Critical limb ischemia is 0.40 or less."
             },
-            testTakingTip: "A high ankle-brachial index is not a reassuring one. Above 1.30 in a patient with diabetes means calcified vessels and a falsely high number.",
+            testTakingTip: "A high ankle-brachial index is not a reassuring one. Above 1.40 in a patient with diabetes means calcified vessels and a falsely high number.",
             guideSection: "Section 11 - Numbers to have cold",
             guideSectionId: "numbers-cold"
         }

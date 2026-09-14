@@ -98,12 +98,12 @@ var heartFailureQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Heart failure with reduced ejection fraction (HFrEF), or systolic dysfunction, is defined by an ejection fraction (EF) < 40%. An EF of 30% means the ventricle cannot contract effectively - it is weak and dilated. This is the \"reduced\" category.",
+                correct: "Heart failure with reduced ejection fraction (HFrEF), or systolic dysfunction, is defined by an ejection fraction (EF) of 40% or less. An EF of 30% means the ventricle cannot contract effectively - it is weak and dilated. This is the \"reduced\" category.",
                 a: "Heart failure with preserved ejection fraction (HFpEF) has an ejection fraction (EF) \u2265 50%. The heart contracts normally but cannot relax and fill properly (diastolic dysfunction).",
-                c: "Heart failure with midrange ejection fraction (HFmrEF) has an ejection fraction (EF) of 41-49%. This patient\u2019s EF of 30% is below that range.",
+                c: "Heart failure with mildly reduced ejection fraction (HFmrEF) has an ejection fraction (EF) of 41-49%. This patient\u2019s EF of 30% is below that range.",
                 d: "\"Compensated heart failure\" describes a functional status (symptoms controlled), not an ejection fraction (EF) classification. This patient has active symptoms."
             },
-            testTakingTip: "Know the ejection fraction (EF) cutoffs: <40% = heart failure with reduced ejection fraction (HFrEF), 41-49% = heart failure with midrange ejection fraction (HFmrEF), \u226550% = heart failure with preserved ejection fraction (HFpEF). Don\u2019t be tricked by a \"normal\" EF - HFpEF patients still have heart failure!",
+            testTakingTip: "Know the ejection fraction (EF) cutoffs: ≤40% = heart failure with reduced ejection fraction (HFrEF), 41-49% = heart failure with mildly reduced ejection fraction (HFmrEF), \u226550% = heart failure with preserved ejection fraction (HFpEF). Don\u2019t be tricked by a \"normal\" EF - HFpEF patients still have heart failure!",
             labValues: [
                 { name: "Ejection Fraction (EF)", normal: "55\u201370%" }
             ],

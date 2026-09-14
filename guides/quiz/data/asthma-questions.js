@@ -112,7 +112,7 @@ var asthmaQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with moderate persistent asthma is currently on a low-dose inhaled corticosteroid (ICS) at Step 2. The patient reports using the rescue inhaler 4 times per week and waking at night with coughing twice a month. The nurse anticipates the provider will:",
+            stem: "A patient with mild persistent asthma is currently on a low-dose inhaled corticosteroid (ICS) at Step 2. The patient reports using the rescue inhaler 4 times per week and waking at night with coughing twice a month. The nurse anticipates the provider will:",
             options: [
                 { id: "a", text: "Continue current treatment - symptoms are well-controlled" },
                 { id: "b", text: "Step up to medium-dose inhaled corticosteroid or add a long-acting beta2-agonist" },
@@ -121,8 +121,8 @@ var asthmaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient\u2019s asthma is NOT well-controlled: rescue inhaler use >2 days/week (using 4x/week) and nighttime symptoms >2x/month indicates the need to step up therapy. From Step 2, which is a low-dose inhaled corticosteroid (ICS), the step-up is to Step 3: medium-dose ICS OR low-dose ICS + long-acting beta2-agonist (LABA) combination.",
-                a: "Well-controlled asthma = rescue inhaler \u22642 days/week AND nighttime symptoms \u22642x/month. This patient exceeds both thresholds.",
+                correct: "This patient\u2019s asthma is NOT well-controlled: rescue inhaler use on more than 2 days a week (this patient uses it 4 times a week) is enough on its own to step up therapy, even though waking twice a month is still within the well-controlled range. From Step 2, which is a low-dose inhaled corticosteroid (ICS), the step-up is to Step 3: medium-dose ICS OR low-dose ICS + long-acting beta2-agonist (LABA) combination.",
+                a: "Well-controlled asthma = rescue inhaler \u22642 days/week AND nighttime symptoms \u22642x/month. This patient exceeds the rescue inhaler threshold, and one criterion out of range is enough.",
                 c: "Stepping down is only appropriate when asthma has been well-controlled for at least 3 months. This patient needs more treatment, not less.",
                 d: "Daily oral corticosteroids are reserved for Step 6 (severe persistent) after all other options have failed. Jumping to oral steroids from Step 2 skips multiple intermediate steps."
             },
@@ -171,7 +171,7 @@ var asthmaQuizData = {
                 correct: "Controllers are taken daily to prevent symptoms: inhaled corticosteroids (ICS) and long-acting beta2-agonists (LABAs). Rescue medications provide rapid relief during acute episodes: short-acting beta2-agonists (SABAs) and ipratropium. Knowing this distinction is essential for patient education.",
                 a: "CONTROLLER - Inhaled corticosteroids are the most effective first-line controller medications. They reduce airway inflammation and are taken daily. Rinse mouth after use to prevent oral candidiasis.",
                 b: "RESCUE - Short-acting beta2-agonists like albuterol provide rapid bronchodilation within 5\u201315 minutes. Used PRN for acute symptoms. Needing a short-acting beta2-agonist (SABA) >2 days/week indicates poorly controlled asthma.",
-                c: "CONTROLLER - Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an inhaled corticosteroid (ICS), never as monotherapy, due to the Food and Drug Administration (FDA) Black Box Warning about increased risk when used alone.",
+                c: "CONTROLLER - Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an inhaled corticosteroid (ICS), never as monotherapy, because a long-acting beta2-agonist used alone raises the risk of severe and fatal asthma attacks. The Food and Drug Administration (FDA) removed the boxed warning from combination inhalers in 2017, but the rule against using one alone still stands.",
                 d: "RESCUE - Ipratropium bromide is a short-acting anticholinergic used as adjunct quick-relief therapy in acute exacerbations, often nebulized with albuterol (DuoNeb) for synergistic bronchodilation."
             },
             testTakingTip: "Controllers = daily: inhaled corticosteroids (ICS), long-acting beta2-agonists (LABAs), leukotriene modifiers. Rescue = PRN: short-acting beta2-agonists (SABAs), ipratropium. Critical safety: LABAs must NEVER be used alone - always with an ICS.",

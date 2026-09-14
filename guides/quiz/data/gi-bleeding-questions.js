@@ -83,7 +83,7 @@ var giBleedingQuizData = {
                 d: "FOURTH - A Foley catheter allows precise hourly urine output measurement as an indicator of end-organ perfusion. Declining urine output (UOP) suggests worsening shock and the need for more aggressive resuscitation.",
                 e: "FIFTH - Once the patient is being resuscitated and monitored, an IV proton pump inhibitor (PPI), not oral, is administered to reduce gastric acid and promote hemostasis. The standard is IV pantoprazole 80 mg bolus followed by 8 mg/hour infusion. Endoscopy preparation begins concurrently for definitive diagnosis and treatment."
             },
-            testTakingTip: "Gastrointestinal (GI) bleed resuscitation priorities: Two large-bore IVs, type & crossmatch, complete blood count (CBC), basic metabolic panel (BMP), coags, Foley catheter with a urine output (UOP) goal of >0.5 mL/kg/hr, cardiac monitor, NPO for endoscopy. Remember: IV proton pump inhibitor (PPI), not oral, in the acute setting. Morphine is avoided due to hypotension risk.",
+            testTakingTip: "Gastrointestinal (GI) bleed resuscitation priorities: two large-bore IVs, then labs (type & crossmatch, complete blood count (CBC), basic metabolic panel (BMP), coags), then the cardiac monitor, then a Foley catheter with a urine output (UOP) goal of >0.5 mL/kg/hr, then NPO for endoscopy. Remember: IV proton pump inhibitor (PPI), not oral, in the acute setting. Morphine is avoided due to hypotension risk.",
             guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },

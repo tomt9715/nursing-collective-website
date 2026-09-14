@@ -257,7 +257,7 @@ var pediatricRenalDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "In children, chronic kidney disease (CKD) is most often caused by congenital anomalies of the kidney and urinary tract (CAKUT), such as hypoplasia, dysplasia, and polycystic kidney disease (PKD), obstructive uropathy (posterior urethral valves), or reflux nephropathy. This differs from adult CKD, where diabetes and hypertension (HTN) dominate.",
+                correct: "In children, chronic kidney disease (CKD) is most often caused by congenital anomalies of the kidney and urinary tract (CAKUT), such as hypoplasia, dysplasia, obstructive uropathy (posterior urethral valves), and reflux nephropathy. Glomerular disease and inherited cystic disease such as polycystic kidney disease (PKD) come next. This differs from adult CKD, where diabetes and hypertension (HTN) dominate.",
                 a: "Type 2 diabetes mellitus (T2DM) and hypertension (HTN) are adult chronic kidney disease (CKD) causes.",
                 b: "Hypertension (HTN) is rare as primary cause in children.",
                 d: "Autoimmune disease causes some pediatric chronic kidney disease (CKD) but isn't the most common."

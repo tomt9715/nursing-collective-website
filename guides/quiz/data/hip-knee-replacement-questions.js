@@ -52,14 +52,14 @@ var hipKneeReplacementQuizData = {
                 correct: "The findings - unilateral swelling (3 cm circumference difference), warmth, tenderness, and a 'heavy/aching' sensation in the operative leg on post-op day 2 - are classic signs of deep vein thrombosis (DVT). Joint replacement is one of the highest-risk procedures for DVT; without prophylaxis the risk is 40-60% after total knee replacement (TKR). The nurse should immediately notify the provider for evaluation. Venous duplex ultrasound is the gold standard diagnostic test for DVT.",
                 a: "While some post-operative swelling is expected, a 3 cm circumference difference with warmth and tenderness is NOT normal. Dismissing this as expected swelling could delay diagnosis and treatment of a potentially fatal deep vein thrombosis (DVT) → pulmonary embolism.",
                 c: "While deep vein thrombosis (DVT) prophylaxis (enoxaparin) is standard post-joint replacement, administering the scheduled dose does NOT address the current suspected DVT. The patient likely needs therapeutic-dose anticoagulation, not prophylactic dosing, if DVT is confirmed.",
-                d: "If deep vein thrombosis (DVT) is present, ambulation before anticoagulation could dislodge the clot and cause a pulmonary embolism. The patient should be placed on bed rest until DVT is ruled out or therapeutic anticoagulation is initiated."
+                d: "Walking the patient before a suspected deep vein thrombosis (DVT) has been evaluated delays the priority action. Hold ambulation until the provider has assessed the patient; once anticoagulation has started, early walking is encouraged and does not raise the risk of pulmonary embolism."
             },
             labValues: [
                 { name: "D-dimer", normal: "<500 ng/mL (elevated in DVT but also post-surgery - low specificity)" },
                 { name: "aPTT", normal: "25–35 seconds (for heparin monitoring)" },
                 { name: "Anti-Xa Level", normal: "0.5–1.0 IU/mL (for enoxaparin monitoring)" }
             ],
-            testTakingTip: "Deep vein thrombosis (DVT) after joint replacement: swelling > 3 cm difference, warmth, tenderness, heavy/aching pain. Do NOT ambulate if DVT suspected - bed rest until ruled out. D-dimer is often elevated post-surgery anyway (poor specificity), so duplex ultrasound is the definitive test. Homan's sign is unreliable and no longer recommended.",
+            testTakingTip: "Deep vein thrombosis (DVT) after joint replacement: swelling > 3 cm difference, warmth, tenderness, heavy/aching pain. Suspected DVT: hold walking and notify first; once anticoagulation starts, early ambulation is encouraged. D-dimer is often elevated post-surgery anyway (poor specificity), so duplex ultrasound is the definitive test. Homans sign is unreliable and no longer recommended.",
             guideSection: "Section 7 - DVT Prevention",
             guideSectionId: "dvt-prevention"
         },
@@ -258,7 +258,7 @@ var hipKneeReplacementQuizData = {
                 c: "Computed tomography (CT) pulmonary angiography is the gold standard diagnostic test for pulmonary embolism (PE), but diagnostics never come before stabilization. The patient needs oxygen and emergency evaluation first.",
                 d: "Sequential compression devices (SCDs) are a deep vein thrombosis (DVT) PREVENTION measure, not a pulmonary embolism (PE) treatment. They are useless once embolization has already occurred. Additionally, if the patient has an existing DVT, leg compression could theoretically dislodge additional clot material."
             },
-            testTakingTip: "Pulmonary embolism (PE) after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + head of bed (HOB) elevated + rapid response. The question will try to tempt you with heparin or computed tomography pulmonary angiography (CTPA) - but always stabilize airway, breathing, circulation (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
+            testTakingTip: "Pulmonary embolism (PE) after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + head of bed (HOB) elevated + rapid response. The question will try to tempt you with heparin or computed tomography pulmonary angiography (CTPA) - but always stabilize airway, breathing, circulation (ABC) before diagnostics or medication orders. PE is one of the leading causes of death after joint replacement.",
             guideSection: "Section 7 - DVT Prevention",
             guideSectionId: "dvt-prevention"
         },

@@ -43,7 +43,7 @@ var pediatricGerdQuizData = {
             stem: "A 6-week-old has been vomiting after feeds. Today, the vomit appeared green. What is the priority nursing action?",
             options: [
                 { id: "a", text: "Reassure the parents that green vomit is normal reflux" },
-                { id: "b", text: "Thicken the feedings with rice cereal and follow up in 2 weeks" },
+                { id: "b", text: "Thicken the feedings with oatmeal cereal and follow up in 2 weeks" },
                 { id: "c", text: "Notify the provider immediately and prepare for an upper gastrointestinal series" },
                 { id: "d", text: "Start a proton pump inhibitor for suspected reflux" }
             ],
@@ -204,19 +204,19 @@ var pediatricGerdQuizData = {
             difficulty: "application",
             stem: "A parent asks the nurse how to thicken formula for their infant with gastroesophageal reflux disease (GERD). Which instruction is correct?",
             options: [
-                { id: "a", text: "Add 1 tablespoon of rice cereal per ounce of formula" },
-                { id: "b", text: "Add 1 teaspoon of rice cereal per ounce of formula" },
-                { id: "c", text: "Add 1 teaspoon of rice cereal to the entire bottle" },
-                { id: "d", text: "Thickening is not recommended for infants" }
+                { id: "a", text: "Mix infant rice cereal into the formula, since it is the standard thickener" },
+                { id: "b", text: "Use infant oatmeal cereal or a pre-thickened formula, in the amount the provider recommends" },
+                { id: "c", text: "Cut a cross in the nipple tip with scissors so the thicker formula flows freely" },
+                { id: "d", text: "Thicken every feed, including breast milk, for as long as the baby spits up at all" }
             ],
             correct: "b",
             rationale: {
-                correct: "The standard recipe is 1 teaspoon of rice cereal per ounce of formula. Parents also need to enlarge the nipple opening (cross-cut) so the thicker formula can flow. Helps some infants; not all.",
-                a: "1 tablespoon per ounce is too thick, risks excessive calories and choking.",
-                c: "Under-thickens; need per-ounce dosing for consistency.",
-                d: "Thickening IS a recognized conservative measure, though evidence is mixed."
+                correct: "Infant oatmeal cereal or a commercial pre-thickened anti-regurgitation formula is the current choice. The provider or dietitian sets the amount, because too much adds calories and makes the feed hard to suck. Pair thickened feeds with a faster-flow nipple. Thickening helps some infants, not all.",
+                a: "Rice cereal is no longer recommended as a thickener. It contains inorganic arsenic, and the Food and Drug Administration (FDA) advises limiting it in infants.",
+                c: "Cutting the nipple lets formula pour out too fast and creates a choking risk. Use a faster-flow nipple instead.",
+                d: "Thickening is for troublesome regurgitation when the provider recommends it. A spitting infant who is gaining weight needs reassurance, and breast milk is not routinely thickened."
             },
-            testTakingTip: "Thickener: 1 tsp rice per oz formula. Enlarge nipple opening.",
+            testTakingTip: "Thicken with oatmeal cereal or a pre-thickened formula, in the amount ordered. Use a faster-flow nipple, never a cut one.",
             guideSection: "Section 4 - Conservative Management",
             guideSectionId: "conservative"
         },
@@ -328,7 +328,7 @@ var pediatricGerdQuizData = {
                 c: "Two hours after every feed is impractical and more than is needed.",
                 d: "Reflux follows every feed, so the measure applies to all of them."
             },
-            testTakingTip: "Conservative care comes first: upright 30 minutes, smaller more frequent feeds, and thickening at 1 teaspoon of rice cereal per ounce.",
+            testTakingTip: "Conservative care comes first: upright 30 minutes, smaller more frequent feeds, and thickened feeds if the provider recommends them.",
             guideSection: "Section 9 - Numbers to have cold",
             guideSectionId: "numbers-cold"
         },

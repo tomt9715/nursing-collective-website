@@ -196,12 +196,12 @@ var diabetesMellitusQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Neutral protamine Hagedorn (NPH) is the only insulin that appears cloudy (it is a suspension). It must be gently rolled (not shaken) to resuspend the particles evenly before drawing up the dose. All other insulin types are clear solutions.",
+                correct: "Neutral protamine Hagedorn (NPH) is cloudy because it is a suspension, and so are premixed insulins that contain it, such as 70/30. It must be gently rolled (not shaken) to resuspend the particles evenly before drawing up the dose. Rapid-acting, short-acting and long-acting insulins are clear solutions.",
                 a: "Glargine (Lantus) and detemir (Levemir) should NEVER be mixed with any other insulin. Mixing alters their long-acting properties and can cause unpredictable absorption.",
                 c: "Rapid-acting insulins (lispro, aspart) should be given within 15 minutes of a meal (at the meal), not 30–60 minutes before. Regular insulin is the one given 30 minutes before meals.",
-                d: "Only regular insulin can be given IV. It is the only insulin type approved for intravenous administration. All other types, including rapid-acting, neutral protamine Hagedorn (NPH), and long-acting insulins, are for subcutaneous use only."
+                d: "Regular insulin is the insulin used for IV infusions. Cloudy insulins and long-acting insulins must never be given IV. All other types, including rapid-acting, neutral protamine Hagedorn (NPH), and long-acting insulins, are for subcutaneous use only."
             },
-            testTakingTip: "Key insulin facts for the NCLEX: Neutral protamine Hagedorn (NPH) = only cloudy insulin (roll, don't shake). Regular = only IV insulin. Glargine/detemir = never mix. When mixing: Regular before NPH ('RN' = clear before cloudy).",
+            testTakingTip: "Key insulin facts for the NCLEX: Neutral protamine Hagedorn (NPH) and premixes like 70/30 = cloudy (roll, don't shake). Regular = the IV insulin. Glargine/detemir = never mix. When mixing: Regular before NPH ('RN' = clear before cloudy).",
             guideSection: "Section 5 - Insulin Therapy",
             guideSectionId: "insulin-therapy"
         },

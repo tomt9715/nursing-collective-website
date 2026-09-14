@@ -32,7 +32,7 @@ const sidebarConfig = {
         { id: 'tip-levothyroxine', title: 'Levothyroxine Teaching', text: 'Empty stomach 30 to 60 minutes before breakfast, 4 hours from calcium and iron, and it potentiates warfarin.' },
         { id: 'tip-myxedema', title: 'Passive Rewarming Only', text: 'External heat dilates peripheral vessels and this heart cannot compensate. Warm blankets, no more than 1 F an hour.' },
         { id: 'tip-hypo-vs-hyper', title: 'Learn One List, Get the Other Free', text: 'Every finding is an exact opposite. Cold or hot, gaining or losing, slow pulse or fast. Learn hypo and flip it.' },
-        { id: 'tip-thyroid-storm', title: 'Four Blocks, in Order', text: 'Block synthesis with PTU, release with iodine an hour later, adrenergic effects with a beta-blocker, conversion with steroids.' },
+        { id: 'tip-thyroid-storm', title: 'Four Blocks, Rate First', text: 'Beta-blocker first for the heart rate. Block synthesis with PTU, conversion with steroids, and release with iodine an hour after the PTU.' },
         { id: 'tip-ptu-pregnancy', title: 'PTU in the First Trimester Only', text: 'Methimazole is teratogenic in the first trimester; PTU covers that window, then switch back for the liver risk.' },
         { id: 'tip-rai-precautions', title: 'RAI Precautions', text: 'Pregnancy test first, none for 6 to 12 months after. Sleep alone, separate utensils, flush twice, keep 3 feet away.' },
         { id: 'tip-thyroidectomy', title: 'Airway, Bleeding, Calcium, Communication', text: 'Airway first, always. Then bleeding, and check behind the neck. Then calcium. Then the voice, every 2 to 4 hours.' }

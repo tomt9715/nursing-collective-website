@@ -121,12 +121,12 @@ var coronaryArteryDiseaseQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After drug-eluting stent (DES) placement, dual antiplatelet therapy (DAPT), which is aspirin plus a P2Y12 inhibitor like clopidogrel, must continue for at least 12 months. Stopping clopidogrel prematurely carries a 20\u201340% risk of acute stent thrombosis, which can be fatal. The cardiologist must be consulted before any changes to antiplatelet therapy.",
+                correct: "After drug-eluting stent (DES) placement, dual antiplatelet therapy (DAPT), which is aspirin plus a P2Y12 inhibitor like clopidogrel, must continue for the prescribed duration, typically 6 to 12 months, and 12 months after an acute coronary syndrome. Stopping clopidogrel early is the strongest risk factor for stent thrombosis, which is fatal in 20 to 40 percent of cases. The cardiologist must be consulted before any changes to antiplatelet therapy.",
                 a: "Stopping dual antiplatelet therapy (DAPT) early after a drug-eluting stent (DES) is life-threatening. Dental bleeding risk is far less dangerous than stent thrombosis risk.",
                 c: "Stopping one component of dual antiplatelet therapy (DAPT) without cardiologist approval increases stent thrombosis risk. Both agents are needed for the full prescribed duration.",
                 d: "Warfarin does not prevent stent thrombosis - it works on the coagulation cascade, not platelet aggregation. It is not a substitute for antiplatelet therapy."
             },
-            testTakingTip: "Dual antiplatelet therapy (DAPT) after stent = non-negotiable. Drug-eluting stent: 12 months minimum. Bare-metal stent: 1\u20133 months minimum. Stopping early = stent thrombosis = myocardial infarction (MI) or death. Always consult cardiology first.",
+            testTakingTip: "Dual antiplatelet therapy (DAPT) after stent = non-negotiable. Drug-eluting stent: typically 6 to 12 months. Bare-metal stent: at least 1 month. Stopping early = stent thrombosis = myocardial infarction (MI) or death. Always consult cardiology first.",
             guideSection: "Section 7 - DAPT After Stent Placement",
             guideSectionId: "management"
         },

@@ -49,12 +49,12 @@ var copdQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient is experiencing CO2 narcosis from excessive oxygen. In chronic CO2 retainers, the respiratory drive shifts from the normal CO2 stimulus to a hypoxic drive. High-flow oxygen eliminates the hypoxic stimulus, causing respiratory depression. The nurse should reduce (not remove) the oxygen to 1-2 L/min and stimulate the patient to breathe. Target SpO2 is 88-92% for these patients.",
+                correct: "This patient is experiencing CO2 narcosis from excessive oxygen. In chronic CO2 retainers, high-flow oxygen worsens ventilation-perfusion mismatch in damaged lungs and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and the patient becomes drowsy. The older hypoxic drive explanation is incomplete. The nurse should reduce (not remove) the oxygen to 1-2 L/min and stimulate the patient to breathe. Target SpO2 is 88-92% for these patients.",
                 a: "This patient is not resting - they\u2019re developing respiratory failure from CO2 narcosis. Continuing high-flow O2 could lead to respiratory arrest.",
                 c: "Never completely remove oxygen from a hypoxemic patient. The goal is to reduce flow, not eliminate it. These patients still need supplemental O2, just at a lower rate.",
                 d: "Naloxone reverses opioid-induced respiratory depression. This patient\u2019s drowsiness is from CO2 narcosis, not opioid overdose. Naloxone would have no effect."
             },
-            testTakingTip: "Chronic obstructive pulmonary disease (COPD) + chronic CO2 retention = low-flow O2 only (1-2 L/min, target SpO2 88-92%). High-flow O2 knocks out the hypoxic drive \u2192 CO2 narcosis \u2192 respiratory arrest. This is one of the most tested COPD concepts on NCLEX. Reduce the O2, don\u2019t remove it.",
+            testTakingTip: "Chronic obstructive pulmonary disease (COPD) + chronic CO2 retention = low-flow O2 only (1-2 L/min, target SpO2 88-92%). High-flow O2 drives CO2 up \u2192 CO2 narcosis \u2192 respiratory arrest. This is one of the most tested COPD concepts on NCLEX. Reduce the O2, don\u2019t remove it.",
             guideSection: "Section 5 - Oxygen Therapy in COPD",
             guideSectionId: "oxygen-therapy"
         },
@@ -97,7 +97,7 @@ var copdQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "Prioritize airway, breathing, circulation (ABCs) - oxygenation first with targets specific to chronic obstructive pulmonary disease (COPD), 88\u201392%. Then assess ventilation with an arterial blood gas (ABG), treat bronchospasm (nebulizer), reduce inflammation (steroids), and collect diagnostic specimens.",
-                a: "FIRST - SpO2 of 85% requires immediate oxygen therapy. In chronic obstructive pulmonary disease (COPD), use LOW-flow oxygen targeting SpO2 88\u201392%. High-flow oxygen risks suppressing the hypoxic ventilatory drive and causing CO2 narcosis.",
+                a: "FIRST - SpO2 of 85% requires immediate oxygen therapy. In chronic obstructive pulmonary disease (COPD), use LOW-flow oxygen targeting SpO2 88\u201392%. High-flow oxygen risks driving CO2 up and causing CO2 narcosis.",
                 b: "SECOND - Once oxygen is initiated, obtain an arterial blood gas (ABG) to evaluate PaCO2, pH, and PaO2. The ABG guides treatment decisions, such as the need for bilevel positive airway pressure (BiPAP) if CO2 is critically elevated.",
                 c: "THIRD - Nebulized short-acting bronchodilators (albuterol + ipratropium) relieve bronchospasm and improve airflow.",
                 d: "FOURTH - Systemic corticosteroids reduce airway inflammation, shorten recovery time, and reduce treatment failure. They take hours to reach full effect, so early administration is important.",
@@ -279,7 +279,7 @@ var copdQuizData = {
             correct: "a",
             rationale: {
                 correct: "The saturation target in chronic obstructive pulmonary disease (COPD) with chronic retention is 88 to 92 percent. A reading of 97 percent means too much oxygen is being given, so the flow is reduced and the patient reassessed.",
-                b: "Leaving the saturation at 97 percent in a chronic retainer risks suppressing the drive to breathe.",
+                b: "Leaving the saturation at 97 percent in a chronic retainer risks driving carbon dioxide up.",
                 c: "Pushing the saturation higher moves further away from the 88 to 92 percent target.",
                 d: "Removing oxygen altogether swings the patient to the opposite risk. The flow is reduced, not stopped."
             },

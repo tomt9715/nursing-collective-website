@@ -49,7 +49,7 @@ var copdQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient is experiencing CO2 narcosis from excessive oxygen. In chronic CO2 retainers, high-flow oxygen worsens ventilation-perfusion mismatch in damaged lungs and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and the patient becomes drowsy. The older hypoxic drive explanation is incomplete. The nurse should reduce (not remove) the oxygen to 1-2 L/min and stimulate the patient to breathe. Target SpO2 is 88-92% for these patients.",
+                correct: "This patient is experiencing CO2 narcosis from excessive oxygen. In chronic CO2 retainers, high-flow oxygen worsens ventilation-perfusion mismatch in damaged lungs and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and the patient becomes drowsy. The older hypoxic drive explanation is incomplete. The nurse should reduce (not remove) the oxygen to 1-2 L/min, rouse the patient and coach deep breaths, and then notify the provider. Target SpO2 is 88-92% for these patients.",
                 a: "This patient is not resting - they\u2019re developing respiratory failure from CO2 narcosis. Continuing high-flow O2 could lead to respiratory arrest.",
                 c: "Never completely remove oxygen from a hypoxemic patient. The goal is to reduce flow, not eliminate it. These patients still need supplemental O2, just at a lower rate.",
                 d: "Naloxone reverses opioid-induced respiratory depression. This patient\u2019s drowsiness is from CO2 narcosis, not opioid overdose. Naloxone would have no effect."

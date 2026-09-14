@@ -350,7 +350,7 @@ High-alert drugs, the complications you have to tell apart, and the administrati
 ### High-alert medications
 - Insulin, heparin, opioids, concentrated electrolytes, chemotherapy
 - Independent double check
-- **Regular is the only insulin that goes IV**
+- **Regular is the standard insulin for IV infusion**
 
 ### Access and fluids
 - Vesicants, parenteral nutrition and long duration go central

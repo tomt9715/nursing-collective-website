@@ -72,12 +72,12 @@ var ivMedicationsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Regular insulin is the only insulin given intravenously. It is also a high-alert medication, so the infusion gets an independent double check.",
+                correct: "Regular insulin is the standard insulin for a continuous IV infusion. It is also a high-alert medication, so the infusion gets an independent double check.",
                 a: "Neutral protamine Hagedorn (NPH) insulin is an intermediate-acting suspension. It is cloudy and is never given IV.",
                 b: "Glargine is long-acting and subcutaneous only. Giving it IV would be a serious error.",
                 d: "Premixed suspensions are subcutaneous only."
             },
-            testTakingTip: "Regular is the only insulin that goes IV. Cloudy insulin never goes IV.",
+            testTakingTip: "Regular is the insulin for IV infusions. Cloudy and long-acting insulin never go IV.",
             guideSection: "Section 3 - High-alert medications",
             guideSectionId: "high-alert"
         },

@@ -95,15 +95,15 @@ var oxygenTherapyQuizData = {
             stem: "A patient with chronic obstructive pulmonary disease (COPD) is receiving oxygen via nasal cannula at 2 L/min. The nurse notes the patient has become increasingly drowsy and difficult to arouse. Respiratory rate has decreased from 18 to 8 breaths/min. SpO2 reads 99%. What should the nurse do FIRST?",
             options: [
                 { id: "a", text: "Increase the oxygen flow rate since the patient is becoming unresponsive" },
-                { id: "b", text: "Reduce the oxygen flow rate and stimulate the patient to breathe" },
+                { id: "b", text: "Reduce the oxygen flow rate, rouse the patient, and coach deep breaths" },
                 { id: "c", text: "Obtain an arterial blood gas (ABG)" },
                 { id: "d", text: "Continue monitoring since the SpO2 is within normal limits" }
             ],
             correct: "b",
             rationale: {
-                correct: "This chronic obstructive pulmonary disease (COPD) patient is showing signs of CO2 narcosis. Excess oxygen worsens ventilation-perfusion mismatch in damaged lungs and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and somnolence follows. The immediate action is to reduce the O2 flow rate and stimulate breathing. The SpO2 of 99% in a COPD patient is a red flag, not reassurance - it means they are getting too much oxygen.",
+                correct: "This chronic obstructive pulmonary disease (COPD) patient is showing signs of CO2 narcosis. Excess oxygen worsens ventilation-perfusion mismatch in damaged lungs and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and somnolence follows. The immediate action is to reduce the O2 flow rate and keep the patient awake and taking deep breaths, which blows off CO2 while help is called. The SpO2 of 99% in a COPD patient is a red flag, not reassurance - it means they are getting too much oxygen.",
                 a: "Increasing oxygen would push CO2 even higher, worsening the narcosis and potentially causing respiratory arrest. This is the opposite of what is needed.",
-                c: "An arterial blood gas (ABG) is essential and should be obtained, but it is NOT the first action when the patient is becoming obtunded. Reducing the oxygen and stimulating breathing addresses the immediate life threat.",
+                c: "An arterial blood gas (ABG) is essential and should be obtained, but it is NOT the first action when the patient is becoming obtunded. Reducing the oxygen and rousing the patient to breathe deeply addresses the immediate life threat.",
                 d: "A SpO2 of 99% in a chronic obstructive pulmonary disease (COPD) patient on supplemental oxygen is ABNORMAL - their target is 88-92%. The high SpO2 combined with decreased level of consciousness (LOC) and respiratory depression signals CO2 narcosis, not stability."
             },
             labValues: [
@@ -204,12 +204,12 @@ var oxygenTherapyQuizData = {
                 { id: "d", text: "Apply continuous pulse oximetry and capnography to monitor both oxygenation and ventilation trends" },
                 { id: "e", text: "Hold any sedating medications (opioids, benzodiazepines) and review the medication administration record for respiratory depressants" }
             ],
-            correct: ["a", "b", "c", "d", "e"],
+            correct: ["a", "c", "b", "d", "e"],
             rationale: {
-                correct: "The priority sequence addresses immediate safety: avoid worsening the crisis (do not increase O2), optimize what you can independently (positioning, stimulation), escalate to the provider for definitive treatment with bilevel positive airway pressure (BiPAP), establish monitoring, and eliminate contributing factors (sedating medications).",
+                correct: "The priority sequence addresses immediate safety: avoid worsening the crisis (do not increase O2), escalate at once because a pH of 7.22 needs ventilatory support with bilevel positive airway pressure (BiPAP), rouse and position the patient while help comes, establish monitoring, and eliminate contributing factors (sedating medications).",
                 a: "FIRST - In chronic obstructive pulmonary disease (COPD) patients with CO2 retention, increasing O2 above the prescribed low-flow rate worsens ventilation-perfusion mismatch and frees CO2 from hemoglobin (the Haldane effect), so CO2 climbs and narcosis deepens. The older hypoxic drive explanation is incomplete. Maintaining the current rate prevents iatrogenic harm.",
-                b: "SECOND - Physical stimulation can temporarily increase respiratory effort in a somnolent patient. High Fowler\u2019s position lowers abdominal pressure on the diaphragm, improving tidal volume. These are independent nursing actions that can be done immediately.",
-                c: "THIRD - A pH of 7.22 with PaCO2 of 78 indicates severe acute respiratory failure requiring ventilatory support. Bilevel positive airway pressure (BiPAP) provides inspiratory pressure to augment tidal volume and expiratory pressure to maintain alveolar recruitment, promoting CO2 clearance without intubation.",
+                b: "THIRD - Rousing the patient and coaching deep breaths can temporarily increase ventilation in a somnolent patient. High Fowler\u2019s position lowers abdominal pressure on the diaphragm, improving tidal volume. These independent nursing actions buy time but do not replace ventilatory support, so they follow the call for help.",
+                c: "SECOND - A pH of 7.22 with PaCO2 of 78 indicates severe acute respiratory failure requiring ventilatory support, so the provider is called immediately. Bilevel positive airway pressure (BiPAP) provides inspiratory pressure to augment tidal volume and expiratory pressure to maintain alveolar recruitment, promoting CO2 clearance without intubation.",
                 d: "FOURTH - Continuous monitoring detects further deterioration. Capnography (end-tidal CO2) provides real-time ventilation data between arterial blood gas (ABG) draws. SpO2 target for chronic obstructive pulmonary disease (COPD) is 88\u201392% - higher levels suggest excessive O2 that may drive CO2 up.",
                 e: "FIFTH - Any sedating medications compound the respiratory depression. Reviewing the medication administration record (MAR) identifies if opioids, benzodiazepines, or muscle relaxants contributed to the acute decompensation. Reversal agents (naloxone, flumazenil) may be needed if these medications are the trigger."
             },

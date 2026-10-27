@@ -906,7 +906,7 @@ async function handleSocialAuth(provider) {
 
     try {
         // Get OAuth authorization URL from backend
-        const response = await fetch(`${API_URL}/auth/oauth/${provider}`, {
+        const response = await fetch(`${API_URL}/auth/oauth/${provider}?${new URLSearchParams({ return_url: window.location.origin })}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

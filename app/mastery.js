@@ -1073,7 +1073,9 @@ var MasteryTracker = (function () {
             if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
                 apiUrl = 'https://api.thenursingcollective.pro';
             } else {
-                apiUrl = 'https://staging-backend-production-365a.up.railway.app';
+                apiUrl = window.location.hostname.endsWith('.florencebot-website.pages.dev')
+                    ? window.location.origin + '/staging-api'
+                    : 'https://staging-backend-production-365a.up.railway.app';
             }
         }
 

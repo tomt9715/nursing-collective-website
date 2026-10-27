@@ -9,7 +9,10 @@ const API_URL = (function() {
     if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
         return 'https://api.thenursingcollective.pro';
     }
-    return 'https://staging-backend-production-365a.up.railway.app';
+    if (window.location.hostname.endsWith('.florencebot-website.pages.dev')) {
+            return window.location.origin + '/staging-api';
+        }
+        return 'https://staging-backend-production-365a.up.railway.app';
 })();
 
 // Force light mode on guide pages (don't affect global preference)

@@ -21,6 +21,9 @@
         if (h === 'thenursingcollective.pro' || h === 'www.thenursingcollective.pro') {
             return 'https://api.thenursingcollective.pro';
         }
+        if (window.location.hostname.endsWith('.florencebot-website.pages.dev')) {
+            return window.location.origin + '/staging-api';
+        }
         return 'https://staging-backend-production-365a.up.railway.app';
     })();
 

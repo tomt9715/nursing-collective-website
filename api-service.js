@@ -10,7 +10,11 @@ const API_URL = (function() {
     if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro' || hostname === 'learn.thenursingcollective.pro') {
         return 'https://api.thenursingcollective.pro';
     }
-    // Staging: preview branches, localhost, and any non-production host
+    if (hostname.endsWith('.florencebot-website.pages.dev')) {
+        console.log('[API] Using staging backend through first-party preview gateway');
+        return window.location.origin + '/staging-api';
+    }
+    // Local development continues to use staging directly.
     console.log('[API] Using staging backend');
     return 'https://staging-backend-production-365a.up.railway.app';
 })();

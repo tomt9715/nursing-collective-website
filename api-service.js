@@ -15,6 +15,8 @@ const API_URL = (function() {
     return 'https://staging-backend-production-365a.up.railway.app';
 })();
 
+var _tokenRefreshPromise = null;
+
 /**
  * Centralized API calling function with automatic token refresh
  * @param {string} endpoint - API endpoint (e.g., '/user/profile')
@@ -57,8 +59,11 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
             } catch (refreshError) {
                 console.error('Token refresh failed:', refreshError);
                 // Refresh failed, logout user
-                performLogout();
-                throw new Error('Session expired. Please login again.');
+                if (refreshError.status === 400 || refreshError.status === 401) {
+                    performLogout();
+                    throw new Error('Session expired. Please login again.');
+                }
+                throw refreshError;
             }
         }
 
@@ -96,7 +101,16 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
  * Refresh the access token using the httpOnly cookie refresh token
  * @returns {Promise<string>} - New access token
  */
-async function refreshToken() {
+let refreshRequest = null;
+
+function refreshToken() {
+    if (!refreshRequest) {
+        refreshRequest = requestTokenRefresh().finally(function() { refreshRequest = null; });
+    }
+    return refreshRequest;
+}
+
+async function requestTokenRefresh() {
     try {
         // Refresh token is sent automatically via httpOnly cookie
         const response = await fetch(`${API_URL}/auth/refresh`, {
@@ -110,7 +124,9 @@ async function refreshToken() {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.error || 'Token refresh failed');
+            const failure = new Error(data.error || 'Token refresh failed');
+            failure.status = response.status;
+            throw failure;
         }
 
         // Update access token (refresh token stays in httpOnly cookie)
@@ -209,7 +225,9 @@ async function ensureValidToken() {
         await refreshToken();
         return true;
     } catch (e) {
-        // Refresh failed — session is truly expired, clean up
+        // Only an explicit invalid-session response ends the login.
+        // A network outage or server error must not erase a working session.
+        if (e.status !== 400 && e.status !== 401) throw e;
         localStorage.removeItem('accessToken');
         localStorage.removeItem('user');
         localStorage.removeItem('tokenTimestamp');
@@ -286,7 +304,6 @@ function applyUserStamp(userId) {
  * Returns a promise so callers can await it before rendering.
  */
 function requireAuth() {
-    console.info('[Auth] Session check', { present: isAuthenticated(), stale: isTokenStale() });
     if (!isAuthenticated()) {
         window.location.href = 'login.html';
         return Promise.resolve(false);
@@ -306,7 +323,11 @@ function requireAuth() {
                 }
                 return true;
             })
-            .catch(function() {
+            .catch(function(error) {
+                if (isAuthenticated() && error.status !== 400 && error.status !== 401) {
+                    showSessionReconnectMessage();
+                    return false;
+                }
                 // Refresh failed — session dead
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('user');
@@ -319,13 +340,32 @@ function requireAuth() {
     return Promise.resolve(true);
 }
 
+function showSessionReconnectMessage() {
+    function show() {
+        if (document.getElementById('session-reconnect-message')) return;
+        const banner = document.createElement('div');
+        banner.id = 'session-reconnect-message';
+        banner.className = 'session-reconnect-banner';
+        banner.setAttribute('role', 'alert');
+        const message = document.createElement('p');
+        message.textContent = 'We couldn’t reconnect to your account. Please try again.';
+        const retry = document.createElement('button');
+        retry.textContent = 'Try again';
+        retry.addEventListener('click', function() { window.location.reload(); });
+        banner.append(message, retry);
+        (document.querySelector('main') || document.body).prepend(banner);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show, { once: true });
+    else show();
+}
+
 // ─── Pre-warm: kick off token refresh immediately if stale ────────────
 // This runs as soon as api-service.js loads (before later scripts download).
 // By the time dashboard-script.js calls requireAuth(), the refresh is
 // already in-flight or finished — saving 300-800ms on cold page loads.
-var _tokenRefreshPromise = null;
 if (isAuthenticated() && isTokenStale()) {
-    _tokenRefreshPromise = refreshToken().catch(function() { /* handled later by requireAuth */ });
+    _tokenRefreshPromise = ensureValidToken();
+    _tokenRefreshPromise.catch(function() { /* handled by the auth guard */ });
 }
 
 // Listen for cross-tab logout events

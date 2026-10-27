@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // If user has a stored token but it's stale, try silent refresh before updating nav
     if (typeof ensureValidToken === 'function' && typeof isTokenStale === 'function'
         && localStorage.getItem('accessToken') && isTokenStale()) {
-        await ensureValidToken();
+        try { await ensureValidToken(); }
+        catch (error) { console.warn('[Auth] Session renewal temporarily unavailable'); }
     }
 
     // Update nav based on auth state

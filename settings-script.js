@@ -1104,6 +1104,7 @@ function renderSubscriptionCard(data) {
     // Tier badge
     var tierBadge = document.getElementById('membership-tier-badge');
     if (tierBadge) {
+        tierBadge.style.display = sub.plan_id === 'monthly-access' ? 'none' : '';
         var isAi = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
         if (isAi) {
             tierBadge.className = 'membership-plan-tier ai-powered';
@@ -1152,7 +1153,7 @@ function renderSubscriptionCard(data) {
     // Change Plan button
     var changePlanBtn = document.getElementById('membership-change-plan-btn');
     if (changePlanBtn) {
-        changePlanBtn.hidden = sub.plan_id === 'monthly-access';
+        changePlanBtn.style.display = sub.plan_id === 'monthly-access' ? 'none' : '';
         changePlanBtn.addEventListener('click', function() { openChangePlanModal(sub); });
     }
 

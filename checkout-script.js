@@ -26,11 +26,11 @@
     const PLAN_DETAILS = {
         'monthly-access': {
             billing: 'Billed monthly',
-            submitMessage: 'Your plan gives you instant access to all study guides. You can cancel anytime from your dashboard.',
+            submitMessage: 'Your plan gives you instant access to all study guides. You can cancel anytime from Account → Plan & Billing.',
             features: [
                 'Full access to all study guides',
-                'Unlimited practice questions',
-                'Cancel anytime from your dashboard',
+                'Guide practice quizzes with answer explanations',
+                'Cancel anytime from Account → Plan & Billing',
             ],
         },
         'semester-access': {
@@ -53,11 +53,11 @@
         },
         'ai-monthly-access': {
             billing: 'Billed monthly',
-            submitMessage: 'Your plan gives you instant access to all study guides plus AI tools. You can cancel anytime from your dashboard.',
+            submitMessage: 'Your plan gives you instant access to all study guides plus AI tools. You can cancel anytime from Account → Plan & Billing.',
             features: [
                 'Everything in Standard, plus AI study tools',
                 'Smart study plans and weak-spot tracking',
-                'Cancel anytime from your dashboard',
+                'Cancel anytime from Account → Plan & Billing',
             ],
         },
         'ai-semester-access': {

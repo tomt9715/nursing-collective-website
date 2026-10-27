@@ -178,16 +178,21 @@ function isAuthenticated() {
 }
 
 /**
- * Check if the stored access token is likely expired
- * Uses tokenTimestamp to estimate without decoding the JWT
- * @returns {boolean} - True if token is likely expired
+ * Check the token's expiry to decide when to refresh.
+ * This is only a client-side refresh hint; the API still validates the JWT.
  */
 function isTokenStale() {
-    const timestamp = localStorage.getItem('tokenTimestamp');
-    if (!timestamp) return true; // No timestamp = assume stale
-    const ageMs = Date.now() - parseInt(timestamp, 10);
-    // Access tokens expire in 15 min (900s). Treat as stale after 14 min.
-    return ageMs > 14 * 60 * 1000;
+    try {
+        const token = localStorage.getItem('accessToken');
+        if (!token) return true;
+        const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+        const claims = JSON.parse(atob(payload.padEnd(Math.ceil(payload.length / 4) * 4, '=')));
+        if (typeof claims.exp !== 'number' || !Number.isFinite(claims.exp)) return true;
+        // Refresh one minute before the server-issued expiry.
+        return Date.now() >= (claims.exp - 60) * 1000;
+    } catch (error) {
+        return true;
+    }
 }
 
 /**

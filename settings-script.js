@@ -1066,7 +1066,7 @@ function renderSubscriptionCard(data) {
     var planLabel = document.getElementById('membership-plan-label');
     if (planLabel) {
         var planNames = {
-            'monthly-access': 'Monthly Access',
+            'monthly-access': 'Study membership',
             'semester-access': 'Semester Access',
             'lifetime-access': 'Lifetime Access',
             'ai-monthly-access': 'AI-Powered Monthly',
@@ -1138,16 +1138,10 @@ function renderSubscriptionCard(data) {
         }
     }
 
-    // Upgrade prompt
+    // New membership messaging has one study offer; existing AI access stays intact.
     var upgradePrompt = document.getElementById('membership-upgrade-prompt');
     var isAiPlan = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
-    if (upgradePrompt) {
-        if (isAiPlan) {
-            upgradePrompt.classList.add('hidden');
-        } else {
-            upgradePrompt.classList.remove('hidden');
-        }
-    }
+    if (upgradePrompt) upgradePrompt.classList.add('hidden');
 
     // Upgrade button
     var upgradeBtn = document.getElementById('membership-upgrade-btn');
@@ -1158,6 +1152,7 @@ function renderSubscriptionCard(data) {
     // Change Plan button
     var changePlanBtn = document.getElementById('membership-change-plan-btn');
     if (changePlanBtn) {
+        changePlanBtn.hidden = sub.plan_id === 'monthly-access';
         changePlanBtn.addEventListener('click', function() { openChangePlanModal(sub); });
     }
 
@@ -1498,7 +1493,7 @@ function openChangePlanModal(currentSub) {
     if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
 
     var planNames = {
-        'monthly-access': 'Monthly Access',
+        'monthly-access': 'Study membership',
         'semester-access': 'Semester Access',
         'lifetime-access': 'Lifetime Access',
         'ai-monthly-access': 'AI-Powered Monthly',
@@ -1634,7 +1629,7 @@ function handleChangePlan(currentSub, modal) {
     if (!selectedPlan) return;
 
     var currentPlanNames = {
-        'monthly-access': 'Monthly Access',
+        'monthly-access': 'Study membership',
         'semester-access': 'Semester Access',
         'lifetime-access': 'Lifetime Access',
         'ai-monthly-access': 'AI-Powered Monthly',

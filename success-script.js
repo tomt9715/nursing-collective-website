@@ -304,7 +304,7 @@ function showSubscriptionSuccess(subscription) {
 
     // Determine plan display name
     const planNames = {
-        'monthly-access': 'Monthly Access',
+        'monthly-access': 'Study membership',
         'semester-access': 'Semester Access',
         'lifetime-access': 'Lifetime Access',
         'ai-monthly-access': 'AI-Powered Monthly',
@@ -329,7 +329,7 @@ function showSubscriptionSuccess(subscription) {
     const successTitle = isCreditAddon ? 'Credits Added!' : (isAIPlan ? 'Welcome to AI-Powered!' : 'Welcome to Premium!');
     const successMessage = isCreditAddon
         ? `Your ${escapeHtml(planName)} has been added to your account. Your additional credits are available immediately.`
-        : `Your ${escapeHtml(planName)} subscription is now active. You have unlimited access to all study guides, clinical resources, and quick reference tools.${isAIPlan ? ' Plus AI-powered study tools!' : ''}`;
+        : `Your ${escapeHtml(planName)} subscription is now active. You can now use the study guides and their practice quizzes. The resource library remains free for everyone.${isAIPlan ? ' Plus AI-powered study tools!' : ''}`;
     const successIconGradient = isAIPlan ? 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
     const successIcon = isCreditAddon ? 'fa-plus-circle' : (isAIPlan ? 'fa-robot' : 'fa-crown');
 

@@ -176,6 +176,11 @@ class QuizEngine {
     }
 
     showResults() {
+        // Repeated result clicks must not record the same attempt twice.
+        if (this.phase === 'results') {
+            this._renderResultsScreen();
+            return;
+        }
         this.phase = 'results';
         this._stopTimer();
         this.totalTimeSeconds = Math.round((Date.now() - this.sessionStartTime) / 1000);
@@ -213,7 +218,11 @@ class QuizEngine {
                 }
             });
             if (masteryResults.length > 0) {
-                MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
+                try {
+                    MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
+                } catch (error) {
+                    console.warn('[Quiz] Mastery tracking failed; showing results anyway.', error);
+                }
             }
         }
 
@@ -1196,7 +1205,7 @@ class QuizEngine {
                 </a>
                 <div class="quiz-top-bar-right">
                     ${timerHtml}
-                    <a href="${this.isAIGenerated ? '../../ai-tools.html' : '../ai-tools.html'}" class="quiz-ai-tools-link" title="AI Study Tools">
+                    <a href="/ai-tools.html" class="quiz-ai-tools-link" title="AI Study Tools">
                         <i class="fas fa-wand-magic-sparkles"></i> <span>AI Tools</span>
                     </a>
                 </div>

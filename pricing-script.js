@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         await membershipReady;
         if (membershipError) { window.location.reload(); return; }
         if (membership && membership.has_access) {
-            window.location.href = 'settings.html#membership-plan-card';
+            window.location.href = 'settings.html#billing';
             return;
         }
         if (!isAuthenticated()) {

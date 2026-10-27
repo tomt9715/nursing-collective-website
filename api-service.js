@@ -281,6 +281,7 @@ function applyUserStamp(userId) {
  * Returns a promise so callers can await it before rendering.
  */
 function requireAuth() {
+    console.info('[Auth] Session check', { present: isAuthenticated(), stale: isTokenStale() });
     if (!isAuthenticated()) {
         window.location.href = 'login.html';
         return Promise.resolve(false);

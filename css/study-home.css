@@ -24,6 +24,7 @@
 .study-home .verification-banner h2 { font-size: 16px; }
 .study-home a:focus-visible, .study-home button:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
 @media (max-width: 768px) {
+  .dash-sidebar { top: calc(60px + var(--beta-banner-h, 0px)); height: calc(100dvh - 60px - var(--beta-banner-h, 0px)); }
   .study-home-grid { grid-template-columns: minmax(0, 1fr); }
   .study-home-method { padding: 8px 4px; }
   .study-home-primary { justify-content: center; width: 100%; }

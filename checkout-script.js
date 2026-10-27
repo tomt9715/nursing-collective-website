@@ -25,6 +25,8 @@
     // ── Plan-specific copy + features for the order summary ──
     const PLAN_DETAILS = {
         'monthly-access': {
+            name: 'Study membership',
+            description: 'Access to available study guides and their practice quizzes. Our resource library is free without a membership.',
             billing: 'Billed monthly',
             submitMessage: 'Your plan gives you instant access to all study guides. You can cancel anytime from Account → Plan & Billing.',
             features: [
@@ -272,8 +274,8 @@
         const totalEl = $('summary-total');
         const featuresEl = $('summary-features');
 
-        if (nameEl) nameEl.textContent = product.name || planId;
-        if (descEl) descEl.textContent = product.description || '';
+        if (nameEl) nameEl.textContent = details.name || product.name || planId;
+        if (descEl) descEl.textContent = details.description || product.description || '';
 
         const originalPrice = (intent && typeof intent.originalAmount === 'number') ? intent.originalAmount : product.price;
         const finalPrice = (intent && typeof intent.amount === 'number') ? intent.amount : product.price;

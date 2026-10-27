@@ -1,0 +1,31 @@
+/* Study home uses the existing Atelier colors and type. */
+#dashboard-full-content { display: block; }
+.study-home { max-width: 1120px; }
+.study-home .dashboard-header-compact { display: block; margin-bottom: 28px; }
+.study-home .dashboard-header-compact h1 { margin-bottom: 8px; }
+.study-home .dashboard-header-compact p { color: var(--text-dim); }
+.study-home-start { padding: clamp(24px, 5vw, 48px); background: var(--card); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 24px; }
+.study-home-eyebrow { display: block; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--teal); margin-bottom: 12px; }
+.study-home-start h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(28px, 4vw, 40px); line-height: 1.2; margin-bottom: 16px; }
+.study-home-start p { max-width: 600px; color: var(--text-dim); font-size: 17px; margin-bottom: 24px; }
+.study-home-primary { display: inline-flex; align-items: center; gap: 16px; padding: 14px 22px; border-radius: 8px; background: var(--teal-dim); color: #fff; font-weight: 600; min-height: 48px; }
+.study-home-primary:hover { background: #08665f; color: #fff; }
+.study-home-secondary { display: block; width: fit-content; margin-top: 18px; text-decoration: underline; text-underline-offset: 3px; }
+.study-home-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items: start; }
+.study-home-grid h2 { font-size: 19px; font-weight: 600; }
+.study-home-method { padding: 24px; }
+.study-home-method ol { padding-left: 24px; margin-top: 20px; }
+.study-home-method li { padding-left: 6px; margin-bottom: 20px; }
+.study-home-method li::marker { color: var(--teal); font-weight: 600; }
+.study-home-method strong, .study-home-method span { display: block; }
+.study-home-method span { margin-top: 4px; color: var(--text-dim); }
+.study-home-help { margin-top: 32px; color: var(--text-dim); font-size: 14px; }
+.study-home-help a { text-decoration: underline; text-underline-offset: 3px; }
+.study-home .verification-banner h2 { font-size: 16px; }
+.study-home a:focus-visible, .study-home button:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
+@media (max-width: 768px) {
+  .study-home-grid { grid-template-columns: minmax(0, 1fr); }
+  .study-home-method { padding: 8px 4px; }
+  .study-home-primary { justify-content: center; width: 100%; }
+  .study-home .recent-guide-name { overflow-wrap: anywhere; }
+}

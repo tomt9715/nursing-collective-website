@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - The Nursing Collective</title>
+    <title>Study Home - The Nursing Collective</title>
     <meta name="description" content="Manage your study guides, track progress, and access your premium content.">
     <link rel="canonical" href="https://thenursingcollective.pro/dashboard.html">
     <meta property="og:type" content="website">
@@ -31,11 +31,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/dashboard-redesign.css?v=rounds-widget">
-    <link rel="stylesheet" href="css/empty-state.css?v=1">
-    <link rel="stylesheet" href="css/flatpickr-theme.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -49,6 +46,7 @@
     <!-- Sentry Error Tracking (defer: ordered but non-render-blocking) -->
     <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script defer src="sentry-init.js"></script>
+    <link rel="stylesheet" href="css/study-home.css?v=1">
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -69,10 +67,10 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="dashboard.html" class="active">Study Home</a>
+                <a href="my-guides.html">Study Guides</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
                 <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
@@ -109,7 +107,7 @@
         <div class="container">
             <a href="index.html">Home</a>
             <span class="separator">/</span>
-            <span class="current">Dashboard</span>
+            <span class="current">Study Home</span>
         </div>
     </div>
 
@@ -124,31 +122,20 @@
                 <div class="dash-sidebar-inner">
                     <div class="dash-sidebar-section">
                         <a href="dashboard.html" class="dash-sidebar-item active">
-                            <i class="fas fa-th-large"></i> Dashboard
+                            <i class="fas fa-th-large"></i> Study Home
                         </a>
                         <a href="my-guides.html" class="dash-sidebar-item">
                             <i class="fas fa-book-open"></i> Study Guides
                         </a>
-                        <a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;">
-                            <i class="fas fa-brain"></i> Quiz Bank
-                        </a>
                         <a href="my-resources.html" class="dash-sidebar-item">
                             <i class="fas fa-book-reader"></i> Resources
                         </a>
-                        <a href="ai-tools.html" class="dash-sidebar-item" id="sidebar-ai-tools">
-                            <i class="fas fa-wand-magic-sparkles"></i> AI Tools
-                        </a>
-                        <a href="rounds.html" class="dash-sidebar-item" id="sidebar-rounds" style="display:none;">
-                            <i class="fas fa-stethoscope"></i> Rounds
-                        </a>
                     </div>
                     <div class="dash-sidebar-section">
-                        <a href="community.html" class="dash-sidebar-item" data-sidebar-page="community">
-                            <i class="fab fa-discord"></i> Community
-                        </a>
                         <a href="settings.html" class="dash-sidebar-item">
-                            <i class="fas fa-cog"></i> Settings
+                            <i class="fas fa-cog"></i> Account
                         </a>
+                        <a href="contact.html" class="dash-sidebar-item"><i class="fas fa-question-circle"></i> Help</a>
                     </div>
                     <div class="dash-sidebar-section dash-sidebar-admin hidden" id="sidebar-admin-section">
                         <a href="admin.html" class="dash-sidebar-item">
@@ -162,461 +149,51 @@
                         <button id="sidebar-resend-btn" class="sidebar-verify-btn">Resend</button>
                     </div>
                 </div>
-                <!-- Daily Study Goal Widget -->
-                <div class="sidebar-goal-widget" id="sidebar-goal-widget">
-                    <div class="sidebar-goal-header">
-                        <span class="sidebar-goal-title"><i class="fas fa-bullseye"></i> Today's Goal</span>
-                    </div>
-                    <div class="sidebar-goal-ring-container">
-                        <svg class="sidebar-goal-ring" viewBox="0 0 48 48" width="48" height="48">
-                            <circle class="sidebar-goal-track" cx="24" cy="24" r="20" fill="none" stroke-width="4"/>
-                            <circle class="sidebar-goal-fill" id="goal-ring-fill" cx="24" cy="24" r="20" fill="none" stroke-width="4"
-                                stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
-                                transform="rotate(-90 24 24)"/>
-                        </svg>
-                        <span class="sidebar-goal-count" id="goal-count-text">0/5</span>
-                    </div>
-                    <div class="sidebar-goal-label" id="goal-label-text">sets completed</div>
-                </div>
-                <!-- Sidebar Subscription Widget -->
-                <div class="sidebar-sub-widget" id="sidebar-sub-widget">
-                    <div class="sidebar-sub-cta">
-                        <div class="skeleton-loader">
-                            <div class="skeleton skeleton-card" style="height:60px;border-radius:8px"></div>
-                        </div>
-                    </div>
-                </div>
             </aside>
 
             <!-- Main Content -->
             <div class="dash-main">
 
-        <!-- Onboarding View (shown for new empty users) -->
-        <div id="dashboard-onboarding" class="hidden">
-            <div class="onboarding-wrap">
-                <div class="onboarding-header">
-                    <h1>Welcome, <span id="onboarding-name">there</span>!</h1>
-                    <p>Here's how to get started with The Nursing Collective.</p>
-                </div>
-
-                <div class="onboarding-cards">
-                    <a href="my-resources.html" class="onboarding-card">
-                        <div class="onboarding-card-icon"><i class="fas fa-book-open"></i></div>
-                        <h3>Start Studying</h3>
-                        <p>Free study tips, clinical guides, and nursing fundamentals you can use right now.</p>
-                    </a>
-                    <a href="ai-tools.html" class="onboarding-card">
-                        <div class="onboarding-card-icon"><i class="fas fa-robot"></i></div>
-                        <h3>Meet Florence</h3>
-                        <p>Your AI study assistant — ask questions, break down concepts, and prep for exams.</p>
-                    </a>
-                    <a href="pricing.html" class="onboarding-card">
-                        <div class="onboarding-card-icon"><i class="fas fa-star"></i></div>
-                        <h3>See What's Included</h3>
-                        <p>Study guides, practice quizzes, Florence AI, and more — see what a plan unlocks.</p>
-                    </a>
-                </div>
-
-                <a href="https://discord.gg/y2Mh77wAV2" target="_blank" rel="noopener" class="onboarding-discord">
-                    <i class="fab fa-discord"></i> Join nursing students on Discord
-                </a>
-
-                <div id="onboarding-verify-nudge" class="onboarding-verify hidden">
-                    <i class="fas fa-envelope"></i>
-                    <span>Check your inbox to verify your email address.</span>
-                    <button id="onboarding-resend-btn" class="onboarding-verify-btn">Resend</button>
-                </div>
-
-                <button id="skip-to-dashboard-btn" class="onboarding-skip">
-                    Skip to full dashboard <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Full Dashboard (hidden when onboarding is shown) -->
         <div id="dashboard-full-content">
-        <div class="container">
-            <!-- Dashboard Header -->
-            <div class="dashboard-header-compact">
-                <h1>Welcome back, <span id="user-first-name">User</span>!
-                    <span id="premium-badge"></span>
-                    <span id="beta-badge"></span>
-                </h1>
-                <div class="user-stats-compact">
-                    <span class="stat-inline" id="subscription-status-inline">
-                        <i class="fas fa-crown"></i>
-                        <span id="guides-count">--</span>
-                    </span>
-                    <span class="stat-inline">
-                        <i class="fas fa-calendar-alt"></i>
-                        Member since <span id="member-since">Jan 2026</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="dash-stats-row">
-                <div class="dash-stat" id="stat-card-guides">
-                    <div class="dash-stat-icon"><i class="fas fa-book-open" style="color:var(--teal)"></i></div>
-                    <div class="dash-stat-num" id="stat-guides-count">--</div>
-                    <div class="dash-stat-label">Guides Studied</div>
-                    <div class="dash-stat-flyout" id="flyout-guides">
-                        <div class="flyout-title">Guides by Category</div>
-                        <div id="flyout-guides-content"><div class="flyout-empty">No guides studied yet</div></div>
-                    </div>
-                </div>
-                <div class="dash-stat" id="stat-card-questions">
-                    <div class="dash-stat-icon"><i class="fas fa-pen-to-square" style="color:#8b5cf6"></i></div>
-                    <div class="dash-stat-num" id="stat-questions-answered">--</div>
-                    <div class="dash-stat-label">Qs Answered</div>
-                    <div class="dash-stat-flyout" id="flyout-questions">
-                        <div class="flyout-title">Recent Activity</div>
-                        <div id="flyout-questions-content"><div class="flyout-empty">No quiz data yet</div></div>
-                    </div>
-                </div>
-                <div class="dash-stat" id="stat-card-accuracy">
-                    <div class="dash-stat-icon"><i class="fas fa-bullseye" style="color:#10b981"></i></div>
-                    <div class="dash-stat-num" id="stat-avg-score">--</div>
-                    <div class="dash-stat-label">Accuracy</div>
-                    <div class="dash-stat-flyout" id="flyout-accuracy">
-                        <div class="flyout-title">Performance Breakdown</div>
-                        <div id="flyout-accuracy-content"><div class="flyout-empty">No quiz data yet</div></div>
-                    </div>
-                </div>
-                <div class="dash-stat" id="stat-card-streak">
-                    <div class="dash-stat-icon"><i class="fas fa-fire" style="color:#f59e0b"></i></div>
-                    <div class="dash-stat-num" id="stat-streak">0</div>
-                    <div class="dash-stat-label">Day Streak</div>
-                    <div class="dash-stat-flyout" id="flyout-streak">
-                        <div class="flyout-title">Last 14 Days</div>
-                        <div id="flyout-streak-content"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Email Verification Banner -->
-            <div id="email-verification-banner" class="verification-banner hidden">
-                <div class="verification-banner-inner">
-                    <div class="verification-banner-content">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <div>
-                            <h4>Verify Your Email</h4>
-                            <p>Please check your inbox and verify your email address to unlock all features.</p>
-                        </div>
-                    </div>
-                    <button id="resend-verification-btn" class="verification-banner-btn">
-                        <i class="fas fa-paper-plane"></i> Resend Email
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quick Actions Hero -->
-            <section class="quick-actions-hero">
-                <div class="quick-actions-grid-hero">
-                    <button class="action-card-hero primary" data-navigate="my-guides.html">
-                        <div class="action-icon-large"><i class="fas fa-book-open"></i></div>
-                        <h3>Browse Study Guides</h3>
-                        <p>Explore NCLEX resources</p>
-                    </button>
-                    <button class="action-card-hero hidden" id="quiz-bank-action-btn" data-navigate="https://learn.thenursingcollective.pro">
-                        <div class="action-icon-large"><i class="fas fa-brain"></i></div>
-                        <h3>Quiz Bank</h3>
-                        <p>Practice questions by topic</p>
-                    </button>
-                    <button class="action-card-hero" id="subscription-action-btn" data-navigate="pricing.html">
-                        <div class="action-icon-large"><i class="fas fa-rocket"></i></div>
-                        <h3 id="subscription-action-title">View Plans</h3>
-                        <p id="subscription-action-desc">Get a subscription</p>
-                    </button>
-                    <button class="action-card-hero" data-navigate="community.html">
-                        <div class="action-icon-large"><i class="fab fa-discord"></i></div>
-                        <h3>Community</h3>
-                        <p>Connect with fellow students</p>
-                    </button>
-                    <button class="action-card-hero" data-navigate="settings.html">
-                        <div class="action-icon-large"><i class="fas fa-cog"></i></div>
-                        <h3>Settings</h3>
-                        <p>Manage your account</p>
-                    </button>
-                    <button class="action-card-hero admin-only admin-action hidden" id="admin-panel-btn" data-navigate="admin.html">
-                        <div class="action-icon-large"><i class="fas fa-user-shield"></i></div>
-                        <h3>Admin Panel</h3>
-                        <p>Manage users & guides</p>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Dashboard Grid -->
-            <div class="dashboard-grid">
-                <!-- Getting Started Card (only shows for new users) -->
-                <div class="dashboard-card getting-started-card hidden" id="getting-started-card">
-                    <h3><i class="fas fa-rocket"></i> Welcome to The Nursing Collective!</h3>
-                    <p>Get started with these quick steps to make the most of your account:</p>
-                    <div class="getting-started-grid">
-                        <div class="getting-started-step">
-                            <i class="fas fa-book-open"></i>
-                            <h4>Browse Study Guides</h4>
-                            <p>Explore our NCLEX-focused study materials</p>
-                        </div>
-                        <div class="getting-started-step">
-                            <i class="fab fa-discord"></i>
-                            <h4>Join Our Community</h4>
-                            <p>Connect with fellow nursing students on Discord</p>
-                        </div>
-                        <div class="getting-started-step">
-                            <i class="fas fa-rocket"></i>
-                            <h4>Choose a Plan</h4>
-                            <p>Subscribe to unlock all study guides and resources</p>
-                        </div>
-                    </div>
-                    <button class="getting-started-dismiss-btn" id="dismiss-getting-started-btn">
-                        <i class="fas fa-check"></i> Got it!
-                    </button>
-                </div>
-
-                <!-- Two-Column Hub: Study Plan + Recent Guides + Activity -->
-                <div class="dashboard-two-col">
-                    <!-- Today's Study Plan Widget -->
-                    <div class="study-plan-widget" id="study-plan-widget">
+            <div class="container study-home">
+                <header class="dashboard-header-compact">
+                    <h1>Welcome, <span id="user-first-name">Student</span>!</h1>
+                    <p>Understand the material. Practice for your next exam.</p>
+                </header>
+                <section class="study-home-start" aria-labelledby="study-start-title">
+                    <span class="study-home-eyebrow">Start with one topic</span>
+                    <h2 id="study-start-title">What are you studying today?</h2>
+                    <p>Choose a study guide, work through the concepts, then try its practice quiz to see what needs another look.</p>
+                    <a href="my-guides.html" class="study-home-primary">Browse study guides <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="my-resources.html" class="study-home-secondary">Find study tips and reference tools</a>
+                </section>
+                <div class="study-home-grid">
+                    <section class="recent-guides-widget" aria-labelledby="continue-title">
                         <div class="widget-header">
-                            <h3><i class="fas fa-calendar-day"></i> Today's Study Plan</h3>
-                            <a href="#" class="widget-header-link hidden" id="edit-semester-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
+                            <h2 id="continue-title">Continue studying</h2>
+                            <a href="my-guides.html" class="widget-header-link">All guides →</a>
                         </div>
-                        <div id="study-plan-content" class="study-plan-content">
-                            <!-- Populated by study-plan-widget.js -->
+                        <div id="recent-guides-list" class="recent-guides-list" aria-live="polite">
+                            <p>Loading your recent guides…</p>
                         </div>
-                    </div>
-
-                    <!-- Recent Guides Widget -->
-                    <div class="recent-guides-widget">
-                        <div class="widget-header">
-                            <h3><i class="fas fa-book-medical"></i> Recent Guides</h3>
-                            <a href="my-guides.html" class="widget-header-link">Browse All →</a>
-                        </div>
-                        <div id="recent-guides-list" class="recent-guides-list">
-                            <!-- Loading skeleton -->
-                            <div class="skeleton-loader">
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Bank Widget -->
-                    <div class="quiz-bank-widget" id="quiz-bank-widget">
-                        <div class="widget-header">
-                            <h3><i class="fas fa-brain"></i> Quiz Bank</h3>
-                            <a href="https://learn.thenursingcollective.pro" class="widget-header-link" target="_blank" rel="noopener">Open Bank →</a>
-                        </div>
-                        <div id="quiz-bank-content">
-                            <!-- Loading skeleton -->
-                            <div class="skeleton-loader">
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exam Countdown Widget -->
-                    <div class="exam-countdown-widget" id="exam-countdown-widget">
-                        <div class="widget-header">
-                            <h3><i class="fas fa-hourglass-half"></i> Upcoming Exams</h3>
-                            <a href="#" class="widget-header-link hidden" id="edit-exams-link">Edit <i class="fas fa-pencil-alt"></i></a>
-                        </div>
-                        <div id="exam-countdown-content">
-                            <!-- Populated by exam-countdown-widget.js -->
-                        </div>
-                    </div>
-
-                    <!-- Study Activity Widget -->
-                    <div class="study-activity-widget" id="study-activity-widget">
-                        <div class="widget-header" style="display:flex;align-items:center;justify-content:space-between">
-                            <h3><i class="fas fa-calendar-check"></i> Study Activity</h3>
-                            <div class="activity-week-toggle">
-                                <button class="activity-week-btn active" data-week="this">This Week</button>
-                                <button class="activity-week-btn" data-week="last">Last Week</button>
-                            </div>
-                        </div>
-                        <div class="activity-bars" id="activity-bars">
-                            <!-- JS fills 7 bar rows -->
-                        </div>
-                        <div class="activity-summary">
-                            <div class="activity-summary-item">
-                                <div class="activity-summary-num" id="activity-week-total">0</div>
-                                <div class="activity-summary-label">Activities</div>
-                            </div>
-                            <div class="activity-summary-item">
-                                <div class="activity-summary-num" id="activity-days-active">0</div>
-                                <div class="activity-summary-label">Days Active</div>
-                            </div>
-                            <div class="activity-summary-item">
-                                <div class="activity-summary-num" id="activity-streak">0</div>
-                                <div class="activity-summary-label">Streak</div>
-                            </div>
-                        </div>
-                        <div class="activity-legend">
-                            <span class="activity-legend-item"><span class="activity-dot dot-quiz"></span> Quizzes</span>
-                            <span class="activity-legend-item"><span class="activity-dot dot-guide"></span> Guides</span>
-                            <span class="activity-legend-item"><span class="activity-dot dot-ai"></span> AI Tools</span>
-                            <span class="activity-legend-item"><span class="activity-dot dot-plan"></span> Study Plan</span>
-                        </div>
-                    </div>
-
-                    <!-- Today's Rounds Widget -->
-                    <div class="rounds-today-widget" id="rounds-today-widget" hidden>
-                        <div class="widget-header">
-                            <h3><i class="fas fa-stethoscope"></i> Today's Rounds</h3>
-                            <a href="rounds.html" class="widget-header-link">Open Rounds →</a>
-                        </div>
-                        <div id="rounds-today-content" class="rounds-today-content">
-                            <div class="skeleton-loader">
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                                <div class="skeleton skeleton-card skeleton-row"></div>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
+                    <section class="study-home-method" aria-labelledby="study-method-title">
+                        <h2 id="study-method-title">A simple way to study</h2>
+                        <ol>
+                            <li><strong>Understand one topic.</strong><span>Read the guide and focus on why things happen.</span></li>
+                            <li><strong>Try the practice quiz.</strong><span>Find it at the end of each guide. Use the explanations to check your thinking.</span></li>
+                            <li><strong>Review what you missed.</strong><span>Follow the quiz links back to the sections you need.</span></li>
+                        </ol>
+                    </section>
                 </div>
-
-                <!-- Subscription container (hidden, used by JS for data loading) -->
-                <div id="subscription-management-container" style="display:none"></div>
-
+                <p class="study-home-help">Need a hand? <a href="contact.html">Get help</a> or <a href="settings.html">manage your account</a>.</p>
             </div>
         </div>
-        </div> <!-- end #dashboard-full-content -->
             </div> <!-- end .dash-main -->
         </div> <!-- end .dash-layout -->
     </section>
 
     </main>
-
-    <!-- Semester Setup Wizard -->
-    <div class="semester-modal-overlay" id="semester-modal-overlay">
-        <div class="semester-modal">
-            <div class="sm-modal-top">
-                <button class="sm-start-over hidden" id="sm-start-over"><i class="fas fa-redo"></i> Start Over</button>
-                <button class="semester-modal-close" id="semester-modal-close"><i class="fas fa-times"></i></button>
-            </div>
-
-            <!-- Step Indicator -->
-            <div class="sm-steps-bar" id="sm-steps-bar">
-                <div class="sm-step-dot active" data-step="1"><span>1</span></div>
-                <div class="sm-step-line"></div>
-                <div class="sm-step-dot" data-step="2"><span>2</span></div>
-                <div class="sm-step-line"></div>
-                <div class="sm-step-dot" data-step="3"><span>3</span></div>
-            </div>
-
-            <!-- Step 1: Add Classes -->
-            <div class="sm-panel" id="sm-step-1">
-                <h2 id="sm-step-1-title">Add Your Classes</h2>
-                <p class="sm-subtitle">What classes are you taking this semester?</p>
-
-                <div class="sm-semester-selector">
-                    <label>Semester</label>
-                    <input type="text" id="sm-semester-select" class="sm-semester-input" list="sm-semester-options" placeholder="e.g. Spring 2026" autocomplete="off">
-                    <datalist id="sm-semester-options">
-                        <option value="Spring 2026">
-                        <option value="Summer 2026">
-                        <option value="Fall 2026">
-                        <option value="Winter 2027">
-                        <option value="Spring 2027">
-                    </datalist>
-                </div>
-
-                <div id="sm-classes-editor"></div>
-
-                <button class="sm-add-class-btn" id="sm-add-class"><i class="fas fa-plus-circle"></i> Add Class</button>
-
-                <div class="sm-actions">
-                    <button class="sm-btn-danger hidden" id="sm-clear-all"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    <button class="sm-btn-next" id="sm-to-step-2">Next: Add Exams <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Step 2: Add Exams Per Class -->
-            <div class="sm-panel hidden" id="sm-step-2">
-                <h2>Add Your Exams</h2>
-                <p class="sm-subtitle">Add upcoming exams for each class. Upload a blueprint or syllabus to auto-extract topics.</p>
-
-                <div id="sm-exams-editor">
-                    <!-- Dynamically rendered per-class exam forms -->
-                </div>
-
-                <div class="sm-actions">
-                    <button class="sm-btn-back" id="sm-back-to-step-1"><i class="fas fa-arrow-left"></i> Back</button>
-                    <div class="sm-actions-right">
-                        <button class="sm-btn-skip" id="sm-skip-exams">Skip for now</button>
-                        <button class="sm-btn-next" id="sm-to-step-3">Finish Setup <i class="fas fa-check"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Done -->
-            <div class="sm-panel hidden" id="sm-step-success">
-                <div class="sm-success">
-                    <div class="sm-success-icon"><i class="fas fa-check-circle"></i></div>
-                    <h2>You're all set!</h2>
-                    <p class="sm-subtitle" id="sm-success-summary"></p>
-                    <a href="study-session.html" class="sm-btn-next" style="display:inline-flex;text-decoration:none;justify-content:center">Start Today's Plan <i class="fas fa-arrow-right"></i></a>
-                    <a href="ai-tools.html" class="sm-btn-secondary hidden" id="sm-success-cta-ai">Or upload your first lecture <i class="fas fa-arrow-right"></i></a>
-                    <a href="my-guides.html" class="sm-btn-secondary hidden" id="sm-success-cta-standard">Or browse study guides <i class="fas fa-arrow-right"></i></a>
-                    <button class="sm-btn-done" id="sm-done"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Exam Modal -->
-    <div class="exam-modal-overlay" id="exam-modal-overlay">
-        <div class="exam-modal">
-            <div class="em-modal-top">
-                <h2 id="em-title">Add Exam</h2>
-                <button class="em-close" id="em-close"><i class="fas fa-times"></i></button>
-            </div>
-
-            <div class="em-form">
-                <div class="em-field">
-                    <label>Class</label>
-                    <select id="em-class-select" class="em-select"></select>
-                </div>
-
-                <div class="em-row">
-                    <div class="em-field em-field-grow">
-                        <label>Exam Name</label>
-                        <input type="text" id="em-exam-name" class="em-input" placeholder="e.g. Exam 1, Midterm, Final">
-                    </div>
-                    <div class="em-field">
-                        <label>Date</label>
-                        <div class="em-date-wrap">
-                            <input type="date" id="em-exam-date" class="em-input">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="em-field">
-                    <label>Topics <span class="em-optional">(optional — or upload a review sheet)</span></label>
-                    <div class="sm-topic-tags" id="em-topic-tags">
-                        <input type="text" class="sm-topic-input" id="em-topic-input" placeholder="Type a topic + Enter, or upload a review sheet below">
-                    </div>
-                </div>
-
-                <div class="em-field">
-                    <label>Review sheet</label>
-                    <div class="sm-topic-upload" id="em-upload-zone">
-                        <input type="file" id="em-upload-file" accept=".pdf,.docx" hidden>
-                        <span class="em-upload-text"><i class="fas fa-cloud-arrow-up"></i> Drop review sheet or <u>browse</u></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="em-actions">
-                <button class="em-btn-delete hidden" id="em-delete"><i class="fas fa-trash-alt"></i> Delete</button>
-                <button class="em-btn-save" id="em-save"><i class="fas fa-check"></i> Save Exam</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Dark Mode Manager (runs first to prevent flash) -->
     <script src="dark-mode.js"></script>
@@ -629,16 +206,7 @@
     <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
     <script defer src="modal.js"></script>
     <script defer src="script.js?v=4.8.dashboard"></script>
-    <script defer src="app/data/registry.js"></script>
-    <script defer src="app/mastery.js"></script>
-    <script defer src="study-plan-widget.js"></script>
-    <script defer src="exam-countdown-widget.js"></script>
-    <script defer src="rounds-widget.js"></script>
-    <script defer src="semester-setup-script.js?v=tier-cta">
-    <script defer src="exam-modal-script.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
-    <script defer src="flatpickr-init.js"></script>
-    <script defer src="dashboard-script.js?v=5.9.drill-deeplink"></script>
+    <script defer src="dashboard-script.js?v=6.simple-study"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>

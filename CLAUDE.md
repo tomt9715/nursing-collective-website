@@ -1,5 +1,9 @@
 # Claude Code Instructions
 
+## Current live release and next UI work — 28 October 2026
+
+Read [../CLAUDE_HANDOFF.md](../CLAUDE_HANDOFF.md) first. The simplified version is live and public. Future UI/style work must use a preview branch and receive fresh approval before another live deployment. The handoff records current branches, styling files, product decisions, auth/billing protections, verification and rollback. Older feature plans are historical.
+
 ## Work Log
 At the end of every session, add an entry to the TNC Work Log in Obsidian:
 - **Primary (date-first):** `/Users/tomthomas/Documents/Obsidian/Manhattanville Courses/TNC/Work Log.md` — new entry at the top, tagged with `[Launch]` `[Quiz Bank]` `[Dashboard]` `[Rounds]` `[AI Features]` `[Content]` `[Backend]` `[Obsidian/Notion]` etc.
@@ -15,14 +19,15 @@ Format: `## YYYY-MM-DD — Claude Code` followed by bullet points of what was do
 - **Backend**: Flask/Python API hosted on Railway
 - **Database**: PostgreSQL on Railway
 - **Payments**: Stripe Checkout (test mode uses `test_` keys)
-- **Auth**: Firebase Authentication (Google, Discord, Email/Password)
+- **Auth**: Custom Flask JWT + HTTPOnly refresh cookies (Google/Discord OAuth and email/password)
 - **Error Tracking**: Sentry
 - **CDN**: Cloudflare (also handles security headers via `_headers` file)
 
 ### Key URLs
 - **Production Site**: https://thenursingcollective.pro
-- **Production API**: https://florencebot-backend-production.up.railway.app
-- **Preview Pattern**: https://preview-{branch-name}.thenursingcollective-pro.pages.dev
+- **Production API**: https://api.thenursingcollective.pro
+- **Staging API**: https://staging-backend-production-365a.up.railway.app
+- **Preview Pattern**: Actual Cloudflare deployment URLs use florencebot-website.pages.dev; retrieve the actual URL from the dashboard.
 
 ---
 
@@ -77,7 +82,7 @@ git push origin preview/<feature-name>
 
 Preview URL will be available at:
 ```
-https://preview-<feature-name>.thenursingcollective-pro.pages.dev
+https://<actual-deployment-id>.florencebot-website.pages.dev
 ```
 
 Wait 1-2 minutes for Cloudflare to deploy.
@@ -170,20 +175,18 @@ document.querySelectorAll('[data-navigate]').forEach(btn => {
 **2. API Calls**
 All API calls should go through `api-service.js`:
 ```javascript
-// Use the apiService object
-const data = await apiService.get('/endpoint');
-const result = await apiService.post('/endpoint', { body: data });
+// Use the shared API client (adds auth and handles renewal)
+const data = await apiCall('/endpoint');
+const result = await apiCall('/endpoint', { method: 'POST', body: JSON.stringify(data) });
 ```
 
 **3. Authentication State**
 Check auth state before protected operations:
 ```javascript
-const user = firebase.auth().currentUser;
-if (!user) {
-    window.location.href = 'login.html';
-    return;
-}
-const token = await user.getIdToken();
+const allowed = await requireAuth();
+if (!allowed) return;
+// apiCall/authorizedFetch attach the access token; refresh credentials stay HTTPOnly.
+const profile = await apiCall('/user/profile');
 ```
 
 ### CSS Patterns
@@ -240,10 +243,10 @@ When adding new external scripts, update the CSP in `_headers`.
 
 ## Backend API Reference
 
-Base URL: `https://florencebot-backend-production.up.railway.app`
+Base URL: `https://api.thenursingcollective.pro`
 
 ### Auth Required Endpoints
-All require `Authorization: Bearer {firebase_id_token}` header.
+All require `Authorization: Bearer {access_token}` header.
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -266,7 +269,7 @@ All require `Authorization: Bearer {firebase_id_token}` header.
 ## Remaining Tasks (Backlog)
 
 ### High Priority
-- [ ] Move refresh tokens to httpOnly cookies
+- [x] Refresh tokens use HTTPOnly cookies; preserve production/staging cookie isolation (see handoff).
 
 ### Medium Priority
 - [ ] Add Vite build pipeline

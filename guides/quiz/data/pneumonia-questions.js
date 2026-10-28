@@ -9,7 +9,7 @@ var pneumoniaQuizData = {
     guideName: "Pneumonia",
     guideSlug: "pneumonia",
     category: "Respiratory",
-    categoryColor: "#3b82f6",
+    categoryColor: "#2563a8",
     estimatedMinutes: 20,
     questions: [
         {

@@ -15,30 +15,40 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#faf7f2">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/bundle.min.css">
-    <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS — shared palette only; this page carries its own small layer
+         instead of the pre-redesign bundle it used to pull in. -->
+    <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
+    <link rel="stylesheet" href="css/tokens.css?v=light-chrome-20261028">
 
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', system-ui, sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .error-page {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
-            background: var(--background-light);
         }
 
         .error-content {
@@ -46,21 +56,9 @@
             max-width: 600px;
         }
 
-        .error-code {
-            font-size: clamp(100px, 20vw, 180px);
-            font-weight: 700;
-            font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
         .error-icon {
-            font-size: 4rem;
-            color: var(--primary-color);
+            font-size: 3rem;
+            color: var(--teal-dim);
             margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
         }
@@ -70,42 +68,87 @@
             50% { transform: translateY(-10px); }
         }
 
-        .error-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--text-primary);
+        @media (prefers-reduced-motion: reduce) {
+            .error-icon { animation: none; }
+        }
+
+        .error-code {
+            font-family: 'DM Mono', monospace;
+            font-size: clamp(72px, 16vw, 132px);
+            font-weight: 500;
+            color: var(--text-dimmer);
+            letter-spacing: -0.02em;
+            line-height: 1;
             margin-bottom: 16px;
         }
 
+        .error-title {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: clamp(28px, 5vw, 38px);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
         .error-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            font-size: 17px;
+            color: var(--text-dim);
             margin-bottom: 32px;
-            line-height: 1.6;
         }
 
         .error-actions {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .error-actions .btn {
-            min-width: 160px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 170px;
+            min-height: 48px;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font: inherit;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
         }
+
+        .btn-primary {
+            background: var(--teal-dim);
+            border: 1px solid var(--teal-dim);
+            color: #fff;
+        }
+
+        .btn-primary:hover { background: #08665f; color: #fff; }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-mid);
+            color: var(--text);
+        }
+
+        .btn-outline:hover { border-color: var(--teal-dim); color: var(--teal-dim); }
 
         .error-suggestions {
             margin-top: 48px;
             padding-top: 32px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
         }
 
-        .error-suggestions h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 16px;
+        .error-suggestions h2 {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-dimmer);
+            margin-bottom: 18px;
         }
 
         .suggestion-links {
@@ -116,37 +159,29 @@
         }
 
         .suggestion-links a {
-            color: var(--primary-color);
+            color: var(--teal-dim);
             text-decoration: none;
             font-weight: 500;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: color 0.2s;
+            transition: color 0.15s;
         }
 
-        .suggestion-links a:hover {
-            color: var(--primary-dark);
+        .suggestion-links a:hover { color: #08665f; text-decoration: underline; text-underline-offset: 3px; }
+
+        .error-page a:focus-visible {
+            outline: 3px solid var(--teal-dim);
+            outline-offset: 4px;
         }
 
         @media (max-width: 480px) {
-            .error-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .error-actions .btn {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .suggestion-links {
-                flex-direction: column;
-                gap: 16px;
-            }
+            .error-actions { flex-direction: column; align-items: center; }
+            .error-actions .btn { width: 100%; max-width: 280px; }
+            .suggestion-links { flex-direction: column; gap: 16px; }
         }
     </style>
-    <script src="beta-banner.js?v=usability-20261028"></script>
+    <script src="beta-banner.js?v=light-chrome-20261028"></script>
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
 </head>
@@ -154,45 +189,43 @@
     <main class="error-page">
         <div class="error-content">
             <div class="error-icon">
-                <i class="fas fa-stethoscope"></i>
+                <i class="fas fa-stethoscope" aria-hidden="true"></i>
             </div>
             <div class="error-code">404</div>
             <h1 class="error-title">Page Not Found</h1>
             <p class="error-description">
-                Oops! The page you're looking for seems to have taken an unexpected break.
-                It might have been moved, deleted, or never existed in the first place.
+                The page you're looking for isn't here. It may have moved, or the
+                link that brought you here may be out of date.
             </p>
             <div class="error-actions">
                 <a href="index.html" class="btn btn-primary">
-                    <i class="fas fa-home"></i> Go Home
+                    <i class="fas fa-home" aria-hidden="true"></i> Go Home
                 </a>
-                <a href="pricing.html" class="btn btn-outline">
-                    <i class="fas fa-rocket"></i> View Plans
+                <a href="my-guides.html" class="btn btn-outline">
+                    <i class="fas fa-book-open" aria-hidden="true"></i> Study Guides
                 </a>
             </div>
 
             <div class="error-suggestions">
-                <h3>Popular Pages</h3>
+                <h2>Popular pages</h2>
                 <div class="suggestion-links">
                     <a href="resources.html">
-                        <i class="fas fa-book-open"></i> Resources
+                        <i class="fas fa-folder-open" aria-hidden="true"></i> Resources
                     </a>
                     <a href="pricing.html">
-                        <i class="fas fa-tags"></i> Pricing
+                        <i class="fas fa-tags" aria-hidden="true"></i> Pricing
                     </a>
                     <a href="https://discord.gg/y2Mh77wAV2">
-                        <i class="fab fa-discord"></i> Discord
+                        <i class="fab fa-discord" aria-hidden="true"></i> Discord
                     </a>
                     <a href="contact.html">
-                        <i class="fas fa-envelope"></i> Contact
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Contact
                     </a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Dark Mode Manager -->
-    <script src="dark-mode.js"></script>
     <script src="cookie-consent.js"></script>
 </body>
 </html>

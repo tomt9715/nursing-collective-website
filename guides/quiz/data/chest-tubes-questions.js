@@ -8,7 +8,7 @@ var chestTubesQuizData = {
     guideName: "Chest Tubes",
     guideSlug: "chest-tubes",
     category: "Respiratory",
-    categoryColor: "#3b82f6",
+    categoryColor: "#2563a8",
     estimatedMinutes: 20,
     questions: [
         {

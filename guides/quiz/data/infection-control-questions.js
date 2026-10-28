@@ -10,7 +10,7 @@ var infectionControlQuizData = {
     guideName: "Infection Control",
     guideSlug: "infection-control",
     category: "Fundamentals",
-    categoryColor: "#2E86AB",
+    categoryColor: "#0e9a8f",
     estimatedMinutes: 16,
     questions: [
         {

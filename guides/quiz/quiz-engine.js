@@ -17,7 +17,7 @@ class QuizEngine {
         this.guideName = config.guideName || 'Study Guide';
         this.guideSlug = config.guideSlug || '';
         this.category = config.category || '';
-        this.categoryColor = config.categoryColor || '#2E86AB';
+        this.categoryColor = config.categoryColor || '#0e9a8f';
         this.estimatedMinutes = config.estimatedMinutes || Math.max(5, Math.round(this.questions.length * 1.5));
         this.backUrl = config.backUrl || ('../' + this.guideSlug + '.html');
         this.backLabel = config.backLabel || 'Back to Study Guide';
@@ -920,7 +920,7 @@ class QuizEngine {
             style.textContent = `
                 .quiz-leave-overlay {
                     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                    background: rgba(0,0,0,0.6); z-index: 10000;
+                    background: rgba(43,38,33,0.45); z-index: 10000;
                     display: flex; align-items: center; justify-content: center;
                     padding: 20px; animation: quiz-fadeIn 0.2s ease;
                     -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
@@ -928,7 +928,7 @@ class QuizEngine {
                 .quiz-leave-card {
                     background: var(--quiz-card-bg, #fff); border-radius: 20px;
                     padding: 40px; max-width: 420px; width: 100%;
-                    text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+                    text-align: center; box-shadow: 0 20px 50px rgba(58,44,26,0.22);
                     animation: quiz-slideUp 0.25s ease;
                 }
                 @keyframes quiz-slideUp {
@@ -944,14 +944,14 @@ class QuizEngine {
                 .quiz-leave-icon i { font-size: 28px; color: white; }
                 .quiz-leave-card h2 {
                     font-family: 'Outfit', sans-serif; font-size: 1.5rem;
-                    color: var(--quiz-text-primary, #1f2937); margin-bottom: 12px;
+                    color: var(--quiz-text-primary, #2b2621); margin-bottom: 12px;
                 }
                 .quiz-leave-card p {
-                    color: var(--quiz-text-secondary, #6b7280);
+                    color: var(--quiz-text-secondary, #6a6157);
                     font-size: 1rem; line-height: 1.6; margin-bottom: 8px;
                 }
                 .quiz-leave-note {
-                    font-size: 0.88rem !important; color: #9ca3af !important;
+                    font-size: 0.88rem !important; color: var(--quiz-text-light, #8a8073) !important;
                     margin-bottom: 24px !important;
                 }
                 .quiz-leave-actions {
@@ -963,9 +963,7 @@ class QuizEngine {
                 .quiz-leave-go {
                     padding: 12px 24px; font-size: 0.95rem;
                 }
-                [data-theme="dark"] .quiz-leave-card {
-                    background: var(--quiz-card-bg, #1f2937);
-                }
+
             `;
             document.head.appendChild(style);
         }
@@ -2220,11 +2218,11 @@ class QuizEngine {
     /**
      * Animates the SVG score ring from 0% to the target percentage,
      * transitioning through color milestones:
-     *   0–69%  → red    (#e05252)
-     *   70–79% → orange (#f97316)
-     *   80–89% → amber  (#fbbf24)
-     *   90–99% → green  (#3dbd7a)
-     *   100%   → gold   (#facc15) + continuous glow
+     *   0–69%  → red    (#d64545)
+     *   70–79% → orange (#d9661a)
+     *   80–89% → amber  (#c9791a)
+     *   90–99% → green  (#2fa866)
+     *   100%   → gold   (#b8860b) + continuous glow
      */
     _animateScoreRing(targetPct, correctCount, total) {
         const ringEl = this.container.querySelector('.quiz-score-ring-fill');
@@ -2240,11 +2238,11 @@ class QuizEngine {
 
         // Color milestones — the ring adopts a color once a threshold is reached
         const milestones = [
-            { pct: 0,   color: '#e05252' }, // red
-            { pct: 70,  color: '#f97316' }, // orange
-            { pct: 80,  color: '#fbbf24' }, // amber
-            { pct: 90,  color: '#3dbd7a' }, // green
-            { pct: 100, color: '#facc15' }  // gold (exact 100 only)
+            { pct: 0,   color: '#d64545' }, // red
+            { pct: 70,  color: '#d9661a' }, // orange
+            { pct: 80,  color: '#c9791a' }, // amber
+            { pct: 90,  color: '#2fa866' }, // green
+            { pct: 100, color: '#b8860b' }  // gold (exact 100 only)
         ];
 
         function getColorForPct(p) {
@@ -2426,7 +2424,7 @@ class QuizEngine {
         canvas.width = parent.offsetWidth;
         canvas.height = parent.offsetHeight;
 
-        const colors = ['#0fbcad', '#3dbd7a', '#facc15', '#f4a535', '#ec5fa3', '#a78bfa', '#e05252'];
+        const colors = ['#0e9a8f', '#2fa866', '#c9a227', '#c9791a', '#c2306e', '#6d4bd0', '#d64545'];
         const pieces = [];
         const count = 80;
 

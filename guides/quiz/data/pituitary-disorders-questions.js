@@ -9,7 +9,7 @@ var pituitaryDisordersQuizData = {
     guideName: "Pituitary & Hypothalamus Disorders",
     guideSlug: "pituitary-disorders",
     category: "Endocrine",
-    categoryColor: "#0EA5E9",
+    categoryColor: "#0e7c8a",
     estimatedMinutes: 20,
     questions: [
         // ============================================================

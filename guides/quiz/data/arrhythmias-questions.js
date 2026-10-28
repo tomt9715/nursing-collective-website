@@ -9,7 +9,7 @@ var arrhythmiasQuizData = {
     guideName: "Arrhythmias",
     guideSlug: "arrhythmias",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

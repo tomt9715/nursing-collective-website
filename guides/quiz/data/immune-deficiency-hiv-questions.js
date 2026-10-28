@@ -9,7 +9,7 @@ var immuneDeficiencyHivQuizData = {
     guideName: "Immune Deficiency, HIV & Anaphylaxis",
     guideSlug: "immune-deficiency-hiv",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 20,
     questions: [
         {

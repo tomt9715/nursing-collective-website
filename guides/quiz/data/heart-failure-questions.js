@@ -9,7 +9,7 @@ var heartFailureQuizData = {
     guideName: "Heart Failure",
     guideSlug: "heart-failure",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

@@ -10,7 +10,7 @@ var sickleCellCrisisQuizData = {
     guideName: "Sickle Cell Crisis",
     guideSlug: "sickle-cell-crisis",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 14,
     questions: [
         {

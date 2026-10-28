@@ -9,7 +9,7 @@ var hypertensionQuizData = {
     guideName: "Hypertension",
     guideSlug: "hypertension",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

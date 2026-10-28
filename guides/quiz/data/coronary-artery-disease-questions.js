@@ -9,7 +9,7 @@ var coronaryArteryDiseaseQuizData = {
     guideName: "Coronary Artery Disease",
     guideSlug: "coronary-artery-disease",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

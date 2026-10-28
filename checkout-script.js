@@ -221,7 +221,7 @@
         showError(message, {
             title: 'You\'re already covered',
             icon: 'fas fa-check-circle',
-            iconColor: '#0fbcad',
+            iconColor: '#0e9a8f',
             ctaText: 'Go to Dashboard',
             ctaHref: 'dashboard.html',
         });
@@ -231,7 +231,7 @@
         showError(message, {
             title: 'Use the upgrade option',
             icon: 'fas fa-arrow-up-right-from-square',
-            iconColor: '#0fbcad',
+            iconColor: '#0e9a8f',
             ctaText: 'Open Settings',
             ctaHref: 'settings.html#subscription',
         });

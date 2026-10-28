@@ -9,7 +9,7 @@ var myocardialInfarctionQuizData = {
     guideName: "Myocardial Infarction",
     guideSlug: "myocardial-infarction",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

@@ -671,19 +671,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (openForgotModalBtn) {
         openForgotModalBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            forgotModal.classList.remove('hidden');
             forgotModal.style.display = 'flex';
+            document.getElementById('forgot-email').value = document.getElementById('email').value;
+            document.getElementById('forgot-email').focus();
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
     }
 
     if (closeForgotModalBtn) {
         closeForgotModalBtn.addEventListener('click', function() {
+            forgotModal.classList.add('hidden');
             forgotModal.style.display = 'none';
+            openForgotModalBtn.focus();
             document.body.style.overflow = '';
             forgotPasswordForm.reset();
             document.getElementById('forgot-password-message').style.display = 'none';
         });
     }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && forgotModal && !forgotModal.classList.contains('hidden')) {
+            closeForgotModalBtn.click();
+        }
+    });
 
     // Close modal when clicking outside
     if (forgotModal) {

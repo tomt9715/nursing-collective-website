@@ -251,10 +251,10 @@
         </div>
 
         <!-- Forgot Password Modal -->
-        <div class="modal-overlay hidden" id="forgot-password-modal">
+        <div class="modal-overlay hidden" id="forgot-password-modal" role="dialog" aria-modal="true" aria-labelledby="forgot-password-title">
             <div class="modal-content modal-content-small">
                 <div class="modal-header">
-                    <h2><i class="fas fa-key"></i> Reset Your Password</h2>
+                    <h2 id="forgot-password-title"><i class="fas fa-key"></i> Reset Your Password</h2>
                     <button class="modal-close" id="close-forgot-modal" aria-label="Close modal">
                         <i class="fas fa-times"></i>
                     </button>
@@ -296,7 +296,7 @@
     <script src="api-service.js?v=first-party-session-20261027"></script>
 
     <script src="script.js?v=membership-alignment-20261027"></script>
-    <script src="auth-script.js?v=17.preview-return"></script>
+    <script src="auth-script.js?v=18.reset-dialog"></script>
 
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>

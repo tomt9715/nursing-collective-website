@@ -64,7 +64,7 @@ async function check() {
         await new Promise(resolve => setTimeout(resolve, 10));
         if (mode === 'invalid') {
             assert(!app.values.accessToken);
-            assert.equal(app.location.href, 'login.html');
+            assert.equal(app.location.href, '/login.html');
         } else {
             assert(app.values.accessToken);
             assert.equal(app.location.href, '');

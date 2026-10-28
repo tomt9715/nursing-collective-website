@@ -1058,7 +1058,7 @@ async function loadMembership() {
         portalButton.addEventListener('click', openBillingPortal);
         portalButton.dataset.bound = 'true';
     }
-    var subPromise = apiCall('/api/subscription-status').catch(function(err) {
+    var subPromise = apiCall('/api/subscription-status?sync_billing=1').catch(function(err) {
         console.warn('Failed to load subscription status:', err);
         return null;
     });

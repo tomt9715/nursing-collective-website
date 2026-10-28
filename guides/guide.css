@@ -70,7 +70,7 @@ img { max-width: 100%; display: block; }
 /* ══ Download / back bar ══ */
 .download-bar {
   position: sticky;
-  top: 0;
+  top: var(--beta-banner-h, 0px);
   z-index: 40;
   display: flex;
   align-items: center;

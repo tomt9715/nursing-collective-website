@@ -1,0 +1,25 @@
+.simple-pricing { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; max-width:1000px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+.simple-plan { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:32px; display:flex; flex-direction:column; }
+.simple-plan.paid { border:2px solid var(--teal-dim); }
+.simple-plan-label { font-family:'DM Mono',monospace; font-size:12px; color:var(--teal-dim); margin-bottom:12px; }
+.simple-plan h2 { font-family:'DM Serif Display',serif; font-weight:400; font-size:28px; line-height:1.25; }
+.simple-price { font-size:42px; font-weight:600; margin-top:20px; }
+.simple-price span { font-size:15px; font-weight:400; color:var(--text-dim); }
+.simple-billing { color:var(--text-dim); font-size:14px; }
+.simple-plan ul { padding-left:20px; margin:24px 0 28px; flex:1; }
+.simple-plan li { margin-bottom:12px; }
+.simple-pricing-link { display:block; width:100%; padding:14px 20px; text-align:center; font:inherit; font-weight:600; background:var(--teal-dim); border:1px solid var(--teal-dim); border-radius:8px; color:#fff; cursor:pointer; min-height:48px; }
+.simple-pricing-link:hover { background:#08665f; color:#fff; }
+.simple-pricing-link.secondary { background:transparent; color:var(--teal-dim); }
+.simple-pricing-link:disabled { opacity:.65; cursor:wait; }
+.simple-plan-fine { font-size:13px; color:var(--text-dim); margin-top:14px; }
+.simple-pricing-notes,.simple-pricing-faq { max-width:1000px; padding:0 24px; margin:32px auto; position:relative; z-index:1; }
+.simple-pricing-notes p { margin-bottom:12px; color:var(--text-dim); }
+.simple-pricing-notes a,.simple-pricing-faq a { text-decoration:underline; text-underline-offset:3px; }
+.simple-pricing-faq { margin-top:64px; margin-bottom:72px; }
+.simple-pricing-faq h2 { font-family:'DM Serif Display',serif; font-size:30px; font-weight:400; margin-bottom:24px; }
+.simple-pricing-faq details { border-top:1px solid var(--border); padding:18px 0; }
+.simple-pricing-faq summary { cursor:pointer; font-weight:600; padding-right:12px; }
+.simple-pricing-faq details p { max-width:780px; margin-top:12px; color:var(--text-dim); }
+.simple-pricing a:focus-visible,.simple-pricing button:focus-visible,.simple-pricing-faq summary:focus-visible { outline:3px solid var(--teal-dim); outline-offset:4px; }
+@media(max-width:768px) { .simple-pricing { grid-template-columns:minmax(0,1fr); padding:0 16px; } .simple-plan { padding:24px; } .simple-pricing-notes,.simple-pricing-faq { padding:0 20px; } }

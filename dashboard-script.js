@@ -1,9 +1,6 @@
-// Dashboard Page JavaScript
-// Simplified hub layout — recent guides + quiz stats + account/subscription
-// Note: API service layer is now in api-service.js
-
-// Check authentication (uses api-service.js functions)
+// Study home: profile, recent guides, and account verification.
 const authReady = requireAuth();
+let cachedSubscriptionStatus = null;
 
 document.addEventListener('DOMContentLoaded', async function() {
 
@@ -94,60 +91,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-// ==================== Widget Update Functions ====================
-
-function updateAccountWidget(user) {
-    // Legacy — account widget removed; sidebar subscription handles display
-}
-
-// ==================== Subscription Status Cache ====================
-let cachedSubscriptionStatus = null;
-
 async function getSubscriptionStatusCached() {
     if (!cachedSubscriptionStatus) {
         cachedSubscriptionStatus = await checkSubscriptionStatus();
     }
     return cachedSubscriptionStatus;
 }
-
-// ==================== Subscription Helper Functions ====================
-
-const planDisplayNames = {
-    'monthly-access': 'Monthly',
-    'semester-access': 'Semester',
-    'lifetime-access': 'Lifetime',
-    'ai-monthly-access': 'AI Monthly',
-    'ai-semester-access': 'AI Semester',
-    'ai-lifetime-access': 'AI Lifetime'
-};
-
-const planDisplayNamesFull = {
-    'monthly-access': 'Monthly Access',
-    'semester-access': 'Semester Access',
-    'lifetime-access': 'Lifetime Access',
-    'ai-monthly-access': 'AI-Powered Monthly',
-    'ai-semester-access': 'AI-Powered Semester',
-    'ai-lifetime-access': 'AI-Powered Lifetime'
-};
-
-function updateCompactStats(user) {
-    const guidesCountElement = document.getElementById('guides-count');
-    const memberSinceElement = document.getElementById('member-since');
-
-    if (guidesCountElement) {
-        guidesCountElement.textContent = 'Loading...';
-    }
-
-    if (memberSinceElement && user.created_at) {
-        const date = new Date(user.created_at);
-        memberSinceElement.textContent = date.toLocaleDateString('en-US', {
-            month: 'short',
-            year: 'numeric'
-        });
-    }
-}
-
-// ==================== Load User Profile ====================
 
 async function loadUserProfile() {
     try {
@@ -161,32 +110,9 @@ async function loadUserProfile() {
             userFirstNameEl.textContent = displayName;
         }
 
-        // Badges
-        const premiumBadgeEl = document.getElementById('premium-badge');
-        const isAdmin = user.is_admin === true;
-
-        const adminPanelBtn = document.getElementById('admin-panel-btn');
-        if (adminPanelBtn && isAdmin) adminPanelBtn.classList.remove('hidden');
-        if (isAdmin) document.body.classList.add('is-admin-user');
-
-        // Sync sidebar admin section visibility
+        // Keep administrator access in the sidebar.
         const sidebarAdmin = document.getElementById('sidebar-admin-section');
-        if (sidebarAdmin && isAdmin) sidebarAdmin.classList.remove('hidden');
-
-        if (premiumBadgeEl && user.is_premium && !isAdmin) {
-            premiumBadgeEl.className = 'dash-badge dash-badge-premium';
-            premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
-        }
-
-        // Beta tester badge — shown for ALL users during beta
-        const betaBadgeEl = document.getElementById('beta-badge');
-        if (betaBadgeEl) {
-            betaBadgeEl.className = 'dash-badge dash-badge-beta';
-            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta';
-        }
-
-        updateCompactStats(user);
-        updateAccountWidget(user);
+        if (sidebarAdmin && user.is_admin) sidebarAdmin.classList.remove('hidden');
         updateEmailVerificationBanner(user);
 
         // Update user avatar
@@ -219,56 +145,6 @@ async function loadUserProfile() {
             }
         }
 
-        showGettingStartedCard(user);
-
-        // Show Quiz Bank quick action for premium users
-        if (user.is_premium) {
-            const quizBankBtn = document.getElementById('quiz-bank-action-btn');
-            if (quizBankBtn) quizBankBtn.style.display = '';
-            // Sync sidebar quiz link visibility
-            const sidebarQuiz = document.getElementById('sidebar-quiz-link');
-            if (sidebarQuiz) sidebarQuiz.style.display = '';
-            // Sync sidebar Rounds link visibility
-            const sidebarRounds = document.getElementById('sidebar-rounds');
-            if (sidebarRounds) sidebarRounds.style.display = '';
-        }
-
-        // Update subscription quick action for premium users
-        if (user.is_premium) {
-            const subActionBtn = document.getElementById('subscription-action-btn');
-            const subActionTitle = document.getElementById('subscription-action-title');
-            const subActionDesc = document.getElementById('subscription-action-desc');
-            if (subActionBtn && subActionTitle && subActionDesc) {
-                subActionBtn.removeAttribute('data-navigate');
-                subActionBtn.dataset.subscriptionManage = 'true';
-                subActionTitle.textContent = 'Manage Subscription';
-                subActionDesc.textContent = 'Billing & cancellation';
-                subActionBtn.querySelector('.action-icon-large i').className = 'fas fa-cog';
-                var newBtn = subActionBtn.cloneNode(true);
-                subActionBtn.parentNode.replaceChild(newBtn, subActionBtn);
-                newBtn.addEventListener('click', async function() {
-                    try {
-                        this.disabled = true;
-                        this.querySelector('h3').textContent = 'Opening...';
-                        const response = await apiCall('/api/subscription/manage', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ return_url: window.location.href })
-                        });
-                        if (response.url) window.location.href = response.url;
-                        else {
-                            this.disabled = false;
-                            this.querySelector('h3').textContent = 'Manage Subscription';
-                        }
-                    } catch (error) {
-                        console.error('Error opening subscription management:', error);
-                        this.disabled = false;
-                        this.querySelector('h3').textContent = 'Manage Subscription';
-                    }
-                });
-            }
-        }
-
         localStorage.setItem('user', JSON.stringify(user));
 
     } catch (error) {
@@ -296,242 +172,23 @@ async function loadUserProfile() {
         return;
     }
 
-    // ── New user onboarding check ──
-    // Show simplified onboarding view for new empty users
-    try {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) return;
-
-        var guideHistory = {};
-        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
-        var hasStudiedGuides = Object.keys(guideHistory).length > 0;
-        var onboardingDismissed = localStorage.getItem('gettingStartedDismissed') === 'true';
-
-        // Check subscription
-        var subStatus = { hasAccess: false };
-        try {
-            if (typeof getSubscriptionStatusCached === 'function') {
-                subStatus = await getSubscriptionStatusCached();
-            }
-        } catch(e) {}
-
-        var isNewEmptyUser = !subStatus.hasAccess && !hasStudiedGuides && !onboardingDismissed;
-
-        var onboardingEl = document.getElementById('dashboard-onboarding');
-        var fullDashEl = document.getElementById('dashboard-full-content');
-
-        if (isNewEmptyUser && onboardingEl && fullDashEl) {
-            // Show onboarding, hide full dashboard
-            onboardingEl.classList.remove('hidden');
-            fullDashEl.classList.add('hidden');
-
-            // Populate name
-            var onboardingName = document.getElementById('onboarding-name');
-            if (onboardingName && user.first_name) {
-                onboardingName.textContent = user.first_name;
-            }
-
-            // Show email verification nudge if needed
-            var authMethod = localStorage.getItem('lastAuthMethod');
-            var isOAuth = authMethod === 'google' || authMethod === 'discord';
-            if (!user.is_verified && !isOAuth) {
-                var verifyNudge = document.getElementById('onboarding-verify-nudge');
-                if (verifyNudge) verifyNudge.classList.remove('hidden');
-            }
-
-            // Wire up skip button
-            var skipBtn = document.getElementById('skip-to-dashboard-btn');
-            if (skipBtn) {
-                skipBtn.addEventListener('click', function() {
-                    localStorage.setItem('gettingStartedDismissed', 'true');
-                    onboardingEl.classList.add('hidden');
-                    fullDashEl.classList.remove('hidden');
-                    // Now load the full dashboard
-                    loadFullDashboard(user);
-                });
-            }
-
-            // Still load sidebar widgets
-            updateDailyGoalWidget();
-            loadSubscriptionManagement();
-            return; // Skip full dashboard loading
-        }
-    } catch(e) {
-        console.error('Onboarding check failed:', e);
-    }
-
-    // Load full dashboard sections
+    // Every student starts in the same study-focused home.
     loadFullDashboard(JSON.parse(localStorage.getItem('user')));
 }
 
 async function loadFullDashboard(user) {
     if (!user) return;
-    // Reveal the full dashboard content (hidden by default in CSS to prevent flash)
-    var fullDash = document.getElementById('dashboard-full-content');
+    const fullDash = document.getElementById('dashboard-full-content');
     if (fullDash) fullDash.style.display = 'block';
+    // Render local history first; a slow sync must not block starting a guide.
+    await loadRecentGuides();
     try {
-        // Fire all independent data-fetches in parallel instead of sequentially.
-        // syncStudyHistory, MasteryTracker.pull, and fetchQuizSessions are
-        // all independent API calls — run them at the same time.
-        var dataPromises = [
-            syncStudyHistory(),
-            fetchAndCacheQuizSessions(),
-            fetchActivityData()
-        ];
-        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
-            dataPromises.push(
-                MasteryTracker.pullFromServer()
-            );
-        }
-        await Promise.all(dataPromises);
-
-        // All data is now in localStorage — render widgets
-        if (typeof loadStudyPlan === 'function') loadStudyPlan();
-        if (typeof loadExamCountdown === 'function') loadExamCountdown();
-        if (typeof loadTodaysRounds === 'function') loadTodaysRounds();
-        loadRecentGuides();
-        loadQuizBankWidget();
-        loadStudyActivityCalendar();
-        updateDailyGoalWidget();
-
-        updateStatsRow();
-        initStatFlyouts();
-        loadSubscriptionManagement();
-
-        // ── Post-render: upgrade empty widgets into contextual CTAs ──
-        enhanceEmptyStates();
-
-        // ── Onboarding: auto-open the semester setup wizard if a brand-new
-        //    subscriber just landed here from success.html with ?onboard=semester.
-        maybeAutoTriggerSemesterOnboarding();
-
+        await syncStudyHistory();
+        await loadRecentGuides();
     } catch (error) {
-        console.error('Error loading dashboard sections:', error);
+        console.error('Unable to sync recent study history:', error);
     }
 }
-
-// ==================== Onboarding auto-trigger ====================
-// When a new subscriber clicks "Set Up Your Semester" on success.html,
-// they land here at dashboard.html?onboard=semester. We open the wizard
-// once so they don't have to hunt for it. Guards against re-triggering:
-//   - URL is cleaned immediately, so refresh won't re-open
-//   - skipped entirely if the user already completed setup (has_setup=true)
-async function maybeAutoTriggerSemesterOnboarding() {
-    try {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('onboard') !== 'semester') return;
-
-        // Strip the query param so a page refresh won't re-trigger.
-        const url = new URL(window.location.href);
-        url.searchParams.delete('onboard');
-        window.history.replaceState({}, '', url.toString());
-
-        // Don't re-trigger for users who've already set up their semester.
-        let setupData;
-        try {
-            setupData = await apiCall('/api/semester/setup');
-        } catch (e) {
-            // If we can't read setup state, skip auto-trigger silently.
-            return;
-        }
-        if (setupData && setupData.has_setup) return;
-
-        // The wizard is defined in semester-setup-script.js (defer-loaded).
-        // It should be ready by now since the dashboard's async data loads
-        // take longer than defer-script parsing, but poll briefly just in
-        // case to avoid a race.
-        const start = Date.now();
-        while (typeof window.openSemesterModal !== 'function' && Date.now() - start < 2000) {
-            await new Promise(r => setTimeout(r, 100));
-        }
-        if (typeof window.openSemesterModal === 'function') {
-            window.openSemesterModal();
-        }
-    } catch (err) {
-        console.warn('Onboarding auto-trigger failed:', err);
-    }
-}
-
-// ==================== Empty State Enhancement ====================
-// Replaces zero-state widgets with actionable CTAs for new/free users
-
-async function enhanceEmptyStates() {
-    try {
-        var guideHistory = {};
-        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
-        var guidesStudied = Object.keys(guideHistory).length;
-        var hasQuizData = false;
-        try {
-            if (typeof MasteryTracker !== 'undefined') {
-                var stats = MasteryTracker.getOverallStats();
-                hasQuizData = stats && stats.totalQuestionsAnswered > 0;
-            }
-        } catch(e) {}
-
-        // Replace stats row with action prompts if everything is zero
-        if (guidesStudied === 0 && !hasQuizData) {
-            var statsRow = document.querySelector('.dash-stats-row');
-            if (!statsRow) return;
-
-            // For paid users, swap the "Explore plans" CTA for semester setup.
-            var hasAccess = false;
-            try {
-                if (typeof getSubscriptionStatusCached === 'function') {
-                    var status = await getSubscriptionStatusCached();
-                    hasAccess = !!(status && status.hasAccess);
-                }
-            } catch(e) {}
-
-            var fourthCta = hasAccess
-                ? '<div class="empty-stat-cta" data-action="open-semester">' +
-                    '<div class="empty-stat-icon"><i class="fas fa-calendar-check"></i></div>' +
-                    '<div class="empty-stat-text">Set up your semester</div>' +
-                  '</div>'
-                : '<div class="empty-stat-cta" data-navigate="pricing.html">' +
-                    '<div class="empty-stat-icon"><i class="fas fa-crown"></i></div>' +
-                    '<div class="empty-stat-text">Explore study plans</div>' +
-                  '</div>';
-
-            statsRow.innerHTML =
-                '<div class="empty-stat-cta" data-navigate="my-guides.html">' +
-                    '<div class="empty-stat-icon"><i class="fas fa-book-open"></i></div>' +
-                    '<div class="empty-stat-text">Study your first guide</div>' +
-                '</div>' +
-                '<div class="empty-stat-cta" data-navigate="resources.html">' +
-                    '<div class="empty-stat-icon"><i class="fas fa-lightbulb"></i></div>' +
-                    '<div class="empty-stat-text">Browse free resources</div>' +
-                '</div>' +
-                '<div class="empty-stat-cta" data-navigate="community.html">' +
-                    '<div class="empty-stat-icon"><i class="fab fa-discord"></i></div>' +
-                    '<div class="empty-stat-text">Join the community</div>' +
-                '</div>' +
-                fourthCta;
-
-            // Wire up navigation on the new cards
-            statsRow.querySelectorAll('[data-navigate]').forEach(function(el) {
-                el.addEventListener('click', function() {
-                    window.location.href = this.getAttribute('data-navigate');
-                });
-            });
-            // Wire up the semester-wizard action for paid users
-            statsRow.querySelectorAll('[data-action="open-semester"]').forEach(function(el) {
-                el.addEventListener('click', function() {
-                    if (typeof window.openSemesterModal === 'function') {
-                        window.openSemesterModal();
-                    }
-                });
-            });
-
-            // Hide Getting Started card — the CTA cards replace it
-            var gettingStarted = document.getElementById('getting-started-card');
-            if (gettingStarted) gettingStarted.classList.add('hidden');
-        }
-    } catch(e) {
-        console.error('Empty state enhancement failed:', e);
-    }
-}
-
-// ==================== Study History Sync ====================
 
 async function syncStudyHistory() {
     try {
@@ -547,7 +204,7 @@ async function syncStudyHistory() {
 
         // Load localStorage data
         var localData = {};
-        try { localData = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch (e) {}
+        try { localData = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch (e) { /* Ignore malformed local history. */ }
 
         // Merge: for each guide, keep the most recent timestamp
         var merged = Object.assign({}, serverData);
@@ -599,8 +256,6 @@ async function syncStudyHistory() {
     }
 }
 
-// ==================== Recent Guides Widget ====================
-
 async function loadRecentGuides() {
     const container = document.getElementById('recent-guides-list');
     if (!container) return;
@@ -627,7 +282,7 @@ async function loadRecentGuides() {
             // Sort by most recent
             const recentEntries = Object.entries(lastStudiedMap)
                 .map(([id, date]) => ({ id, date: new Date(date) }))
-                .filter(e => !isNaN(e.date.getTime()))
+                .filter(e => /^[a-z0-9-]+$/.test(e.id) && !isNaN(e.date.getTime()))
                 .sort((a, b) => b.date - a.date)
                 .slice(0, 3);
 
@@ -639,7 +294,7 @@ async function loadRecentGuides() {
                     return `
                         <div class="recent-guide-item">
                             <div class="recent-guide-icon-img">
-                                <img src="${iconSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-book-open\\'></i>'">
+                                <img src="${iconSrc}" alt="" loading="lazy">
                             </div>
                             <div class="recent-guide-info">
                                 <span class="recent-guide-name">${escapeHtml(name)}</span>
@@ -660,7 +315,7 @@ async function loadRecentGuides() {
                 container.innerHTML = `
                     <div class="recent-guides-empty">
                         <i class="fas fa-book-open"></i>
-                        <p>No guides studied yet</p>
+                        <p>Your recently opened guides will appear here. Pick a topic to begin.</p>
                         <button class="btn btn-primary btn-sm" data-navigate="my-guides.html">
                             <i class="fas fa-rocket"></i> Start Studying
                         </button>
@@ -699,141 +354,18 @@ async function loadRecentGuides() {
         container.innerHTML = `
             <div class="recent-guides-empty">
                 <i class="fas fa-exclamation-circle"></i>
-                <p>Unable to load guides</p>
+                <p>We couldn’t load your recent guides. You can still <a href="my-guides.html">browse study guides</a>.</p>
             </div>
         `;
     }
 }
 
-// ==================== Quiz Bank Widget ====================
-
-var QUIZ_BANK_HUB_URL = 'https://learn.thenursingcollective.pro';
-
-function loadQuizBankWidget() {
-    var container = document.getElementById('quiz-bank-content');
-    if (!container) return;
-
-    // Pull recent sessions + mastery in one shot
-    var sessions = (typeof _cachedQuizSessions !== 'undefined' && Array.isArray(_cachedQuizSessions)) ? _cachedQuizSessions : [];
-    var stats = null;
-    try {
-        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getOverallStats === 'function') {
-            stats = MasteryTracker.getOverallStats();
-        }
-    } catch (e) { /* ignore */ }
-
-    var weak = (stats && stats.weakestChapters) ? stats.weakestChapters : [];
-    // Filter to chapters that have actually been practiced (level > 0)
-    var weakPracticed = weak.filter(function (c) { return c && c.level > 0; }).slice(0, 2);
-    var lastSession = sessions.length > 0 ? sessions[0] : null;
-
-    // Empty state — no quiz activity at all
-    if (!lastSession && weakPracticed.length === 0) {
-        container.innerHTML =
-            '<div class="qb-widget-empty">' +
-                '<i class="fas fa-brain"></i>' +
-                '<p>No quiz attempts yet.</p>' +
-                '<a href="' + QUIZ_BANK_HUB_URL + '" class="btn btn-primary btn-sm" target="_blank" rel="noopener">' +
-                    '<i class="fas fa-rocket"></i> Take a Quiz' +
-                '</a>' +
-            '</div>';
-        return;
-    }
-
-    var html = '';
-
-    // ── Recent section ──
-    if (lastSession) {
-        var topicId = lastSession.topic_id || '';
-        var isAiSession = lastSession.category === 'AI Generated' ||
-                          (typeof topicId === 'string' && topicId.indexOf('ai-') === 0);
-
-        var topicLabel;
-        if (isAiSession) {
-            topicLabel = 'AI Practice Quiz';
-        } else {
-            try {
-                if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getTopicLabel === 'function') {
-                    topicLabel = MasteryTracker.getTopicLabel(topicId) || formatGuideName(topicId);
-                } else {
-                    topicLabel = formatGuideName(topicId);
-                }
-            } catch (e) { topicLabel = formatGuideName(topicId); }
-        }
-
-        var score = typeof lastSession.score === 'number' ? Math.round(lastSession.score) : null;
-        var correct = lastSession.correct_count;
-        var total = lastSession.total_count;
-        var timeAgo = formatRelativeTime(lastSession.created_at) || 'Recently';
-
-        var metaParts = [];
-        if (score !== null) metaParts.push(score + '%');
-        if (typeof correct === 'number' && typeof total === 'number') metaParts.push(correct + ' of ' + total);
-        metaParts.push(timeAgo);
-
-        var scoreColorClass = '';
-        if (score !== null) {
-            if (score >= 90) scoreColorClass = 'qb-score-strong';
-            else if (score >= 70) scoreColorClass = 'qb-score-mid';
-            else scoreColorClass = 'qb-score-weak';
-        }
-
-        // AI sessions can't be retaken from a topic_id alone (questions live in sessionStorage),
-        // so send the user back to AI Tools where they can re-generate.
-        var retakeHref, retakeLabel;
-        if (isAiSession) {
-            retakeHref = 'ai-tools.html';
-            retakeLabel = 'AI Tools';
-        } else if (topicId) {
-            retakeHref = 'guides/quiz/quiz.html?topic=' + encodeURIComponent(topicId);
-            retakeLabel = 'Retake';
-        } else {
-            retakeHref = QUIZ_BANK_HUB_URL;
-            retakeLabel = 'Open';
-        }
-
-        html += '<div class="qb-section-label">Last quiz</div>';
-        html += '<div class="qb-row">';
-        html +=   '<div class="qb-row-badge ' + scoreColorClass + '">' + (score !== null ? score + '%' : '—') + '</div>';
-        html +=   '<div class="qb-row-info">';
-        html +=     '<span class="qb-row-name">' + escapeHtml(topicLabel) + '</span>';
-        html +=     '<span class="qb-row-meta">' + escapeHtml(metaParts.join(' · ')) + '</span>';
-        html +=   '</div>';
-        html +=   '<a class="btn-row-open" href="' + retakeHref + '">' + retakeLabel + '</a>';
-        html += '</div>';
-    }
-
-    // ── Weak Spots section ──
-    if (weakPracticed.length > 0) {
-        html += '<div class="qb-section-label">Needs work</div>';
-        weakPracticed.forEach(function (ch) {
-            var levelLabel = 'Lvl ' + (ch.level || 0);
-            // Deep-link directly into that chapter on the Quiz Bank hub
-            var drillHref = ch.id
-                ? QUIZ_BANK_HUB_URL + '/?chapter=' + encodeURIComponent(ch.id)
-                : QUIZ_BANK_HUB_URL;
-            html += '<div class="qb-row">';
-            html +=   '<div class="qb-row-badge qb-score-weak"><i class="fas fa-bullseye"></i></div>';
-            html +=   '<div class="qb-row-info">';
-            html +=     '<span class="qb-row-name">' + escapeHtml(ch.label || ch.id) + '</span>';
-            html +=     '<span class="qb-row-meta">' + escapeHtml(levelLabel) + ' · ' + (ch.points || 0) + ' pts</span>';
-            html +=   '</div>';
-            html +=   '<a class="btn-row-open" href="' + drillHref + '" target="_blank" rel="noopener">Drill</a>';
-            html += '</div>';
-        });
-    }
-
-    container.innerHTML = html;
-}
-
-// Convert product ID to display name (e.g., 'heart-failure' -> 'Heart Failure')
 function formatGuideName(productId) {
     return productId.split('-').map(word =>
         word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
 }
 
-// Continue studying - navigates to guide and updates last studied
 function continueStudying(productId) {
     try {
         const lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
@@ -852,416 +384,6 @@ function continueStudying(productId) {
     if (typeof trackBetaEvent === 'function') trackBetaEvent('guide_opened', { guide_id: productId });
     window.location.href = `guides/${productId}.html`;
 }
-
-// ==================== Study Activity Calendar ====================
-
-function loadStudyActivityCalendar(weekOffset) {
-    var container = document.getElementById('activity-bars');
-    if (!container) return;
-
-    var offset = weekOffset || 0; // 0 = this week, -1 = last week
-    var activityDays = (_cachedActivityData && _cachedActivityData.days) || {};
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var dayOfWeek = today.getDay(); // 0=Sun
-
-    // Build 7 days for the target week
-    var weekStart = new Date(today);
-    weekStart.setDate(weekStart.getDate() - dayOfWeek + (offset * 7));
-
-    var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    var FULL_BAR = 5; // 5 activities = 100% full bar
-
-    var html = '';
-    var weekTotal = 0;
-    var daysActive = 0;
-
-    for (var i = 0; i < 7; i++) {
-        var d = new Date(weekStart);
-        d.setDate(d.getDate() + i);
-        var isToday = d.getTime() === today.getTime();
-        var isFuture = d > today;
-        var key = d.toISOString().split('T')[0];
-        var dayData = activityDays[key] || { quiz: 0, guide: 0, ai: 0, study_plan: 0, total: 0 };
-        var count = dayData.total;
-        var pct = isFuture ? 0 : Math.min(100, Math.round((count / FULL_BAR) * 100));
-        var dateLabel = monthNames[d.getMonth()] + ' ' + d.getDate();
-
-        if (count > 0 && !isFuture) {
-            weekTotal += count;
-            daysActive++;
-        }
-
-        var rowClass = 'activity-bar-row';
-        var isFireDay = count >= 5 && !isFuture;
-        if (isToday) rowClass += ' today';
-        if (isFireDay) rowClass += ' fire';
-        if (count === 0 && !isFuture) rowClass += ' inactive';
-
-        var countLabel = '';
-        if (!isFuture) {
-            countLabel = isFireDay
-                ? '<i class="fas fa-fire"></i> ' + count
-                : String(count);
-        }
-
-        // Activity type dots
-        var dots = '';
-        if (!isFuture && count > 0) {
-            dots = '<div class="activity-bar-dots">';
-            if (dayData.quiz > 0) dots += '<span class="activity-dot dot-quiz" title="' + dayData.quiz + ' quiz session' + (dayData.quiz !== 1 ? 's' : '') + '"></span>';
-            if (dayData.guide > 0) dots += '<span class="activity-dot dot-guide" title="' + dayData.guide + ' guide' + (dayData.guide !== 1 ? 's' : '') + ' opened"></span>';
-            if (dayData.ai > 0) dots += '<span class="activity-dot dot-ai" title="' + dayData.ai + ' document' + (dayData.ai !== 1 ? 's' : '') + ' uploaded"></span>';
-            if (dayData.study_plan > 0) dots += '<span class="activity-dot dot-plan" title="Study plan generated"></span>';
-            dots += '</div>';
-        }
-
-        html += '<div class="' + rowClass + '">';
-        html += '<div class="activity-bar-label">' + dayNames[i] + '<span class="activity-date">' + dateLabel + '</span></div>';
-        html += '<div class="activity-bar-track"><div class="activity-bar-fill" style="width:' + (isFuture ? 0 : pct) + '%"></div></div>';
-        html += '<div class="activity-bar-count">' + countLabel + '</div>';
-        html += dots;
-        html += '</div>';
-    }
-
-    container.innerHTML = html;
-
-    // Empty state nudge (only for current week)
-    if (weekTotal === 0 && offset === 0) {
-        // Replace the empty bar rows with just the nudge message
-        var widget = document.getElementById('study-activity-widget');
-        if (widget) widget.classList.add('activity-empty');
-        container.innerHTML = '<div class="empty-card">' +
-            '<div class="empty-card-icon empty-card-icon--green"><i class="fas fa-seedling"></i></div>' +
-            '<div class="empty-card-text">' +
-                '<p class="empty-card-title">No activity yet this week</p>' +
-                '<p class="empty-card-desc">As you study guides, take quizzes, and use AI tools, your activity will show up here.</p>' +
-            '</div>' +
-            '</div>';
-    }
-
-    // Streak from server (more accurate than client-side calculation)
-    var streak = (_cachedActivityData && _cachedActivityData.streak) || 0;
-
-    var weekTotalEl = document.getElementById('activity-week-total');
-    var daysActiveEl = document.getElementById('activity-days-active');
-    var streakEl = document.getElementById('activity-streak');
-    if (weekTotalEl) weekTotalEl.textContent = weekTotal;
-    if (daysActiveEl) daysActiveEl.textContent = daysActive;
-    if (streakEl) streakEl.textContent = streak;
-
-    // Wire up toggle buttons (only once)
-    if (!container._toggleWired) {
-        container._toggleWired = true;
-        var btns = document.querySelectorAll('.activity-week-btn');
-        btns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                btns.forEach(function(b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-                var w = btn.getAttribute('data-week') === 'last' ? -1 : 0;
-                loadStudyActivityCalendar(w);
-            });
-        });
-    }
-}
-
-// Cached activity data fetched from /api/activity/weekly
-var _cachedActivityData = null;
-
-async function fetchActivityData() {
-    try {
-        var resp = await apiCall('/api/activity/weekly', { method: 'GET' });
-        _cachedActivityData = resp;
-    } catch (e) {
-        console.warn('[Dashboard] Failed to fetch activity data:', e.message || e);
-        _cachedActivityData = { days: {}, streak: 0 };
-    }
-}
-
-// Cached quiz sessions fetched from server
-var _cachedQuizSessions = null;
-
-async function fetchAndCacheQuizSessions() {
-    try {
-        var resp = await apiCall('/api/quiz/sessions?limit=100', { method: 'GET' });
-        _cachedQuizSessions = resp.sessions || [];
-    } catch (e) {
-        console.warn('[Dashboard] Failed to fetch quiz sessions:', e.message || e);
-        _cachedQuizSessions = [];
-    }
-}
-
-function getActivityDates() {
-    var dates = {};
-
-    // Count quiz sessions (sets completed) per day
-    var sessions = _cachedQuizSessions || [];
-    sessions.forEach(function(s) {
-        if (s.created_at) {
-            var d = new Date(s.created_at);
-            if (!isNaN(d.getTime())) {
-                var key = d.toISOString().split('T')[0];
-                dates[key] = (dates[key] || 0) + 1;
-            }
-        }
-    });
-
-    return dates;
-}
-
-// ==================== Stat Card Flyouts ====================
-
-function initStatFlyouts() {
-    var statCards = document.querySelectorAll('.dash-stat');
-
-    statCards.forEach(function(card) {
-        card.addEventListener('click', function(e) {
-            e.stopPropagation();
-            var flyout = card.querySelector('.dash-stat-flyout');
-            if (!flyout) return;
-
-            var wasOpen = flyout.classList.contains('open');
-
-            // Close all flyouts first
-            closeAllFlyouts();
-
-            if (!wasOpen) {
-                flyout.classList.add('open');
-                card.classList.add('active');
-                populateFlyout(card.id);
-            }
-        });
-    });
-
-    // Close flyouts when clicking outside
-    document.addEventListener('click', function() {
-        closeAllFlyouts();
-    });
-
-    // Prevent flyout clicks from closing
-    document.querySelectorAll('.dash-stat-flyout').forEach(function(f) {
-        f.addEventListener('click', function(e) { e.stopPropagation(); });
-    });
-}
-
-function closeAllFlyouts() {
-    document.querySelectorAll('.dash-stat-flyout.open').forEach(function(f) {
-        f.classList.remove('open');
-    });
-    document.querySelectorAll('.dash-stat.active').forEach(function(c) {
-        c.classList.remove('active');
-    });
-}
-
-function populateFlyout(cardId) {
-    switch (cardId) {
-        case 'stat-card-guides': populateGuidesFlyout(); break;
-        case 'stat-card-questions': populateQuestionsFlyout(); break;
-        case 'stat-card-accuracy': populateAccuracyFlyout(); break;
-        case 'stat-card-streak': populateStreakFlyout(); break;
-    }
-}
-
-function populateGuidesFlyout() {
-    var container = document.getElementById('flyout-guides-content');
-    if (!container) return;
-
-    var lastStudied = {};
-    try { lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch(e) {}
-
-    var ids = Object.keys(lastStudied);
-    if (ids.length === 0) {
-        container.innerHTML = '<div class="flyout-empty">No guides studied yet</div>';
-        return;
-    }
-
-    // Group by category
-    var categories = {};
-    var categoryMap = {
-        'heart-failure': 'Cardiovascular', 'myocardial-infarction': 'Cardiovascular', 'arrhythmias': 'Cardiovascular', 'hypertension': 'Cardiovascular', 'coronary-artery-disease': 'Cardiovascular', 'peripheral-vascular-disease': 'Cardiovascular',
-        'copd': 'Respiratory', 'asthma': 'Respiratory', 'pneumonia': 'Respiratory', 'tuberculosis': 'Respiratory', 'oxygen-therapy': 'Respiratory', 'chest-tubes': 'Respiratory',
-        'stroke': 'Neurological', 'seizures': 'Neurological', 'traumatic-brain-injury': 'Neurological', 'spinal-cord-injury': 'Neurological', 'meningitis': 'Neurological', 'parkinsons-ms': 'Neurological',
-        'diabetes-type1': 'Endocrine', 'diabetes-type2': 'Endocrine', 'thyroid-disorders': 'Endocrine', 'adrenal-disorders': 'Endocrine', 'pituitary-disorders': 'Endocrine',
-        'acute-kidney-injury': 'Renal', 'chronic-kidney-disease': 'Renal', 'dialysis': 'Renal', 'kidney-stones': 'Renal', 'urinary-tract-infections': 'Renal', 'fluid-electrolytes': 'Renal',
-        'gi-bleeding': 'GI', 'bowel-obstruction': 'GI', 'liver-disease': 'GI', 'pancreatitis': 'GI', 'inflammatory-bowel-disease': 'GI', 'gerd-peptic-ulcer': 'GI',
-        'fractures': 'Musculoskeletal', 'arthritis': 'Musculoskeletal', 'hip-knee-replacement': 'Musculoskeletal', 'osteoporosis': 'Musculoskeletal', 'amputation-care': 'Musculoskeletal',
-        'cardiac-medications': 'Pharmacology', 'antibiotics-antivirals': 'Pharmacology', 'pain-management': 'Pharmacology', 'iv-medications': 'Pharmacology', 'psychotropic-medications': 'Pharmacology', 'emergency-medications': 'Pharmacology',
-        'assessment-skills': 'Fundamentals', 'infection-control': 'Fundamentals', 'documentation-charting': 'Fundamentals', 'patient-safety': 'Fundamentals', 'mobility-transfers': 'Fundamentals',
-        'pediatric-congenital-heart-defects': 'Pediatric Nursing',
-        'kawasaki-disease': 'Pediatric Nursing',
-        'rheumatic-fever-endocarditis': 'Pediatric Nursing',
-        'pediatric-gi-obstructions': 'Pediatric Nursing',
-        'cleft-lip-palate': 'Pediatric Nursing',
-        'pediatric-gerd': 'Pediatric Nursing',
-        'pediatric-renal-disorders': 'Pediatric Nursing',
-        'uti-vur-enuresis': 'Pediatric Nursing',
-        'male-gu-disorders': 'Pediatric Nursing',
-        'neural-tube-defects': 'Pediatric Nursing',
-        'pediatric-fractures-immobility': 'Pediatric Nursing',
-        'pediatric-skin-infections': 'Pediatric Nursing',
-        'hypersensitivity-inflammatory-skin': 'Pediatric Nursing',
-        'pediatric-burns': 'Pediatric Nursing',
-        'pediatric-leukemias': 'Pediatric Nursing',
-        'sickle-cell-crisis': 'Pediatric Nursing',
-        'pediatric-solid-tumors': 'Pediatric Nursing',
-        'bleeding-disorders': 'Pediatric Nursing',
-        'iron-deficiency-anemia': 'Pediatric Nursing',
-        'jia-lupus': 'Pediatric Nursing',
-        'immune-deficiency-hiv': 'Pediatric Nursing'
-    };
-
-    ids.forEach(function(id) {
-        var cat = categoryMap[id] || 'Other';
-        if (!categories[cat]) categories[cat] = 0;
-        categories[cat]++;
-    });
-
-    var html = '';
-    var sorted = Object.entries(categories).sort(function(a, b) { return b[1] - a[1]; });
-    sorted.forEach(function(pair) {
-        html += '<div class="flyout-row"><span class="flyout-row-label">' + escapeHtml(pair[0]) + '</span><span class="flyout-row-value">' + pair[1] + '</span></div>';
-    });
-    html += '<div class="flyout-divider"></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Total</span><span class="flyout-row-value">' + ids.length + ' guides</span></div>';
-    container.innerHTML = html;
-}
-
-function populateQuestionsFlyout() {
-    var container = document.getElementById('flyout-questions-content');
-    if (!container) return;
-
-    if (typeof MasteryTracker === 'undefined') {
-        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
-        return;
-    }
-
-    var stats = MasteryTracker.getOverallStats();
-    if (stats.totalQuestionsAnswered === 0) {
-        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
-        return;
-    }
-
-    var html = '';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Total Answered</span><span class="flyout-row-value">' + stats.totalQuestionsAnswered.toLocaleString() + '</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Practiced</span><span class="flyout-row-value">' + stats.chaptersPracticed + '</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Mastered</span><span class="flyout-row-value">' + stats.chaptersMastered + '</span></div>';
-    html += '<div class="flyout-divider"></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Avg Mastery Level</span><span class="flyout-row-value">' + stats.averageLevel.toFixed(1) + '</span></div>';
-    container.innerHTML = html;
-}
-
-function populateAccuracyFlyout() {
-    var container = document.getElementById('flyout-accuracy-content');
-    if (!container) return;
-
-    if (typeof MasteryTracker === 'undefined') {
-        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
-        return;
-    }
-
-    var stats = MasteryTracker.getOverallStats();
-    if (stats.totalQuestionsAnswered === 0) {
-        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
-        return;
-    }
-
-    var html = '';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Overall Accuracy</span><span class="flyout-row-value">' + stats.accuracy + '%</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Correct Answers</span><span class="flyout-row-value">' + Math.round(stats.totalQuestionsAnswered * stats.accuracy / 100) + '</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Incorrect</span><span class="flyout-row-value">' + (stats.totalQuestionsAnswered - Math.round(stats.totalQuestionsAnswered * stats.accuracy / 100)) + '</span></div>';
-
-    // Show best/worst topics if MasteryTracker exposes them
-    if (typeof MasteryTracker.getTopicStats === 'function') {
-        try {
-            var topics = MasteryTracker.getTopicStats();
-            if (topics && topics.length > 0) {
-                var sorted = topics.filter(function(t) { return t.totalAnswered > 0; }).sort(function(a, b) { return b.accuracy - a.accuracy; });
-                if (sorted.length > 0) {
-                    html += '<div class="flyout-divider"></div>';
-                    html += '<div class="flyout-row"><span class="flyout-row-label">Best Topic</span><span class="flyout-row-value">' + escapeHtml(sorted[0].name) + '</span></div>';
-                    if (sorted.length > 1) {
-                        html += '<div class="flyout-row"><span class="flyout-row-label">Needs Work</span><span class="flyout-row-value">' + escapeHtml(sorted[sorted.length - 1].name) + '</span></div>';
-                    }
-                }
-            }
-        } catch (e) { /* ignore */ }
-    }
-
-    container.innerHTML = html;
-}
-
-function populateStreakFlyout() {
-    var container = document.getElementById('flyout-streak-content');
-    if (!container) return;
-
-    var activeDates = getActivityDates();
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    // Build 14-day mini calendar
-    var labels = '<div class="flyout-streak-labels"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>';
-    var grid = '<div class="flyout-streak-grid">';
-
-    // Start from 13 days ago, fill 14 cells
-    var start = new Date(today);
-    start.setDate(start.getDate() - 13);
-
-    for (var i = 0; i < 14; i++) {
-        var d = new Date(start);
-        d.setDate(d.getDate() + i);
-        var key = d.toISOString().split('T')[0];
-        var isActive = (activeDates[key] || 0) > 0;
-        var isToday = d.getTime() === today.getTime();
-        grid += '<div class="flyout-streak-day' + (isActive ? ' active' : '') + (isToday ? ' today' : '') + '"></div>';
-    }
-    grid += '</div>';
-
-    // Current streak calculation
-    var currentStreak = 0;
-    var checkDate = new Date(today);
-    while (true) {
-        var key = checkDate.toISOString().split('T')[0];
-        if ((activeDates[key] || 0) > 0) {
-            currentStreak++;
-            checkDate.setDate(checkDate.getDate() - 1);
-        } else {
-            break;
-        }
-    }
-
-    container.innerHTML = labels + grid + '<div class="flyout-divider"></div><div class="flyout-row"><span class="flyout-row-label">Current Streak</span><span class="flyout-row-value">' + currentStreak + ' day' + (currentStreak !== 1 ? 's' : '') + '</span></div>';
-}
-
-// ==================== Stats Row (hero mockup style) ====================
-
-function updateStatsRow() {
-    // Guides studied count (real data from localStorage)
-    var guidesEl = document.getElementById('stat-guides-count');
-    if (guidesEl) {
-        var lastStudied = {};
-        try { lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch(e) {}
-        var count = Object.keys(lastStudied).length;
-        guidesEl.textContent = count > 0 ? count : '0';
-    }
-
-    // Quiz bank stats (real data only)
-    if (typeof MasteryTracker !== 'undefined') {
-        var stats = MasteryTracker.getOverallStats();
-        var answeredEl = document.getElementById('stat-questions-answered');
-        var scoreEl = document.getElementById('stat-avg-score');
-        var streakEl = document.getElementById('stat-streak');
-        if (answeredEl) answeredEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.totalQuestionsAnswered.toLocaleString() : '0';
-        if (scoreEl) scoreEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.accuracy + '%' : '--';
-        if (streakEl) streakEl.textContent = stats.streak || '0';
-    } else {
-        var answeredEl = document.getElementById('stat-questions-answered');
-        if (answeredEl) answeredEl.textContent = '0';
-    }
-}
-
-// ==================== Email Verification Banner ====================
 
 function updateEmailVerificationBanner(user) {
     // Hide the old main-content banner permanently
@@ -1324,283 +446,6 @@ function updateEmailVerificationBanner(user) {
     }
 }
 
-// ==================== Getting Started Card ====================
-
-async function showGettingStartedCard(user) {
-    const gettingStartedCard = document.getElementById('getting-started-card');
-    if (!gettingStartedCard) return;
-
-    const createdDate = new Date(user.created_at);
-    const today = new Date();
-    const daysOld = Math.floor((today - createdDate) / (1000 * 60 * 60 * 24));
-    const dismissed = localStorage.getItem('gettingStartedDismissed');
-
-    if (daysOld >= 2 || dismissed) return;
-
-    // For paid users, "Choose a Plan" is stale — point them to semester setup instead.
-    let hasAccess = false;
-    try {
-        if (typeof getSubscriptionStatusCached === 'function') {
-            const status = await getSubscriptionStatusCached();
-            hasAccess = !!(status && status.hasAccess);
-        }
-    } catch (e) {}
-
-    if (hasAccess) {
-        const steps = gettingStartedCard.querySelectorAll('.getting-started-step');
-        const step3 = steps[2];
-        if (step3) {
-            step3.innerHTML =
-                '<i class="fas fa-calendar-check"></i>' +
-                '<h4>Set Up Your Semester</h4>' +
-                '<p>Tell us your classes &amp; exam dates for a personalized study plan</p>';
-            step3.style.cursor = 'pointer';
-            step3.addEventListener('click', function () {
-                if (typeof window.openSemesterModal === 'function') {
-                    window.openSemesterModal();
-                }
-            });
-        }
-    }
-
-    gettingStartedCard.classList.remove('hidden');
-    const dismissBtn = gettingStartedCard.querySelector('button');
-    if (dismissBtn) {
-        dismissBtn.onclick = function() {
-            gettingStartedCard.classList.add('hidden');
-            localStorage.setItem('gettingStartedDismissed', 'true');
-        };
-    }
-}
-
-// ==================== Daily Study Goal Widget ====================
-
-async function updateDailyGoalWidget() {
-    var widget = document.getElementById('sidebar-goal-widget');
-    var ringFill = document.getElementById('goal-ring-fill');
-    var countText = document.getElementById('goal-count-text');
-    var labelText = document.getElementById('goal-label-text');
-    if (!widget || !ringFill || !countText) return;
-
-    var hasAccess = true;
-    try {
-        if (typeof getSubscriptionStatusCached === 'function') {
-            var status = await getSubscriptionStatusCached();
-            hasAccess = !!(status && status.hasAccess);
-        }
-    } catch (e) { /* network glitch — fall through and show the widget normally */ }
-    widget.style.display = '';
-
-    // Free user — keep the widget visible with a paywall CTA so they at least
-    // know the daily-streak feature exists. Quizzes are paywalled, so the ring
-    // would never move for them; previously we hid the whole widget, which made
-    // the feature invisible to anyone who hadn't subscribed yet.
-    if (!hasAccess) {
-        widget.classList.add('sidebar-goal-widget--locked');
-        widget.classList.remove('goal-complete');
-        var lockedCircumference = 2 * Math.PI * 20;
-        ringFill.setAttribute('stroke-dasharray', lockedCircumference.toFixed(2));
-        ringFill.setAttribute('stroke-dashoffset', lockedCircumference.toFixed(2));
-        countText.textContent = '0/5';
-        if (labelText) {
-            labelText.innerHTML = '<a href="pricing.html" class="sidebar-goal-link">Subscribe to start your streak <i class="fas fa-arrow-right"></i></a>';
-        }
-        return;
-    }
-    widget.classList.remove('sidebar-goal-widget--locked');
-
-    var DAILY_GOAL = 5;
-    var activeDates = getActivityDates();
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    var todayKey = today.toISOString().split('T')[0];
-    var todayCount = activeDates[todayKey] || 0;
-
-    var circumference = 2 * Math.PI * 20; // r=20 => ~125.66
-    var completed = Math.min(todayCount, DAILY_GOAL);
-    var offset = circumference - (completed / DAILY_GOAL) * circumference;
-
-    ringFill.setAttribute('stroke-dasharray', circumference.toFixed(2));
-    ringFill.setAttribute('stroke-dashoffset', offset.toFixed(2));
-    countText.textContent = todayCount + '/' + DAILY_GOAL;
-
-    if (todayCount >= DAILY_GOAL) {
-        widget.classList.add('goal-complete');
-        labelText.textContent = 'Goal reached!';
-    } else {
-        widget.classList.remove('goal-complete');
-        labelText.textContent = todayCount === 0 ? 'Start a quiz set!' : 'sets completed';
-    }
-}
-
-// ==================== Sidebar Subscription Widget ====================
-
-async function loadSidebarSubscription() {
-    const widget = document.getElementById('sidebar-sub-widget');
-    if (!widget) return;
-
-    try {
-        const { hasAccess, subscription } = await getSubscriptionStatusCached();
-
-        if (subscription) {
-            const planName = planDisplayNames[subscription.plan_id] || subscription.plan_name || 'Plan';
-            const isActive = subscription.is_active;
-            const isLifetime = subscription.plan_id === 'lifetime-access' || subscription.plan_id === 'ai-lifetime-access';
-            const isCancelling = subscription.cancel_at_period_end;
-
-            let statusClass = 'active';
-            let statusText = 'Active';
-            let statusIcon = 'fa-check-circle';
-            if (isActive && isCancelling) {
-                var daysLeft = subscription.expires_at ? Math.ceil((new Date(subscription.expires_at) - new Date()) / 86400000) : 999;
-                if (daysLeft <= 30) { statusClass = 'cancelling'; statusText = 'Ending Soon'; statusIcon = 'fa-clock'; }
-            }
-            else if (!isActive) { statusClass = 'expired'; statusText = 'Expired'; statusIcon = 'fa-times-circle'; }
-
-            let detailText = '';
-            if (isLifetime) {
-                detailText = '<strong>Lifetime</strong> — never expires';
-            } else if (subscription.expires_at) {
-                const isMonthly = subscription.plan_id === 'monthly-access' || subscription.plan_id === 'ai-monthly-access';
-                const label = isCancelling ? 'Access until' : (isMonthly ? 'Renews' : 'Expires');
-                detailText = label + ' <strong>' + formatDate(subscription.expires_at) + '</strong>';
-            }
-
-            let actionHtml = '';
-            const isAiPlan = subscription.plan_id && subscription.plan_id.startsWith('ai-');
-            if (!isActive) {
-                actionHtml = '<a href="pricing.html" class="sidebar-sub-resubscribe"><i class="fas fa-rocket"></i> Resubscribe</a>';
-            } else if (!isAiPlan) {
-                // Standard plan user — opens upgrade-modal.js in place (no nav to /pricing).
-                var upgradePrice = '+$10/mo';
-                if (subscription.plan_id === 'semester-access') upgradePrice = '+$30';
-                else if (subscription.plan_id === 'lifetime-access') upgradePrice = '+$50';
-                actionHtml = '<button type="button" class="sidebar-sub-upgrade" data-sidebar-upgrade="1"><i class="fas fa-bolt"></i> Upgrade to AI · ' + upgradePrice + '</button>';
-            }
-
-            widget.className = 'sidebar-sub-widget';
-            widget.innerHTML = `
-                <div class="sidebar-sub-header">
-                    <div class="sidebar-sub-plan"><i class="fas fa-crown"></i> ${escapeHtml(planName)}</div>
-                    <span class="sidebar-sub-status ${statusClass}"><i class="fas ${statusIcon}"></i> ${statusText}</span>
-                </div>
-                <div class="sidebar-sub-divider"></div>
-                <div class="sidebar-sub-detail">${detailText}</div>
-                ${actionHtml}
-            `;
-
-            // Wire the upgrade button to open the in-place modal.
-            // Falls back to /settings.html?upgrade=ai if the modal module isn't loaded.
-            const upgradeBtn = widget.querySelector('[data-sidebar-upgrade="1"]');
-            if (upgradeBtn) {
-                upgradeBtn.addEventListener('click', function () {
-                    if (typeof window.openUpgradeAiModal === 'function') {
-                        window.openUpgradeAiModal();
-                    } else {
-                        window.location.href = 'settings.html?upgrade=ai';
-                    }
-                });
-            }
-        } else {
-            widget.className = 'sidebar-sub-widget no-sub';
-            widget.innerHTML = `
-                <div class="sidebar-sub-cta">
-                    <i class="fas fa-crown"></i>
-                    <p>Unlock all study guides and resources</p>
-                    <a href="pricing.html" class="btn btn-primary btn-sm">View Plans <i class="fas fa-arrow-right"></i></a>
-                </div>
-            `;
-        }
-    } catch (error) {
-        console.error('Error loading sidebar subscription:', error);
-        widget.innerHTML = '';
-    }
-}
-
-// Keep loadSubscriptionManagement as a thin wrapper (hidden container still used for data)
-async function loadSubscriptionManagement() {
-    await loadSidebarSubscription();
-}
-
-// ==================== Continue Studying Hero ====================
-
-function loadContinueHero() {
-    const hero = document.getElementById('continue-hero');
-    if (!hero) return;
-
-    let lastStudiedMap = {};
-    try {
-        lastStudiedMap = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
-    } catch (e) { return; }
-
-    const entries = Object.entries(lastStudiedMap)
-        .map(function(pair) { return { id: pair[0], date: new Date(pair[1]) }; })
-        .filter(function(e) { return !isNaN(e.date.getTime()); })
-        .sort(function(a, b) { return b.date - a.date; });
-
-    if (entries.length === 0) return;
-
-    const latest = entries[0];
-    const name = formatGuideName(latest.id);
-    const timeAgo = formatRelativeTime(latest.date.toISOString());
-    const iconSrc = 'assets/images/guide-icons/' + latest.id + '.webp';
-
-    var iconEl = document.getElementById('continue-hero-icon');
-    if (iconEl) {
-        iconEl.innerHTML = '<img src="' + iconSrc + '" alt="" onerror="this.parentElement.innerHTML=\'<i class=\\\'fas fa-book-open\\\'></i>\'">';
-    }
-    var nameEl = document.getElementById('continue-hero-name');
-    if (nameEl) nameEl.textContent = name;
-    var timeEl = document.getElementById('continue-hero-time');
-    if (timeEl) timeEl.textContent = 'Last studied ' + (timeAgo || 'recently');
-
-    var btn = document.getElementById('continue-hero-btn');
-    if (btn) {
-        btn.addEventListener('click', function() {
-            continueStudying(latest.id);
-        });
-    }
-
-    hero.classList.remove('hidden');
-}
-
-// ==================== Event Listeners ====================
-
-// Sync mastery progress to server on page unload (best-effort)
-window.addEventListener('beforeunload', function () {
-    if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.syncToServer === 'function') {
-        MasteryTracker.syncToServer();
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('[data-navigate]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            window.location.href = this.dataset.navigate;
-        });
-    });
-
-    document.querySelectorAll('[data-external]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            window.open(this.dataset.external, '_blank');
-        });
-    });
-
-    const dismissBtn = document.getElementById('dismiss-getting-started-btn');
-    if (dismissBtn) {
-        dismissBtn.addEventListener('click', function() {
-            const card = document.getElementById('getting-started-card');
-            if (card) {
-                card.classList.add('hidden');
-                localStorage.setItem('gettingStartedDismissed', 'true');
-            }
-        });
-    }
-
-});
-
-// ==================== Utility Functions ====================
-
 function formatRelativeTime(dateString) {
     if (!dateString) return null;
     const date = new Date(dateString);
@@ -1614,5 +459,3 @@ function formatRelativeTime(dateString) {
     if (diffDays < 30) return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? 's' : ''} ago`;
     return formatDate(dateString);
 }
-
-// escapeHtml() and formatDate() are provided by script.js

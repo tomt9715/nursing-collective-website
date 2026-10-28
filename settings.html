@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
 
     <!-- Lockscreen (must run immediately) -->
-    <script src="beta-banner.js"></script>
+    <script src="beta-banner.js?v=usability-20261028"></script>
     <!-- Sentry Error Tracking (deferred) -->
     <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script defer src="sentry-init.js"></script>
@@ -63,10 +63,10 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="dashboard.html">Dashboard</a>
+                <a href="dashboard.html">Study Home</a>
+                <a href="my-guides.html">Study Guides</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
-                <a href="about.html">About</a>
                 <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
@@ -114,31 +114,20 @@
             <div class="dash-sidebar-inner">
                 <div class="dash-sidebar-section">
                     <a href="dashboard.html" class="dash-sidebar-item">
-                        <i class="fas fa-th-large"></i> Dashboard
+                        <i class="fas fa-th-large"></i> Study Home
                     </a>
                     <a href="my-guides.html" class="dash-sidebar-item">
                         <i class="fas fa-book-open"></i> Study Guides
                     </a>
-                    <a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;">
-                        <i class="fas fa-brain"></i> Quiz Bank
-                    </a>
                     <a href="my-resources.html" class="dash-sidebar-item">
                         <i class="fas fa-book-reader"></i> Resources
                     </a>
-                    <a href="ai-tools.html" class="dash-sidebar-item">
-                        <i class="fas fa-wand-magic-sparkles"></i> AI Tools
-                    </a>
-                    <a href="rounds.html" class="dash-sidebar-item" id="sidebar-rounds" style="display:none;">
-                        <i class="fas fa-stethoscope"></i> Rounds
-                    </a>
                 </div>
                 <div class="dash-sidebar-section">
-                    <a href="community.html" class="dash-sidebar-item">
-                        <i class="fab fa-discord"></i> Community
-                    </a>
                     <a href="settings.html" class="dash-sidebar-item active">
-                        <i class="fas fa-cog"></i> Settings
+                        <i class="fas fa-cog"></i> Account
                     </a>
+                        <a href="contact.html" class="dash-sidebar-item"><i class="fas fa-question-circle"></i> Help</a>
                 </div>
             </div>
         </aside>
@@ -146,6 +135,18 @@
         <div class="dash-main">
         <section class="settings-section">
         <div class="settings-container">
+            <details class="account-extra-tools" style="margin-bottom:24px;padding:18px;border:1px solid var(--border);border-radius:12px;">
+                <summary>Additional tools</summary>
+                <p style="margin:12px 0;">Looking for a tool you’ve used before? Your access hasn’t changed.</p>
+                <ul style="padding-left:20px;line-height:2;">
+                    <li><a href="https://learn.thenursingcollective.pro">Quiz Bank</a></li>
+                    <li><a href="ai-tools.html">AI Tools</a></li>
+                    <li><a href="rounds.html">Rounds</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="study-session.html">Study sessions</a></li>
+                </ul>
+            </details>
+
 
             <!-- Tab Navigation -->
             <div class="settings-tabs">
@@ -452,6 +453,13 @@
                 </div>
 
                 <div id="billing-list" class="hidden"></div>
+                <div id="billing-portal-actions" class="hidden">
+                <div class="membership-actions">
+                    <button type="button" class="btn-small secondary" id="billing-manage-btn">Manage billing &amp; payment details</button>
+                </div>
+                <p class="settings-card-desc">Open Stripe to update your payment method and view invoices. Your existing plan stays the same.</p>
+                <p id="billing-manage-status" role="status" aria-live="polite"></p>
+                </div>
             </div>
 
             </div> <!-- end tab: billing -->
@@ -615,16 +623,15 @@
     <!-- Dark Mode Manager (sync - prevents flash) -->
     <script src="dark-mode.js"></script>
     <!-- API Service Layer (sync - needed by other scripts) -->
-    <script src="api-service.js?v=1769142742"></script>
+    <script src="api-service.js?v=first-party-session-20261027"></script>
     <script src="upgrade-modal.js?v=1"></script>
     <link rel="stylesheet" href="css/upgrade-modal.css?v=1">
-    <script src="sidebar-widgets.js?v=1"></script>
     <!-- Deferred scripts -->
     <script defer src="modal.js"></script>
     <script defer src="sidebar.js"></script>
-    <script defer src="script.js?v=4.8.settings"></script>
+    <script defer src="script.js?v=membership-alignment-20261027"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-    <script defer src="settings-script.js?v=5.4.upgrade-options-api"></script>
+    <script defer src="settings-script.js?v=billing-self-service-20261028b"></script>
     <!-- ═══ Full-screen Modals (body-level for reliable fixed positioning) ═══ -->
 
     <!-- Delete Account Confirmation Modal -->

@@ -69,6 +69,10 @@ function initAuthCallback() {
         try {
             // Store access token (refresh token is set as httpOnly cookie by backend)
             localStorage.setItem('accessToken', accessToken);
+            // OAuth just issued this token, like email sign-in. Mark it fresh
+            // before the dashboard's stale-session check can try a refresh.
+            localStorage.setItem('tokenTimestamp', Date.now().toString());
+            console.info('[Auth] OAuth callback stored a fresh session');
 
             // Fetch user data
             fetch(`${API_URL}/user/profile`, {

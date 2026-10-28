@@ -176,6 +176,11 @@ class QuizEngine {
     }
 
     showResults() {
+        // Repeated result clicks must not record the same attempt twice.
+        if (this.phase === 'results') {
+            this._renderResultsScreen();
+            return;
+        }
         this.phase = 'results';
         this._stopTimer();
         this.totalTimeSeconds = Math.round((Date.now() - this.sessionStartTime) / 1000);
@@ -213,7 +218,11 @@ class QuizEngine {
                 }
             });
             if (masteryResults.length > 0) {
-                MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
+                try {
+                    MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
+                } catch (error) {
+                    console.warn('[Quiz] Mastery tracking failed; showing results anyway.', error);
+                }
             }
         }
 
@@ -749,7 +758,10 @@ class QuizEngine {
                 // Update visual state for this row
                 const row = matrixCell.closest('tr');
                 if (row) {
-                    row.querySelectorAll('.quiz-matrix-cell').forEach(c => c.classList.remove('quiz-matrix-cell--selected'));
+                    row.querySelectorAll('.quiz-matrix-cell').forEach(c => {
+                        c.classList.remove('quiz-matrix-cell--selected');
+                        c.setAttribute('aria-checked', c === matrixCell ? 'true' : 'false');
+                    });
                     matrixCell.classList.add('quiz-matrix-cell--selected');
                 }
                 this._updateSubmitButton();
@@ -1196,7 +1208,7 @@ class QuizEngine {
                 </a>
                 <div class="quiz-top-bar-right">
                     ${timerHtml}
-                    <a href="${this.isAIGenerated ? '../../ai-tools.html' : '../ai-tools.html'}" class="quiz-ai-tools-link" title="AI Study Tools">
+                    <a href="/ai-tools.html" class="quiz-ai-tools-link" title="AI Study Tools">
                         <i class="fas fa-wand-magic-sparkles"></i> <span>AI Tools</span>
                     </a>
                 </div>
@@ -1317,8 +1329,8 @@ class QuizEngine {
             html += `<td class="quiz-matrix-finding">${this._escapeHtml(opt.text)}</td>`;
             cols.forEach(col => {
                 html += `
-                    <td class="quiz-matrix-cell" role="radio" tabindex="0" aria-checked="false">
-                        <input type="radio" name="quiz-matrix-${q.id}-${opt.id}" value="${this._escapeAttr(col)}" tabindex="-1">
+                    <td class="quiz-matrix-cell" role="radio" tabindex="0" aria-checked="false" aria-label="${this._escapeAttr(opt.text + ": " + col)}">
+                        <input type="radio" name="quiz-matrix-${q.id}-${opt.id}" value="${this._escapeAttr(col)}" tabindex="-1" aria-label="${this._escapeAttr(opt.text + ": " + col)}">
                         <span class="quiz-matrix-radio-marker"></span>
                     </td>
                 `;

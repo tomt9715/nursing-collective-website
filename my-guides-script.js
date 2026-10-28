@@ -1,9 +1,6 @@
 (function() {
     'use strict';
 
-    var ICON_BASE = 'assets/images/guide-icons/';
-    var CATEGORY_ICON_BASE = 'assets/images/study-guide-page/';
-
     // ── Access state (set on init) ──────────────────────────────
     var _hasAccess = false;
     var _hasSemesterSetup = false;
@@ -170,7 +167,7 @@
             name: 'Maternal-Newborn Nursing',
             classIcon: 'maternal-newborn-nursing-class-icon',
             classFaIcon: 'fa-baby-carriage',
-            description: 'Antepartum, labor & delivery, postpartum, newborn care, high-risk pregnancy, and women\'s health.',
+            description: 'Antepartum care, pregnancy assessment, and patient education.',
             gradient: 'linear-gradient(135deg, #ec4899, #db2777)',
             topics: [
                 {
@@ -198,7 +195,7 @@
             name: 'Pediatric Nursing',
             classIcon: 'pediatric-nursing-class-icon',
             classFaIcon: 'fa-child',
-            description: 'Congenital conditions, pediatric emergencies, and age-specific care across body systems.',
+            description: 'Pediatric conditions and age-specific care across body systems.',
             gradient: 'linear-gradient(135deg, #e05252, #b91c3c)',
             topics: [
                 {
@@ -357,19 +354,20 @@
         }
     ];
 
-    // ── Compute counts ───────────────────────────────────────────
-    var totalAvailable = 0;
-    var totalComingSoon = 0;
-
-    CLASS_CATALOG.forEach(function(cls) {
-        var avail = 0, soon = 0;
-        cls.topics.forEach(function(t) {
-            avail += t.guides.length;
-            soon += (t.comingSoon || []).length;
+    // Keep planned content in CLASS_CATALOG, but publish only usable classes/topics.
+    var AVAILABLE_CLASSES = CLASS_CATALOG.map(function(cls) {
+        return Object.assign({}, cls, {
+            topics: cls.topics.filter(function(topic) { return topic.guides.length > 0; })
         });
-        cls.guideCounts = { available: avail, comingSoon: soon };
-        totalAvailable += avail;
-        totalComingSoon += soon;
+    }).filter(function(cls) { return cls.topics.length > 0; });
+
+    var totalAvailable = 0;
+    AVAILABLE_CLASSES.forEach(function(cls) {
+        var available = cls.topics.reduce(function(total, topic) {
+            return total + topic.guides.length;
+        }, 0);
+        cls.guideCounts = { available: available };
+        totalAvailable += available;
     });
 
     // ── Render: Class Landing (Level 1) ──────────────────────────
@@ -378,30 +376,6 @@
         if (!container) return;
 
         var html = '';
-
-        // Setup banner — paid users without a configured semester
-        var bannerDismissed = false;
-        try { bannerDismissed = localStorage.getItem('myGuidesSetupBannerDismissed') === 'true'; } catch (e) {}
-        if (_hasAccess && !_hasSemesterSetup && !bannerDismissed) {
-            html +=
-                '<div class="my-guides-setup-banner" id="setup-banner">' +
-                    '<div class="my-guides-setup-banner-icon"><i class="fas fa-calendar-check"></i></div>' +
-                    '<div class="my-guides-setup-banner-text">' +
-                        '<strong class="my-guides-setup-banner-title">' +
-                            'Tell us your classes &mdash; we\'ll show you the right guides first.' +
-                        '</strong>' +
-                        '<span class="my-guides-setup-banner-sub">' +
-                            'Two-minute setup. We\'ll match your exam dates to the guides that prep you for them.' +
-                        '</span>' +
-                    '</div>' +
-                    '<a href="dashboard.html?onboard=semester" class="my-guides-setup-banner-cta">' +
-                        'Set up my semester →' +
-                    '</a>' +
-                    '<button class="my-guides-setup-banner-dismiss" id="setup-banner-dismiss" aria-label="Dismiss">' +
-                        '<i class="fas fa-times"></i>' +
-                    '</button>' +
-                '</div>';
-        }
 
         // Today's recommended guides — async-filled from /api/semester/daily-plan
         // for paid users with a configured semester. Stays empty otherwise.
@@ -412,13 +386,12 @@
         // Stats bar
         html += '<div class="guide-library-stats">';
         html += '<div class="guide-library-stat"><i class="fas fa-book-open"></i> <strong>' + totalAvailable + '</strong> guides available</div>';
-        html += '<div class="guide-library-stat"><i class="fas fa-clock"></i> <strong>' + totalComingSoon + '</strong> coming soon</div>';
-        html += '<div class="guide-library-stat"><i class="fas fa-graduation-cap"></i> <strong>' + CLASS_CATALOG.length + '</strong> classes</div>';
+        html += '<div class="guide-library-stat"><i class="fas fa-graduation-cap"></i> <strong>' + AVAILABLE_CLASSES.length + '</strong> classes</div>';
         html += '</div>';
 
         // Class cards
         html += '<div class="class-card-grid">';
-        CLASS_CATALOG.forEach(function(cls) {
+        AVAILABLE_CLASSES.forEach(function(cls) {
             var counts = cls.guideCounts;
             var isLocked = !_hasAccess;
 
@@ -433,9 +406,6 @@
             html += '<div class="class-card-meta">';
             if (counts.available > 0) {
                 html += '<span class="class-card-stat"><i class="fas fa-book-open"></i> ' + counts.available + ' available</span>';
-            }
-            if (counts.comingSoon > 0) {
-                html += '<span class="class-card-stat"><i class="fas fa-clock"></i> ' + counts.comingSoon + ' coming soon</span>';
             }
             html += '</div>';
             html += '</div>';
@@ -462,15 +432,6 @@
         animateIn(container);
         bindClassCards();
 
-        var dismissBtn = document.getElementById('setup-banner-dismiss');
-        if (dismissBtn) {
-            dismissBtn.addEventListener('click', function () {
-                var banner = document.getElementById('setup-banner');
-                if (banner) banner.style.display = 'none';
-                try { localStorage.setItem('myGuidesSetupBannerDismissed', 'true'); } catch (e) {}
-            });
-        }
-
         if (_hasAccess && _hasSemesterSetup) {
             loadDailyPlanGuides();
         }
@@ -493,7 +454,7 @@
             // Index of valid guide slugs from the catalog (only built guides
             // are clickable — uncovered topics shouldn't appear as cards).
             var validGuides = {};
-            CLASS_CATALOG.forEach(function (cls) {
+            AVAILABLE_CLASSES.forEach(function (cls) {
                 (cls.topics || []).forEach(function (topic) {
                     (topic.guides || []).forEach(function (g) {
                         if (g.file) {
@@ -583,8 +544,8 @@
     // ── Render: Class Detail (Level 2) ───────────────────────────
     function renderDetail(classId) {
         var cls = null;
-        for (var i = 0; i < CLASS_CATALOG.length; i++) {
-            if (CLASS_CATALOG[i].id === classId) { cls = CLASS_CATALOG[i]; break; }
+        for (var i = 0; i < AVAILABLE_CLASSES.length; i++) {
+            if (AVAILABLE_CLASSES[i].id === classId) { cls = AVAILABLE_CLASSES[i]; break; }
         }
         if (!cls) { renderLanding(); return; }
 
@@ -612,20 +573,18 @@
         var subtitleParts = [];
         if (cls.topics.length > 1) subtitleParts.push(cls.topics.length + ' topics');
         if (cls.guideCounts.available > 0) subtitleParts.push(cls.guideCounts.available + ' available');
-        if (cls.guideCounts.comingSoon > 0) subtitleParts.push(cls.guideCounts.comingSoon + ' coming soon');
         html += '<p class="class-detail-subtitle">' + subtitleParts.join(' &middot; ') + '</p>';
         html += '</div>';
         html += '</div>';
 
         // Topic sections
         cls.topics.forEach(function(topic) {
-            var totalInTopic = topic.guides.length + (topic.comingSoon || []).length;
 
             html += '<div class="guide-category">';
             html += '<div class="guide-category-header">';
             html += '<i class="fas ' + (topic.icon || 'fa-book') + ' guide-category-icon"></i>';
             html += '<h2 class="guide-category-title">' + topic.category + '</h2>';
-            html += '<span class="guide-category-count">' + topic.guides.length + ' of ' + totalInTopic + ' guides</span>';
+            html += '<span class="guide-category-count">' + topic.guides.length + (topic.guides.length === 1 ? ' guide' : ' guides') + '</span>';
             html += '</div>';
 
             html += '<div class="guide-grid">';
@@ -656,17 +615,6 @@
                     html += '<span class="guide-locked-badge"><i class="fas fa-lock"></i> Premium</span>';
                     html += '</div>';
                 }
-            });
-
-            // Coming soon
-            (topic.comingSoon || []).forEach(function(item) {
-                html += '<div class="guide-card coming-soon">';
-                html += '<div class="guide-card-info">';
-                html += '<div class="guide-card-name">' + item.name + '</div>';
-                html += '<div class="guide-card-meta">Study Guide</div>';
-                html += '</div>';
-                html += '<span class="coming-soon-badge">Coming Soon</span>';
-                html += '</div>';
             });
 
             html += '</div>'; // .guide-grid
@@ -722,15 +670,15 @@
     }
 
     // ── Hash router ──────────────────────────────────────────────
-    var validIds = CLASS_CATALOG.map(function(c) { return c.id; });
+    var validIds = AVAILABLE_CLASSES.map(function(c) { return c.id; });
 
     function route() {
         var hash = window.location.hash.replace('#', '');
         if (hash && validIds.indexOf(hash) !== -1 && _hasAccess) {
             renderDetail(hash);
         } else {
-            if (hash && !_hasAccess) {
-                // Non-subscriber tried to navigate via hash — clear it
+            if (hash) {
+                // Clear hidden/unknown class links as well as inaccessible detail routes.
                 history.replaceState(null, '', window.location.pathname);
             }
             renderLanding();

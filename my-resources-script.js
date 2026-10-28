@@ -9,20 +9,20 @@
         { id: 'time-management', title: 'Time Management', desc: 'How to prioritize what matters and protect your time when you can\'t do everything.', icon: 'fa-clock', category: 'survival', free: true },
         { id: 'care-plans', title: 'How to Write a Care Plan', desc: 'A step-by-step approach to care plans that actually makes sense.', icon: 'fa-clipboard-list', category: 'survival', free: true },
         { id: 'feeling-like-failing', title: "When You Feel Like You're Failing", desc: 'For those moments when you wonder if you\'re cut out for this.', icon: 'fa-heart', category: 'survival', free: true },
-        // Clinical Confidence (premium)
-        { id: 'first-semester-clinicals', title: 'First Semester Clinicals', desc: 'What to expect, how to prepare, and how to survive your first clinical rotation.', icon: 'fa-hospital', category: 'clinical', free: false },
-        { id: 'head-to-toe-assessment', title: 'Head-to-Toe Assessment', desc: 'A systematic approach to physical assessment you can actually remember.', icon: 'fa-user-md', category: 'clinical', free: false },
-        { id: 'clinical-skills', title: 'Clinical Skills', desc: 'Essential nursing skills broken down into clear, confident steps.', icon: 'fa-hand-holding-medical', category: 'clinical', free: false },
-        { id: 'clinical-safety', title: 'Clinical Safety', desc: 'Patient safety priorities, error prevention, and what to do when things go wrong.', icon: 'fa-shield-alt', category: 'clinical', free: false },
-        { id: 'clinical-bag', title: 'Clinical Bag Essentials', desc: 'Everything you need in your bag for clinical days, organized by priority.', icon: 'fa-briefcase-medical', category: 'clinical', free: false },
-        { id: 'night-before-clinicals', title: 'Night Before Clinicals', desc: 'Your prep checklist and what to review the night before clinical rotations.', icon: 'fa-moon', category: 'clinical', free: false },
-        { id: 'when-you-dont-know', title: "When You Don't Know", desc: 'How to handle clinical situations when you\'re unsure what to do next.', icon: 'fa-question-circle', category: 'clinical', free: false },
-        // Quick Reference (premium)
-        { id: 'lab-values', title: 'Lab Values', desc: 'Normal ranges, critical values, and what abnormal results mean by system.', icon: 'fa-vial', category: 'reference', free: false },
-        { id: 'vital-signs', title: 'Vital Signs', desc: 'Normal ranges by age, assessment tips, and when to escalate concerns.', icon: 'fa-heartbeat', category: 'reference', free: false },
-        { id: 'medications', title: 'Medications', desc: 'Common drug classes, key side effects, and nursing considerations at a glance.', icon: 'fa-pills', category: 'reference', free: false },
-        { id: 'documentation-phrases', title: 'Documentation Phrases', desc: 'Copy-ready charting phrases organized by assessment area and situation.', icon: 'fa-file-medical', category: 'reference', free: false },
-        { id: 'abbreviations', title: 'Abbreviations', desc: 'Common medical abbreviations and acronyms you\'ll see in clinical and on exams.', icon: 'fa-spell-check', category: 'reference', free: false }
+        // Clinical Confidence (free)
+        { id: 'first-semester-clinicals', title: 'First Semester Clinicals', desc: 'What to expect, how to prepare, and how to survive your first clinical rotation.', icon: 'fa-hospital', category: 'clinical', free: true },
+        { id: 'head-to-toe-assessment', title: 'Head-to-Toe Assessment', desc: 'A systematic approach to physical assessment you can actually remember.', icon: 'fa-user-md', category: 'clinical', free: true },
+        { id: 'clinical-skills', title: 'Clinical Skills', desc: 'Essential nursing skills broken down into clear, confident steps.', icon: 'fa-hand-holding-medical', category: 'clinical', free: true },
+        { id: 'clinical-safety', title: 'Clinical Safety', desc: 'Patient safety priorities, error prevention, and what to do when things go wrong.', icon: 'fa-shield-alt', category: 'clinical', free: true },
+        { id: 'clinical-bag', title: 'Clinical Bag Essentials', desc: 'Everything you need in your bag for clinical days, organized by priority.', icon: 'fa-briefcase-medical', category: 'clinical', free: true },
+        { id: 'night-before-clinicals', title: 'Night Before Clinicals', desc: 'Your prep checklist and what to review the night before clinical rotations.', icon: 'fa-moon', category: 'clinical', free: true },
+        { id: 'when-you-dont-know', title: "When You Don't Know", desc: 'How to handle clinical situations when you\'re unsure what to do next.', icon: 'fa-question-circle', category: 'clinical', free: true },
+        // Quick Reference (free)
+        { id: 'lab-values', title: 'Lab Values', desc: 'Normal ranges, critical values, and what abnormal results mean by system.', icon: 'fa-vial', category: 'reference', free: true },
+        { id: 'vital-signs', title: 'Vital Signs', desc: 'Normal ranges by age, assessment tips, and when to escalate concerns.', icon: 'fa-heartbeat', category: 'reference', free: true },
+        { id: 'medications', title: 'Medications', desc: 'Common drug classes, key side effects, and nursing considerations at a glance.', icon: 'fa-pills', category: 'reference', free: true },
+        { id: 'documentation-phrases', title: 'Documentation Phrases', desc: 'Copy-ready charting phrases organized by assessment area and situation.', icon: 'fa-file-medical', category: 'reference', free: true },
+        { id: 'abbreviations', title: 'Abbreviations', desc: 'Common medical abbreviations and acronyms you\'ll see in clinical and on exams.', icon: 'fa-spell-check', category: 'reference', free: true }
     ];
 
     var CATEGORIES = [
@@ -30,14 +30,6 @@
         { key: 'clinical', title: 'Clinical Confidence', icon: 'fa-stethoscope' },
         { key: 'reference', title: 'Quick Reference Tools', icon: 'fa-bolt' }
     ];
-
-    // ── Compute totals ─────────────────────────────────────────────
-    var totalFree = 0;
-    var totalPremium = 0;
-    RESOURCES.forEach(function(r) {
-        if (r.free) totalFree++;
-        else totalPremium++;
-    });
 
     // ── Render ─────────────────────────────────────────────────────
     function renderResources(hasAccess) {
@@ -109,20 +101,9 @@
     }
 
     // ── Init ───────────────────────────────────────────────────────
-    async function init() {
-        try {
-            var subStatus = await checkSubscriptionStatus();
-            renderResources(subStatus.hasAccess);
-        } catch (e) {
-            console.error('Error loading resources:', e);
-            var container = document.getElementById('my-resources-library');
-            if (container) {
-                container.innerHTML = '<div style="text-align:center;padding:60px 24px;color:#94a3b8;">' +
-                    '<i class="fas fa-exclamation-circle" style="font-size:1.5rem;margin-bottom:12px;display:block;"></i>' +
-                    'Unable to load resources. Please try refreshing.' +
-                    '</div>';
-            }
-        }
+    function init() {
+        // Resource pages are public; browsing them must not depend on the API.
+        renderResources(false);
     }
 
     if (document.readyState === 'loading') {

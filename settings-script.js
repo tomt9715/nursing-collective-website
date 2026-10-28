@@ -1031,8 +1031,34 @@ function setupProfilePicListeners() {
 // MEMBERSHIP SECTION
 // ══════════════════════════════════════════════
 
+async function openBillingPortal() {
+    var button = document.getElementById('billing-manage-btn');
+    var status = document.getElementById('billing-manage-status');
+    button.disabled = true;
+    status.textContent = 'Opening secure billing…';
+    try {
+        var data = await apiCall('/api/subscription/manage', {
+            method: 'POST',
+            body: JSON.stringify({ return_url: window.location.origin + '/settings#billing' })
+        });
+        var destination = new URL(data.url);
+        if (destination.protocol !== 'https:' || destination.hostname !== 'billing.stripe.com') {
+            throw new Error('Unexpected billing destination');
+        }
+        window.location.assign(destination.href);
+    } catch (error) {
+        status.textContent = 'We couldn’t open billing. Please try again or contact support.';
+        button.disabled = false;
+    }
+}
+
 async function loadMembership() {
-    var subPromise = apiCall('/api/subscription-status').catch(function(err) {
+    var portalButton = document.getElementById('billing-manage-btn');
+    if (portalButton && !portalButton.dataset.bound) {
+        portalButton.addEventListener('click', openBillingPortal);
+        portalButton.dataset.bound = 'true';
+    }
+    var subPromise = apiCall('/api/subscription-status?sync_billing=1').catch(function(err) {
         console.warn('Failed to load subscription status:', err);
         return null;
     });
@@ -1066,7 +1092,7 @@ function renderSubscriptionCard(data) {
     var planLabel = document.getElementById('membership-plan-label');
     if (planLabel) {
         var planNames = {
-            'monthly-access': 'Monthly Access',
+            'monthly-access': 'Study membership',
             'semester-access': 'Semester Access',
             'lifetime-access': 'Lifetime Access',
             'ai-monthly-access': 'AI-Powered Monthly',
@@ -1104,6 +1130,7 @@ function renderSubscriptionCard(data) {
     // Tier badge
     var tierBadge = document.getElementById('membership-tier-badge');
     if (tierBadge) {
+        tierBadge.style.display = sub.plan_id === 'monthly-access' ? 'none' : '';
         var isAi = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
         if (isAi) {
             tierBadge.className = 'membership-plan-tier ai-powered';
@@ -1138,16 +1165,10 @@ function renderSubscriptionCard(data) {
         }
     }
 
-    // Upgrade prompt
+    // New membership messaging has one study offer; existing AI access stays intact.
     var upgradePrompt = document.getElementById('membership-upgrade-prompt');
     var isAiPlan = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
-    if (upgradePrompt) {
-        if (isAiPlan) {
-            upgradePrompt.classList.add('hidden');
-        } else {
-            upgradePrompt.classList.remove('hidden');
-        }
-    }
+    if (upgradePrompt) upgradePrompt.classList.add('hidden');
 
     // Upgrade button
     var upgradeBtn = document.getElementById('membership-upgrade-btn');
@@ -1158,6 +1179,7 @@ function renderSubscriptionCard(data) {
     // Change Plan button
     var changePlanBtn = document.getElementById('membership-change-plan-btn');
     if (changePlanBtn) {
+        changePlanBtn.style.display = sub.plan_id === 'monthly-access' ? 'none' : '';
         changePlanBtn.addEventListener('click', function() { openChangePlanModal(sub); });
     }
 
@@ -1301,6 +1323,8 @@ function renderBillingHistory(data) {
     var listEl = document.getElementById('billing-list');
 
     if (loadingEl) loadingEl.style.display = 'none';
+    var portal = document.getElementById('billing-portal-actions');
+    if (portal) portal.classList.toggle('hidden', !data || !data.can_manage_billing);
 
     if (!data || !data.invoices || data.invoices.length === 0) {
         if (emptyEl) emptyEl.classList.remove('hidden');
@@ -1498,7 +1522,7 @@ function openChangePlanModal(currentSub) {
     if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
 
     var planNames = {
-        'monthly-access': 'Monthly Access',
+        'monthly-access': 'Study membership',
         'semester-access': 'Semester Access',
         'lifetime-access': 'Lifetime Access',
         'ai-monthly-access': 'AI-Powered Monthly',
@@ -1634,7 +1658,7 @@ function handleChangePlan(currentSub, modal) {
     if (!selectedPlan) return;
 
     var currentPlanNames = {
-        'monthly-access': 'Monthly Access',
+        'monthly-access': 'Study membership',
         'semester-access': 'Semester Access',
         'lifetime-access': 'Lifetime Access',
         'ai-monthly-access': 'AI-Powered Monthly',

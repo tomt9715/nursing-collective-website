@@ -453,6 +453,13 @@
                 </div>
 
                 <div id="billing-list" class="hidden"></div>
+                <div id="billing-portal-actions" class="hidden">
+                <div class="membership-actions">
+                    <button type="button" class="btn-small secondary" id="billing-manage-btn">Manage billing &amp; payment details</button>
+                </div>
+                <p class="settings-card-desc">Open Stripe to update your payment method and view invoices. Your existing plan stays the same.</p>
+                <p id="billing-manage-status" role="status" aria-live="polite"></p>
+                </div>
             </div>
 
             </div> <!-- end tab: billing -->
@@ -624,7 +631,7 @@
     <script defer src="sidebar.js"></script>
     <script defer src="script.js?v=membership-alignment-20261027"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-    <script defer src="settings-script.js?v=billing-flow-20261027"></script>
+    <script defer src="settings-script.js?v=billing-self-service-20261028"></script>
     <!-- ═══ Full-screen Modals (body-level for reliable fixed positioning) ═══ -->
 
     <!-- Delete Account Confirmation Modal -->

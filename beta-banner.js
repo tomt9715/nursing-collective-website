@@ -21,7 +21,7 @@
             '<span class="beta-banner-badge">BETA</span>' +
             '<span class="beta-banner-text">' +
                 "You're using an early version of The Nursing Collective. " +
-                'Found a bug? <a href="contact.html" class="beta-banner-link" id="beta-report-bug">Let us know</a>' +
+                'Found a bug? <a href="/contact.html" class="beta-banner-link" id="beta-report-bug">Let us know</a>' +
             '</span>' +
             '<button class="beta-banner-close" aria-label="Dismiss beta banner">&times;</button>' +
         '</div>';
@@ -148,7 +148,7 @@
                     e.stopPropagation();
                     window.openFeedbackWidget('bug');
                 }
-                // Otherwise the normal href="contact.html" navigates
+                // Otherwise the normal href="/contact.html" navigates
             });
         }
     }

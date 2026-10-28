@@ -184,7 +184,7 @@ async function performLogout() {
     localStorage.setItem('logoutEvent', Date.now().toString());
 
     // Redirect to login
-    window.location.href = 'login.html';
+    window.location.href = '/login.html';
 }
 
 /**
@@ -309,7 +309,7 @@ function applyUserStamp(userId) {
  */
 function requireAuth() {
     if (!isAuthenticated()) {
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
         return Promise.resolve(false);
     }
 
@@ -322,7 +322,7 @@ function requireAuth() {
             .then(function() {
                 // After refresh, re-check authentication
                 if (!isAuthenticated()) {
-                    window.location.href = 'login.html';
+                    window.location.href = '/login.html';
                     return false;
                 }
                 return true;
@@ -336,7 +336,7 @@ function requireAuth() {
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('user');
                 localStorage.removeItem('tokenTimestamp');
-                window.location.href = 'login.html';
+                window.location.href = '/login.html';
                 return false;
             });
     }
@@ -381,7 +381,7 @@ window.addEventListener('storage', function(e) {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('user');
         localStorage.removeItem('tokenTimestamp');
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
 });
 

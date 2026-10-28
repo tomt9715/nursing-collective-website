@@ -1031,7 +1031,33 @@ function setupProfilePicListeners() {
 // MEMBERSHIP SECTION
 // ══════════════════════════════════════════════
 
+async function openBillingPortal() {
+    var button = document.getElementById('billing-manage-btn');
+    var status = document.getElementById('billing-manage-status');
+    button.disabled = true;
+    status.textContent = 'Opening secure billing…';
+    try {
+        var data = await apiCall('/api/subscription/manage', {
+            method: 'POST',
+            body: JSON.stringify({ return_url: window.location.origin + '/settings#billing' })
+        });
+        var destination = new URL(data.url);
+        if (destination.protocol !== 'https:' || destination.hostname !== 'billing.stripe.com') {
+            throw new Error('Unexpected billing destination');
+        }
+        window.location.assign(destination.href);
+    } catch (error) {
+        status.textContent = 'We couldn’t open billing. Please try again or contact support.';
+        button.disabled = false;
+    }
+}
+
 async function loadMembership() {
+    var portalButton = document.getElementById('billing-manage-btn');
+    if (portalButton && !portalButton.dataset.bound) {
+        portalButton.addEventListener('click', openBillingPortal);
+        portalButton.dataset.bound = 'true';
+    }
     var subPromise = apiCall('/api/subscription-status').catch(function(err) {
         console.warn('Failed to load subscription status:', err);
         return null;
@@ -1297,6 +1323,8 @@ function renderBillingHistory(data) {
     var listEl = document.getElementById('billing-list');
 
     if (loadingEl) loadingEl.style.display = 'none';
+    var portal = document.getElementById('billing-portal-actions');
+    if (portal) portal.classList.toggle('hidden', !data || !data.can_manage_billing);
 
     if (!data || !data.invoices || data.invoices.length === 0) {
         if (emptyEl) emptyEl.classList.remove('hidden');

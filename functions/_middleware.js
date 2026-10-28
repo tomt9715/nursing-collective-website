@@ -277,6 +277,12 @@ const PUBLIC_PATHS = new Set([
 
 export async function onRequest(context) {
     const { request, env, next } = context;
+    // Explicit production launch switch; previews retain their password gate.
+    const hostname = new URL(request.url).hostname;
+    const productionHost = ['thenursingcollective.pro', 'www.thenursingcollective.pro', 'learn.thenursingcollective.pro'].includes(hostname);
+    if (productionHost && env.PUBLIC_SITE_ENABLED === '1') {
+        return next();
+    }
     const password = env.SITE_PASSWORD;
 
     if (PUBLIC_PATHS.has(new URL(request.url).pathname)) {

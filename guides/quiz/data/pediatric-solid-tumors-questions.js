@@ -9,7 +9,7 @@ var pediatricSolidTumorsQuizData = {
     guideName: "Pediatric Solid Tumors",
     guideSlug: "pediatric-solid-tumors",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 20,
     questions: [
         {

@@ -9,7 +9,7 @@ var peripheralVascularDiseaseQuizData = {
     guideName: "Peripheral Vascular Disease",
     guideSlug: "peripheral-vascular-disease",
     category: "Cardiovascular",
-    categoryColor: "#ef4444",
+    categoryColor: "#c0392b",
     estimatedMinutes: 20,
     questions: [
         {

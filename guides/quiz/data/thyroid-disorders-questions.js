@@ -13,7 +13,7 @@ var thyroidDisordersQuizData = {
     guideName: "Thyroid Disorders",
     guideSlug: "thyroid-disorders",
     category: "Endocrine",
-    categoryColor: "#0891B2",
+    categoryColor: "#0e7c8a",
     estimatedMinutes: 120,
     questions: [
 

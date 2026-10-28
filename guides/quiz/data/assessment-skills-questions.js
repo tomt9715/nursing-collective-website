@@ -9,7 +9,7 @@ var assessmentSkillsQuizData = {
     guideName: "Assessment Skills",
     guideSlug: "assessment-skills",
     category: "Fundamentals",
-    categoryColor: "#10b981",
+    categoryColor: "#0e9a8f",
     estimatedMinutes: 20,
     questions: [
         {

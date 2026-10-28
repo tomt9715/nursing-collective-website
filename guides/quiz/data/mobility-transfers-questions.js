@@ -10,7 +10,7 @@ var mobilityTransfersQuizData = {
     guideName: "Mobility and Transfers",
     guideSlug: "mobility-transfers",
     category: "Fundamentals",
-    categoryColor: "#2E86AB",
+    categoryColor: "#0e9a8f",
     estimatedMinutes: 16,
     questions: [
         {

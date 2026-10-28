@@ -9,7 +9,7 @@ var pediatricBurnsQuizData = {
     guideName: "Pediatric Burns",
     guideSlug: "pediatric-burns",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 14,
     questions: [
         {

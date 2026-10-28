@@ -8,7 +8,7 @@ var antepartumCareQuizData = {
     guideName: "Antepartum Care",
     guideSlug: "antepartum-care",
     category: "Maternal-Newborn",
-    categoryColor: "#EC4899",
+    categoryColor: "#c2306e",
     estimatedMinutes: 20,
     questions: [
         {

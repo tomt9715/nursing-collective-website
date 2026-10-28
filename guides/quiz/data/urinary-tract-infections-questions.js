@@ -9,7 +9,7 @@ var urinaryTractInfectionsQuizData = {
     guideName: "UTI & Pyelonephritis",
     guideSlug: "urinary-tract-infections",
     category: "Medical-Surgical Nursing",
-    categoryColor: "#f4a535",
+    categoryColor: "#b0631a",
     estimatedMinutes: 16,
     questions: [
         {

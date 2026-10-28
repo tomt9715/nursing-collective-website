@@ -9,7 +9,7 @@ var adrenalDisordersQuizData = {
     guideName: "Adrenal Disorders",
     guideSlug: "adrenal-disorders",
     category: "Endocrine",
-    categoryColor: "#7C3AED",
+    categoryColor: "#0e7c8a",
     estimatedMinutes: 20,
     questions: [
         // ============================================================

@@ -8,7 +8,7 @@ var diabetesMellitusQuizData = {
     guideName: "Diabetes Mellitus",
     guideSlug: "diabetes-mellitus",
     category: "Endocrine",
-    categoryColor: "#6B8DD6",
+    categoryColor: "#0e7c8a",
     estimatedMinutes: 20,
     questions: [
         {

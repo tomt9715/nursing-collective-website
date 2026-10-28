@@ -1,6 +1,6 @@
 /**
  * Beta Banner
- * Injects a yellow banner above the navbar on every page.
+ * Injects a warm-light banner above the navbar on every page.
  * Dismissible — remembered in localStorage so it stays hidden.
  *
  * To remove after beta: delete this file and remove the
@@ -30,8 +30,8 @@
     var style = document.createElement('style');
     style.textContent =
         '.beta-banner {' +
-            'background: #162032;' +
-            'border-bottom: 0.5px solid rgba(255,255,255,0.12);' +
+            'background: var(--navy-3, #f1ece4);' +
+            'border-bottom: 1px solid var(--border-mid, rgba(58,44,26,0.17));' +
             'padding: 8px 16px;' +
             'font-family: "Outfit", sans-serif;' +
             'font-size: 13px;' +
@@ -53,9 +53,9 @@
         '}' +
         '.beta-banner-badge {' +
             'font-family: "DM Mono", monospace;' +
-            'background: rgba(15,188,173,0.12);' +
-            'color: #0fbcad;' +
-            'border: 0.5px solid rgba(15,188,173,0.25);' +
+            'background: var(--teal-soft, rgba(14,154,143,0.12));' +
+            'color: var(--teal-dim, #0b7d74);' +
+            'border: 1px solid rgba(14,154,143,0.28);' +
             'font-weight: 500;' +
             'font-size: 10px;' +
             'padding: 2px 8px;' +
@@ -64,10 +64,10 @@
             'flex-shrink: 0;' +
         '}' +
         '.beta-banner-text {' +
-            'color: #8a9bb0;' +
+            'color: var(--text-dim, #6a6157);' +
         '}' +
         '.beta-banner-link {' +
-            'color: #0fbcad;' +
+            'color: var(--teal-dim, #0b7d74);' +
             'font-weight: 500;' +
             'text-decoration: none;' +
             'cursor: pointer;' +
@@ -76,13 +76,13 @@
             'transition: color 0.15s;' +
         '}' +
         '.beta-banner-link:hover {' +
-            'color: #e8edf2;' +
+            'color: var(--text, #2b2621);' +
         '}' +
         '.beta-banner-close {' +
             'background: none;' +
             'border: none;' +
             'font-size: 16px;' +
-            'color: #4a5a6a;' +
+            'color: var(--text-dimmer, #8a8073);' +
             'cursor: pointer;' +
             'padding: 0 4px;' +
             'line-height: 1;' +
@@ -90,7 +90,7 @@
             'transition: color 0.15s;' +
         '}' +
         '.beta-banner-close:hover {' +
-            'color: #e8edf2;' +
+            'color: var(--text, #2b2621);' +
         '}' +
         /* Push fixed navbar and body content down when banner is visible */
         'body.has-beta-banner {' +

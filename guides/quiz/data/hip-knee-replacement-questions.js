@@ -9,7 +9,7 @@ var hipKneeReplacementQuizData = {
     guideName: "Hip & Knee Replacement",
     guideSlug: "hip-knee-replacement",
     category: "Musculoskeletal",
-    categoryColor: "#8b5cf6",
+    categoryColor: "#7c4bb8",
     estimatedMinutes: 20,
     questions: [
         {

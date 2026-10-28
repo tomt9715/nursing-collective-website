@@ -143,7 +143,7 @@
             .paywall-icon {
                 width: 52px;
                 height: 52px;
-                background: rgba(15,188,173,0.12);
+                background: rgba(14,154,143,0.12);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -168,8 +168,8 @@
                 margin-bottom: 24px;
             }
             .paywall-pricing {
-                background: rgba(255,255,255,0.04);
-                border: 0.5px solid rgba(255,255,255,0.07);
+                background: #faf7f2;
+                border: 1px solid rgba(58,44,26,0.11);
                 border-radius: 10px;
                 padding: 16px;
                 margin-bottom: 24px;
@@ -220,7 +220,7 @@
                 border: 0.5px solid rgba(58,44,26,0.17);
             }
             .paywall-btn-secondary:hover {
-                border-color: rgba(255,255,255,0.2);
+                border-color: #0b7d74;
                 color: #2b2621;
             }
             .paywall-login {
@@ -234,7 +234,7 @@
                 font-weight: 500;
             }
             .paywall-login a:hover {
-                color: #0a9086;
+                color: #0b7d74;
             }
             @media (max-width: 480px) {
                 .paywall-modal {

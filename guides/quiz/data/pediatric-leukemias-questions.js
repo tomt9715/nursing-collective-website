@@ -10,7 +10,7 @@ var pediatricLeukemiasQuizData = {
     guideName: "Pediatric Leukemias (ALL/AML)",
     guideSlug: "pediatric-leukemias",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 14,
     questions: [
         {

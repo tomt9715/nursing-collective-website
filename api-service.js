@@ -714,7 +714,7 @@ function showPaywall() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(43, 38, 33, 0.55);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -722,7 +722,7 @@ function showPaywall() {
             padding: 20px;
         }
         .paywall-content {
-            background: var(--card-background, #fff);
+            background: var(--card, #fff);
             border-radius: 20px;
             padding: 48px;
             max-width: 500px;
@@ -730,31 +730,31 @@ function showPaywall() {
         }
         .paywall-icon {
             font-size: 48px;
-            color: var(--primary-color, #2E86AB);
+            color: var(--primary-color, #0b7d74);
             margin-bottom: 24px;
         }
         .paywall-content h2 {
             font-size: 28px;
             margin-bottom: 16px;
-            color: var(--text-primary, #1a1a1a);
+            color: var(--text-primary, #2b2621);
         }
         .paywall-content p {
-            color: var(--text-secondary, #666);
+            color: var(--text-secondary, #6a6157);
             margin-bottom: 24px;
             line-height: 1.6;
         }
         .paywall-pricing {
-            background: var(--background-light, #f5f5f5);
+            background: var(--background-light, #faf7f2);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 24px;
         }
         .paywall-price {
             font-size: 18px;
-            color: var(--text-primary, #1a1a1a);
+            color: var(--text-primary, #2b2621);
         }
         .paywall-or {
-            color: var(--text-secondary, #666);
+            color: var(--text-secondary, #6a6157);
             font-size: 14px;
             margin: 8px 0;
         }
@@ -771,7 +771,7 @@ function showPaywall() {
             font-size: 14px;
         }
         .paywall-login a {
-            color: var(--primary-color, #2E86AB);
+            color: var(--primary-color, #0b7d74);
         }
     `;
 

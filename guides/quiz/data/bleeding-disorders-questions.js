@@ -9,7 +9,7 @@ var bleedingDisordersQuizData = {
     guideName: "Bleeding Disorders (Hemophilia & ITP)",
     guideSlug: "bleeding-disorders",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 20,
     questions: [
         {

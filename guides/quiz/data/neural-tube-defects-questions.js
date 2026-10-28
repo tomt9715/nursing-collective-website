@@ -9,7 +9,7 @@ var neuralTubeDefectsQuizData = {
     guideName: "Neural Tube Defects",
     guideSlug: "neural-tube-defects",
     category: "Pediatric Nursing",
-    categoryColor: "#ef5a5a",
+    categoryColor: "#d4553f",
     estimatedMinutes: 20,
     questions: [
         {

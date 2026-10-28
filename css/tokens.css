@@ -50,6 +50,32 @@
   --shadow-sm:   0 1px 2px rgba(58,44,26,0.06), 0 1px 3px rgba(58,44,26,0.05);
   --shadow-md:   0 6px 20px rgba(58,44,26,0.11);
   --shadow-lg:   0 12px 40px rgba(58,44,26,0.15);
+
+  /* ── Legacy aliases ──
+     The cookie banner and the feedback widget predate this file and ask
+     for the pre-redesign variable names. They are loaded on every page,
+     but css/main.css (where those names used to live) is not, so without
+     these the banner rendered with no background and the widget fell back
+     to the old #2E86AB blue. Map them onto the warm light palette rather
+     than editing two widget stylesheets that other pages still share. */
+  --primary-color:     var(--teal-dim);
+  --primary-dark:      #08665f;
+  --secondary-color:   #08665f;   /* the feedback button's gradient needs a
+                                     second stop; without it the whole
+                                     linear-gradient was invalid and the
+                                     button rendered with no fill at all */
+  --hover-bg:          var(--navy-3);
+  --card-bg:           var(--card);
+  --background-white:  var(--navy-2);
+  --background-light:  var(--navy);
+  --border-color:      var(--border);
+  --text-primary:      var(--text);
+  --text-secondary:    var(--text-dim);
+  --text-color:        var(--text);
+  --text-light:        var(--text-dimmer);
+  --text-muted:        var(--text-dimmer);
+  --input-bg:          var(--navy-2);
+  --z-cookie-banner:   1200;
 }
 
 /* Recover from a temporary authentication service outage without logging out. */

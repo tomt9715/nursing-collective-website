@@ -8,7 +8,7 @@ var giBleedingQuizData = {
     guideName: "GI Bleeding",
     guideSlug: "gi-bleeding",
     category: "Gastrointestinal",
-    categoryColor: "#f59e0b",
+    categoryColor: "#c9791a",
     estimatedMinutes: 20,
     questions: [
         {

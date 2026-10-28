@@ -8,7 +8,7 @@ var seizuresQuizData = {
     guideName: "Seizures & Epilepsy",
     guideSlug: "seizures",
     category: "Neurological",
-    categoryColor: "#8b5cf6",
+    categoryColor: "#6d4bd0",
     estimatedMinutes: 20,
     questions: [
         {

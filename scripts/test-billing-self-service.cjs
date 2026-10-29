@@ -44,5 +44,6 @@ const assert = require('node:assert/strict');
   }
   assert(!readFileSync('settings.html','utf8').includes('id="membership-change-plan-btn"'));
   assert(!readFileSync('settings.html','utf8').includes('href="rounds.html"'));
+  assert(!readFileSync('guides/guide-script.js','utf8').includes("aiScript.src = 'ai-section-quiz.js'"));
   console.log('Portal return, safe redirect, retry state, matrix labels and retired-plan protections passed');
 })();

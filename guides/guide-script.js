@@ -421,19 +421,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         } catch (e) { /* ignore storage errors */ }
 
-        // Lazy-load AI section quiz enhancement (only after access verified)
-        if (!window.initializeAISectionQuiz) {
-            var aiScript = document.createElement('script');
-            aiScript.src = 'ai-section-quiz.js';
-            aiScript.onload = function () {
-                if (typeof window.initializeAISectionQuiz === 'function') {
-                    window.initializeAISectionQuiz(typeof sidebarConfig !== 'undefined' ? sidebarConfig : null);
-                }
-            };
-            document.body.appendChild(aiScript);
-        } else {
-            window.initializeAISectionQuiz(typeof sidebarConfig !== 'undefined' ? sidebarConfig : null);
-        }
+        // The retired AI entry point must not be reintroduced dynamically.
+        // Keep the legacy implementation/API for existing integrations.
 
         // Check for auto-download parameter (from dashboard PDF button)
         const urlParams = new URLSearchParams(window.location.search);

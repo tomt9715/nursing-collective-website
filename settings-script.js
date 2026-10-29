@@ -1166,12 +1166,8 @@ function renderSubscriptionCard(data) {
         upgradeBtn.addEventListener('click', handleMembershipUpgrade);
     }
 
-    // Change Plan button
-    var changePlanBtn = document.getElementById('membership-change-plan-btn');
-    if (changePlanBtn) {
-        changePlanBtn.style.display = sub.plan_id === 'monthly-access' ? 'none' : '';
-        changePlanBtn.addEventListener('click', function() { openChangePlanModal(sub); });
-    }
+    // Only one offer is sold now. Grandfathered benefits remain readable;
+    // billing/cancellation controls stay available without retired-plan sales.
 
     // Cancel Subscription button
     // Only shown for recurring (monthly) plans — semester/lifetime are one-time
@@ -1565,9 +1561,8 @@ function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
         html += '<div style="text-align:center; margin-bottom:10px;"><span style="display:inline-flex; align-items:center; gap:5px; background:rgba(46,134,171,0.08); color:var(--primary-color); font-size:0.75rem; font-weight:700; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:1px solid rgba(46,134,171,0.15); letter-spacing:0.5px;"><i class="fas fa-book-open" style="font-size:0.65rem;"></i> Standard Plans</span></div>';
     }
 
-    var planOrder = showAi
-        ? ['ai-monthly-access', 'ai-semester-access', 'ai-lifetime-access']
-        : ['monthly-access', 'semester-access', 'lifetime-access'];
+    // Retained for legacy callers: describe the member's own plan only.
+    var planOrder = [currentSub.plan_id];
 
     planOrder.forEach(function(planId) {
         var plan = plans[planId];

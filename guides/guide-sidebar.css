@@ -746,7 +746,8 @@
 
 @media (max-width: 768px) {
     .page-wrapper {
-        margin-top: 120px;
+        /* The sticky download bar is in normal flow; no fixed-header spacer. */
+        margin-top: 0;
     }
 }
 

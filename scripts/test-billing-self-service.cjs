@@ -29,5 +29,19 @@ const assert = require('node:assert/strict');
   const html=engine._renderMatrixOptions({id:'sample',matrixColumns:['Expected','Report'],options:[{id:'a',text:'Finding "A"'}]});
   assert.match(html,/aria-label="Finding &quot;A&quot;: Expected"/);
   assert.match(html,/aria-label="Finding &quot;A&quot;: Report"/);
-  console.log('Portal return, safe redirect, retry state, and matrix labels passed');
+  const plans = {
+    'monthly-access':{name:'Study membership',price:14.99,interval:'month'},
+    'semester-access':{name:'Semester Access',price:44.99,access_days:120},
+    'lifetime-access':{name:'Lifetime Access',price:149},
+    'ai-monthly-access':{name:'AI-Powered Monthly',price:24.99,interval:'month'}
+  };
+  context._changePlanData={plans};
+  for (const id of Object.keys(plans)) {
+    const output={innerHTML:'',style:{},querySelectorAll:()=>[]};
+    context.renderPlanTier(id.startsWith('ai-'),{plan_id:id},output,{style:{}});
+    const offers=[...output.innerHTML.matchAll(/data-plan-id="([^"]+)"/g)].map(m=>m[1]);
+    assert.deepEqual(offers,[id]);
+  }
+  assert(!readFileSync('settings.html','utf8').includes('id="membership-change-plan-btn"'));
+  console.log('Portal return, safe redirect, retry state, matrix labels and retired-plan protections passed');
 })();

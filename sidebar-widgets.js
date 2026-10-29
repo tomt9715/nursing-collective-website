@@ -199,14 +199,6 @@
                 if (!isActive) {
                     actionHtml = '<a href="pricing.html" class="sidebar-sub-resubscribe">' +
                         '<i class="fas fa-rocket"></i> Resubscribe</a>';
-                } else if (!isAiPlan) {
-                    var upgradePrice = '+$10/mo';
-                    if (subscription.plan_id === 'semester-access') upgradePrice = '+$30';
-                    else if (subscription.plan_id === 'lifetime-access') upgradePrice = '+$50';
-                    // Opens upgrade-modal.js in place — no nav to /pricing or /settings.
-                    // If upgrade-modal.js isn't loaded on this page, falls back to settings.
-                    actionHtml = '<button type="button" class="sidebar-sub-upgrade" data-sidebar-upgrade="1">' +
-                        '<i class="fas fa-bolt"></i> Upgrade to AI · ' + upgradePrice + '</button>';
                 }
 
                 widget.className = 'sidebar-sub-widget';
@@ -220,20 +212,6 @@
                     '<div class="sidebar-sub-divider"></div>' +
                     '<div class="sidebar-sub-detail">' + detailText + '</div>' +
                     actionHtml;
-
-                // Wire the upgrade button to open the in-place modal.
-                // Falls back to /settings.html?upgrade=ai if the modal module
-                // isn't loaded on this page.
-                var upgradeBtn = widget.querySelector('[data-sidebar-upgrade="1"]');
-                if (upgradeBtn) {
-                    upgradeBtn.addEventListener('click', function () {
-                        if (typeof window.openUpgradeAiModal === 'function') {
-                            window.openUpgradeAiModal();
-                        } else {
-                            window.location.href = 'settings.html?upgrade=ai';
-                        }
-                    });
-                }
             } else {
                 widget.className = 'sidebar-sub-widget no-sub';
                 widget.innerHTML =

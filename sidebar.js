@@ -48,9 +48,6 @@
                     '<a href="my-resources.html" class="dash-sidebar-item" data-sidebar-page="resources">' +
                         '<i class="fas fa-book-reader"></i> Resources' +
                     '</a>' +
-                    '<a href="ai-tools.html" class="dash-sidebar-item" id="sidebar-ai-tools" data-sidebar-page="ai-tools">' +
-                        '<i class="fas fa-wand-magic-sparkles"></i> AI Tools' +
-                    '</a>' +
                     '<a href="rounds.html" class="dash-sidebar-item" id="sidebar-rounds" style="display:none;" data-sidebar-page="rounds">' +
                         '<i class="fas fa-stethoscope"></i> Rounds' +
                     '</a>' +

@@ -1206,9 +1206,6 @@ class QuizEngine {
                 </a>
                 <div class="quiz-top-bar-right">
                     ${timerHtml}
-                    <a href="/ai-tools.html" class="quiz-ai-tools-link" title="AI Study Tools">
-                        <i class="fas fa-wand-magic-sparkles"></i> <span>AI Tools</span>
-                    </a>
                 </div>
             </div>
             <div class="quiz-progress">

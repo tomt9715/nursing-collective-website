@@ -140,7 +140,6 @@
                 <p style="margin:12px 0;">Looking for a tool you’ve used before? Your access hasn’t changed.</p>
                 <ul style="padding-left:20px;line-height:2;">
                     <li><a href="https://learn.thenursingcollective.pro">Quiz Bank</a></li>
-                    <li><a href="ai-tools.html">AI Tools</a></li>
                     <li><a href="rounds.html">Rounds</a></li>
                     <li><a href="community.html">Community</a></li>
                     <li><a href="study-session.html">Study sessions</a></li>
@@ -324,19 +323,6 @@
                         </div>
                     </div>
 
-                    <div id="membership-upgrade-prompt" class="membership-upgrade-box hidden">
-                        <div class="membership-upgrade-text">
-                            <i class="fas fa-bolt"></i>
-                            <div>
-                                <strong>Unlock AI Study Tools</strong>
-                                <span>Upload notes, generate NCLEX questions, and more.</span>
-                            </div>
-                        </div>
-                        <button class="btn-primary settings-save-btn" id="membership-upgrade-btn" style="white-space:nowrap;">
-                            <i class="fas fa-arrow-up"></i> Upgrade to AI-Powered
-                        </button>
-                    </div>
-
                     <div class="membership-actions">
                         <button class="btn-small secondary" id="membership-change-plan-btn">
                             <i class="fas fa-exchange-alt"></i> Change Plan
@@ -370,17 +356,10 @@
                         </div>
                     </div>
                     <div class="plan-compare-item">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-highlighter"></i>
                         <div>
-                            <strong>Florence AI</strong>
-                            <p>AI study assistant for explanations and practice</p>
-                        </div>
-                    </div>
-                    <div class="plan-compare-item">
-                        <i class="fas fa-calendar-day"></i>
-                        <div>
-                            <strong>Personalized Study Plans</strong>
-                            <p>Daily recommendations based on your exams</p>
+                            <strong>Answer Explanations</strong>
+                            <p>Every question links back to the section it came from</p>
                         </div>
                     </div>
                 </div>
@@ -624,8 +603,6 @@
     <script src="dark-mode.js"></script>
     <!-- API Service Layer (sync - needed by other scripts) -->
     <script src="api-service.js?v=light-chrome-20261028"></script>
-    <script src="upgrade-modal.js?v=1"></script>
-    <link rel="stylesheet" href="css/upgrade-modal.css?v=1">
     <!-- Deferred scripts -->
     <script defer src="modal.js"></script>
     <script defer src="sidebar.js?v=light-chrome-20261028"></script>
@@ -741,7 +718,6 @@
         </div>
     </div>
 
-    <!-- Upgrade to AI-Powered modal: HTML now injected dynamically by upgrade-modal.js -->
     <!-- (same modal also opens from sidebar widgets on other pages) -->
 
 

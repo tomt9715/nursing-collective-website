@@ -173,9 +173,9 @@ function showCreditAddonSuccess(pack, balance) {
         </div>
 
         <div class="success-actions">
-            <a href="ai-tools.html" class="btn btn-primary btn-large">
-                <i class="fas fa-robot"></i>
-                Open AI Tools
+            <a href="my-guides.html" class="btn btn-primary btn-large">
+                <i class="fas fa-book-open"></i>
+                Browse Study Guides
             </a>
             <a href="dashboard.html" class="btn btn-light">
                 <i class="fas fa-list"></i>
@@ -314,7 +314,6 @@ function showSubscriptionSuccess(subscription) {
         'ai-credits-large': 'AI Credits - Large Pack'
     };
     const planName = planNames[subscription.plan_id] || subscription.plan_name || 'Subscription';
-    const isAIPlan = subscription.plan_id && subscription.plan_id.startsWith('ai-') && !subscription.plan_id.startsWith('ai-credits');
     const isCreditAddon = subscription.plan_id && subscription.plan_id.startsWith('ai-credits');
 
     // Format expiration date if exists
@@ -326,12 +325,12 @@ function showSubscriptionSuccess(subscription) {
         accessInfo = 'You have lifetime access to all premium content.';
     }
 
-    const successTitle = isCreditAddon ? 'Credits Added!' : (isAIPlan ? 'Welcome to AI-Powered!' : 'Welcome to Premium!');
+    const successTitle = isCreditAddon ? 'Credits Added!' : 'Welcome to Premium!';
     const successMessage = isCreditAddon
         ? `Your ${escapeHtml(planName)} has been added to your account. Your additional credits are available immediately.`
-        : `Your ${escapeHtml(planName)} subscription is now active. You can now use the study guides and their practice quizzes. The resource library remains free for everyone.${isAIPlan ? ' Plus AI-powered study tools!' : ''}`;
-    const successIconGradient = isAIPlan ? 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-    const successIcon = isCreditAddon ? 'fa-plus-circle' : (isAIPlan ? 'fa-robot' : 'fa-crown');
+        : `Your ${escapeHtml(planName)} subscription is now active. You can now use the study guides and their practice quizzes. The resource library remains free for everyone.`;
+    const successIconGradient = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+    const successIcon = isCreditAddon ? 'fa-plus-circle' : 'fa-crown';
 
     container.innerHTML = `
         <div class="success-icon" style="background: ${successIconGradient};">
@@ -362,17 +361,10 @@ function showSubscriptionSuccess(subscription) {
                 Set Up Your Semester
             </a>
             <p class="success-action-note">Takes about 2 minutes &mdash; we'll personalize your study plan.</p>
-            ${isAIPlan ? `
-                <a href="ai-tools.html" class="btn btn-light">
-                    <i class="fas fa-robot"></i>
-                    Skip &mdash; jump to AI tools
-                </a>
-            ` : `
-                <a href="my-guides.html" class="btn btn-light">
-                    <i class="fas fa-book-open"></i>
-                    Skip &mdash; browse study guides
-                </a>
-            `}
+            <a href="my-guides.html" class="btn btn-light">
+                <i class="fas fa-book-open"></i>
+                Skip &mdash; browse study guides
+            </a>
         </div>
 
         <div class="email-note">

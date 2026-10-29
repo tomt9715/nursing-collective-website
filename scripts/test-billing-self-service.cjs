@@ -43,5 +43,6 @@ const assert = require('node:assert/strict');
     assert.deepEqual(offers,[id]);
   }
   assert(!readFileSync('settings.html','utf8').includes('id="membership-change-plan-btn"'));
+  assert(!readFileSync('settings.html','utf8').includes('href="rounds.html"'));
   console.log('Portal return, safe redirect, retry state, matrix labels and retired-plan protections passed');
 })();

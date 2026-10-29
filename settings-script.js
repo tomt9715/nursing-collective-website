@@ -1327,6 +1327,9 @@ function renderBillingHistory(data) {
         var desc = inv.description || 'Payment';
         if (desc.length > 50) desc = desc.substring(0, 47) + '...';
 
+        var paymentStatus = inv.status === 'succeeded' ? 'Paid' : inv.status === 'failed' ? 'Payment failed' : 'Pending';
+        var statusTag = '<span class="billing-row-status">' + paymentStatus + '</span>';
+
         var refundedTag = '';
         if (inv.refunded) {
             refundedTag = '<span class="billing-row-refunded">REFUNDED</span>';
@@ -1335,14 +1338,14 @@ function renderBillingHistory(data) {
         }
 
         var receiptLink = '';
-        if (inv.receipt_url) {
+        if (inv.receipt_url && inv.status === 'succeeded') {
             receiptLink = '<a href="' + inv.receipt_url + '" target="_blank" rel="noopener" class="billing-receipt-link"><i class="fas fa-external-link-alt"></i> Receipt</a>';
         }
 
         html += '<div class="billing-row">' +
             '<div class="billing-row-left">' +
                 '<span class="billing-row-desc">' + membershipEscapeHtml(desc) + '</span>' +
-                '<span class="billing-row-date">' + dateStr + ' ' + refundedTag + '</span>' +
+                '<span class="billing-row-date">' + dateStr + ' · ' + statusTag + ' ' + refundedTag + '</span>' +
             '</div>' +
             '<div class="billing-row-right">' +
                 '<span class="billing-row-amount">' + amount + '</span>' +

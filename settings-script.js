@@ -24,16 +24,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load membership section
     loadMembership();
 
-    // Fallback hook: if sidebar widget on a page without upgrade-modal.js
-    // sent the user here with ?upgrade=ai, auto-open the upgrade modal.
-    try {
-        var params = new URLSearchParams(window.location.search);
-        if (params.get('upgrade') === 'ai' && typeof window.openUpgradeAiModal === 'function') {
-            // Give loadMembership() a moment so the modal opens over a populated UI.
-            setTimeout(function () { window.openUpgradeAiModal(); }, 400);
-        }
-    } catch (e) { /* no URLSearchParams or no modal — ignore */ }
-
     // Setup delete account handlers
     setupDeleteAccount();
 
@@ -1368,22 +1358,6 @@ function renderBillingHistory(data) {
     listEl.innerHTML = html;
 }
 
-function handleMembershipUpgrade() {
-    // Delegated to the shared upgrade-modal.js module so the same modal
-    // can open from anywhere with a sidebar widget (dashboard, my-guides,
-    // etc.) instead of forcing a navigation to /settings or /pricing.
-    if (typeof window.openUpgradeAiModal === 'function') {
-        window.openUpgradeAiModal();
-    } else {
-        console.warn('[Settings] upgrade-modal.js not loaded; falling back to /pricing.');
-        window.location.href = 'pricing.html?tier=ai';
-    }
-}
-
-// loadUpgradeDetails + proceedToUpgrade moved to upgrade-modal.js so the
-// same modal can open from any page with a sidebar widget (not just
-// /settings). See window.openUpgradeAiModal().
-
 // ─── Cancel Subscription Modal ───
 function openCancelSubModal(sub) {
     var modal = document.getElementById('cancel-sub-modal');
@@ -1616,13 +1590,6 @@ function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
         html += '</div>';
     });
 
-    // Toggle link to switch between tiers
-    if (showAi) {
-        html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Looking for Standard plans? <a href="#" class="change-plan-tier-toggle" style="color:var(--primary-color);">View Standard plans</a></p>';
-    } else {
-        html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Want AI study tools? <a href="#" class="change-plan-tier-toggle" style="color:#7c3aed;">View AI-Powered plans</a></p>';
-    }
-
     optionsEl.innerHTML = html;
     optionsEl.style.display = 'flex';
 
@@ -1640,15 +1607,6 @@ function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
             if (confirmBtn) confirmBtn.style.display = 'inline-flex';
         });
     });
-
-    // Add toggle handler to switch tiers inline
-    var toggleLink = optionsEl.querySelector('.change-plan-tier-toggle');
-    if (toggleLink) {
-        toggleLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            renderPlanTier(!showAi, currentSub, optionsEl, confirmBtn);
-        });
-    }
 }
 
 function handleChangePlan(currentSub, modal) {

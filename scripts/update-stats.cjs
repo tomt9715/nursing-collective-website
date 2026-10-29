@@ -10,15 +10,16 @@
  *
  * Marker format (round-tripped on every run):
  *
- *   <!-- STAT:guides    -->55<!-- /STAT -->
+ *   <!-- STAT:guides    -->50+<!-- /STAT -->
  *   <!-- STAT:resources -->17<!-- /STAT -->
- *   <!-- STAT:questions -->3,074<!-- /STAT -->
+ *   <!-- STAT:questions -->3,000+<!-- /STAT -->
  *   <!-- STAT:topics    -->67+<!-- /STAT -->
  *   <!-- STAT:chapters  -->16<!-- /STAT -->
  *
- * All counts are exact except `topics`, which carries a "+" because it
- * counts Quiz Bank topics that have questions, not every topic listed.
- * Run this after shipping a guide or a batch of questions.
+ * `guides`, `questions` and `topics` are rounded DOWN to a floor and carry
+ * a "+"; `resources` and `chapters` are exact because they are small enough
+ * that a reader can check them. Run this after shipping a guide or a batch
+ * of questions.
  *
  * Usage:
  *   node scripts/update-stats.js
@@ -103,6 +104,15 @@ function countBuiltGuides() {
 
 // ── Marker replacement ───────────────────────────────────────────────
 
+// Round a count DOWN to a floor and mark it with a "+". The public copy
+// then stays true as the library grows, instead of needing a re-ship for
+// every guide or question batch. Counts below one step print exactly,
+// since "0+" tells a reader nothing.
+function floorPlus(n, step) {
+    if (n < step) return String(n);
+    return `${(Math.floor(n / step) * step).toLocaleString('en-US')}+`;
+}
+
 function buildStats() {
     const registry = loadRegistry();
     const qbQuestions = countQuizBankQuestions();
@@ -123,12 +133,12 @@ function buildStats() {
     }
 
     return {
-        // Exact. This used to round down to the nearest hundred so the figure
-        // read as a confident floor, but rounding 3,074 to "3,000+" gives away
-        // most of a batch, and the number is regenerated from the files anyway.
-        questions: totalQuestions.toLocaleString('en-US'),
-        // Exact counts elsewhere
-        guides: String(guides),
+        // A floor, not the exact figure: "3,000+" and "50+" stay accurate
+        // between batches, and an exact count invites a reader to audit it.
+        // The precise numbers are in the build log below either way.
+        questions: floorPlus(totalQuestions, 500),
+        guides: floorPlus(guides, 10),
+        // Small enough to state exactly
         resources: String(resources),
         topics: `${populatedTopics}+`,
         chapters: String(chapters),
@@ -176,7 +186,7 @@ console.log('\nResolved stats:');
 console.log(`  Quiz Bank: ${stats._detail.qbQuestions} questions`);
 console.log(`  Per-guide: ${stats._detail.guideQuestions} questions`);
 console.log(`  Total questions: ${stats._detail.totalQuestions} → display "${stats.questions}"`);
-console.log(`  Built guides: ${stats.guides}`);
+console.log(`  Built guides: ${stats._detail.guides} → display "${stats.guides}"`);
 console.log(`  Free resources: ${stats.resources}`);
 console.log(`  Populated topics: ${stats._detail.populatedTopics} → display "${stats.topics}"`);
 console.log(`  Chapters: ${stats.chapters}`);

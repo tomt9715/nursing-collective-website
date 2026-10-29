@@ -8,8 +8,8 @@
  * questions on-the-fly the first time and serves a cached result for
  * every subsequent user (no credit cost — see backend's guide_ai_routes).
  *
- * Loaded by guide-script.js after access verification passes, so pills
- * only render for users with valid guide access.
+ * Retained for legacy integrations. Standard guide pages no longer load
+ * this retired AI entry point automatically.
  *
  * CSP-compliant: no inline event handlers, no inline scripts.
  */

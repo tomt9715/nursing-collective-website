@@ -21,6 +21,7 @@ class QuizEngine {
         this.estimatedMinutes = config.estimatedMinutes || Math.max(5, Math.round(this.questions.length * 1.5));
         this.backUrl = config.backUrl || ('../' + this.guideSlug + '.html');
         this.backLabel = config.backLabel || 'Back to Study Guide';
+        this.canExplainQuestions = config.canExplainQuestions === true;
         this.isAIGenerated = config.isAIGenerated || false;
         this.aiPoolInfo = config.aiPoolInfo || null; // { currentRound, totalRounds, hasNextRound, questionsPerRound, totalQuestions }
         this.sectionTitle = config.sectionTitle || null; // for section-specific quizzes
@@ -1920,8 +1921,8 @@ class QuizEngine {
             `;
         }
 
-        // Explain This Question button — available for all answers
-        html += `
+        // The server verifies grandfathered AI/admin access.
+        if (this.canExplainQuestions) html += `
             <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
                 <i class="fas fa-graduation-cap"></i> Explain This Question
             </button>
@@ -2372,8 +2373,8 @@ class QuizEngine {
             `;
         }
 
-        // Explain button on results screen
-        detailHtml += `
+        // Match the explanation endpoint's entitlement.
+        if (this.canExplainQuestions) detailHtml += `
             <button class="quiz-explain-btn quiz-explain-btn--result" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
                 <i class="fas fa-graduation-cap"></i> Explain with AI
             </button>

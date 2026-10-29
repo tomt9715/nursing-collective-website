@@ -8,6 +8,7 @@
     'use strict';
 
     var PRODUCT_ID = document.body.dataset.productId || '';
+    var canExplainQuestions = false;
     var GUIDE_NAME = document.body.dataset.guideName || '';
 
     var API_URL = (function () {
@@ -114,6 +115,7 @@
             return response.json();
         }).then(function (data) {
             if (typeof data === 'boolean') return data; // Returned from retry
+            canExplainQuestions = data.can_explain_questions === true;
             var guides = data.purchased_guides || [];
             var hasAccess = data.has_premium || data.all_guides_access ||
                 guides.some(function (g) { return g.product_id === PRODUCT_ID; });
@@ -220,6 +222,7 @@
                 backUrl: aiData.backUrl || '../../ai-tools.html',
                 backLabel: aiData.backLabel || 'Back to AI Tools',
                 isAIGenerated: true,
+                canExplainQuestions: true,
                 sectionTitle: aiData.sectionTitle || null,
                 aiPoolInfo: {
                     currentRound: currentRound,
@@ -260,6 +263,7 @@
                     guideSlug: quizData.guideSlug,
                     category: quizData.category,
                     categoryColor: quizData.categoryColor,
+                    canExplainQuestions: canExplainQuestions,
                     estimatedMinutes: quizData.estimatedMinutes
                 });
 

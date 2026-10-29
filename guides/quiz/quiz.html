@@ -46,7 +46,7 @@
     <script src="quiz-history.js"></script>
     <script src="../../app/data/registry.js"></script>
     <script src="../../app/mastery.js"></script>
-    <script src="quiz-engine.js?v=light-chrome-20261028"></script>
+    <script src="quiz-engine.js?v=explanation-access-20261029"></script>
 
     <!-- Dynamic loader: reads ?topic= param, loads question data, and boots quiz -->
     <script>
@@ -142,7 +142,7 @@
             document.body.setAttribute('data-guide-name', window._aiQuizData.guideName || 'AI Practice Questions');
             document.title = (window._aiQuizData.guideName || 'AI Practice Questions') + ' Quiz - The Nursing Collective';
             var initScript = document.createElement('script');
-            initScript.src = 'quiz-init.js?v=light-chrome-20261028';
+            initScript.src = 'quiz-init.js?v=explanation-access-20261029';
             document.body.appendChild(initScript);
             return;
         }
@@ -203,7 +203,7 @@
 
             // Load quiz-init.js (handles access verification + engine bootstrap)
             var initScript = document.createElement('script');
-            initScript.src = 'quiz-init.js?v=light-chrome-20261028';
+            initScript.src = 'quiz-init.js?v=explanation-access-20261029';
             document.body.appendChild(initScript);
 
             // Load content-gate.js after init

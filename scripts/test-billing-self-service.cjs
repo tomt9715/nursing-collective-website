@@ -29,6 +29,18 @@ const assert = require('node:assert/strict');
   const html=engine._renderMatrixOptions({id:'sample',matrixColumns:['Expected','Report'],options:[{id:'a',text:'Finding "A"'}]});
   assert.match(html,/aria-label="Finding &quot;A&quot;: Expected"/);
   assert.match(html,/aria-label="Finding &quot;A&quot;: Report"/);
+  const question={id:'access-test',type:'single',stem:'Sample question',correct:'a',options:[{id:'a',text:'Answer'}],rationale:{correct:'Built-in rationale'},guideSectionId:'sample'};
+  engine.guideSlug='sample'; engine.results=new Map([[question.id,{correct:true,userAnswer:'a',correctAnswer:'a'}]]);
+  engine.flaggedQuestions=new Set(); engine.questionTimes=new Map(); engine._shuffledOptions=new Map();
+  for (const allowed of [false,true]) {
+    engine.canExplainQuestions=allowed;
+    const feedback=engine._buildPracticeFeedback(question,'a',true,false);
+    const result=engine._renderResultItem(question,0);
+    assert.equal(feedback.includes('data-quiz-action="explain-question"'),allowed);
+    assert.equal(result.includes('data-quiz-action="explain-question"'),allowed);
+    assert(feedback.includes('Built-in rationale'));
+    assert(result.includes('Built-in rationale'));
+  }
   const plans = {
     'monthly-access':{name:'Study membership',price:14.99,interval:'month'},
     'semester-access':{name:'Semester Access',price:44.99,access_days:120},

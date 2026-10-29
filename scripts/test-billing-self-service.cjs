@@ -57,6 +57,7 @@ const assert = require('node:assert/strict');
   assert(!readFileSync('settings.html','utf8').includes('id="membership-change-plan-btn"'));
   assert(!readFileSync('settings.html','utf8').includes('href="rounds.html"'));
   assert(!readFileSync('guides/guide-script.js','utf8').includes("aiScript.src = 'ai-section-quiz.js'"));
+  context.document.createElement=tag => new JSDOM('').window.document.createElement(tag);
   const billingList={innerHTML:'',classList:{remove(){}}};
   context.document.getElementById=id => id === 'billing-list' ? billingList : null;
   context.renderBillingHistory({invoices:[{created:1,amount:14.99,status:'failed',receipt_url:'https://example.test/receipt'}]});

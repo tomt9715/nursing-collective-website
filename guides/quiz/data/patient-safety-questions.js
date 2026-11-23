@@ -10,7 +10,7 @@ var patientSafetyQuizData = {
     guideName: "Patient Safety",
     guideSlug: "patient-safety",
     category: "Fundamentals",
-    categoryColor: "#0e9a8f",
+    categoryColor: "#0b7d74",
     estimatedMinutes: 16,
     questions: [
         {

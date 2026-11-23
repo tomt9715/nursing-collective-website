@@ -633,7 +633,7 @@ img { max-width: 100%; display: block; }
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   font-weight: 500;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   background: var(--navy-3);
   padding: 2px 7px;
   border-radius: 4px;

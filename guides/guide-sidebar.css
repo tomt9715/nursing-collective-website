@@ -18,9 +18,9 @@
    simply never fire — they are not a second source of truth.
 
    Accent shorthand used below:
-     var(--cat,      #0e9a8f)                  category accent
+     var(--cat,      #0b7d74)                  category accent
      var(--cat-soft, rgba(14,154,143,0.10))    category tint fill
-     var(--teal,     #0e9a8f)                  FlorenceBot (always teal)
+     var(--teal,     #0b7d74)                  FlorenceBot (always teal)
    ══════════════════════════════════════════════════════════════ */
 
 
@@ -64,7 +64,7 @@
 }
 
 .toc-header i {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-size: 0.85rem;
 }
 
@@ -72,7 +72,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.68rem;
     font-weight: 400;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -112,7 +112,7 @@
 /* Active item: tinted fill, no colour rail */
 .toc-panel .toc-link.active {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-weight: 600;
 }
 
@@ -135,14 +135,14 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.68rem;
     letter-spacing: 0.06em;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
 }
 
 .toc-progress-percent {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-weight: 500;
 }
 
@@ -155,7 +155,7 @@
 
 .toc-progress-fill {
     height: 100%;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     border-radius: 3px;
     width: 0%;
     transition: width 0.3s ease;
@@ -188,7 +188,7 @@
 
 .toc-nav-link:hover {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     text-decoration: none;
 }
 
@@ -236,7 +236,7 @@
 
 .mobile-nav-shortcut:hover {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     text-decoration: none;
 }
 
@@ -333,7 +333,7 @@
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
 }
 
 .florence-speech {
@@ -365,7 +365,7 @@
 }
 
 .florence-speech p strong {
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
     font-weight: 600;
 }
 
@@ -384,7 +384,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.68rem;
     font-weight: 400;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 14px;
@@ -395,7 +395,7 @@
 
 .key-numbers-title i {
     font-size: 0.7rem;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
 }
 
 /* Test me toggle */
@@ -405,7 +405,7 @@
     font-size: 0.58rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     background: var(--cat-soft, rgba(14,154,143,0.10));
     border: 0.5px solid var(--border-mid, rgba(58,44,26,0.17));
     border-radius: 20px;
@@ -413,7 +413,7 @@
     cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
 }
-.key-numbers-test:hover { border-color: var(--cat, #0e9a8f); }
+.key-numbers-test:hover { border-color: var(--cat, #0b7d74); }
 
 /* Clickable numbers (read mode: jump to section) */
 .key-numbers-card .key-number.is-link { cursor: pointer; }
@@ -442,12 +442,12 @@
     font-size: 0.6rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
 }
 /* Revealed cards carry a quiet hint that a second tap re-covers them. */
 .key-numbers-card.testing .key-number.revealed .key-number-label::after {
     content: ' \00b7 hide';
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     font-size: 0.6rem;
 }
 
@@ -556,7 +556,7 @@
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
     margin: 0;
 }
 
@@ -574,7 +574,7 @@
 
 .florence-tips-card .tip-item:hover {
     transform: translateX(3px);
-    border-color: var(--teal, #0e9a8f);
+    border-color: var(--teal, #0b7d74);
 }
 
 .florence-tips-card .tip-item:active {
@@ -600,7 +600,7 @@
     font-family: 'Font Awesome 6 Free';
     font-weight: 400;
     font-size: 0.75rem;
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
 }
 
 .tip-item-text {
@@ -637,7 +637,7 @@
 .florencebot-tip-icon {
     width: 38px;
     height: 38px;
-    background: var(--teal, #0e9a8f);
+    background: var(--teal, #0b7d74);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -651,7 +651,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.63rem;
     font-weight: 400;
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -759,7 +759,7 @@
 
 .high-yield-summary {
     background: var(--navy-2, #ffffff);
-    border: 0.5px solid var(--cat, #0e9a8f);
+    border: 0.5px solid var(--cat, #0b7d74);
     border-radius: 16px;
     padding: 26px 28px;
     margin: 30px 0;
@@ -779,7 +779,7 @@
 }
 
 .high-yield-summary h2 i {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-size: 1rem;
 }
 
@@ -816,7 +816,7 @@
     position: absolute;
     left: 0;
     top: 10px;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-size: 0.85rem;
 }
 
@@ -852,7 +852,7 @@
 }
 
 .bottom-line strong:first-child {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-weight: 600;
 }
 
@@ -883,7 +883,7 @@
 }
 
 .cross-references h2 i {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-size: 0.95rem;
 }
 
@@ -901,7 +901,7 @@
     font-weight: 400;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     margin: 0 0 10px 0;
 }
 
@@ -924,7 +924,7 @@
     gap: 6px;
     padding: 6px 14px;
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     border: 0.5px solid var(--border, rgba(58,44,26,0.11));
     border-radius: 20px;
     text-decoration: none;
@@ -933,9 +933,9 @@
 }
 
 .cross-ref-group li a:hover {
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     color: #fff;
-    border-color: var(--cat, #0e9a8f);
+    border-color: var(--cat, #0b7d74);
     text-decoration: none;
 }
 
@@ -949,7 +949,7 @@
     gap: 6px;
     padding: 6px 14px;
     background: var(--navy-3, #f1ece4);
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dim);
     border: 0.5px dashed var(--border-mid, rgba(58,44,26,0.17));
     border-radius: 20px;
     font-weight: 500;
@@ -1059,7 +1059,7 @@
     min-width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     color: #fff;
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.76rem;
@@ -1078,7 +1078,7 @@
 
 .pq-type-tag--single {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
 }
 
 .pq-type-tag--priority {
@@ -1091,7 +1091,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.66rem;
     font-weight: 400;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
 }
 
 .pq-card-body {
@@ -1132,7 +1132,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -1150,7 +1150,7 @@
 }
 
 .pq-reveal-btn:focus-visible {
-    outline: 2px solid var(--cat, #0e9a8f);
+    outline: 2px solid var(--cat, #0b7d74);
     outline-offset: 2px;
 }
 
@@ -1176,7 +1176,7 @@
 
 .pq-correct-label {
     font-weight: 600;
-    color: var(--green, #2fa866);
+    color: var(--green, #1a7a46);
     font-size: 0.92rem;
     margin: 0 0 12px 0;
 }
@@ -1196,13 +1196,13 @@
 }
 
 .pq-rationale.correct {
-    color: var(--green, #2fa866);
+    color: var(--green, #1a7a46);
 }
 
 /* ── Test-taking tip ── */
 .pq-test-tip {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    border: 0.5px solid var(--cat, #0e9a8f);
+    border: 0.5px solid var(--cat, #0b7d74);
     border-radius: 10px;
     padding: 12px 16px;
     margin-top: 14px;
@@ -1214,7 +1214,7 @@
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     margin: 0 0 5px 0;
 }
 
@@ -1232,7 +1232,7 @@
 }
 
 .pq-section-ref a {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     text-decoration: underline;
 }
 
@@ -1296,7 +1296,7 @@
     align-items: center;
     text-align: center;
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    border: 0.5px solid var(--cat, #0e9a8f);
+    border: 0.5px solid var(--cat, #0b7d74);
     border-radius: 14px;
     padding: 36px 28px;
     margin-top: 16px;
@@ -1310,7 +1310,7 @@
 .quiz-cta-icon {
     width: 56px;
     height: 56px;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -1354,12 +1354,12 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.76rem;
     letter-spacing: 0.04em;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     font-weight: 400;
 }
 
 .quiz-cta-stats i {
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-size: 0.85rem;
 }
 
@@ -1368,7 +1368,7 @@
     align-items: center;
     gap: 10px;
     padding: 12px 28px;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     color: #fff;
     border: none;
     border-radius: 9px;
@@ -1433,7 +1433,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     color: #fff;
     border: none;
     font-size: 1.4rem;
@@ -1517,7 +1517,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 0.88rem;
     font-weight: 600;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     cursor: pointer;
     border-bottom: 2px solid transparent;
     transition: color 0.2s, border-color 0.2s;
@@ -1530,8 +1530,8 @@
 }
 
 .mobile-nav-tab.active {
-    color: var(--cat, #0e9a8f);
-    border-bottom-color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
+    border-bottom-color: var(--cat, #0b7d74);
 }
 
 .mobile-nav-close {
@@ -1586,7 +1586,7 @@
 
 .mobile-toc-progress-fill {
     height: 100%;
-    background: var(--cat, #0e9a8f);
+    background: var(--cat, #0b7d74);
     border-radius: 3px;
     width: 0%;
     transition: width 0.3s ease;
@@ -1596,7 +1596,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     min-width: 32px;
     text-align: right;
 }
@@ -1637,7 +1637,7 @@
 /* Active item: tinted fill, no colour rail */
 .mobile-toc-link.active {
     background: var(--cat-soft, rgba(14,154,143,0.10));
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
     font-weight: 600;
 }
 
@@ -1654,7 +1654,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.68rem;
     font-weight: 400;
-    color: var(--text-dimmer, #8a8073);
+    color: var(--text-dimmer, #7a7064);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 12px;
@@ -1665,7 +1665,7 @@
 
 .mobile-section-label i {
     font-size: 0.7rem;
-    color: var(--cat, #0e9a8f);
+    color: var(--cat, #0b7d74);
 }
 
 .mobile-key-numbers {
@@ -1727,7 +1727,7 @@
 }
 
 .mobile-tip-item i {
-    color: var(--teal, #0e9a8f);
+    color: var(--teal, #0b7d74);
     font-size: 0.85rem;
     flex-shrink: 0;
 }

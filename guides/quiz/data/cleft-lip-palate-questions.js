@@ -9,7 +9,7 @@ var cleftLipPalateQuizData = {
     guideName: "Cleft Lip & Palate",
     guideSlug: "cleft-lip-palate",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

@@ -9,7 +9,7 @@ var antibioticsAntiviralsQuizData = {
     guideName: "Antibiotics and Antivirals",
     guideSlug: "antibiotics-antivirals",
     category: "Pharmacology",
-    categoryColor: "#2fa866",
+    categoryColor: "#1a7a46",
     estimatedMinutes: 20,
     questions: [
         {

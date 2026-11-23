@@ -9,7 +9,7 @@ var hypersensitivityInflammatorySkinQuizData = {
     guideName: "Hypersensitivity & Inflammatory Skin",
     guideSlug: "hypersensitivity-inflammatory-skin",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

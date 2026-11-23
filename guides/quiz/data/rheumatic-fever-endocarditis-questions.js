@@ -9,7 +9,7 @@ var rheumaticFeverEndocarditisQuizData = {
     guideName: "Rheumatic Fever & Endocarditis",
     guideSlug: "rheumatic-fever-endocarditis",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

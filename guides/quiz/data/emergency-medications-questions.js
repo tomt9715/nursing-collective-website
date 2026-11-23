@@ -10,7 +10,7 @@ var emergencyMedicationsQuizData = {
     guideName: "Emergency Medications",
     guideSlug: "emergency-medications",
     category: "Pharmacology",
-    categoryColor: "#2fa866",
+    categoryColor: "#1a7a46",
     estimatedMinutes: 18,
     questions: [
         {

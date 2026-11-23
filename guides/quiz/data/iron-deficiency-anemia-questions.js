@@ -9,7 +9,7 @@ var ironDeficiencyAnemiaQuizData = {
     guideName: "Iron-Deficiency Anemia",
     guideSlug: "iron-deficiency-anemia",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

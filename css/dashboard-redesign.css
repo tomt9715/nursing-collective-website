@@ -2085,7 +2085,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   transition: all 0.2s;
 }
 .sm-step-dot.active { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 600; }

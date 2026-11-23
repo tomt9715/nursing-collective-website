@@ -10,7 +10,7 @@ var documentationChartingQuizData = {
     guideName: "Documentation and Charting",
     guideSlug: "documentation-charting",
     category: "Fundamentals",
-    categoryColor: "#0e9a8f",
+    categoryColor: "#0b7d74",
     estimatedMinutes: 15,
     questions: [
         {

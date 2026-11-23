@@ -22,18 +22,18 @@
 /* ══ Category accents ══
    Each is darkened enough to read on white and to carry white text
    when used as a fill. --cat-soft is the tint used for callout fills. */
-[data-category]                      { --cat: #0e9a8f; --cat-soft: rgba(14,154,143,0.10); }
+[data-category]                      { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); }
 [data-category="cardiovascular"]     { --cat: #c0392b; --cat-soft: rgba(192,57,43,0.09); }
 [data-category="respiratory"]        { --cat: #2563a8; --cat-soft: rgba(37,99,168,0.09); }
 [data-category="neurological"]       { --cat: #6d4bd0; --cat-soft: rgba(109,75,208,0.09); }
 [data-category="endocrine"]          { --cat: #0e7c8a; --cat-soft: rgba(14,124,138,0.09); }
 [data-category="renal"]              { --cat: #b0631a; --cat-soft: rgba(176,99,26,0.09); }
-[data-category="gastrointestinal"]   { --cat: #c9791a; --cat-soft: rgba(201,121,26,0.09); }
+[data-category="gastrointestinal"]   { --cat: #a45f10; --cat-soft: rgba(164,95,16,0.09); }
 [data-category="musculoskeletal"]    { --cat: #7c4bb8; --cat-soft: rgba(124,75,184,0.09); }
-[data-category="pharmacology"]       { --cat: #2fa866; --cat-soft: rgba(47,168,102,0.09); }
-[data-category="fundamentals"]       { --cat: #0e9a8f; --cat-soft: rgba(14,154,143,0.10); }
+[data-category="pharmacology"]       { --cat: #1a7a46; --cat-soft: rgba(26,122,70,0.09); }
+[data-category="fundamentals"]       { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); }
 [data-category="maternal-newborn"]   { --cat: #c2306e; --cat-soft: rgba(194,48,110,0.09); }
-[data-category="pediatrics"]         { --cat: #d4553f; --cat-soft: rgba(212,85,63,0.09); }
+[data-category="pediatrics"]         { --cat: #b8402c; --cat-soft: rgba(184,64,44,0.09); }
 [data-category="mental-health"]      { --cat: #4a5bb8; --cat-soft: rgba(74,91,184,0.09); }
 
 
@@ -544,7 +544,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 9px;
 }
 .do-box-label { color: #2563a8; }
-.copy-box-label { color: #2fa866; }
+.copy-box-label { color: #1a7a46; }
 
 .do-box p, .copy-box p { font-size: 15px; }
 .do-box p:last-child, .copy-box p:last-child { margin-bottom: 0; }
@@ -1118,7 +1118,7 @@ img { max-width: 100%; display: block; }
   border: 0.5px solid var(--border);
   border-radius: 12px;
   padding: 16px 18px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   font-size: 14.5px;
   text-align: center;
 }

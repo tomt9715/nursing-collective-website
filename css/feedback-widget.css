@@ -199,7 +199,7 @@
 .feedback-char-counter {
     font-size: 12px;
     text-align: right;
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
     margin-top: -8px;
     margin-bottom: -4px;
 }
@@ -380,12 +380,12 @@
 }
 
 .feedback-dropdown-label.placeholder {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 .feedback-dropdown-chevron {
     font-size: 11px;
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
     transition: transform 0.2s ease;
     flex-shrink: 0;
 }
@@ -555,7 +555,7 @@
 }
 
 [data-theme="dark"] .feedback-close {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 [data-theme="dark"] .feedback-tabs {
@@ -563,7 +563,7 @@
 }
 
 [data-theme="dark"] .feedback-tab {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 [data-theme="dark"] .feedback-tab:hover:not(.active) {
@@ -578,7 +578,7 @@
 }
 
 [data-theme="dark"] .feedback-textarea::placeholder {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 [data-theme="dark"] .feedback-select option {
@@ -613,7 +613,7 @@
 }
 
 [data-theme="dark"] .feedback-label {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 /* Emoji - dark mode */
@@ -631,13 +631,13 @@
 }
 
 [data-theme="dark"] .feedback-emoji-label {
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 /* Screenshot - dark mode */
 [data-theme="dark"] .feedback-screenshot-trigger {
     border-color: var(--border-color, #4b5563);
-    color: var(--text-muted, #8a8073);
+    color: var(--text-muted, #7a7064);
 }
 
 [data-theme="dark"] .feedback-screenshot-trigger:hover,

@@ -103,7 +103,7 @@ function showAccessDenied(message, showLoginButton = true) {
         }
         .access-denied-icon i {
             font-size: 22px;
-            color: #d64545;
+            color: #c23131;
         }
         .access-denied-content h2 {
             font-family: 'DM Serif Display', serif;
@@ -137,7 +137,7 @@ function showAccessDenied(message, showLoginButton = true) {
             transition: all 0.15s;
         }
         .btn-primary {
-            background: #0e9a8f;
+            background: #0b7d74;
             color: #fff;
         }
         .btn-primary:hover {
@@ -154,11 +154,11 @@ function showAccessDenied(message, showLoginButton = true) {
         }
         .btn-tertiary {
             background: transparent;
-            color: #0e9a8f;
+            color: #0b7d74;
             border: 0.5px solid rgba(15,188,173,0.3);
         }
         .btn-tertiary:hover {
-            border-color: #0e9a8f;
+            border-color: #0b7d74;
             background: rgba(15,188,173,0.08);
         }
         @media (max-width: 480px) {

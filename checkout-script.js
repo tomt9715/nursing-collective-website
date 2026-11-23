@@ -102,14 +102,14 @@
         theme: 'stripe',
         labels: 'floating',
         variables: {
-            colorPrimary: '#0e9a8f',
+            colorPrimary: '#0b7d74',
             colorBackground: '#ffffff',
             colorText: '#2b2621',
             colorTextSecondary: '#6a6157',
-            colorTextPlaceholder: '#8a8073',
-            colorDanger: '#d64545',
+            colorTextPlaceholder: '#7a7064',
+            colorDanger: '#c23131',
             colorIconTab: '#6a6157',
-            colorIconTabSelected: '#0e9a8f',
+            colorIconTabSelected: '#0b7d74',
             fontFamily: 'Outfit, system-ui, sans-serif',
             fontSizeBase: '15px',
             spacingUnit: '4px',
@@ -127,11 +127,11 @@
                 borderColor: 'rgba(58,44,26,0.28)',
             },
             '.Input:focus': {
-                borderColor: '#0e9a8f',
+                borderColor: '#0b7d74',
                 boxShadow: '0 0 0 2px rgba(14,154,143,0.18)',
             },
             '.Input--invalid': {
-                borderColor: '#d64545',
+                borderColor: '#c23131',
                 boxShadow: 'none',
             },
             '.Label': {
@@ -151,11 +151,11 @@
             },
             '.Tab--selected': {
                 backgroundColor: '#ffffff',
-                borderColor: '#0e9a8f',
+                borderColor: '#0b7d74',
                 color: '#2b2621',
             },
             '.TabIcon--selected': {
-                fill: '#0e9a8f',
+                fill: '#0b7d74',
             },
             '.Block': {
                 backgroundColor: '#ffffff',
@@ -166,7 +166,7 @@
                 border: '1px solid rgba(58,44,26,0.17)',
             },
             '.Error': {
-                color: '#d64545',
+                color: '#c23131',
                 fontSize: '13px',
             },
             '.PickerItem': {
@@ -175,7 +175,7 @@
                 borderColor: 'rgba(58,44,26,0.17)',
             },
             '.PickerItem--selected': {
-                borderColor: '#0e9a8f',
+                borderColor: '#0b7d74',
             },
         },
     };
@@ -221,7 +221,7 @@
         showError(message, {
             title: 'You\'re already covered',
             icon: 'fas fa-check-circle',
-            iconColor: '#0e9a8f',
+            iconColor: '#0b7d74',
             ctaText: 'Go to Dashboard',
             ctaHref: 'dashboard.html',
         });
@@ -231,7 +231,7 @@
         showError(message, {
             title: 'Use the upgrade option',
             icon: 'fas fa-arrow-up-right-from-square',
-            iconColor: '#0e9a8f',
+            iconColor: '#0b7d74',
             ctaText: 'Open Settings',
             ctaHref: 'settings.html#subscription',
         });

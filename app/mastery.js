@@ -626,10 +626,10 @@ var MasteryTracker = (function () {
 
     function getMasteryColor(level) {
         // TNC brand palette (matches navy/teal design system).
-        if (level >= 9) return '#8b5cf6';  // Purple — mastery / elite
-        if (level >= 6) return '#3dbd7a';  // Green — proficient
-        if (level >= 3) return '#f4a535';  // Amber — developing
-        return '#e05252';                   // Red — needs work
+        if (level >= 9) return '#6d4bd0';  // Purple — mastery / elite
+        if (level >= 6) return '#1a7a46';  // Green — proficient
+        if (level >= 3) return '#a45f10';  // Amber — developing
+        return '#c23131';                   // Red — needs work
     }
 
     function getMasteryColorClass(level) {

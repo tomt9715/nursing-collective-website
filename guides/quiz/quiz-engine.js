@@ -17,7 +17,7 @@ class QuizEngine {
         this.guideName = config.guideName || 'Study Guide';
         this.guideSlug = config.guideSlug || '';
         this.category = config.category || '';
-        this.categoryColor = config.categoryColor || '#0e9a8f';
+        this.categoryColor = config.categoryColor || '#0b7d74';
         this.estimatedMinutes = config.estimatedMinutes || Math.max(5, Math.round(this.questions.length * 1.5));
         this.backUrl = config.backUrl || ('../' + this.guideSlug + '.html');
         this.backLabel = config.backLabel || 'Back to Study Guide';
@@ -952,7 +952,7 @@ class QuizEngine {
                     font-size: 1rem; line-height: 1.6; margin-bottom: 8px;
                 }
                 .quiz-leave-note {
-                    font-size: 0.88rem !important; color: var(--quiz-text-light, #8a8073) !important;
+                    font-size: 0.88rem !important; color: var(--quiz-text-light, #7a7064) !important;
                     margin-bottom: 24px !important;
                 }
                 .quiz-leave-actions {
@@ -2216,10 +2216,10 @@ class QuizEngine {
     /**
      * Animates the SVG score ring from 0% to the target percentage,
      * transitioning through color milestones:
-     *   0–69%  → red    (#d64545)
+     *   0–69%  → red    (#c23131)
      *   70–79% → orange (#d9661a)
-     *   80–89% → amber  (#c9791a)
-     *   90–99% → green  (#2fa866)
+     *   80–89% → amber  (#a45f10)
+     *   90–99% → green  (#1a7a46)
      *   100%   → gold   (#b8860b) + continuous glow
      */
     _animateScoreRing(targetPct, correctCount, total) {
@@ -2236,10 +2236,10 @@ class QuizEngine {
 
         // Color milestones — the ring adopts a color once a threshold is reached
         const milestones = [
-            { pct: 0,   color: '#d64545' }, // red
+            { pct: 0,   color: '#c23131' }, // red
             { pct: 70,  color: '#d9661a' }, // orange
-            { pct: 80,  color: '#c9791a' }, // amber
-            { pct: 90,  color: '#2fa866' }, // green
+            { pct: 80,  color: '#a45f10' }, // amber
+            { pct: 90,  color: '#1a7a46' }, // green
             { pct: 100, color: '#b8860b' }  // gold (exact 100 only)
         ];
 
@@ -2422,7 +2422,7 @@ class QuizEngine {
         canvas.width = parent.offsetWidth;
         canvas.height = parent.offsetHeight;
 
-        const colors = ['#0e9a8f', '#2fa866', '#c9a227', '#c9791a', '#c2306e', '#6d4bd0', '#d64545'];
+        const colors = ['#0b7d74', '#1a7a46', '#c9a227', '#a45f10', '#c2306e', '#6d4bd0', '#c23131'];
         const pieces = [];
         const count = 80;
 

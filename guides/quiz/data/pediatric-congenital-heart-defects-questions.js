@@ -9,7 +9,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
     guideName: "Pediatric Congenital Heart Defects",
     guideSlug: "pediatric-congenital-heart-defects",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 18,
     questions: [
         {

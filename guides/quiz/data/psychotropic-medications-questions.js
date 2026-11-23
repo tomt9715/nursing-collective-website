@@ -11,7 +11,7 @@ var psychotropicMedicationsQuizData = {
     guideName: "Psychotropic Medications",
     guideSlug: "psychotropic-medications",
     category: "Pharmacology",
-    categoryColor: "#2fa866",
+    categoryColor: "#1a7a46",
     estimatedMinutes: 18,
     questions: [
         {

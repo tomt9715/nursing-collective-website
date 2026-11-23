@@ -217,7 +217,7 @@
                 guideName: aiData.guideName || 'AI Practice Questions',
                 guideSlug: aiData.guideSlug || 'ai-generated',
                 category: aiData.category || 'AI Generated',
-                categoryColor: aiData.categoryColor || '#0e9a8f',
+                categoryColor: aiData.categoryColor || '#0b7d74',
                 estimatedMinutes: aiData.estimatedMinutes || Math.max(5, Math.round(perRound * 1.5)),
                 backUrl: aiData.backUrl || '../../ai-tools.html',
                 backLabel: aiData.backLabel || 'Back to AI Tools',

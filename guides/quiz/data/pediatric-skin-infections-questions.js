@@ -9,7 +9,7 @@ var pediatricSkinInfectionsQuizData = {
     guideName: "Pediatric Skin Infections",
     guideSlug: "pediatric-skin-infections",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

@@ -152,7 +152,7 @@
             }
             .paywall-icon i {
                 font-size: 22px;
-                color: #0e9a8f;
+                color: #0b7d74;
             }
             .paywall-modal h2 {
                 font-family: 'DM Serif Display', serif;
@@ -180,12 +180,12 @@
                 color: #6a6157;
             }
             .paywall-price strong {
-                color: #0e9a8f;
+                color: #0b7d74;
                 font-weight: 600;
             }
             .paywall-divider {
                 font-family: 'DM Mono', monospace;
-                color: #8a8073;
+                color: #7a7064;
                 font-size: 11px;
                 letter-spacing: 0.06em;
                 margin: 8px 0;
@@ -208,7 +208,7 @@
                 transition: all 0.15s;
             }
             .paywall-btn-primary {
-                background: #0e9a8f;
+                background: #0b7d74;
                 color: #fff;
             }
             .paywall-btn-primary:hover {
@@ -226,10 +226,10 @@
             .paywall-login {
                 margin-top: 16px;
                 font-size: 13px;
-                color: #8a8073;
+                color: #7a7064;
             }
             .paywall-login a {
-                color: #0e9a8f;
+                color: #0b7d74;
                 text-decoration: none;
                 font-weight: 500;
             }

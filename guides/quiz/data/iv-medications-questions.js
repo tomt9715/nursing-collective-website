@@ -9,7 +9,7 @@ var ivMedicationsQuizData = {
     guideName: "IV Medications",
     guideSlug: "iv-medications",
     category: "Pharmacology",
-    categoryColor: "#2fa866",
+    categoryColor: "#1a7a46",
     estimatedMinutes: 15,
     questions: [
         {

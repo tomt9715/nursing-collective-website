@@ -427,7 +427,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  color: var(--teal);
+  color: var(--teal-dim);
   flex-shrink: 0;
 }
 

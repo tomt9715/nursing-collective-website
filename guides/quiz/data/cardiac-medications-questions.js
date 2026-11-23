@@ -9,7 +9,7 @@ var cardiacMedicationsQuizData = {
     guideName: "Cardiac Medications",
     guideSlug: "cardiac-medications",
     category: "Pharmacology",
-    categoryColor: "#2fa866",
+    categoryColor: "#1a7a46",
     estimatedMinutes: 20,
     questions: [
         {

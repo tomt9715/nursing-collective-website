@@ -9,7 +9,7 @@ var pediatricRenalDisordersQuizData = {
     guideName: "Pediatric Renal Disorders",
     guideSlug: "pediatric-renal-disorders",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 16,
     questions: [
         {

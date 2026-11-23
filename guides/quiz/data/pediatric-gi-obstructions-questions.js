@@ -9,7 +9,7 @@ var pediatricGiObstructionsQuizData = {
     guideName: "Pediatric GI Obstructions",
     guideSlug: "pediatric-gi-obstructions",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 16,
     questions: [
         {

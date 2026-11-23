@@ -9,7 +9,7 @@ var pediatricFracturesImmobilityQuizData = {
     guideName: "Pediatric Fractures & Immobility",
     guideSlug: "pediatric-fractures-immobility",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

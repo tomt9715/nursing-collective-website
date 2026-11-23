@@ -9,7 +9,7 @@ var utiVurEnuresisQuizData = {
     guideName: "UTI, VUR & Enuresis",
     guideSlug: "uti-vur-enuresis",
     category: "Pediatric Nursing",
-    categoryColor: "#d4553f",
+    categoryColor: "#b8402c",
     estimatedMinutes: 20,
     questions: [
         {

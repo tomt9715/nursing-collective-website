@@ -551,7 +551,8 @@
 }
 
 [data-theme="dark"] .feedback-header h3 {
-    color: #f1f5f9;
+    /* The panel is white on this site; #f1f5f9 here rendered at 1.07:1. */
+    color: var(--text, #2b2621);
 }
 
 [data-theme="dark"] .feedback-close {

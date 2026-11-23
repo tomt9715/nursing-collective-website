@@ -42,6 +42,24 @@
   --purple-dim:  #5a3cb0;
   --discord:     #5865F2;   /* Discord brand — do not restyle */
 
+  /* ── Ink on tinted and sunken surfaces ── READ THIS BEFORE PICKING A COLOUR
+     The values above are checked against --navy-2 (white) and --navy (cream).
+     They are NOT safe on a tinted or sunken surface, because the surface is
+     darker than the page and eats 0.5–1.0 of the ratio. This was missed once
+     already and put 22 labels between 3.76:1 and 4.47:1 across Study Home,
+     Account and the guides.
+
+     The rule: on --navy-3, on any --*-soft tint, or on any rgba() fill, step
+     down one.
+         meta text   --text-dimmer  ->  --text-dim      (4.13 -> 5.16 on --navy-3)
+         accents     --teal         ->  --teal-dim      (4.37 -> 5.97 on a teal tint)
+         warnings    --amber        ->  --amber-ink     (4.31 -> 6.3 on an amber tint)
+         guide hues  --cat          ->  --cat-ink       (see guides/guide.css)
+     Verify by measuring the RENDERED element, compositing its real background
+     up the ancestor chain — reading the stylesheet is not enough, which is how
+     these were missed the first time. */
+  --amber-ink:   #8a4f0d;   /* --amber for text on an amber tint */
+
   /* ── Text ──
      --text-dimmer is the lightest ink that still passes AA on the page and
      card backgrounds (4.85:1 on white, 4.54:1 on cream). It does NOT pass on

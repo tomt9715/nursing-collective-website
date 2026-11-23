@@ -246,13 +246,13 @@ img { max-width: 100%; display: block; }
 }
 
 .dash-sidebar-item:hover {
-  background: rgba(14,154,143,0.08);
+  background: rgba(11,125,116,0.08);
   color: var(--text);
   text-decoration: none;
 }
 
 .dash-sidebar-item.active {
-  background: rgba(14,154,143,0.12);
+  background: rgba(11,125,116,0.12);
   color: var(--teal);
   font-weight: 600;
   border-left-color: var(--teal);
@@ -348,9 +348,9 @@ img { max-width: 100%; display: block; }
   border-radius: 6px;
   white-space: nowrap;
 }
-.ss-countdown-pill.urgent { background: rgba(214,69,69,0.12);  color: var(--red); }
-.ss-countdown-pill.soon   { background: rgba(201,121,26,0.12); color: var(--amber); }
-.ss-countdown-pill.near   { background: rgba(14,154,143,0.12); color: var(--teal); }
+.ss-countdown-pill.urgent { background: rgba(194,49,49,0.12);  color: var(--red); }
+.ss-countdown-pill.soon   { background: rgba(164,95,16,0.12); color: var(--amber); }
+.ss-countdown-pill.near   { background: rgba(11,125,116,0.12); color: var(--teal); }
 .ss-countdown-pill.normal { background: var(--navy-3); color: var(--text-dim); }
 
 
@@ -492,15 +492,15 @@ img { max-width: 100%; display: block; }
    Text stays --text so it never drops below contrast on the tint. */
 .ss-exam-header.urgent {
   border-left-color: var(--red);
-  background: rgba(214,69,69,0.07);
+  background: rgba(194,49,49,0.07);
 }
 .ss-exam-header.soon {
   border-left-color: var(--amber);
-  background: rgba(201,121,26,0.07);
+  background: rgba(164,95,16,0.07);
 }
 .ss-exam-header.near {
   border-left-color: var(--teal);
-  background: rgba(14,154,143,0.06);
+  background: rgba(11,125,116,0.06);
 }
 
 .ss-exam-header-info {
@@ -548,7 +548,7 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
   transition: all 0.15s ease;
 }
-.ss-exam-upload-btn:hover { background: rgba(14,154,143,0.09); }
+.ss-exam-upload-btn:hover { background: rgba(11,125,116,0.09); }
 .ss-exam-upload-btn i { font-size: 10px; }
 
 .ss-exam-topic-count {
@@ -579,7 +579,7 @@ img { max-width: 100%; display: block; }
   transition: background 0.15s ease;
 }
 .ss-topic-row:last-child { border-bottom: none; }
-.ss-topic-row:hover { background: rgba(14,154,143,0.05); }
+.ss-topic-row:hover { background: rgba(11,125,116,0.05); }
 
 /* Checkbox
    The <i> is fa-circle when unchecked, fa-check-circle when checked.
@@ -606,7 +606,7 @@ img { max-width: 100%; display: block; }
 }
 .ss-check-btn:hover {
   border-color: var(--teal);
-  color: rgba(14,154,143,0.28);
+  color: rgba(11,125,116,0.28);
 }
 
 /* Topic info */
@@ -675,8 +675,8 @@ img { max-width: 100%; display: block; }
   transition: all 0.15s ease;
 }
 .ss-action-link:hover {
-  background: rgba(14,154,143,0.09);
-  border-color: rgba(14,154,143,0.28);
+  background: rgba(11,125,116,0.09);
+  border-color: rgba(11,125,116,0.28);
   color: var(--teal);
 }
 .ss-action-link i { font-size: 11px; }
@@ -889,7 +889,7 @@ img { max-width: 100%; display: block; }
 .ss-upload-dropzone:hover,
 .ss-upload-dropzone.drag-over {
   border-color: var(--teal);
-  background: rgba(14,154,143,0.08);
+  background: rgba(11,125,116,0.08);
 }
 
 .ss-upload-dropzone i {
@@ -982,8 +982,8 @@ img { max-width: 100%; display: block; }
   gap: 8px;
   margin-top: 12px;
   padding: 10px 14px;
-  background: rgba(214,69,69,0.09);
-  border: 0.5px solid rgba(214,69,69,0.28);
+  background: rgba(194,49,49,0.09);
+  border: 0.5px solid rgba(194,49,49,0.28);
   border-radius: 8px;
   font-family: 'Outfit', sans-serif;
   font-size: 13px;
@@ -1133,12 +1133,12 @@ img { max-width: 100%; display: block; }
 .feedback-emoji:hover { background: rgba(58,44,26,0.06); }
 .feedback-emoji .feedback-emoji-icon { line-height: 1; color: var(--text-dim); transition: color 0.15s; }
 .feedback-emoji:hover .feedback-emoji-icon { color: var(--text); }
-.feedback-emoji.active { border-color: var(--teal); background: rgba(14,154,143,0.12); }
+.feedback-emoji.active { border-color: var(--teal); background: rgba(11,125,116,0.12); }
 .feedback-emoji.active .feedback-emoji-icon { color: var(--teal); }
 .feedback-emoji-label { color: var(--text-dimmer); font-size: 10px; }
 .feedback-emoji.active .feedback-emoji-label { color: var(--teal); }
 .feedback-screenshot-trigger { border-color: var(--border-mid); color: var(--text-dim); border-radius: 8px; }
-.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(14,154,143,0.06); }
+.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(11,125,116,0.06); }
 .feedback-screenshot-img { border-color: var(--border-mid); }
 .feedback-submit { background: var(--teal); color: #fff; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600; }
 .feedback-submit:hover { opacity: 1; background: var(--teal-dim); }

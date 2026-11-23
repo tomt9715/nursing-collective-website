@@ -19,7 +19,7 @@
 
    Accent shorthand used below:
      var(--cat,      #0b7d74)                  category accent
-     var(--cat-soft, rgba(14,154,143,0.10))    category tint fill
+     var(--cat-soft, rgba(11,125,116,0.10))    category tint fill
      var(--teal,     #0b7d74)                  FlorenceBot (always teal)
    ══════════════════════════════════════════════════════════════ */
 
@@ -111,7 +111,7 @@
 
 /* Active item: tinted fill, no colour rail */
 .toc-panel .toc-link.active {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
     font-weight: 600;
 }
@@ -187,7 +187,7 @@
 }
 
 .toc-nav-link:hover {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
     text-decoration: none;
 }
@@ -235,7 +235,7 @@
 }
 
 .mobile-nav-shortcut:hover {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
     text-decoration: none;
 }
@@ -291,7 +291,7 @@
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(14,154,143,0.10) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(11,125,116,0.10) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -384,7 +384,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.68rem;
     font-weight: 400;
-    color: var(--text-dimmer, #7a7064);
+    color: var(--text-dim, #6a6157);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 14px;
@@ -406,7 +406,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--cat, #0b7d74);
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     border: 0.5px solid var(--border-mid, rgba(58,44,26,0.17));
     border-radius: 20px;
     padding: 3px 10px;
@@ -472,28 +472,28 @@
 /* Semantic stat tints — flat token fills, no pastel gradients */
 .key-numbers-card .key-number.critical,
 .mobile-key-number.critical {
-    background: rgba(214,69,69,0.07);
-    border: 0.5px solid rgba(214,69,69,0.28);
+    background: rgba(194,49,49,0.07);
+    border: 0.5px solid rgba(194,49,49,0.28);
 }
 
 .key-numbers-card .key-number.time,
 .mobile-key-number.time,
 .key-numbers-card .key-number.warning,
 .mobile-key-number.warning {
-    background: rgba(201,121,26,0.08);
-    border: 0.5px solid rgba(201,121,26,0.28);
+    background: rgba(164,95,16,0.08);
+    border: 0.5px solid rgba(164,95,16,0.28);
 }
 
 .key-numbers-card .key-number.target,
 .mobile-key-number.target {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     border: 0.5px solid var(--border-mid, rgba(58,44,26,0.17));
 }
 
 .key-numbers-card .key-number.success,
 .mobile-key-number.success {
-    background: rgba(47,168,102,0.08);
-    border: 0.5px solid rgba(47,168,102,0.28);
+    background: rgba(26,122,70,0.08);
+    border: 0.5px solid rgba(26,122,70,0.28);
 }
 
 .key-numbers-card .key-number.info,
@@ -520,8 +520,8 @@
 
 /* ── Florence tips — clinical pearls ── */
 .florence-tips-card {
-    background: var(--teal-soft, rgba(14,154,143,0.12));
-    border: 0.5px solid rgba(14,154,143,0.30);
+    background: var(--teal-soft, rgba(11,125,116,0.12));
+    border: 0.5px solid rgba(11,125,116,0.30);
     border-radius: 14px;
     padding: 18px;
     box-shadow: var(--shadow-sm, 0 1px 3px rgba(58,44,26,0.06));
@@ -677,15 +677,15 @@
 
 @keyframes tipGlow {
     0% {
-        box-shadow: 0 0 0 0 rgba(14,154,143,0.55);
+        box-shadow: 0 0 0 0 rgba(11,125,116,0.55);
         transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 25px 10px rgba(14,154,143,0.35);
+        box-shadow: 0 0 25px 10px rgba(11,125,116,0.35);
         transform: scale(1.01);
     }
     100% {
-        box-shadow: 0 0 0 0 rgba(14,154,143,0);
+        box-shadow: 0 0 0 0 rgba(11,125,116,0);
         transform: scale(1);
     }
 }
@@ -923,7 +923,7 @@
     align-items: center;
     gap: 6px;
     padding: 6px 14px;
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
     border: 0.5px solid var(--border, rgba(58,44,26,0.11));
     border-radius: 20px;
@@ -1077,7 +1077,7 @@
 }
 
 .pq-type-tag--single {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
 }
 
@@ -1201,7 +1201,7 @@
 
 /* ── Test-taking tip ── */
 .pq-test-tip {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     border: 0.5px solid var(--cat, #0b7d74);
     border-radius: 10px;
     padding: 12px 16px;
@@ -1295,7 +1295,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     border: 0.5px solid var(--cat, #0b7d74);
     border-radius: 14px;
     padding: 36px 28px;
@@ -1354,7 +1354,7 @@
     font-family: 'DM Mono', 'Outfit', monospace;
     font-size: 0.76rem;
     letter-spacing: 0.04em;
-    color: var(--text-dimmer, #7a7064);
+    color: var(--text-dim, #6a6157);
     font-weight: 400;
 }
 
@@ -1636,7 +1636,7 @@
 
 /* Active item: tinted fill, no colour rail */
 .mobile-toc-link.active {
-    background: var(--cat-soft, rgba(14,154,143,0.10));
+    background: var(--cat-soft, rgba(11,125,116,0.10));
     color: var(--cat, #0b7d74);
     font-weight: 600;
 }
@@ -1709,8 +1709,8 @@
     align-items: center;
     gap: 10px;
     padding: 12px 14px;
-    background: var(--teal-soft, rgba(14,154,143,0.12));
-    border: 0.5px solid rgba(14,154,143,0.30);
+    background: var(--teal-soft, rgba(11,125,116,0.12));
+    border: 0.5px solid rgba(11,125,116,0.30);
     border-radius: 10px;
     margin-bottom: 8px;
     cursor: pointer;

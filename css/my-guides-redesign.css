@@ -252,7 +252,7 @@ img { max-width: 100%; display: block; }
 
 .dash-sidebar-item.active {
   background: rgba(11,125,116,0.12);
-  color: var(--teal);
+  color: var(--teal-dim);
   font-weight: 600;
 }
 
@@ -535,7 +535,7 @@ img { max-width: 100%; display: block; }
 }
 
 .breadcrumb-back:hover {
-  background: rgba(15,188,173,0.08);
+  background: rgba(11,125,116,0.08);
 }
 
 .breadcrumb-sep {
@@ -899,7 +899,7 @@ img { max-width: 100%; display: block; }
 .icon-musculoskeletal { background: rgba(61,189,122,0.15); }
 .icon-endocrine      { background: rgba(236,72,153,0.15); }
 .icon-fundamentals   { background: rgba(99,102,241,0.15); }
-.icon-pharmacology   { background: rgba(15,188,173,0.15); }
+.icon-pharmacology   { background: rgba(11,125,116,0.15); }
 .icon-renal          { background: rgba(6,182,212,0.15); }
 .icon-maternal       { background: rgba(244,114,182,0.15); }
 .icon-pediatrics     { background: rgba(251,146,60,0.15); }
@@ -951,12 +951,12 @@ img { max-width: 100%; display: block; }
 .feedback-emoji:hover { background: rgba(58,44,26,0.05); }
 .feedback-emoji .feedback-emoji-icon { line-height: 1; color: var(--text-dim); transition: color 0.15s; }
 .feedback-emoji:hover .feedback-emoji-icon { color: var(--text); }
-.feedback-emoji.active { border-color: var(--teal); background: rgba(15,188,173,0.1); }
+.feedback-emoji.active { border-color: var(--teal); background: rgba(11,125,116,0.1); }
 .feedback-emoji.active .feedback-emoji-icon { color: var(--teal); }
 .feedback-emoji-label { color: var(--text-dimmer); font-size: 10px; }
 .feedback-emoji.active .feedback-emoji-label { color: var(--teal); }
 .feedback-screenshot-trigger { border-color: var(--border-mid); color: var(--text-dim); border-radius: 8px; }
-.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(15,188,173,0.05); }
+.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(11,125,116,0.05); }
 .feedback-screenshot-img { border-color: var(--border-mid); }
 .feedback-submit { background: var(--teal); color: #fff; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600; }
 .feedback-submit:hover { opacity: 1; background: var(--teal-dim); }

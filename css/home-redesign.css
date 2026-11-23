@@ -704,8 +704,8 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background: rgba(15,188,173,0.08);
-  border: 0.5px solid rgba(15,188,173,0.15);
+  background: rgba(11,125,116,0.08);
+  border: 0.5px solid rgba(11,125,116,0.15);
   color: var(--teal);
   font-size: 15px;
   margin-bottom: 18px;
@@ -1143,7 +1143,7 @@ img { max-width: 100%; display: block; }
 
 .feedback-emoji.active {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
 }
 
 .feedback-emoji.active .feedback-emoji-icon {
@@ -1168,7 +1168,7 @@ img { max-width: 100%; display: block; }
 .feedback-screenshot-trigger:hover,
 .feedback-screenshot-trigger:focus-visible {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.05);
+  background: rgba(11,125,116,0.05);
 }
 
 .feedback-screenshot-img {

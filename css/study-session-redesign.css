@@ -253,9 +253,9 @@ img { max-width: 100%; display: block; }
 
 .dash-sidebar-item.active {
   background: rgba(11,125,116,0.12);
-  color: var(--teal);
+  color: var(--teal-dim);
   font-weight: 600;
-  border-left-color: var(--teal);
+  border-left-color: var(--teal-dim);
 }
 
 .dash-sidebar-item i {

@@ -883,7 +883,7 @@ img { max-width: 100%; display: block; }
 
 .feedback-emoji.active {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
 }
 
 .feedback-emoji.active .feedback-emoji-icon {
@@ -908,7 +908,7 @@ img { max-width: 100%; display: block; }
 .feedback-screenshot-trigger:hover,
 .feedback-screenshot-trigger:focus-visible {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.05);
+  background: rgba(11,125,116,0.05);
 }
 
 .feedback-screenshot-img {

@@ -430,9 +430,9 @@ img { max-width: 100%; display: block; }
 }
 
 .badge-teal {
-  background: rgba(15,188,173,0.12);
+  background: rgba(11,125,116,0.12);
   color: var(--teal);
-  border: 0.5px solid rgba(15,188,173,0.25);
+  border: 0.5px solid rgba(11,125,116,0.25);
 }
 
 .badge-amber {
@@ -551,9 +551,9 @@ img { max-width: 100%; display: block; }
   font-size: 9px;
   padding: 2px 6px;
   border-radius: 10px;
-  background: rgba(15,188,173,0.12);
+  background: rgba(11,125,116,0.12);
   color: var(--teal);
-  border: 0.5px solid rgba(15,188,173,0.25);
+  border: 0.5px solid rgba(11,125,116,0.25);
   font-family: 'DM Mono', monospace;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -595,8 +595,8 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--teal);
-  background: rgba(15,188,173,0.12);
-  border: 0.5px solid rgba(15,188,173,0.25);
+  background: rgba(11,125,116,0.12);
+  border: 0.5px solid rgba(11,125,116,0.25);
   border-radius: 20px;
   padding: 4px 14px;
   white-space: nowrap;
@@ -820,8 +820,8 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
-  background: rgba(15,188,173,0.08);
-  border: 0.5px solid rgba(15,188,173,0.15);
+  background: rgba(11,125,116,0.08);
+  border: 0.5px solid rgba(11,125,116,0.15);
 }
 
 .feature-card-icon svg {
@@ -1356,7 +1356,7 @@ img { max-width: 100%; display: block; }
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(15,188,173,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(11,125,116,0.15) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   pointer-events: none;
   animation: energyRipple 0.8s ease-out forwards;
@@ -1575,7 +1575,7 @@ img { max-width: 100%; display: block; }
 
 .feedback-emoji.active {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
 }
 
 .feedback-emoji.active .feedback-emoji-icon {
@@ -1600,7 +1600,7 @@ img { max-width: 100%; display: block; }
 .feedback-screenshot-trigger:hover,
 .feedback-screenshot-trigger:focus-visible {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.05);
+  background: rgba(11,125,116,0.05);
 }
 
 .feedback-screenshot-img {

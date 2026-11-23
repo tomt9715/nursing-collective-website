@@ -81,8 +81,8 @@ img { max-width: 100%; display: block; }
 .dash-sidebar-section { display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); margin-bottom: 4px; }
 .dash-sidebar-section:last-child { border-bottom: none; margin-bottom: 0; }
 .dash-sidebar-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: all 0.15s ease; cursor: pointer; border-left: 2px solid transparent; }
-.dash-sidebar-item:hover { background: rgba(15,188,173,0.06); color: var(--text); text-decoration: none; }
-.dash-sidebar-item.active { background: rgba(15,188,173,0.1); color: var(--teal); font-weight: 600; border-left-color: var(--teal); }
+.dash-sidebar-item:hover { background: rgba(11,125,116,0.06); color: var(--text); text-decoration: none; }
+.dash-sidebar-item.active { background: rgba(11,125,116,0.1); color: var(--teal-dim); font-weight: 600; border-left-color: var(--teal-dim); }
 .dash-sidebar-item i { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
 .dash-sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(58,44,26,0.4); z-index: 49; }
 .dash-main { flex: 1; min-width: 0; padding: 28px 32px 40px; }
@@ -271,7 +271,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
   color: var(--teal);
   font-size: 13px;
   flex-shrink: 0;
@@ -527,7 +527,7 @@ input::placeholder {
 }
 
 .settings-profile-avatar-area {
-  background: linear-gradient(135deg, rgba(15,188,173,0.08) 0%, rgba(10,144,134,0.04) 100%);
+  background: linear-gradient(135deg, rgba(11,125,116,0.08) 0%, rgba(10,144,134,0.04) 100%);
   border-radius: 14px 14px 0 0;
   margin: -24px -24px 0;
   padding: 32px 24px 24px;
@@ -894,7 +894,7 @@ input::placeholder {
 
 .icon-picker-option.selected {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
 }
 
 .icon-picker-option img {
@@ -947,7 +947,7 @@ input::placeholder {
 
 .icon-picker-upload-btn:hover {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.06);
+  background: rgba(11,125,116,0.06);
   color: var(--teal);
 }
 
@@ -1048,7 +1048,7 @@ input::placeholder {
   font-weight: 600;
 }
 .membership-plan-tier.standard {
-  background: rgba(15,188,173,0.12);
+  background: rgba(11,125,116,0.12);
   color: var(--teal);
 }
 .membership-plan-tier.ai-powered {
@@ -1177,11 +1177,11 @@ input::placeholder {
 }
 .plan-option:hover {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.04);
+  background: rgba(11,125,116,0.04);
 }
 .plan-option.selected {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.08);
+  background: rgba(11,125,116,0.08);
 }
 .plan-option.current-plan {
   opacity: 0.5;
@@ -1234,7 +1234,7 @@ input::placeholder {
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 10px;
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
   color: var(--teal);
   margin-left: 8px;
 }
@@ -1744,12 +1744,12 @@ input::placeholder {
 .feedback-emoji:hover { background: rgba(58,44,26,0.05); }
 .feedback-emoji .feedback-emoji-icon { line-height: 1; color: var(--text-dim); transition: color 0.15s; }
 .feedback-emoji:hover .feedback-emoji-icon { color: var(--text); }
-.feedback-emoji.active { border-color: var(--teal); background: rgba(15,188,173,0.1); }
+.feedback-emoji.active { border-color: var(--teal); background: rgba(11,125,116,0.1); }
 .feedback-emoji.active .feedback-emoji-icon { color: var(--teal); }
 .feedback-emoji-label { color: var(--text-dimmer); font-size: 10px; }
 .feedback-emoji.active .feedback-emoji-label { color: var(--teal); }
 .feedback-screenshot-trigger { border-color: var(--border-mid); color: var(--text-dim); border-radius: 8px; }
-.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(15,188,173,0.05); }
+.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(11,125,116,0.05); }
 .feedback-screenshot-img { border-color: var(--border-mid); }
 .feedback-submit { background: var(--teal); color: #fff; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600; }
 .feedback-submit:hover { opacity: 1; background: var(--teal-dim); }

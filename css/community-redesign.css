@@ -80,7 +80,7 @@ img { max-width: 100%; display: block; }
 .dash-sidebar-section:last-child { border-bottom: none; margin-bottom: 0; }
 .dash-sidebar-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: all 0.15s ease; cursor: pointer; }
 .dash-sidebar-item:hover { background: rgba(11,125,116,0.07); color: var(--text); text-decoration: none; }
-.dash-sidebar-item.active { background: rgba(11,125,116,0.12); color: var(--teal); font-weight: 600; }
+.dash-sidebar-item.active { background: rgba(11,125,116,0.12); color: var(--teal-dim); font-weight: 600; }
 .dash-sidebar-item i { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
 .dash-sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(58,44,26,0.35); z-index: 49; }
 .dash-main { flex: 1; min-width: 0; padding: 28px 32px 40px; }
@@ -367,12 +367,12 @@ img { max-width: 100%; display: block; }
 .feedback-emoji:hover { background: rgba(58,44,26,0.05); }
 .feedback-emoji .feedback-emoji-icon { line-height: 1; color: var(--text-dim); transition: color 0.15s; }
 .feedback-emoji:hover .feedback-emoji-icon { color: var(--text); }
-.feedback-emoji.active { border-color: var(--teal); background: rgba(15,188,173,0.1); }
+.feedback-emoji.active { border-color: var(--teal); background: rgba(11,125,116,0.1); }
 .feedback-emoji.active .feedback-emoji-icon { color: var(--teal); }
 .feedback-emoji-label { color: var(--text-dimmer); font-size: 10px; }
 .feedback-emoji.active .feedback-emoji-label { color: var(--teal); }
 .feedback-screenshot-trigger { border-color: var(--border-mid); color: var(--text-dim); border-radius: 8px; }
-.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(15,188,173,0.05); }
+.feedback-screenshot-trigger:hover, .feedback-screenshot-trigger:focus-visible { border-color: var(--teal); background: rgba(11,125,116,0.05); }
 .feedback-screenshot-img { border-color: var(--border-mid); }
 .feedback-submit { background: var(--teal); color: #fff; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 600; }
 .feedback-submit:hover { opacity: 1; background: var(--teal-dim); }

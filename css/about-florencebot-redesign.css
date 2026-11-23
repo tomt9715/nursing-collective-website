@@ -26,8 +26,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(14,154,143,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14,154,143,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(11,125,116,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,125,116,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -516,7 +516,7 @@ img { max-width: 100%; display: block; }
 }
 
 .message .bot-avatar {
-  background: rgba(15,188,173,0.12);
+  background: rgba(11,125,116,0.12);
 }
 
 .message-content {
@@ -1001,7 +1001,7 @@ img { max-width: 100%; display: block; }
 
 .feedback-emoji.active {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.1);
+  background: rgba(11,125,116,0.1);
 }
 
 .feedback-emoji.active .feedback-emoji-icon {
@@ -1026,7 +1026,7 @@ img { max-width: 100%; display: block; }
 .feedback-screenshot-trigger:hover,
 .feedback-screenshot-trigger:focus-visible {
   border-color: var(--teal);
-  background: rgba(15,188,173,0.05);
+  background: rgba(11,125,116,0.05);
 }
 
 .feedback-screenshot-img {

@@ -14,7 +14,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "e2e": "cypress open",
-    "e2e:headless": "cypress run"
+    "e2e:headless": "cypress run",
+    "serve:static": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "test:contrast": "python3 -m http.server 4173 --bind 127.0.0.1 >/dev/null 2>&1 & SRV=$!; sleep 1; cypress run --spec cypress/e2e/contrast.cy.js --config baseUrl=http://127.0.0.1:4173; STATUS=$?; kill $SRV; exit $STATUS"
   },
   "repository": {
     "type": "git",

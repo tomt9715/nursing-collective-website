@@ -550,7 +550,7 @@ img { max-width: 100%; display: block; }
 .mockup-guide-cat {
   font-size: 10px;
   font-family: 'DM Mono', monospace;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 10px;

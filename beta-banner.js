@@ -82,7 +82,7 @@
             'background: none;' +
             'border: none;' +
             'font-size: 16px;' +
-            'color: var(--text-dimmer, #7a7064);' +
+            'color: var(--text-dim, #6a6157);' +
             'cursor: pointer;' +
             'padding: 0 4px;' +
             'line-height: 1;' +

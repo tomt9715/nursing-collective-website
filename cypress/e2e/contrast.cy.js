@@ -1,9 +1,23 @@
 /**
  * Rendered-DOM contrast guard.
  *
- * Run against any environment:
- *   npx cypress run --spec cypress/e2e/contrast.cy.js \
- *     --config baseUrl=https://thenursingcollective.pro
+ * HOW TO RUN IT
+ *
+ *   npm run test:contrast
+ *
+ * which starts a local static server, runs this spec against it and stops the
+ * server again.
+ *
+ * NOT AGAINST PRODUCTION. Cloudflare's bot filter answers Cypress's headless
+ * browser with 403 on every page, even though the site is public and a real
+ * browser loads it fine. This was tried; all 11 tests failed on `cy.visit()`,
+ * not on contrast. To check production, open it in a real browser and paste
+ * scripts/contrast-audit.js into the console — that is how the 23 November
+ * numbers were taken.
+ *
+ * Paths below therefore carry the .html extension: a plain static server has
+ * no clean-URL rewriting. Production serves the clean form and redirects the
+ * .html one to it.
  *
  * This catches the two classes of problem that reading the CSS does not:
  * ink sitting on a tinted or sunken surface inherited from an ancestor, and
@@ -21,16 +35,36 @@ const AUDITOR = 'scripts/contrast-audit.js';
 
 // Public pages only; everything else redirects to login without a session.
 const PAGES = [
-  '/',
-  '/pricing',
-  '/resources',
-  '/about',
-  '/contact',
-  '/terms',
-  '/privacy',
-  '/login',
-  '/resources/lab-values',
-  '/resources/how-to-study'
+  // Core public pages
+  '/index.html',
+  '/pricing.html',
+  '/resources.html',
+  '/about.html',
+  '/contact.html',
+  '/terms.html',
+  '/privacy.html',
+  '/login.html',
+  '/404.html',
+
+  // All 17 free resource pages — every one of them was still loading
+  // dark-mode.js after the first removal pass, which only globbed the root.
+  '/resources/abbreviations.html',
+  '/resources/care-plans.html',
+  '/resources/clinical-bag.html',
+  '/resources/clinical-safety.html',
+  '/resources/clinical-skills.html',
+  '/resources/documentation-phrases.html',
+  '/resources/feeling-like-failing.html',
+  '/resources/first-semester-clinicals.html',
+  '/resources/head-to-toe-assessment.html',
+  '/resources/how-to-study.html',
+  '/resources/lab-values.html',
+  '/resources/medications.html',
+  '/resources/night-before-clinicals.html',
+  '/resources/not-overwhelmed.html',
+  '/resources/time-management.html',
+  '/resources/vital-signs.html',
+  '/resources/when-you-dont-know.html'
 ];
 
 function report(result) {
@@ -66,7 +100,7 @@ describe('Contrast (rendered DOM, WCAG AA)', () => {
   });
 
   it('no page loads dark-mode.js outside the admin panel', () => {
-    cy.visit('/');
+    cy.visit('/index.html');
     cy.document().then(doc => {
       const darkMode = [...doc.scripts].filter(s => /dark-mode\.js/.test(s.src));
       expect(

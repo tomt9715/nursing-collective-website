@@ -90,7 +90,7 @@
                     <i class="fas fa-lock"></i>
                 </div>
                 <h2>Premium Content</h2>
-                <p>This study guide is available to subscribers. Membership includes the study guides and their practice quizzes. Our resource library is free.</p>
+                <p>This study guide is available to subscribers. Membership includes the study guides, their practice quizzes and the Quiz Bank. Our resource library is free.</p>
                 <div class="paywall-pricing">
                     <div class="paywall-price"><strong>$14.99/month</strong> · Renews until canceled</div>
                 </div>

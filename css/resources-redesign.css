@@ -495,17 +495,17 @@ img { max-width: 100%; display: block; }
 
 .badge-teal {
   background: rgba(11,125,116,0.12);
-  color: var(--teal);
+  color: var(--teal-dim);
 }
 
 .badge-amber {
-  background: rgba(244,165,53,0.12);
-  color: var(--amber);
+  background: rgba(164,95,16,0.12);
+  color: var(--amber-ink);
 }
 
 .badge-green {
-  background: rgba(61,189,122,0.12);
-  color: var(--green);
+  background: rgba(26,122,70,0.12);
+  color: var(--green-ink);
 }
 
 .badge-dim {
@@ -989,7 +989,7 @@ img { max-width: 100%; display: block; }
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.04em;
-  color: var(--teal);
+  color: var(--teal-dim);
   background: rgba(11,125,116,0.12);
   border-radius: 20px;
   padding: 3px 10px;

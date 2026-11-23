@@ -59,6 +59,7 @@
      up the ancestor chain — reading the stylesheet is not enough, which is how
      these were missed the first time. */
   --amber-ink:   #8a4f0d;   /* --amber for text on an amber tint */
+  --green-ink:   #16683b;   /* --green for text on a green tint */
 
   /* ── Text ──
      --text-dimmer is the lightest ink that still passes AA on the page and

@@ -47,3 +47,8 @@ css-backup/
 
 # Local design previews of gated guides — must NEVER deploy (no paywall)
 guides/_design-preview*.html
+
+# Cypress run artefacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/

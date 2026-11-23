@@ -22,10 +22,14 @@
         return 'https://staging-backend-production-365a.up.railway.app';
     })();
 
-    // Quiz UI is always-dark to match the rest of the authenticated workspace
-    // (dashboard, my-guides, Quiz Bank). The data-theme attribute is kept so
-    // any legacy [data-theme="dark"] element overrides still apply.
-    document.documentElement.setAttribute('data-theme', 'dark');
+    // The quiz used to be always-dark, to match an authenticated workspace that
+    // was itself dark. The warm light conversion changed that everywhere else,
+    // but this line survived it, so every quiz ran with data-theme="dark" over
+    // light tokens and switched on ~44 legacy dark rules in quiz-styles.css —
+    // dark-brown timer and flag chips, a near-black time pill and pale-red text
+    // on a cream page. Clear it the way guides/guide-script.js does, so a
+    // preference set on another page cannot drag the quiz back into it.
+    document.documentElement.removeAttribute('data-theme');
 
     function getAuthToken() {
         return localStorage.getItem('accessToken');

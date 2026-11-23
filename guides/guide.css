@@ -22,19 +22,19 @@
 /* ══ Category accents ══
    Each is darkened enough to read on white and to carry white text
    when used as a fill. --cat-soft is the tint used for callout fills. */
-[data-category]                      { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); }
-[data-category="cardiovascular"]     { --cat: #c0392b; --cat-soft: rgba(192,57,43,0.09); }
-[data-category="respiratory"]        { --cat: #2563a8; --cat-soft: rgba(37,99,168,0.09); }
-[data-category="neurological"]       { --cat: #6d4bd0; --cat-soft: rgba(109,75,208,0.09); }
-[data-category="endocrine"]          { --cat: #0e7c8a; --cat-soft: rgba(14,124,138,0.09); }
-[data-category="renal"]              { --cat: #b0631a; --cat-soft: rgba(176,99,26,0.09); }
-[data-category="gastrointestinal"]   { --cat: #a45f10; --cat-soft: rgba(164,95,16,0.09); }
-[data-category="musculoskeletal"]    { --cat: #7c4bb8; --cat-soft: rgba(124,75,184,0.09); }
-[data-category="pharmacology"]       { --cat: #1a7a46; --cat-soft: rgba(26,122,70,0.09); }
-[data-category="fundamentals"]       { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); }
-[data-category="maternal-newborn"]   { --cat: #c2306e; --cat-soft: rgba(194,48,110,0.09); }
-[data-category="pediatrics"]         { --cat: #b8402c; --cat-soft: rgba(184,64,44,0.09); }
-[data-category="mental-health"]      { --cat: #4a5bb8; --cat-soft: rgba(74,91,184,0.09); }
+[data-category]                      { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); --cat-ink: #0a746c; }
+[data-category="cardiovascular"]     { --cat: #c0392b; --cat-soft: rgba(192,57,43,0.09); --cat-ink: #bc382a; }
+[data-category="respiratory"]        { --cat: #2563a8; --cat-soft: rgba(37,99,168,0.09); --cat-ink: #2563a8; }
+[data-category="neurological"]       { --cat: #6d4bd0; --cat-soft: rgba(109,75,208,0.09); --cat-ink: #6d4bd0; }
+[data-category="endocrine"]          { --cat: #0e7c8a; --cat-soft: rgba(14,124,138,0.09); --cat-ink: #0d7380; }
+[data-category="renal"]              { --cat: #b0631a; --cat-soft: rgba(176,99,26,0.09); --cat-ink: #9b5717; }
+[data-category="gastrointestinal"]   { --cat: #a45f10; --cat-soft: rgba(164,95,16,0.09); --cat-ink: #99580f; }
+[data-category="musculoskeletal"]    { --cat: #7c4bb8; --cat-soft: rgba(124,75,184,0.09); --cat-ink: #7c4bb8; }
+[data-category="pharmacology"]       { --cat: #1a7a46; --cat-soft: rgba(26,122,70,0.09); --cat-ink: #197845; }
+[data-category="fundamentals"]       { --cat: #0b7d74; --cat-soft: rgba(11,125,116,0.10); --cat-ink: #0a746c; }
+[data-category="maternal-newborn"]   { --cat: #c2306e; --cat-soft: rgba(194,48,110,0.09); --cat-ink: #ba2e6a; }
+[data-category="pediatrics"]         { --cat: #b8402c; --cat-soft: rgba(184,64,44,0.09); --cat-ink: #b63f2c; }
+[data-category="mental-health"]      { --cat: #4a5bb8; --cat-soft: rgba(74,91,184,0.09); --cat-ink: #4a5bb8; }
 
 
 /* ══ Base ══ */
@@ -317,7 +317,7 @@ img { max-width: 100%; display: block; }
   font-size: 14px;
   font-weight: 500;
   background: var(--cat-soft);
-  color: var(--cat);
+  color: var(--cat-ink, var(--cat));
 }
 
 .section-icon {
@@ -475,8 +475,8 @@ img { max-width: 100%; display: block; }
 .info-box.critical,
 .info-box.warning,
 .info-box.redflag {
-  background: rgba(214,69,69,0.06);
-  border-color: rgba(214,69,69,0.32);
+  background: rgba(194,49,49,0.06);
+  border-color: rgba(194,49,49,0.32);
 }
 .info-box.critical .info-box-header,
 .info-box.warning .info-box-header,
@@ -486,8 +486,8 @@ img { max-width: 100%; display: block; }
 
 .info-box.safe,
 .info-box.tip {
-  background: rgba(47,168,102,0.06);
-  border-color: rgba(47,168,102,0.32);
+  background: rgba(26,122,70,0.06);
+  border-color: rgba(26,122,70,0.32);
 }
 .info-box.safe .info-box-header,
 .info-box.tip .info-box-header,
@@ -496,13 +496,13 @@ img { max-width: 100%; display: block; }
 
 .info-box.clinical,
 .info-box.nclex {
-  background: rgba(201,121,26,0.06);
-  border-color: rgba(201,121,26,0.32);
+  background: rgba(164,95,16,0.06);
+  border-color: rgba(164,95,16,0.32);
 }
 .info-box.clinical .info-box-header,
 .info-box.nclex .info-box-header,
 .info-box.clinical .info-box-header i,
-.info-box.nclex .info-box-header i { color: var(--amber); }
+.info-box.nclex .info-box-header i { color: var(--amber-ink, #8a4f0d); }
 
 .info-box.pediatric {
   background: rgba(194,48,110,0.06);
@@ -528,8 +528,8 @@ img { max-width: 100%; display: block; }
   border: 0.5px solid rgba(37,99,168,0.35);
 }
 .copy-box {
-  background: rgba(47,168,102,0.05);
-  border: 0.5px solid rgba(47,168,102,0.35);
+  background: rgba(26,122,70,0.05);
+  border: 0.5px solid rgba(26,122,70,0.35);
 }
 
 .do-box-label,
@@ -705,7 +705,7 @@ img { max-width: 100%; display: block; }
   color: var(--text);
 }
 
-.redflag-card { border-color: rgba(214,69,69,0.32); background: rgba(214,69,69,0.05); }
+.redflag-card { border-color: rgba(194,49,49,0.32); background: rgba(194,49,49,0.05); }
 
 /* Left/right comparison halves */
 .left-side,
@@ -830,12 +830,12 @@ img { max-width: 100%; display: block; }
 .bp-card-description { padding: 0 16px 14px; font-size: 14px; color: var(--text-dim); }
 
 /* Severity is meaningful here, so it keeps its colour */
-.bp-card.normal    { border-color: rgba(47,168,102,0.32); }
-.bp-card.normal .bp-card-header    { background: rgba(47,168,102,0.07); color: var(--green); }
-.bp-card.elevated  { border-color: rgba(201,121,26,0.32); }
-.bp-card.elevated .bp-card-header  { background: rgba(201,121,26,0.07); color: var(--amber); }
-.bp-card.crisis    { border-color: rgba(214,69,69,0.32); }
-.bp-card.crisis .bp-card-header    { background: rgba(214,69,69,0.07); color: var(--red); }
+.bp-card.normal    { border-color: rgba(26,122,70,0.32); }
+.bp-card.normal .bp-card-header    { background: rgba(26,122,70,0.07); color: var(--green); }
+.bp-card.elevated  { border-color: rgba(164,95,16,0.32); }
+.bp-card.elevated .bp-card-header  { background: rgba(164,95,16,0.07); color: var(--amber); }
+.bp-card.crisis    { border-color: rgba(194,49,49,0.32); }
+.bp-card.crisis .bp-card-header    { background: rgba(194,49,49,0.07); color: var(--red); }
 
 
 /* ══ Numbered interventions / steps ══ */
@@ -1047,7 +1047,7 @@ img { max-width: 100%; display: block; }
 .quiz-cta-content { flex: 1; min-width: 200px; }
 .quiz-cta-content h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
 .quiz-cta-content p { font-size: 14.5px; color: var(--text-dim); margin: 0; }
-.quiz-cta-stats { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dimmer); }
+.quiz-cta-stats { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); }
 
 .quiz-cta-button,
 .quiz-btn {

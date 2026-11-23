@@ -26,8 +26,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(14,154,143,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14,154,143,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(11,125,116,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,125,116,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -325,18 +325,18 @@ img { max-width: 100%; display: block; }
 }
 
 .overall-status.operational {
-  border-color: rgba(47,168,102,0.35);
-  background: rgba(47,168,102,0.06);
+  border-color: rgba(26,122,70,0.35);
+  background: rgba(26,122,70,0.06);
 }
 
 .overall-status.degraded {
-  border-color: rgba(201,121,26,0.35);
-  background: rgba(201,121,26,0.06);
+  border-color: rgba(164,95,16,0.35);
+  background: rgba(164,95,16,0.06);
 }
 
 .overall-status.outage {
-  border-color: rgba(214,69,69,0.35);
-  background: rgba(214,69,69,0.06);
+  border-color: rgba(194,49,49,0.35);
+  background: rgba(194,49,49,0.06);
 }
 
 .status-indicator {

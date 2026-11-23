@@ -365,8 +365,8 @@ img { max-width: 100%; display: block; }
 
 /* Active = tinted teal background + teal text (no border-left rail) */
 .dash-sidebar-item.active {
-  background: rgba(14,154,143,0.10);
-  color: var(--teal);
+  background: rgba(11,125,116,0.10);
+  color: var(--teal-dim);
   font-weight: 600;
 }
 
@@ -1436,14 +1436,14 @@ img { max-width: 100%; display: block; }
 .recent-guide-time {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   letter-spacing: 0.04em;
 }
 
 .btn-row-open {
   background: transparent;
   border: 0.5px solid var(--border-mid);
-  color: var(--teal);
+  color: var(--teal-dim);
   padding: 6px 14px;
   border-radius: 6px;
   font-family: 'Outfit', sans-serif;
@@ -1500,9 +1500,9 @@ img { max-width: 100%; display: block; }
 }
 .qb-row-badge i { font-size: 14px; }
 
-.qb-score-strong { background: rgba(47,168,102,0.14); color: var(--green); }
+.qb-score-strong { background: rgba(26,122,70,0.14); color: var(--green); }
 .qb-score-mid    { background: rgba(244,165,53,0.15); color: var(--amber); }
-.qb-score-weak   { background: rgba(214,69,69,0.14);  color: var(--red); }
+.qb-score-weak   { background: rgba(194,49,49,0.14);  color: var(--red); }
 
 .qb-row-info {
   flex: 1;
@@ -1797,7 +1797,7 @@ img { max-width: 100%; display: block; }
 
 .empty-stat-cta:hover {
   border-color: var(--teal);
-  background: rgba(14,154,143,0.06);
+  background: rgba(11,125,116,0.06);
 }
 
 .empty-stat-icon {

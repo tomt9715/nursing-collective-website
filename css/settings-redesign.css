@@ -237,7 +237,7 @@ img { max-width: 100%; display: block; }
 .settings-stat-label {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -432,7 +432,7 @@ input[type="password"]:focus,
 select:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(14,154,143,0.15);
+  box-shadow: 0 0 0 3px rgba(11,125,116,0.15);
 }
 
 .form-control:disabled,
@@ -509,7 +509,7 @@ input::placeholder {
 }
 
 .toggle-switch input:focus + .toggle-slider {
-  box-shadow: 0 0 0 3px rgba(14,154,143,0.25);
+  box-shadow: 0 0 0 3px rgba(11,125,116,0.25);
 }
 
 
@@ -573,8 +573,9 @@ input::placeholder {
 .settings-avatar-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Sits over a photo — stays dark so the white label reads */
-  background: rgba(58,44,26,0.55);
+  /* Sits over a photo — stays dark so the white label reads.
+     0.55 only reached 3.99:1 over a light avatar; 0.68 gives 5.59:1. */
+  background: rgba(58,44,26,0.68);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -721,7 +722,7 @@ input::placeholder {
 
 /* ── Danger Zone ──────────────────────────────── */
 .settings-card--danger {
-  border: 1px solid rgba(214,69,69,0.35);
+  border: 1px solid rgba(194,49,49,0.35);
 }
 
 .settings-card--danger .settings-card-header i {
@@ -734,9 +735,9 @@ input::placeholder {
 
 .danger-zone-content {
   padding: 20px;
-  background: rgba(214,69,69,0.07);
+  background: rgba(194,49,49,0.07);
   border-radius: 12px;
-  border: 1px solid rgba(214,69,69,0.35);
+  border: 1px solid rgba(194,49,49,0.35);
 }
 
 .danger-zone-content p,
@@ -781,8 +782,8 @@ input::placeholder {
 
 .danger-zone-warning {
   padding: 12px;
-  background: rgba(214,69,69,0.1);
-  border: 1px solid rgba(214,69,69,0.35);
+  background: rgba(194,49,49,0.1);
+  border: 1px solid rgba(194,49,49,0.35);
   border-radius: 8px;
   margin-bottom: 16px;
 }
@@ -814,7 +815,7 @@ input::placeholder {
 }
 
 .btn-danger:disabled {
-  background: rgba(214,69,69,0.45);
+  background: rgba(194,49,49,0.45);
   color: #fff;
   cursor: not-allowed;
 }
@@ -1033,7 +1034,7 @@ input::placeholder {
   color: var(--amber);
 }
 .sub-status-badge.expired {
-  background: rgba(214,69,69,0.12);
+  background: rgba(194,49,49,0.12);
   color: var(--red);
 }
 
@@ -1151,13 +1152,13 @@ input::placeholder {
   font-weight: 600;
   color: var(--red);
   background: transparent;
-  border: 1px solid rgba(214,69,69,0.35);
+  border: 1px solid rgba(194,49,49,0.35);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 .btn-small.danger-outline:hover {
-  background: rgba(214,69,69,0.07);
+  background: rgba(194,49,49,0.07);
   border-color: var(--red);
 }
 
@@ -1519,7 +1520,7 @@ input::placeholder {
 .delete-modal-icon {
   width: 64px;
   height: 64px;
-  background: rgba(214,69,69,0.1);
+  background: rgba(194,49,49,0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1546,8 +1547,8 @@ input::placeholder {
   color: var(--red);
   font-weight: 500;
   font-size: 1rem;
-  background: rgba(214,69,69,0.07);
-  border: 1px solid rgba(214,69,69,0.35);
+  background: rgba(194,49,49,0.07);
+  border: 1px solid rgba(194,49,49,0.35);
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -1593,7 +1594,7 @@ input::placeholder {
 }
 
 .delete-modal-btn-confirm:disabled {
-  background: rgba(214,69,69,0.45);
+  background: rgba(194,49,49,0.45);
   color: #fff;
   cursor: not-allowed;
 }
@@ -1631,8 +1632,8 @@ input::placeholder {
   font-size: 0.85rem;
   margin-bottom: 12px;
   padding: 8px;
-  background: rgba(214,69,69,0.07);
-  border: 1px solid rgba(214,69,69,0.35);
+  background: rgba(194,49,49,0.07);
+  border: 1px solid rgba(194,49,49,0.35);
   border-radius: 6px;
 }
 

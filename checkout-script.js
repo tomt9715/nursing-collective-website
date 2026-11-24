@@ -351,17 +351,63 @@
         window.location.href = target.toString();
     }
 
-    function renderDiscount(intent) {
+    function renderDiscount(intent, product) {
         const row = $('summary-discount-row');
         const valueEl = $('summary-discount');
+        const noteEl = $('summary-discount-note');
         if (!row || !valueEl) return;
         if (intent && intent.discount) {
             const d = intent.discount;
             const label = d.type === 'percent' ? `−${d.value}%` : `−$${d.value.toFixed(2)}`;
             valueEl.textContent = label;
             row.classList.remove('hidden');
+            if (noteEl) {
+                const note = discountDurationNote(d, intent, product);
+                noteEl.textContent = note;
+                noteEl.classList.toggle('hidden', !note);
+            }
         } else {
             row.classList.add('hidden');
+            if (noteEl) {
+                noteEl.textContent = '';
+                noteEl.classList.add('hidden');
+            }
+        }
+    }
+
+    /**
+     * A one-time purchase is a single payment, so a discount on it needs no
+     * explanation. A subscription renews, and a 'once' coupon does NOT apply
+     * to the renewal — say so plainly, with the price actually charged next
+     * time, so nobody is surprised by their second invoice.
+     */
+    function discountDurationNote(discount, intent, product) {
+        const isRecurring = product && product.type === 'subscription';
+        if (!isRecurring || !discount) return '';
+
+        const renewal = (intent && typeof intent.originalAmount === 'number')
+            ? intent.originalAmount
+            : (product && product.price);
+        const renewsAt = (typeof renewal === 'number')
+            ? ` Renews at ${formatPrice(renewal)}/month.`
+            : '';
+
+        switch (discount.duration) {
+            case 'once':
+                return `Discount applies to your first month only.${renewsAt}`;
+            case 'repeating': {
+                const months = discount.durationInMonths;
+                if (!months) return `Discount applies for a limited number of months.${renewsAt}`;
+                return months === 1
+                    ? `Discount applies to your first month only.${renewsAt}`
+                    : `Discount applies to your first ${months} months.${renewsAt}`;
+            }
+            case 'forever':
+                return 'Discount applies for as long as your membership stays active.';
+            default:
+                // A backend that does not send a duration gets silence rather
+                // than a guess: guessing wrong misstates what they will pay.
+                return '';
         }
     }
 
@@ -459,7 +505,7 @@
             }
 
             renderOrderSummary(product, planId, currentIntent);
-            renderDiscount(currentIntent);
+            renderDiscount(currentIntent, product);
 
             // 4. Mount Stripe Elements with our dark appearance.
             stripe = Stripe(publishableKey);
@@ -512,7 +558,7 @@
 
                 currentIntent = newIntent;
                 renderOrderSummary(product, planId, currentIntent);
-                renderDiscount(currentIntent);
+                renderDiscount(currentIntent, product);
 
                 // 100%-off path: backend fulfilled the order without Stripe.
                 // Swap the form into a "ready to confirm" state instead of

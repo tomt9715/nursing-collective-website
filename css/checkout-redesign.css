@@ -720,6 +720,15 @@ img { max-width: 100%; display: block; }
   color: var(--green);
 }
 
+/* Spells out that a discount covers the first payment only, so nobody is
+   surprised by the renewal price. */
+.summary-discount-note {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
 /* ── Fatal-error fallback panel ── */
 .payment-error {
   padding: 60px 20px;

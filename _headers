@@ -29,9 +29,18 @@
 #                            scripts.clarity.ms, so allowing only the entry
 #                            origin still blocks it.
 #
+# EXPECTED, not a bug: the console shows one violation on pages with analytics
+# consent —
+#   "Executing inline script violates ... a hash ('sha256-7KDyRdh0...')"
+# That is Google's gtag.js injecting its own inline iframe probe. Adding
+# 'unsafe-inline' to satisfy it would throw away the entire value of the
+# policy, and pinning the hash breaks whenever Google changes that snippet.
+# Verified that gtag, Sentry and Clarity all initialise regardless.
+#
 # If you add an external script, stylesheet, font or fetch target, add its
 # origin here or it will be blocked. Check the browser console for
-# "Refused to load" after any such change.
+# "Refused to load" after any such change — and accept cookies while you do,
+# or you will not see the consent-gated ones.
 
 # Security headers for all pages
 /*

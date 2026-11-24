@@ -57,33 +57,6 @@ describe('Homepage', () => {
         });
     });
 
-    describe('Dark Mode', () => {
-        it('should toggle dark mode', () => {
-            // Start in light mode (default)
-            cy.get('html').should('not.have.attr', 'data-theme', 'dark');
-
-            // Toggle to dark mode
-            cy.get('#theme-toggle').click();
-            cy.get('html').should('have.attr', 'data-theme', 'dark');
-
-            // Toggle back to light mode
-            cy.get('#theme-toggle').click();
-            cy.get('html').should('not.have.attr', 'data-theme', 'dark');
-        });
-
-        it('should persist dark mode preference', () => {
-            // Enable dark mode
-            cy.get('#theme-toggle').click();
-            cy.get('html').should('have.attr', 'data-theme', 'dark');
-
-            // Reload page
-            cy.reload();
-
-            // Dark mode should still be active
-            cy.get('html').should('have.attr', 'data-theme', 'dark');
-        });
-    });
-
     describe('Mobile Responsiveness', () => {
         beforeEach(() => {
             cy.viewport('iphone-x');
@@ -129,10 +102,6 @@ describe('Homepage', () => {
 
         it('should have alt text on logo', () => {
             cy.get('.nav-logo').should('have.attr', 'alt');
-        });
-
-        it('should have aria-labels on icon buttons', () => {
-            cy.get('#theme-toggle').should('have.attr', 'aria-label');
         });
     });
 

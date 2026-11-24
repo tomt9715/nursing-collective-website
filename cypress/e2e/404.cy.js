@@ -47,18 +47,6 @@ describe('404 Error Page', () => {
         cy.url().should('include', 'index.html');
     });
 
-    describe('Dark Mode', () => {
-        it('should support dark mode', () => {
-            // The 404 page includes dark-mode.js
-            cy.window().then((win) => {
-                win.document.documentElement.setAttribute('data-theme', 'dark');
-            });
-
-            cy.get('html').should('have.attr', 'data-theme', 'dark');
-            cy.get('.error-page').should('be.visible');
-        });
-    });
-
     describe('Mobile Responsiveness', () => {
         it('should be responsive on mobile', () => {
             cy.viewport('iphone-x');

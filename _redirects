@@ -1,5 +1,17 @@
-# Redirect old quiz-bank and app paths to learn subdomain
-https://thenursingcollective.pro/quiz-bank/* https://learn.thenursingcollective.pro 301
-https://www.thenursingcollective.pro/quiz-bank/* https://learn.thenursingcollective.pro 301
-https://thenursingcollective.pro/app/index.html https://learn.thenursingcollective.pro 301
-https://www.thenursingcollective.pro/app/index.html https://learn.thenursingcollective.pro 301
+# Cloudflare Pages _redirects
+#
+# Intentionally empty of rules.
+#
+# This file used to hold four redirects for legacy /quiz-bank/* and
+# /app/index.html paths, written with absolute source URLs
+# (https://thenursingcollective.pro/quiz-bank/*). Cloudflare Pages requires
+# RELATIVE source paths, warned about these on every build, and dropped them —
+# verified in production on 24 Nov 2026, where both paths returned 404.
+#
+# They were not rewritten as relative rules because the destination is the live
+# learn subdomain, and a relative rule applies to preview deployments too,
+# which would send preview testers to production. They now live in
+# functions/_middleware.js, which already distinguishes the production host.
+#
+# If you add a rule here, the source must be a relative path (/old-path/*) and
+# it will apply to previews as well as production.

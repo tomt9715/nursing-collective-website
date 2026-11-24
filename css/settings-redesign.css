@@ -1134,6 +1134,17 @@ input::placeholder {
   flex-wrap: wrap;
 }
 
+/* Billing History: the action sat flush against the payment row above it,
+   reading as part of that row, and its box started 32px left of the helper
+   text beneath it because .settings-card-desc is indented to clear the card
+   header icon. Measured on production: button box at 304.5px, helper text at
+   336.5px. Separating the block and matching that indent puts both at 336.5
+   and gives the action room of its own. */
+#billing-portal-actions .membership-actions {
+  margin-top: 20px;
+  padding-left: 32px;
+}
+
 .btn-small.secondary {
   display: inline-flex;
   align-items: center;

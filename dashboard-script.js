@@ -385,23 +385,75 @@ function continueStudying(productId) {
     window.location.href = `guides/${productId}.html`;
 }
 
-function updateEmailVerificationBanner(user) {
-    // Hide the old main-content banner permanently
-    var oldBanner = document.getElementById('email-verification-banner');
-    if (oldBanner) oldBanner.classList.add('hidden');
+// Dismissal is per-user: see USER_SCOPED_STORAGE_KEYS in api-service.js, which
+// clears it on sign-out so the next account does not inherit it.
+var VERIFY_BANNER_DISMISSED_KEY = 'verifyEmailBannerDismissed';
 
-    // Show subtle sidebar nudge instead
+function setUpVerifyBanner(banner, user) {
+    if (!banner) return;
+
+    var dismissed = false;
+    try {
+        dismissed = localStorage.getItem(VERIFY_BANNER_DISMISSED_KEY) === '1';
+    } catch (e) { /* private mode: just show it */ }
+    if (dismissed) {
+        banner.classList.add('hidden');
+        return;
+    }
+
+    var detail = document.getElementById('verify-banner-detail');
+    if (detail && user && user.email) {
+        detail.textContent = 'We sent a confirmation link to ' + user.email +
+            '. Open it to secure your account and make sure you get receipts and password resets.';
+    }
+
+    var dismissBtn = document.getElementById('verify-banner-dismiss');
+    if (dismissBtn) {
+        dismissBtn.onclick = function () {
+            banner.classList.add('hidden');
+            try { localStorage.setItem(VERIFY_BANNER_DISMISSED_KEY, '1'); } catch (e) { /* ignore */ }
+        };
+    }
+
+    var resendBtn = document.getElementById('verify-banner-resend');
+    if (resendBtn) {
+        resendBtn.onclick = async function () {
+            resendBtn.disabled = true;
+            resendBtn.textContent = 'Sending...';
+            try {
+                // The endpoint is @validate_json and requires an email in the
+                // body; sending none returns 400.
+                await apiCall('/auth/resend-verification', {
+                    method: 'POST',
+                    body: JSON.stringify({ email: user.email })
+                });
+                resendBtn.textContent = 'Email sent';
+            } catch (error) {
+                console.error('Error resending verification:', error);
+                resendBtn.textContent = 'Try again';
+                resendBtn.disabled = false;
+            }
+        };
+    }
+
+    banner.classList.remove('hidden');
+}
+
+function updateEmailVerificationBanner(user) {
+    var banner = document.getElementById('email-verification-banner');
     var nudge = document.getElementById('sidebar-verify-nudge');
     var resendBtn = document.getElementById('sidebar-resend-btn');
     if (!nudge) return;
 
-    // Check multiple signals: backend verified flag, OAuth via localStorage, or Discord-connected
-    var authMethod = localStorage.getItem('lastAuthMethod');
-    var isOAuthUser = authMethod === 'google' || authMethod === 'discord';
+    // An OAuth email is verified by the provider, so ask only email/password
+    // users. Read it off the profile rather than localStorage: lastAuthMethod
+    // is not user-scoped, so a previous account's value survives a sign-out
+    // and would silently suppress this for the next person on the machine.
+    var isOAuthUser = user.has_google === true || user.has_apple === true;
     var hasDiscord = user.has_discord === true;
 
-    // If verified, OAuth user, or Discord-connected — hide
     if (user.is_verified || isOAuthUser || hasDiscord) {
+        if (banner) banner.classList.add('hidden');
         nudge.classList.add('hidden');
         return;
     }
@@ -409,6 +461,7 @@ function updateEmailVerificationBanner(user) {
     // Show for genuinely unverified email-only users
     if (!user.is_verified) {
         nudge.classList.remove('hidden');
+        setUpVerifyBanner(banner, user);
 
         if (resendBtn) {
             resendBtn.onclick = async function() {

@@ -586,6 +586,77 @@ img { max-width: 100%; display: block; }
   border-color: rgba(244,165,53,0.2);
 }
 
+/* Unverified-email banner. The sidebar nudge below is 12px dim text and was
+   being missed entirely, so the prompt also appears in the main column where
+   the eye actually lands. Dismissible, because nothing is gated on it. */
+.verify-email-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--amber-soft, rgba(244,165,53,0.10));
+  border: 0.5px solid rgba(244,165,53,0.45);
+}
+.verify-email-banner > i {
+  color: var(--amber-ink, #8a4f0d);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.verify-email-banner-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.verify-email-banner-text strong {
+  font-size: 14px;
+  color: var(--text);
+}
+.verify-email-banner-text span {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+.verify-email-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.verify-email-banner-btn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: var(--teal);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.verify-email-banner-btn:hover { background: var(--teal-dim); }
+.verify-email-banner-btn:disabled { opacity: 0.6; cursor: default; }
+.verify-email-banner-dismiss {
+  padding: 7px 10px;
+  border: 0;
+  background: none;
+  color: var(--text-dim);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.verify-email-banner-dismiss:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  .verify-email-banner { flex-wrap: wrap; }
+  .verify-email-banner-actions { width: 100%; justify-content: flex-start; }
+}
+
 /* Sidebar email verification nudge */
 .sidebar-verify-nudge {
   margin: 0;

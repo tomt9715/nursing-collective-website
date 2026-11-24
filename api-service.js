@@ -273,7 +273,8 @@ const USER_SCOPED_STORAGE_KEYS = [
     'gettingStartedDismissed',
     'myGuidesSetupBannerDismissed',
     'roundsIntroDismissed',
-    'roundsPlayTipsDismissed'
+    'roundsPlayTipsDismissed',
+    'verifyEmailBannerDismissed'
 ];
 
 function clearUserScopedStorage() {

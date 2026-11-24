@@ -11,30 +11,65 @@
     const statusTitle = document.getElementById('status-title');
     const statusMessage = document.getElementById('status-message');
     const actionButtons = document.getElementById('action-buttons');
+    const confirmPrompt = document.getElementById('confirm-prompt');
+    const confirmBtn = document.getElementById('confirm-email-btn');
 
     // Get token from URL
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
 
     if (!token) {
+        hidePrompt();
         showError('Invalid verification link. Please check your email and try again.');
         return;
     }
 
-    // Verify email with backend
-    fetch(`${API_BASE}/verify-email?token=${encodeURIComponent(token)}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                showError(data.error);
-            } else {
-                showSuccess(data.message || 'Email verified successfully!');
-            }
-        })
-        .catch(error => {
-            console.error('Verification error:', error);
-            showError('Failed to verify email. Please try again or contact support.');
-        });
+    // Verification happens on click, never on load.
+    //
+    // This page used to verify as soon as it rendered. Institutional mailboxes
+    // run links through security scanners (Microsoft Defender Safe Links and
+    // similar) that fetch and render them before anyone opens the message, so
+    // accounts were being confirmed automatically — observed on a
+    // student.mville.edu address that was verified without the email ever
+    // being opened. Rendering the page now proves nothing; someone has to
+    // press the button.
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', verifyNow);
+    } else {
+        // No button in the DOM (older cached markup): fall back to the old
+        // behaviour rather than stranding someone on a dead page.
+        verifyNow();
+    }
+
+    function hidePrompt() {
+        if (confirmPrompt) confirmPrompt.style.display = 'none';
+    }
+
+    function verifyNow() {
+        if (confirmBtn) {
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Confirming…</span>';
+        }
+        statusIcon.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:var(--teal);"></i>';
+        statusTitle.textContent = 'Confirming your email…';
+        statusMessage.textContent = 'This takes a moment.';
+
+        fetch(`${API_BASE}/verify-email?token=${encodeURIComponent(token)}`)
+            .then(response => response.json())
+            .then(data => {
+                hidePrompt();
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    showSuccess(data.message || 'Email verified successfully!');
+                }
+            })
+            .catch(error => {
+                console.error('Verification error:', error);
+                hidePrompt();
+                showError('Failed to verify email. Please try again or contact support.');
+            });
+    }
 
     function showSuccess(message) {
         statusIcon.innerHTML = '<i class="fas fa-check-circle" style="color: #10b981;"></i>';

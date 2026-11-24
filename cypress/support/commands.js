@@ -18,20 +18,6 @@ Cypress.Commands.add('waitForNavigation', () => {
 });
 
 /**
- * Custom command to toggle dark mode
- */
-Cypress.Commands.add('toggleDarkMode', () => {
-    cy.get('#theme-toggle').click();
-});
-
-/**
- * Custom command to check dark mode is active
- */
-Cypress.Commands.add('assertDarkMode', (shouldBeDark = true) => {
-    cy.get('html').should(shouldBeDark ? 'have.attr' : 'not.have.attr', 'data-theme', 'dark');
-});
-
-/**
  * Custom command to add item to cart (guest)
  */
 Cypress.Commands.add('addToCartGuest', (productId, productName, price) => {

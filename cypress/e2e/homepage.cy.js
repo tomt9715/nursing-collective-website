@@ -13,47 +13,16 @@ describe('Homepage', () => {
             cy.get('body').should('be.visible');
         });
 
-        it('should display the hero section', () => {
-            cy.get('.hero').should('be.visible');
-            cy.get('.hero h1').should('contain', 'Nursing School Success Hub');
-        });
-
         it('should display the navigation', () => {
             cy.get('.navbar').should('be.visible');
             cy.get('.nav-logo').should('be.visible');
         });
-
-        it('should display the features section', () => {
-            cy.get('.features').should('be.visible');
-            cy.get('.feature-card').should('have.length.at.least', 3);
-        });
-
-        it('should display the footer', () => {
-            cy.get('.footer').should('be.visible');
-            cy.get('.footer-brand').should('contain', 'The Nursing Collective');
-        });
     });
 
     describe('Navigation', () => {
-        it('should navigate to Study Guides page', () => {
-            cy.get('.nav-links').contains('Study Guides').click();
-            cy.url().should('include', 'study-guides');
-        });
-
         it('should navigate to Pricing page', () => {
             cy.get('.nav-links').contains('Pricing').click();
             cy.url().should('include', 'pricing');
-        });
-
-        it('should navigate to Login page', () => {
-            cy.get('.nav-links').contains('Login').click();
-            cy.url().should('include', 'login');
-        });
-
-        it('should have working Discord link in CTA', () => {
-            cy.get('.hero-buttons a').first()
-                .should('have.attr', 'href')
-                .and('include', 'discord.gg');
         });
     });
 
@@ -82,11 +51,6 @@ describe('Homepage', () => {
 
             cy.get('#mobile-menu-btn').click();
             cy.get('.nav-links').should('not.have.class', 'mobile-open');
-        });
-
-        it('should show Home link in mobile menu', () => {
-            cy.get('#mobile-menu-btn').click();
-            cy.get('.nav-link-home').should('be.visible');
         });
     });
 

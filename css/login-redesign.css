@@ -595,6 +595,25 @@ img { max-width: 100%; display: block; }
   top: calc(50% + 10px);
 }
 
+/* The calc above assumes a group is just label + input: its +10px is half
+   the label block, which lands the icon on the input's centre. That breaks
+   when the group also holds something BELOW the input (the password
+   strength bar, the "passwords match" line), because the group's centre
+   drops by half that element's height and the icons sink with it.
+   .input-row gives the icons a box containing only the input, so plain
+   centring is correct no matter what else the group holds. */
+.input-row {
+  position: relative;
+  display: block;
+}
+
+.form-group .input-row .field-icon,
+.form-group .input-row .password-toggle,
+.form-group:has(label) .input-row .field-icon,
+.form-group:has(label) .input-row .password-toggle {
+  top: 50%;
+}
+
 .form-group input:focus,
 .auth-input:focus {
   border-color: var(--teal);

@@ -24,8 +24,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
-    <link rel="stylesheet" href="css/feedback-widget.css?v=tinted-20261123">
-    <link rel="stylesheet" href="css/tokens.css?v=cypress-fixes-20261123">
+    <link rel="stylesheet" href="css/feedback-widget.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/tokens.css?v=audit-cleanup-20261124">
     <link rel="stylesheet" href="css/checkout-redesign.css?v=tinted-20261123">
 
     <!-- Font Awesome -->
@@ -35,11 +35,11 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Stripe.js (required for Embedded Checkout) -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <script defer src="https://js.stripe.com/v3/"></script>
 
     <!-- Sentry Error Tracking -->
-    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
-    <script src="sentry-init.js"></script>
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
     <script src="beta-banner.js?v=cypress-fixes-20261123"></script>
 </head>
 <body>
@@ -261,11 +261,11 @@
     </footer>
 
     <!-- Scripts -->
-<script src="api-service.js?v=light-chrome-20261028"></script>
-    <script src="script.js?v=membership-alignment-20261027"></script>
-    <script src="checkout-script.js?v=contrast-20261123"></script>
-    <script src="analytics.js"></script>
-    <script src="cookie-consent.js"></script>
-    <script src="feedback-widget.js"></script>
+<script defer src="api-service.js?v=audit-cleanup-20261124"></script>
+    <script defer src="script.js?v=audit-cleanup-20261124"></script>
+    <script defer src="checkout-script.js?v=audit-cleanup-20261124"></script>
+    <script defer src="analytics.js"></script>
+    <script defer src="cookie-consent.js"></script>
+    <script defer src="feedback-widget.js"></script>
 </body>
 </html>

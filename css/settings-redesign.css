@@ -110,6 +110,20 @@ img { max-width: 100%; display: block; }
   max-width: 100%;
 }
 
+/* The page previously opened on an <h3>, so it had no document title for
+   screen readers or search engines. */
+.settings-page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 480px) {
+  .settings-page-title { font-size: 25px; }
+}
+
 .settings-section {
   padding-top: 0;
 }

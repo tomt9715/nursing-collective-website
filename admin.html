@@ -37,8 +37,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Sentry Error Tracking (load first) -->
-    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
-    <script src="sentry-init.js"></script>
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
     <script src="beta-banner.js?v=cypress-fixes-20261123"></script>
 </head>
 <body>
@@ -1295,21 +1295,21 @@
     </footer>
 
     <!-- Custom Modal System -->
-    <script src="modal.js"></script>
+    <script defer src="modal.js"></script>
 
     <!-- Dark Mode Manager -->
-    <script src="dark-mode.js"></script>
+    <script defer src="dark-mode.js"></script>
 
     <!-- Sidebar Navigation -->
-    <script src="sidebar.js?v=light-chrome-20261028"></script>
+    <script defer src="sidebar.js?v=light-chrome-20261028"></script>
 
     <!-- API Service Layer -->
-    <script src="api-service.js?v=light-chrome-20261028"></script>
+    <script defer src="api-service.js?v=audit-cleanup-20261124"></script>
 
     <!-- Shared Utilities (escapeHtml, formatDate, etc.) -->
-    <script src="script.js?v=membership-alignment-20261027"></script>
+    <script defer src="script.js?v=audit-cleanup-20261124"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=2.2.delete-user"></script>
+    <script defer src="admin-script.js?v=audit-cleanup-20261124"></script>
 </body>
 </html>

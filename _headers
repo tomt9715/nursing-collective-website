@@ -1,3 +1,31 @@
+# Content Security Policy
+#
+# Added 24 Nov 2026. CLAUDE.md had claimed for months that this file carried a
+# CSP with no 'unsafe-inline' for scripts; it carried no CSP at all.
+#
+# script-src deliberately has NO 'unsafe-inline' — that is the whole value of
+# the policy, and the codebase already earns it: zero inline event handlers,
+# and quiz.html's one inline block was moved to quiz-bootstrap.js to get here.
+# JSON-LD blocks are data, not executed, so they are unaffected.
+#
+# style-src DOES allow 'unsafe-inline', because ~70 style="..." attributes are
+# spread through the markup. Inline styles cannot execute code; dropping this
+# would mean rewriting that markup for very little security gain.
+#
+# Every origin below was taken from what the pages actually load:
+#   browser.sentry-cdn.com   error tracking bundle (every page)
+#   googletagmanager.com     gtag, loaded by analytics.js after consent
+#   js.stripe.com            checkout.html
+#   cdn.jsdelivr.net         settings.html (image cropper)
+#   cdnjs.cloudflare.com     Font Awesome CSS + its font files
+#   fonts.googleapis/gstatic Google Fonts
+#   ingest.us.sentry.io      the DSN host in sentry-init.js
+#   api. / staging-backend   the two API hosts api-service.js selects between
+#
+# If you add an external script, stylesheet, font or fetch target, add its
+# origin here or it will be blocked. Check the browser console for
+# "Refused to load" after any such change.
+
 # Security headers for all pages
 /*
   X-Content-Type-Options: nosniff
@@ -8,6 +36,7 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://browser.sentry-cdn.com https://www.googletagmanager.com https://js.stripe.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.thenursingcollective.pro https://staging-backend-production-365a.up.railway.app https://o4510760021590016.ingest.us.sentry.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://api.stripe.com; frame-src https://js.stripe.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
 
 # Cache control for HTML pages
 /*.html

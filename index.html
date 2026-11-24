@@ -41,9 +41,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
-    <link rel="stylesheet" href="css/feedback-widget.css?v=tinted-20261123">
-    <link rel="stylesheet" href="css/tokens.css?v=cypress-fixes-20261123">
-    <link rel="stylesheet" href="css/home-redesign.css?v=cypress-fixes-20261123">
+    <link rel="stylesheet" href="css/feedback-widget.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/tokens.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/home-redesign.css?v=audit-cleanup-20261124">
 
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -52,8 +52,8 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Sentry Error Tracking (load first) -->
-    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
-    <script src="sentry-init.js"></script>
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
 
     <!-- Structured Data JSON-LD -->
     <script type="application/ld+json">
@@ -292,17 +292,17 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-card-icon"><i class="fas fa-book-open"></i></div>
-                    <h4>Study Guides</h4>
+                    <h3>Study Guides</h3>
                     <p><!-- STAT:guides -->50+<!-- /STAT --> comprehensive guides across cardiovascular, respiratory, neuro, pharmacology, and more. Designed for how nursing students actually learn.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h4>Practice Questions</h4>
+                    <h3>Practice Questions</h3>
                     <p>Thousands of clinical scenario questions that test real understanding — not just memorization. Track progress and find your weak spots.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-card-icon"><i class="fas fa-stethoscope"></i></div>
-                    <h4>Clinical Resources</h4>
+                    <h3>Clinical Resources</h3>
                     <p>Lab values, vital signs, medications, and quick reference tools you'll actually use in clinicals and on the floor.</p>
                 </div>
             </div>
@@ -317,17 +317,17 @@
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">01</div>
-                    <h4>Pick a plan</h4>
+                    <h3>Pick a plan</h3>
                     <p>Explore the free resources, or join the study membership for $14.99/month. Renews until canceled.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">02</div>
-                    <h4>Study what matters</h4>
+                    <h3>Study what matters</h3>
                     <p>Choose an available study guide, work through its practice quiz, and review the explanations.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">03</div>
-                    <h4>Walk in confident</h4>
+                    <h3>Walk in confident</h3>
                     <p>Review key concepts, practice with questions, and go into your exams knowing you're prepared.</p>
                 </div>
             </div>
@@ -349,7 +349,7 @@
             <div class="community-wrap">
                 <div class="section-label">Community</div>
                 <h2 class="section-heading">You're not studying alone</h2>
-                <p class="section-desc">Join hundreds of nursing students on Discord. Share tips, ask questions, and get instant clinical references from FlorenceBot — our AI study assistant.</p>
+                <p class="section-desc">Join other nursing students on Discord. Share tips, ask questions, and get instant clinical references from FlorenceBot — our AI study assistant.</p>
                 <div class="community-features">
                     <div class="community-pill"><i class="fas fa-robot"></i> FlorenceBot AI</div>
                     <div class="community-pill"><i class="fas fa-users"></i> Peer Support</div>
@@ -413,12 +413,12 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="home-redirect.js"></script>
-    <script src="home-mockup-tabs.js"></script>
-<script src="api-service.js?v=light-chrome-20261028"></script>
-    <script src="script.js?v=membership-alignment-20261027"></script>
-    <script src="analytics.js"></script>
-    <script src="cookie-consent.js"></script>
-    <script src="feedback-widget.js"></script>
+    <script defer src="home-redirect.js"></script>
+    <script defer src="home-mockup-tabs.js"></script>
+<script defer src="api-service.js?v=audit-cleanup-20261124"></script>
+    <script defer src="script.js?v=audit-cleanup-20261124"></script>
+    <script defer src="analytics.js"></script>
+    <script defer src="cookie-consent.js"></script>
+    <script defer src="feedback-widget.js"></script>
 </body>
 </html>

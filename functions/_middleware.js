@@ -280,6 +280,25 @@ export async function onRequest(context) {
     // Explicit production launch switch; previews retain their password gate.
     const hostname = new URL(request.url).hostname;
     const productionHost = ['thenursingcollective.pro', 'www.thenursingcollective.pro', 'learn.thenursingcollective.pro'].includes(hostname);
+
+    // ── Legacy path redirects ──
+    // These lived in _redirects with absolute source URLs, which Cloudflare
+    // Pages does not accept — it warned on every build and silently dropped
+    // them. Verified against production on 24 Nov 2026: both
+    // /quiz-bank/something and /app/index.html returned 404, so the redirects
+    // had never worked and old bookmarks were landing on the 404 page.
+    //
+    // Handled here rather than with relative sources in _redirects because the
+    // target is the live learn subdomain: a preview deployment must not bounce
+    // testers onto production. Production host only, before the gate.
+    if (productionHost) {
+        const path = new URL(request.url).pathname;
+        if (path === '/quiz-bank' || path.startsWith('/quiz-bank/') ||
+            path === '/app' || path === '/app/' || path === '/app/index.html') {
+            return Response.redirect('https://learn.thenursingcollective.pro/', 301);
+        }
+    }
+
     if (productionHost && env.PUBLIC_SITE_ENABLED === '1') {
         return next();
     }

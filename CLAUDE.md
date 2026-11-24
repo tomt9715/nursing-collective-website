@@ -89,7 +89,7 @@ Wait 1-2 minutes for Cloudflare to deploy.
 
 ### Step 3: Test the Preview
 - **Visual checks**: Verify UI/styling at the preview URL
-- **Backend testing**: Test cart, checkout, API calls against production backend
+- **Backend testing**: preview branches use the staging backend and staging Stripe test mode
 
 ### Step 4: When User Approves ("move to live site")
 Only when the user confirms changes are ready for production:
@@ -130,13 +130,13 @@ nursing-collective-website/
 ├── admin.html          # Admin panel (requires admin role)
 ├── pricing.html        # Subscription tiers
 ├── success.html        # Post-payment success page
-├── study-guides.html   # Study guides landing
-├── guides.html         # Redirects to study-guides.html
+├── my-guides.html      # The guide library (study-guides.html and guides.html do not exist)
 ├── about.html          # About The Nursing Collective
 ├── css/
-│   ├── main.css        # Core styles, variables, utilities
-│   ├── components.css  # Reusable component styles
-│   └── pages.css       # Page-specific styles
+│   ├── tokens.css      # Palette + design tokens — SINGLE SOURCE OF TRUTH
+│   ├── <page>-redesign.css  # one stylesheet per page, loaded after tokens.css
+│   └── (main.css, components.css, pages.css and the page-*.css set were
+│        deleted on 24 Nov 2026 — nothing loaded them)
 ├── api-service.js      # Central API client (all backend calls go through here)
 ├── auth-script.js      # Auth handling (custom JWT)
 ├── dashboard-script.js # Dashboard functionality
@@ -191,23 +191,23 @@ const profile = await apiCall('/user/profile');
 
 ### CSS Patterns
 
-**1. CSS Variables** (defined in `main.css`)
+**1. CSS Variables** — defined in `css/tokens.css`, which is the single source
+of truth. `main.css` was deleted on 24 Nov 2026. The palette is warm light and
+every value is checked for WCAG AA in both directions; read the comments in
+`tokens.css` before changing one, especially the rule about ink on tinted and
+sunken surfaces.
 ```css
---primary-color: #2E86AB;
---secondary-color: #A23B72;
---accent-color: #F18F01;
---background-color: #FFFFFF;
---text-color: #1A1A1A;
+--navy:   #faf7f2;  /* page (historical name, light value) */
+--navy-2: #ffffff;  /* card */
+--teal:   #0b7d74;  /* accent */
+--text:   #2b2621;  /* ink */
 ```
 
-**2. Dark Mode**
-Uses `[data-theme="dark"]` attribute on `<html>`:
-```css
-[data-theme="dark"] {
-    --background-color: #1A1A1A;
-    --text-color: #F5F5F5;
-}
-```
+**2. Dark Mode — REMOVED.** The site is warm light only. `dark-mode.js` was
+taken off every non-admin page on 23 Nov 2026 and the `[data-theme="dark"]`
+rules were deleted. Do not reintroduce the attribute: while it was still being
+set, legacy dark rules rendered over light tokens and made quiz labels
+unreadable at 1.61:1.
 
 **3. Responsive Breakpoints**
 ```css
@@ -231,7 +231,7 @@ When adding new external scripts, update the CSP in `_headers`.
 ## Important Notes
 
 - NEVER push directly to `main` without testing on a preview branch first
-- Preview branches connect to the production Railway backend
+- Preview branches connect to the **staging** backend and staging database, not production
 - Cloudflare auto-deploys all non-production branches
 - For quick visual-only checks (no backend), user can also use Netlify Drop
 - All JavaScript must be in external files (no inline scripts due to CSP)
@@ -243,7 +243,8 @@ When adding new external scripts, update the CSP in `_headers`.
 
 ## Backend API Reference
 
-Base URL: `https://api.thenursingcollective.pro`
+Base URLs: production `https://api.thenursingcollective.pro`, staging
+`https://staging-backend-production-365a.up.railway.app` (api-service.js picks by hostname)
 
 ### Auth Required Endpoints
 All require `Authorization: Bearer {access_token}` header.
@@ -252,7 +253,6 @@ All require `Authorization: Bearer {access_token}` header.
 |----------|--------|-------------|
 | `/api/user/profile` | GET | Get user profile |
 | `/api/user/purchases` | GET | Get user's purchased guides |
-| `/api/cart` | GET/POST | Get or update cart |
 | `/api/checkout/create-session` | POST | Create Stripe checkout |
 | `/api/admin/users` | GET | List users (admin only) |
 | `/api/admin/guides` | GET/POST | Manage guides (admin only) |

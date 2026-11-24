@@ -29,9 +29,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
-    <link rel="stylesheet" href="css/feedback-widget.css?v=tinted-20261123">
-    <link rel="stylesheet" href="css/tokens.css?v=cypress-fixes-20261123">
-    <link rel="stylesheet" href="css/settings-redesign.css?v=sidebar-20261123">
+    <link rel="stylesheet" href="css/feedback-widget.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/tokens.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/settings-redesign.css?v=audit-cleanup-20261124">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -47,7 +47,6 @@
     <!-- Sentry Error Tracking (deferred) -->
     <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script defer src="sentry-init.js"></script>
-    <link rel="stylesheet" href="css/sidebar-widgets.css?v=1">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -135,6 +134,7 @@
         <div class="dash-main">
         <section class="settings-section">
         <div class="settings-container">
+            <h1 class="settings-page-title">Account</h1>
             <details class="account-extra-tools" style="margin-bottom:24px;padding:18px;border:1px solid var(--border);border-radius:12px;">
                 <summary>Additional tools</summary>
                 <p style="margin:12px 0;">Looking for a tool you’ve used before? Your access hasn’t changed.</p>
@@ -597,13 +597,13 @@
     <!-- Footer removed — workspace page -->
     <!-- Dark Mode Manager (sync - prevents flash) -->
 <!-- API Service Layer (sync - needed by other scripts) -->
-    <script src="api-service.js?v=light-chrome-20261028"></script>
+    <script defer src="api-service.js?v=audit-cleanup-20261124"></script>
     <!-- Deferred scripts -->
     <script defer src="modal.js"></script>
     <script defer src="sidebar.js?v=light-chrome-20261028"></script>
-    <script defer src="script.js?v=membership-alignment-20261027"></script>
+    <script defer src="script.js?v=audit-cleanup-20261124"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-    <script defer src="settings-script.js?v=billing-status-20261029"></script>
+    <script defer src="settings-script.js?v=audit-cleanup-20261124"></script>
     <!-- ═══ Full-screen Modals (body-level for reliable fixed positioning) ═══ -->
 
     <!-- Delete Account Confirmation Modal -->
@@ -846,8 +846,8 @@
         </div>
     </div>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
-    <script src="analytics.js"></script>
-    <script src="cookie-consent.js"></script>
-    <script src="feedback-widget.js"></script>
+    <script defer src="analytics.js"></script>
+    <script defer src="cookie-consent.js"></script>
+    <script defer src="feedback-widget.js"></script>
 </body>
 </html>

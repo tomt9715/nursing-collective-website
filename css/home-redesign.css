@@ -711,7 +711,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 18px;
 }
 
-.feature-card h4 {
+.feature-card h3, .feature-card h4 {
   font-size: 17px;
   font-weight: 500;
   color: var(--text);
@@ -762,7 +762,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 14px;
 }
 
-.step-card h4 {
+.step-card h3, .step-card h4 {
   font-size: 17px;
   font-weight: 500;
   color: var(--text);

@@ -691,3 +691,14 @@
         padding: 6px 4px;
     }
 }
+
+
+/* ── Reserve space for the floating button ──
+   The button itself is positioned sensibly above (<=480px). What was missing
+   is a gutter: being position:fixed, it floated over whatever sat beneath it
+   — card copy on the homepage, the "Manage your membership" link on pricing.
+   Give the page enough bottom padding that any content can scroll clear.
+   Applied from 600px down so small tablets get it too. */
+@media (max-width: 600px) {
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+}

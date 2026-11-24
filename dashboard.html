@@ -30,8 +30,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
-    <link rel="stylesheet" href="css/feedback-widget.css?v=tinted-20261123">
-    <link rel="stylesheet" href="css/tokens.css?v=cypress-fixes-20261123">
+    <link rel="stylesheet" href="css/feedback-widget.css?v=audit-cleanup-20261124">
+    <link rel="stylesheet" href="css/tokens.css?v=audit-cleanup-20261124">
     <link rel="stylesheet" href="css/dashboard-redesign.css?v=sidebar-20261123">
 
     <!-- Font Awesome -->
@@ -197,16 +197,16 @@
 
     <!-- Dark Mode Manager (runs first to prevent flash) -->
 <!-- API Service Layer (loads early to pre-warm stale tokens) -->
-    <script src="api-service.js?v=light-chrome-20261028"></script>
+    <script defer src="api-service.js?v=audit-cleanup-20261124"></script>
 
     <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
     <script defer src="modal.js"></script>
-    <script defer src="script.js?v=membership-alignment-20261027"></script>
-    <script defer src="dashboard-script.js?v=6.simple-study"></script>
+    <script defer src="script.js?v=audit-cleanup-20261124"></script>
+    <script defer src="dashboard-script.js?v=audit-cleanup-20261124"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
-    <script src="analytics.js"></script>
-    <script src="cookie-consent.js"></script>
-    <script src="feedback-widget.js"></script>
+    <script defer src="analytics.js"></script>
+    <script defer src="cookie-consent.js"></script>
+    <script defer src="feedback-widget.js"></script>
 
 </body>
 </html>

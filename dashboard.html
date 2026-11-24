@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="css/cookie-consent.css?v=light-chrome-20261028">
     <link rel="stylesheet" href="css/feedback-widget.css?v=audit-cleanup-20261124">
     <link rel="stylesheet" href="css/tokens.css?v=audit-cleanup-20261124">
-    <link rel="stylesheet" href="css/dashboard-redesign.css?v=sidebar-20261123">
+    <link rel="stylesheet" href="css/dashboard-redesign.css?v=verify-banner-20261124">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -156,6 +156,17 @@
 
         <div id="dashboard-full-content">
             <div class="container study-home">
+                <div class="verify-email-banner hidden" id="email-verification-banner" role="status">
+                    <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                    <div class="verify-email-banner-text">
+                        <strong>Confirm your email address</strong>
+                        <span id="verify-banner-detail">We sent a confirmation link to your inbox. Open it to secure your account and make sure you get receipts and password resets.</span>
+                    </div>
+                    <div class="verify-email-banner-actions">
+                        <button type="button" id="verify-banner-resend" class="verify-email-banner-btn">Resend email</button>
+                        <button type="button" id="verify-banner-dismiss" class="verify-email-banner-dismiss" aria-label="Dismiss for now">Not now</button>
+                    </div>
+                </div>
                 <header class="dashboard-header-compact">
                     <h1>Welcome, <span id="user-first-name">Student</span>!</h1>
                     <p>Understand the material. Practice for your next exam.</p>
@@ -197,12 +208,12 @@
 
     <!-- Dark Mode Manager (runs first to prevent flash) -->
 <!-- API Service Layer (loads early to pre-warm stale tokens) -->
-    <script defer src="api-service.js?v=audit-cleanup-20261124"></script>
+    <script defer src="api-service.js?v=verify-banner-20261124"></script>
 
     <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
     <script defer src="modal.js"></script>
     <script defer src="script.js?v=audit-cleanup-20261124"></script>
-    <script defer src="dashboard-script.js?v=audit-cleanup-20261124"></script>
+    <script defer src="dashboard-script.js?v=verify-banner-20261124"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script defer src="analytics.js"></script>
     <script defer src="cookie-consent.js"></script>

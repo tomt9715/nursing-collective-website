@@ -103,6 +103,33 @@ describe('Homepage', () => {
         it('should have alt text on logo', () => {
             cy.get('.nav-logo').should('have.attr', 'alt');
         });
+
+        // Replaces a spec that asserted an aria-label on #theme-toggle. That
+        // button went with dark mode, and the test went with it. Pinning a
+        // single selector was the weakness: it tested one element rather than
+        // the rule, so removing the element silently removed the coverage.
+        //
+        // This checks the rule instead — every button a user can see has to
+        // announce itself somehow — so it keeps working as the page changes
+        // and fails the moment a nameless icon button appears.
+        it('gives every visible button an accessible name', () => {
+            cy.get('button:visible').each(($btn) => {
+                const el = $btn[0];
+                // The order the accessible-name algorithm uses, loosely:
+                // aria-labelledby, aria-label, visible text, then title.
+                const labelledBy = el.getAttribute('aria-labelledby');
+                const name =
+                    (labelledBy && (Cypress.$('#' + labelledBy).text() || '').trim()) ||
+                    (el.getAttribute('aria-label') || '').trim() ||
+                    ($btn.text() || '').trim() ||
+                    (el.getAttribute('title') || '').trim();
+
+                expect(
+                    name,
+                    `button needs an accessible name: ${el.outerHTML.slice(0, 120)}`
+                ).to.not.equal('');
+            });
+        });
     });
 
     describe('SEO', () => {

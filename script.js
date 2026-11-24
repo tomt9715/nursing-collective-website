@@ -159,8 +159,19 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     // User menu dropdown toggle
-    // Note: dashboard.html and settings.html use their own scripts for this
-    const hasOwnScript = window.location.pathname.includes('dashboard') || window.location.pathname.includes('settings');
+    //
+    // dashboard.html, settings.html and admin.html bind this themselves, so
+    // binding again here would give those pages two handlers on one click.
+    // Both call classList.toggle('active'), so they cancel out and the menu
+    // never opens — which is exactly what admin.html did until 24 Nov 2026,
+    // because the check below listed only dashboard and settings.
+    //
+    // Anchored to the end of the path on purpose. admin-user.html also
+    // contains "admin", but admin-user-script.js does NOT bind the dropdown,
+    // so a loose match would leave that page with no handler at all. Matching
+    // "/admin" or "/admin.html" exactly keeps admin-user working. URLs serve
+    // clean here (/admin), hence the optional extension.
+    const hasOwnScript = /\/(dashboard|settings|admin)(\.html)?$/.test(window.location.pathname);
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
 

@@ -17,9 +17,23 @@ describe('Homepage', () => {
             cy.get('.navbar').should('be.visible');
             cy.get('.nav-logo').should('be.visible');
         });
+
+        it('should display the footer', () => {
+            cy.get('.footer').should('be.visible');
+            // .footer-brand in the old markup; the redesign renamed it.
+            cy.get('.footer-brand-name').should('contain', 'The Nursing Collective');
+        });
     });
 
     describe('Navigation', () => {
+        it('should navigate to the study guide library', () => {
+            cy.get('.nav-links').contains('Study Guides').click();
+            // The link still reads "Study Guides", but study-guides.html was
+            // deleted on 24 Nov 2026 and the library is my-guides.html. The
+            // old spec asserted the old URL, which is why it failed.
+            cy.url().should('include', 'my-guides');
+        });
+
         it('should navigate to Pricing page', () => {
             cy.get('.nav-links').contains('Pricing').click();
             cy.url().should('include', 'pricing');

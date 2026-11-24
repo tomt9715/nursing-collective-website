@@ -63,7 +63,15 @@
                 return { hasAccess: false, unknown: true };
             }
             const data = await response.json();
-            return { hasAccess: !!(data.has_premium || data.all_guides_access), unknown: false };
+            return {
+                hasAccess: !!(data.has_premium || data.all_guides_access),
+                unknown: false,
+                // entitled && !emailVerified means they have paid but have not
+                // confirmed their address. Telling that person to subscribe
+                // would be telling them to buy what they already own.
+                entitled: data.entitled === true,
+                emailVerified: data.email_verified !== false
+            };
         } catch (error) {
             console.error('Access check error:', error);
             return { hasAccess: false, unknown: true };
@@ -71,7 +79,57 @@
     }
 
     // Show paywall overlay
-    function showPaywall() {
+    // Ask the backend for the signed-in address, so Resend can name it and
+    // /auth/resend-verification gets the email it requires.
+    async function fetchOwnEmail() {
+        try {
+            const token = localStorage.getItem('accessToken');
+            const res = await fetch(`${API_URL}/api/user/profile`, {
+                headers: { 'Authorization': `Bearer ${token}` },
+                credentials: 'include'
+            });
+            if (!res.ok) return null;
+            const body = await res.json();
+            return (body.user && body.user.email) || null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function wireVerifyGate() {
+        const btn = document.getElementById('paywall-resend');
+        const status = document.getElementById('paywall-resend-status');
+        if (!btn) return;
+
+        btn.addEventListener('click', async function () {
+            btn.disabled = true;
+            btn.textContent = 'Sending…';
+            const email = await fetchOwnEmail();
+            if (!email) {
+                btn.textContent = 'Resend confirmation email';
+                btn.disabled = false;
+                if (status) status.textContent = 'Could not reach your account. Try again in a moment.';
+                return;
+            }
+            try {
+                const res = await fetch(`${API_URL}/auth/resend-verification`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ email: email })
+                });
+                if (!res.ok) throw new Error('resend failed');
+                btn.textContent = 'Email sent';
+                if (status) status.textContent = 'Sent to ' + email + '. Open the link, then reload this page.';
+            } catch (e) {
+                btn.textContent = 'Try again';
+                btn.disabled = false;
+                if (status) status.textContent = 'That did not send. Try again, or email support.';
+            }
+        });
+    }
+
+    function showPaywall(mode) {
         // Don't show if already showing
         if (document.getElementById('content-paywall')) {
             return;
@@ -84,7 +142,20 @@
         // Create overlay
         const overlay = document.createElement('div');
         overlay.id = 'content-paywall';
-        overlay.innerHTML = `
+        overlay.innerHTML = mode === 'verify' ? `
+            <div class="paywall-modal">
+                <div class="paywall-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <h2>Confirm your email to start studying</h2>
+                <p>We sent a confirmation link when you signed up. Open it and your study guides, quizzes and the Quiz Bank unlock straight away. Check your spam folder if it is not in your inbox.</p>
+                <div class="paywall-actions">
+                    <button type="button" id="paywall-resend" class="paywall-btn paywall-btn-primary">Resend confirmation email</button>
+                    <a href="/dashboard.html" class="paywall-btn paywall-btn-secondary">Back to your dashboard</a>
+                </div>
+                <p class="paywall-login" id="paywall-resend-status"></p>
+            </div>
+        ` : `
             <div class="paywall-modal">
                 <div class="paywall-icon">
                     <i class="fas fa-lock"></i>
@@ -248,6 +319,7 @@
 
         document.head.appendChild(style);
         document.body.appendChild(overlay);
+        if (mode === 'verify') wireVerifyGate();
         document.body.style.overflow = 'hidden';
     }
 
@@ -260,12 +332,12 @@
             return;
         }
 
-        const { hasAccess, unknown } = await checkAccess();
+        const { hasAccess, unknown, entitled, emailVerified } = await checkAccess();
 
         if (!hasAccess && !unknown) {
             // Store intended destination for redirect after subscription
             sessionStorage.setItem('redirectAfterSubscribe', path);
-            showPaywall();
+            showPaywall(!emailVerified && isAuthenticated() ? 'verify' : 'subscribe');
         }
     }
 

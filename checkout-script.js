@@ -1,9 +1,15 @@
 /**
  * Checkout Page Script — Stripe Elements / PaymentElement
  *
- * Migrated off Stripe Embedded Checkout (which can't be fully dark-themed) to
- * Stripe Elements with PaymentElement so the payment form renders inside our
- * own navy panel using a custom appearance config.
+ * Migrated off Stripe Embedded Checkout, which could not be themed closely
+ * enough, to Stripe Elements with PaymentElement so the payment form renders
+ * inside our own panel under a custom appearance config.
+ *
+ * The site moved to the warm light palette on 23 Nov 2026; the original reason
+ * for the migration was that Embedded Checkout could not be made dark enough.
+ * The constraint still holds, only inverted — see STRIPE_APPEARANCE below,
+ * which must track css/tokens.css because Stripe renders its fields in an
+ * iframe that CSS cannot reach.
  *
  * Flow:
  *   1. Read ?plan=<id> from the URL.
@@ -13,7 +19,7 @@
  *        - a PaymentIntent (semester / lifetime / credit add-ons), or
  *        - a Subscription's latest_invoice.payment_intent (monthly plans
  *          created with payment_behavior='default_incomplete').
- *   4. Mount PaymentElement with a dark appearance config.
+ *   4. Mount PaymentElement with the warm light appearance config.
  *   5. On submit: validate the terms checkbox, then call stripe.confirmPayment
  *      with a return_url back to success.html. Stripe handles 3DS / redirects.
  *   6. Webhooks fulfill the order; success.html polls /api/subscription-status.
@@ -507,7 +513,7 @@
             renderOrderSummary(product, planId, currentIntent);
             renderDiscount(currentIntent, product);
 
-            // 4. Mount Stripe Elements with our dark appearance.
+            // 4. Mount Stripe Elements with our warm light appearance.
             stripe = Stripe(publishableKey);
             mountPaymentElement(currentIntent.clientSecret);
         } catch (err) {

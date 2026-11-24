@@ -23,7 +23,11 @@
 #   api. / staging-backend   the two API hosts api-service.js selects between
 #   clarity.ms               Microsoft Clarity, loaded by cookie-consent.js
 #                            ONLY after analytics consent — which is why a
-#                            sweep that never accepts cookies will not see it
+#                            sweep that never accepts cookies will not see it.
+#                            *.clarity.ms is required as well as www: the tag
+#                            at www.clarity.ms then pulls its real payload from
+#                            scripts.clarity.ms, so allowing only the entry
+#                            origin still blocks it.
 #
 # If you add an external script, stylesheet, font or fetch target, add its
 # origin here or it will be blocked. Check the browser console for
@@ -39,7 +43,7 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://browser.sentry-cdn.com https://www.googletagmanager.com https://js.stripe.com https://cdn.jsdelivr.net https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.thenursingcollective.pro https://staging-backend-production-365a.up.railway.app https://o4510760021590016.ingest.us.sentry.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://api.stripe.com https://www.clarity.ms https://*.clarity.ms; frame-src https://js.stripe.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://browser.sentry-cdn.com https://www.googletagmanager.com https://js.stripe.com https://cdn.jsdelivr.net https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.thenursingcollective.pro https://staging-backend-production-365a.up.railway.app https://o4510760021590016.ingest.us.sentry.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://api.stripe.com https://www.clarity.ms https://*.clarity.ms; frame-src https://js.stripe.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
 
 # Cache control for HTML pages
 /*.html

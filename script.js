@@ -184,6 +184,33 @@ document.addEventListener('DOMContentLoaded', async function() {
             });
         });
     }
+
+    // Keep aria-expanded on the account button in step with the dropdown.
+    //
+    // Four scripts toggle #user-dropdown — this one, dashboard-script.js,
+    // settings-script.js and admin-script.js — and each closes it from more
+    // than one place. Adding the attribute update to all of them would mean
+    // the same two lines in eight spots, where one missed spot leaves a screen
+    // reader being told the menu is shut while it is open.
+    //
+    // Watching the class covers every one of them from here, including any
+    // handler added later, because they all express open/closed the same way.
+    // script.js loads on all 24 pages that carry the button, so this runs
+    // wherever the button exists. Deliberately outside the hasOwnScript guard
+    // above: those pages still need the attribute kept honest.
+    if (userMenuBtn && userDropdown && typeof MutationObserver !== 'undefined') {
+        const syncExpanded = function () {
+            userMenuBtn.setAttribute(
+                'aria-expanded',
+                userDropdown.classList.contains('active') ? 'true' : 'false'
+            );
+        };
+        syncExpanded();
+        new MutationObserver(syncExpanded).observe(userDropdown, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
 });
 
 // ============================================

@@ -90,6 +90,26 @@ describe('Homepage', () => {
         // This checks the rule instead — every button a user can see has to
         // announce itself somehow — so it keeps working as the page changes
         // and fails the moment a nameless icon button appears.
+        // The account button is icon-only and opens a menu, so it needs both
+        // a name and an honest open/closed state. aria-expanded is set in the
+        // markup but kept in step by a MutationObserver in script.js, because
+        // four different scripts toggle that dropdown — a static value here
+        // would tell a screen reader the menu is shut while it is open.
+        it('keeps the account button named and its menu state honest', () => {
+            cy.get('#user-menu-btn')
+                .should('have.attr', 'aria-label', 'Account menu')
+                .and('have.attr', 'aria-haspopup', 'true')
+                .and('have.attr', 'aria-expanded', 'false');
+
+            cy.get('#user-menu-btn').click({ force: true });
+            cy.get('#user-dropdown').should('have.class', 'active');
+            cy.get('#user-menu-btn').should('have.attr', 'aria-expanded', 'true');
+
+            cy.get('body').click(5, 5);
+            cy.get('#user-dropdown').should('not.have.class', 'active');
+            cy.get('#user-menu-btn').should('have.attr', 'aria-expanded', 'false');
+        });
+
         it('gives every visible button an accessible name', () => {
             cy.get('button:visible').each(($btn) => {
                 const el = $btn[0];

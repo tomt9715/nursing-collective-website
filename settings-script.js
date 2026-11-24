@@ -1021,6 +1021,27 @@ function setupProfilePicListeners() {
 // MEMBERSHIP SECTION
 // ══════════════════════════════════════════════
 
+/**
+ * Clear the "Opening secure billing…" state when the visitor comes back.
+ *
+ * openBillingPortal() disables the button and navigates away in the same tab.
+ * Returning from Stripe usually restores this page from the back-forward
+ * cache, which replays the DOM exactly as it was left — button still
+ * disabled, status text still showing — and nothing reruns to undo it. The
+ * button then looks broken until a manual reload.
+ *
+ * `pageshow` fires on both a fresh load and a bfcache restore, so resetting
+ * there covers the case without needing to detect which happened.
+ */
+function bindBillingPortalReturn() {
+    window.addEventListener('pageshow', function () {
+        var button = document.getElementById('billing-manage-btn');
+        var status = document.getElementById('billing-manage-status');
+        if (button) button.disabled = false;
+        if (status) status.textContent = '';
+    });
+}
+
 async function openBillingPortal() {
     var button = document.getElementById('billing-manage-btn');
     var status = document.getElementById('billing-manage-status');
@@ -1047,6 +1068,7 @@ async function loadMembership() {
     if (portalButton && !portalButton.dataset.bound) {
         portalButton.addEventListener('click', openBillingPortal);
         portalButton.dataset.bound = 'true';
+        bindBillingPortalReturn();
     }
     var subPromise = apiCall('/api/subscription-status?sync_billing=1').catch(function(err) {
         console.warn('Failed to load subscription status:', err);
